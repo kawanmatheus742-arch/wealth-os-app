@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wealth OS Fintech</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #081120 0%, #0d1528 100%);
+      color: white;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .logo {
+      font-size: 28px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 38px;
+    }
+
+    .subtitle {
+      color: #9fb0cf;
+      margin-top: 6px;
+      font-size: 15px;
+    }
+
+    .card {
+      background: rgba(17, 24, 39, 0.92);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.28);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #0d172b;
+      color: white;
+      font-size: 14px;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #8fa3c7;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #1d8cff, #49b2ff);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button.secondary {
+      background: #475569;
+    }
+
+    .small-button {
+      width: auto;
+      padding: 10px 14px;
+      margin-top: 0;
+    }
+
+    .status {
+      margin-top: 12px;
+      min-height: 20px;
+      font-size: 14px;
+    }
+
+    .muted {
+      color: #9fb0cf;
+    }
+
+    .metric-title {
+      color: #9fb0cf;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .metric-value {
+      font-size: 34px;
+      font-weight: 800;
+    }
+
+    .timeline-item {
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      margin-top: 10px;
+    }
+
+    .top-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    #appSection {
+      display: none;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 900px) {
+      .grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">💎</div>
+      <div>
+        <h1>Wealth OS Fintech</h1>
+        <div class="subtitle">Login real + app real + timeline automática</div>
+      </div>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="authSection" class="card">
+      <h2 style="margin-top:0;">Entrar</h2>
+      <div class="muted">Use sua conta para acessar o app.</div>
+
+      <input id="email" type="email" placeholder="Seu e-mail" />
+      <input id="password" type="password" placeholder="Sua senha" />
+
+      <button id="loginBtn">Entrar</button>
+      <button id="logoutBtn" class="secondary hidden">Sair</button>
+
+      <div id="authStatus" class="status"></div>
+    </div>
+
+    <!-- APP -->
+    <div id="appSection">
+      <div class="grid">
+        <div class="card">
+          <div class="metric-title">Usuário logado</div>
+          <div id="userEmail" class="metric-value" style="font-size:22px;">-</div>
+        </div>
+
+        <div class="card">
+          <div class="metric-title">Patrimônio investido</div>
+          <div id="totalInvestido" class="metric-value">R$ 0,00</div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h2 style="margin-top:0;">Novo investimento</h2>
+          <div class="muted">Salva na tabela de investimentos e registra na timeline.</div>
+
+          <input id="asset" placeholder="Ativo (ex: PETR4)" />
+          <input id="amount" type="number" placeholder="Valor investido" />
+
+          <button id="saveInvestmentBtn">Salvar investimento</button>
+          <div id="saveStatus" class="status"></div>
+        </div>
+
+        <div class="card">
+          <h2 style="margin-top:0;">Resumo rápido</h2>
+          <div class="grid-3">
+            <div>
+              <div class="metric-title">Itens</div>
+              <div id="totalItens" class="metric-value" style="font-size:24px;">0</div>
+            </div>
+            <div>
+              <div class="metric-title">Último ativo</div>
+              <div id="ultimoAtivo" class="metric-value" style="font-size:24px;">-</div>
+            </div>
+            <div>
+              <div class="metric-title">Timeline</div>
+              <div id="totalTimeline" class="metric-value" style="font-size:24px;">0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="top-actions">
+          <h2 style="margin:0;">Timeline</h2>
+          <button id="refreshTimelineBtn" class="secondary small-button">Atualizar timeline</button>
+        </div>
+        <div class="muted" style="margin-top:8px;">Criação de posições aparece aqui automaticamente.</div>
+        <div id="timeline" style="margin-top:14px;">Sem histórico ainda</div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { createClient } from "https://esm.sh/@supabase/supabase-js";
+
+    const supabase = createClient(
+      "https://sqvqssdsrpdfvfxcnwwa.supabase.co",
+      "sb_publishable_HfHYwaCI4kEPGWTtPIpvBw_96WL_UPu"
+    );
+
+    const authSection = document.getElementById("authSection");
+    const appSection = document.getElementById("appSection");
+    const authStatus = document.getElementById("authStatus");
+    const saveStatus = document.getElementById("saveStatus");
+
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+
+    const loginBtn = document.getElementById("loginBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const saveInvestmentBtn = document.getElementById("saveInvestmentBtn");
+    const refreshTimelineBtn = document.getElementById("refreshTimelineBtn");
+
+    const userEmailEl = document.getElementById("userEmail");
+    const totalInvestidoEl = document.getElementById("totalInvestido");
+    const totalItensEl = document.getElementById("totalItens");
+    const ultimoAtivoEl = document.getElementById("ultimoAtivo");
+    const totalTimelineEl = document.getElementById("totalTimeline");
+    const timelineEl = document.getElementById("timeline");
+
+    function money(value) {
+      return Number(value || 0).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      });
+    }
+
+    async function getCurrentUser() {
+      const { data } = await supabase.auth.getSession();
+      return data.session?.user || null;
+    }
+
+    function showLoggedOut() {
+      appSection.style.display = "none";
+      loginBtn.classList.remove("hidden");
+      logoutBtn.classList.add("hidden");
+      authStatus.textContent = "";
+    }
+
+    function showLoggedIn(user) {
+      appSection.style.display = "block";
+      loginBtn.classList.add("hidden");
+      logoutBtn.classList.remove("hidden");
+      userEmailEl.textContent = user.email;
+      authStatus.textContent = "Logado com sucesso.";
+    }
+
+    async function carregarInvestimentos() {
+      const user = await getCurrentUser();
+      if (!user) return;
+
+      const { data, error } = await supabase
+        .from("investments")
+        .select("*")
+        .eq("user_id", user.id)
+        .order("id", { ascending: false });
+
+      if (error) {
+        totalInvestidoEl.textContent = "R$ 0,00";
+        totalItensEl.textContent = "0";
+        ultimoAtivoEl.textContent = "-";
+        return;
+      }
+
+      const items = data || [];
+      const total = items.reduce((acc, item) => acc + Number(item.amount || 0), 0);
+
+      totalInvestidoEl.textContent = money(total);
+      totalItensEl.textContent = String(items.length);
+      ultimoAtivoEl.textContent = items.length ? items[0].asset : "-";
+    }
+
+    async function carregarTimeline() {
+      const user = await getCurrentUser();
+      if (!user) {
+        timelineEl.innerHTML = "Faça login para ver a timeline";
+        totalTimelineEl.textContent = "0";
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from("investment_history")
+        .select("*")
+        .eq("user_id", user.id)
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        timelineEl.innerHTML = "Erro ao carregar timeline";
+        totalTimelineEl.textContent = "0";
+        return;
+      }
+
+      const timeline = data || [];
+      totalTimelineEl.textContent = String(timeline.length);
+
+      if (!timeline.length) {
+        timelineEl.innerHTML = "Sem histórico ainda";
+        return;
+      }
+
+      timelineEl.innerHTML = "";
+
+      timeline.forEach((item) => {
+        const div = document.createElement("div");
+        div.className = "timeline-item";
+        div.innerHTML = `
+          <strong>${item.action}</strong><br>
+          Ativo: ${item.asset || "-"}<br>
+          Valor: ${money(item.amount || 0)}<br>
+          <span class="muted">${new Date(item.created_at).toLocaleString("pt-BR")}</span>
+        `;
+        timelineEl.appendChild(div);
+      });
+    }
+
+    async function salvarHistorico(userId, investmentId, payload) {
+      const { error } = await supabase
+        .from("investment_history")
+        .insert([
+          {
+            user_id: userId,
+            investment_id: investmentId,
+            action: "create",
+            asset: payload.asset,
+            category: payload.category,
+            amount: payload.amount,
+            quantity: payload.quantity,
+            avg_price: payload.avg_price,
+            current_price: payload.current_price
+          }
+        ]);
+
+      if (error) {
+        console.error("Erro ao salvar histórico:", error);
+        throw error;
+      }
+    }
+
+    loginBtn.addEventListener("click", async () => {
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+
+      if (!email || !password) {
+        authStatus.textContent = "Preencha email e senha.";
+        return;
+      }
+
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      if (error) {
+        authStatus.textContent = error.message;
+        return;
+      }
+
+      const user = await getCurrentUser();
+      if (!user) {
+        authStatus.textContent = "Login feito, mas não foi possível carregar usuário.";
+        return;
+      }
+
+      showLoggedIn(user);
+      await carregarInvestimentos();
+      await carregarTimeline();
+    });
+
+    logoutBtn.addEventListener("click", async () => {
+      await supabase.auth.signOut();
+      showLoggedOut();
+      timelineEl.innerHTML = "Sem histórico ainda";
+      totalTimelineEl.textContent = "0";
+      totalInvestidoEl.textContent = "R$ 0,00";
+      totalItensEl.textContent = "0";
+      ultimoAtivoEl.textContent = "-";
+      userEmailEl.textContent = "-";
+    });
+
+    saveInvestmentBtn.addEventListener("click", async () => {
+      const user = await getCurrentUser();
+
+      if (!user) {
+        saveStatus.textContent = "Faça login antes de salvar.";
+        return;
+      }
+
+      const asset = document.getElementById("asset").value.trim().toUpperCase();
+      const amount = Number(document.getElementById("amount").value);
+
+      if (!asset) {
+        saveStatus.textContent = "Digite o ativo.";
+        return;
+      }
+
+      if (!amount || amount <= 0) {
+        saveStatus.textContent = "Digite um valor válido.";
+        return;
+      }
+
+      saveStatus.textContent = "Salvando...";
+
+      const payload = {
+        user_id: user.id,
+        asset,
+        category: "Ações",
+        amount,
+        quantity: 1,
+        avg_price: amount,
+        current_price: amount
+      };
+
+      const { data, error } = await supabase
+        .from("investments")
+        .insert([payload])
+        .select()
+        .single();
+
+      if (error) {
+        saveStatus.textContent = "Erro ao salvar investimento.";
+        console.error(error);
+        return;
+      }
+
+      try {
+        await salvarHistorico(user.id, data.id, payload);
+      } catch (errorTimeline) {
+        saveStatus.textContent = "Investimento salvo, mas a timeline falhou.";
+        console.error(errorTimeline);
+        await carregarInvestimentos();
+        await carregarTimeline();
+        return;
+      }
+
+      saveStatus.textContent = "Investimento salvo com sucesso.";
+      document.getElementById("asset").value = "";
+      document.getElementById("amount").value = "";
+
+      await carregarInvestimentos();
+      await carregarTimeline();
+    });
+
+    refreshTimelineBtn.addEventListener("click", async () => {
+      await carregarTimeline();
+    });
+
+    async function init() {
+      const user = await getCurrentUser();
+
+      if (!user) {
+        showLoggedOut();
+        return;
+      }
+
+      showLoggedIn(user);
+      await carregarInvestimentos();
+      await carregarTimeline();
+    }
+
+    init();
+  </script>
+</body>
+</html>

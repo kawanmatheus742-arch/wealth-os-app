@@ -1,0 +1,17 @@
+{
+  "name": "Wealth OS",
+  "short_name": "Wealth OS",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#060816",
+  "theme_color": "#060816",
+  "description": "Painel premium para acompanhar investimentos, patrimônio e metas.",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

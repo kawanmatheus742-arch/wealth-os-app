@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wealth OS Premium</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#060816">
+
+  <style>
+    :root{
+      --bg:#060816;
+      --bg2:#0b1020;
+      --panel:rgba(15,23,42,.86);
+      --panel-2:rgba(17,24,39,.94);
+      --line:rgba(255,255,255,.08);
+      --line-2:rgba(255,255,255,.12);
+      --text:#f8fafc;
+      --muted:#94a3b8;
+      --blue:#1d8cff;
+      --blue2:#49b2ff;
+      --cyan:#22d3ee;
+      --green:#22c55e;
+      --red:#ef4444;
+      --orange:#fb923c;
+      --yellow:#f59e0b;
+      --shadow:0 18px 45px rgba(0,0,0,.28);
+      --shadow-strong:0 28px 70px rgba(0,0,0,.42);
+      --radius:24px;
+    }
+
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+
+    body{
+      margin:0;
+      color:var(--text);
+      font-family:Arial,sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(29,140,255,.18), transparent 22%),
+        radial-gradient(circle at top right, rgba(34,211,238,.12), transparent 18%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    .container{
+      max-width:1440px;
+      margin:0 auto;
+      padding:24px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-bottom:24px;
+      animation:fadeUp .45s ease both;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .logo{
+      width:58px;
+      height:58px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      font-size:28px;
+      background:linear-gradient(135deg, rgba(29,140,255,.35), rgba(73,178,255,.18));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:var(--shadow);
+      animation:floaty 4s ease-in-out infinite;
+    }
+
+    .brand h1{
+      margin:0;
+      font-size:40px;
+      letter-spacing:-.06em;
+    }
+
+    .subtitle{
+      color:var(--muted);
+      margin-top:6px;
+      font-size:15px;
+    }
+
+    .pill{
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+      backdrop-filter:blur(10px);
+    }
+
+    .card{
+      position:relative;
+      overflow:hidden;
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+      animation:fadeUp .45s ease both;
+      transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      backdrop-filter:blur(16px);
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(255,255,255,.03), transparent 42%);
+      pointer-events:none;
+    }
+
+    .card:hover,
+    .mini-card:hover,
+    .asset-item:hover,
+    .timeline-item:hover,
+    .insight-item:hover{
+      transform:translateY(-2px);
+      border-color:rgba(73,178,255,.22);
+      box-shadow:var(--shadow-strong);
+    }
+
+    .card h2,.card h3{
+      margin-top:0;
+      letter-spacing:-.03em;
+      position:relative;
+      z-index:1;
+    }
+
+    .muted{ color:var(--muted); }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:18px;
+      margin-bottom:18px;
+    }
+
+    .hero-title{
+      color:var(--muted);
+      font-size:13px;
+      margin-bottom:10px;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-value{
+      margin:0;
+      font-size:68px;
+      line-height:1;
+      font-weight:800;
+      letter-spacing:-.08em;
+      animation:pulseGlow 2.5s ease-in-out infinite;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-sub{
+      margin-top:12px;
+      color:#dbe7f7;
+      line-height:1.6;
+      max-width:760px;
+      font-size:15px;
+      position:relative;
+      z-index:1;
+    }
+
+    .grid-4{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:18px;
+      position:relative;
+      z-index:1;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-bottom:18px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-bottom:18px;
+    }
+
+    .mini-card{
+      background:var(--panel-2);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:16px;
+      transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      animation:fadeUp .5s ease both;
+    }
+
+    .mini-label{
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:8px;
+    }
+
+    .mini-value{
+      font-size:28px;
+      font-weight:800;
+      letter-spacing:-.04em;
+      word-break:break-word;
+    }
+
+    .top-actions{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    input, select{
+      width:100%;
+      padding:14px;
+      margin-top:10px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      background:#0d172b;
+      color:white;
+      font-size:14px;
+      outline:none;
+      transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+    }
+
+    input:focus, select:focus{
+      border-color:rgba(73,178,255,.45);
+      box-shadow:0 0 0 4px rgba(73,178,255,.10);
+      transform:translateY(-1px);
+    }
+
+    input::placeholder{ color:#8fa3c7; }
+
+    select option{
+      background:#fff;
+      color:#111827;
+    }
+
+    button{
+      width:100%;
+      padding:14px;
+      margin-top:12px;
+      border:none;
+      border-radius:14px;
+      background:linear-gradient(135deg, var(--blue), var(--blue2));
+      color:white;
+      font-weight:700;
+      cursor:pointer;
+      font-size:14px;
+      transition:transform .15s ease, filter .15s ease, box-shadow .15s ease;
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 10px 26px rgba(29,140,255,.22);
+    }
+
+    button::after{
+      content:"";
+      position:absolute;
+      top:0;
+      left:-120%;
+      width:80%;
+      height:100%;
+      transform:skewX(-22deg);
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
+      transition:left .45s ease;
+    }
+
+    button:hover::after{ left:140%; }
+
+    button:hover{
+      transform:translateY(-1px);
+      filter:brightness(1.04);
+    }
+
+    button.secondary{
+      background:#475569;
+      box-shadow:none;
+    }
+
+    button.success{
+      background:linear-gradient(135deg, #16a34a, #22c55e);
+      box-shadow:0 10px 26px rgba(34,197,94,.20);
+    }
+
+    button.danger{
+      background:linear-gradient(135deg, #dc2626, #ef4444);
+      box-shadow:0 10px 26px rgba(239,68,68,.20);
+    }
+
+    .small-btn{
+      width:auto;
+      margin-top:0;
+      padding:10px 12px;
+      font-size:13px;
+    }
+
+    .row-buttons{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:10px;
+    }
+
+    .status{
+      margin-top:12px;
+      min-height:20px;
+      font-size:14px;
+      position:relative;
+      z-index:1;
+    }
+
+    .timeline-item, .asset-item, .insight-item{
+      padding:14px;
+      border-radius:14px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.06);
+      margin-top:10px;
+      transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      animation:slideIn .3s ease;
+    }
+
+    .asset-item{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:14px;
+      align-items:center;
+    }
+
+    .asset-left strong{
+      display:block;
+      font-size:17px;
+      margin-bottom:4px;
+    }
+
+    .asset-left span{
+      color:var(--muted);
+      font-size:13px;
+      display:block;
+      margin-top:3px;
+    }
+
+    .asset-right{
+      text-align:right;
+      font-weight:700;
+      min-width:230px;
+    }
+
+    .asset-actions{
+      display:flex;
+      gap:8px;
+      margin-top:10px;
+      flex-wrap:wrap;
+    }
+
+    .asset-actions button{
+      width:auto;
+      margin-top:0;
+      padding:10px 12px;
+      font-size:13px;
+    }
+
+    .positive{ color:var(--green); }
+    .negative{ color:var(--orange); }
+    .neutral{ color:#e2e8f0; }
+
+    .chart-wrap{
+      margin-top:12px;
+      width:100%;
+      overflow:auto;
+    }
+
+    svg{
+      width:100%;
+      height:300px;
+      display:block;
+    }
+
+    .progress-wrap{ margin-top:12px; }
+
+    .progress-bar{
+      width:100%;
+      height:12px;
+      background:rgba(255,255,255,.07);
+      border-radius:999px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.05);
+    }
+
+    .progress-fill{
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg, var(--blue), var(--cyan));
+      border-radius:999px;
+      transition:width .45s ease;
+    }
+
+    .filter-row{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:10px;
+      margin-top:10px;
+    }
+
+    #appSection{ display:none; }
+
+    .auth-toggle{
+      margin-top:12px;
+      text-align:center;
+      color:#49b2ff;
+      cursor:pointer;
+      font-size:14px;
+      user-select:none;
+    }
+
+    .modal-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.58);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:9999;
+      backdrop-filter:blur(8px);
+    }
+
+    .modal-overlay.show{
+      display:flex;
+      animation:fadeIn .18s ease forwards;
+    }
+
+    .modal-box{
+      width:100%;
+      max-width:430px;
+      background:linear-gradient(180deg, #0f172a, #111827);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:22px;
+      padding:24px;
+      box-shadow:0 30px 70px rgba(0,0,0,.45);
+      transform:scale(.92) translateY(8px);
+      opacity:0;
+      transition:transform .2s ease, opacity .2s ease;
+    }
+
+    .modal-overlay.show .modal-box{
+      transform:scale(1) translateY(0);
+      opacity:1;
+    }
+
+    .modal-actions{
+      display:flex;
+      gap:10px;
+      margin-top:20px;
+    }
+
+    .modal-actions button{
+      margin-top:0;
+    }
+
+    .toast-wrap{
+      position:fixed;
+      top:18px;
+      right:18px;
+      z-index:10000;
+      display:grid;
+      gap:10px;
+      width:min(360px, calc(100vw - 24px));
+    }
+
+    .toast{
+      padding:14px 16px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(15,23,42,.96);
+      color:white;
+      box-shadow:var(--shadow-strong);
+      backdrop-filter:blur(12px);
+      animation:toastIn .22s ease forwards;
+    }
+
+    .toast.success{ border-color:rgba(34,197,94,.35); }
+    .toast.error{ border-color:rgba(239,68,68,.35); }
+    .toast.info{ border-color:rgba(73,178,255,.35); }
+
+    @keyframes toastIn{
+      from { opacity:0; transform:translateY(-10px) scale(.98); }
+      to { opacity:1; transform:translateY(0) scale(1); }
+    }
+
+    @keyframes fadeIn{
+      from { opacity:0; }
+      to { opacity:1; }
+    }
+
+    @keyframes fadeUp{
+      from { opacity:0; transform:translateY(14px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+
+    @keyframes slideIn{
+      from { opacity:0; transform:translateX(-10px); }
+      to { opacity:1; transform:translateX(0); }
+    }
+
+    @keyframes floaty{
+      0%,100% { transform:translateY(0); }
+      50% { transform:translateY(-4px); }
+    }
+
+    @keyframes pulseGlow{
+      0% { text-shadow:0 0 0 rgba(29,140,255,0); }
+      50% { text-shadow:0 0 18px rgba(29,140,255,.35); }
+      100% { text-shadow:0 0 0 rgba(29,140,255,0); }
+    }
+
+    @media (max-width:1100px){
+      .hero, .grid-2, .grid-3{
+        grid-template-columns:1fr;
+      }
+
+      .grid-4{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .hero-value{
+        font-size:48px;
+      }
+    }
+
+    @media (max-width:700px){
+      .grid-4{
+        grid-template-columns:1fr;
+      }
+
+      .asset-item{
+        grid-template-columns:1fr;
+      }
+
+      .asset-right{
+        text-align:left;
+        min-width:auto;
+      }
+
+      .row-buttons,
+      .filter-row,
+      .modal-actions{
+        grid-template-columns:1fr;
+        flex-direction:column;
+      }
+
+      .brand h1{
+        font-size:30px;
+      }
+
+      .hero-value{
+        font-size:40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">💎</div>
+        <div>
+          <h1>Wealth OS</h1>
+          <div class="subtitle">Completo, premium e com experiência mais refinada</div>
+        </div>
+      </div>
+      <div class="pill">Premium</div>
+    </div>
+
+    <div id="authSection" class="card">
+      <h2 id="authTitle" style="margin-bottom:8px;">Entrar</h2>
+      <div class="muted" id="authSubtitle">Faça login para acessar seu painel.</div>
+
+      <input id="email" type="email" placeholder="Seu e-mail" />
+      <input id="password" type="password" placeholder="Sua senha" />
+
+      <button id="authBtn" onclick="handleAuth()">Entrar</button>
+
+      <div id="toggleAuth" class="auth-toggle" onclick="toggleAuthMode()">
+        Criar conta
+      </div>
+
+      <div id="authStatus" class="status"></div>
+    </div>
+
+    <div id="appSection">
+      <div class="hero">
+        <div class="card">
+          <div class="hero-title">Patrimônio atual da carteira</div>
+          <h2 id="portfolioCurrentHero" class="hero-value">R$ 0,00</h2>
+          <div class="hero-sub">
+            Painel completo com preço real, lucro/prejuízo, filtros, edição, exclusão, metas patrimoniais, projeção e análise automática.
+          </div>
+
+          <div class="grid-4">
+            <div class="mini-card">
+              <div class="mini-label">Usuário</div>
+              <div id="userEmail" class="mini-value" style="font-size:20px;">-</div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-label">Investido</div>
+              <div id="totalInvestido" class="mini-value">R$ 0,00</div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-label">Valor atual</div>
+              <div id="portfolioCurrent" class="mini-value">R$ 0,00</div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-label">Lucro / prejuízo</div>
+              <div id="profitLoss" class="mini-value">R$ 0,00</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom:8px;">Ações rápidas</h3>
+          <div class="muted">Atualize preços, saia da conta e mantenha a timeline atualizada.</div>
+          <button class="secondary" onclick="logout()">Sair</button>
+          <button class="secondary" onclick="refreshTimeline()">Atualizar timeline</button>
+          <button class="success" onclick="refreshAllPrices()">Atualizar todos os preços</button>
+          <div id="topStatus" class="status"></div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 id="formTitle">Novo investimento</h3>
+          <div class="muted">Cadastre, edite, busque preço real e salve sua posição.</div>
+
+          <input id="asset" placeholder="Ativo (ex: PETR4, VALE3, BTC)" />
+          
+          <select id="category">
+            <option value="">Selecione a categoria</option>
+            <option value="Ações">Ações</option>
+            <option value="Cripto">Cripto</option>
+            <option value="FIIs">FIIs</option>
+            <option value="Renda Fixa">Renda Fixa</option>
+            <option value="ETF">ETF</option>
+            <option value="Internacional">Internacional</option>
+            <option value="Outros">Outros</option>
+          </select>
+
+          <input id="quantity" type="number" placeholder="Quantidade" />
+          <input id="avgPrice" type="number" placeholder="Preço médio" />
+          <input id="currentPrice" type="number" placeholder="Preço atual" />
+
+          <div class="row-buttons">
+            <button class="secondary" onclick="fetchSinglePrice()">Buscar preço real</button>
+            <button id="saveBtn" onclick="saveInvestment()">Salvar investimento</button>
+          </div>
+
+          <div class="row-buttons">
+            <button id="cancelEditBtn" class="secondary" onclick="cancelEdit()" style="display:none;">Cancelar edição</button>
+          </div>
+
+          <div id="saveStatus" class="status"></div>
+        </div>
+
+        <div class="card">
+          <div class="top-actions">
+            <h3 style="margin:0;">Meta patrimonial</h3>
+            <span class="muted">Com projeção</span>
+          </div>
+
+          <input id="targetValue" type="number" placeholder="Meta de patrimônio" />
+          <input id="monthlyContribution" type="number" placeholder="Aporte mensal planejado" />
+
+          <button onclick="saveGoal()">Salvar meta</button>
+
+          <div class="progress-wrap">
+            <div class="mini-label">Progresso da meta</div>
+            <div class="progress-bar">
+              <div id="goalProgressFill" class="progress-fill"></div>
+            </div>
+          </div>
+
+          <div class="grid-3" style="margin-top:16px; margin-bottom:0;">
+            <div class="mini-card">
+              <div class="mini-label">Meta</div>
+              <div id="goalValueDisplay" class="mini-value" style="font-size:22px;">R$ 0,00</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">Progresso</div>
+              <div id="goalProgressText" class="mini-value" style="font-size:22px;">0%</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">Projeção</div>
+              <div id="projectionText" class="mini-value" style="font-size:18px;">Sem meta</div>
+            </div>
+          </div>
+
+          <div id="goalStatus" class="status"></div>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Resumo rápido</h3>
+          <div class="mini-card" style="margin-top:12px;">
+            <div class="mini-label">Posições</div>
+            <div id="positionsCount" class="mini-value">0</div>
+          </div>
+          <div class="mini-card" style="margin-top:12px;">
+            <div class="mini-label">Timeline</div>
+            <div id="timelineCount" class="mini-value">0</div>
+          </div>
+          <div class="mini-card" style="margin-top:12px;">
+            <div class="mini-label">Maior categoria</div>
+            <div id="topCategory" class="mini-value" style="font-size:22px;">-</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Análise inteligente</h3>
+          <div id="insightsList" style="margin-top:12px;">Sem análise ainda.</div>
+        </div>
+
+        <div class="card">
+          <h3>Maior posição</h3>
+          <div id="topHoldingBox" style="margin-top:12px;">Sem dados.</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="top-actions">
+            <h3 style="margin:0;">Evolução do patrimônio</h3>
+            <span class="muted">Acumulado da carteira</span>
+          </div>
+          <div class="chart-wrap">
+            <svg id="chartSvg" viewBox="0 0 700 280" preserveAspectRatio="none"></svg>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="top-actions">
+            <h3 style="margin:0;">Timeline</h3>
+            <span class="muted">Histórico automático</span>
+          </div>
+          <div id="timeline" style="margin-top:14px;">Sem histórico ainda.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="top-actions">
+          <h3 style="margin:0;">Seus investimentos</h3>
+          <span class="muted">Com busca, filtro, edição e exclusão</span>
+        </div>
+
+        <div class="filter-row">
+          <input id="searchInput" placeholder="Buscar ativo" oninput="applyFilters()" />
+          <select id="filterCategory" onchange="applyFilters()">
+            <option value="">Todas as categorias</option>
+            <option value="Ações">Ações</option>
+            <option value="Cripto">Cripto</option>
+            <option value="FIIs">FIIs</option>
+            <option value="Renda Fixa">Renda Fixa</option>
+            <option value="ETF">ETF</option>
+            <option value="Internacional">Internacional</option>
+            <option value="Outros">Outros</option>
+          </select>
+        </div>
+
+        <div id="assetsList" style="margin-top:12px;">Sem investimentos.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="deleteModal" class="modal-overlay" onclick="handleModalBackdrop(event)">
+    <div class="modal-box">
+      <h3 style="margin-top:0;">Confirmar exclusão</h3>
+      <p id="deleteModalText" class="muted" style="line-height:1.6;">
+        Deseja realmente excluir este investimento?
+      </p>
+
+      <div class="modal-actions">
+        <button class="secondary" onclick="closeDeleteModal()">Cancelar</button>
+        <button class="danger" onclick="confirmDelete()">Excluir</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toastWrap" class="toast-wrap"></div>
+
+  <script type="module">
+    import { createClient } from "https://esm.sh/@supabase/supabase-js";
+
+    const supabase = createClient(
+      "https://sqvqssdsrpdfvfxcnwwa.supabase.co",
+      "sb_publishable_HfHYwaCI4kEPGWTtPIpvBw_96WL_UPu"
+    );
+
+    const authSection = document.getElementById("authSection");
+    const appSection = document.getElementById("appSection");
+    const authStatus = document.getElementById("authStatus");
+    const saveStatus = document.getElementById("saveStatus");
+    const topStatus = document.getElementById("topStatus");
+    const goalStatus = document.getElementById("goalStatus");
+
+    const userEmail = document.getElementById("userEmail");
+    const totalInvestido = document.getElementById("totalInvestido");
+    const portfolioCurrent = document.getElementById("portfolioCurrent");
+    const portfolioCurrentHero = document.getElementById("portfolioCurrentHero");
+    const profitLoss = document.getElementById("profitLoss");
+    const positionsCount = document.getElementById("positionsCount");
+    const timelineCount = document.getElementById("timelineCount");
+    const topCategory = document.getElementById("topCategory");
+    const timeline = document.getElementById("timeline");
+    const assetsList = document.getElementById("assetsList");
+    const chartSvg = document.getElementById("chartSvg");
+    const insightsList = document.getElementById("insightsList");
+    const topHoldingBox = document.getElementById("topHoldingBox");
+
+    const formTitle = document.getElementById("formTitle");
+    const saveBtn = document.getElementById("saveBtn");
+    const cancelEditBtn = document.getElementById("cancelEditBtn");
+
+    const goalValueDisplay = document.getElementById("goalValueDisplay");
+    const goalProgressText = document.getElementById("goalProgressText");
+    const goalProgressFill = document.getElementById("goalProgressFill");
+    const projectionText = document.getElementById("projectionText");
+
+    const deleteModal = document.getElementById("deleteModal");
+    const deleteModalText = document.getElementById("deleteModalText");
+    const toastWrap = document.getElementById("toastWrap");
+
+    let allInvestments = [];
+    let editingInvestmentId = null;
+    let currentUserId = null;
+    let deleteTargetId = null;
+    let isLoginMode = true;
+
+    function money(value) {
+      return Number(value || 0).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      });
+    }
+
+    function showToast(message, type = "info") {
+      const el = document.createElement("div");
+      el.className = `toast ${type}`;
+      el.textContent = message;
+      toastWrap.appendChild(el);
+
+      setTimeout(() => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(-6px)";
+      }, 2600);
+
+      setTimeout(() => el.remove(), 3000);
+    }
+
+    function getPnLClass(value) {
+      if (value > 0) return "positive";
+      if (value < 0) return "negative";
+      return "neutral";
+    }
+
+    async function getUser() {
+      const { data } = await supabase.auth.getSession();
+      return data.session?.user || null;
+    }
+
+    function showLogin() {
+      authSection.style.display = "block";
+      appSection.style.display = "none";
+    }
+
+    function showApp(email) {
+      authSection.style.display = "none";
+      appSection.style.display = "block";
+      userEmail.textContent = email;
+    }
+
+    function getGoalStorageKey(userId) {
+      return `wealth_os_goal_${userId}`;
+    }
+
+    function loadGoal(userId) {
+      const raw = localStorage.getItem(getGoalStorageKey(userId));
+      if (!raw) return { targetValue: 0, monthlyContribution: 0 };
+      try {
+        return JSON.parse(raw);
+      } catch {
+        return { targetValue: 0, monthlyContribution: 0 };
+      }
+    }
+
+    function saveGoalLocal(userId, data) {
+      localStorage.setItem(getGoalStorageKey(userId), JSON.stringify(data));
+    }
+
+    function renderGoalSection(currentValue) {
+      if (!currentUserId) return;
+
+      const goal = loadGoal(currentUserId);
+      const target = Number(goal.targetValue || 0);
+      const monthly = Number(goal.monthlyContribution || 0);
+
+      document.getElementById("targetValue").value = target || "";
+      document.getElementById("monthlyContribution").value = monthly || "";
+
+      goalValueDisplay.textContent = money(target);
+
+      if (!target || target <= 0) {
+        goalProgressText.textContent = "0%";
+        projectionText.textContent = "Sem meta";
+        goalProgressFill.style.width = "0%";
+        return;
+      }
+
+      const progress = Math.min((currentValue / target) * 100, 100);
+      goalProgressText.textContent = `${progress.toFixed(1)}%`;
+      goalProgressFill.style.width = `${progress}%`;
+
+      if (currentValue >= target) {
+        projectionText.textContent = "Meta alcançada";
+        return;
+      }
+
+      if (!monthly || monthly <= 0) {
+        projectionText.textContent = "Defina aporte mensal";
+        return;
+      }
+
+      const missing = target - currentValue;
+      const months = Math.ceil(missing / monthly);
+      projectionText.textContent = `${months} ${months === 1 ? "mês" : "meses"}`;
+    }
+
+    function renderChart(items) {
+      chartSvg.innerHTML = "";
+
+      if (!items.length) {
+        chartSvg.innerHTML = `<text x="50%" y="50%" text-anchor="middle" fill="#94a3b8" font-size="18">Sem dados para o gráfico</text>`;
+        return;
+      }
+
+      const ordered = [...items].reverse();
+      let acc = 0;
+      const serie = ordered.map((item) => {
+        const currentValue = Number(item.quantity || 0) * Number(item.current_price || 0);
+        acc += currentValue;
+        return acc;
+      });
+
+      const width = 700;
+      const height = 280;
+      const padding = 26;
+      const max = Math.max(...serie, 1);
+      const stepX = serie.length === 1 ? 0 : (width - padding * 2) / (serie.length - 1);
+
+      const points = serie.map((value, i) => {
+        const x = padding + i * stepX;
+        const y = height - padding - ((value / max) * (height - padding * 2));
+        return { x, y };
+      });
+
+      const path = points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`).join(" ");
+      const area = `${path} L ${points[points.length - 1].x} ${height - padding} L ${points[0].x} ${height - padding} Z`;
+
+      chartSvg.innerHTML = `
+        <defs>
+          <linearGradient id="lineGradient" x1="0" x2="1">
+            <stop offset="0%" stop-color="#1d8cff"/>
+            <stop offset="100%" stop-color="#22d3ee"/>
+          </linearGradient>
+          <linearGradient id="fillGradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#49b2ff" stop-opacity="0.28"/>
+            <stop offset="100%" stop-color="#49b2ff" stop-opacity="0.02"/>
+          </linearGradient>
+        </defs>
+        <line x1="${padding}" y1="${height - padding}" x2="${width - padding}" y2="${height - padding}" stroke="#334155" stroke-width="1"/>
+        <path d="${area}" fill="url(#fillGradient)"></path>
+        <path d="${path}" fill="none" stroke="url(#lineGradient)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+        ${points.map(p => `<circle cx="${p.x}" cy="${p.y}" r="4.5" fill="#dbeafe"></circle>`).join("")}
+      `;
+    }
+
+    function renderInsights(items, totalInvested, totalCurrent, pnlTotal) {
+      if (!items.length) {
+        insightsList.innerHTML = "Sem análise ainda.";
+        topHoldingBox.innerHTML = "Sem dados.";
+        topCategory.textContent = "-";
+        return;
+      }
+
+      const byCategory = {};
+      let biggest = null;
+
+      items.forEach((item) => {
+        const invested = Number(item.amount || 0);
+        byCategory[item.category] = (byCategory[item.category] || 0) + invested;
+
+        const currentValue = Number(item.quantity || 0) * Number(item.current_price || 0);
+        if (!biggest || currentValue > biggest.currentValue) {
+          biggest = { asset: item.asset, category: item.category, currentValue };
+        }
+      });
+
+      let majorCategory = "-";
+      let majorValue = 0;
+
+      Object.entries(byCategory).forEach(([cat, value]) => {
+        if (value > majorValue) {
+          majorValue = value;
+          majorCategory = cat;
+        }
+      });
+
+      topCategory.textContent = majorCategory;
+
+      const insights = [];
+      const pnlPercent = totalInvested > 0 ? (pnlTotal / totalInvested) * 100 : 0;
+      const concentration = totalInvested > 0 ? (majorValue / totalInvested) * 100 : 0;
+
+      if (pnlTotal > 0) {
+        insights.push(`Sua carteira está no lucro em ${money(pnlTotal)} (${pnlPercent.toFixed(1)}%).`);
+      } else if (pnlTotal < 0) {
+        insights.push(`Sua carteira está em queda de ${money(Math.abs(pnlTotal))} (${Math.abs(pnlPercent).toFixed(1)}%).`);
+      } else {
+        insights.push(`Sua carteira está estável no momento.`);
+      }
+
+      if (concentration >= 60) {
+        insights.push(`Sua carteira está muito concentrada em ${majorCategory} (${concentration.toFixed(1)}%).`);
+      } else if (concentration >= 40) {
+        insights.push(`Sua maior concentração está em ${majorCategory}, em nível moderado.`);
+      } else {
+        insights.push(`Sua carteira está relativamente bem distribuída entre categorias.`);
+      }
+
+      if (items.length < 3) {
+        insights.push(`Você tem poucas posições. Diversificar pode fortalecer sua carteira.`);
+      } else {
+        insights.push(`Você já começou a montar uma carteira mais completa.`);
+      }
+
+      insightsList.innerHTML = "";
+      insights.forEach((text) => {
+        const div = document.createElement("div");
+        div.className = "insight-item";
+        div.textContent = text;
+        insightsList.appendChild(div);
+      });
+
+      topHoldingBox.innerHTML = `
+        <div class="insight-item">
+          <strong>${biggest.asset}</strong><br>
+          Categoria: ${biggest.category}<br>
+          Valor atual: ${money(biggest.currentValue)}
+        </div>
+      `;
+    }
+
+    function renderAssetsList(items) {
+      if (!items.length) {
+        assetsList.innerHTML = "Sem investimentos.";
+        return;
+      }
+
+      assetsList.innerHTML = "";
+      items.forEach((item) => {
+        const invested = Number(item.amount || 0);
+        const current = Number(item.quantity || 0) * Number(item.current_price || 0);
+        const pnl = current - invested;
+        const pnlClass = getPnLClass(pnl);
+
+        const div = document.createElement("div");
+        div.className = "asset-item";
+        div.innerHTML = `
+          <div class="asset-left">
+            <strong>${item.asset || "-"}</strong>
+            <span>${item.category || "Sem categoria"}</span>
+            <span>Qtd: ${Number(item.quantity || 0)} • PM: ${money(item.avg_price || 0)} • Atual: ${money(item.current_price || 0)}</span>
+            <div class="asset-actions">
+              <button class="secondary" onclick="editInvestment('${item.id}')">Editar</button>
+              <button class="secondary" onclick="refreshSingleSavedPrice('${item.id}')">Atualizar preço</button>
+              <button class="danger" onclick="openDeleteModal('${item.id}')">Excluir</button>
+            </div>
+          </div>
+          <div class="asset-right">
+            ${money(current)}<br>
+            <span class="${pnlClass}">${pnl >= 0 ? "+" : "-"} ${money(Math.abs(pnl))}</span>
+          </div>
+        `;
+        assetsList.appendChild(div);
+      });
+    }
+
+    function applyFiltersInternal() {
+      const search = document.getElementById("searchInput").value.trim().toUpperCase();
+      const category = document.getElementById("filterCategory").value;
+
+      let filtered = [...allInvestments];
+
+      if (search) {
+        filtered = filtered.filter(item => String(item.asset || "").toUpperCase().includes(search));
+      }
+
+      if (category) {
+        filtered = filtered.filter(item => item.category === category);
+      }
+
+      renderAssetsList(filtered);
+    }
+
+    async function loadInvestments() {
+      const user = await getUser();
+      if (!user) return;
+
+      const { data, error } = await supabase
+        .from("investments")
+        .select("*")
+        .eq("user_id", user.id)
+        .order("id", { ascending: false });
+
+      if (error) {
+        totalInvestido.textContent = "R$ 0,00";
+        portfolioCurrent.textContent = "R$ 0,00";
+        portfolioCurrentHero.textContent = "R$ 0,00";
+        profitLoss.textContent = "R$ 0,00";
+        positionsCount.textContent = "0";
+        assetsList.innerHTML = "Erro ao carregar investimentos.";
+        renderChart([]);
+        renderInsights([], 0, 0, 0);
+        return;
+      }
+
+      allInvestments = data || [];
+
+      const totalInvestedValue = allInvestments.reduce((acc, item) => acc + Number(item.amount || 0), 0);
+      const totalCurrentValue = allInvestments.reduce((acc, item) => acc + (Number(item.quantity || 0) * Number(item.current_price || 0)), 0);
+      const pnlTotal = totalCurrentValue - totalInvestedValue;
+
+      totalInvestido.textContent = money(totalInvestedValue);
+      portfolioCurrent.textContent = money(totalCurrentValue);
+      portfolioCurrentHero.textContent = money(totalCurrentValue);
+      profitLoss.textContent = money(pnlTotal);
+      profitLoss.className = "mini-value " + getPnLClass(pnlTotal);
+      positionsCount.textContent = String(allInvestments.length);
+
+      if (!allInvestments.length) {
+        assetsList.innerHTML = "Sem investimentos.";
+        renderChart([]);
+        renderInsights([], 0, 0, 0);
+        renderGoalSection(0);
+        return;
+      }
+
+      applyFiltersInternal();
+      renderChart(allInvestments);
+      renderInsights(allInvestments, totalInvestedValue, totalCurrentValue, pnlTotal);
+      renderGoalSection(totalCurrentValue);
+    }
+
+    async function loadTimeline() {
+      const user = await getUser();
+
+      if (!user) {
+        timeline.innerHTML = "Faça login para ver a timeline.";
+        timelineCount.textContent = "0";
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from("investment_history")
+        .select("*")
+        .eq("user_id", user.id)
+        .order("created_at", { ascending: false })
+        .limit(20);
+
+      if (error) {
+        timeline.innerHTML = "Erro ao carregar timeline.";
+        timelineCount.textContent = "0";
+        console.error(error);
+        return;
+      }
+
+      const items = data || [];
+      timelineCount.textContent = String(items.length);
+
+      if (!items.length) {
+        timeline.innerHTML = "Sem histórico ainda.";
+        return;
+      }
+
+      timeline.innerHTML = "";
+
+      items.forEach((item) => {
+        const div = document.createElement("div");
+        div.className = "timeline-item";
+        div.innerHTML = `
+          <strong>${item.action}</strong><br>
+          Ativo: ${item.asset || "-"}<br>
+          Valor: ${money(item.amount || 0)}<br>
+          <span class="muted">${new Date(item.created_at).toLocaleString("pt-BR")}</span>
+        `;
+        timeline.appendChild(div);
+      });
+    }
+
+    async function saveHistory(userId, investmentId, action, payload) {
+      const { error } = await supabase
+        .from("investment_history")
+        .insert([
+          {
+            user_id: userId,
+            investment_id: investmentId,
+            action,
+            asset: payload.asset,
+            category: payload.category,
+            amount: payload.amount,
+            quantity: payload.quantity,
+            avg_price: payload.avg_price,
+            current_price: payload.current_price
+          }
+        ]);
+
+      if (error) {
+        console.error("Erro ao salvar histórico:", error);
+        throw new Error(error.message);
+      }
+    }
+
+    function fillForm(item) {
+      document.getElementById("asset").value = item.asset || "";
+      document.getElementById("category").value = item.category || "";
+      document.getElementById("quantity").value = item.quantity || "";
+      document.getElementById("avgPrice").value = item.avg_price || "";
+      document.getElementById("currentPrice").value = item.current_price || "";
+
+      editingInvestmentId = item.id;
+      formTitle.textContent = "Editar investimento";
+      saveBtn.textContent = "Atualizar investimento";
+      cancelEditBtn.style.display = "block";
+      saveStatus.textContent = "Modo de edição ativado.";
+      showToast("Modo de edição ativado.", "info");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function resetForm() {
+      document.getElementById("asset").value = "";
+      document.getElementById("category").value = "";
+      document.getElementById("quantity").value = "";
+      document.getElementById("avgPrice").value = "";
+      document.getElementById("currentPrice").value = "";
+      editingInvestmentId = null;
+      formTitle.textContent = "Novo investimento";
+      saveBtn.textContent = "Salvar investimento";
+      cancelEditBtn.style.display = "none";
+    }
+
+    function toggleAuthModeUI() {
+      document.getElementById("authTitle").textContent = isLoginMode ? "Entrar" : "Criar conta";
+      document.getElementById("authSubtitle").textContent = isLoginMode
+        ? "Faça login para acessar seu painel."
+        : "Crie sua conta para começar.";
+      document.getElementById("authBtn").textContent = isLoginMode ? "Entrar" : "Cadastrar";
+      document.getElementById("toggleAuth").textContent = isLoginMode ? "Criar conta" : "Já tenho conta";
+      authStatus.textContent = "";
+    }
+
+    window.toggleAuthMode = function () {
+      isLoginMode = !isLoginMode;
+      toggleAuthModeUI();
+    };
+
+    async function signup(email, password) {
+      authStatus.textContent = "Criando conta...";
+
+      const { error } = await supabase.auth.signUp({
+        email,
+        password
+      });
+
+      if (error) {
+        authStatus.textContent = error.message;
+        showToast(error.message, "error");
+        return;
+      }
+
+      authStatus.textContent = "Conta criada com sucesso. Agora faça login.";
+      showToast("Conta criada com sucesso.", "success");
+      isLoginMode = true;
+      toggleAuthModeUI();
+    }
+
+    window.handleAuth = async function () {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!email || !password) {
+        authStatus.textContent = "Preencha email e senha.";
+        return;
+      }
+
+      if (password.length < 6) {
+        authStatus.textContent = "A senha precisa ter pelo menos 6 caracteres.";
+        return;
+      }
+
+      if (isLoginMode) {
+        await login();
+      } else {
+        await signup(email, password);
+      }
+    };
+
+    window.cancelEdit = function () {
+      resetForm();
+      saveStatus.textContent = "Edição cancelada.";
+      showToast("Edição cancelada.", "info");
+    };
+
+    window.editInvestment = function (id) {
+      const item = allInvestments.find(x => String(x.id) === String(id));
+      if (!item) return;
+      fillForm(item);
+    };
+
+    window.openDeleteModal = function (id) {
+      const item = allInvestments.find(x => String(x.id) === String(id));
+      if (!item) return;
+
+      deleteTargetId = id;
+      deleteModalText.textContent = `Deseja realmente excluir ${item.asset}? Essa ação remove a posição da carteira.`;
+      deleteModal.classList.add("show");
+    };
+
+    function closeDeleteModal() {
+      deleteModal.classList.remove("show");
+      setTimeout(() => {
+        deleteTargetId = null;
+      }, 200);
+    }
+
+    window.closeDeleteModal = closeDeleteModal;
+
+    window.handleModalBackdrop = function (event) {
+      if (event.target === deleteModal) {
+        closeDeleteModal();
+      }
+    };
+
+    window.confirmDelete = async function () {
+      if (!deleteTargetId) return;
+      await deleteInvestmentReal(deleteTargetId);
+      closeDeleteModal();
+    };
+
+    async function deleteInvestmentReal(id) {
+      const user = await getUser();
+      if (!user) return;
+
+      const item = allInvestments.find(x => String(x.id) === String(id));
+      if (!item) return;
+
+      const { error } = await supabase
+        .from("investments")
+        .delete()
+        .eq("id", id)
+        .eq("user_id", user.id);
+
+      if (error) {
+        topStatus.textContent = "Erro ao excluir investimento.";
+        showToast("Erro ao excluir investimento.", "error");
+        console.error(error);
+        return;
+      }
+
+      try {
+        await saveHistory(user.id, id, "delete", {
+          asset: item.asset,
+          category: item.category,
+          amount: item.amount,
+          quantity: item.quantity,
+          avg_price: item.avg_price,
+          current_price: item.current_price
+        });
+      } catch {}
+
+      if (editingInvestmentId === id) resetForm();
+
+      topStatus.textContent = "Investimento excluído.";
+      showToast(`${item.asset} excluído com sucesso.`, "success");
+      await loadInvestments();
+      await loadTimeline();
+    }
+
+    window.applyFilters = function () {
+      applyFiltersInternal();
+    };
+
+    window.login = async function () {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!email || !password) {
+        authStatus.textContent = "Preencha email e senha.";
+        return;
+      }
+
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+
+      if (error) {
+        authStatus.textContent = error.message;
+        showToast(error.message, "error");
+        return;
+      }
+
+      const user = await getUser();
+      if (!user) {
+        authStatus.textContent = "Não foi possível carregar o usuário.";
+        return;
+      }
+
+      currentUserId = user.id;
+      showApp(user.email);
+      authStatus.textContent = "";
+      topStatus.textContent = "Logado com sucesso.";
+      showToast("Login realizado com sucesso.", "success");
+      await loadInvestments();
+      await loadTimeline();
+    };
+
+    window.logout = async function () {
+      await supabase.auth.signOut();
+      currentUserId = null;
+      topStatus.textContent = "";
+      showToast("Você saiu da conta.", "info");
+      showLogin();
+    };
+
+    window.fetchSinglePrice = async function () {
+      const asset = document.getElementById("asset").value.trim().toUpperCase();
+      if (!asset) {
+        saveStatus.textContent = "Digite o ativo primeiro.";
+        return;
+      }
+
+      saveStatus.textContent = "Buscando preço real...";
+
+      try {
+        const { data, error } = await supabase.functions.invoke("quick-worker", {
+          body: { ticker: asset }
+        });
+
+        if (error) throw new Error(error.message || "Falha ao buscar preço.");
+
+        const price = data?.results?.[0]?.regularMarketPrice;
+        if (!price) throw new Error("Preço não encontrado.");
+
+        document.getElementById("currentPrice").value = price;
+        saveStatus.textContent = "Preço atual carregado com sucesso.";
+        showToast(`Preço de ${asset} carregado.`, "success");
+      } catch (e) {
+        saveStatus.textContent = "Erro ao buscar preço: " + e.message;
+        showToast(`Erro ao buscar preço de ${asset}.`, "error");
+      }
+    };
+
+    window.refreshSingleSavedPrice = async function (id) {
+      const user = await getUser();
+      if (!user) return;
+
+      const item = allInvestments.find(x => String(x.id) === String(id));
+      if (!item) return;
+
+      topStatus.textContent = `Atualizando ${item.asset}...`;
+
+      try {
+        const { data, error } = await supabase.functions.invoke("quick-worker", {
+          body: { ticker: item.asset }
+        });
+
+        if (error) throw new Error(error.message || "Falha ao buscar preço.");
+
+        const price = data?.results?.[0]?.regularMarketPrice;
+        if (!price) throw new Error("Preço não encontrado.");
+
+        const { error: updateError } = await supabase
+          .from("investments")
+          .update({ current_price: price })
+          .eq("id", id)
+          .eq("user_id", user.id);
+
+        if (updateError) throw new Error(updateError.message);
+
+        try {
+          await saveHistory(user.id, id, "update", {
+            asset: item.asset,
+            category: item.category,
+            amount: item.amount,
+            quantity: item.quantity,
+            avg_price: item.avg_price,
+            current_price: price
+          });
+        } catch {}
+
+        topStatus.textContent = `Preço de ${item.asset} atualizado.`;
+        showToast(`Preço de ${item.asset} atualizado.`, "success");
+        await loadInvestments();
+        await loadTimeline();
+      } catch (e) {
+        topStatus.textContent = `Erro ao atualizar ${item.asset}: ${e.message}`;
+        showToast(`Erro ao atualizar ${item.asset}.`, "error");
+      }
+    };
+
+    window.refreshAllPrices = async function () {
+      const user = await getUser();
+      if (!user) return;
+
+      topStatus.textContent = "Atualizando todos os preços...";
+
+      for (const item of allInvestments) {
+        try {
+          const ticker = String(item.asset || "").toUpperCase().trim();
+          if (!ticker) continue;
+
+          const { data: priceData, error: priceError } = await supabase.functions.invoke("quick-worker", {
+            body: { ticker }
+          });
+
+          if (priceError) continue;
+
+          const price = priceData?.results?.[0]?.regularMarketPrice;
+          if (!price) continue;
+
+          await supabase
+            .from("investments")
+            .update({ current_price: price })
+            .eq("id", item.id)
+            .eq("user_id", user.id);
+
+          try {
+            await saveHistory(user.id, item.id, "update", {
+              asset: item.asset,
+              category: item.category,
+              amount: item.amount,
+              quantity: item.quantity,
+              avg_price: item.avg_price,
+              current_price: price
+            });
+          } catch {}
+        } catch {}
+      }
+
+      topStatus.textContent = "Preços atualizados.";
+      showToast("Todos os preços foram atualizados.", "success");
+      await loadInvestments();
+      await loadTimeline();
+    };
+
+    window.saveGoal = async function () {
+      if (!currentUserId) return;
+
+      const targetValue = Number(document.getElementById("targetValue").value || 0);
+      const monthlyContribution = Number(document.getElementById("monthlyContribution").value || 0);
+
+      saveGoalLocal(currentUserId, { targetValue, monthlyContribution });
+      goalStatus.textContent = "Meta salva com sucesso.";
+      showToast("Meta patrimonial salva.", "success");
+
+      const currentValue = allInvestments.reduce((acc, item) => acc + (Number(item.quantity || 0) * Number(item.current_price || 0)), 0);
+      renderGoalSection(currentValue);
+    };
+
+    window.saveInvestment = async function () {
+      const user = await getUser();
+
+      if (!user) {
+        saveStatus.textContent = "Faça login antes.";
+        return;
+      }
+
+      const asset = document.getElementById("asset").value.trim().toUpperCase();
+      const category = document.getElementById("category").value;
+      const quantity = Number(document.getElementById("quantity").value);
+      const avgPrice = Number(document.getElementById("avgPrice").value);
+      const currentPrice = Number(document.getElementById("currentPrice").value);
+
+      if (!asset) {
+        saveStatus.textContent = "Digite o ativo.";
+        return;
+      }
+
+      if (!category) {
+        saveStatus.textContent = "Selecione a categoria.";
+        return;
+      }
+
+      if (!quantity || quantity <= 0) {
+        saveStatus.textContent = "Digite uma quantidade válida.";
+        return;
+      }
+
+      if (!avgPrice || avgPrice <= 0) {
+        saveStatus.textContent = "Digite um preço médio válido.";
+        return;
+      }
+
+      if (!currentPrice || currentPrice <= 0) {
+        saveStatus.textContent = "Digite um preço atual válido ou busque o preço real.";
+        return;
+      }
+
+      saveStatus.textContent = editingInvestmentId ? "Atualizando..." : "Salvando...";
+
+      const amount = quantity * avgPrice;
+
+      const payload = {
+        user_id: user.id,
+        asset,
+        category,
+        amount,
+        quantity,
+        avg_price: avgPrice,
+        current_price: currentPrice
+      };
+
+      if (editingInvestmentId) {
+        const { error } = await supabase
+          .from("investments")
+          .update(payload)
+          .eq("id", editingInvestmentId)
+          .eq("user_id", user.id);
+
+        if (error) {
+          saveStatus.textContent = "Erro ao atualizar investimento.";
+          showToast("Erro ao atualizar investimento.", "error");
+          console.error(error);
+          return;
+        }
+
+        try {
+          await saveHistory(user.id, editingInvestmentId, "update", payload);
+        } catch (e) {
+          saveStatus.textContent = "Atualizou, mas falhou timeline: " + e.message;
+          await loadInvestments();
+          await loadTimeline();
+          return;
+        }
+
+        saveStatus.textContent = "Investimento atualizado com sucesso.";
+        showToast(`${asset} atualizado com sucesso.`, "success");
+        resetForm();
+        await loadInvestments();
+        await loadTimeline();
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from("investments")
+        .insert([payload])
+        .select()
+        .single();
+
+      if (error) {
+        saveStatus.textContent = "Erro ao salvar investimento.";
+        showToast("Erro ao salvar investimento.", "error");
+        console.error(error);
+        return;
+      }
+
+      try {
+        await saveHistory(user.id, data.id, "create", payload);
+      } catch (e) {
+        saveStatus.textContent = "Salvou investimento, mas falhou timeline: " + e.message;
+        await loadInvestments();
+        await loadTimeline();
+        return;
+      }
+
+      saveStatus.textContent = "Investimento salvo com sucesso.";
+      showToast(`${asset} salvo com sucesso.`, "success");
+      resetForm();
+      await loadInvestments();
+      await loadTimeline();
+    };
+
+    window.refreshTimeline = async function () {
+      await loadTimeline();
+      topStatus.textContent = "Timeline atualizada.";
+      showToast("Timeline atualizada.", "info");
+    };
+
+    async function init() {
+      toggleAuthModeUI();
+
+      const user = await getUser();
+
+      if (!user) {
+        showLogin();
+        return;
+      }
+
+      currentUserId = user.id;
+      showApp(user.email);
+      await loadInvestments();
+      await loadTimeline();
+    }
+
+    window.addEventListener("DOMContentLoaded", init);
+  </script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("sw.js")
+          .then(() => console.log("PWA ativo"))
+          .catch(err => console.log("Erro SW:", err));
+      });
+    }
+  </script>
+</body>
+</html>
