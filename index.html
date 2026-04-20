@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wealth OS Premium</title>
 
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#060816">
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#1d8cff" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
 
   <style>
     :root{
@@ -1737,7 +1739,7 @@
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js")
+        navigator.serviceWorker.register("/sw.js")
           .then(() => console.log("PWA ativo"))
           .catch(err => console.log("Erro SW:", err));
       });
