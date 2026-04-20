@@ -17,16 +17,13 @@
       --panel:rgba(15,23,42,.86);
       --panel-2:rgba(17,24,39,.94);
       --line:rgba(255,255,255,.08);
-      --line-2:rgba(255,255,255,.12);
       --text:#f8fafc;
       --muted:#94a3b8;
       --blue:#1d8cff;
       --blue2:#49b2ff;
       --cyan:#22d3ee;
       --green:#22c55e;
-      --red:#ef4444;
       --orange:#fb923c;
-      --yellow:#f59e0b;
       --shadow:0 18px 45px rgba(0,0,0,.28);
       --shadow-strong:0 28px 70px rgba(0,0,0,.42);
       --radius:24px;
@@ -270,7 +267,7 @@
       font-weight:700;
       cursor:pointer;
       font-size:14px;
-      transition:transform .15s ease, filter .15s ease, box-shadow .15s ease;
+      transition:transform .15s ease, filter .15s ease, box-shadow .15s ease, opacity .15s ease;
       position:relative;
       overflow:hidden;
       box-shadow:0 10px 26px rgba(29,140,255,.22);
@@ -295,6 +292,13 @@
       filter:brightness(1.04);
     }
 
+    button:disabled{
+      cursor:not-allowed;
+      opacity:.92;
+      transform:none;
+      filter:none;
+    }
+
     button.secondary{
       background:#475569;
       box-shadow:none;
@@ -308,13 +312,6 @@
     button.danger{
       background:linear-gradient(135deg, #dc2626, #ef4444);
       box-shadow:0 10px 26px rgba(239,68,68,.20);
-    }
-
-    .small-btn{
-      width:auto;
-      margin-top:0;
-      padding:10px 12px;
-      font-size:13px;
     }
 
     .row-buttons{
@@ -435,6 +432,117 @@
       user-select:none;
     }
 
+    .input-wrap{
+      position:relative;
+      margin-top:10px;
+    }
+
+    .input-wrap input{
+      margin-top:0;
+    }
+
+    .password-input{
+      padding-right:64px !important;
+    }
+
+    .eye-btn{
+      position:absolute;
+      top:50%;
+      right:12px;
+      transform:translateY(-50%);
+      width:40px;
+      height:40px;
+      margin:0;
+      padding:0;
+      border:none;
+      border-radius:12px;
+      background:rgba(255,255,255,.04);
+      box-shadow:none;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      color:#7dd3fc;
+      transition:
+        transform .18s ease,
+        background .18s ease,
+        color .18s ease,
+        box-shadow .18s ease;
+      z-index:2;
+    }
+
+    .eye-btn::after{
+      display:none;
+    }
+
+    .eye-btn:hover{
+      transform:translateY(-50%) scale(1.04);
+      background:rgba(56,189,248,.10);
+      color:#bae6fd;
+      box-shadow:0 0 0 1px rgba(56,189,248,.12), 0 0 18px rgba(56,189,248,.14);
+      filter:none;
+    }
+
+    .eye-btn:active{
+      transform:translateY(-50%) scale(.96);
+    }
+
+    .eye-btn.active{
+      color:#22c55e;
+      background:rgba(34,197,94,.10);
+      box-shadow:0 0 0 1px rgba(34,197,94,.12), 0 0 18px rgba(34,197,94,.12);
+    }
+
+    .eye-svg{
+      position:absolute;
+      width:20px;
+      height:20px;
+      opacity:0;
+      transform:scale(.85) rotate(-8deg);
+      transition:opacity .2s ease, transform .2s ease;
+      pointer-events:none;
+    }
+
+    .eye-svg.active{
+      opacity:1;
+      transform:scale(1) rotate(0deg);
+    }
+
+    .auth-main-btn.loading{
+      pointer-events:none;
+      opacity:.98;
+      box-shadow:0 14px 30px rgba(29,140,255,.30);
+    }
+
+    .auth-main-btn.loading::after{
+      display:none;
+    }
+
+    .btn-loading-content{
+      display:none;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+
+    .auth-main-btn.loading .btn-label{
+      display:none;
+    }
+
+    .auth-main-btn.loading .btn-loading-content{
+      display:flex;
+    }
+
+    .spinner{
+      width:16px;
+      height:16px;
+      border:2px solid rgba(255,255,255,.28);
+      border-top-color:#fff;
+      border-radius:50%;
+      animation:spin .75s linear infinite;
+      flex-shrink:0;
+    }
+
     .modal-overlay{
       position:fixed;
       inset:0;
@@ -504,6 +612,11 @@
     .toast.success{ border-color:rgba(34,197,94,.35); }
     .toast.error{ border-color:rgba(239,68,68,.35); }
     .toast.info{ border-color:rgba(73,178,255,.35); }
+
+    @keyframes spin{
+      from { transform:rotate(0deg); }
+      to { transform:rotate(360deg); }
+    }
 
     @keyframes toastIn{
       from { opacity:0; transform:translateY(-10px) scale(.98); }
@@ -598,10 +711,34 @@
       <h2 id="authTitle" style="margin-bottom:8px;">Entrar</h2>
       <div class="muted" id="authSubtitle">Faça login para acessar seu painel.</div>
 
-      <input id="email" type="email" placeholder="Seu e-mail" />
-      <input id="password" type="password" placeholder="Sua senha" />
+      <div class="input-wrap">
+        <input id="email" type="email" placeholder="Seu e-mail" />
+      </div>
 
-      <button id="authBtn" onclick="handleAuth()">Entrar</button>
+      <div class="input-wrap">
+        <input id="password" class="password-input" type="password" placeholder="Sua senha" />
+        <button type="button" class="eye-btn" id="togglePasswordBtn" onclick="togglePassword()" aria-label="Mostrar ou ocultar senha">
+          <svg id="eyeOpenIcon" class="eye-svg active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+            <path d="M2 12C3.8 8.8 7.3 6 12 6s8.2 2.8 10 6c-1.8 3.2-5.3 6-10 6S3.8 15.2 2 12Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+
+          <svg id="eyeClosedIcon" class="eye-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+            <path d="M3 3L21 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M10.6 6.2A11 11 0 0 1 12 6c4.7 0 8.2 2.8 10 6a14.7 14.7 0 0 1-4.1 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6.1 6.9A14.4 14.4 0 0 0 2 12c1.8 3.2 5.3 6 10 6 1 0 1.9-.1 2.8-.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9.9 9.9A3 3 0 0 0 14.1 14.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <button id="authBtn" class="auth-main-btn" onclick="handleAuth()">
+        <span class="btn-label">Entrar</span>
+        <span class="btn-loading-content">
+          <span class="spinner"></span>
+          <span id="authBtnLoadingText">Entrando...</span>
+        </span>
+      </button>
 
       <div id="toggleAuth" class="auth-toggle" onclick="toggleAuthMode()">
         Criar conta
@@ -826,6 +963,8 @@
     const saveStatus = document.getElementById("saveStatus");
     const topStatus = document.getElementById("topStatus");
     const goalStatus = document.getElementById("goalStatus");
+    const authBtn = document.getElementById("authBtn");
+    const authBtnLoadingText = document.getElementById("authBtnLoadingText");
 
     const userEmail = document.getElementById("userEmail");
     const totalInvestido = document.getElementById("totalInvestido");
@@ -859,6 +998,7 @@
     let currentUserId = null;
     let deleteTargetId = null;
     let isLoginMode = true;
+    let authLoading = false;
 
     function money(value) {
       return Number(value || 0).toLocaleString("pt-BR", {
@@ -885,6 +1025,18 @@
       if (value > 0) return "positive";
       if (value < 0) return "negative";
       return "neutral";
+    }
+
+    function setAuthLoading(loading, mode = "login") {
+      authLoading = loading;
+      authBtn.disabled = loading;
+
+      if (loading) {
+        authBtn.classList.add("loading");
+        authBtnLoadingText.textContent = mode === "signup" ? "Criando conta..." : "Entrando...";
+      } else {
+        authBtn.classList.remove("loading");
+      }
     }
 
     async function getUser() {
@@ -1085,39 +1237,76 @@
     }
 
     function renderAssetsList(items) {
-      if (!items.length) {
-        assetsList.innerHTML = "Sem investimentos.";
-        return;
-      }
+  if (!items.length) {
+    assetsList.innerHTML = "Sem investimentos.";
+    return;
+  }
 
-      assetsList.innerHTML = "";
-      items.forEach((item) => {
-        const invested = Number(item.amount || 0);
-        const current = Number(item.quantity || 0) * Number(item.current_price || 0);
-        const pnl = current - invested;
-        const pnlClass = getPnLClass(pnl);
+  const totalCarteira = items.reduce((acc, item) => {
+    return acc + (item.quantity * item.current_price);
+  }, 0);
 
-        const div = document.createElement("div");
-        div.className = "asset-item";
-        div.innerHTML = `
-          <div class="asset-left">
-            <strong>${item.asset || "-"}</strong>
-            <span>${item.category || "Sem categoria"}</span>
-            <span>Qtd: ${Number(item.quantity || 0)} • PM: ${money(item.avg_price || 0)} • Atual: ${money(item.current_price || 0)}</span>
-            <div class="asset-actions">
-              <button class="secondary" onclick="editInvestment('${item.id}')">Editar</button>
-              <button class="secondary" onclick="refreshSingleSavedPrice('${item.id}')">Atualizar preço</button>
-              <button class="danger" onclick="openDeleteModal('${item.id}')">Excluir</button>
-            </div>
-          </div>
-          <div class="asset-right">
-            ${money(current)}<br>
-            <span class="${pnlClass}">${pnl >= 0 ? "+" : "-"} ${money(Math.abs(pnl))}</span>
-          </div>
-        `;
-        assetsList.appendChild(div);
-      });
-    }
+  assetsList.innerHTML = "";
+
+  items.forEach(item => {
+    const current = item.quantity * item.current_price;
+    const invested = item.amount;
+    const pnl = current - invested;
+    const percent = totalCarteira > 0 ? (current / totalCarteira) * 100 : 0;
+
+    const div = document.createElement("div");
+    div.style = `
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 16px;
+      margin-top: 12px;
+      transition: all 0.2s;
+    `;
+
+    div.innerHTML = `
+      <div style="display:flex; justify-content:space-between;">
+        <div>
+          <strong style="font-size:18px;">${item.asset}</strong><br>
+          <span style="color:#94a3b8;">${item.category}</span>
+        </div>
+        <div style="text-align:right;">
+          <strong>${money(current)}</strong><br>
+          <span style="color:${pnl > 0 ? "#22c55e" : pnl < 0 ? "#ef4444" : "#ccc"};">
+            ${pnl >= 0 ? "+" : "-"} ${money(Math.abs(pnl))}
+          </span>
+        </div>
+      </div>
+
+      <div style="margin-top:10px; font-size:13px; color:#94a3b8;">
+        ${percent.toFixed(1)}% da carteira
+      </div>
+
+      <div style="margin-top:6px; height:8px; background:#111827; border-radius:999px;">
+        <div style="
+          width:${percent}%;
+          height:100%;
+          background:linear-gradient(90deg,#1d8cff,#22d3ee);
+          border-radius:999px;
+        "></div>
+      </div>
+
+      <div style="margin-top:10px; font-size:13px; color:#94a3b8;">
+        Qtd: ${item.quantity} • PM: ${money(item.avg_price)} • Atual: ${money(item.current_price)}
+      </div>
+
+      <div style="margin-top:10px; display:flex; gap:6px;">
+        <button onclick="editInvestment('${item.id}')">Editar</button>
+        <button onclick="refreshSingleSavedPrice('${item.id}')">Atualizar</button>
+        <button onclick="openDeleteModal('${item.id}')" style="background:#dc2626;">Excluir</button>
+      </div>
+    `;
+
+    assetsList.appendChild(div);
+  });
+}
+      
+  
 
     function applyFiltersInternal() {
       const search = document.getElementById("searchInput").value.trim().toUpperCase();
@@ -1287,37 +1476,64 @@
       document.getElementById("authSubtitle").textContent = isLoginMode
         ? "Faça login para acessar seu painel."
         : "Crie sua conta para começar.";
-      document.getElementById("authBtn").textContent = isLoginMode ? "Entrar" : "Cadastrar";
+      document.querySelector("#authBtn .btn-label").textContent = isLoginMode ? "Entrar" : "Cadastrar";
       document.getElementById("toggleAuth").textContent = isLoginMode ? "Criar conta" : "Já tenho conta";
       authStatus.textContent = "";
     }
 
+    window.togglePassword = function () {
+      const passwordInput = document.getElementById("password");
+      const eyeBtn = document.getElementById("togglePasswordBtn");
+      const eyeOpen = document.getElementById("eyeOpenIcon");
+      const eyeClosed = document.getElementById("eyeClosedIcon");
+
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeBtn.classList.add("active");
+        eyeOpen.classList.remove("active");
+        eyeClosed.classList.add("active");
+      } else {
+        passwordInput.type = "password";
+        eyeBtn.classList.remove("active");
+        eyeClosed.classList.remove("active");
+        eyeOpen.classList.add("active");
+      }
+    };
+
     window.toggleAuthMode = function () {
+      if (authLoading) return;
       isLoginMode = !isLoginMode;
       toggleAuthModeUI();
     };
 
     async function signup(email, password) {
       authStatus.textContent = "Criando conta...";
+      setAuthLoading(true, "signup");
 
-      const { error } = await supabase.auth.signUp({
-        email,
-        password
-      });
+      try {
+        const { error } = await supabase.auth.signUp({
+          email,
+          password
+        });
 
-      if (error) {
-        authStatus.textContent = error.message;
-        showToast(error.message, "error");
-        return;
+        if (error) {
+          authStatus.textContent = error.message;
+          showToast(error.message, "error");
+          return;
+        }
+
+        authStatus.textContent = "Conta criada com sucesso. Agora faça login.";
+        showToast("Conta criada com sucesso.", "success");
+        isLoginMode = true;
+        toggleAuthModeUI();
+      } finally {
+        setAuthLoading(false);
       }
-
-      authStatus.textContent = "Conta criada com sucesso. Agora faça login.";
-      showToast("Conta criada com sucesso.", "success");
-      isLoginMode = true;
-      toggleAuthModeUI();
     }
 
     window.handleAuth = async function () {
+      if (authLoading) return;
+
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value.trim();
 
@@ -1424,6 +1640,8 @@
     };
 
     window.login = async function () {
+      if (authLoading) return;
+
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value.trim();
 
@@ -1432,27 +1650,34 @@
         return;
       }
 
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
-
-      if (error) {
-        authStatus.textContent = error.message;
-        showToast(error.message, "error");
-        return;
-      }
-
-      const user = await getUser();
-      if (!user) {
-        authStatus.textContent = "Não foi possível carregar o usuário.";
-        return;
-      }
-
-      currentUserId = user.id;
-      showApp(user.email);
       authStatus.textContent = "";
-      topStatus.textContent = "Logado com sucesso.";
-      showToast("Login realizado com sucesso.", "success");
-      await loadInvestments();
-      await loadTimeline();
+      setAuthLoading(true, "login");
+
+      try {
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+
+        if (error) {
+          authStatus.textContent = error.message;
+          showToast(error.message, "error");
+          return;
+        }
+
+        const user = await getUser();
+        if (!user) {
+          authStatus.textContent = "Não foi possível carregar o usuário.";
+          return;
+        }
+
+        currentUserId = user.id;
+        showApp(user.email);
+        authStatus.textContent = "";
+        topStatus.textContent = "Logado com sucesso.";
+        showToast("Login realizado com sucesso.", "success");
+        await loadInvestments();
+        await loadTimeline();
+      } finally {
+        setAuthLoading(false);
+      }
     };
 
     window.logout = async function () {
@@ -1735,7 +1960,5 @@
 
     window.addEventListener("DOMContentLoaded", init);
   </script>
-
-
 </body>
 </html>
