@@ -128,7 +128,8 @@
     .timeline-item:hover,
     .insight-item:hover,
     .rank-item:hover,
-    .category-row:hover{
+    .category-row:hover,
+    .detail-item:hover{
       transform:translateY(-2px);
       border-color:rgba(73,178,255,.22);
       box-shadow:var(--shadow-strong);
@@ -235,13 +236,11 @@
       z-index:1;
     }
 
-    .grid-4{
+    .grid-2{
       display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-      margin-top:18px;
-      position:relative;
-      z-index:1;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-bottom:18px;
     }
 
     .grid-3{
@@ -251,11 +250,22 @@
       margin-bottom:18px;
     }
 
-    .grid-2{
+    .grid-4{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
-      margin-bottom:18px;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:18px;
+      position:relative;
+      z-index:1;
+    }
+
+    .grid-5{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:14px;
+      margin-top:18px;
+      position:relative;
+      z-index:1;
     }
 
     .mini-card{
@@ -278,6 +288,10 @@
       font-weight:800;
       letter-spacing:-.04em;
       word-break:break-word;
+    }
+
+    .mini-value.small{
+      font-size:22px;
     }
 
     .email-value{
@@ -411,7 +425,7 @@
     .status-error{ color:#fca5a5; }
     .status-info{ color:#cbd5e1; }
 
-    .timeline-item, .asset-item, .insight-item, .rank-item, .category-row{
+    .timeline-item, .asset-item, .insight-item, .rank-item, .category-row, .detail-item{
       padding:14px;
       border-radius:14px;
       background:rgba(255,255,255,.04);
@@ -420,6 +434,22 @@
       transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
       animation:slideIn .3s ease;
     }
+
+    .timeline-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:5px 10px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
+    .badge-create{ background:rgba(34,197,94,.12); color:#bbf7d0; border:1px solid rgba(34,197,94,.22); }
+    .badge-edit{ background:rgba(59,130,246,.12); color:#bfdbfe; border:1px solid rgba(59,130,246,.22); }
+    .badge-delete{ background:rgba(239,68,68,.12); color:#fecaca; border:1px solid rgba(239,68,68,.22); }
+    .badge-price{ background:rgba(251,146,60,.12); color:#fed7aa; border:1px solid rgba(251,146,60,.22); }
 
     .asset-item{
       display:grid;
@@ -462,6 +492,21 @@
       min-width:96px;
     }
 
+    .detail-actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+
+    .detail-actions button{
+      width:auto;
+      min-width:150px;
+      margin-top:0;
+      padding:10px 12px;
+      font-size:13px;
+    }
+
     .positive{ color:var(--green); }
     .negative{ color:var(--orange); }
     .neutral{ color:#e2e8f0; }
@@ -477,6 +522,28 @@
       background:rgba(29,140,255,.12);
       border:1px solid rgba(73,178,255,.18);
       margin-top:8px;
+    }
+
+    .badge.latest{
+      color:#dcfce7;
+      background:rgba(34,197,94,.10);
+      border-color:rgba(34,197,94,.18);
+    }
+
+    .editing-banner{
+      display:none;
+      margin-bottom:14px;
+      padding:12px 14px;
+      border-radius:14px;
+      background:rgba(29,140,255,.12);
+      border:1px solid rgba(73,178,255,.24);
+      color:#dbeafe;
+      line-height:1.5;
+    }
+
+    .editing-banner.show{
+      display:block;
+      animation:fadeUp .25s ease both;
     }
 
     .chart-wrap{
@@ -515,6 +582,13 @@
       grid-template-columns:1.2fr .8fr;
       gap:10px;
       margin-top:10px;
+    }
+
+    .timeline-filter-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+      gap:10px;
+      margin-top:12px;
     }
 
     .rank-grid{
@@ -556,6 +630,19 @@
       height:100%;
       border-radius:999px;
       background:linear-gradient(90deg, var(--blue), var(--cyan));
+    }
+
+    .detail-meta{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:10px;
+    }
+
+    .detail-item strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:15px;
     }
 
     #appSection{ display:none; }
@@ -700,6 +787,12 @@
       transform:scale(.92) translateY(8px);
       opacity:0;
       transition:transform .2s ease, opacity .2s ease;
+      max-height:min(90vh, 760px);
+      overflow:auto;
+    }
+
+    .modal-box.modal-lg{
+      max-width:760px;
     }
 
     .modal-overlay.show .modal-box{
@@ -722,7 +815,7 @@
       z-index:10000;
       display:grid;
       gap:10px;
-      width:min(420px, calc(100vw - 24px));
+      width:min(440px, calc(100vw - 24px));
     }
 
     .toast{
@@ -832,6 +925,13 @@
       100% { text-shadow:0 0 0 rgba(29,140,255,0); }
     }
 
+    @media (max-width:1200px){
+      .grid-5,
+      .timeline-filter-grid{
+        grid-template-columns:repeat(3,1fr);
+      }
+    }
+
     @media (max-width:1100px){
       .hero, .grid-2, .grid-3, .rank-grid{
         grid-template-columns:1fr;
@@ -847,7 +947,9 @@
     }
 
     @media (max-width:700px){
-      .grid-4{
+      .grid-4,
+      .grid-5,
+      .timeline-filter-grid{
         grid-template-columns:1fr;
       }
 
@@ -861,7 +963,8 @@
       }
 
       .row-buttons,
-      .filter-row{
+      .filter-row,
+      .detail-meta{
         grid-template-columns:1fr;
       }
 
@@ -925,7 +1028,6 @@
             <path d="M2 12C3.8 8.8 7.3 6 12 6s8.2 2.8 10 6c-1.8 3.2-5.3 6-10 6S3.8 15.2 2 12Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/>
           </svg>
-
           <svg id="eyeClosedIcon" class="eye-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
             <path d="M3 3L21 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
             <path d="M10.6 6.2A11 11 0 0 1 12 6c4.7 0 8.2 2.8 10 6a14.7 14.7 0 0 1-4.1 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -955,13 +1057,11 @@
         <div class="card">
           <div class="hero-title-row">
             <div class="hero-title">Patrimônio atual da carteira</div>
-
             <button id="toggleBalanceBtn" class="eye-btn-pro" type="button" onclick="toggleBalanceVisibility()" aria-label="Mostrar ou ocultar patrimônio">
               <svg id="balanceEyeOpen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
                 <path d="M2 12C3.8 8.8 7.3 6 12 6s8.2 2.8 10 6c-1.8 3.2-5.3 6-10 6S3.8 15.2 2 12Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/>
               </svg>
-
               <svg id="balanceEyeClosed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" style="display:none;">
                 <path d="M3 3L21 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
                 <path d="M10.6 6.2A11 11 0 0 1 12 6c4.7 0 8.2 2.8 10 6a14.7 14.7 0 0 1-4.1 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -982,20 +1082,40 @@
               <div class="mini-label">Usuário</div>
               <div id="userEmail" class="mini-value email-value">-</div>
             </div>
-
             <div class="mini-card">
               <div class="mini-label">Investido</div>
               <div id="totalInvestido" class="mini-value sensitive-value">R$ 0,00</div>
             </div>
-
             <div class="mini-card">
               <div class="mini-label">Valor atual</div>
               <div id="portfolioCurrent" class="mini-value sensitive-value">R$ 0,00</div>
             </div>
-
             <div class="mini-card">
               <div class="mini-label">Lucro / prejuízo</div>
               <div id="profitLoss" class="mini-value sensitive-value">R$ 0,00</div>
+            </div>
+          </div>
+
+          <div class="grid-5">
+            <div class="mini-card">
+              <div class="mini-label">Rentabilidade total</div>
+              <div id="totalReturnPercent" class="mini-value small">0,0%</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">Ativos no lucro</div>
+              <div id="profitableAssetsCount" class="mini-value small">0</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">Ativos no prejuízo</div>
+              <div id="losingAssetsCount" class="mini-value small">0</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">Total de aportes</div>
+              <div id="totalContributionsCount" class="mini-value small">0</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">Última atualização</div>
+              <div id="lastUpdateTime" class="mini-value small">--</div>
             </div>
           </div>
         </div>
@@ -1011,12 +1131,12 @@
       </div>
 
       <div class="grid-2">
-        <div class="card">
+        <div class="card" id="investmentFormCard">
+          <div id="editingBanner" class="editing-banner"></div>
           <h3 id="formTitle">Novo investimento</h3>
           <div class="muted">Cadastre, edite, busque preço real e salve sua posição.</div>
 
           <input id="asset" placeholder="Ativo (ex: PETR4, VALE3, BTC)" />
-          
           <select id="category">
             <option value="">Selecione a categoria</option>
             <option value="Ações">Ações</option>
@@ -1066,12 +1186,10 @@
               <div class="mini-label">Meta</div>
               <div id="goalValueDisplay" class="mini-value" style="font-size:22px;">R$ 0,00</div>
             </div>
-
             <div class="mini-card">
               <div class="mini-label">Progresso</div>
               <div id="goalProgressText" class="mini-value" style="font-size:22px;">0%</div>
             </div>
-
             <div class="mini-card">
               <div class="mini-label">Projeção</div>
               <div id="projectionText" class="mini-value" style="font-size:18px;">Sem meta</div>
@@ -1089,6 +1207,11 @@
           <div class="mini-card" style="margin-top:12px;">
             <div class="mini-label">Posições únicas</div>
             <div id="positionsCount" class="mini-value">0</div>
+          </div>
+
+          <div class="mini-card" style="margin-top:12px;">
+            <div class="mini-label">Lançamentos brutos</div>
+            <div id="rawRecordsCount" class="mini-value">0</div>
           </div>
 
           <div class="mini-card" style="margin-top:12px;">
@@ -1133,7 +1256,6 @@
             <h3 style="margin:0;">Capital investido acumulado</h3>
             <span class="muted">Baseado nos registros cadastrados</span>
           </div>
-
           <div class="chart-wrap">
             <svg id="chartSvg" viewBox="0 0 700 280" preserveAspectRatio="none"></svg>
           </div>
@@ -1142,8 +1264,24 @@
         <div class="card">
           <div class="top-actions">
             <h3 style="margin:0;">Timeline</h3>
-            <span class="muted">Histórico automático</span>
+            <span id="timelineFilteredCount" class="muted">0 resultados</span>
           </div>
+
+          <div class="timeline-filter-grid">
+            <select id="timelineActionFilter" onchange="applyTimelineFilters()">
+              <option value="">Todas as ações</option>
+              <option value="create">Criação</option>
+              <option value="edit">Edição</option>
+              <option value="delete">Exclusão</option>
+              <option value="price_update">Atualização de preço</option>
+            </select>
+
+            <input id="timelineAssetFilter" placeholder="Filtrar por ativo" oninput="applyTimelineFilters()" />
+            <input id="timelineDateStart" type="date" onchange="applyTimelineFilters()" />
+            <input id="timelineDateEnd" type="date" onchange="applyTimelineFilters()" />
+            <button class="secondary" style="margin-top:10px;" onclick="clearTimelineFilters()">Limpar filtros</button>
+          </div>
+
           <div id="timeline" style="margin-top:14px;">Sem histórico ainda.</div>
         </div>
       </div>
@@ -1199,6 +1337,19 @@
     </div>
   </div>
 
+  <div id="groupedDetailsModal" class="modal-overlay" onclick="handleGroupedBackdrop(event)">
+    <div class="modal-box modal-lg">
+      <h3 id="groupedDetailsTitle" style="margin-top:0;">Detalhes do grupo</h3>
+      <p class="muted" style="line-height:1.6;">
+        Estes são os lançamentos individuais que formam o ativo consolidado.
+      </p>
+      <div id="groupedDetailsContent" style="margin-top:14px;">Sem dados.</div>
+      <div class="modal-actions">
+        <button class="secondary" onclick="closeGroupedDetailsModal()">Fechar</button>
+      </div>
+    </div>
+  </div>
+
   <div id="toastWrap" class="toast-wrap"></div>
 
   <script type="module">
@@ -1222,8 +1373,15 @@
     const portfolioCurrent = document.getElementById("portfolioCurrent");
     const portfolioCurrentHero = document.getElementById("portfolioCurrentHero");
     const profitLoss = document.getElementById("profitLoss");
+    const totalReturnPercent = document.getElementById("totalReturnPercent");
+    const profitableAssetsCount = document.getElementById("profitableAssetsCount");
+    const losingAssetsCount = document.getElementById("losingAssetsCount");
+    const totalContributionsCount = document.getElementById("totalContributionsCount");
+    const lastUpdateTime = document.getElementById("lastUpdateTime");
     const positionsCount = document.getElementById("positionsCount");
+    const rawRecordsCount = document.getElementById("rawRecordsCount");
     const timelineCount = document.getElementById("timelineCount");
+    const timelineFilteredCount = document.getElementById("timelineFilteredCount");
     const topCategory = document.getElementById("topCategory");
     const timeline = document.getElementById("timeline");
     const assetsList = document.getElementById("assetsList");
@@ -1242,20 +1400,28 @@
     const deleteModal = document.getElementById("deleteModal");
     const deleteModalText = document.getElementById("deleteModalText");
     const logoutModal = document.getElementById("logoutModal");
+    const groupedDetailsModal = document.getElementById("groupedDetailsModal");
+    const groupedDetailsTitle = document.getElementById("groupedDetailsTitle");
+    const groupedDetailsContent = document.getElementById("groupedDetailsContent");
     const toastWrap = document.getElementById("toastWrap");
     const bootLoader = document.getElementById("bootLoader");
     const offlineBanner = document.getElementById("offlineBanner");
+    const editingBanner = document.getElementById("editingBanner");
+    const investmentFormCard = document.getElementById("investmentFormCard");
 
     let rawInvestments = [];
     let allInvestments = [];
+    let allTimeline = [];
     let editingInvestmentId = null;
+    let editingMeta = null;
     let currentUserId = null;
-    let deleteTargetId = null;
+    let deleteTarget = null;
     let isLoginMode = true;
     let authLoading = false;
     let authListenerRegistered = false;
     let goalStorageMode = "supabase";
     let balanceVisible = true;
+    let reopenGroupAfterDeleteKey = null;
 
     let realSensitive = {
       hero: "R$ 0,00",
@@ -1294,6 +1460,11 @@
       if (num > 0) return `+ ${money(num)}`;
       if (num < 0) return `- ${money(Math.abs(num))}`;
       return money(0);
+    }
+
+    function percent(value) {
+      const num = Number(value || 0);
+      return `${num.toFixed(1)}%`;
     }
 
     function escapeHtml(value) {
@@ -1375,6 +1546,49 @@
       bootLoader.classList.toggle("hidden", !show);
     }
 
+    function getGoalStorageKey(userId) {
+      return `wealth_os_goal_${userId}`;
+    }
+
+    function getBalanceVisibilityKey(userId) {
+      return `wealth_os_balance_visible_${userId}`;
+    }
+
+    function getLastUpdateKey(userId) {
+      return `wealth_os_last_price_update_${userId}`;
+    }
+
+    function loadLastUpdate(userId) {
+      if (!userId) return "";
+      return localStorage.getItem(getLastUpdateKey(userId)) || "";
+    }
+
+    function saveLastUpdate(userId) {
+      if (!userId) return;
+      localStorage.setItem(getLastUpdateKey(userId), new Date().toISOString());
+    }
+
+    function renderLastUpdateTime() {
+      const raw = loadLastUpdate(currentUserId);
+      if (!raw) {
+        lastUpdateTime.textContent = "--";
+        return;
+      }
+
+      const date = new Date(raw);
+      if (Number.isNaN(date.getTime())) {
+        lastUpdateTime.textContent = "--";
+        return;
+      }
+
+      lastUpdateTime.textContent = date.toLocaleString("pt-BR", {
+        day: "2-digit",
+        month: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+    }
+
     function updateOfflineUI() {
       const offline = !navigator.onLine;
       offlineBanner.classList.toggle("show", offline);
@@ -1403,12 +1617,8 @@
       return data.session?.user || null;
     }
 
-    function getGoalStorageKey(userId) {
-      return `wealth_os_goal_${userId}`;
-    }
-
-    function getBalanceVisibilityKey(userId) {
-      return `wealth_os_balance_visible_${userId}`;
+    function getGroupKey(asset, category) {
+      return `${String(asset || "").trim().toUpperCase()}__${String(category || "Outros").trim() || "Outros"}`;
     }
 
     function loadBalanceVisibility(userId) {
@@ -1549,13 +1759,36 @@
       updateSensitiveCardsDisplay();
     };
 
+    function normalizeTimelineAction(action) {
+      if (action === "update") return "edit";
+      return action || "";
+    }
+
+    function actionLabel(action) {
+      const normalized = normalizeTimelineAction(action);
+      if (normalized === "create") return "Criação";
+      if (normalized === "edit") return "Edição";
+      if (normalized === "delete") return "Exclusão";
+      if (normalized === "price_update") return "Atualização de preço";
+      return normalized || "Ação";
+    }
+
+    function actionBadgeClass(action) {
+      const normalized = normalizeTimelineAction(action);
+      if (normalized === "create") return "badge-create";
+      if (normalized === "edit") return "badge-edit";
+      if (normalized === "delete") return "badge-delete";
+      if (normalized === "price_update") return "badge-price";
+      return "badge-edit";
+    }
+
     function consolidateInvestments(items) {
       const groups = new Map();
 
       items.forEach((item) => {
         const asset = String(item.asset || "").trim().toUpperCase();
         const category = String(item.category || "Outros").trim() || "Outros";
-        const key = `${asset}__${category}`;
+        const key = getGroupKey(asset, category);
 
         const quantity = Number(item.quantity || 0);
         const amount = Number(item.amount || 0);
@@ -1597,6 +1830,7 @@
 
         return {
           id: group.id,
+          groupKey: getGroupKey(group.asset, group.category),
           asset: group.asset,
           category: group.category,
           quantity: qty,
@@ -1887,15 +2121,80 @@
       `).join("");
     }
 
+    function openGroupedDetailsModal(item) {
+      if (!item || !item.sourceItems?.length) return;
+
+      groupedDetailsTitle.textContent = `Detalhes de ${item.asset} • ${item.category}`;
+      const ordered = [...item.sourceItems].sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
+      const consolidatedPnL = Number(item.current_value || 0) - Number(item.amount || 0);
+      const consolidatedAvg = Number(item.quantity || 0) > 0 ? Number(item.amount || 0) / Number(item.quantity || 0) : 0;
+      const consolidatedPct = Number(item.amount || 0) > 0 ? (consolidatedPnL / Number(item.amount || 0)) * 100 : 0;
+      const latestId = ordered[0]?.id ? String(ordered[0].id) : null;
+
+      groupedDetailsContent.innerHTML = `
+        <div class="detail-item">
+          <strong>Resumo consolidado</strong>
+          Quantidade total: ${Number(item.quantity || 0)}<br>
+          Preço médio consolidado: ${money(consolidatedAvg)}<br>
+          Investido total: ${money(item.amount || 0)}<br>
+          Valor atual total: ${money(item.current_value || 0)}<br>
+          Lucro / prejuízo: <span class="${getPnLClass(consolidatedPnL)}">${formatPnL(consolidatedPnL)} • ${percent(consolidatedPct)}</span><br>
+          <span class="muted">${item.sourceCount} lançamento(s) neste grupo</span>
+
+          <div class="detail-actions">
+            <button class="danger" onclick="deleteEntireGroup('${escapeHtml(item.groupKey)}')">Excluir grupo inteiro</button>
+          </div>
+        </div>
+
+        ${ordered.map((source, index) => {
+          const currentValue = Number(source.quantity || 0) * Number(source.current_price || 0);
+          const pnl = currentValue - Number(source.amount || 0);
+          const pnlPct = Number(source.amount || 0) > 0 ? (pnl / Number(source.amount || 0)) * 100 : 0;
+          const isLatest = latestId && String(source.id) === latestId;
+
+          return `
+            <div class="detail-item">
+              <strong>
+                Lançamento ${ordered.length - index}
+                ${isLatest ? `<span class="badge latest" style="margin-left:8px;">Mais recente</span>` : ""}
+              </strong>
+
+              <div class="detail-meta">
+                <div>
+                  Quantidade: ${Number(source.quantity || 0)}<br>
+                  Preço médio: ${money(source.avg_price || 0)}<br>
+                  Preço atual: ${money(source.current_price || 0)}
+                </div>
+                <div>
+                  Investido: ${money(source.amount || 0)}<br>
+                  Valor atual: ${money(currentValue)}<br>
+                  Resultado: <span class="${getPnLClass(pnl)}">${formatPnL(pnl)} • ${percent(pnlPct)}</span>
+                </div>
+              </div>
+
+              <div style="margin-top:10px;" class="muted">
+                Data do registro: ${source.created_at ? new Date(source.created_at).toLocaleString("pt-BR") : "-"}
+              </div>
+
+              <div class="detail-actions">
+                <button onclick="editRawInvestment('${String(source.id)}')">Editar lançamento</button>
+                <button class="danger" onclick="deleteRawInvestment('${String(source.id)}')">Excluir lançamento</button>
+              </div>
+            </div>
+          `;
+        }).join("")}
+      `;
+
+      groupedDetailsModal.classList.add("show");
+    }
+
     function renderAssetsList(items) {
       if (!items.length) {
         assetsList.innerHTML = "Sem investimentos.";
         return;
       }
 
-      const totalCarteira = items.reduce((acc, item) => {
-        return acc + Number(item.current_value || 0);
-      }, 0);
+      const totalCarteira = items.reduce((acc, item) => acc + Number(item.current_value || 0), 0);
 
       assetsList.innerHTML = "";
 
@@ -1904,11 +2203,11 @@
         const invested = Number(item.amount || 0);
         const pnl = current - invested;
         const pnlPercent = invested > 0 ? (pnl / invested) * 100 : 0;
-        const percent = totalCarteira > 0 ? (current / totalCarteira) * 100 : 0;
+        const percentCarteira = totalCarteira > 0 ? (current / totalCarteira) * 100 : 0;
 
         const actionButtons = item.isGrouped
           ? `
-            <button onclick="showGroupedInfo('${String(item.id)}')" class="secondary">Detalhes</button>
+            <button onclick="showGroupedInfo('${String(item.id)}')" class="secondary">Detalhes do grupo</button>
             <button onclick="refreshSingleSavedPrice('${String(item.id)}', this)">Atualizar grupo</button>
           `
           : `
@@ -1925,11 +2224,11 @@
             <strong>${escapeHtml(item.asset)}</strong>
             <span>${escapeHtml(item.category || "Outros")}</span>
             <span>Qtd: ${Number(item.quantity || 0)} • PM: ${money(item.avg_price)} • Atual: ${money(item.current_price)}</span>
-            <span>${percent.toFixed(1)}% da carteira • ${pnlPercent.toFixed(1)}% de rentabilidade</span>
+            <span>${percentCarteira.toFixed(1)}% da carteira • ${pnlPercent.toFixed(1)}% de rentabilidade</span>
 
             <div style="margin-top:10px; height:8px; background:#111827; border-radius:999px;">
               <div style="
-                width:${Math.min(percent, 100)}%;
+                width:${Math.min(percentCarteira, 100)}%;
                 height:100%;
                 background:linear-gradient(90deg,#1d8cff,#22d3ee);
                 border-radius:999px;
@@ -1946,7 +2245,8 @@
           <div class="asset-right">
             <div>${money(current)}</div>
             <div class="${getPnLClass(pnl)}" style="margin-top:6px;">
-              ${formatPnL(pnl)}
+              ${formatPnL(pnl)}<br>
+              <span style="font-size:13px;">${percent(pnlPercent)}</span>
             </div>
           </div>
         `;
@@ -1954,6 +2254,76 @@
         assetsList.appendChild(div);
       });
     }
+
+    function renderTimelineItems(items) {
+      timeline.innerHTML = "";
+      timelineFilteredCount.textContent = `${items.length} resultado(s)`;
+
+      if (!items.length) {
+        timeline.innerHTML = "Nenhum registro encontrado com os filtros atuais.";
+        return;
+      }
+
+      items.forEach((item) => {
+        const normalizedAction = normalizeTimelineAction(item.action);
+        const div = document.createElement("div");
+        div.className = "timeline-item";
+        div.innerHTML = `
+          <div class="timeline-badge ${actionBadgeClass(normalizedAction)}">${actionLabel(normalizedAction)}</div>
+          <strong>${escapeHtml(item.asset || "-")}</strong><br>
+          Categoria: ${escapeHtml(item.category || "-")}<br>
+          Valor: ${money(item.amount || 0)}<br>
+          Quantidade: ${Number(item.quantity || 0)}<br>
+          Preço médio: ${money(item.avg_price || 0)}<br>
+          Preço atual: ${money(item.current_price || 0)}<br>
+          <span class="muted">${item.created_at ? new Date(item.created_at).toLocaleString("pt-BR") : "-"}</span>
+        `;
+        timeline.appendChild(div);
+      });
+    }
+
+    window.applyTimelineFilters = function () {
+      const action = document.getElementById("timelineActionFilter").value;
+      const asset = document.getElementById("timelineAssetFilter").value.trim().toUpperCase();
+      const start = document.getElementById("timelineDateStart").value;
+      const end = document.getElementById("timelineDateEnd").value;
+
+      let filtered = [...allTimeline];
+
+      if (action) {
+        filtered = filtered.filter(item => normalizeTimelineAction(item.action) === action);
+      }
+
+      if (asset) {
+        filtered = filtered.filter(item => String(item.asset || "").toUpperCase().includes(asset));
+      }
+
+      if (start) {
+        const startDate = new Date(`${start}T00:00:00`);
+        filtered = filtered.filter(item => {
+          const itemDate = new Date(item.created_at || 0);
+          return itemDate >= startDate;
+        });
+      }
+
+      if (end) {
+        const endDate = new Date(`${end}T23:59:59`);
+        filtered = filtered.filter(item => {
+          const itemDate = new Date(item.created_at || 0);
+          return itemDate <= endDate;
+        });
+      }
+
+      renderTimelineItems(filtered);
+    };
+
+    window.clearTimelineFilters = function () {
+      document.getElementById("timelineActionFilter").value = "";
+      document.getElementById("timelineAssetFilter").value = "";
+      document.getElementById("timelineDateStart").value = "";
+      document.getElementById("timelineDateEnd").value = "";
+      renderTimelineItems(allTimeline);
+    };
 
     function applyFiltersInternal() {
       const search = document.getElementById("searchInput").value.trim().toUpperCase();
@@ -1971,6 +2341,19 @@
       renderAssetsList(filtered);
       renderPerformanceRanking(filtered);
       renderCategoryAllocation(filtered);
+    }
+
+    function updateDashboardPremiumMetrics(items, totalInvestedValue, pnlTotal) {
+      const profitability = totalInvestedValue > 0 ? (pnlTotal / totalInvestedValue) * 100 : 0;
+      const winners = items.filter(item => (Number(item.current_value || 0) - Number(item.amount || 0)) > 0).length;
+      const losers = items.filter(item => (Number(item.current_value || 0) - Number(item.amount || 0)) < 0).length;
+
+      totalReturnPercent.textContent = percent(profitability);
+      totalReturnPercent.className = `mini-value small ${getPnLClass(profitability)}`;
+      profitableAssetsCount.textContent = String(winners);
+      losingAssetsCount.textContent = String(losers);
+      totalContributionsCount.textContent = String(rawInvestments.length);
+      renderLastUpdateTime();
     }
 
     async function loadInvestments() {
@@ -1995,6 +2378,12 @@
         updateHeroBalanceDisplay();
         updateSensitiveCardsDisplay();
         positionsCount.textContent = "0";
+        rawRecordsCount.textContent = "0";
+        totalReturnPercent.textContent = "0,0%";
+        profitableAssetsCount.textContent = "0";
+        losingAssetsCount.textContent = "0";
+        totalContributionsCount.textContent = "0";
+        lastUpdateTime.textContent = "--";
         assetsList.innerHTML = "Erro ao carregar investimentos.";
         performanceRankingBox.innerHTML = "Erro ao carregar ranking.";
         categoryAllocationBox.innerHTML = "Erro ao carregar alocação.";
@@ -2021,6 +2410,8 @@
       updateSensitiveCardsDisplay();
 
       positionsCount.textContent = String(allInvestments.length);
+      rawRecordsCount.textContent = String(rawInvestments.length);
+      updateDashboardPremiumMetrics(allInvestments, totalInvestedValue, pnlTotal);
 
       if (!allInvestments.length) {
         assetsList.innerHTML = "Sem investimentos.";
@@ -2036,6 +2427,16 @@
       renderChart(rawInvestments);
       renderInsights(allInvestments, totalInvestedValue, totalCurrentValue, pnlTotal);
       renderGoalSection(totalCurrentValue);
+
+      if (reopenGroupAfterDeleteKey) {
+        const group = allInvestments.find(item => item.groupKey === reopenGroupAfterDeleteKey && item.isGrouped);
+        if (group) {
+          reopenGroupAfterDeleteKey = null;
+          openGroupedDetailsModal(group);
+        } else {
+          reopenGroupAfterDeleteKey = null;
+        }
+      }
     }
 
     async function loadTimeline() {
@@ -2043,6 +2444,8 @@
       if (!user) {
         timeline.innerHTML = "Faça login para ver a timeline.";
         timelineCount.textContent = "0";
+        timelineFilteredCount.textContent = "0 resultado(s)";
+        allTimeline = [];
         return;
       }
 
@@ -2051,36 +2454,31 @@
         .select("*")
         .eq("user_id", user.id)
         .order("created_at", { ascending: false })
-        .limit(20);
+        .limit(200);
 
       if (error) {
         timeline.innerHTML = "Erro ao carregar timeline.";
         timelineCount.textContent = "0";
+        timelineFilteredCount.textContent = "0 resultado(s)";
+        allTimeline = [];
         console.error(error);
         return;
       }
 
-      const items = data || [];
-      timelineCount.textContent = String(items.length);
+      allTimeline = (data || []).map(item => ({
+        ...item,
+        action: normalizeTimelineAction(item.action)
+      }));
 
-      if (!items.length) {
+      timelineCount.textContent = String(allTimeline.length);
+
+      if (!allTimeline.length) {
         timeline.innerHTML = "Sem histórico ainda.";
+        timelineFilteredCount.textContent = "0 resultado(s)";
         return;
       }
 
-      timeline.innerHTML = "";
-
-      items.forEach((item) => {
-        const div = document.createElement("div");
-        div.className = "timeline-item";
-        div.innerHTML = `
-          <strong>${escapeHtml(item.action || "-")}</strong><br>
-          Ativo: ${escapeHtml(item.asset || "-")}<br>
-          Valor: ${money(item.amount || 0)}<br>
-          <span class="muted">${item.created_at ? new Date(item.created_at).toLocaleString("pt-BR") : "-"}</span>
-        `;
-        timeline.appendChild(div);
-      });
+      renderTimelineItems(allTimeline);
     }
 
     async function saveHistory(userId, investmentId, action, payload) {
@@ -2106,6 +2504,17 @@
       }
     }
 
+    function updateEditingBanner() {
+      if (!editingMeta) {
+        editingBanner.classList.remove("show");
+        editingBanner.textContent = "";
+        return;
+      }
+
+      editingBanner.textContent = `Editando lançamento individual de ${editingMeta.asset} • ${editingMeta.category}.`;
+      editingBanner.classList.add("show");
+    }
+
     function fillForm(item) {
       document.getElementById("asset").value = item.asset || "";
       document.getElementById("category").value = item.category || "";
@@ -2114,13 +2523,20 @@
       document.getElementById("currentPrice").value = item.current_price || "";
 
       editingInvestmentId = item.id;
+      editingMeta = {
+        asset: item.asset || "-",
+        category: item.category || "Outros"
+      };
+
       formTitle.textContent = "Editar investimento";
       saveBtn.textContent = "Atualizar investimento";
       saveBtn.dataset.originalText = "Atualizar investimento";
       cancelEditBtn.style.display = "block";
+      updateEditingBanner();
       setStatus(saveStatus, "Modo de edição ativado.", "info");
       showToast("Modo de edição ativado.", "info");
-      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      investmentFormCard.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
     function resetForm() {
@@ -2131,10 +2547,12 @@
       document.getElementById("currentPrice").value = "";
 
       editingInvestmentId = null;
+      editingMeta = null;
       formTitle.textContent = "Novo investimento";
       saveBtn.textContent = "Salvar investimento";
       saveBtn.dataset.originalText = "Salvar investimento";
       cancelEditBtn.style.display = "none";
+      updateEditingBanner();
     }
 
     function clearAppUI() {
@@ -2152,7 +2570,14 @@
       updateSensitiveCardsDisplay();
 
       positionsCount.textContent = "0";
+      rawRecordsCount.textContent = "0";
       timelineCount.textContent = "0";
+      timelineFilteredCount.textContent = "0 resultado(s)";
+      totalReturnPercent.textContent = "0,0%";
+      profitableAssetsCount.textContent = "0";
+      losingAssetsCount.textContent = "0";
+      totalContributionsCount.textContent = "0";
+      lastUpdateTime.textContent = "--";
       topCategory.textContent = "-";
       assetsList.innerHTML = "Sem investimentos.";
       timeline.innerHTML = "Sem histórico ainda.";
@@ -2163,6 +2588,7 @@
       chartSvg.innerHTML = "";
       rawInvestments = [];
       allInvestments = [];
+      allTimeline = [];
       currentGoal = { targetValue: 0, monthlyContribution: 0 };
       resetForm();
       renderGoalSection(0);
@@ -2302,12 +2728,67 @@
       showToast("Edição cancelada.", "info");
     };
 
+    function closeGroupedDetailsModal() {
+      groupedDetailsModal.classList.remove("show");
+    }
+
+    window.closeGroupedDetailsModal = closeGroupedDetailsModal;
+
+    window.handleGroupedBackdrop = function (event) {
+      if (event.target === groupedDetailsModal) closeGroupedDetailsModal();
+    };
+
     window.showGroupedInfo = function (id) {
       const item = allInvestments.find(x => String(x.id) === String(id));
       if (!item || !item.isGrouped) return;
+      openGroupedDetailsModal(item);
+    };
 
-      setStatus(topStatus, `${item.asset} está consolidado em ${item.sourceCount} registros. Para editar ou excluir, ajuste os registros antigos separadamente.`, "info");
-      showToast(`${item.asset} reúne ${item.sourceCount} registros antigos em um único card.`, "info");
+    window.editRawInvestment = function (id) {
+      const item = rawInvestments.find(x => String(x.id) === String(id));
+      if (!item) return;
+
+      closeGroupedDetailsModal();
+      fillForm(item);
+    };
+
+    function openDeleteModalWithTarget(target) {
+      if (!target) return;
+      deleteTarget = target;
+      deleteModalText.textContent = target.message;
+      deleteModal.classList.add("show");
+    }
+
+    window.deleteRawInvestment = function (id) {
+      const item = rawInvestments.find(x => String(x.id) === String(id));
+      if (!item) return;
+
+      reopenGroupAfterDeleteKey = getGroupKey(item.asset, item.category);
+      closeGroupedDetailsModal();
+
+      openDeleteModalWithTarget({
+        mode: "single",
+        id: item.id,
+        asset: item.asset,
+        category: item.category,
+        message: `Deseja realmente excluir ${item.asset}? Essa ação remove este lançamento individual da carteira.`
+      });
+    };
+
+    window.deleteEntireGroup = function (groupKey) {
+      const item = allInvestments.find(x => x.groupKey === groupKey);
+      if (!item) return;
+
+      reopenGroupAfterDeleteKey = null;
+
+      openDeleteModalWithTarget({
+        mode: "group",
+        groupKey,
+        ids: [...item.sourceIds],
+        asset: item.asset,
+        category: item.category,
+        message: `Deseja realmente excluir todo o grupo ${item.asset} • ${item.category}? Isso remove ${item.sourceCount} lançamento(s).`
+      });
     };
 
     window.editInvestment = function (id) {
@@ -2331,15 +2812,22 @@
         return;
       }
 
-      deleteTargetId = id;
-      deleteModalText.textContent = `Deseja realmente excluir ${item.asset}? Essa ação remove a posição da carteira.`;
-      deleteModal.classList.add("show");
+      const rawItem = item.sourceItems?.[0] || rawInvestments.find(x => String(x.id) === String(id));
+      if (!rawItem) return;
+
+      openDeleteModalWithTarget({
+        mode: "single",
+        id: rawItem.id,
+        asset: rawItem.asset,
+        category: rawItem.category,
+        message: `Deseja realmente excluir ${rawItem.asset}? Essa ação remove este lançamento da carteira.`
+      });
     };
 
     function closeDeleteModal() {
       deleteModal.classList.remove("show");
       setTimeout(() => {
-        deleteTargetId = null;
+        deleteTarget = null;
       }, 200);
     }
 
@@ -2350,19 +2838,25 @@
     };
 
     window.confirmDelete = async function () {
-      if (!deleteTargetId || generalLoading.deleteInvestment) return;
-      await deleteInvestmentReal(deleteTargetId);
+      if (!deleteTarget || generalLoading.deleteInvestment) return;
+
+      if (deleteTarget.mode === "group") {
+        await deleteGroupReal(deleteTarget);
+      } else {
+        await deleteInvestmentReal(deleteTarget);
+      }
+
       closeDeleteModal();
     };
 
-    async function deleteInvestmentReal(id) {
+    async function deleteInvestmentReal(target) {
       if (!requireOnline("Sem internet para excluir investimento.")) return;
 
       const user = await getUser();
       if (!user) return;
 
-      const item = allInvestments.find(x => String(x.id) === String(id));
-      if (!item) return;
+      const rawItem = rawInvestments.find(x => String(x.id) === String(target.id));
+      if (!rawItem) return;
 
       generalLoading.deleteInvestment = true;
       setButtonLoading(document.getElementById("confirmDeleteBtn"), true, "Excluindo...");
@@ -2371,7 +2865,7 @@
         const { error } = await supabase
           .from("investments")
           .delete()
-          .eq("id", id)
+          .eq("id", target.id)
           .eq("user_id", user.id);
 
         if (error) {
@@ -2382,21 +2876,74 @@
         }
 
         try {
-          const source = item.sourceItems[0] || item;
-          await saveHistory(user.id, id, "delete", {
-            asset: source.asset,
-            category: source.category,
-            amount: source.amount,
-            quantity: source.quantity,
-            avg_price: source.avg_price,
-            current_price: source.current_price
+          await saveHistory(user.id, target.id, "delete", {
+            asset: rawItem.asset,
+            category: rawItem.category,
+            amount: rawItem.amount,
+            quantity: rawItem.quantity,
+            avg_price: rawItem.avg_price,
+            current_price: rawItem.current_price
           });
         } catch {}
 
-        if (editingInvestmentId === id) resetForm();
+        if (editingInvestmentId === target.id) resetForm();
 
-        setStatus(topStatus, "Investimento excluído.", "success");
-        showToast(`${item.asset} excluído com sucesso.`, "success");
+        setStatus(topStatus, "Lançamento excluído.", "success");
+        showToast(`${rawItem.asset} excluído com sucesso.`, "success");
+        await loadInvestments();
+        await loadTimeline();
+      } finally {
+        generalLoading.deleteInvestment = false;
+        setButtonLoading(document.getElementById("confirmDeleteBtn"), false);
+      }
+    }
+
+    async function deleteGroupReal(target) {
+      if (!requireOnline("Sem internet para excluir grupo.")) return;
+
+      const user = await getUser();
+      if (!user) return;
+      if (!Array.isArray(target.ids) || !target.ids.length) return;
+
+      generalLoading.deleteInvestment = true;
+      setButtonLoading(document.getElementById("confirmDeleteBtn"), true, "Excluindo grupo...");
+
+      try {
+        const sources = rawInvestments.filter(item => target.ids.includes(item.id));
+
+        const { error } = await supabase
+          .from("investments")
+          .delete()
+          .in("id", target.ids)
+          .eq("user_id", user.id);
+
+        if (error) {
+          const message = safeErrorMessage(error, "Erro ao excluir grupo.");
+          setStatus(topStatus, message, "error");
+          showToast(message, "error");
+          return;
+        }
+
+        for (const source of sources) {
+          try {
+            await saveHistory(user.id, source.id, "delete", {
+              asset: source.asset,
+              category: source.category,
+              amount: source.amount,
+              quantity: source.quantity,
+              avg_price: source.avg_price,
+              current_price: source.current_price
+            });
+          } catch {}
+        }
+
+        if (sources.some(source => String(source.id) === String(editingInvestmentId))) {
+          resetForm();
+        }
+
+        closeGroupedDetailsModal();
+        setStatus(topStatus, "Grupo excluído com sucesso.", "success");
+        showToast(`Grupo ${target.asset} • ${target.category} excluído.`, "success");
         await loadInvestments();
         await loadTimeline();
       } finally {
@@ -2513,7 +3060,7 @@
 
         for (const source of item.sourceItems) {
           try {
-            await saveHistory(user.id, source.id, "update", {
+            await saveHistory(user.id, source.id, "price_update", {
               asset: source.asset,
               category: source.category,
               amount: source.amount,
@@ -2524,10 +3071,20 @@
           } catch {}
         }
 
+        saveLastUpdate(currentUserId);
+        renderLastUpdateTime();
+
         setStatus(topStatus, `Preço de ${item.asset} atualizado.`, "success");
         showToast(`Preço de ${item.asset} atualizado.`, "success");
         await loadInvestments();
         await loadTimeline();
+
+        if (groupedDetailsModal.classList.contains("show") && item.isGrouped) {
+          const refreshed = allInvestments.find(x => x.groupKey === item.groupKey);
+          if (refreshed && refreshed.isGrouped) {
+            openGroupedDetailsModal(refreshed);
+          }
+        }
       } catch (e) {
         const message = safeErrorMessage(e, `Erro ao atualizar ${item.asset}.`);
         setStatus(topStatus, message, "error");
@@ -2588,7 +3145,7 @@
 
               for (const source of target.sourceItems) {
                 try {
-                  await saveHistory(user.id, source.id, "update", {
+                  await saveHistory(user.id, source.id, "price_update", {
                     asset: source.asset,
                     category: source.category,
                     amount: source.amount,
@@ -2605,6 +3162,9 @@
             failedAssets.push(item.asset || "Ativo desconhecido");
           }
         }
+
+        saveLastUpdate(currentUserId);
+        renderLastUpdateTime();
 
         await loadInvestments();
         await loadTimeline();
@@ -2695,18 +3255,6 @@
         return;
       }
 
-      const duplicate = rawInvestments.find(item =>
-        String(item.asset || "").toUpperCase() === asset &&
-        String(item.category || "") === category &&
-        String(item.id) !== String(editingInvestmentId || "")
-      );
-
-      if (duplicate) {
-        setStatus(saveStatus, "Esse ativo já existe nessa categoria. Edite a posição existente.", "error");
-        showToast("Ativo duplicado detectado.", "error");
-        return;
-      }
-
       generalLoading.saveInvestment = true;
       setButtonLoading(saveBtn, true, editingInvestmentId ? "Atualizando..." : "Salvando...");
       setStatus(saveStatus, editingInvestmentId ? "Atualizando..." : "Salvando...", "info");
@@ -2733,7 +3281,7 @@
           if (error) throw error;
 
           try {
-            await saveHistory(user.id, editingInvestmentId, "update", payload);
+            await saveHistory(user.id, editingInvestmentId, "edit", payload);
           } catch (e) {
             setStatus(saveStatus, "Atualizou, mas falhou timeline: " + e.message, "error");
             await loadInvestments();
@@ -2766,8 +3314,17 @@
           return;
         }
 
-        setStatus(saveStatus, "Investimento salvo com sucesso.", "success");
-        showToast(`${asset} salvo com sucesso.`, "success");
+        const existingSameGroupCount = rawInvestments.filter(item =>
+          String(item.asset || "").toUpperCase() === asset &&
+          String(item.category || "") === category
+        ).length;
+
+        const message = existingSameGroupCount > 0
+          ? `${asset} adicionado com novo aporte e consolidado no painel.`
+          : `${asset} salvo com sucesso.`;
+
+        setStatus(saveStatus, message, "success");
+        showToast(message, "success");
         resetForm();
         await loadInvestments();
         await loadTimeline();
@@ -2839,6 +3396,7 @@
 
       currentUserId = user.id;
       balanceVisible = loadBalanceVisibility(currentUserId);
+      renderLastUpdateTime();
       await loadGoal(currentUserId);
       showApp(user.email);
       await loadInvestments();
@@ -2861,6 +3419,7 @@
           if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED" || event === "INITIAL_SESSION") {
             currentUserId = session.user.id;
             balanceVisible = loadBalanceVisibility(currentUserId);
+            renderLastUpdateTime();
             await loadGoal(currentUserId);
             showApp(session.user.email);
             await loadInvestments();
