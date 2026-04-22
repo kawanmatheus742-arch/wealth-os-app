@@ -126,7 +126,9 @@
     .mini-card:hover,
     .asset-item:hover,
     .timeline-item:hover,
-    .insight-item:hover{
+    .insight-item:hover,
+    .rank-item:hover,
+    .category-row:hover{
       transform:translateY(-2px);
       border-color:rgba(73,178,255,.22);
       box-shadow:var(--shadow-strong);
@@ -409,7 +411,7 @@
     .status-error{ color:#fca5a5; }
     .status-info{ color:#cbd5e1; }
 
-    .timeline-item, .asset-item, .insight-item{
+    .timeline-item, .asset-item, .insight-item, .rank-item, .category-row{
       padding:14px;
       border-radius:14px;
       background:rgba(255,255,255,.04);
@@ -464,6 +466,19 @@
     .negative{ color:var(--orange); }
     .neutral{ color:#e2e8f0; }
 
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      color:#dbeafe;
+      background:rgba(29,140,255,.12);
+      border:1px solid rgba(73,178,255,.18);
+      margin-top:8px;
+    }
+
     .chart-wrap{
       margin-top:12px;
       width:100%;
@@ -500,6 +515,47 @@
       grid-template-columns:1.2fr .8fr;
       gap:10px;
       margin-top:10px;
+    }
+
+    .rank-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+
+    .rank-title{
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:8px;
+    }
+
+    .rank-item strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:16px;
+    }
+
+    .category-row-head{
+      display:flex;
+      justify-content:space-between;
+      gap:8px;
+      margin-bottom:8px;
+      font-size:14px;
+    }
+
+    .category-bar{
+      height:10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.07);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.05);
+    }
+
+    .category-bar-fill{
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--blue), var(--cyan));
     }
 
     #appSection{ display:none; }
@@ -666,7 +722,7 @@
       z-index:10000;
       display:grid;
       gap:10px;
-      width:min(360px, calc(100vw - 24px));
+      width:min(420px, calc(100vw - 24px));
     }
 
     .toast{
@@ -679,6 +735,7 @@
       backdrop-filter:blur(12px);
       animation:toastIn .22s ease forwards;
       line-height:1.5;
+      word-break:break-word;
     }
 
     .toast.success{ border-color:rgba(34,197,94,.35); }
@@ -776,7 +833,7 @@
     }
 
     @media (max-width:1100px){
-      .hero, .grid-2, .grid-3{
+      .hero, .grid-2, .grid-3, .rank-grid{
         grid-template-columns:1fr;
       }
 
@@ -1030,7 +1087,7 @@
           <h3>Resumo rápido</h3>
 
           <div class="mini-card" style="margin-top:12px;">
-            <div class="mini-label">Posições</div>
+            <div class="mini-label">Posições únicas</div>
             <div id="positionsCount" class="mini-value">0</div>
           </div>
 
@@ -1058,6 +1115,20 @@
 
       <div class="grid-2">
         <div class="card">
+          <h3>Ranking por rentabilidade</h3>
+          <div class="muted">Melhores e piores posições da carteira consolidada.</div>
+          <div id="performanceRankingBox" style="margin-top:12px;">Sem dados.</div>
+        </div>
+
+        <div class="card">
+          <h3>Alocação por categoria</h3>
+          <div class="muted">Percentual da carteira atual dividido por categoria.</div>
+          <div id="categoryAllocationBox" style="margin-top:12px;">Sem dados.</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
           <div class="top-actions">
             <h3 style="margin:0;">Capital investido acumulado</h3>
             <span class="muted">Baseado nos registros cadastrados</span>
@@ -1080,7 +1151,7 @@
       <div class="card">
         <div class="top-actions">
           <h3 style="margin:0;">Seus investimentos</h3>
-          <span class="muted">Com busca, filtro, edição e exclusão</span>
+          <span class="muted">Ativos repetidos são consolidados visualmente</span>
         </div>
 
         <div class="filter-row">
@@ -1159,6 +1230,8 @@
     const chartSvg = document.getElementById("chartSvg");
     const insightsList = document.getElementById("insightsList");
     const topHoldingBox = document.getElementById("topHoldingBox");
+    const performanceRankingBox = document.getElementById("performanceRankingBox");
+    const categoryAllocationBox = document.getElementById("categoryAllocationBox");
     const formTitle = document.getElementById("formTitle");
     const saveBtn = document.getElementById("saveBtn");
     const cancelEditBtn = document.getElementById("cancelEditBtn");
@@ -1173,6 +1246,7 @@
     const bootLoader = document.getElementById("bootLoader");
     const offlineBanner = document.getElementById("offlineBanner");
 
+    let rawInvestments = [];
     let allInvestments = [];
     let editingInvestmentId = null;
     let currentUserId = null;
@@ -1240,9 +1314,9 @@
       setTimeout(() => {
         el.style.opacity = "0";
         el.style.transform = "translateY(-6px)";
-      }, 2600);
+      }, 3200);
 
-      setTimeout(() => el.remove(), 3000);
+      setTimeout(() => el.remove(), 3800);
     }
 
     function getPnLClass(value) {
@@ -1289,6 +1363,13 @@
       return message || fallback;
     }
 
+    function requireOnline(message = "Você está sem internet.") {
+      if (navigator.onLine) return true;
+      showToast(message, "error");
+      setStatus(topStatus, "Sem conexão. Alguns dados podem não atualizar.", "error");
+      return false;
+    }
+
     function setBootLoading(show) {
       if (!bootLoader) return;
       bootLoader.classList.toggle("hidden", !show);
@@ -1300,6 +1381,8 @@
 
       if (offline) {
         setStatus(topStatus, "Sem conexão. Alguns dados podem não atualizar.", "error");
+      } else {
+        setStatus(topStatus, "");
       }
     }
 
@@ -1360,27 +1443,25 @@
         return currentGoal;
       }
 
-      if (goalStorageMode === "local") {
-        currentGoal = loadGoalLocal(userId);
-        return currentGoal;
-      }
-
       try {
         const { data, error } = await supabase
-          .from("user_goals")
+          .from("goals")
           .select("target_value, monthly_contribution")
           .eq("user_id", userId)
           .maybeSingle();
 
         if (error) throw error;
 
+        goalStorageMode = "supabase";
         currentGoal = {
           targetValue: Number(data?.target_value || 0),
           monthlyContribution: Number(data?.monthly_contribution || 0)
         };
 
+        saveGoalLocal(userId, currentGoal);
         return currentGoal;
       } catch (error) {
+        console.error("Erro ao carregar meta no Supabase:", error);
         goalStorageMode = "local";
         currentGoal = loadGoalLocal(userId);
         return currentGoal;
@@ -1390,30 +1471,40 @@
     async function persistGoal(userId, data) {
       if (!userId) return;
 
-      if (goalStorageMode === "local") {
-        saveGoalLocal(userId, data);
-        currentGoal = data;
-        return;
-      }
-
       try {
-        const { error } = await supabase
-          .from("user_goals")
-          .upsert({
-            user_id: userId,
-            target_value: data.targetValue,
-            monthly_contribution: data.monthlyContribution
-          }, { onConflict: "user_id" });
+        const { data: result, error } = await supabase
+          .from("goals")
+          .upsert(
+            {
+              user_id: userId,
+              target_value: data.targetValue,
+              monthly_contribution: data.monthlyContribution
+            },
+            { onConflict: "user_id" }
+          )
+          .select();
 
         if (error) throw error;
 
+        goalStorageMode = "supabase";
         currentGoal = data;
         saveGoalLocal(userId, data);
+        console.log("Meta salva no Supabase:", result);
       } catch (error) {
+        console.error("ERRO REAL AO SALVAR META:", error);
+
         goalStorageMode = "local";
         saveGoalLocal(userId, data);
         currentGoal = data;
-        showToast("Meta salva localmente. Para sincronizar em todos os dispositivos, crie a tabela user_goals.", "info");
+
+        const realMessage =
+          error?.message ||
+          error?.details ||
+          error?.hint ||
+          "Erro desconhecido ao salvar meta.";
+
+        showToast(`Erro real do Supabase: ${realMessage}`, "error");
+        setStatus(goalStatus, `Erro real: ${realMessage}`, "error");
       }
     }
 
@@ -1457,6 +1548,70 @@
       updateHeroBalanceDisplay();
       updateSensitiveCardsDisplay();
     };
+
+    function consolidateInvestments(items) {
+      const groups = new Map();
+
+      items.forEach((item) => {
+        const asset = String(item.asset || "").trim().toUpperCase();
+        const category = String(item.category || "Outros").trim() || "Outros";
+        const key = `${asset}__${category}`;
+
+        const quantity = Number(item.quantity || 0);
+        const amount = Number(item.amount || 0);
+        const currentValue = quantity * Number(item.current_price || 0);
+        const createdAt = item.created_at || null;
+
+        if (!groups.has(key)) {
+          groups.set(key, {
+            id: item.id,
+            asset,
+            category,
+            quantity: 0,
+            amount: 0,
+            currentValue: 0,
+            created_at: createdAt,
+            sourceIds: [],
+            sourceItems: []
+          });
+        }
+
+        const group = groups.get(key);
+        group.quantity += quantity;
+        group.amount += amount;
+        group.currentValue += currentValue;
+        group.sourceIds.push(item.id);
+        group.sourceItems.push(item);
+
+        const existingDate = new Date(group.created_at || 0).getTime();
+        const incomingDate = new Date(createdAt || 0).getTime();
+        if (incomingDate > existingDate) {
+          group.created_at = createdAt;
+        }
+      });
+
+      return Array.from(groups.values()).map((group) => {
+        const qty = Number(group.quantity || 0);
+        const avgPrice = qty > 0 ? group.amount / qty : 0;
+        const currentPrice = qty > 0 ? group.currentValue / qty : 0;
+
+        return {
+          id: group.id,
+          asset: group.asset,
+          category: group.category,
+          quantity: qty,
+          amount: group.amount,
+          avg_price: avgPrice,
+          current_price: currentPrice,
+          created_at: group.created_at,
+          current_value: group.currentValue,
+          sourceIds: group.sourceIds,
+          sourceItems: group.sourceItems,
+          sourceCount: group.sourceItems.length,
+          isGrouped: group.sourceItems.length > 1
+        };
+      }).sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
+    }
 
     function renderGoalSection(currentValue) {
       if (!currentUserId) {
@@ -1570,9 +1725,9 @@
         const category = item.category || "Outros";
         byCategory[category] = (byCategory[category] || 0) + invested;
 
-        const currentValue = Number(item.quantity || 0) * Number(item.current_price || 0);
+        const currentValue = Number(item.current_value || 0);
         if (!biggest || currentValue > biggest.currentValue) {
-          biggest = { asset: item.asset, category, currentValue };
+          biggest = { asset: item.asset, category, currentValue, sourceCount: item.sourceCount };
         }
       });
 
@@ -1591,6 +1746,7 @@
       const insights = [];
       const pnlPercent = totalInvested > 0 ? (pnlTotal / totalInvested) * 100 : 0;
       const concentration = totalInvested > 0 ? (majorValue / totalInvested) * 100 : 0;
+      const groupedCount = items.filter(item => item.isGrouped).length;
 
       if (pnlTotal > 0) {
         insights.push(`Sua carteira está no lucro em ${money(pnlTotal)} (${pnlPercent.toFixed(1)}%).`);
@@ -1614,6 +1770,10 @@
         insights.push("Você já começou a montar uma carteira mais completa.");
       }
 
+      if (groupedCount > 0) {
+        insights.push(`${groupedCount} ativo(s) foram consolidados visualmente por repetição de cadastro.`);
+      }
+
       insightsList.innerHTML = "";
       insights.forEach((text) => {
         const div = document.createElement("div");
@@ -1627,8 +1787,104 @@
           <strong>${escapeHtml(biggest.asset)}</strong><br>
           Categoria: ${escapeHtml(biggest.category)}<br>
           Valor atual: ${money(biggest.currentValue)}
+          ${biggest.sourceCount > 1 ? `<br><span class="muted">${biggest.sourceCount} registros consolidados</span>` : ""}
         </div>
       `;
+    }
+
+    function renderPerformanceRanking(items) {
+      if (!items.length) {
+        performanceRankingBox.innerHTML = "Sem dados.";
+        return;
+      }
+
+      const enriched = items.map((item) => {
+        const invested = Number(item.amount || 0);
+        const currentValue = Number(item.current_value || 0);
+        const pnl = currentValue - invested;
+        const pnlPercent = invested > 0 ? (pnl / invested) * 100 : 0;
+
+        return {
+          ...item,
+          pnl,
+          pnlPercent,
+          currentValue
+        };
+      });
+
+      const best = [...enriched]
+        .sort((a, b) => b.pnlPercent - a.pnlPercent)
+        .slice(0, 3);
+
+      const worst = [...enriched]
+        .sort((a, b) => a.pnlPercent - b.pnlPercent)
+        .slice(0, 3);
+
+      function buildColumn(title, list, type) {
+        if (!list.length) {
+          return `<div><div class="rank-title">${title}</div><div class="rank-item">Sem dados.</div></div>`;
+        }
+
+        return `
+          <div>
+            <div class="rank-title">${title}</div>
+            ${list.map(item => `
+              <div class="rank-item">
+                <strong>${escapeHtml(item.asset)}</strong>
+                <div>${money(item.currentValue)}</div>
+                <div class="${type === "best" ? "positive" : "negative"}" style="margin-top:6px;">
+                  ${item.pnl >= 0 ? "+" : "-"} ${money(Math.abs(item.pnl))} • ${item.pnlPercent.toFixed(1)}%
+                </div>
+                ${item.sourceCount > 1 ? `<div class="badge">${item.sourceCount} registros consolidados</div>` : ""}
+              </div>
+            `).join("")}
+          </div>
+        `;
+      }
+
+      performanceRankingBox.innerHTML = `
+        <div class="rank-grid">
+          ${buildColumn("Melhores posições", best, "best")}
+          ${buildColumn("Piores posições", worst, "worst")}
+        </div>
+      `;
+    }
+
+    function renderCategoryAllocation(items) {
+      if (!items.length) {
+        categoryAllocationBox.innerHTML = "Sem dados.";
+        return;
+      }
+
+      const byCategory = {};
+      let total = 0;
+
+      items.forEach((item) => {
+        const category = item.category || "Outros";
+        const currentValue = Number(item.current_value || 0);
+        byCategory[category] = (byCategory[category] || 0) + currentValue;
+        total += currentValue;
+      });
+
+      const ordered = Object.entries(byCategory)
+        .map(([category, value]) => ({
+          category,
+          value,
+          percent: total > 0 ? (value / total) * 100 : 0
+        }))
+        .sort((a, b) => b.value - a.value);
+
+      categoryAllocationBox.innerHTML = ordered.map(item => `
+        <div class="category-row">
+          <div class="category-row-head">
+            <strong>${escapeHtml(item.category)}</strong>
+            <span>${item.percent.toFixed(1)}% • ${money(item.value)}</span>
+          </div>
+          <div class="category-bar">
+            <div class="category-bar-fill" style="width:${Math.min(item.percent, 100)}%;"></div>
+          </div>
+        </div>
+      `).join("");
     }
 
     function renderAssetsList(items) {
@@ -1638,16 +1894,28 @@
       }
 
       const totalCarteira = items.reduce((acc, item) => {
-        return acc + (Number(item.quantity || 0) * Number(item.current_price || 0));
+        return acc + Number(item.current_value || 0);
       }, 0);
 
       assetsList.innerHTML = "";
 
       items.forEach(item => {
-        const current = Number(item.quantity || 0) * Number(item.current_price || 0);
+        const current = Number(item.current_value || 0);
         const invested = Number(item.amount || 0);
         const pnl = current - invested;
+        const pnlPercent = invested > 0 ? (pnl / invested) * 100 : 0;
         const percent = totalCarteira > 0 ? (current / totalCarteira) * 100 : 0;
+
+        const actionButtons = item.isGrouped
+          ? `
+            <button onclick="showGroupedInfo('${String(item.id)}')" class="secondary">Detalhes</button>
+            <button onclick="refreshSingleSavedPrice('${String(item.id)}', this)">Atualizar grupo</button>
+          `
+          : `
+            <button onclick="editInvestment('${String(item.id)}')">Editar</button>
+            <button onclick="refreshSingleSavedPrice('${String(item.id)}', this)">Atualizar</button>
+            <button onclick="openDeleteModal('${String(item.id)}')" class="danger">Excluir</button>
+          `;
 
         const div = document.createElement("div");
         div.className = "asset-item";
@@ -1657,7 +1925,7 @@
             <strong>${escapeHtml(item.asset)}</strong>
             <span>${escapeHtml(item.category || "Outros")}</span>
             <span>Qtd: ${Number(item.quantity || 0)} • PM: ${money(item.avg_price)} • Atual: ${money(item.current_price)}</span>
-            <span>${percent.toFixed(1)}% da carteira</span>
+            <span>${percent.toFixed(1)}% da carteira • ${pnlPercent.toFixed(1)}% de rentabilidade</span>
 
             <div style="margin-top:10px; height:8px; background:#111827; border-radius:999px;">
               <div style="
@@ -1668,10 +1936,10 @@
               "></div>
             </div>
 
+            ${item.isGrouped ? `<div class="badge">${item.sourceCount} registros consolidados</div>` : ""}
+
             <div class="asset-actions">
-              <button onclick="editInvestment('${String(item.id)}')">Editar</button>
-              <button onclick="refreshSingleSavedPrice('${String(item.id)}', this)">Atualizar</button>
-              <button onclick="openDeleteModal('${String(item.id)}')" class="danger">Excluir</button>
+              ${actionButtons}
             </div>
           </div>
 
@@ -1701,6 +1969,8 @@
       }
 
       renderAssetsList(filtered);
+      renderPerformanceRanking(filtered);
+      renderCategoryAllocation(filtered);
     }
 
     async function loadInvestments() {
@@ -1726,16 +1996,19 @@
         updateSensitiveCardsDisplay();
         positionsCount.textContent = "0";
         assetsList.innerHTML = "Erro ao carregar investimentos.";
+        performanceRankingBox.innerHTML = "Erro ao carregar ranking.";
+        categoryAllocationBox.innerHTML = "Erro ao carregar alocação.";
         renderChart([]);
         renderInsights([], 0, 0, 0);
         console.error(error);
         return;
       }
 
-      allInvestments = data || [];
+      rawInvestments = data || [];
+      allInvestments = consolidateInvestments(rawInvestments);
 
       const totalInvestedValue = allInvestments.reduce((acc, item) => acc + Number(item.amount || 0), 0);
-      const totalCurrentValue = allInvestments.reduce((acc, item) => acc + (Number(item.quantity || 0) * Number(item.current_price || 0)), 0);
+      const totalCurrentValue = allInvestments.reduce((acc, item) => acc + Number(item.current_value || 0), 0);
       const pnlTotal = totalCurrentValue - totalInvestedValue;
 
       realSensitive.hero = money(totalCurrentValue);
@@ -1751,6 +2024,8 @@
 
       if (!allInvestments.length) {
         assetsList.innerHTML = "Sem investimentos.";
+        performanceRankingBox.innerHTML = "Sem dados.";
+        categoryAllocationBox.innerHTML = "Sem dados.";
         renderChart([]);
         renderInsights([], 0, 0, 0);
         renderGoalSection(0);
@@ -1758,7 +2033,7 @@
       }
 
       applyFiltersInternal();
-      renderChart(allInvestments);
+      renderChart(rawInvestments);
       renderInsights(allInvestments, totalInvestedValue, totalCurrentValue, pnlTotal);
       renderGoalSection(totalCurrentValue);
     }
@@ -1883,7 +2158,10 @@
       timeline.innerHTML = "Sem histórico ainda.";
       insightsList.innerHTML = "Sem análise ainda.";
       topHoldingBox.innerHTML = "Sem dados.";
+      performanceRankingBox.innerHTML = "Sem dados.";
+      categoryAllocationBox.innerHTML = "Sem dados.";
       chartSvg.innerHTML = "";
+      rawInvestments = [];
       allInvestments = [];
       currentGoal = { targetValue: 0, monthlyContribution: 0 };
       resetForm();
@@ -1929,6 +2207,8 @@
     };
 
     async function signup(email, password) {
+      if (!requireOnline("Você precisa estar conectado para criar a conta.")) return;
+
       setStatus(authStatus, "Criando conta...", "info");
       setAuthLoading(true, "signup");
 
@@ -1953,6 +2233,7 @@
 
     async function login() {
       if (authLoading) return;
+      if (!requireOnline("Você precisa estar conectado para fazer login.")) return;
 
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value.trim();
@@ -1980,14 +2261,7 @@
           return;
         }
 
-        currentUserId = data.user.id;
-        balanceVisible = loadBalanceVisibility(currentUserId);
-        showApp(data.user.email);
-        await loadGoal(currentUserId);
-        await loadInvestments();
-        await loadTimeline();
-
-        setStatus(topStatus, "Logado com sucesso.", "success");
+        setStatus(topStatus, "Login realizado. Carregando painel...", "info");
         showToast("Login realizado com sucesso.", "success");
       } catch (err) {
         const message = safeErrorMessage(err, "Erro ao fazer login.");
@@ -2028,15 +2302,34 @@
       showToast("Edição cancelada.", "info");
     };
 
+    window.showGroupedInfo = function (id) {
+      const item = allInvestments.find(x => String(x.id) === String(id));
+      if (!item || !item.isGrouped) return;
+
+      setStatus(topStatus, `${item.asset} está consolidado em ${item.sourceCount} registros. Para editar ou excluir, ajuste os registros antigos separadamente.`, "info");
+      showToast(`${item.asset} reúne ${item.sourceCount} registros antigos em um único card.`, "info");
+    };
+
     window.editInvestment = function (id) {
       const item = allInvestments.find(x => String(x.id) === String(id));
       if (!item) return;
-      fillForm(item);
+
+      if (item.isGrouped) {
+        window.showGroupedInfo(id);
+        return;
+      }
+
+      fillForm(item.sourceItems[0] || item);
     };
 
     window.openDeleteModal = function (id) {
       const item = allInvestments.find(x => String(x.id) === String(id));
       if (!item) return;
+
+      if (item.isGrouped) {
+        window.showGroupedInfo(id);
+        return;
+      }
 
       deleteTargetId = id;
       deleteModalText.textContent = `Deseja realmente excluir ${item.asset}? Essa ação remove a posição da carteira.`;
@@ -2063,6 +2356,8 @@
     };
 
     async function deleteInvestmentReal(id) {
+      if (!requireOnline("Sem internet para excluir investimento.")) return;
+
       const user = await getUser();
       if (!user) return;
 
@@ -2087,13 +2382,14 @@
         }
 
         try {
+          const source = item.sourceItems[0] || item;
           await saveHistory(user.id, id, "delete", {
-            asset: item.asset,
-            category: item.category,
-            amount: item.amount,
-            quantity: item.quantity,
-            avg_price: item.avg_price,
-            current_price: item.current_price
+            asset: source.asset,
+            category: source.category,
+            amount: source.amount,
+            quantity: source.quantity,
+            avg_price: source.avg_price,
+            current_price: source.current_price
           });
         } catch {}
 
@@ -2131,9 +2427,6 @@
 
       try {
         await supabase.auth.signOut();
-        currentUserId = null;
-        clearAppUI();
-        showLogin();
         showToast("Você saiu da conta.", "info");
       } finally {
         generalLoading.logout = false;
@@ -2148,6 +2441,7 @@
 
     window.fetchSinglePrice = async function () {
       if (generalLoading.fetchSinglePrice) return;
+      if (!requireOnline("Sem internet para buscar preço.")) return;
 
       const asset = document.getElementById("asset").value.trim().toUpperCase();
 
@@ -2184,6 +2478,8 @@
     };
 
     window.refreshSingleSavedPrice = async function (id, buttonEl) {
+      if (!requireOnline("Sem internet para atualizar preço.")) return;
+
       const user = await getUser();
       if (!user) return;
       if (singlePriceLoadingMap.has(String(id))) return;
@@ -2192,7 +2488,7 @@
       if (!item) return;
 
       singlePriceLoadingMap.add(String(id));
-      setButtonLoading(buttonEl, true, "Atualizando...");
+      setButtonLoading(buttonEl, true, item.isGrouped ? "Atualizando grupo..." : "Atualizando...");
       setStatus(topStatus, `Atualizando ${item.asset}...`, "info");
 
       try {
@@ -2205,24 +2501,28 @@
         const price = data?.results?.[0]?.regularMarketPrice;
         if (!price) throw new Error("Preço não encontrado.");
 
-        const { error: updateError } = await supabase
-          .from("investments")
-          .update({ current_price: price })
-          .eq("id", id)
-          .eq("user_id", user.id);
+        for (const sourceId of item.sourceIds) {
+          const { error: updateError } = await supabase
+            .from("investments")
+            .update({ current_price: price })
+            .eq("id", sourceId)
+            .eq("user_id", user.id);
 
-        if (updateError) throw updateError;
+          if (updateError) throw updateError;
+        }
 
-        try {
-          await saveHistory(user.id, id, "update", {
-            asset: item.asset,
-            category: item.category,
-            amount: item.amount,
-            quantity: item.quantity,
-            avg_price: item.avg_price,
-            current_price: price
-          });
-        } catch {}
+        for (const source of item.sourceItems) {
+          try {
+            await saveHistory(user.id, source.id, "update", {
+              asset: source.asset,
+              category: source.category,
+              amount: source.amount,
+              quantity: source.quantity,
+              avg_price: source.avg_price,
+              current_price: price
+            });
+          } catch {}
+        }
 
         setStatus(topStatus, `Preço de ${item.asset} atualizado.`, "success");
         showToast(`Preço de ${item.asset} atualizado.`, "success");
@@ -2241,6 +2541,7 @@
     window.refreshAllPrices = async function () {
       const user = await getUser();
       if (!user || generalLoading.refreshAllPrices) return;
+      if (!requireOnline("Sem internet para atualizar os preços.")) return;
 
       generalLoading.refreshAllPrices = true;
       setButtonLoading(document.getElementById("refreshAllPricesBtn"), true, "Atualizando...");
@@ -2248,15 +2549,14 @@
 
       const failedAssets = [];
       let successCount = 0;
+      const alreadyUpdated = new Set();
 
       try {
         for (const item of allInvestments) {
           try {
             const ticker = String(item.asset || "").toUpperCase().trim();
-            if (!ticker) {
-              failedAssets.push(item.asset || "Ativo sem código");
-              continue;
-            }
+            if (!ticker || alreadyUpdated.has(ticker)) continue;
+            alreadyUpdated.add(ticker);
 
             const { data: priceData, error: priceError } = await supabase.functions.invoke("quick-worker", {
               body: { ticker }
@@ -2273,29 +2573,34 @@
               continue;
             }
 
-            const { error: updateError } = await supabase
-              .from("investments")
-              .update({ current_price: price })
-              .eq("id", item.id)
-              .eq("user_id", user.id);
+            const targets = allInvestments.filter(x => x.asset === ticker);
 
-            if (updateError) {
-              failedAssets.push(ticker);
-              continue;
+            for (const target of targets) {
+              for (const sourceId of target.sourceIds) {
+                const { error: updateError } = await supabase
+                  .from("investments")
+                  .update({ current_price: price })
+                  .eq("id", sourceId)
+                  .eq("user_id", user.id);
+
+                if (updateError) throw updateError;
+              }
+
+              for (const source of target.sourceItems) {
+                try {
+                  await saveHistory(user.id, source.id, "update", {
+                    asset: source.asset,
+                    category: source.category,
+                    amount: source.amount,
+                    quantity: source.quantity,
+                    avg_price: source.avg_price,
+                    current_price: price
+                  });
+                } catch {}
+              }
             }
 
             successCount++;
-
-            try {
-              await saveHistory(user.id, item.id, "update", {
-                asset: item.asset,
-                category: item.category,
-                amount: item.amount,
-                quantity: item.quantity,
-                avg_price: item.avg_price,
-                current_price: price
-              });
-            } catch {}
           } catch {
             failedAssets.push(item.asset || "Ativo desconhecido");
           }
@@ -2305,11 +2610,11 @@
         await loadTimeline();
 
         if (!failedAssets.length) {
-          setStatus(topStatus, "Todos os preços foram atualizados.", "success");
-          showToast("Todos os preços foram atualizados.", "success");
+          setStatus(topStatus, `${successCount} ativo(s) atualizado(s) com sucesso.`, "success");
+          showToast(`${successCount} ativo(s) atualizado(s) com sucesso.`, "success");
         } else if (successCount > 0) {
-          setStatus(topStatus, `${failedAssets.length} ativo(s) não puderam ser atualizados.`, "error");
-          showToast(`${failedAssets.length} ativo(s) falharam: ${failedAssets.slice(0, 3).join(", ")}${failedAssets.length > 3 ? "..." : ""}`, "error");
+          setStatus(topStatus, `${successCount} atualizado(s), ${failedAssets.length} falharam.`, "error");
+          showToast(`${successCount} atualizado(s), ${failedAssets.length} falharam: ${failedAssets.slice(0, 3).join(", ")}${failedAssets.length > 3 ? "..." : ""}`, "error");
         } else {
           setStatus(topStatus, "Nenhum preço pôde ser atualizado no momento.", "error");
           showToast("Nenhum preço pôde ser atualizado.", "error");
@@ -2322,6 +2627,7 @@
 
     window.saveGoal = async function () {
       if (!currentUserId || generalLoading.saveGoal) return;
+      if (!requireOnline("Sem internet para salvar a meta no servidor.")) return;
 
       generalLoading.saveGoal = true;
       setButtonLoading(document.getElementById("saveGoalBtn"), true, "Salvando...");
@@ -2333,14 +2639,14 @@
         const data = { targetValue, monthlyContribution };
         await persistGoal(currentUserId, data);
 
-        const msg = goalStorageMode === "supabase"
-          ? "Meta salva com sucesso."
-          : "Meta salva localmente.";
+        if (goalStorageMode === "supabase") {
+          setStatus(goalStatus, "Meta salva e sincronizada com sucesso.", "success");
+          showToast("Meta salva e sincronizada com sucesso.", "success");
+        } else if (!goalStatus.textContent) {
+          setStatus(goalStatus, "Meta salva localmente.", "info");
+        }
 
-        setStatus(goalStatus, msg, "success");
-        showToast(msg, "success");
-
-        const currentValue = allInvestments.reduce((acc, item) => acc + (Number(item.quantity || 0) * Number(item.current_price || 0)), 0);
+        const currentValue = allInvestments.reduce((acc, item) => acc + Number(item.current_value || 0), 0);
         renderGoalSection(currentValue);
       } finally {
         generalLoading.saveGoal = false;
@@ -2350,6 +2656,7 @@
 
     window.saveInvestment = async function () {
       if (generalLoading.saveInvestment) return;
+      if (!requireOnline("Sem internet para salvar investimento.")) return;
 
       const user = await getUser();
       if (!user) {
@@ -2388,7 +2695,7 @@
         return;
       }
 
-      const duplicate = allInvestments.find(item =>
+      const duplicate = rawInvestments.find(item =>
         String(item.asset || "").toUpperCase() === asset &&
         String(item.category || "") === category &&
         String(item.id) !== String(editingInvestmentId || "")
@@ -2476,6 +2783,7 @@
 
     window.refreshTimeline = async function () {
       if (generalLoading.refreshTimeline) return;
+      if (!requireOnline("Sem internet para atualizar a timeline.")) return;
 
       generalLoading.refreshTimeline = true;
       setButtonLoading(document.getElementById("refreshTimelineBtn"), true, "Atualizando...");
@@ -2557,6 +2865,7 @@
             showApp(session.user.email);
             await loadInvestments();
             await loadTimeline();
+            setStatus(topStatus, "");
           }
         }, 0);
       });
