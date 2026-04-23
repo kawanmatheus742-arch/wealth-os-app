@@ -8,652 +8,110 @@
   <meta name="theme-color" content="#0ea5e9" />
   <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
   <link rel="apple-touch-icon" href="/icon-192.png" />
-
   <style>
-    :root{
-      --bg:#030712;--bg2:#07111f;--panel:rgba(8,15,31,.88);--panel2:rgba(12,22,44,.96);
-      --line:rgba(255,255,255,.08);--text:#f8fafc;--muted:#8ea3c7;
-      --blue:#0ea5e9;--cyan:#22d3ee;--green:#22c55e;--orange:#fb923c;--red:#ef4444;--yellow:#facc15;--violet:#8b5cf6;
-      --shadow:0 22px 60px rgba(0,0,0,.35);--radius:26px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;min-height:100vh;color:var(--text);font-family:Inter,Arial,sans-serif;overflow-x:hidden;
-      background:
-        radial-gradient(circle at 0% 0%,rgba(14,165,233,.22),transparent 25%),
-        radial-gradient(circle at 100% 0%,rgba(139,92,246,.12),transparent 28%),
-        linear-gradient(180deg,var(--bg),var(--bg2));
-    }
-    body::before{
-      content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;
-      background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
-      background-size:28px 28px;mask-image:linear-gradient(180deg,#000,transparent 85%);
-    }
-    .container{position:relative;z-index:1;max-width:1540px;margin:auto;padding:24px}
-    .topbar,.title-row,.row-buttons,.actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:68px;height:68px;border-radius:24px;display:grid;place-items:center;font-size:30px;background:linear-gradient(135deg,rgba(14,165,233,.65),rgba(139,92,246,.25));border:1px solid rgba(255,255,255,.12);box-shadow:var(--shadow)}
-    h1{margin:0;font-size:44px;letter-spacing:-.08em} h2,h3{margin:0;letter-spacing:-.035em}
-    .subtitle,.muted{color:var(--muted)} .subtitle{font-size:14px;margin-top:6px;line-height:1.5}
-    .pill,.chip,.badge{border-radius:999px;padding:9px 13px;background:rgba(255,255,255,.045);border:1px solid var(--line);color:#dbeafe;font-size:12px}
-    .pill{background:linear-gradient(135deg,rgba(14,165,233,.16),rgba(139,92,246,.14))}
-    .grid{display:grid;gap:16px}.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:repeat(3,1fr)}.grid-4{grid-template-columns:repeat(4,1fr)}.grid-5{grid-template-columns:repeat(5,1fr)}.hero-grid{grid-template-columns:1.35fr .65fr}.field-grid{grid-template-columns:1fr 1fr}.toolbar{grid-template-columns:1fr 1fr 1fr 1fr}
-    .card,.mini,.item{
-      position:relative;overflow:hidden;border-radius:var(--radius);padding:22px;background:var(--panel);
-      border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(16px);
-    }
-    .mini,.item{border-radius:20px;padding:16px;background:var(--panel2);box-shadow:0 14px 34px rgba(0,0,0,.20)}
-    .card::before,.mini::before,.item::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.04),transparent 45%);pointer-events:none}
-    .kicker{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:#c7d7f2;opacity:.78;margin-bottom:8px}
-    .label{font-size:12px;color:var(--muted);margin-bottom:8px}.value{font-size:clamp(18px,2vw,28px);font-weight:900;letter-spacing:-.04em;word-break:break-word}.value.sm{font-size:18px}.value.xl{font-size:clamp(46px,6vw,86px);line-height:1;letter-spacing:-.09em;text-shadow:0 0 26px rgba(14,165,233,.20)}
-    .positive{color:var(--green)}.negative{color:var(--orange)}.neutral{color:#e2e8f0}
-    input,select,textarea{
-      width:100%;padding:14px;border-radius:14px;background:#0d172b;color:#fff;border:1px solid rgba(255,255,255,.09);outline:none;font-size:14px;
-    }
-    input:focus,select:focus,textarea:focus{border-color:rgba(56,189,248,.45);box-shadow:0 0 0 4px rgba(56,189,248,.10)}
-    input::placeholder,textarea::placeholder{color:#8fa3c7} select option{background:white;color:#111827}
-    textarea{min-height:96px;resize:vertical}
-    label{display:block;margin-top:10px;margin-bottom:6px;color:#c7d7f2;font-size:12px}
-    button{
-      width:100%;padding:14px;border:0;border-radius:14px;margin-top:12px;cursor:pointer;color:white;font-weight:900;
-      background:linear-gradient(135deg,var(--blue),#38bdf8);box-shadow:0 12px 30px rgba(14,165,233,.22);
-    }
-    button.secondary{background:linear-gradient(135deg,#475569,#64748b)} button.success{background:linear-gradient(135deg,#16a34a,#22c55e)} button.danger{background:linear-gradient(135deg,#dc2626,#ef4444)} button.gold{background:linear-gradient(135deg,#f59e0b,#facc15);color:#111827} button.violet{background:linear-gradient(135deg,#7c3aed,#06b6d4)}
-    button:disabled{opacity:.65;cursor:not-allowed}.actions button,.row-buttons button{width:auto;min-width:110px;padding:10px 12px;margin:0}
-    .status{min-height:20px;margin-top:12px;font-size:14px;line-height:1.5}.status-success{color:var(--green)}.status-error{color:#fecaca}.status-info{color:#cbd5e1}
-    .auth-toggle{margin-top:12px;text-align:center;color:#7dd3fc;cursor:pointer}
-    .hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-    .progress{height:12px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;border:1px solid rgba(255,255,255,.06)}.fill{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:.35s}.fill.hit{background:linear-gradient(90deg,#22c55e,#4ade80)}
-    .asset,.movement,.timeline-entry{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;margin-top:10px}
-    .right{text-align:right;min-width:180px;font-weight:900}.bar{height:8px;background:#111827;border-radius:999px;overflow:hidden;margin-top:10px}.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:999px}
-    .empty{padding:22px;text-align:center;color:#cbd5e1;border:1px dashed rgba(255,255,255,.10);border-radius:18px;background:rgba(255,255,255,.025)}
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.64);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999;backdrop-filter:blur(8px)}
-    .modal.show{display:flex}.modal-box{width:100%;max-width:520px;max-height:90vh;overflow:auto;background:#0f172a;border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:var(--shadow)}.modal-lg{max-width:920px}
-    .toast-wrap{position:fixed;top:18px;right:18px;z-index:10000;display:grid;gap:10px;width:min(440px,calc(100vw - 24px))}.toast{padding:14px 16px;border-radius:16px;background:#0f172a;border:1px solid var(--line);box-shadow:var(--shadow)}.toast.success{border-color:rgba(34,197,94,.35)}.toast.error{border-color:rgba(239,68,68,.35)}
-    .loader{position:fixed;inset:0;z-index:11000;display:flex;align-items:center;justify-content:center;background:rgba(6,8,22,.92);backdrop-filter:blur(10px)}.loader.hidden{display:none}.spin{width:22px;height:22px;border:2px solid rgba(255,255,255,.25);border-top-color:white;border-radius:50%;animation:spin .75s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
-    #appSection{display:none}
-    @media(max-width:1180px){.hero-grid,.grid-2,.grid-3{grid-template-columns:1fr}.grid-4,.grid-5,.toolbar,.field-grid{grid-template-columns:1fr 1fr}}
-    @media(max-width:760px){.container{padding:16px}h1{font-size:32px}.grid-4,.grid-5,.toolbar,.field-grid{grid-template-columns:1fr}.asset,.movement,.timeline-entry{grid-template-columns:1fr}.right{text-align:left}.actions button,.row-buttons button{width:100%}}
+    :root{--bg:#030712;--bg2:#07111f;--card:rgba(8,15,31,.88);--card2:rgba(11,21,42,.96);--line:rgba(255,255,255,.09);--text:#f8fafc;--muted:#8ea3c7;--blue:#0ea5e9;--cyan:#22d3ee;--green:#22c55e;--orange:#fb923c;--red:#ef4444;--yellow:#facc15;--violet:#8b5cf6;--shadow:0 18px 45px rgba(0,0,0,.28);--radius:26px;--radius2:18px;--max:1500px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--text);font-family:Inter,Arial,sans-serif;overflow-x:hidden;background:radial-gradient(circle at 0 0,rgba(14,165,233,.2),transparent 24%),radial-gradient(circle at 100% 0,rgba(139,92,246,.12),transparent 24%),linear-gradient(180deg,var(--bg),var(--bg2) 50%,#0b1730)}body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);background-size:28px 28px;opacity:.28}.container{position:relative;z-index:1;max-width:var(--max);margin:auto;padding:24px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}.brand{display:flex;align-items:center;gap:14px}.logo{width:68px;height:68px;border-radius:24px;display:grid;place-items:center;font-size:30px;background:linear-gradient(135deg,rgba(14,165,233,.7),rgba(56,189,248,.18));border:1px solid var(--line);box-shadow:var(--shadow)}h1{margin:0;font-size:44px;letter-spacing:-.08em;line-height:1}.subtitle{color:var(--muted);font-size:14px;margin-top:7px;line-height:1.5}.chips{display:flex;gap:10px;flex-wrap:wrap}.chip{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.045);border:1px solid var(--line);font-size:12px}.premium{background:linear-gradient(135deg,rgba(14,165,233,.18),rgba(139,92,246,.16));border-color:rgba(56,189,248,.25)}.grid{display:grid;gap:14px}.grid2{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:repeat(3,1fr)}.grid4{grid-template-columns:repeat(4,1fr)}.grid5{grid-template-columns:repeat(5,1fr)}.hero-grid{grid-template-columns:1.35fr .65fr;gap:18px}.split{grid-template-columns:1fr 1fr;gap:18px}.fields{grid-template-columns:1fr 1fr}.card,.mini,.item{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);backdrop-filter:blur(18px)}.mini,.item{border-radius:var(--radius2);padding:16px;background:var(--card2);transition:.18s ease}.mini:hover,.item:hover,.card:hover{border-color:rgba(56,189,248,.25)}.card:before,.mini:before,.item:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.04),transparent 44%);pointer-events:none}.section{position:relative;z-index:1;display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-bottom:12px}.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:#c7d7f2;opacity:.8;margin-bottom:8px}h2,h3{margin:0;letter-spacing:-.035em}.muted{color:var(--muted)}.positive{color:var(--green)}.negative{color:var(--orange)}.neutral{color:#e2e8f0}.hero{padding-top:28px;background:linear-gradient(180deg,rgba(10,18,36,.94),rgba(7,13,26,.95));border-color:rgba(56,189,248,.13)}.hero:after{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,rgba(14,165,233,.15),rgba(34,211,238,.85),rgba(139,92,246,.35))}.hero-value{position:relative;z-index:1;margin:10px 0 0;font-size:clamp(50px,6vw,86px);line-height:1;letter-spacing:-.09em;font-weight:900;text-shadow:0 0 24px rgba(14,165,233,.2);word-break:break-word}.badges{position:relative;z-index:1;display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.badge{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);font-size:12px;color:#dbeafe}.badge.green{background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.25);color:#bbf7d0}.badge.red{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.25);color:#fecaca}.badge.purple{background:rgba(139,92,246,.15);border-color:rgba(139,92,246,.28);color:#ddd6fe}.label{position:relative;z-index:1;color:var(--muted);font-size:12px;margin-bottom:8px}.value{position:relative;z-index:1;font-size:clamp(18px,2vw,28px);font-weight:900;line-height:1.18;letter-spacing:-.04em;word-break:break-word}.value.small{font-size:clamp(15px,1.6vw,21px)}label{display:block;margin:10px 0 6px;color:#c7d7f2;font-size:12px}input,select,textarea{width:100%;padding:14px;border:1px solid rgba(255,255,255,.09);border-radius:14px;outline:none;background:#0d172b;color:#fff;font-size:14px}textarea{min-height:96px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:rgba(56,189,248,.46);box-shadow:0 0 0 4px rgba(56,189,248,.10)}select option{background:#fff;color:#111827}button{width:100%;padding:14px;border:0;border-radius:14px;margin-top:12px;color:#fff;font-weight:900;background:linear-gradient(135deg,var(--blue),#38bdf8);box-shadow:0 10px 26px rgba(14,165,233,.22);cursor:pointer}button:hover{filter:brightness(1.05);transform:translateY(-1px)}button:disabled{opacity:.7;cursor:not-allowed;transform:none}.secondary{background:linear-gradient(135deg,#475569,#64748b)!important}.success{background:linear-gradient(135deg,#16a34a,#22c55e)!important}.danger{background:linear-gradient(135deg,#dc2626,#ef4444)!important}.gold{background:linear-gradient(135deg,#f59e0b,#facc15)!important;color:#111827!important}.row{display:flex;gap:8px;flex-wrap:wrap}.row button{width:auto;min-width:96px;padding:10px 12px}.status{min-height:20px;margin-top:12px;font-size:14px;line-height:1.5}.status-success{color:var(--green)}.status-error{color:#fecaca}.status-info{color:#cbd5e1}.empty{padding:22px;text-align:center;color:#cbd5e1;border:1px dashed rgba(255,255,255,.1);border-radius:18px;background:rgba(255,255,255,.02)}.asset{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;margin-top:10px}.asset-title{font-weight:900;font-size:18px;margin-bottom:4px}.asset-meta{color:var(--muted);font-size:13px;line-height:1.6}.asset-right{text-align:right;min-width:190px;font-weight:900}.bar{height:8px;border-radius:999px;background:#111827;overflow:hidden;margin-top:10px}.fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--cyan))}.auth-toggle{text-align:center;color:#49b2ff;margin-top:12px;cursor:pointer}.input-wrap{position:relative;margin-top:10px}.password-input{padding-right:60px}.eye{position:absolute;top:50%;right:12px;transform:translateY(-50%);width:40px;height:40px;margin:0;padding:0;background:rgba(255,255,255,.05);display:grid;place-items:center}.boot{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(6,8,22,.92);backdrop-filter:blur(10px)}.boot.hidden{opacity:0;visibility:hidden;pointer-events:none}.bootbox{width:min(420px,calc(100vw - 32px));padding:24px;border-radius:24px;background:rgba(15,23,42,.96);border:1px solid var(--line);box-shadow:var(--shadow);text-align:center}.spinner{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.28);border-top-color:#fff;animation:spin .75s linear infinite}.toast-wrap{position:fixed;top:18px;right:18px;z-index:99999;display:grid;gap:10px;width:min(460px,calc(100vw - 24px))}.toast{padding:14px 16px;border-radius:16px;border:1px solid var(--line);background:rgba(15,23,42,.96);box-shadow:var(--shadow);line-height:1.5}.toast.success{border-color:rgba(34,197,94,.35)}.toast.error{border-color:rgba(239,68,68,.35)}.modal{position:fixed;inset:0;z-index:9998;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.64);padding:20px}.modal.show{display:flex}.modalbox{width:100%;max-width:460px;border-radius:24px;background:linear-gradient(180deg,#0f172a,#111827);border:1px solid var(--line);padding:24px;box-shadow:var(--shadow)}svg{width:100%;height:320px;display:block}.offline{display:none;margin-bottom:16px;padding:12px 14px;border-radius:16px;background:rgba(239,68,68,.14);border:1px solid rgba(239,68,68,.25);color:#fecaca}.offline.show{display:block}#appSection{display:none}@keyframes spin{to{transform:rotate(360deg)}}@media(max-width:1120px){.hero-grid,.split,.grid2,.grid3{grid-template-columns:1fr}.grid4,.grid5,.fields{grid-template-columns:1fr 1fr}}@media(max-width:760px){.container{padding:16px}h1{font-size:30px}.grid4,.grid5,.fields{grid-template-columns:1fr}.asset{grid-template-columns:1fr}.asset-right{text-align:left}.hero-value{font-size:clamp(38px,12vw,62px)}}
   </style>
 </head>
 <body>
-  <div id="loader" class="loader"><div class="card" style="max-width:420px;text-align:center"><h3>Wealth OS</h3><p class="muted">Carregando sessão e preparando painel premium...</p><div style="display:flex;justify-content:center"><div class="spin"></div></div></div></div>
-  <div id="toastWrap" class="toast-wrap"></div>
-
+  <div id="boot" class="boot"><div class="bootbox"><h2>Wealth OS</h2><p class="muted">Carregando painel profissional...</p><div style="display:flex;justify-content:center"><div class="spinner"></div></div></div></div>
   <div class="container">
-    <div class="topbar">
-      <div class="brand"><div class="logo">💎</div><div><h1>Wealth OS</h1><div class="subtitle">Controle premium de investimentos, patrimônio, movimentações, renda passiva e meta.</div></div></div>
-      <div class="topbar-actions"><span class="pill">Premium Build</span><span id="syncChip" class="chip">Sync: OK</span><span id="marketChip" class="chip">Carteira ativa</span></div>
+    <div id="offline" class="offline">Você está sem conexão. Algumas funções podem não responder até a internet voltar.</div>
+    <div class="topbar"><div class="brand"><div class="logo">💎</div><div><h1>Wealth OS</h1><div class="subtitle">Sistema premium para carteira, movimentações, preço médio real, renda passiva e evolução patrimonial.</div></div></div><div class="chips"><div class="chip premium">Etapa 1C</div><div id="syncChip" class="chip">Sync: OK</div><div id="ledgerChip" class="chip">Ledger ativo</div></div></div>
+
+    <div id="authSection" class="card"><div class="section"><div><div class="kicker">Acesso</div><h2 id="authTitle">Entrar</h2><div id="authSubtitle" class="muted">Faça login para acessar seu painel premium.</div></div></div><input id="email" type="email" placeholder="Seu e-mail" autocomplete="email"><div class="input-wrap"><input id="password" class="password-input" type="password" placeholder="Sua senha" autocomplete="current-password"><button class="eye" onclick="togglePassword()" type="button">👁️</button></div><button id="authBtn" onclick="handleAuth()">Entrar</button><div id="toggleAuth" class="auth-toggle" onclick="toggleAuthMode()">Criar conta</div><div id="authStatus" class="status"></div></div>
+
+    <div id="appSection" class="grid">
+      <div class="hero-grid grid"><div class="card hero"><div class="section"><div><div class="muted">Patrimônio atual da carteira</div><div id="greeting" class="badge">Olá 👋</div></div><button style="width:48px" onclick="toggleBalance()">👁️</button></div><h2 id="heroValue" class="hero-value">R$ 0,00</h2><p class="muted" style="position:relative;z-index:1;line-height:1.6">Painel com cadastro atual, ledger profissional, posições calculadas por movimentações, preço real, metas, snapshots e renda passiva.</p><div class="badges"><span id="walletBadge" class="badge">Carteira neutra</span><span id="goalBadge" class="badge">Meta sem configuração</span><span id="ledgerBadge" class="badge purple">Ledger aguardando dados</span></div><div class="grid grid4" style="margin-top:18px"><div class="mini"><div class="label">Usuário</div><div id="userEmail" class="value small">-</div></div><div class="mini"><div class="label">Investido atual</div><div id="investedValue" class="value">R$ 0,00</div></div><div class="mini"><div class="label">Valor atual</div><div id="currentValue" class="value">R$ 0,00</div></div><div class="mini"><div class="label">Lucro/prejuízo</div><div id="pnlValue" class="value">R$ 0,00</div></div></div><div class="grid grid5" style="margin-top:14px"><div class="mini"><div class="label">Rentabilidade</div><div id="returnPct" class="value small">0,0%</div></div><div class="mini"><div class="label">No lucro</div><div id="winners" class="value small">0</div></div><div class="mini"><div class="label">No prejuízo</div><div id="losers" class="value small">0</div></div><div class="mini"><div class="label">Posições</div><div id="positionsCount" class="value small">0</div></div><div class="mini"><div class="label">Última atualização</div><div id="lastUpdate" class="value small">--</div></div></div></div>
+      <div class="card"><div class="section"><div><div class="kicker">Atalhos</div><h3>Ações rápidas</h3><div class="muted">Controles da carteira e do ledger</div></div></div><button class="success" id="refreshPricesBtn" onclick="refreshAllPrices()">Atualizar todos os preços</button><button class="secondary" onclick="refreshEverything()">Recarregar painel</button><button class="secondary" onclick="openLogoutModal()">Sair</button><div class="grid grid2" style="margin-top:14px"><div class="mini"><div class="label">Movimentações</div><div id="quickMovements" class="value small">0</div></div><div class="mini"><div class="label">Renda passiva</div><div id="quickPassive" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Snapshots</div><div id="quickSnapshots" class="value small">0</div></div><div class="mini"><div class="label">Maior ativo</div><div id="quickBiggest" class="value small">-</div></div></div><div id="topStatus" class="status"></div></div></div>
+
+      <div class="grid grid4"><div class="mini"><div class="label">Compras/entradas no ledger</div><div id="sumEntries" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Vendas/saídas no ledger</div><div id="sumExits" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Taxas + impostos</div><div id="sumCosts" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Renda passiva acumulada</div><div id="sumPassive" class="value small positive">R$ 0,00</div></div></div>
+
+      <div class="card"><div class="section"><div><div class="kicker">Etapa 1C • Carteira por extrato</div><h3>Posições calculadas por movimentações</h3><div class="muted">Preço médio, quantidade atual e renda passiva calculados a partir da tabela portfolio_movements.</div></div><span id="movementPositionsBadge" class="badge purple">0 posições</span></div><div id="movementPositionsBox" class="empty">Sem posições calculadas ainda.</div></div>
+
+      <div class="split grid"><div class="card"><div class="section"><div><div class="kicker">Ledger profissional</div><h3>Registrar movimentação</h3><div class="muted">Compra, venda, dividendo, rendimento, taxa, imposto e transferência.</div></div></div><div class="grid fields"><div><label>Tipo</label><select id="movementType"><option value="buy">Compra</option><option value="sell">Venda</option><option value="dividend">Dividendo</option><option value="interest">Juros</option><option value="yield">Rendimento</option><option value="fee">Taxa</option><option value="tax">Imposto</option><option value="transfer_in">Transferência de entrada</option><option value="transfer_out">Transferência de saída</option><option value="split">Split / desdobramento</option><option value="bonus">Bonificação</option><option value="other">Outro</option></select></div><div><label>Ativo</label><input id="movementAsset" placeholder="Ex: PETR4"></div></div><div class="grid fields"><div><label>Categoria</label><select id="movementCategory"><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select></div><div><label>Data</label><input id="movementDate" type="date"></div></div><div class="grid fields"><div><label>Quantidade</label><input id="movementQuantity" type="number" step="any" min="0" placeholder="0"></div><div><label>Preço unitário</label><input id="movementUnitPrice" type="number" step="any" min="0" placeholder="0"></div></div><div class="grid fields"><div><label>Valor bruto</label><input id="movementGross" type="number" step="any" min="0" placeholder="Auto ou manual"></div><div><label>Corretora</label><input id="movementBroker" placeholder="Ex: XP, NuInvest"></div></div><div class="grid fields"><div><label>Taxas</label><input id="movementFees" type="number" step="any" min="0" placeholder="0"></div><div><label>Impostos</label><input id="movementTaxes" type="number" step="any" min="0" placeholder="0"></div></div><label>Observações</label><textarea id="movementNotes" placeholder="Ex: compra mensal, dividendo recebido..."></textarea><button id="saveMovementBtn" onclick="saveMovement()">Salvar movimentação</button><div id="movementStatus" class="status"></div></div>
+      <div class="card"><div class="section"><div><div class="kicker">Extrato</div><h3>Últimas movimentações</h3><div class="muted">Registros do ledger profissional.</div></div></div><div id="movementsList" class="empty">Sem movimentações ainda.</div></div></div>
+
+      <div class="split grid"><div class="card"><div class="section"><div><div class="kicker">Cadastro atual</div><h3>Investimento rápido</h3><div class="muted">Mantido para não quebrar sua base atual. O ledger será a fonte principal nas próximas etapas.</div></div></div><label>Ativo</label><input id="asset" placeholder="Ex: PETR4, VALE3, BTC"><label>Categoria</label><select id="category"><option value="">Selecione</option><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select><div class="grid fields"><div><label>Quantidade</label><input id="quantity" type="number" step="any"></div><div><label>Preço médio</label><input id="avgPrice" type="number" step="any"></div></div><label>Preço atual</label><input id="currentPrice" type="number" step="any"><div class="row" style="margin-top:12px"><button class="secondary" id="fetchPriceBtn" onclick="fetchSinglePrice()">Buscar preço real</button><button id="saveInvestBtn" onclick="saveInvestment()">Salvar investimento</button></div><div id="saveStatus" class="status"></div></div>
+      <div class="card"><div class="section"><div><div class="kicker">Goal engine</div><h3>Meta patrimonial</h3><div class="muted">Meta, progresso e projeção.</div></div></div><div class="grid fields"><div><label>Meta de patrimônio</label><input id="targetValue" type="number" step="any"></div><div><label>Aporte mensal</label><input id="monthlyContribution" type="number" step="any"></div></div><button id="saveGoalBtn" class="gold" onclick="saveGoal()">Salvar meta</button><div class="grid grid4" style="margin-top:16px"><div class="mini"><div class="label">Meta</div><div id="goalValue" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Progresso</div><div id="goalProgress" class="value small">0%</div></div><div class="mini"><div class="label">Projeção</div><div id="goalProjection" class="value small">Sem meta</div></div><div class="mini"><div class="label">Acima/Falta</div><div id="goalRemaining" class="value small">R$ 0,00</div></div></div><div class="bar" style="height:12px"><div id="goalFill" class="fill" style="width:0%"></div></div><div id="goalStatus" class="status"></div></div></div>
+
+      <div class="grid grid3"><div class="card"><div class="section"><div><div class="kicker">Insights</div><h3>Análise inteligente</h3></div></div><div id="insightsBox" class="empty">Sem análise ainda.</div></div><div class="card"><div class="section"><div><div class="kicker">Top position</div><h3>Maior posição</h3></div></div><div id="topHolding" class="empty">Sem dados.</div></div><div class="card"><div class="section"><div><div class="kicker">Risk & quality</div><h3>Saúde da carteira</h3></div></div><div id="healthBox" class="empty">Sem dados.</div></div></div>
+
+      <div class="grid grid2"><div class="card"><div class="section"><div><div class="kicker">Contribution curve</div><h3>Capital investido acumulado</h3></div></div><svg id="capitalChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div><div class="card"><div class="section"><div><div class="kicker">Historical engine</div><h3>Histórico patrimonial</h3></div><span id="snapshotBadge" class="muted">0 snapshots</span></div><div class="grid grid3"><div class="mini"><div class="label">Recente</div><div id="snapLatest" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Maior</div><div id="snapHighest" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Variação</div><div id="snapVar" class="value small">R$ 0,00</div></div></div><svg id="historyChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div></div>
+
+      <div class="card"><div class="section"><div><div class="kicker">Portfolio terminal</div><h3>Seus investimentos</h3><div class="muted">Cadastro atual consolidado visualmente.</div></div></div><div class="grid fields"><input id="searchInput" placeholder="Buscar ativo" oninput="renderAssets()"><select id="filterCategory" onchange="renderAssets()"><option value="">Todas as categorias</option><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select></div><div id="assetsList" style="margin-top:12px" class="empty">Sem investimentos.</div></div>
     </div>
-
-    <section id="authSection" class="card">
-      <div class="kicker">Acesso</div><h2 id="authTitle">Entrar</h2><p id="authSubtitle" class="muted">Faça login para acessar seu painel premium.</p>
-      <input id="email" type="email" placeholder="Seu e-mail" autocomplete="email" style="margin-top:12px">
-      <input id="password" type="password" placeholder="Sua senha" autocomplete="current-password" style="margin-top:10px">
-      <button id="authBtn" onclick="handleAuth()">Entrar</button>
-      <div id="toggleAuth" class="auth-toggle" onclick="toggleAuthMode()">Criar conta</div>
-      <div id="authStatus" class="status"></div>
-    </section>
-
-    <main id="appSection" class="grid">
-      <section class="hero-grid grid">
-        <div class="card">
-          <div class="title-row"><div><div class="kicker">Patrimônio atual da carteira</div><span id="heroGreeting" class="chip">Olá 👋</span></div><button style="width:auto;margin:0" class="secondary" onclick="toggleBalance()">👁</button></div>
-          <div id="portfolioHero" class="value xl" style="margin-top:18px">R$ 0,00</div>
-          <p class="muted">Painel executivo com preço real, meta patrimonial, histórico, consolidação de ativos, filtros, edição, exclusão e motor profissional de movimentações.</p>
-          <div class="hero-badges"><span id="walletBadge" class="badge">Status: neutro</span><span id="goalBadge" class="badge">Meta: sem configuração</span><span id="categoryBadge" class="badge">Maior categoria: -</span></div>
-          <div class="grid grid-4" style="margin-top:18px">
-            <div class="mini"><div class="label">Usuário</div><div id="userEmail" class="value sm">-</div></div>
-            <div class="mini"><div class="label">Investido</div><div id="totalInvested" class="value">R$ 0,00</div></div>
-            <div class="mini"><div class="label">Valor atual</div><div id="currentValue" class="value">R$ 0,00</div></div>
-            <div class="mini"><div class="label">Lucro / prejuízo</div><div id="profitLoss" class="value">R$ 0,00</div></div>
-          </div>
-          <div class="grid grid-5" style="margin-top:16px">
-            <div class="mini"><div class="label">Rentabilidade</div><div id="returnPct" class="value sm">0,0%</div></div>
-            <div class="mini"><div class="label">Ativos no lucro</div><div id="winnersCount" class="value sm">0</div></div>
-            <div class="mini"><div class="label">Ativos no prejuízo</div><div id="losersCount" class="value sm">0</div></div>
-            <div class="mini"><div class="label">Aportes</div><div id="contributionsCount" class="value sm">0</div></div>
-            <div class="mini"><div class="label">Última atualização</div><div id="lastUpdateTime" class="value sm">--</div></div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="kicker">Atalhos</div><h3>Ações rápidas</h3><p class="muted">Controles principais da carteira.</p>
-          <button class="secondary" id="refreshTimelineBtn" onclick="refreshTimeline()">Atualizar timeline</button>
-          <button class="success" id="refreshAllBtn" onclick="refreshAllPrices()">Atualizar todos os preços</button>
-          <button class="secondary" onclick="openLogoutModal()">Sair</button>
-          <div class="grid grid-2" style="margin-top:16px">
-            <div class="mini"><div class="label">Snapshots</div><div id="snapshotsCount" class="value sm">0</div></div>
-            <div class="mini"><div class="label">Movimentações</div><div id="movementsCount" class="value sm">0</div></div>
-            <div class="mini"><div class="label">Renda passiva</div><div id="passiveIncome" class="value sm">R$ 0,00</div></div>
-            <div class="mini"><div class="label">Maior ativo</div><div id="biggestAsset" class="value sm">-</div></div>
-          </div>
-          <div id="topStatus" class="status"></div>
-        </div>
-      </section>
-
-      <section class="grid grid-2">
-        <div class="card"><div class="kicker">Leitura executiva</div><h2 id="summaryHeadline">Sem dados ainda</h2><p id="summaryNote" class="muted">Cadastre ativos e acompanhe patrimônio, meta e rentabilidade em um único painel.</p></div>
-        <div class="card"><div class="kicker">Status patrimonial</div><h2 id="summarySecondary">Pronto para análise</h2><p id="summarySecondaryNote" class="muted">A área mostra o posicionamento executivo conforme sua carteira ganha dados reais.</p></div>
-      </section>
-
-      <section class="card">
-        <div class="kicker">Executive view</div><h3>Resumo executivo premium</h3>
-        <div id="executiveGrid" class="grid grid-4" style="margin-top:12px"><div class="item">Sem dados.</div></div>
-      </section>
-
-      <section class="card">
-        <div class="kicker">Risk & quality</div><h3>Saúde da carteira</h3>
-        <div id="healthGrid" class="grid grid-4" style="margin-top:12px"><div class="item">Sem dados.</div></div>
-      </section>
-
-      <section class="grid grid-2">
-        <div class="card">
-          <div id="editingBanner" class="chip" style="display:none;margin-bottom:12px"></div>
-          <div class="kicker">Entrada de dados</div><h3 id="formTitle">Novo investimento</h3><p class="muted">Cadastro atual da carteira. A camada profissional de movimentações fica logo abaixo.</p>
-          <label>Ativo</label><input id="asset" placeholder="Ex: PETR4, VALE3, BTC">
-          <label>Categoria</label><select id="category"><option value="">Selecione</option><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select>
-          <div class="field-grid grid"><div><label>Quantidade</label><input id="quantity" type="number" min="0" step="any" placeholder="Quantidade"></div><div><label>Preço médio</label><input id="avgPrice" type="number" min="0" step="any" placeholder="Preço médio"></div></div>
-          <label>Preço atual</label><input id="currentPrice" type="number" min="0" step="any" placeholder="Preço atual">
-          <div class="row-buttons"><button class="secondary" id="fetchSingleBtn" onclick="fetchSinglePrice()">Buscar preço real</button><button id="saveBtn" onclick="saveInvestment()">Salvar investimento</button><button id="cancelEditBtn" class="secondary" onclick="cancelEdit()" style="display:none">Cancelar edição</button></div>
-          <div id="saveStatus" class="status"></div>
-        </div>
-
-        <div class="card">
-          <div class="kicker">Goal engine</div><h3>Meta patrimonial</h3><p class="muted">Meta, barra de progresso e projeção de chegada.</p>
-          <div class="field-grid grid"><div><label>Meta de patrimônio</label><input id="targetValue" type="number" min="0" step="any" placeholder="1500000"></div><div><label>Aporte mensal</label><input id="monthlyContribution" type="number" min="0" step="any" placeholder="2000"></div></div>
-          <button id="saveGoalBtn" class="gold" onclick="saveGoal()">Salvar meta</button>
-          <label>Progresso da meta</label><div class="progress"><div id="goalProgressFill" class="fill"></div></div>
-          <div class="grid grid-4" style="margin-top:16px">
-            <div class="mini"><div class="label">Meta</div><div id="goalValueDisplay" class="value sm">R$ 0,00</div></div>
-            <div class="mini"><div class="label">Progresso</div><div id="goalProgressText" class="value sm">0%</div></div>
-            <div class="mini"><div class="label">Projeção</div><div id="projectionText" class="value sm">Sem meta</div></div>
-            <div class="mini"><div class="label">Acima / falta</div><div id="goalRemaining" class="value sm">R$ 0,00</div></div>
-          </div>
-          <div id="goalStatus" class="status"></div>
-        </div>
-      </section>
-
-      <section class="card">
-        <div class="title-row"><div><div class="kicker">Etapa 1B — Motor profissional</div><h3>Movimentações da carteira</h3><p class="muted">Compra, venda, dividendo, rendimento, taxa, imposto e transferência.</p></div><span id="movementChip" class="chip">Ledger pronto</span></div>
-        <div class="item" style="border-color:rgba(139,92,246,.25);background:linear-gradient(180deg,rgba(139,92,246,.12),rgba(12,22,44,.96))">
-          <strong>Camada profissional adicionada.</strong><br>
-          <span class="muted">Ela não apaga seu painel atual. Ela prepara o app para preço médio real, lucro realizado, renda passiva, relatórios e cálculo por extrato nas próximas etapas.</span>
-        </div>
-
-        <div class="grid grid-4" style="margin-top:16px">
-          <div class="mini"><div class="label">Movimentações</div><div id="movementTotal" class="value sm">0</div></div>
-          <div class="mini"><div class="label">Compras / entradas</div><div id="movementBuys" class="value sm">R$ 0,00</div></div>
-          <div class="mini"><div class="label">Vendas / saídas</div><div id="movementSells" class="value sm">R$ 0,00</div></div>
-          <div class="mini"><div class="label">Renda passiva</div><div id="movementIncome" class="value sm">R$ 0,00</div></div>
-        </div>
-
-        <div class="grid grid-2" style="margin-top:16px;align-items:start">
-          <div>
-            <div class="kicker">Registrar movimentação</div>
-            <div class="toolbar grid">
-              <div><label>Tipo</label><select id="movementType"><option value="buy">Compra</option><option value="sell">Venda</option><option value="dividend">Dividendo</option><option value="interest">Juros</option><option value="yield">Rendimento</option><option value="fee">Taxa</option><option value="tax">Imposto</option><option value="transfer_in">Transferência entrada</option><option value="transfer_out">Transferência saída</option><option value="split">Split / desdobramento</option><option value="bonus">Bonificação</option><option value="other">Outro</option></select></div>
-              <div><label>Ativo</label><input id="movementAsset" placeholder="Ex: PETR4"></div>
-              <div><label>Categoria</label><select id="movementCategory"><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select></div>
-              <div><label>Data</label><input id="movementDate" type="date"></div>
-            </div>
-            <div class="toolbar grid">
-              <div><label>Quantidade</label><input id="movementQuantity" type="number" min="0" step="any" placeholder="0"></div>
-              <div><label>Preço unitário</label><input id="movementUnitPrice" type="number" min="0" step="any" placeholder="0"></div>
-              <div><label>Valor bruto</label><input id="movementGrossAmount" type="number" min="0" step="any" placeholder="Auto ou manual"></div>
-              <div><label>Corretora</label><input id="movementBroker" placeholder="Ex: XP, NuInvest"></div>
-            </div>
-            <div class="field-grid grid">
-              <div><label>Taxas</label><input id="movementFees" type="number" min="0" step="any" placeholder="0"></div>
-              <div><label>Impostos</label><input id="movementTaxes" type="number" min="0" step="any" placeholder="0"></div>
-            </div>
-            <label>Observações</label><textarea id="movementNotes" placeholder="Ex: compra mensal, dividendo recebido, taxa da corretora..."></textarea>
-            <button id="saveMovementBtn" class="violet" onclick="savePortfolioMovement()">Salvar movimentação</button>
-            <div id="movementStatus" class="status"></div>
-          </div>
-          <div>
-            <div class="kicker">Últimas movimentações</div>
-            <div id="movementsList"><div class="empty">Sem movimentações ainda.</div></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="grid grid-3">
-        <div class="card"><div class="kicker">Instant view</div><h3>Resumo rápido</h3><div class="grid grid-2" style="margin-top:12px"><div class="mini"><div class="label">Posições únicas</div><div id="positionsCount" class="value">0</div></div><div class="mini"><div class="label">Lançamentos</div><div id="rawCount" class="value">0</div></div><div class="mini"><div class="label">Timeline</div><div id="timelineCount" class="value">0</div></div><div class="mini"><div class="label">Maior categoria</div><div id="topCategory" class="value sm">-</div></div></div></div>
-        <div class="card"><div class="kicker">Insights</div><h3>Análise inteligente</h3><div id="insightsList" style="margin-top:12px"><div class="empty">Sem análise ainda.</div></div></div>
-        <div class="card"><div class="kicker">Top position</div><h3>Maior posição</h3><div id="topHoldingBox" style="margin-top:12px"><div class="empty">Sem dados.</div></div></div>
-      </section>
-
-      <section class="card">
-        <div class="title-row"><div><div class="kicker">Historical engine</div><h3>Histórico patrimonial real</h3><p class="muted">Snapshots automáticos da evolução da carteira.</p></div><span id="snapshotBadge" class="chip">0 snapshots</span></div>
-        <div class="grid grid-5" style="margin-top:16px">
-          <div class="mini"><div class="label">Mais recente</div><div id="snapshotLatest" class="value sm">R$ 0,00</div></div>
-          <div class="mini"><div class="label">Maior patrimônio</div><div id="snapshotHighest" class="value sm">R$ 0,00</div></div>
-          <div class="mini"><div class="label">Variação histórica</div><div id="snapshotVariation" class="value sm">R$ 0,00</div></div>
-          <div class="mini"><div class="label">% da meta</div><div id="snapshotGoalPct" class="value sm">0%</div></div>
-          <div class="mini"><div class="label">Snapshots</div><div id="snapshotCount" class="value sm">0</div></div>
-        </div>
-        <div id="snapshotNote" class="item" style="margin-top:14px">O app salva snapshots automáticos quando há mudança real no patrimônio, preços ou registros.</div>
-      </section>
-
-      <section class="grid grid-2">
-        <div class="card"><div class="kicker">Performance board</div><h3>Ranking por rentabilidade</h3><div id="performanceBox" style="margin-top:12px"><div class="empty">Sem dados.</div></div></div>
-        <div class="card"><div class="kicker">Allocation map</div><h3>Alocação por categoria</h3><div id="allocationBox" style="margin-top:12px"><div class="empty">Sem dados.</div></div></div>
-      </section>
-
-      <section class="grid grid-2">
-        <div class="card"><div class="kicker">Activity feed</div><h3>Timeline</h3><div class="toolbar grid" style="margin-top:12px"><select id="timelineActionFilter" onchange="applyTimelineFilters()"><option value="">Todas as ações</option><option value="create">Criação</option><option value="edit">Edição</option><option value="delete">Exclusão</option><option value="price_update">Atualização de preço</option></select><input id="timelineAssetFilter" placeholder="Filtrar por ativo" oninput="applyTimelineFilters()"><input id="timelineDateStart" type="date" onchange="applyTimelineFilters()"><input id="timelineDateEnd" type="date" onchange="applyTimelineFilters()"></div><button class="secondary" onclick="clearTimelineFilters()">Limpar filtros</button><div id="timeline" style="margin-top:12px"><div class="empty">Sem histórico ainda.</div></div></div>
-        <div class="card"><div class="kicker">Portfolio terminal</div><h3>Seus investimentos</h3><div class="field-grid grid" style="margin-top:12px"><input id="searchInput" placeholder="Buscar ativo" oninput="applyFilters()"><select id="filterCategory" onchange="applyFilters()"><option value="">Todas as categorias</option><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select></div><div id="assetsList" style="margin-top:12px"><div class="empty">Sem investimentos.</div></div></div>
-      </section>
-    </main>
   </div>
 
-  <div id="deleteModal" class="modal" onclick="handleDeleteBackdrop(event)"><div class="modal-box"><h3>Confirmar exclusão</h3><p id="deleteText" class="muted">Deseja realmente excluir este investimento?</p><div class="item" style="border-color:rgba(239,68,68,.25);color:#fecaca">Essa ação não pode ser desfeita pelo app.</div><div class="actions" style="margin-top:14px"><button class="secondary" onclick="closeDeleteModal()">Cancelar</button><button class="danger" id="confirmDeleteBtn" onclick="confirmDelete()">Excluir</button></div></div></div>
-  <div id="logoutModal" class="modal" onclick="handleLogoutBackdrop(event)"><div class="modal-box"><h3>Confirmar saída</h3><p class="muted">Deseja realmente sair da sua conta agora?</p><div class="actions"><button class="secondary" onclick="closeLogoutModal()">Cancelar</button><button class="danger" id="confirmLogoutBtn" onclick="confirmLogout()">Sair</button></div></div></div>
-  <div id="groupModal" class="modal" onclick="handleGroupBackdrop(event)"><div class="modal-box modal-lg"><h3 id="groupTitle">Detalhes do grupo</h3><p class="muted">Lançamentos individuais que formam o ativo consolidado.</p><div id="groupContent"></div><div class="actions" style="margin-top:14px"><button class="secondary" onclick="closeGroupModal()">Fechar</button></div></div></div>
+  <div id="deleteModal" class="modal" onclick="if(event.target.id==='deleteModal')closeDeleteModal()"><div class="modalbox"><h3>Confirmar exclusão</h3><p id="deleteText" class="muted">Deseja excluir?</p><div class="row"><button class="secondary" onclick="closeDeleteModal()">Cancelar</button><button id="deleteBtn" class="danger" onclick="confirmDelete()">Excluir</button></div></div></div>
+  <div id="logoutModal" class="modal" onclick="if(event.target.id==='logoutModal')closeLogoutModal()"><div class="modalbox"><h3>Confirmar saída</h3><p class="muted">Deseja realmente sair da conta?</p><div class="row"><button class="secondary" onclick="closeLogoutModal()">Cancelar</button><button id="logoutBtn" class="danger" onclick="confirmLogout()">Sair</button></div></div></div>
+  <div id="toastWrap" class="toast-wrap"></div>
 
   <script type="module">
     import { createClient } from "https://esm.sh/@supabase/supabase-js";
     const supabase = createClient("https://sqvqssdsrpdfvfxcnwwa.supabase.co","sb_publishable_HfHYwaCI4kEPGWTtPIpvBw_96WL_UPu");
-    const $ = id => document.getElementById(id);
-
-    let rawInvestments=[], investments=[], timelineRows=[], snapshots=[], movements=[];
-    let currentUserId=null, isLoginMode=true, balanceVisible=true, editId=null, deleteTarget=null, reopenGroupKey=null;
-    let goal={targetValue:0,monthlyContribution:0};
-    let loading={auth:false,save:false,prices:false,goal:false,delete:false,movement:false};
-
-    const money = v => Number(v||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
-    const pct = v => `${Number(v||0).toFixed(1)}%`;
-    const esc = v => String(v ?? "").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#39;");
-    const pnlClass = v => Number(v||0)>0?"positive":Number(v||0)<0?"negative":"neutral";
-    const formatPnL = v => Number(v||0)>0?`+ ${money(v)}`:Number(v||0)<0?`- ${money(Math.abs(v))}`:money(0);
-    const getUser = async()=> (await supabase.auth.getSession()).data.session?.user || null;
-
-    function toast(msg,type="info"){const el=document.createElement("div");el.className=`toast ${type}`;el.textContent=msg;$("toastWrap").appendChild(el);setTimeout(()=>el.remove(),3600)}
-    function status(el,msg,type=""){if(!el)return;el.textContent=msg||"";el.className="status";if(type)el.classList.add(`status-${type}`)}
-    function btn(el,on,text="Carregando..."){if(!el)return;if(!el.dataset.original)el.dataset.original=el.textContent;el.disabled=on;el.textContent=on?text:el.dataset.original}
-    function requireOnline(msg){if(navigator.onLine)return true;toast(msg||"Sem internet.","error");$("syncChip").textContent="Sync: Offline";$("marketChip").textContent="Modo offline";return false}
-    function groupKey(asset,category){return `${String(asset||"").trim().toUpperCase()}__${String(category||"Outros").trim()||"Outros"}`}
-    function setLoader(on){$("loader").classList.toggle("hidden",!on)}
-
-    function showLogin(){ $("authSection").style.display="block"; $("appSection").style.display="none" }
-    function showApp(email){ $("authSection").style.display="none"; $("appSection").style.display="grid"; $("userEmail").textContent=email||"-"; $("heroGreeting").textContent=`Olá, ${(email||"investidor").split("@")[0]} 👋` }
-
-    function setAuthUI(){
-      $("authTitle").textContent=isLoginMode?"Entrar":"Criar conta";
-      $("authSubtitle").textContent=isLoginMode?"Faça login para acessar seu painel premium.":"Crie sua conta para começar.";
-      $("authBtn").textContent=isLoginMode?"Entrar":"Cadastrar";
-      $("toggleAuth").textContent=isLoginMode?"Criar conta":"Já tenho conta";
-      status($("authStatus"),"");
-    }
-    window.toggleAuthMode=()=>{isLoginMode=!isLoginMode;setAuthUI()};
-
-    window.handleAuth=async()=>{
-      if(loading.auth)return;
-      const email=$("email").value.trim(), password=$("password").value.trim();
-      if(!email||!password){status($("authStatus"),"Preencha email e senha.","error");return}
-      if(password.length<6){status($("authStatus"),"A senha precisa ter pelo menos 6 caracteres.","error");return}
-      if(!requireOnline("Você precisa estar conectado."))return;
-      loading.auth=true; btn($("authBtn"),true,isLoginMode?"Entrando...":"Criando...");
-      try{
-        if(isLoginMode){
-          const {error}=await supabase.auth.signInWithPassword({email,password});
-          if(error)throw error;
-          toast("Login realizado.","success");
-        }else{
-          const {error}=await supabase.auth.signUp({email,password});
-          if(error)throw error;
-          isLoginMode=true; setAuthUI();
-          status($("authStatus"),"Conta criada. Agora faça login.","success");
-          toast("Conta criada.","success");
-        }
-      }catch(e){status($("authStatus"),e.message||"Erro de autenticação.","error");toast(e.message||"Erro de autenticação.","error")}
-      finally{loading.auth=false;btn($("authBtn"),false)}
-    };
-
-    function getGoalKey(uid){return `wealth_goal_${uid}`}
-    function getVisibilityKey(uid){return `wealth_visible_${uid}`}
-    function getUpdateKey(uid){return `wealth_last_update_${uid}`}
-    function getSnapshotKey(uid){return `wealth_snapshot_fp_${uid}`}
-
-    async function loadGoal(uid){
-      try{
-        const {data,error}=await supabase.from("goals").select("target_value,monthly_contribution").eq("user_id",uid).maybeSingle();
-        if(error)throw error;
-        goal={targetValue:Number(data?.target_value||0),monthlyContribution:Number(data?.monthly_contribution||0)};
-        localStorage.setItem(getGoalKey(uid),JSON.stringify(goal));
-      }catch{
-        try{goal=JSON.parse(localStorage.getItem(getGoalKey(uid)))||{targetValue:0,monthlyContribution:0}}catch{goal={targetValue:0,monthlyContribution:0}}
-      }
-    }
-
-    function goalStats(current){
-      const target=Number(goal.targetValue||0), monthly=Number(goal.monthlyContribution||0);
-      if(target<=0)return{target,monthly,progress:0,visual:0,remaining:0,above:0,reached:false,display:"0%"};
-      const progress=current/target*100, visual=Math.min(progress,100), remaining=Math.max(target-current,0), above=Math.max(current-target,0), reached=current>=target;
-      return{target,monthly,progress,visual,remaining,above,reached,display:reached?"100%+":`${visual.toFixed(1)}%`};
-    }
-
-    function renderGoal(current){
-      $("targetValue").value=goal.targetValue||"";
-      $("monthlyContribution").value=goal.monthlyContribution||"";
-      const s=goalStats(current);
-      $("goalValueDisplay").textContent=money(s.target);
-      $("goalProgressText").textContent=s.target?s.display:"0%";
-      $("goalProgressFill").style.width=`${s.visual||0}%`;
-      $("goalProgressFill").classList.toggle("hit",s.reached);
-      if(!s.target){
-        $("projectionText").textContent="Sem meta"; $("goalRemaining").textContent="R$ 0,00"; $("goalBadge").textContent="Meta: sem configuração"; return;
-      }
-      if(s.reached){
-        $("projectionText").textContent="Meta alcançada"; $("goalRemaining").textContent=`+ ${money(s.above)}`; $("goalBadge").textContent="Meta: alcançada"; return;
-      }
-      $("goalRemaining").textContent=money(s.remaining);
-      $("goalBadge").textContent=`Meta: ${s.display}`;
-      $("projectionText").textContent=s.monthly>0?`${Math.ceil(s.remaining/s.monthly)} meses`:"Defina aporte";
-    }
-
-    window.saveGoal=async()=>{
-      if(loading.goal||!currentUserId)return;
-      if(!requireOnline("Sem internet para salvar meta."))return;
-      loading.goal=true; btn($("saveGoalBtn"),true,"Salvando...");
-      const data={targetValue:Number($("targetValue").value||0),monthlyContribution:Number($("monthlyContribution").value||0)};
-      try{
-        const {error}=await supabase.from("goals").upsert({user_id:currentUserId,target_value:data.targetValue,monthly_contribution:data.monthlyContribution},{onConflict:"user_id"});
-        if(error)throw error;
-        goal=data; localStorage.setItem(getGoalKey(currentUserId),JSON.stringify(goal));
-        status($("goalStatus"),"Meta salva e sincronizada.","success"); toast("Meta salva.","success");
-        renderAll();
-      }catch(e){
-        goal=data; localStorage.setItem(getGoalKey(currentUserId),JSON.stringify(goal));
-        status($("goalStatus"),"Meta salva localmente. Erro Supabase: "+(e.message||""),"error");
-      }finally{loading.goal=false;btn($("saveGoalBtn"),false)}
-    };
-
-    function consolidate(rows){
-      const map=new Map();
-      rows.forEach(r=>{
-        const asset=String(r.asset||"").toUpperCase().trim(), category=r.category||"Outros", key=groupKey(asset,category);
-        if(!map.has(key))map.set(key,{id:r.id,groupKey:key,asset,category,quantity:0,amount:0,current_value:0,sourceIds:[],sourceItems:[],created_at:r.created_at});
-        const g=map.get(key);
-        g.quantity+=Number(r.quantity||0); g.amount+=Number(r.amount||0); g.current_value+=Number(r.quantity||0)*Number(r.current_price||0);
-        g.sourceIds.push(r.id); g.sourceItems.push(r);
-        if(new Date(r.created_at||0)>new Date(g.created_at||0))g.created_at=r.created_at;
-      });
-      return [...map.values()].map(g=>({...g,avg_price:g.quantity?g.amount/g.quantity:0,current_price:g.quantity?g.current_value/g.quantity:0,sourceCount:g.sourceItems.length,isGrouped:g.sourceItems.length>1})).sort((a,b)=>new Date(b.created_at||0)-new Date(a.created_at||0));
-    }
-
-    async function loadInvestments(){
-      const user=await getUser(); if(!user)return;
-      const {data,error}=await supabase.from("investments").select("*").eq("user_id",user.id).order("created_at",{ascending:false});
-      if(error){$("assetsList").innerHTML=`<div class="empty">Erro ao carregar investimentos.</div>`;return}
-      rawInvestments=data||[]; investments=consolidate(rawInvestments);
-      await trySnapshot();
-      await loadSnapshots();
-      renderAll();
-    }
-
-    async function loadSnapshots(){
-      const user=await getUser(); if(!user)return;
-      try{
-        const {data,error}=await supabase.from("portfolio_snapshots").select("*").eq("user_id",user.id).order("created_at",{ascending:true}).limit(500);
-        if(error)throw error;
-        snapshots=data||[];
-      }catch{snapshots=[]}
-    }
-
-    async function trySnapshot(){
-      if(!currentUserId)return;
-      const totals=getTotals();
-      const fp=JSON.stringify({i:totals.invested.toFixed(2),c:totals.current.toFixed(2),p:totals.pnl.toFixed(2),n:investments.length});
-      const key=getSnapshotKey(currentUserId);
-      if(localStorage.getItem(key)===fp)return;
-      try{
-        const {error}=await supabase.from("portfolio_snapshots").insert([{user_id:currentUserId,total_invested:totals.invested,total_current:totals.current,profit_loss:totals.pnl,positions_count:investments.length}]);
-        if(!error)localStorage.setItem(key,fp);
-      }catch{}
-    }
-
-    function getTotals(){
-      const invested=investments.reduce((a,i)=>a+Number(i.amount||0),0);
-      const current=investments.reduce((a,i)=>a+Number(i.current_value||0),0);
-      return{invested,current,pnl:current-invested};
-    }
-
-    function renderAll(){
-      const t=getTotals(), ret=t.invested?t.pnl/t.invested*100:0, winners=investments.filter(i=>Number(i.current_value)-Number(i.amount)>0).length, losers=investments.filter(i=>Number(i.current_value)-Number(i.amount)<0).length;
-      $("portfolioHero").textContent=balanceVisible?money(t.current):"R$ ••••••••";
-      $("totalInvested").textContent=balanceVisible?money(t.invested):"R$ ••••••••";
-      $("currentValue").textContent=balanceVisible?money(t.current):"R$ ••••••••";
-      $("profitLoss").textContent=balanceVisible?formatPnL(t.pnl):"R$ ••••••••";
-      $("profitLoss").className=`value ${balanceVisible?pnlClass(t.pnl):"neutral"}`;
-      $("returnPct").textContent=pct(ret); $("returnPct").className=`value sm ${pnlClass(ret)}`;
-      $("winnersCount").textContent=winners; $("losersCount").textContent=losers; $("contributionsCount").textContent=rawInvestments.length;
-      $("positionsCount").textContent=investments.length; $("rawCount").textContent=rawInvestments.length;
-      const lu=localStorage.getItem(getUpdateKey(currentUserId)); $("lastUpdateTime").textContent=lu?new Date(lu).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):"--";
-      renderGoal(t.current); renderSummary(t); renderAssets(investments); renderRank(investments); renderAllocation(investments); renderHealth(t); renderSnapshots(); renderMovements();
-    }
-
-    function renderSummary(t){
-      if(!investments.length){$("summaryHeadline").textContent="Sem dados ainda";$("summaryNote").textContent="Cadastre ativos e acompanhe patrimônio, meta e rentabilidade.";return}
-      const ret=t.invested?t.pnl/t.invested*100:0, top=[...investments].sort((a,b)=>b.current_value-a.current_value)[0], s=goalStats(t.current);
-      $("walletBadge").textContent=t.pnl>0?"Status: em lucro":t.pnl<0?"Status: em retração":"Status: neutro";
-      $("summaryHeadline").textContent=t.pnl>0?`Carteira em lucro de ${money(t.pnl)}`:t.pnl<0?`Carteira em retração de ${money(Math.abs(t.pnl))}`:"Carteira em equilíbrio";
-      $("summaryNote").textContent=`Resultado agregado em ${pct(ret)} com ${investments.length} posição(ões) monitoradas.`;
-      $("summarySecondary").textContent=s.target?(s.reached?`Meta superada em ${money(s.above)}`:`${s.display} da meta concluída`):`${money(t.current)} em patrimônio atual`;
-      $("summarySecondaryNote").textContent=s.target?(s.reached?`Você passou da meta. Maior ativo: ${top.asset}.`:`Faltam ${money(s.remaining)}. Maior ativo: ${top.asset}.`):"Defina uma meta para projeção patrimonial.";
-      $("biggestAsset").textContent=top.asset; $("categoryBadge").textContent=`Maior categoria: ${top.category}`;
-      $("topHoldingBox").innerHTML=`<div class="item"><strong>${esc(top.asset)} • ${esc(top.category)}</strong><br>Valor atual: ${money(top.current_value)}<br>${top.sourceCount>1?`${top.sourceCount} registros consolidados`:""}</div>`;
-      $("insightsList").innerHTML=[
-        t.pnl>0?`Sua carteira está no lucro em ${money(t.pnl)}.`:t.pnl<0?`Sua carteira está em queda de ${money(Math.abs(t.pnl))}.`:"Sua carteira está estável.",
-        movements.length?`Seu ledger profissional tem ${movements.length} movimentação(ões).`:"O ledger profissional está pronto para registrar compras, vendas e dividendos.",
-        s.target?`Meta patrimonial: ${s.display}.`:"Configure uma meta para acompanhar a evolução."
-      ].map(x=>`<div class="item" style="margin-top:10px">${esc(x)}</div>`).join("");
-    }
-
-    function renderHealth(t){
-      if(!investments.length){$("healthGrid").innerHTML=`<div class="item">Sem dados.</div>`;return}
-      const byCat={}; investments.forEach(i=>byCat[i.category]=(byCat[i.category]||0)+Number(i.current_value||0));
-      const top=Object.entries(byCat).sort((a,b)=>b[1]-a[1])[0], topPct=t.current?top[1]/t.current*100:0, ret=t.invested?t.pnl/t.invested*100:0, s=goalStats(t.current);
-      $("topCategory").textContent=top?.[0]||"-";
-      $("executiveGrid").innerHTML=[
-        ["Patrimônio",money(t.current)],["Investido",money(t.invested)],["Resultado",formatPnL(t.pnl)],["Rentabilidade",pct(ret)],
-        ["Meta",s.target?money(s.target):"Sem meta"],["Progresso",s.target?s.display:"-"],["Renda passiva",money(getMovementIncome())],["Movimentações",String(movements.length)]
-      ].map(([a,b])=>`<div class="item"><strong>${a}</strong><br>${b}</div>`).join("");
-      $("healthGrid").innerHTML=[
-        ["Concentração",`${top?.[0]||"-"} • ${topPct.toFixed(1)}%`],["Posições",`${investments.length} ativo(s)`],["Resultado",`${formatPnL(t.pnl)} • ${pct(ret)}`],["Meta",s.target?(s.reached?"Alcançada":s.display):"Sem meta"],
-        ["Ledger",`${movements.length} movimentação(ões)`],["Renda passiva",money(getMovementIncome())],["Base histórica",`${snapshots.length} snapshot(s)`],["Status",t.pnl>=0?"Saudável":"Atenção"]
-      ].map(([a,b])=>`<div class="item"><strong>${a}</strong><br>${b}</div>`).join("");
-    }
-
-    function renderAssets(list){
-      if(!list.length){$("assetsList").innerHTML=`<div class="empty">Sem investimentos.</div>`;return}
-      const total=list.reduce((a,i)=>a+Number(i.current_value||0),0);
-      $("assetsList").innerHTML=list.map(i=>{
-        const pnl=Number(i.current_value)-Number(i.amount), ret=i.amount?pnl/i.amount*100:0, weight=total?i.current_value/total*100:0, id=JSON.stringify(String(i.id));
-        const actions=i.isGrouped?`<button class="secondary" onclick='showGroup(${id})'>Detalhes do grupo</button><button onclick='refreshSinglePrice(${id},this)'>Atualizar grupo</button>`:`<button onclick='editInvestment(${id})'>Editar</button><button onclick='refreshSinglePrice(${id},this)'>Atualizar</button><button class="danger" onclick='openDelete(${id})'>Excluir</button>`;
-        return `<div class="asset item"><div><strong>${esc(i.asset)} • ${esc(i.category)}</strong><br><span class="muted">Qtd: ${i.quantity} • PM: ${money(i.avg_price)} • Atual: ${money(i.current_price)}<br>${weight.toFixed(1)}% da carteira • ${ret.toFixed(1)}% rentabilidade</span><div class="bar"><span style="width:${Math.min(weight,100)}%"></span></div>${i.isGrouped?`<span class="badge">${i.sourceCount} registros consolidados</span>`:""}<div class="actions" style="margin-top:10px">${actions}</div></div><div class="right ${pnlClass(pnl)}">${money(i.current_value)}<br>${formatPnL(pnl)}<br><span style="font-size:13px">${pct(ret)}</span></div></div>`;
-      }).join("");
-    }
-
-    function renderRank(list){
-      if(!list.length){$("performanceBox").innerHTML=`<div class="empty">Sem dados.</div>`;return}
-      const enriched=list.map(i=>{const p=Number(i.current_value)-Number(i.amount),r=i.amount?p/i.amount*100:0;return{...i,p,r}});
-      const best=[...enriched].sort((a,b)=>b.r-a.r).slice(0,3), worst=[...enriched].sort((a,b)=>a.r-b.r).slice(0,3);
-      const col=(title,arr,type)=>`<div><strong>${title}</strong>${arr.map(i=>`<div class="item" style="margin-top:10px"><strong>${esc(i.asset)}</strong><br><span class="${type}">${formatPnL(i.p)} • ${pct(i.r)}</span></div>`).join("")}</div>`;
-      $("performanceBox").innerHTML=`<div class="grid grid-2">${col("Melhores",best,"positive")}${col("Piores",worst,"negative")}</div>`;
-    }
-
-    function renderAllocation(list){
-      if(!list.length){$("allocationBox").innerHTML=`<div class="empty">Sem dados.</div>`;return}
-      const by={}, total=list.reduce((a,i)=>{by[i.category]=(by[i.category]||0)+Number(i.current_value||0);return a+Number(i.current_value||0)},0);
-      $("allocationBox").innerHTML=Object.entries(by).sort((a,b)=>b[1]-a[1]).map(([cat,val])=>{const p=total?val/total*100:0;return `<div class="item" style="margin-top:10px"><div class="title-row"><strong>${esc(cat)}</strong><span>${pct(p)} • ${money(val)}</span></div><div class="bar"><span style="width:${Math.min(p,100)}%"></span></div></div>`}).join("");
-    }
-
-    function renderSnapshots(){
-      if(!snapshots.length){$("snapshotBadge").textContent="0 snapshots";$("snapshotsCount").textContent="0";return}
-      const ordered=[...snapshots].sort((a,b)=>new Date(a.created_at)-new Date(b.created_at)), first=ordered[0], last=ordered[ordered.length-1], high=ordered.reduce((m,i)=>Number(i.total_current)>Number(m.total_current)?i:m,ordered[0]), variation=Number(last.total_current)-Number(first.total_current), s=goalStats(Number(last.total_current));
-      $("snapshotBadge").textContent=`${snapshots.length} snapshots`; $("snapshotsCount").textContent=snapshots.length; $("snapshotCount").textContent=snapshots.length;
-      $("snapshotLatest").textContent=money(last.total_current); $("snapshotHighest").textContent=money(high.total_current); $("snapshotVariation").textContent=formatPnL(variation); $("snapshotVariation").className=`value sm ${pnlClass(variation)}`;
-      $("snapshotGoalPct").textContent=s.target?(s.reached?"100%+":pct(s.visual)):"Sem meta"; $("snapshotNote").textContent=s.target?(s.reached?`Você está ${money(s.above)} acima da meta.`:`Faltam ${money(s.remaining)} para a meta.`):"O app salva snapshots automáticos quando há mudança real no patrimônio.";
-    }
-
-    async function loadTimeline(){
-      const user=await getUser(); if(!user)return;
-      const {data,error}=await supabase.from("investment_history").select("*").eq("user_id",user.id).order("created_at",{ascending:false}).limit(120);
-      timelineRows=error?[]:(data||[]);
-      $("timelineCount").textContent=timelineRows.length;
-      renderTimeline(timelineRows);
-    }
-
-    function actionLabel(a){return{create:"Criação",edit:"Edição",update:"Edição",delete:"Exclusão",price_update:"Atualização de preço"}[a]||a||"Ação"}
-    function renderTimeline(rows){
-      if(!rows.length){$("timeline").innerHTML=`<div class="empty">Sem histórico ainda.</div>`;return}
-      $("timeline").innerHTML=rows.slice(0,40).map(i=>`<div class="timeline-entry item"><div><span class="badge">${actionLabel(i.action)}</span><br><strong>${esc(i.asset||"-")}</strong><br><span class="muted">Categoria: ${esc(i.category||"-")}<br>Qtd: ${Number(i.quantity||0)} • PM: ${money(i.avg_price||0)} • Atual: ${money(i.current_price||0)}<br>${i.created_at?new Date(i.created_at).toLocaleString("pt-BR"):"-"}</span></div><div class="right">${money(i.amount||0)}</div></div>`).join("");
-    }
-    window.applyTimelineFilters=()=>{
-      const action=$("timelineActionFilter").value, asset=$("timelineAssetFilter").value.trim().toUpperCase(), start=$("timelineDateStart").value, end=$("timelineDateEnd").value;
-      let r=[...timelineRows];
-      if(action)r=r.filter(i=>(i.action==="update"?"edit":i.action)===action);
-      if(asset)r=r.filter(i=>String(i.asset||"").toUpperCase().includes(asset));
-      if(start)r=r.filter(i=>new Date(i.created_at)>=new Date(start+"T00:00:00"));
-      if(end)r=r.filter(i=>new Date(i.created_at)<=new Date(end+"T23:59:59"));
-      renderTimeline(r);
-    };
-    window.clearTimelineFilters=()=>{["timelineActionFilter","timelineAssetFilter","timelineDateStart","timelineDateEnd"].forEach(id=>$(id).value="");renderTimeline(timelineRows)};
-    window.refreshTimeline=async()=>{btn($("refreshTimelineBtn"),true,"Atualizando...");await loadTimeline();btn($("refreshTimelineBtn"),false);toast("Timeline atualizada.","success")};
-
-    function movementLabel(t){return{buy:"Compra",sell:"Venda",dividend:"Dividendo",interest:"Juros",yield:"Rendimento",fee:"Taxa",tax:"Imposto",transfer_in:"Transferência entrada",transfer_out:"Transferência saída",split:"Split / desdobramento",bonus:"Bonificação",other:"Outro"}[t]||t}
-    function getMovementIncome(){return movements.filter(i=>["dividend","interest","yield","bonus"].includes(i.movement_type)).reduce((a,i)=>a+Number(i.gross_amount||0),0)}
-    async function loadMovements(){
-      const user=await getUser(); if(!user)return;
-      const {data,error}=await supabase.from("portfolio_movements").select("*").eq("user_id",user.id).order("movement_date",{ascending:false}).order("created_at",{ascending:false}).limit(120);
-      movements=error?[]:(data||[]);
-      renderMovements();
-    }
-    function renderMovements(){
-      const buys=movements.filter(i=>["buy","transfer_in"].includes(i.movement_type)).reduce((a,i)=>a+Number(i.gross_amount||0),0);
-      const sells=movements.filter(i=>["sell","transfer_out"].includes(i.movement_type)).reduce((a,i)=>a+Number(i.gross_amount||0),0);
-      const income=getMovementIncome();
-      $("movementTotal").textContent=movements.length; $("movementBuys").textContent=money(buys); $("movementSells").textContent=money(sells); $("movementIncome").textContent=money(income);
-      $("movementsCount").textContent=movements.length; $("passiveIncome").textContent=money(income); $("movementChip").textContent=movements.length?"Ledger ativo":"Ledger pronto";
-      if(!movements.length){$("movementsList").innerHTML=`<div class="empty">Sem movimentações ainda.</div>`;return}
-      $("movementsList").innerHTML=movements.slice(0,40).map(i=>{
-        const total=Number(i.gross_amount||0)+Number(i.fees||0)+Number(i.taxes||0), neg=["sell","transfer_out","fee","tax"].includes(i.movement_type), pos=["buy","transfer_in","dividend","interest","yield","bonus"].includes(i.movement_type);
-        return `<div class="movement item"><div><span class="badge">${movementLabel(i.movement_type)}</span><br><strong>${esc(i.asset)} • ${esc(i.category)}</strong><br><span class="muted">${i.movement_date?new Date(i.movement_date+"T00:00:00").toLocaleDateString("pt-BR"):"-"}${i.broker?` • ${esc(i.broker)}`:""}<br>Qtd: ${Number(i.quantity||0)} • Preço: ${money(i.unit_price||0)} • Taxas: ${money(i.fees||0)} • Impostos: ${money(i.taxes||0)}</span>${i.notes?`<p class="muted">${esc(i.notes)}</p>`:""}</div><div class="right ${neg?"negative":pos?"positive":"neutral"}">${neg?"- ":pos?"+ ":""}${money(total)}</div></div>`;
-      }).join("");
-    }
-    function resetMovementForm(){["movementAsset","movementQuantity","movementUnitPrice","movementGrossAmount","movementFees","movementTaxes","movementBroker","movementNotes"].forEach(id=>$(id).value="");$("movementType").value="buy";$("movementCategory").value="Ações";$("movementDate").value=new Date().toISOString().slice(0,10)}
-    window.savePortfolioMovement=async()=>{
-      if(loading.movement)return;if(!requireOnline("Sem internet para salvar movimentação."))return;
-      const user=await getUser(); if(!user){status($("movementStatus"),"Faça login antes.","error");return}
-      const movement_type=$("movementType").value, asset=$("movementAsset").value.trim().toUpperCase(), category=$("movementCategory").value||"Outros", quantity=Number($("movementQuantity").value||0), unit_price=Number($("movementUnitPrice").value||0), manual=Number($("movementGrossAmount").value||0), fees=Number($("movementFees").value||0), taxes=Number($("movementTaxes").value||0), broker=$("movementBroker").value.trim(), notes=$("movementNotes").value.trim(), movement_date=$("movementDate").value||new Date().toISOString().slice(0,10);
-      const gross_amount=manual>0?manual:quantity*unit_price;
-      if(!asset){status($("movementStatus"),"Digite o ativo.","error");return}
-      if(["buy","sell","transfer_in","transfer_out"].includes(movement_type)&&gross_amount<=0){status($("movementStatus"),"Informe quantidade/preço ou valor bruto.","error");return}
-      if(["dividend","interest","yield","fee","tax","bonus","other"].includes(movement_type)&&gross_amount<=0&&fees<=0&&taxes<=0){status($("movementStatus"),"Informe valor, taxa ou imposto.","error");return}
-      loading.movement=true; btn($("saveMovementBtn"),true,"Salvando...");
-      try{
-        const payload={user_id:user.id,movement_type,asset,category,quantity,unit_price,gross_amount,fees,taxes,currency:"BRL",broker:broker||null,notes:notes||null,movement_date};
-        const {error}=await supabase.from("portfolio_movements").insert([payload]);
-        if(error)throw error;
-        status($("movementStatus"),"Movimentação salva com sucesso.","success"); toast("Movimentação salva.","success"); resetMovementForm(); await loadMovements(); renderAll();
-      }catch(e){status($("movementStatus"),e.message||"Erro ao salvar movimentação.","error");toast(e.message||"Erro ao salvar movimentação.","error")}
-      finally{loading.movement=false;btn($("saveMovementBtn"),false)}
-    };
-
-    window.saveInvestment=async()=>{
-      if(loading.save)return;if(!requireOnline("Sem internet para salvar investimento."))return;
-      const user=await getUser(); if(!user)return;
-      const asset=$("asset").value.trim().toUpperCase(), category=$("category").value, quantity=Number($("quantity").value), avg=Number($("avgPrice").value), current=Number($("currentPrice").value);
-      if(!asset||!category||quantity<=0||avg<=0||current<=0){status($("saveStatus"),"Preencha ativo, categoria, quantidade, preço médio e preço atual.","error");return}
-      loading.save=true; btn($("saveBtn"),true,editId?"Atualizando...":"Salvando...");
-      const payload={user_id:user.id,asset,category,amount:quantity*avg,quantity,avg_price:avg,current_price:current};
-      try{
-        if(editId){
-          const {error}=await supabase.from("investments").update(payload).eq("id",editId).eq("user_id",user.id); if(error)throw error;
-          await saveHistory(user.id,editId,"edit",payload).catch(()=>{});
-          toast("Investimento atualizado.","success");
-        }else{
-          const {data,error}=await supabase.from("investments").insert([payload]).select().single(); if(error)throw error;
-          await saveHistory(user.id,data.id,"create",payload).catch(()=>{});
-          toast("Investimento salvo.","success");
-        }
-        resetForm(); await loadInvestments(); await loadTimeline();
-      }catch(e){status($("saveStatus"),e.message||"Erro ao salvar investimento.","error");toast(e.message||"Erro ao salvar investimento.","error")}
-      finally{loading.save=false;btn($("saveBtn"),false)}
-    };
-    async function saveHistory(userId,investmentId,action,payload){await supabase.from("investment_history").insert([{user_id:userId,investment_id:investmentId,action,asset:payload.asset,category:payload.category,amount:payload.amount,quantity:payload.quantity,avg_price:payload.avg_price,current_price:payload.current_price}])}
-    function resetForm(){["asset","category","quantity","avgPrice","currentPrice"].forEach(id=>$(id).value="");editId=null;$("formTitle").textContent="Novo investimento";$("saveBtn").textContent="Salvar investimento";$("saveBtn").dataset.original="Salvar investimento";$("cancelEditBtn").style.display="none";$("editingBanner").style.display="none"}
-    window.cancelEdit=()=>{resetForm();status($("saveStatus"),"Edição cancelada.","info")};
-    window.editInvestment=id=>{const item=rawInvestments.find(x=>String(x.id)===String(id)); if(!item)return;$("asset").value=item.asset||"";$("category").value=item.category||"";$("quantity").value=item.quantity||"";$("avgPrice").value=item.avg_price||"";$("currentPrice").value=item.current_price||"";editId=item.id;$("formTitle").textContent="Editar investimento";$("saveBtn").textContent="Atualizar investimento";$("saveBtn").dataset.original="Atualizar investimento";$("cancelEditBtn").style.display="inline-block";$("editingBanner").textContent=`Editando ${item.asset} • ${item.category}`;$("editingBanner").style.display="inline-block";window.scrollTo({top:$("asset").offsetTop-80,behavior:"smooth"})};
-
-    window.fetchSinglePrice=async()=>{
-      const asset=$("asset").value.trim().toUpperCase(); if(!asset){status($("saveStatus"),"Digite o ativo primeiro.","error");return}
-      if(!requireOnline("Sem internet para buscar preço."))return;
-      btn($("fetchSingleBtn"),true,"Buscando...");
-      try{const {data,error}=await supabase.functions.invoke("quick-worker",{body:{ticker:asset}}); if(error)throw error; const price=data?.results?.[0]?.regularMarketPrice; if(!price)throw new Error("Preço não encontrado."); $("currentPrice").value=Number(price); status($("saveStatus"),"Preço carregado.","success")}
-      catch(e){status($("saveStatus"),e.message||"Erro ao buscar preço.","error")}
-      finally{btn($("fetchSingleBtn"),false)}
-    };
-
-    window.refreshSinglePrice=async(id,button)=>{
-      const item=investments.find(x=>String(x.id)===String(id)); if(!item)return;
-      if(!requireOnline("Sem internet para atualizar preço."))return;
-      btn(button,true,item.isGrouped?"Atualizando grupo...":"Atualizando...");
-      try{
-        const {data,error}=await supabase.functions.invoke("quick-worker",{body:{ticker:item.asset}}); if(error)throw error;
-        const price=data?.results?.[0]?.regularMarketPrice; if(!price)throw new Error("Preço não encontrado.");
-        const user=await getUser();
-        for(const sourceId of item.sourceIds){const {error:e}=await supabase.from("investments").update({current_price:price}).eq("id",sourceId).eq("user_id",user.id); if(e)throw e}
-        for(const source of item.sourceItems){await saveHistory(user.id,source.id,"price_update",{asset:source.asset,category:source.category,amount:source.amount,quantity:source.quantity,avg_price:source.avg_price,current_price:price}).catch(()=>{})}
-        localStorage.setItem(getUpdateKey(currentUserId),new Date().toISOString());
-        toast(`Preço de ${item.asset} atualizado.`,"success"); await loadInvestments(); await loadTimeline();
-      }catch(e){toast(e.message||"Erro ao atualizar preço.","error")}
-      finally{btn(button,false)}
-    };
-    window.refreshAllPrices=async()=>{
-      if(loading.prices)return;if(!requireOnline("Sem internet para atualizar preços."))return;
-      loading.prices=true;btn($("refreshAllBtn"),true,"Atualizando...");
-      let ok=0,fail=0;
-      for(const item of investments){try{await window.refreshSinglePrice(item.id,{disabled:false,textContent:"",dataset:{}});ok++}catch{fail++}}
-      btn($("refreshAllBtn"),false);loading.prices=false;toast(`${ok} atualizado(s), ${fail} falha(s).`,fail?"error":"success");
-    };
-
-    window.openDelete=id=>{const item=rawInvestments.find(x=>String(x.id)===String(id))||investments.find(x=>String(x.id)===String(id))?.sourceItems?.[0]; if(!item)return; deleteTarget={mode:"single",id:item.id,asset:item.asset}; $("deleteText").textContent=`Deseja realmente excluir ${item.asset}?`; $("deleteModal").classList.add("show")};
-    window.closeDeleteModal=()=>{$("deleteModal").classList.remove("show");deleteTarget=null}; window.handleDeleteBackdrop=e=>{if(e.target===$("deleteModal"))closeDeleteModal()};
-    window.confirmDelete=async()=>{if(!deleteTarget||loading.delete)return;const user=await getUser();loading.delete=true;btn($("confirmDeleteBtn"),true,"Excluindo...");try{const {error}=await supabase.from("investments").delete().eq("id",deleteTarget.id).eq("user_id",user.id);if(error)throw error;toast("Excluído.","success");await loadInvestments();await loadTimeline()}catch(e){toast(e.message||"Erro ao excluir.","error")}finally{loading.delete=false;btn($("confirmDeleteBtn"),false);closeDeleteModal()}};
-
-    window.showGroup=id=>{const item=investments.find(x=>String(x.id)===String(id)); if(!item)return;$("groupTitle").textContent=`Detalhes de ${item.asset} • ${item.category}`;$("groupContent").innerHTML=`<div class="item"><strong>Resumo consolidado</strong><br>Qtd total: ${item.quantity}<br>Investido: ${money(item.amount)}<br>Valor atual: ${money(item.current_value)}<br><button class="danger" onclick="deleteGroup('${esc(item.groupKey)}')">Excluir grupo inteiro</button></div>`+item.sourceItems.map((s,idx)=>`<div class="item" style="margin-top:10px"><strong>Lançamento ${idx+1}</strong><br>Qtd: ${s.quantity} • PM: ${money(s.avg_price)} • Atual: ${money(s.current_price)}<div class="actions" style="margin-top:10px"><button onclick="editInvestment('${s.id}')">Editar</button><button class="danger" onclick="openDelete('${s.id}')">Excluir</button></div></div>`).join("");$("groupModal").classList.add("show")};
-    window.closeGroupModal=()=>{$("groupModal").classList.remove("show")};window.handleGroupBackdrop=e=>{if(e.target===$("groupModal"))closeGroupModal()};
-    window.deleteGroup=async(key)=>{const item=investments.find(x=>x.groupKey===key); if(!item)return; closeGroupModal(); const user=await getUser(); const {error}=await supabase.from("investments").delete().in("id",item.sourceIds).eq("user_id",user.id); if(error)toast(error.message,"error"); else{toast("Grupo excluído.","success"); await loadInvestments(); await loadTimeline()}};
-
-    window.openLogoutModal=()=>{$("logoutModal").classList.add("show")}; window.closeLogoutModal=()=>{$("logoutModal").classList.remove("show")}; window.handleLogoutBackdrop=e=>{if(e.target===$("logoutModal"))closeLogoutModal()}; window.confirmLogout=async()=>{await supabase.auth.signOut();closeLogoutModal();toast("Você saiu da conta.")};
-
-    window.applyFilters=()=>{const s=$("searchInput").value.trim().toUpperCase(), c=$("filterCategory").value;let list=[...investments];if(s)list=list.filter(i=>i.asset.includes(s));if(c)list=list.filter(i=>i.category===c);renderAssets(list);renderRank(list);renderAllocation(list)};
-    window.toggleBalance=()=>{balanceVisible=!balanceVisible;if(currentUserId)localStorage.setItem(getVisibilityKey(currentUserId),String(balanceVisible));renderAll()};
-
-    async function sync(){
-      const user=await getUser();
-      if(!user){currentUserId=null;showLogin();setLoader(false);return}
-      currentUserId=user.id; balanceVisible=(localStorage.getItem(getVisibilityKey(user.id))??"true")==="true";
-      await loadGoal(user.id); showApp(user.email); await loadInvestments(); await loadTimeline(); await loadMovements(); renderAll(); setLoader(false);
-    }
-
-    function clearUI(){rawInvestments=[];investments=[];timelineRows=[];snapshots=[];movements=[];renderAll();showLogin()}
-    supabase.auth.onAuthStateChange((event,session)=>{setTimeout(async()=>{if(event==="SIGNED_OUT"||!session?.user){clearUI();return}await sync()},0)});
-    window.addEventListener("online",()=>{$("syncChip").textContent="Sync: OK";toast("Conexão restabelecida.","success")});
-    window.addEventListener("offline",()=>{$("syncChip").textContent="Sync: Offline";toast("Você está sem internet.","error")});
-
-    ["email","password"].forEach(id=>$(id).addEventListener("keydown",e=>{if(e.key==="Enter")handleAuth()}));
-    ["asset","quantity","avgPrice","currentPrice"].forEach(id=>$(id).addEventListener("keydown",e=>{if(e.key==="Enter")saveInvestment()}));
-    ["targetValue","monthlyContribution"].forEach(id=>$(id).addEventListener("keydown",e=>{if(e.key==="Enter")saveGoal()}));
-    ["movementAsset","movementQuantity","movementUnitPrice","movementGrossAmount"].forEach(id=>$(id).addEventListener("keydown",e=>{if(e.key==="Enter")savePortfolioMovement()}));
-
-    $("movementDate").value=new Date().toISOString().slice(0,10);
-    setAuthUI();
-    sync();
+    const $=id=>document.getElementById(id);
+    let userId=null,userEmail="",loginMode=true,balanceVisible=true,raw=[],assets=[],movements=[],positions=[],summary=null,snaps=[],goal={targetValue:0,monthlyContribution:0},deleteTarget=null;
+    const loading={};
+    function money(v){return Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+    function pct(v){return `${Number(v||0).toFixed(1)}%`}
+    function pnl(v){v=Number(v||0);return v>0?`+ ${money(v)}`:v<0?`- ${money(Math.abs(v))}`:money(0)}
+    function cls(v){v=Number(v||0);return v>0?'positive':v<0?'negative':'neutral'}
+    function esc(v){return String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;')}
+    function status(el,msg,type=''){if(!el)return;el.textContent=msg||'';el.className='status';if(type)el.classList.add('status-'+type)}
+    function toast(msg,type='info'){const d=document.createElement('div');d.className='toast '+type;d.textContent=msg;$('toastWrap').appendChild(d);setTimeout(()=>d.remove(),3800)}
+    function btn(el,on,text='Carregando...'){if(!el)return;if(!el.dataset.t)el.dataset.t=el.textContent.trim();el.disabled=on;el.textContent=on?text:el.dataset.t}
+    function requireOnline(){if(navigator.onLine)return true;toast('Você está sem internet.','error');return false}
+    async function getUser(){const {data}=await supabase.auth.getSession();return data.session?.user||null}
+    function setBoot(show){$('boot').classList.toggle('hidden',!show)}
+    function lastKey(){return `wealth_os_last_price_update_${userId}`}
+    function balKey(){return `wealth_os_balance_visible_${userId}`}
+    function fpKey(){return `wealth_os_snapshot_fp_${userId}`}
+    function goalKey(){return `wealth_os_goal_${userId}`}
+    function renderLast(){const raw=localStorage.getItem(lastKey());if(!raw){$('lastUpdate').textContent='--';return}const d=new Date(raw);$('lastUpdate').textContent=isNaN(d)?'--':d.toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}
+    function syncChips(){const off=!navigator.onLine;$('offline').classList.toggle('show',off);$('syncChip').textContent=off?'Sync: Offline':'Sync: OK';$('ledgerChip').textContent=off?'Modo offline':'Ledger ativo'}
+    window.togglePassword=()=>{$('password').type=$('password').type==='password'?'text':'password'}
+    window.toggleAuthMode=()=>{loginMode=!loginMode;$('authTitle').textContent=loginMode?'Entrar':'Criar conta';$('authSubtitle').textContent=loginMode?'Faça login para acessar seu painel premium.':'Crie sua conta para começar.';$('authBtn').textContent=loginMode?'Entrar':'Cadastrar';$('toggleAuth').textContent=loginMode?'Criar conta':'Já tenho conta';status($('authStatus'),'')}
+    window.handleAuth=async()=>{if(loading.auth)return;const email=$('email').value.trim(),password=$('password').value.trim();if(!email||!password){status($('authStatus'),'Preencha email e senha.','error');return}if(password.length<6){status($('authStatus'),'A senha precisa ter pelo menos 6 caracteres.','error');return}if(!requireOnline())return;loading.auth=true;btn($('authBtn'),true,loginMode?'Entrando...':'Criando...');try{const r=loginMode?await supabase.auth.signInWithPassword({email,password}):await supabase.auth.signUp({email,password});if(r.error)throw r.error;if(!loginMode){toast('Conta criada. Agora faça login.','success');loginMode=true;toggleAuthMode();}else toast('Login realizado.','success')}catch(e){status($('authStatus'),e.message||'Erro no acesso.','error');toast(e.message||'Erro no acesso.','error')}finally{loading.auth=false;btn($('authBtn'),false)}}
+    function showApp(u){userId=u.id;userEmail=u.email||'';$('authSection').style.display='none';$('appSection').style.display='grid';$('userEmail').textContent=userEmail;$('greeting').textContent='Olá, '+(userEmail.split('@')[0]||'investidor')+' 👋';balanceVisible=(localStorage.getItem(balKey())??'true')==='true'}
+    function showLogin(){userId=null;$('authSection').style.display='block';$('appSection').style.display='none'}
+    window.toggleBalance=()=>{balanceVisible=!balanceVisible;localStorage.setItem(balKey(),String(balanceVisible));renderDashboard()}
+    function consolidate(list){const m=new Map();list.forEach(i=>{const a=String(i.asset||'').trim().toUpperCase(),c=String(i.category||'Outros').trim()||'Outros',k=a+'__'+c,q=Number(i.quantity||0),amt=Number(i.amount||0),cur=q*Number(i.current_price||0);if(!m.has(k))m.set(k,{id:i.id,asset:a,category:c,quantity:0,amount:0,current_value:0,sourceIds:[],sourceItems:[],created_at:i.created_at});const g=m.get(k);g.quantity+=q;g.amount+=amt;g.current_value+=cur;g.sourceIds.push(i.id);g.sourceItems.push(i);if(new Date(i.created_at||0)>new Date(g.created_at||0))g.created_at=i.created_at});return [...m.values()].map(g=>({...g,avg_price:g.quantity?g.amount/g.quantity:0,current_price:g.quantity?g.current_value/g.quantity:0,sourceCount:g.sourceItems.length,isGrouped:g.sourceItems.length>1})).sort((a,b)=>new Date(b.created_at||0)-new Date(a.created_at||0))}
+    async function loadGoal(){try{const {data,error}=await supabase.from('goals').select('target_value,monthly_contribution').eq('user_id',userId).maybeSingle();if(error)throw error;goal={targetValue:Number(data?.target_value||0),monthlyContribution:Number(data?.monthly_contribution||0)};localStorage.setItem(goalKey(),JSON.stringify(goal))}catch{try{goal=JSON.parse(localStorage.getItem(goalKey()))||{targetValue:0,monthlyContribution:0}}catch{goal={targetValue:0,monthlyContribution:0}}}}
+    function goalStats(cur){const t=Number(goal.targetValue||0),m=Number(goal.monthlyContribution||0);if(!t)return{target:t,monthly:m,progress:0,display:'0%',remaining:0,above:0,reached:false};const raw=cur/t*100,progress=Math.min(raw,100),remaining=Math.max(t-cur,0),above=Math.max(cur-t,0),reached=cur>=t;return{target:t,monthly:m,progress,display:reached?'100%+':progress.toFixed(1)+'%',remaining,above,reached}}
+    function renderGoal(cur){$('targetValue').value=goal.targetValue||'';$('monthlyContribution').value=goal.monthlyContribution||'';const s=goalStats(cur);$('goalValue').textContent=money(s.target);$('goalProgress').textContent=s.target?s.display:'0%';$('goalFill').style.width=s.progress+'%';if(!s.target){$('goalProjection').textContent='Sem meta';$('goalRemaining').textContent='R$ 0,00';$('goalBadge').textContent='Meta sem configuração';return}if(s.reached){$('goalProjection').textContent='Meta alcançada';$('goalRemaining').textContent='+ '+money(s.above);$('goalBadge').textContent='Meta alcançada';return}$('goalRemaining').textContent=money(s.remaining);$('goalBadge').textContent='Meta: '+s.display;$('goalProjection').textContent=s.monthly?Math.ceil(s.remaining/s.monthly)+' meses':'Defina aporte'}
+    window.saveGoal=async()=>{if(!requireOnline())return;btn($('saveGoalBtn'),true,'Salvando...');try{goal={targetValue:Number($('targetValue').value||0),monthlyContribution:Number($('monthlyContribution').value||0)};const {error}=await supabase.from('goals').upsert({user_id:userId,target_value:goal.targetValue,monthly_contribution:goal.monthlyContribution},{onConflict:'user_id'});if(error)throw error;localStorage.setItem(goalKey(),JSON.stringify(goal));status($('goalStatus'),'Meta salva.','success');renderDashboard()}catch(e){status($('goalStatus'),e.message||'Erro ao salvar.','error')}finally{btn($('saveGoalBtn'),false)}}
+    async function loadInvestments(){const {data,error}=await supabase.from('investments').select('*').eq('user_id',userId).order('created_at',{ascending:false});raw=error?[]:(data||[]);assets=consolidate(raw);renderDashboard();renderAssets();renderCapitalChart();await saveSnapshot();await loadSnapshots()}
+    function renderDashboard(){const inv=assets.reduce((a,i)=>a+Number(i.amount||0),0),cur=assets.reduce((a,i)=>a+Number(i.current_value||0),0),pl=cur-inv,r=inv?pl/inv*100:0,w=assets.filter(i=>Number(i.current_value||0)-Number(i.amount||0)>0).length,l=assets.filter(i=>Number(i.current_value||0)-Number(i.amount||0)<0).length;$('heroValue').textContent=balanceVisible?money(cur):'R$ ••••••••';$('investedValue').textContent=balanceVisible?money(inv):'R$ ••••••••';$('currentValue').textContent=balanceVisible?money(cur):'R$ ••••••••';$('pnlValue').textContent=balanceVisible?pnl(pl):'R$ ••••••••';$('pnlValue').className='value '+cls(pl);$('returnPct').textContent=pct(r);$('returnPct').className='value small '+cls(r);$('winners').textContent=w;$('losers').textContent=l;$('positionsCount').textContent=assets.length;$('walletBadge').textContent=pl>0?'Carteira no verde':pl<0?'Carteira em retração':'Carteira neutra';const biggest=[...assets].sort((a,b)=>Number(b.current_value||0)-Number(a.current_value||0))[0];$('quickBiggest').textContent=biggest?biggest.asset:'-';renderGoal(cur);renderInsights(inv,cur,pl);renderLast()}
+    function renderAssets(){const s=($('searchInput')?.value||'').trim().toUpperCase(),c=$('filterCategory')?.value||'';let list=[...assets];if(s)list=list.filter(i=>String(i.asset||'').includes(s));if(c)list=list.filter(i=>i.category===c);if(!list.length){$('assetsList').className='empty';$('assetsList').innerHTML='Sem investimentos.';return}$('assetsList').className='';const total=list.reduce((a,i)=>a+Number(i.current_value||0),0);$('assetsList').innerHTML=list.map(i=>{const cur=Number(i.current_value||0),inv=Number(i.amount||0),pl=cur-inv,ret=inv?pl/inv*100:0,share=total?cur/total*100:0;return `<div class="item asset"><div><div class="asset-title">${esc(i.asset)} • ${esc(i.category)}</div><div class="asset-meta">Qtd: ${Number(i.quantity||0)} • PM: ${money(i.avg_price)} • Atual: ${money(i.current_price)}<br>${share.toFixed(1)}% da carteira • ${ret.toFixed(1)}% de rentabilidade</div><div class="bar"><div class="fill" style="width:${Math.min(share,100)}%"></div></div>${i.isGrouped?`<span class="badge">${i.sourceCount} registros consolidados</span>`:''}<div class="row" style="margin-top:10px"><button onclick="refreshSingle('${String(i.id)}',this)">Atualizar</button><button class="danger" onclick="openDeleteModal('${String(i.id)}')">Excluir</button></div></div><div class="asset-right"><div>${money(cur)}</div><div class="${cls(pl)}">${pnl(pl)}<br><span style="font-size:13px">${pct(ret)}</span></div></div></div>`}).join('')}
+    window.saveInvestment=async()=>{if(!requireOnline())return;const asset=$('asset').value.trim().toUpperCase(),category=$('category').value,q=Number($('quantity').value),avg=Number($('avgPrice').value),cur=Number($('currentPrice').value);if(!asset||!category||q<=0||avg<=0||cur<=0){status($('saveStatus'),'Preencha ativo, categoria, quantidade, preço médio e preço atual.','error');return}btn($('saveInvestBtn'),true,'Salvando...');try{const payload={user_id:userId,asset,category,amount:q*avg,quantity:q,avg_price:avg,current_price:cur};const {data,error}=await supabase.from('investments').insert([payload]).select().single();if(error)throw error;try{await supabase.from('investment_history').insert([{user_id:userId,investment_id:data.id,action:'create',asset,category,amount:payload.amount,quantity:q,avg_price:avg,current_price:cur}])}catch{}status($('saveStatus'),asset+' salvo com sucesso.','success');['asset','category','quantity','avgPrice','currentPrice'].forEach(id=>$(id).value='');await refreshEverything()}catch(e){status($('saveStatus'),e.message||'Erro ao salvar.','error')}finally{btn($('saveInvestBtn'),false)}}
+    window.fetchSinglePrice=async()=>{const asset=$('asset').value.trim().toUpperCase();if(!asset){status($('saveStatus'),'Digite o ativo primeiro.','error');return}btn($('fetchPriceBtn'),true,'Buscando...');try{const {data,error}=await supabase.functions.invoke('quick-worker',{body:{ticker:asset}});if(error)throw error;const price=data?.results?.[0]?.regularMarketPrice;if(!price)throw new Error('Preço não encontrado.');$('currentPrice').value=Number(price);status($('saveStatus'),'Preço carregado.','success')}catch(e){status($('saveStatus'),e.message||'Erro ao buscar preço.','error')}finally{btn($('fetchPriceBtn'),false)}}
+    window.refreshSingle=async(id,b)=>{const item=assets.find(x=>String(x.id)===String(id));if(!item)return;btn(b,true,'Atualizando...');try{const {data,error}=await supabase.functions.invoke('quick-worker',{body:{ticker:item.asset}});if(error)throw error;const price=data?.results?.[0]?.regularMarketPrice;if(!price)throw new Error('Preço não encontrado.');for(const sourceId of item.sourceIds){const {error:e}=await supabase.from('investments').update({current_price:price}).eq('id',sourceId).eq('user_id',userId);if(e)throw e}localStorage.setItem(lastKey(),new Date().toISOString());await refreshEverything();toast('Preço atualizado.','success')}catch(e){toast(e.message||'Erro ao atualizar.','error')}finally{btn(b,false)}}
+    window.refreshAllPrices=async()=>{btn($('refreshPricesBtn'),true,'Atualizando...');try{for(const ticker of [...new Set(assets.map(i=>i.asset))]){try{const {data,error}=await supabase.functions.invoke('quick-worker',{body:{ticker}});if(error)continue;const price=data?.results?.[0]?.regularMarketPrice;if(!price)continue;for(const item of assets.filter(i=>i.asset===ticker)){for(const id of item.sourceIds)await supabase.from('investments').update({current_price:price}).eq('id',id).eq('user_id',userId)}}catch{}}localStorage.setItem(lastKey(),new Date().toISOString());await refreshEverything();toast('Preços atualizados.','success')}finally{btn($('refreshPricesBtn'),false)}}
+    window.openDeleteModal=id=>{deleteTarget=raw.find(i=>String(i.id)===String(id))||assets.find(i=>String(i.id)===String(id))?.sourceItems?.[0];if(!deleteTarget)return;$('deleteText').textContent='Deseja excluir '+deleteTarget.asset+'?';$('deleteModal').classList.add('show')}
+    window.closeDeleteModal=()=>{$('deleteModal').classList.remove('show');deleteTarget=null}
+    window.confirmDelete=async()=>{if(!deleteTarget)return;btn($('deleteBtn'),true,'Excluindo...');try{await supabase.from('investments').delete().eq('id',deleteTarget.id).eq('user_id',userId);closeDeleteModal();await refreshEverything();toast('Excluído.','success')}finally{btn($('deleteBtn'),false)}}
+    function moveLabel(t){return({buy:'Compra',sell:'Venda',dividend:'Dividendo',interest:'Juros',yield:'Rendimento',fee:'Taxa',tax:'Imposto',transfer_in:'Entrada',transfer_out:'Saída',split:'Split',bonus:'Bonificação',other:'Outro'})[t]||t}
+    function moveValue(m){const base=Number(m.gross_amount||0)>0?Number(m.gross_amount||0):Number(m.quantity||0)*Number(m.unit_price||0),fees=Number(m.fees||0),taxes=Number(m.taxes||0);if(['buy','transfer_in'].includes(m.movement_type))return base+fees+taxes;if(['sell','transfer_out'].includes(m.movement_type))return base-fees-taxes;if(['dividend','interest','yield'].includes(m.movement_type))return base-taxes;if(m.movement_type==='fee')return -(fees||base);if(m.movement_type==='tax')return -(taxes||base);return base}
+    window.saveMovement=async()=>{const t=$('movementType').value,asset=$('movementAsset').value.trim().toUpperCase(),category=$('movementCategory').value,date=$('movementDate').value||new Date().toISOString().slice(0,10),q=Number($('movementQuantity').value||0),unit=Number($('movementUnitPrice').value||0);let gross=Number($('movementGross').value||0);const fees=Number($('movementFees').value||0),taxes=Number($('movementTaxes').value||0),broker=$('movementBroker').value.trim(),notes=$('movementNotes').value.trim();if(!asset){status($('movementStatus'),'Digite o ativo.','error');return}if(!gross&&q>0&&unit>0)gross=q*unit;if(['buy','sell','transfer_in','transfer_out','bonus'].includes(t)&&q<=0){status($('movementStatus'),'Digite a quantidade.','error');return}if(['buy','sell','dividend','interest','yield','fee','tax','transfer_in','transfer_out'].includes(t)&&gross<=0&&unit<=0){status($('movementStatus'),'Digite preço unitário ou valor bruto.','error');return}btn($('saveMovementBtn'),true,'Salvando...');try{const payload={user_id:userId,movement_type:t,asset,category,quantity:q,unit_price:unit,gross_amount:gross,fees,taxes,currency:'BRL',broker:broker||null,notes:notes||null,movement_date:date};const {error}=await supabase.from('portfolio_movements').insert([payload]);if(error)throw error;status($('movementStatus'),'Movimentação salva com sucesso.','success');toast('Movimentação salva.','success');['movementAsset','movementQuantity','movementUnitPrice','movementGross','movementFees','movementTaxes','movementBroker','movementNotes'].forEach(id=>$(id).value='');await loadMovementData();renderInsights(assets.reduce((a,i)=>a+Number(i.amount||0),0),assets.reduce((a,i)=>a+Number(i.current_value||0),0),assets.reduce((a,i)=>a+Number(i.current_value||0),0)-assets.reduce((a,i)=>a+Number(i.amount||0),0))}catch(e){status($('movementStatus'),e.message||'Erro ao salvar movimentação.','error')}finally{btn($('saveMovementBtn'),false)}}
+    async function loadMovementData(){await loadMovements();await Promise.all([loadSummary(),loadPositions()]);renderSummary();renderMovements();renderPositions()}
+    async function loadMovements(){const {data,error}=await supabase.from('portfolio_movements').select('*').eq('user_id',userId).order('movement_date',{ascending:false}).order('created_at',{ascending:false}).limit(100);movements=error?[]:(data||[])}
+    function fallbackSummary(){const s={total_movements:movements.length,total_entries:0,total_exits:0,total_passive_income:0,total_fees:0,total_taxes:0};movements.forEach(m=>{const base=Number(m.gross_amount||0)>0?Number(m.gross_amount||0):Number(m.quantity||0)*Number(m.unit_price||0),fees=Number(m.fees||0),taxes=Number(m.taxes||0);if(['buy','transfer_in'].includes(m.movement_type))s.total_entries+=base+fees+taxes;if(['sell','transfer_out'].includes(m.movement_type))s.total_exits+=base-fees-taxes;if(['dividend','interest','yield'].includes(m.movement_type))s.total_passive_income+=base-taxes;s.total_fees+=fees;s.total_taxes+=taxes});return s}
+    async function loadSummary(){const {data,error}=await supabase.from('portfolio_movement_summary').select('*').eq('user_id',userId).maybeSingle();summary=error?fallbackSummary():(data||fallbackSummary())}
+    function fallbackPositions(){const map=new Map();movements.forEach(m=>{const a=String(m.asset||'').toUpperCase(),c=m.category||'Outros',k=a+'__'+c;if(!map.has(k))map.set(k,{asset:a,category:c,total_movements:0,last_movement_date:m.movement_date,current_quantity:0,total_buy_cost:0,total_buy_quantity:0,total_sell_value:0,passive_income:0,total_fees:0,total_taxes:0,average_cost:0});const p=map.get(k),base=Number(m.gross_amount||0)>0?Number(m.gross_amount||0):Number(m.quantity||0)*Number(m.unit_price||0),q=Number(m.quantity||0),fees=Number(m.fees||0),taxes=Number(m.taxes||0);p.total_movements++;if(['buy','transfer_in','bonus'].includes(m.movement_type))p.current_quantity+=q;if(['sell','transfer_out'].includes(m.movement_type))p.current_quantity-=q;if(['buy','transfer_in'].includes(m.movement_type)){p.total_buy_cost+=base+fees+taxes;p.total_buy_quantity+=q}if(['sell','transfer_out'].includes(m.movement_type))p.total_sell_value+=base-fees-taxes;if(['dividend','interest','yield'].includes(m.movement_type))p.passive_income+=base-taxes;p.total_fees+=fees;p.total_taxes+=taxes;p.average_cost=p.total_buy_quantity?p.total_buy_cost/p.total_buy_quantity:0});return[...map.values()]}
+    async function loadPositions(){const {data,error}=await supabase.from('portfolio_positions_from_movements').select('*').eq('user_id',userId).order('asset',{ascending:true});positions=error?fallbackPositions():(data||[])}
+    function renderSummary(){const s=summary||fallbackSummary();$('quickMovements').textContent=Number(s.total_movements||0);$('quickPassive').textContent=money(s.total_passive_income||0);$('sumEntries').textContent=money(s.total_entries||0);$('sumExits').textContent=money(s.total_exits||0);$('sumCosts').textContent=money(Number(s.total_fees||0)+Number(s.total_taxes||0));$('sumPassive').textContent=money(s.total_passive_income||0);$('ledgerBadge').textContent=Number(s.total_movements||0)?`Ledger: ${s.total_movements} movimentação(ões)`:'Ledger aguardando dados'}
+    function renderMovements(){if(!movements.length){$('movementsList').className='empty';$('movementsList').innerHTML='Sem movimentações ainda.';return}$('movementsList').className='';$('movementsList').innerHTML=movements.slice(0,25).map(m=>{const val=moveValue(m),pos=['sell','dividend','interest','yield','transfer_out'].includes(m.movement_type);return`<div class="item" style="margin-top:10px"><span class="badge ${['dividend','interest','yield'].includes(m.movement_type)?'green':'purple'}">${moveLabel(m.movement_type)}</span><div style="display:flex;justify-content:space-between;gap:12px;margin-top:8px"><div><strong>${esc(m.asset)} • ${esc(m.category||'Outros')}</strong><br><span class="muted">${m.movement_date?new Date(m.movement_date+'T00:00:00').toLocaleDateString('pt-BR'):'-'}</span><br>Qtd: ${Number(m.quantity||0)} • Preço: ${money(m.unit_price||0)}<br>Taxas: ${money(m.fees||0)} • Impostos: ${money(m.taxes||0)}${m.broker?'<br>Corretora: '+esc(m.broker):''}</div><div class="${pos?'positive':'negative'}" style="font-weight:900;text-align:right;min-width:120px">${pos?'+':'-'} ${money(Math.abs(val))}</div></div></div>`}).join('')}
+    function renderPositions(){const active=positions.filter(p=>Math.abs(Number(p.current_quantity||0))>0||Number(p.passive_income||0)>0);$('movementPositionsBadge').textContent=active.length+' posição(ões)';if(!active.length){$('movementPositionsBox').className='empty';$('movementPositionsBox').innerHTML='Sem posições calculadas ainda.';return}$('movementPositionsBox').className='';$('movementPositionsBox').innerHTML=active.map(p=>{const qty=Number(p.current_quantity||0),avg=Number(p.average_cost||0),base=Math.max(qty*avg,0);return`<div class="item asset"><div><div class="asset-title">${esc(p.asset)} • ${esc(p.category||'Outros')}</div><div class="asset-meta">Quantidade atual: ${qty}<br>Preço médio calculado: ${money(avg)}<br>Base estimada pelo custo médio: ${money(base)}<br>Último movimento: ${p.last_movement_date?new Date(p.last_movement_date+'T00:00:00').toLocaleDateString('pt-BR'):'-'}</div><span class="badge purple">${Number(p.total_movements||0)} movimento(s)</span></div><div class="asset-right"><div>${money(base)}</div><div class="positive">Renda: ${money(p.passive_income||0)}</div><div class="neutral" style="font-size:13px">Vendas: ${money(p.total_sell_value||0)}</div></div></div>`}).join('')}
+    function renderInsights(inv,cur,pl){if(!assets.length){$('insightsBox').className='empty';$('insightsBox').innerHTML='Sem análise ainda.';$('topHolding').className='empty';$('topHolding').innerHTML='Sem dados.';$('healthBox').className='empty';$('healthBox').innerHTML='Sem dados.';return}const biggest=[...assets].sort((a,b)=>Number(b.current_value||0)-Number(a.current_value||0))[0],ret=inv?pl/inv*100:0,s=goalStats(cur);$('insightsBox').className='';$('insightsBox').innerHTML=[pl>=0?`Carteira positiva em ${pnl(pl)} (${pct(ret)}).`:`Carteira em retração de ${pnl(pl)} (${pct(ret)}).`,s.target?`Meta patrimonial: ${s.display} concluída.`:'Configure uma meta patrimonial.',summary?.total_passive_income>0?`Renda passiva no ledger: ${money(summary.total_passive_income)}.`:'Registre dividendos/rendimentos no ledger.'].map(t=>`<div class="item" style="margin-top:10px">${esc(t)}</div>`).join('');$('topHolding').className='';$('topHolding').innerHTML=`<div class="item"><strong>${esc(biggest.asset)} • ${esc(biggest.category)}</strong><br>Valor atual: ${money(biggest.current_value)}<br>Quantidade: ${Number(biggest.quantity||0)}</div>`;$('healthBox').className='';$('healthBox').innerHTML=`<div class="item"><strong>Resultado agregado</strong><br><span class="${cls(pl)}">${pnl(pl)}</span><br>${pct(ret)}</div><div class="item" style="margin-top:10px"><strong>Diversificação</strong><br>${assets.length} posição(ões)</div>`}
+    async function saveSnapshot(){if(!assets.length)return;const inv=assets.reduce((a,i)=>a+Number(i.amount||0),0),cur=assets.reduce((a,i)=>a+Number(i.current_value||0),0),pl=cur-inv,fp=JSON.stringify({inv:inv.toFixed(2),cur:cur.toFixed(2),pl:pl.toFixed(2),n:assets.length});if(localStorage.getItem(fpKey())===fp)return;try{const{error}=await supabase.from('portfolio_snapshots').insert([{user_id:userId,total_invested:inv,total_current:cur,profit_loss:pl,positions_count:assets.length}]);if(!error)localStorage.setItem(fpKey(),fp)}catch{}}
+    async function loadSnapshots(){const{data,error}=await supabase.from('portfolio_snapshots').select('*').eq('user_id',userId).order('created_at',{ascending:true}).limit(500);snaps=error?[]:(data||[]);renderSnapshots()}
+    function renderSnapshots(){if(!snaps.length){$('quickSnapshots').textContent='0';$('snapshotBadge').textContent='0 snapshots';drawChart($('historyChart'),[],{});return}const ordered=[...snaps].sort((a,b)=>new Date(a.created_at||0)-new Date(b.created_at||0)),first=ordered[0],last=ordered.at(-1),high=ordered.reduce((best,i)=>Number(i.total_current||0)>Number(best.total_current||0)?i:best,ordered[0]),variation=Number(last.total_current||0)-Number(first.total_current||0);$('quickSnapshots').textContent=ordered.length;$('snapshotBadge').textContent=ordered.length+' snapshots';$('snapLatest').textContent=money(last.total_current||0);$('snapHighest').textContent=money(high.total_current||0);$('snapVar').textContent=pnl(variation);$('snapVar').className='value small '+cls(variation);drawChart($('historyChart'),ordered.map(i=>Number(i.total_current||0)),{labels:ordered.map(i=>new Date(i.created_at||Date.now()).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})),goal:Number(goal.targetValue||0)})}
+    function drawChart(svg,values,opt={}){if(!values.length){svg.innerHTML='<text x="50%" y="50%" text-anchor="middle" fill="#94a3b8" font-size="18">Sem dados</text>';return}const w=1000,h=320,pt=28,pb=46,pl=54,pr=26,extra=opt.goal?[opt.goal]:[],min0=Math.min(...values,...extra),max0=Math.max(...values,...extra),pad=Math.max((max0-min0)*.18,1);let min=min0-pad,max=max0+pad;if(max===min){min-=1;max+=1}const range=max-min,dw=w-pl-pr,dh=h-pt-pb,step=values.length===1?0:dw/(values.length-1),pts=values.map((v,i)=>({x:pl+i*step,y:pt+(dh-((v-min)/range)*dh),v})),path=pts.map((p,i)=>(i?'L':'M')+' '+p.x+' '+p.y).join(' '),area=path+` L ${pts.at(-1).x} ${h-pb} L ${pts[0].x} ${h-pb} Z`;let goal='';if(opt.goal){const y=pt+(dh-((opt.goal-min)/range)*dh);goal=`<line x1="${pl}" y1="${y}" x2="${w-pr}" y2="${y}" stroke="#facc15" stroke-width="3" stroke-dasharray="12 8"/><text x="${w-pr}" y="${Math.max(y-10,16)}" text-anchor="end" fill="#fde68a" font-size="13">Meta ${money(opt.goal)}</text>`}svg.innerHTML=`<defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0%" stop-color="#22d3ee"/><stop offset="100%" stop-color="#0ea5e9"/></linearGradient><linearGradient id="fg" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#22d3ee" stop-opacity=".32"/><stop offset="100%" stop-color="#22d3ee" stop-opacity=".03"/></linearGradient></defs>${[0,1,2,3,4].map(i=>{const y=pt+dh-(dh/4*i),v=min+range/4*i;return`<line x1="${pl}" y1="${y}" x2="${w-pr}" y2="${y}" stroke="rgba(255,255,255,.06)"/><text x="${pl-10}" y="${y+4}" text-anchor="end" fill="#8fa3c7" font-size="11">${money(v)}</text>`}).join('')}${goal}<path d="${area}" fill="url(#fg)"/><path d="${path}" fill="none" stroke="url(#lg)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>${pts.map((p,i)=>`<circle cx="${p.x}" cy="${p.y}" r="5" fill="#f8fafc"><title>${money(p.v)}</title></circle><text x="${p.x}" y="${h-14}" text-anchor="middle" fill="#8fa3c7" font-size="11">${opt.labels?.[i]||''}</text>`).join('')}`}
+    function renderCapitalChart(){const ordered=[...raw].sort((a,b)=>new Date(a.created_at||0)-new Date(b.created_at||0));let acc=0;drawChart($('capitalChart'),ordered.map(i=>acc+=Number(i.amount||0)),{labels:ordered.map(i=>new Date(i.created_at||Date.now()).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}))})}
+    window.refreshEverything=async()=>{await Promise.all([loadInvestments(),loadMovementData()]);status($('topStatus'),'Painel atualizado.','success');setTimeout(()=>status($('topStatus'),''),1500)}
+    window.openLogoutModal=()=>{$('logoutModal').classList.add('show')};window.closeLogoutModal=()=>{$('logoutModal').classList.remove('show')};window.confirmLogout=async()=>{btn($('logoutBtn'),true,'Saindo...');try{await supabase.auth.signOut()}finally{btn($('logoutBtn'),false);closeLogoutModal()}}
+    async function boot(){syncChips();window.addEventListener('online',syncChips);window.addEventListener('offline',syncChips);$('movementDate').value=new Date().toISOString().slice(0,10);['email','password'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter')handleAuth()}));supabase.auth.onAuthStateChange((event,session)=>setTimeout(async()=>{if(!session?.user){showLogin();return}showApp(session.user);await loadGoal();await Promise.all([loadInvestments(),loadMovementData()])},0));const u=await getUser();if(u){showApp(u);await loadGoal();await Promise.all([loadInvestments(),loadMovementData()])}else showLogin();setBoot(false)}
+    boot();
   </script>
 </body>
 </html>
