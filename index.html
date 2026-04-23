@@ -11,26 +11,32 @@
 
   <style>
     :root{
-      --bg:#050816;
-      --bg2:#0c1326;
-      --panel:rgba(10,18,37,.86);
-      --panel-2:rgba(13,24,46,.96);
-      --panel-3:rgba(15,28,55,.98);
+      --bg:#040816;
+      --bg2:#0a1123;
+      --bg3:#0e1a34;
+      --panel:rgba(8,15,31,.82);
+      --panel-2:rgba(12,22,44,.94);
+      --panel-3:rgba(14,27,52,.98);
       --line:rgba(255,255,255,.08);
-      --line-strong:rgba(56,189,248,.22);
+      --line-2:rgba(56,189,248,.18);
       --text:#f8fafc;
-      --muted:#94a3b8;
+      --muted:#8ea3c7;
       --blue:#0ea5e9;
       --blue2:#38bdf8;
       --cyan:#22d3ee;
       --green:#22c55e;
+      --green2:#4ade80;
       --orange:#fb923c;
       --red:#ef4444;
       --yellow:#facc15;
+      --violet:#8b5cf6;
       --shadow:0 18px 45px rgba(0,0,0,.28);
-      --shadow-strong:0 28px 75px rgba(0,0,0,.42);
-      --radius:24px;
-      --radius-sm:18px;
+      --shadow-strong:0 28px 80px rgba(0,0,0,.44);
+      --radius:26px;
+      --radius-md:20px;
+      --radius-sm:16px;
+      --blur:16px;
+      --max:1520px;
     }
 
     *{box-sizing:border-box}
@@ -44,9 +50,9 @@
       overflow-x:hidden;
       background:
         radial-gradient(circle at 0% 0%, rgba(14,165,233,.18), transparent 24%),
-        radial-gradient(circle at 100% 0%, rgba(34,211,238,.10), transparent 20%),
+        radial-gradient(circle at 100% 0%, rgba(34,211,238,.09), transparent 20%),
         radial-gradient(circle at 50% -10%, rgba(125,211,252,.08), transparent 24%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
+        linear-gradient(180deg, var(--bg), var(--bg2) 45%, var(--bg3));
     }
 
     body::before{
@@ -54,17 +60,31 @@
       position:fixed;
       inset:0;
       pointer-events:none;
+      z-index:0;
       background:
         linear-gradient(120deg, transparent 0%, rgba(255,255,255,.02) 18%, transparent 36%),
         radial-gradient(circle at 50% -10%, rgba(255,255,255,.03), transparent 32%);
       mix-blend-mode:screen;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
       z-index:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px);
+      background-size:28px 28px;
+      mask-image:linear-gradient(180deg, rgba(0,0,0,.3), transparent 80%);
+      opacity:.25;
     }
 
     .container{
       position:relative;
       z-index:1;
-      max-width:1500px;
+      max-width:var(--max);
       margin:0 auto;
       padding:24px;
     }
@@ -86,29 +106,30 @@
     }
 
     .logo{
-      width:60px;
-      height:60px;
-      border-radius:20px;
+      width:64px;
+      height:64px;
+      border-radius:22px;
       display:grid;
       place-items:center;
-      font-size:28px;
+      font-size:29px;
       background:
         radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 38%),
-        linear-gradient(135deg, rgba(14,165,233,.55), rgba(56,189,248,.18));
-      border:1px solid rgba(255,255,255,.10);
+        linear-gradient(135deg, rgba(14,165,233,.58), rgba(56,189,248,.16));
+      border:1px solid rgba(255,255,255,.11);
       box-shadow:var(--shadow), 0 0 34px rgba(14,165,233,.18);
       animation:floaty 4s ease-in-out infinite;
     }
 
     .brand h1{
       margin:0;
-      font-size:40px;
-      letter-spacing:-.06em;
+      font-size:42px;
+      letter-spacing:-.07em;
+      line-height:1;
     }
 
     .subtitle{
       color:var(--muted);
-      margin-top:4px;
+      margin-top:6px;
       font-size:14px;
     }
 
@@ -130,12 +151,30 @@
       box-shadow:0 8px 18px rgba(0,0,0,.15);
     }
 
-    .layout{display:grid;gap:18px}
-    .hero-grid,.split-grid,.grid-2,.grid-3,.grid-4,.grid-5,.kpi-row,.exec-grid,.health-grid,.quick-grid,.filter-grid,.rank-grid,.detail-grid{
+    .pill.premium{
+      background:linear-gradient(135deg, rgba(14,165,233,.16), rgba(139,92,246,.12));
+      border-color:rgba(56,189,248,.22);
+    }
+
+    .layout,
+    .hero-grid,
+    .split-grid,
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .grid-5,
+    .kpi-row,
+    .exec-grid,
+    .health-grid,
+    .quick-grid,
+    .filter-grid,
+    .rank-grid,
+    .detail-grid{
       display:grid;
       gap:14px;
     }
 
+    .layout{gap:18px}
     .hero-grid{grid-template-columns:1.35fr .65fr; gap:18px}
     .split-grid{grid-template-columns:1fr 1fr; gap:18px}
     .grid-2{grid-template-columns:1fr 1fr; gap:18px}
@@ -158,7 +197,7 @@
       border-radius:var(--radius);
       padding:22px;
       box-shadow:var(--shadow);
-      backdrop-filter:blur(16px);
+      backdrop-filter:blur(var(--blur));
       transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
       animation:fadeUp .45s ease both;
     }
@@ -167,7 +206,7 @@
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(180deg, rgba(255,255,255,.03), transparent 42%);
+      background:linear-gradient(180deg, rgba(255,255,255,.035), transparent 42%);
       pointer-events:none;
     }
 
@@ -175,11 +214,11 @@
       content:"";
       position:absolute;
       inset:auto -90px -90px auto;
-      width:190px;
-      height:190px;
+      width:210px;
+      height:210px;
       border-radius:999px;
       background:radial-gradient(circle, rgba(34,211,238,.08), transparent 70%);
-      filter:blur(8px);
+      filter:blur(10px);
       pointer-events:none;
     }
 
@@ -193,7 +232,8 @@
     .detail-item:hover,
     .insight-item:hover,
     .rank-item:hover,
-    .category-row:hover{
+    .category-row:hover,
+    .summary-super-card:hover{
       transform:translateY(-2px);
       border-color:rgba(56,189,248,.24);
       box-shadow:var(--shadow-strong);
@@ -216,12 +256,24 @@
       letter-spacing:-.03em;
     }
 
+    .section-kicker{
+      font-size:11px;
+      color:#c7d7f2;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      opacity:.72;
+      margin-bottom:8px;
+    }
+
     .muted{color:var(--muted)}
     .positive{color:var(--green)}
     .negative{color:var(--orange)}
     .neutral{color:#e2e8f0}
 
-    .hero-card{min-height:100%}
+    .hero-card{
+      min-height:100%;
+      padding-top:26px;
+    }
 
     .hero-topline{
       position:absolute;
@@ -229,7 +281,7 @@
       left:0;
       right:0;
       height:4px;
-      background:linear-gradient(90deg, rgba(14,165,233,.15), rgba(34,211,238,.70), rgba(14,165,233,.15));
+      background:linear-gradient(90deg, rgba(14,165,233,.14), rgba(34,211,238,.75), rgba(139,92,246,.35), rgba(14,165,233,.14));
     }
 
     .hero-glow{
@@ -240,7 +292,19 @@
       height:280px;
       border-radius:999px;
       background:radial-gradient(circle, rgba(14,165,233,.18), transparent 72%);
-      filter:blur(10px);
+      filter:blur(12px);
+      pointer-events:none;
+    }
+
+    .hero-glow-right{
+      position:absolute;
+      right:-70px;
+      top:-60px;
+      width:220px;
+      height:220px;
+      border-radius:999px;
+      background:radial-gradient(circle, rgba(139,92,246,.10), transparent 72%);
+      filter:blur(16px);
       pointer-events:none;
     }
 
@@ -277,10 +341,10 @@
 
     .hero-value{
       margin:0;
-      font-size:clamp(44px, 6vw, 78px);
+      font-size:clamp(48px, 6vw, 84px);
       line-height:1;
-      letter-spacing:-.08em;
-      font-weight:800;
+      letter-spacing:-.085em;
+      font-weight:900;
       position:relative;
       z-index:1;
       word-break:break-word;
@@ -289,10 +353,10 @@
     }
 
     .hero-subtext{
-      margin-top:12px;
+      margin-top:14px;
       color:#dbe7f7;
       font-size:15px;
-      line-height:1.6;
+      line-height:1.65;
       max-width:780px;
       position:relative;
       z-index:1;
@@ -302,7 +366,7 @@
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      margin-top:16px;
+      margin-top:18px;
       position:relative;
       z-index:1;
     }
@@ -320,12 +384,52 @@
       box-shadow:0 8px 18px rgba(0,0,0,.12);
     }
 
+    .summary-super-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .summary-super-card{
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(12,22,44,.98), rgba(10,18,36,.94));
+      border:1px solid rgba(56,189,248,.12);
+      border-radius:22px;
+      padding:18px;
+      transition:.18s ease;
+      box-shadow:0 14px 40px rgba(0,0,0,.18);
+    }
+
+    .summary-label{
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:8px;
+    }
+
+    .summary-value{
+      font-size:28px;
+      line-height:1.12;
+      letter-spacing:-.05em;
+      font-weight:900;
+      word-break:break-word;
+    }
+
+    .summary-note{
+      margin-top:8px;
+      font-size:13px;
+      color:#dbeafe;
+      opacity:.86;
+      line-height:1.5;
+    }
+
     .mini-card,.stat-card,.quick-mini,.exec-item,.health-item,.timeline-item,.asset-item,.detail-item,.insight-item,.rank-item,.category-row{
       position:relative;
       overflow:hidden;
       background:var(--panel-2);
       border:1px solid var(--line);
-      border-radius:var(--radius-sm);
+      border-radius:var(--radius-md);
       padding:16px;
       transition:.18s ease;
     }
@@ -370,11 +474,17 @@
       margin-top:10px;
     }
 
-    .quick-mini{min-height:74px}
+    .quick-mini{min-height:80px}
+    .quick-mini.emphasis{
+      border-color:rgba(56,189,248,.18);
+      background:linear-gradient(180deg, rgba(14,165,233,.10), rgba(10,18,36,.98));
+    }
+
     .exec-item.highlight-positive{border-color:rgba(34,197,94,.22); box-shadow:0 0 0 1px rgba(34,197,94,.08) inset}
     .exec-item.highlight-negative{border-color:rgba(251,146,60,.22); box-shadow:0 0 0 1px rgba(251,146,60,.08) inset}
     .health-item.warn{border-color:rgba(251,146,60,.25); box-shadow:0 0 0 1px rgba(251,146,60,.08) inset}
     .health-item.good{border-color:rgba(34,197,94,.25); box-shadow:0 0 0 1px rgba(34,197,94,.08) inset}
+    .health-item.info{border-color:rgba(56,189,248,.25); box-shadow:0 0 0 1px rgba(56,189,248,.08) inset}
 
     .status{
       margin-top:12px;
@@ -399,13 +509,14 @@
       border-radius:14px;
       background:#0d172b;
       border:1px solid rgba(255,255,255,.08);
-      transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+      transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease, background .15s ease;
     }
 
     input:focus,select:focus,textarea:focus{
       border-color:rgba(56,189,248,.45);
       box-shadow:0 0 0 4px rgba(56,189,248,.10);
       transform:translateY(-1px);
+      background:#0e1a30;
     }
 
     input::placeholder{color:#8fa3c7}
@@ -421,14 +532,14 @@
       border-radius:14px;
       margin-top:12px;
       color:#fff;
-      font-weight:700;
+      font-weight:800;
       font-size:14px;
       cursor:pointer;
       position:relative;
       overflow:hidden;
       background:linear-gradient(135deg, var(--blue), var(--blue2));
       box-shadow:0 10px 26px rgba(14,165,233,.22);
-      transition:transform .15s ease, filter .15s ease, opacity .15s ease;
+      transition:transform .15s ease, filter .15s ease, opacity .15s ease, box-shadow .15s ease;
     }
 
     button::after{
@@ -446,9 +557,23 @@
     button:hover::after{left:140%}
     button:hover{transform:translateY(-1px); filter:brightness(1.04)}
     button:disabled{cursor:not-allowed; opacity:.72; transform:none; filter:none}
-    button.secondary{background:#475569; box-shadow:none}
-    button.success{background:linear-gradient(135deg, #16a34a, #22c55e); box-shadow:0 10px 26px rgba(34,197,94,.20)}
-    button.danger{background:linear-gradient(135deg, #dc2626, #ef4444); box-shadow:0 10px 26px rgba(239,68,68,.20)}
+    button.secondary{
+      background:linear-gradient(135deg, #475569, #64748b);
+      box-shadow:0 10px 26px rgba(100,116,139,.14);
+    }
+    button.success{
+      background:linear-gradient(135deg, #16a34a, #22c55e);
+      box-shadow:0 10px 26px rgba(34,197,94,.20);
+    }
+    button.danger{
+      background:linear-gradient(135deg, #dc2626, #ef4444);
+      box-shadow:0 10px 26px rgba(239,68,68,.20);
+    }
+    button.gold{
+      background:linear-gradient(135deg, #f59e0b, #facc15);
+      color:#111827;
+      box-shadow:0 10px 26px rgba(250,204,21,.18);
+    }
 
     .row-buttons,.asset-actions,.detail-actions,.modal-actions{
       display:flex;
@@ -465,29 +590,38 @@
       font-size:13px;
     }
 
+    .field-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
     .asset-item{
       display:grid;
       grid-template-columns:1fr auto;
       align-items:center;
       gap:16px;
+      background:
+        linear-gradient(180deg, rgba(12,22,44,.96), rgba(10,18,36,.94));
     }
 
     .asset-title{
-      font-size:17px;
-      font-weight:800;
+      font-size:18px;
+      font-weight:900;
       margin-bottom:4px;
+      letter-spacing:-.03em;
     }
 
     .asset-meta{
       color:var(--muted);
       font-size:13px;
-      line-height:1.55;
+      line-height:1.6;
     }
 
     .asset-right{
       min-width:220px;
       text-align:right;
-      font-weight:700;
+      font-weight:800;
     }
 
     .badge,.timeline-badge,.legend-item{
@@ -512,7 +646,7 @@
       border-color:rgba(34,197,94,.18);
     }
 
-    .timeline-badge{font-size:11px; font-weight:700; margin-bottom:10px}
+    .timeline-badge{font-size:11px; font-weight:800; margin-bottom:10px}
     .badge-create{background:rgba(34,197,94,.12); color:#bbf7d0; border:1px solid rgba(34,197,94,.22)}
     .badge-edit{background:rgba(59,130,246,.12); color:#bfdbfe; border:1px solid rgba(59,130,246,.22)}
     .badge-delete{background:rgba(239,68,68,.12); color:#fecaca; border:1px solid rgba(239,68,68,.22)}
@@ -537,6 +671,7 @@
       transition:width .45s ease;
       position:relative;
       overflow:hidden;
+      box-shadow:0 0 18px rgba(34,211,238,.14);
     }
 
     .progress-fill.goal-hit{
@@ -556,14 +691,22 @@
       margin-top:12px;
       width:100%;
       overflow:auto;
-      background:linear-gradient(180deg, rgba(255,255,255,.01), rgba(255,255,255,0));
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.015), rgba(255,255,255,0)),
+        radial-gradient(circle at 50% 0%, rgba(34,211,238,.04), transparent 50%);
       border-radius:18px;
+      border:1px solid rgba(255,255,255,.04);
+      padding:8px;
     }
 
     svg{
       width:100%;
       height:340px;
       display:block;
+    }
+
+    .chart-wrap.strong svg{
+      height:390px;
     }
 
     .chart-legend{
@@ -602,12 +745,12 @@
     }
 
     .eye-btn-pro{
-      width:42px;
-      height:42px;
-      min-width:42px;
+      width:44px;
+      height:44px;
+      min-width:44px;
       margin:0;
       padding:0;
-      border-radius:14px;
+      border-radius:15px;
       background:rgba(255,255,255,.06);
       color:#dbeafe;
       box-shadow:0 0 26px rgba(14,165,233,.16);
@@ -734,25 +877,25 @@
     .modal-overlay{
       position:fixed;
       inset:0;
-      background:rgba(0,0,0,.58);
+      background:rgba(0,0,0,.62);
       display:none;
       align-items:center;
       justify-content:center;
       padding:20px;
       z-index:9999;
-      backdrop-filter:blur(8px);
+      backdrop-filter:blur(9px);
     }
 
     .modal-overlay.show{display:flex; animation:fadeIn .18s ease forwards}
 
     .modal-box{
       width:100%;
-      max-width:440px;
+      max-width:460px;
       max-height:min(90vh, 760px);
       overflow:auto;
       background:linear-gradient(180deg, #0f172a, #111827);
       border:1px solid rgba(255,255,255,.08);
-      border-radius:22px;
+      border-radius:24px;
       padding:24px;
       box-shadow:0 30px 70px rgba(0,0,0,.45);
       transform:scale(.92) translateY(8px);
@@ -760,7 +903,7 @@
       transition:.2s ease;
     }
 
-    .modal-box.modal-lg{max-width:840px}
+    .modal-box.modal-lg{max-width:920px}
     .modal-overlay.show .modal-box{transform:scale(1) translateY(0); opacity:1}
 
     .boot-loader{
@@ -833,6 +976,22 @@
     .toast.error{border-color:rgba(239,68,68,.35)}
     .toast.info{border-color:rgba(56,189,248,.35)}
 
+    .timeline-toolbar{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr 1fr auto;
+      gap:10px;
+      margin-top:10px;
+    }
+
+    .empty-state{
+      padding:22px;
+      text-align:center;
+      color:#cbd5e1;
+      border:1px dashed rgba(255,255,255,.08);
+      border-radius:18px;
+      background:rgba(255,255,255,.02);
+    }
+
     #appSection{display:none}
 
     @keyframes spin{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
@@ -843,24 +1002,28 @@
     @keyframes pulseGlow{0%{text-shadow:0 0 0 rgba(14,165,233,0)} 50%{text-shadow:0 0 22px rgba(14,165,233,.26)} 100%{text-shadow:0 0 0 rgba(14,165,233,0)}}
     @keyframes barGlow{from{transform:translateX(-120%)} to{transform:translateX(120%)}}
 
-    @media (max-width:1280px){
+    @media (max-width:1320px){
+      .summary-super-grid{grid-template-columns:1fr}
       .grid-5,.kpi-row,.exec-grid,.health-grid{grid-template-columns:repeat(3,1fr)}
+      .timeline-toolbar{grid-template-columns:1fr 1fr 1fr}
     }
 
     @media (max-width:1120px){
       .hero-grid,.split-grid,.grid-2,.grid-3{grid-template-columns:1fr}
       .grid-4,.grid-5,.kpi-row,.exec-grid,.health-grid{grid-template-columns:1fr 1fr}
+      .filter-grid,.detail-grid,.field-grid{grid-template-columns:1fr}
     }
 
     @media (max-width:760px){
       .container{padding:16px}
       .brand h1{font-size:30px}
-      .grid-4,.grid-5,.kpi-row,.exec-grid,.health-grid,.quick-grid,.detail-grid,.filter-grid{grid-template-columns:1fr}
+      .grid-4,.grid-5,.kpi-row,.exec-grid,.health-grid,.quick-grid,.detail-grid,.filter-grid,.timeline-toolbar,.field-grid{grid-template-columns:1fr}
       .asset-item{grid-template-columns:1fr}
       .asset-right{text-align:left; min-width:auto}
-      .row-buttons{flex-direction:column}
-      .modal-actions{flex-direction:column}
+      .row-buttons,.modal-actions{flex-direction:column}
       .topbar-actions{width:100%}
+      .hero-value{font-size:clamp(38px, 12vw, 62px)}
+      .summary-value{font-size:24px}
     }
   </style>
 </head>
@@ -885,12 +1048,12 @@
         <div class="logo">💎</div>
         <div>
           <h1>Wealth OS</h1>
-          <div class="subtitle">Dashboard premium de investimentos, pronto para publicar</div>
+          <div class="subtitle">Plataforma premium de investimentos, projeção patrimonial e leitura executiva da carteira</div>
         </div>
       </div>
 
       <div class="topbar-actions">
-        <div class="pill">Premium</div>
+        <div class="pill premium">Premium Build</div>
         <div id="headerSyncChip" class="chip">Sync: OK</div>
         <div id="headerMarketChip" class="chip">Carteira ativa</div>
       </div>
@@ -899,8 +1062,9 @@
     <div id="authSection" class="card">
       <div class="section-title-row">
         <div>
+          <div class="section-kicker">Acesso</div>
           <h2 id="authTitle" style="margin:0 0 8px 0;">Entrar</h2>
-          <div class="muted" id="authSubtitle">Faça login para acessar seu painel.</div>
+          <div class="muted" id="authSubtitle">Faça login para acessar seu painel premium.</div>
         </div>
       </div>
 
@@ -941,6 +1105,7 @@
         <div class="card hero-card">
           <div class="hero-topline"></div>
           <div class="hero-glow"></div>
+          <div class="hero-glow-right"></div>
 
           <div class="hero-heading">
             <div>
@@ -965,7 +1130,7 @@
           <h2 id="portfolioCurrentHero" class="hero-value">R$ 0,00</h2>
 
           <div class="hero-subtext">
-            Painel executivo com preço real, meta patrimonial, histórico, consolidação de ativos, filtros, edição, exclusão e leitura premium da carteira.
+            Painel executivo com preço real, meta patrimonial, histórico, consolidação de ativos, filtros, edição, exclusão e leitura visual de nível fintech.
           </div>
 
           <div class="hero-badges">
@@ -1020,8 +1185,9 @@
         <div class="card">
           <div class="section-title-row">
             <div>
+              <div class="section-kicker">Atalhos</div>
               <h3>Ações rápidas</h3>
-              <div class="muted">Controles principais da carteira</div>
+              <div class="muted">Controles principais da carteira e da sincronização</div>
             </div>
           </div>
 
@@ -1032,11 +1198,11 @@
           </div>
 
           <div class="quick-grid">
-            <div class="quick-mini">
+            <div class="quick-mini emphasis">
               <div class="mini-label">Snapshots</div>
               <div id="quickSnapshots" class="mini-value tiny">0</div>
             </div>
-            <div class="quick-mini">
+            <div class="quick-mini emphasis">
               <div class="mini-label">Meta acima</div>
               <div id="quickAboveGoal" class="mini-value tiny">R$ 0,00</div>
             </div>
@@ -1070,11 +1236,28 @@
         </div>
       </div>
 
+      <div class="summary-super-grid">
+        <div class="summary-super-card">
+          <div class="section-kicker">Leitura executiva</div>
+          <div class="summary-label">Resumo instantâneo da carteira</div>
+          <div id="summaryHeadline" class="summary-value">Sem dados ainda</div>
+          <div id="summaryNote" class="summary-note">Cadastre ativos e acompanhe a evolução do patrimônio, da meta e da rentabilidade.</div>
+        </div>
+
+        <div class="summary-super-card">
+          <div class="section-kicker">Status patrimonial</div>
+          <div class="summary-label">Ritmo e posicionamento</div>
+          <div id="summarySecondaryHeadline" class="summary-value">Pronto para análise</div>
+          <div id="summarySecondaryNote" class="summary-note">A plataforma vai mostrar meta, concentração, risco e evolução histórica aqui.</div>
+        </div>
+      </div>
+
       <div class="card">
         <div class="section-title-row">
           <div>
+            <div class="section-kicker">Executive view</div>
             <h3>Resumo executivo premium</h3>
-            <div class="muted">Leitura rápida da carteira</div>
+            <div class="muted">Leitura rápida da carteira em linguagem de produto</div>
           </div>
         </div>
         <div id="executiveSummaryGrid" class="exec-grid">
@@ -1085,8 +1268,9 @@
       <div class="card">
         <div class="section-title-row">
           <div>
+            <div class="section-kicker">Risk & quality</div>
             <h3>Saúde da carteira</h3>
-            <div class="muted">Risco, concentração e leitura tática</div>
+            <div class="muted">Risco, concentração, diversificação e momento patrimonial</div>
           </div>
         </div>
         <div id="portfolioHealthGrid" class="health-grid">
@@ -1097,10 +1281,12 @@
       <div class="split-grid">
         <div class="card" id="investmentFormCard">
           <div id="editingBanner" class="editing-banner"></div>
+
           <div class="section-title-row">
             <div>
+              <div class="section-kicker">Entrada de dados</div>
               <h3 id="formTitle">Novo investimento</h3>
-              <div class="muted">Formulário refinado, pronto para edição e cadastros rápidos</div>
+              <div class="muted">Formulário refinado, rápido e pronto para edição individual</div>
             </div>
           </div>
 
@@ -1117,8 +1303,11 @@
             <option value="Outros">Outros</option>
           </select>
 
-          <input id="quantity" type="number" min="0" step="any" placeholder="Quantidade" />
-          <input id="avgPrice" type="number" min="0" step="any" placeholder="Preço médio" />
+          <div class="field-grid">
+            <input id="quantity" type="number" min="0" step="any" placeholder="Quantidade" />
+            <input id="avgPrice" type="number" min="0" step="any" placeholder="Preço médio" />
+          </div>
+
           <input id="currentPrice" type="number" min="0" step="any" placeholder="Preço atual" />
 
           <div class="row-buttons">
@@ -1133,14 +1322,18 @@
         <div class="card">
           <div class="section-title-row">
             <div>
+              <div class="section-kicker">Goal engine</div>
               <h3>Meta patrimonial</h3>
-              <div class="muted">Painel premium com projeção e barra refinada</div>
+              <div class="muted">Painel premium com projeção, barra refinada e leitura de avanço</div>
             </div>
           </div>
 
-          <input id="targetValue" type="number" min="0" step="any" placeholder="Meta de patrimônio" />
-          <input id="monthlyContribution" type="number" min="0" step="any" placeholder="Aporte mensal planejado" />
-          <button id="saveGoalBtn" onclick="saveGoal()">Salvar meta</button>
+          <div class="field-grid">
+            <input id="targetValue" type="number" min="0" step="any" placeholder="Meta de patrimônio" />
+            <input id="monthlyContribution" type="number" min="0" step="any" placeholder="Aporte mensal planejado" />
+          </div>
+
+          <button id="saveGoalBtn" class="gold" onclick="saveGoal()">Salvar meta</button>
 
           <div class="progress-wrap">
             <div class="mini-label">Progresso da meta</div>
@@ -1174,7 +1367,12 @@
 
       <div class="grid-3">
         <div class="card">
-          <div class="section-title-row"><h3 style="margin:0;">Resumo rápido</h3></div>
+          <div class="section-title-row">
+            <div>
+              <div class="section-kicker">Instant view</div>
+              <h3 style="margin:0;">Resumo rápido</h3>
+            </div>
+          </div>
           <div class="grid-2">
             <div class="mini-card">
               <div class="mini-label">Posições únicas</div>
@@ -1196,12 +1394,22 @@
         </div>
 
         <div class="card">
-          <div class="section-title-row"><h3 style="margin:0;">Análise inteligente</h3></div>
+          <div class="section-title-row">
+            <div>
+              <div class="section-kicker">Insights</div>
+              <h3 style="margin:0;">Análise inteligente</h3>
+            </div>
+          </div>
           <div id="insightsList">Sem análise ainda.</div>
         </div>
 
         <div class="card">
-          <div class="section-title-row"><h3 style="margin:0;">Maior posição</h3></div>
+          <div class="section-title-row">
+            <div>
+              <div class="section-kicker">Top position</div>
+              <h3 style="margin:0;">Maior posição</h3>
+            </div>
+          </div>
           <div id="topHoldingBox">Sem dados.</div>
         </div>
       </div>
@@ -1209,8 +1417,9 @@
       <div class="card">
         <div class="section-title-row">
           <div>
+            <div class="section-kicker">Historical engine</div>
             <h3>Histórico patrimonial real</h3>
-            <div class="muted">Gráfico mais forte, com leitura tipo fintech</div>
+            <div class="muted">Gráfico premium mais forte, com meta sobreposta e leitura visual de evolução</div>
           </div>
           <span id="snapshotInfoBadge" class="muted">0 snapshots</span>
         </div>
@@ -1243,8 +1452,8 @@
           <div class="legend-item"><span class="legend-line goal"></span><span>Meta</span></div>
         </div>
 
-        <div class="chart-wrap">
-          <svg id="historicalChartSvg" viewBox="0 0 1000 340" preserveAspectRatio="none"></svg>
+        <div class="chart-wrap strong">
+          <svg id="historicalChartSvg" viewBox="0 0 1000 390" preserveAspectRatio="none"></svg>
         </div>
 
         <div id="snapshotStatusNote" class="snapshot-note">
@@ -1256,8 +1465,9 @@
         <div class="card">
           <div class="section-title-row">
             <div>
+              <div class="section-kicker">Performance board</div>
               <h3>Ranking por rentabilidade</h3>
-              <div class="muted">Melhores e piores posições consolidadas</div>
+              <div class="muted">Melhores e piores posições consolidadas da carteira</div>
             </div>
           </div>
           <div id="performanceRankingBox">Sem dados.</div>
@@ -1266,8 +1476,9 @@
         <div class="card">
           <div class="section-title-row">
             <div>
+              <div class="section-kicker">Allocation map</div>
               <h3>Alocação por categoria</h3>
-              <div class="muted">Distribuição atual da carteira</div>
+              <div class="muted">Distribuição atual e peso de cada bloco da carteira</div>
             </div>
           </div>
           <div id="categoryAllocationBox">Sem dados.</div>
@@ -1278,6 +1489,7 @@
         <div class="card">
           <div class="section-title-row">
             <div>
+              <div class="section-kicker">Contribution curve</div>
               <h3>Capital investido acumulado</h3>
               <div class="muted">Baseado nos registros cadastrados</div>
             </div>
@@ -1290,13 +1502,14 @@
         <div class="card">
           <div class="section-title-row">
             <div>
+              <div class="section-kicker">Activity feed</div>
               <h3>Timeline</h3>
-              <div class="muted">Histórico filtrável das ações</div>
+              <div class="muted">Histórico filtrável de ações, preços e movimentações</div>
             </div>
             <span id="timelineFilteredCount" class="muted">0 resultados</span>
           </div>
 
-          <div class="grid-5" style="margin-top:10px;">
+          <div class="timeline-toolbar">
             <select id="timelineActionFilter" onchange="applyTimelineFilters()">
               <option value="">Todas as ações</option>
               <option value="create">Criação</option>
@@ -1307,7 +1520,7 @@
             <input id="timelineAssetFilter" placeholder="Filtrar por ativo" oninput="applyTimelineFilters()" />
             <input id="timelineDateStart" type="date" onchange="applyTimelineFilters()" />
             <input id="timelineDateEnd" type="date" onchange="applyTimelineFilters()" />
-            <button class="secondary" style="margin-top:10px;" onclick="clearTimelineFilters()">Limpar filtros</button>
+            <button class="secondary" style="margin-top:0;" onclick="clearTimelineFilters()">Limpar</button>
           </div>
 
           <div id="timeline" style="margin-top:14px;">Sem histórico ainda.</div>
@@ -1317,8 +1530,9 @@
       <div class="card">
         <div class="section-title-row">
           <div>
+            <div class="section-kicker">Portfolio terminal</div>
             <h3>Seus investimentos</h3>
-            <div class="muted">Ativos repetidos são consolidados visualmente</div>
+            <div class="muted">Ativos repetidos são consolidados visualmente e podem ser detalhados por grupo</div>
           </div>
         </div>
 
@@ -1458,6 +1672,10 @@
     const offlineBanner = document.getElementById("offlineBanner");
     const editingBanner = document.getElementById("editingBanner");
     const investmentFormCard = document.getElementById("investmentFormCard");
+    const summaryHeadline = document.getElementById("summaryHeadline");
+    const summaryNote = document.getElementById("summaryNote");
+    const summarySecondaryHeadline = document.getElementById("summarySecondaryHeadline");
+    const summarySecondaryNote = document.getElementById("summarySecondaryNote");
 
     let rawInvestments = [];
     let allInvestments = [];
@@ -1981,7 +2199,7 @@
       goalProgressFill.classList.toggle("goal-hit", stats.isReached);
 
       if (stats.isReached) {
-        projectionText.textContent = "Meta ultrapassada";
+        projectionText.textContent = "Meta alcançada";
         goalRemainingDisplay.textContent = `+ ${money(stats.aboveGoal)}`;
         goalHealthBadge.textContent = "Meta: alcançada";
         quickAboveGoal.textContent = money(stats.aboveGoal);
@@ -2011,11 +2229,11 @@
       }
 
       const width = 1000;
-      const height = 340;
-      const paddingTop = 30;
-      const paddingBottom = 46;
-      const paddingLeft = 44;
-      const paddingRight = 24;
+      const height = options.height || 340;
+      const paddingTop = 28;
+      const paddingBottom = 50;
+      const paddingLeft = 54;
+      const paddingRight = 26;
 
       let min = Math.min(...values);
       let max = Math.max(...values);
@@ -2089,10 +2307,12 @@
             <stop offset="0%" stop-color="${options.lineColorStart || "#22d3ee"}"/>
             <stop offset="100%" stop-color="${options.lineColorEnd || "#1d8cff"}"/>
           </linearGradient>
+
           <linearGradient id="${options.fillId || "fillGradient"}" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stop-color="${options.fillColor || "#22d3ee"}" stop-opacity="0.28"/>
+            <stop offset="0%" stop-color="${options.fillColor || "#22d3ee"}" stop-opacity="0.32"/>
             <stop offset="100%" stop-color="${options.fillColor || "#22d3ee"}" stop-opacity="0.03"/>
           </linearGradient>
+
           <filter id="${options.glowId || "chartGlow"}">
             <feGaussianBlur stdDeviation="4.5" result="blur"/>
             <feMerge>
@@ -2123,7 +2343,7 @@
 
     function renderChart(items) {
       if (!items.length) {
-        makeLineChart(chartSvg, [], { emptyText: "Sem dados para o gráfico" });
+        makeLineChart(chartSvg, [], { emptyText: "Sem dados para o gráfico", height: 320 });
         return;
       }
 
@@ -2148,13 +2368,14 @@
         gradientId: "chartInvestedGradient",
         fillId: "chartInvestedFill",
         glowId: "chartInvestedGlow",
-        labels
+        labels,
+        height: 320
       });
     }
 
     function renderHistoricalChart(items) {
       if (!items.length) {
-        makeLineChart(historicalChartSvg, [], { emptyText: "Sem snapshots ainda" });
+        makeLineChart(historicalChartSvg, [], { emptyText: "Sem snapshots ainda", height: 390 });
         return;
       }
 
@@ -2175,7 +2396,8 @@
         fillId: "chartHistoricalFill",
         glowId: "chartHistoricalGlow",
         labels,
-        extraValues: currentGoal.targetValue > 0 ? [Number(currentGoal.targetValue)] : []
+        extraValues: currentGoal.targetValue > 0 ? [Number(currentGoal.targetValue)] : [],
+        height: 390
       });
     }
 
@@ -2282,12 +2504,51 @@
       } catch {}
     }
 
+    function renderSummaryHeadlines(items, totalInvested, totalCurrent, pnlTotal) {
+      if (!items.length) {
+        summaryHeadline.textContent = "Sem dados ainda";
+        summaryNote.textContent = "Cadastre ativos e acompanhe patrimônio, meta e rentabilidade em um único painel.";
+        summarySecondaryHeadline.textContent = "Pronto para análise";
+        summarySecondaryNote.textContent = "Assim que sua carteira ganhar dados reais, esta área mostra o posicionamento executivo.";
+        return;
+      }
+
+      const goal = getGoalStats(totalCurrent);
+      const pnlPct = totalInvested > 0 ? (pnlTotal / totalInvested) * 100 : 0;
+      const top = [...items].sort((a,b)=>Number(b.current_value||0)-Number(a.current_value||0))[0];
+
+      if (pnlTotal > 0) {
+        summaryHeadline.textContent = `Carteira em lucro de ${money(pnlTotal)}`;
+        summaryNote.textContent = `Seu resultado agregado está em ${percent(pnlPct)} com ${items.length} posição(ões) única(s) monitoradas.`;
+      } else if (pnlTotal < 0) {
+        summaryHeadline.textContent = `Carteira em retração de ${money(Math.abs(pnlTotal))}`;
+        summaryNote.textContent = `O resultado agregado está em ${percent(pnlPct)}. Acompanhe concentração, pior ativo e evolução histórica.`;
+      } else {
+        summaryHeadline.textContent = "Carteira em equilíbrio";
+        summaryNote.textContent = `Acompanhe a evolução dos ativos, da meta patrimonial e dos snapshots históricos.`;
+      }
+
+      if (goal.target > 0) {
+        if (goal.isReached) {
+          summarySecondaryHeadline.textContent = `Meta superada em ${money(goal.aboveGoal)}`;
+          summarySecondaryNote.textContent = `Seu patrimônio atual já passou da meta e o maior destaque atual é ${top.asset} • ${top.category}.`;
+        } else {
+          summarySecondaryHeadline.textContent = `${goal.progressDisplay} da meta concluída`;
+          summarySecondaryNote.textContent = `Faltam ${money(goal.remaining)} para a meta patrimonial. O maior ativo atual é ${top.asset} • ${top.category}.`;
+        }
+      } else {
+        summarySecondaryHeadline.textContent = `${money(totalCurrent)} em patrimônio atual`;
+        summarySecondaryNote.textContent = `Defina uma meta para destravar a projeção patrimonial e leitura de evolução mais completa.`;
+      }
+    }
+
     function renderInsights(items, totalInvested, totalCurrent, pnlTotal) {
       if (!items.length) {
-        insightsList.innerHTML = "Sem análise ainda.";
-        topHoldingBox.innerHTML = "Sem dados.";
+        insightsList.innerHTML = `<div class="empty-state">Sem análise ainda.</div>`;
+        topHoldingBox.innerHTML = `<div class="empty-state">Sem dados.</div>`;
         topCategory.textContent = "-";
         categoryDominanceBadge.textContent = "Maior categoria: -";
+        renderSummaryHeadlines([], 0, 0, 0);
         return;
       }
 
@@ -2366,11 +2627,13 @@
           ${biggest.sourceCount > 1 ? `<br><span class="muted">${biggest.sourceCount} registros consolidados</span>` : ""}
         </div>
       `;
+
+      renderSummaryHeadlines(items, totalInvested, totalCurrent, pnlTotal);
     }
 
     function renderPerformanceRanking(items) {
       if (!items.length) {
-        performanceRankingBox.innerHTML = "Sem dados.";
+        performanceRankingBox.innerHTML = `<div class="empty-state">Sem dados.</div>`;
         return;
       }
 
@@ -2417,7 +2680,7 @@
 
     function renderCategoryAllocation(items) {
       if (!items.length) {
-        categoryAllocationBox.innerHTML = "Sem dados.";
+        categoryAllocationBox.innerHTML = `<div class="empty-state">Sem dados.</div>`;
         return;
       }
 
@@ -2484,49 +2747,49 @@
 
       executiveSummaryGrid.innerHTML = `
         <div class="exec-item highlight-positive">
-          <strong>Melhor ativo</strong>
+          <strong>Melhor ativo</strong><br>
           ${escapeHtml(best.asset)} • ${escapeHtml(best.category)}<br>
           <span class="${getPnLClass(best.pnl)}">${formatPnL(best.pnl)}</span>
         </div>
 
         <div class="exec-item highlight-negative">
-          <strong>Pior ativo</strong>
+          <strong>Pior ativo</strong><br>
           ${escapeHtml(worst.asset)} • ${escapeHtml(worst.category)}<br>
           <span class="${getPnLClass(worst.pnl)}">${formatPnL(worst.pnl)}</span>
         </div>
 
         <div class="exec-item">
-          <strong>Maior posição</strong>
+          <strong>Maior posição</strong><br>
           ${escapeHtml(biggest.asset)} • ${escapeHtml(biggest.category)}<br>
           ${money(biggest.current_value || 0)}
         </div>
 
         <div class="exec-item">
-          <strong>Meta patrimonial</strong>
+          <strong>Meta patrimonial</strong><br>
           ${goalStats.target > 0 ? money(goalStats.target) : "Sem meta"}<br>
           ${goalStats.target > 0 ? `${goalStats.progressDisplay} visual` : "Configure a meta"}
         </div>
 
         <div class="exec-item">
-          <strong>Acima da meta</strong>
+          <strong>Acima / Falta</strong><br>
           ${goalStats.target > 0 ? (goalStats.isReached ? money(goalStats.aboveGoal) : money(goalStats.remaining)) : "Sem meta"}<br>
           ${goalStats.target > 0 ? (goalStats.isReached ? "Meta alcançada" : "Falta para meta") : "Sem meta"}
         </div>
 
         <div class="exec-item">
-          <strong>Patrimônio x investido</strong>
+          <strong>Patrimônio x investido</strong><br>
           Atual: ${money(totalCurrent)}<br>
           Investido: ${money(totalInvested)}
         </div>
 
         <div class="exec-item">
-          <strong>Máxima histórica</strong>
+          <strong>Máxima histórica</strong><br>
           ${money(highestSnapshot)}<br>
           ${portfolioSnapshots.length ? "Baseado em snapshots" : "Sem histórico salvo"}
         </div>
 
         <div class="exec-item">
-          <strong>Distância da máxima</strong>
+          <strong>Distância da máxima</strong><br>
           <span class="${getPnLClass(-distanceFromPeak)}">${distanceFromPeak <= 0 ? "No topo histórico" : money(distanceFromPeak)}</span><br>
           ${distanceFromPeak <= 0 ? "Carteira na máxima" : "Abaixo da máxima"}
         </div>
@@ -2548,62 +2811,61 @@
 
       const topCategoryEntry = Object.entries(byCategory).sort((a,b) => b[1] - a[1])[0];
       const topCategoryPercent = topCategoryEntry ? (topCategoryEntry[1] / total) * 100 : 0;
-
       const negativeAssets = items.filter(item => (Number(item.current_value || 0) - Number(item.amount || 0)) < 0).length;
       const snapshotsVar = portfolioSnapshots.length >= 2
         ? Number(portfolioSnapshots[portfolioSnapshots.length - 1].total_current || 0) - Number(portfolioSnapshots[0].total_current || 0)
         : 0;
-
-      const riskText = topCategoryPercent >= 60 ? "Concentração alta" : topCategoryPercent >= 40 ? "Concentração moderada" : "Boa distribuição";
-      const riskClass = topCategoryPercent >= 60 ? "warn" : "good";
       const goalStats = getGoalStats(totalCurrent);
       const rentPct = totalInvested > 0 ? (pnlTotal / totalInvested) * 100 : 0;
 
+      const riskText = topCategoryPercent >= 60 ? "Concentração alta" : topCategoryPercent >= 40 ? "Concentração moderada" : "Boa distribuição";
+      const riskClass = topCategoryPercent >= 60 ? "warn" : topCategoryPercent >= 40 ? "info" : "good";
+
       portfolioHealthGrid.innerHTML = `
         <div class="health-item ${riskClass}">
-          <strong>Risco de concentração</strong>
+          <strong>Risco de concentração</strong><br>
           ${riskText}<br>
           ${topCategoryEntry ? `${escapeHtml(topCategoryEntry[0])} com ${topCategoryPercent.toFixed(1)}%` : "-"}
         </div>
 
         <div class="health-item ${negativeAssets > items.length / 2 ? "warn" : "good"}">
-          <strong>Saúde das posições</strong>
+          <strong>Saúde das posições</strong><br>
           ${negativeAssets} ativo(s) no prejuízo<br>
-          ${items.length - negativeAssets} ativo(s) no lucro ou neutros
+          ${items.length - negativeAssets} no lucro ou neutros
         </div>
 
         <div class="health-item ${rentPct >= 0 ? "good" : "warn"}">
-          <strong>Resultado agregado</strong>
+          <strong>Resultado agregado</strong><br>
           ${formatPnL(pnlTotal)}<br>
           ${percent(rentPct)}
         </div>
 
-        <div class="health-item ${goalStats.isReached ? "good" : "warn"}">
-          <strong>Estado da meta</strong>
+        <div class="health-item ${goalStats.isReached ? "good" : "info"}">
+          <strong>Estado da meta</strong><br>
           ${goalStats.target > 0 ? (goalStats.isReached ? "Meta ultrapassada" : "Meta em construção") : "Sem meta"}<br>
           ${goalStats.target > 0 ? goalStats.progressDisplay : "Configure"}
         </div>
 
         <div class="health-item ${snapshotsVar >= 0 ? "good" : "warn"}">
-          <strong>Evolução histórica</strong>
+          <strong>Evolução histórica</strong><br>
           ${formatPnL(snapshotsVar)}<br>
           ${portfolioSnapshots.length >= 2 ? "Desde o 1º snapshot" : "Sem base suficiente"}
         </div>
 
         <div class="health-item ${items.length >= 3 ? "good" : "warn"}">
-          <strong>Diversificação</strong>
+          <strong>Diversificação</strong><br>
           ${items.length} posição(ões) única(s)<br>
           ${items.length >= 3 ? "Estrutura melhor" : "Pouca diversificação"}
         </div>
 
-        <div class="health-item ${topCategoryEntry ? "good" : ""}">
-          <strong>Dominância setorial</strong>
+        <div class="health-item info">
+          <strong>Dominância setorial</strong><br>
           ${topCategoryEntry ? escapeHtml(topCategoryEntry[0]) : "-"}<br>
           ${topCategoryEntry ? money(topCategoryEntry[1]) : "-"}
         </div>
 
-        <div class="health-item ${portfolioSnapshots.length >= 5 ? "good" : "warn"}">
-          <strong>Base histórica</strong>
+        <div class="health-item ${portfolioSnapshots.length >= 5 ? "good" : "info"}">
+          <strong>Base histórica</strong><br>
           ${portfolioSnapshots.length} snapshot(s)<br>
           ${portfolioSnapshots.length >= 5 ? "Boa leitura histórica" : "Histórico ainda curto"}
         </div>
@@ -2622,7 +2884,7 @@
 
       groupedDetailsContent.innerHTML = `
         <div class="detail-item">
-          <strong>Resumo consolidado</strong>
+          <strong>Resumo consolidado</strong><br>
           Quantidade total: ${Number(item.quantity || 0)}<br>
           Preço médio consolidado: ${money(consolidatedAvg)}<br>
           Investido total: ${money(item.amount || 0)}<br>
@@ -2678,7 +2940,7 @@
 
     function renderAssetsList(items) {
       if (!items.length) {
-        assetsList.innerHTML = "Sem investimentos.";
+        assetsList.innerHTML = `<div class="empty-state">Sem investimentos.</div>`;
         return;
       }
 
@@ -2714,7 +2976,7 @@
               ${percentCarteira.toFixed(1)}% da carteira • ${pnlPercent.toFixed(1)}% de rentabilidade
             </div>
 
-            <div style="margin-top:10px; height:8px; background:#111827; border-radius:999px;">
+            <div style="margin-top:10px; height:8px; background:#111827; border-radius:999px; overflow:hidden;">
               <div style="
                 width:${Math.min(percentCarteira, 100)}%;
                 height:100%;
@@ -2893,12 +3155,12 @@
         losingAssetsCount.textContent = "0";
         totalContributionsCount.textContent = "0";
         lastUpdateTime.textContent = "--";
-        assetsList.innerHTML = "Erro ao carregar investimentos.";
-        performanceRankingBox.innerHTML = "Erro ao carregar ranking.";
-        categoryAllocationBox.innerHTML = "Erro ao carregar alocação.";
+        assetsList.innerHTML = `<div class="empty-state">Erro ao carregar investimentos.</div>`;
+        performanceRankingBox.innerHTML = `<div class="empty-state">Erro ao carregar ranking.</div>`;
+        categoryAllocationBox.innerHTML = `<div class="empty-state">Erro ao carregar alocação.</div>`;
         executiveSummaryGrid.innerHTML = `<div class="exec-item">Erro ao carregar dados.</div>`;
         portfolioHealthGrid.innerHTML = `<div class="health-item">Erro ao carregar dados.</div>`;
-        makeLineChart(chartSvg, [], { emptyText: "Sem dados para o gráfico" });
+        makeLineChart(chartSvg, [], { emptyText: "Sem dados para o gráfico", height: 320 });
         renderInsights([], 0, 0, 0);
         return;
       }
@@ -2928,9 +3190,9 @@
       await loadSnapshots();
 
       if (!allInvestments.length) {
-        assetsList.innerHTML = "Sem investimentos.";
-        performanceRankingBox.innerHTML = "Sem dados.";
-        categoryAllocationBox.innerHTML = "Sem dados.";
+        assetsList.innerHTML = `<div class="empty-state">Sem investimentos.</div>`;
+        performanceRankingBox.innerHTML = `<div class="empty-state">Sem dados.</div>`;
+        categoryAllocationBox.innerHTML = `<div class="empty-state">Sem dados.</div>`;
         executiveSummaryGrid.innerHTML = `<div class="exec-item">Sem dados.</div>`;
         portfolioHealthGrid.innerHTML = `<div class="health-item">Sem dados.</div>`;
         renderChart([]);
@@ -2961,7 +3223,7 @@
     async function loadTimeline() {
       const user = await getUser();
       if (!user) {
-        timeline.innerHTML = "Faça login para ver a timeline.";
+        timeline.innerHTML = `<div class="empty-state">Faça login para ver a timeline.</div>`;
         timelineCount.textContent = "0";
         timelineFilteredCount.textContent = "0 resultado(s)";
         allTimeline = [];
@@ -2978,7 +3240,7 @@
         .limit(200);
 
       if (error) {
-        timeline.innerHTML = "Erro ao carregar timeline.";
+        timeline.innerHTML = `<div class="empty-state">Erro ao carregar timeline.</div>`;
         timelineCount.textContent = "0";
         timelineFilteredCount.textContent = "0 resultado(s)";
         allTimeline = [];
@@ -2997,7 +3259,7 @@
       quickLastMovement.textContent = allTimeline.length ? actionLabel(allTimeline[0].action) : "-";
 
       if (!allTimeline.length) {
-        timeline.innerHTML = "Sem histórico ainda.";
+        timeline.innerHTML = `<div class="empty-state">Sem histórico ainda.</div>`;
         timelineFilteredCount.textContent = "0 resultado(s)";
         return;
       }
@@ -3117,12 +3379,17 @@
       goalHealthBadge.textContent = "Meta: sem configuração";
       categoryDominanceBadge.textContent = "Maior categoria: -";
 
-      assetsList.innerHTML = "Sem investimentos.";
-      timeline.innerHTML = "Sem histórico ainda.";
-      insightsList.innerHTML = "Sem análise ainda.";
-      topHoldingBox.innerHTML = "Sem dados.";
-      performanceRankingBox.innerHTML = "Sem dados.";
-      categoryAllocationBox.innerHTML = "Sem dados.";
+      summaryHeadline.textContent = "Sem dados ainda";
+      summaryNote.textContent = "Cadastre ativos e acompanhe patrimônio, meta e rentabilidade em um único painel.";
+      summarySecondaryHeadline.textContent = "Pronto para análise";
+      summarySecondaryNote.textContent = "Assim que sua carteira ganhar dados reais, esta área mostra o posicionamento executivo.";
+
+      assetsList.innerHTML = `<div class="empty-state">Sem investimentos.</div>`;
+      timeline.innerHTML = `<div class="empty-state">Sem histórico ainda.</div>`;
+      insightsList.innerHTML = `<div class="empty-state">Sem análise ainda.</div>`;
+      topHoldingBox.innerHTML = `<div class="empty-state">Sem dados.</div>`;
+      performanceRankingBox.innerHTML = `<div class="empty-state">Sem dados.</div>`;
+      categoryAllocationBox.innerHTML = `<div class="empty-state">Sem dados.</div>`;
       executiveSummaryGrid.innerHTML = `<div class="exec-item">Sem dados.</div>`;
       portfolioHealthGrid.innerHTML = `<div class="health-item">Sem dados.</div>`;
 
@@ -3145,7 +3412,7 @@
     function toggleAuthModeUI() {
       document.getElementById("authTitle").textContent = isLoginMode ? "Entrar" : "Criar conta";
       document.getElementById("authSubtitle").textContent = isLoginMode
-        ? "Faça login para acessar seu painel."
+        ? "Faça login para acessar seu painel premium."
         : "Crie sua conta para começar.";
       document.querySelector("#authBtn .btn-label").textContent = isLoginMode ? "Entrar" : "Cadastrar";
       document.getElementById("toggleAuth").textContent = isLoginMode ? "Criar conta" : "Já tenho conta";
@@ -3756,6 +4023,7 @@
 
         renderExecutiveSummary(allInvestments, totalInvested, currentValue, pnl);
         renderPortfolioHealth(allInvestments, totalInvested, currentValue, pnl);
+        renderSummaryHeadlines(allInvestments, totalInvested, currentValue, pnl);
       } finally {
         generalLoading.saveGoal = false;
         setButtonLoading(document.getElementById("saveGoalBtn"), false);
