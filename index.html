@@ -1042,6 +1042,77 @@
     }
 
     #appSection{display:none}
+    #groupedDetailsModal{z-index:9998}
+    #logoutModal{z-index:10000}
+    #deleteModal{z-index:10001}
+
+    body.performance-mode{
+      --blur:0px;
+      --shadow:0 10px 24px rgba(0,0,0,.18);
+      --shadow-strong:0 14px 32px rgba(0,0,0,.24);
+    }
+
+    body.performance-mode::before,
+    body.performance-mode::after,
+    body.performance-mode .hero-glow,
+    body.performance-mode .hero-glow-right,
+    body.performance-mode .card::after,
+    body.performance-mode .mini-card::after,
+    body.performance-mode .stat-card::after,
+    body.performance-mode .quick-mini::after{
+      display:none !important;
+    }
+
+    body.performance-mode .card,
+    body.performance-mode .mini-card,
+    body.performance-mode .stat-card,
+    body.performance-mode .quick-mini,
+    body.performance-mode .exec-item,
+    body.performance-mode .health-item,
+    body.performance-mode .timeline-item,
+    body.performance-mode .asset-item,
+    body.performance-mode .detail-item,
+    body.performance-mode .insight-item,
+    body.performance-mode .rank-item,
+    body.performance-mode .category-row,
+    body.performance-mode .summary-super-card,
+    body.performance-mode .pill,
+    body.performance-mode .chip,
+    body.performance-mode .header-strip-card{
+      backdrop-filter:none !important;
+      box-shadow:0 8px 18px rgba(0,0,0,.18) !important;
+      transition:none !important;
+      animation:none !important;
+    }
+
+    body.performance-mode .card:hover,
+    body.performance-mode .mini-card:hover,
+    body.performance-mode .exec-item:hover,
+    body.performance-mode .health-item:hover,
+    body.performance-mode .asset-item:hover,
+    body.performance-mode .timeline-item:hover,
+    body.performance-mode .quick-mini:hover,
+    body.performance-mode .detail-item:hover,
+    body.performance-mode .insight-item:hover,
+    body.performance-mode .rank-item:hover,
+    body.performance-mode .category-row:hover,
+    body.performance-mode .summary-super-card:hover{
+      transform:none !important;
+      box-shadow:0 8px 18px rgba(0,0,0,.18) !important;
+    }
+
+    body.performance-mode .logo,
+    body.performance-mode .hero-value{
+      animation:none !important;
+    }
+
+    body.performance-mode button::after{
+      display:none !important;
+    }
+
+    body.performance-mode .chart-wrap{
+      background:rgba(255,255,255,.02);
+    }
 
     @keyframes spin{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
     @keyframes toastIn{from{opacity:0;transform:translateY(-10px) scale(.98)} to{opacity:1;transform:translateY(0) scale(1)}}
@@ -1813,6 +1884,16 @@
 
     const singlePriceLoadingMap = new Set();
 
+    const PERFORMANCE_MODE = (() => {
+      const mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      const lowCpu = (navigator.hardwareConcurrency || 8) <= 4;
+      const lowRam = typeof navigator.deviceMemory === "number" && navigator.deviceMemory <= 4;
+      return mobile || lowCpu || lowRam;
+    })();
+
+    let filteredTimelineCache = [];
+    let visibleTimelineItems = 30;
+
     function money(value) {
       return Number(value || 0).toLocaleString("pt-BR", {
         style: "currency",
@@ -2437,10 +2518,10 @@
 
         <path d="${area}" fill="url(#${options.fillId || "fillGradient"})"></path>
         <path d="${path}" fill="none" stroke="url(#${options.gradientId || "lineGradient"})" stroke-width="4.5"
-              stroke-linecap="round" stroke-linejoin="round" filter="url(#${options.glowId || "chartGlow"})"></path>
+              stroke-linecap="round" stroke-linejoin="round" ${PERFORMANCE_MODE ? "" : `filter="url(#${options.glowId || "chartGlow"})"`}></path>
 
         ${points.map((p, i) => `
-          <circle cx="${p.x}" cy="${p.y}" r="5.5" fill="#f8fafc" stroke="rgba(29,140,255,.25)" stroke-width="2">
+          <circle cx="${p.x}" cy="${p.y}" r="${PERFORMANCE_MODE ? 4 : 5.5}" fill="#f8fafc" stroke="rgba(29,140,255,.25)" stroke-width="2">
             <title>${labels[i] ? labels[i] + " • " : ""}${money(p.value)}</title>
           </circle>
         `).join("")}
@@ -3063,65 +3144,68 @@
       }
 
       const totalCarteira = items.reduce((acc, item) => acc + Number(item.current_value || 0), 0);
-      assetsList.innerHTML = "";
 
-      items.forEach(item => {
+      assetsList.innerHTML = items.map(item => {
         const current = Number(item.current_value || 0);
         const invested = Number(item.amount || 0);
         const pnl = current - invested;
         const pnlPercent = invested > 0 ? (pnl / invested) * 100 : 0;
         const percentCarteira = totalCarteira > 0 ? (current / totalCarteira) * 100 : 0;
+        const idArg = JSON.stringify(String(item.id));
 
         const actionButtons = item.isGrouped
           ? `
-            <button onclick="showGroupedInfo('${String(item.id)}')" class="secondary">Detalhes do grupo</button>
-            <button onclick="refreshSingleSavedPrice('${String(item.id)}', this)">Atualizar grupo</button>
+            <button onclick='showGroupedInfo(${idArg})' class="secondary">Detalhes do grupo</button>
+            <button onclick='refreshSingleSavedPrice(${idArg}, this)'>Atualizar grupo</button>
           `
           : `
-            <button onclick="editInvestment('${String(item.id)}')">Editar</button>
-            <button onclick="refreshSingleSavedPrice('${String(item.id)}', this)">Atualizar</button>
-            <button onclick="openDeleteModal('${String(item.id)}')" class="danger">Excluir</button>
+            <button onclick='editInvestment(${idArg})'>Editar</button>
+            <button onclick='refreshSingleSavedPrice(${idArg}, this)'>Atualizar</button>
+            <button onclick='openDeleteModal(${idArg})' class="danger">Excluir</button>
           `;
 
-        const div = document.createElement("div");
-        div.className = "asset-item";
-        div.style.marginTop = "10px";
-        div.innerHTML = `
-          <div>
-            <div class="asset-title">${escapeHtml(item.asset)} • ${escapeHtml(item.category)}</div>
-            <div class="asset-meta">
-              Qtd: ${Number(item.quantity || 0)} • PM: ${money(item.avg_price)} • Atual: ${money(item.current_price)}<br>
-              ${percentCarteira.toFixed(1)}% da carteira • ${pnlPercent.toFixed(1)}% de rentabilidade
+        return `
+          <div class="asset-item" style="margin-top:10px;">
+            <div>
+              <div class="asset-title">${escapeHtml(item.asset)} • ${escapeHtml(item.category)}</div>
+              <div class="asset-meta">
+                Qtd: ${Number(item.quantity || 0)} • PM: ${money(item.avg_price)} • Atual: ${money(item.current_price)}<br>
+                ${percentCarteira.toFixed(1)}% da carteira • ${pnlPercent.toFixed(1)}% de rentabilidade
+              </div>
+
+              <div style="margin-top:10px; height:8px; background:#111827; border-radius:999px; overflow:hidden;">
+                <div style="
+                  width:${Math.min(percentCarteira, 100)}%;
+                  height:100%;
+                  background:linear-gradient(90deg,var(--blue),var(--cyan));
+                  border-radius:999px;
+                  box-shadow:0 0 18px rgba(34,211,238,.15);
+                "></div>
+              </div>
+
+              ${item.isGrouped ? `<div class="badge">${item.sourceCount} registros consolidados</div>` : ""}
+              <div class="asset-actions" style="margin-top:10px;">${actionButtons}</div>
             </div>
 
-            <div style="margin-top:10px; height:8px; background:#111827; border-radius:999px; overflow:hidden;">
-              <div style="
-                width:${Math.min(percentCarteira, 100)}%;
-                height:100%;
-                background:linear-gradient(90deg,var(--blue),var(--cyan));
-                border-radius:999px;
-                box-shadow:0 0 18px rgba(34,211,238,.15);
-              "></div>
-            </div>
-
-            ${item.isGrouped ? `<div class="badge">${item.sourceCount} registros consolidados</div>` : ""}
-            <div class="asset-actions" style="margin-top:10px;">${actionButtons}</div>
-          </div>
-
-          <div class="asset-right">
-            <div>${money(current)}</div>
-            <div class="${getPnLClass(pnl)}" style="margin-top:6px;">
-              ${formatPnL(pnl)}<br>
-              <span style="font-size:13px;">${percent(pnlPercent)}</span>
+            <div class="asset-right">
+              <div>${money(current)}</div>
+              <div class="${getPnLClass(pnl)}" style="margin-top:6px;">
+                ${formatPnL(pnl)}<br>
+                <span style="font-size:13px;">${percent(pnlPercent)}</span>
+              </div>
             </div>
           </div>
         `;
-        assetsList.appendChild(div);
-      });
+      }).join("");
     }
 
-    function renderTimelineItems(items) {
-      timeline.innerHTML = "";
+    function resetTimelineView(items) {
+      filteredTimelineCache = [...items];
+      visibleTimelineItems = 30;
+      renderTimelineItems();
+    }
+
+    function renderTimelineItems(items = filteredTimelineCache) {
       timelineFilteredCount.textContent = `${items.length} resultado(s)`;
 
       if (!items.length) {
@@ -3134,24 +3218,34 @@
         return;
       }
 
-      items.forEach((item) => {
+      const visibleItems = items.slice(0, visibleTimelineItems);
+
+      timeline.innerHTML = visibleItems.map((item) => {
         const normalizedAction = normalizeTimelineAction(item.action);
-        const div = document.createElement("div");
-        div.className = "timeline-item";
-        div.style.marginTop = "10px";
-        div.innerHTML = `
-          <div class="timeline-badge ${actionBadgeClass(normalizedAction)}">${actionLabel(normalizedAction)}</div>
-          <strong>${escapeHtml(item.asset || "-")}</strong><br>
-          Categoria: ${escapeHtml(item.category || "-")}<br>
-          Valor: ${money(item.amount || 0)}<br>
-          Quantidade: ${Number(item.quantity || 0)}<br>
-          Preço médio: ${money(item.avg_price || 0)}<br>
-          Preço atual: ${money(item.current_price || 0)}<br>
-          <span class="muted">${item.created_at ? new Date(item.created_at).toLocaleString("pt-BR") : "-"}</span>
+
+        return `
+          <div class="timeline-item" style="margin-top:10px;">
+            <div class="timeline-badge ${actionBadgeClass(normalizedAction)}">${actionLabel(normalizedAction)}</div>
+            <strong>${escapeHtml(item.asset || "-")}</strong><br>
+            Categoria: ${escapeHtml(item.category || "-")}<br>
+            Valor: ${money(item.amount || 0)}<br>
+            Quantidade: ${Number(item.quantity || 0)}<br>
+            Preço médio: ${money(item.avg_price || 0)}<br>
+            Preço atual: ${money(item.current_price || 0)}<br>
+            <span class="muted">${item.created_at ? new Date(item.created_at).toLocaleString("pt-BR") : "-"}</span>
+          </div>
         `;
-        timeline.appendChild(div);
-      });
+      }).join("") + (
+        items.length > visibleTimelineItems
+          ? `<div style="margin-top:12px;"><button class="secondary" onclick="loadMoreTimeline()">Carregar mais</button></div>`
+          : ""
+      );
     }
+
+    window.loadMoreTimeline = function () {
+      visibleTimelineItems += 30;
+      renderTimelineItems();
+    };
 
     window.applyTimelineFilters = function () {
       const action = document.getElementById("timelineActionFilter").value;
@@ -3174,7 +3268,7 @@
         filtered = filtered.filter(item => new Date(item.created_at || 0) <= endDate);
       }
 
-      renderTimelineItems(filtered);
+      resetTimelineView(filtered);
     };
 
     window.clearTimelineFilters = function () {
@@ -3182,7 +3276,7 @@
       document.getElementById("timelineAssetFilter").value = "";
       document.getElementById("timelineDateStart").value = "";
       document.getElementById("timelineDateEnd").value = "";
-      renderTimelineItems(allTimeline);
+      resetTimelineView(allTimeline);
     };
 
     function applyFiltersInternal() {
@@ -3355,7 +3449,7 @@
         .select("*")
         .eq("user_id", user.id)
         .order("created_at", { ascending: false })
-        .limit(200);
+        .limit(120);
 
       if (error) {
         timeline.innerHTML = `<div class="empty-state">Erro ao carregar timeline.</div>`;
@@ -3382,7 +3476,7 @@
         return;
       }
 
-      renderTimelineItems(allTimeline);
+      resetTimelineView(allTimeline);
     }
 
     async function saveHistory(userId, investmentId, action, payload) {
@@ -3526,6 +3620,8 @@
       allTimeline = [];
       portfolioSnapshots = [];
       currentGoal = { targetValue: 0, monthlyContribution: 0 };
+      filteredTimelineCache = [];
+      visibleTimelineItems = 30;
 
       resetForm();
       renderGoalSection(0);
@@ -3712,14 +3808,18 @@
       if (!item) return;
 
       reopenGroupAfterDeleteKey = null;
-      openDeleteModalWithTarget({
-        mode:"group",
-        groupKey,
-        ids:[...item.sourceIds],
-        asset:item.asset,
-        category:item.category,
-        message:`Deseja realmente excluir todo o grupo ${item.asset} • ${item.category}? Isso remove ${item.sourceCount} lançamento(s).`
-      });
+      closeGroupedDetailsModal();
+
+      setTimeout(() => {
+        openDeleteModalWithTarget({
+          mode:"group",
+          groupKey,
+          ids:[...item.sourceIds],
+          asset:item.asset,
+          category:item.category,
+          message:`Deseja realmente excluir todo o grupo ${item.asset} • ${item.category}? Isso remove ${item.sourceCount} lançamento(s).`
+        });
+      }, 80);
     };
 
     window.editInvestment = function (id) {
@@ -4382,6 +4482,10 @@
     }
 
     async function init() {
+      if (PERFORMANCE_MODE) {
+        document.body.classList.add("performance-mode");
+      }
+
       toggleAuthModeUI();
       bindKeyboardShortcuts();
       updateOfflineUI();
