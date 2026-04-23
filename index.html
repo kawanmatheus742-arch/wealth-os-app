@@ -12,13 +12,13 @@
   <style>
     :root{
       --bg:#040816;
-      --bg2:#0a1123;
-      --bg3:#0e1a34;
-      --panel:rgba(8,15,31,.82);
-      --panel-2:rgba(12,22,44,.94);
-      --panel-3:rgba(14,27,52,.98);
+      --bg2:#091326;
+      --bg3:#0d1b36;
+      --panel:rgba(8,15,31,.84);
+      --panel-2:rgba(12,22,44,.96);
+      --panel-3:rgba(16,30,56,.98);
       --line:rgba(255,255,255,.08);
-      --line-2:rgba(56,189,248,.18);
+      --line-strong:rgba(56,189,248,.18);
       --text:#f8fafc;
       --muted:#8ea3c7;
       --blue:#0ea5e9;
@@ -31,12 +31,12 @@
       --yellow:#facc15;
       --violet:#8b5cf6;
       --shadow:0 18px 45px rgba(0,0,0,.28);
-      --shadow-strong:0 28px 80px rgba(0,0,0,.44);
+      --shadow-strong:0 28px 90px rgba(0,0,0,.46);
       --radius:26px;
       --radius-md:20px;
       --radius-sm:16px;
       --blur:16px;
-      --max:1520px;
+      --max:1540px;
     }
 
     *{box-sizing:border-box}
@@ -50,9 +50,9 @@
       overflow-x:hidden;
       background:
         radial-gradient(circle at 0% 0%, rgba(14,165,233,.18), transparent 24%),
-        radial-gradient(circle at 100% 0%, rgba(34,211,238,.09), transparent 20%),
+        radial-gradient(circle at 100% 0%, rgba(34,211,238,.08), transparent 20%),
         radial-gradient(circle at 50% -10%, rgba(125,211,252,.08), transparent 24%),
-        linear-gradient(180deg, var(--bg), var(--bg2) 45%, var(--bg3));
+        linear-gradient(180deg, var(--bg), var(--bg2) 42%, var(--bg3));
     }
 
     body::before{
@@ -74,11 +74,11 @@
       pointer-events:none;
       z-index:0;
       background-image:
-        linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
       background-size:28px 28px;
       mask-image:linear-gradient(180deg, rgba(0,0,0,.3), transparent 80%);
-      opacity:.25;
+      opacity:.24;
     }
 
     .container{
@@ -95,7 +95,7 @@
       justify-content:space-between;
       gap:16px;
       flex-wrap:wrap;
-      margin-bottom:22px;
+      margin-bottom:20px;
       animation:fadeUp .45s ease both;
     }
 
@@ -106,12 +106,12 @@
     }
 
     .logo{
-      width:64px;
-      height:64px;
+      width:66px;
+      height:66px;
       border-radius:22px;
       display:grid;
       place-items:center;
-      font-size:29px;
+      font-size:30px;
       background:
         radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 38%),
         linear-gradient(135deg, rgba(14,165,233,.58), rgba(56,189,248,.16));
@@ -123,8 +123,8 @@
     .brand h1{
       margin:0;
       font-size:42px;
-      letter-spacing:-.07em;
       line-height:1;
+      letter-spacing:-.07em;
     }
 
     .subtitle{
@@ -156,6 +156,59 @@
       border-color:rgba(56,189,248,.22);
     }
 
+    .header-strip{
+      display:grid;
+      grid-template-columns:1.2fr .8fr .8fr .8fr;
+      gap:12px;
+      margin-bottom:18px;
+      animation:fadeUp .48s ease both;
+    }
+
+    .header-strip-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(12,22,44,.90), rgba(10,18,36,.94));
+      padding:16px 18px;
+      box-shadow:0 12px 28px rgba(0,0,0,.16);
+      min-height:88px;
+    }
+
+    .header-strip-card::after{
+      content:"";
+      position:absolute;
+      right:-30px;
+      top:-40px;
+      width:100px;
+      height:100px;
+      border-radius:999px;
+      background:radial-gradient(circle, rgba(34,211,238,.10), transparent 70%);
+      pointer-events:none;
+    }
+
+    .header-strip-label{
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:8px;
+    }
+
+    .header-strip-value{
+      font-size:20px;
+      line-height:1.18;
+      font-weight:800;
+      letter-spacing:-.04em;
+      word-break:break-word;
+    }
+
+    .header-strip-note{
+      margin-top:6px;
+      color:#dbeafe;
+      opacity:.86;
+      font-size:12px;
+      line-height:1.45;
+    }
+
     .layout,
     .hero-grid,
     .split-grid,
@@ -169,7 +222,9 @@
     .quick-grid,
     .filter-grid,
     .rank-grid,
-    .detail-grid{
+    .detail-grid,
+    .field-grid,
+    .timeline-toolbar{
       display:grid;
       gap:14px;
     }
@@ -177,8 +232,8 @@
     .layout{gap:18px}
     .hero-grid{grid-template-columns:1.35fr .65fr; gap:18px}
     .split-grid{grid-template-columns:1fr 1fr; gap:18px}
-    .grid-2{grid-template-columns:1fr 1fr; gap:18px}
-    .grid-3{grid-template-columns:repeat(3,1fr); gap:18px}
+    .grid-2{grid-template-columns:1fr 1fr}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
     .grid-4{grid-template-columns:repeat(4,1fr)}
     .grid-5{grid-template-columns:repeat(5,1fr)}
     .kpi-row{grid-template-columns:repeat(5,1fr); margin-top:18px}
@@ -188,6 +243,8 @@
     .filter-grid{grid-template-columns:1.2fr .8fr}
     .rank-grid{grid-template-columns:1fr 1fr}
     .detail-grid{grid-template-columns:1fr 1fr}
+    .field-grid{grid-template-columns:1fr 1fr}
+    .timeline-toolbar{grid-template-columns:1fr 1fr 1fr 1fr auto}
 
     .card{
       position:relative;
@@ -498,10 +555,19 @@
     .status-error{color:#fecaca}
     .status-info{color:#cbd5e1}
 
+    label.field-label{
+      display:block;
+      margin-top:10px;
+      margin-bottom:6px;
+      font-size:12px;
+      color:#c7d7f2;
+      letter-spacing:.03em;
+    }
+
     input,select,textarea{
       width:100%;
       padding:14px;
-      margin-top:10px;
+      margin-top:0;
       border:none;
       outline:none;
       color:#fff;
@@ -590,19 +656,12 @@
       font-size:13px;
     }
 
-    .field-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-    }
-
     .asset-item{
       display:grid;
       grid-template-columns:1fr auto;
       align-items:center;
       gap:16px;
-      background:
-        linear-gradient(180deg, rgba(12,22,44,.96), rgba(10,18,36,.94));
+      background:linear-gradient(180deg, rgba(12,22,44,.96), rgba(10,18,36,.94));
     }
 
     .asset-title{
@@ -699,14 +758,11 @@
       padding:8px;
     }
 
+    .chart-wrap.strong svg{height:390px}
     svg{
       width:100%;
       height:340px;
       display:block;
-    }
-
-    .chart-wrap.strong svg{
-      height:390px;
     }
 
     .chart-legend{
@@ -976,13 +1032,6 @@
     .toast.error{border-color:rgba(239,68,68,.35)}
     .toast.info{border-color:rgba(56,189,248,.35)}
 
-    .timeline-toolbar{
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr 1fr auto;
-      gap:10px;
-      margin-top:10px;
-    }
-
     .empty-state{
       padding:22px;
       text-align:center;
@@ -1002,7 +1051,8 @@
     @keyframes pulseGlow{0%{text-shadow:0 0 0 rgba(14,165,233,0)} 50%{text-shadow:0 0 22px rgba(14,165,233,.26)} 100%{text-shadow:0 0 0 rgba(14,165,233,0)}}
     @keyframes barGlow{from{transform:translateX(-120%)} to{transform:translateX(120%)}}
 
-    @media (max-width:1320px){
+    @media (max-width:1360px){
+      .header-strip{grid-template-columns:1fr 1fr}
       .summary-super-grid{grid-template-columns:1fr}
       .grid-5,.kpi-row,.exec-grid,.health-grid{grid-template-columns:repeat(3,1fr)}
       .timeline-toolbar{grid-template-columns:1fr 1fr 1fr}
@@ -1010,14 +1060,16 @@
 
     @media (max-width:1120px){
       .hero-grid,.split-grid,.grid-2,.grid-3{grid-template-columns:1fr}
-      .grid-4,.grid-5,.kpi-row,.exec-grid,.health-grid{grid-template-columns:1fr 1fr}
-      .filter-grid,.detail-grid,.field-grid{grid-template-columns:1fr}
+      .grid-4,.grid-5,.kpi-row,.exec-grid,.health-grid,.field-grid,.filter-grid,.detail-grid{grid-template-columns:1fr 1fr}
     }
 
     @media (max-width:760px){
       .container{padding:16px}
       .brand h1{font-size:30px}
-      .grid-4,.grid-5,.kpi-row,.exec-grid,.health-grid,.quick-grid,.detail-grid,.filter-grid,.timeline-toolbar,.field-grid{grid-template-columns:1fr}
+      .header-strip,
+      .grid-4,.grid-5,.kpi-row,.exec-grid,.health-grid,.quick-grid,.filter-grid,.detail-grid,.field-grid,.timeline-toolbar{
+        grid-template-columns:1fr;
+      }
       .asset-item{grid-template-columns:1fr}
       .asset-right{text-align:left; min-width:auto}
       .row-buttons,.modal-actions{flex-direction:column}
@@ -1048,7 +1100,7 @@
         <div class="logo">💎</div>
         <div>
           <h1>Wealth OS</h1>
-          <div class="subtitle">Plataforma premium de investimentos, projeção patrimonial e leitura executiva da carteira</div>
+          <div class="subtitle">Plataforma premium de investimentos, patrimônio, meta e leitura executiva da carteira</div>
         </div>
       </div>
 
@@ -1056,6 +1108,29 @@
         <div class="pill premium">Premium Build</div>
         <div id="headerSyncChip" class="chip">Sync: OK</div>
         <div id="headerMarketChip" class="chip">Carteira ativa</div>
+      </div>
+    </div>
+
+    <div class="header-strip">
+      <div class="header-strip-card">
+        <div class="header-strip-label">Resumo do momento</div>
+        <div id="headerStripMain" class="header-strip-value">Painel pronto</div>
+        <div id="headerStripMainNote" class="header-strip-note">Acompanhe a evolução da carteira, dos preços e da meta patrimonial.</div>
+      </div>
+      <div class="header-strip-card">
+        <div class="header-strip-label">Última atualização</div>
+        <div id="headerStripLastUpdate" class="header-strip-value">--</div>
+        <div class="header-strip-note">Registro visual da última sincronização de preços.</div>
+      </div>
+      <div class="header-strip-card">
+        <div class="header-strip-label">Meta patrimonial</div>
+        <div id="headerStripGoal" class="header-strip-value">Sem meta</div>
+        <div id="headerStripGoalNote" class="header-strip-note">Configure uma meta para destravar a projeção premium.</div>
+      </div>
+      <div class="header-strip-card">
+        <div class="header-strip-label">Histórico salvo</div>
+        <div id="headerStripSnapshots" class="header-strip-value">0 snapshots</div>
+        <div class="header-strip-note">Base histórica para leitura patrimonial e evolução.</div>
       </div>
     </div>
 
@@ -1241,14 +1316,14 @@
           <div class="section-kicker">Leitura executiva</div>
           <div class="summary-label">Resumo instantâneo da carteira</div>
           <div id="summaryHeadline" class="summary-value">Sem dados ainda</div>
-          <div id="summaryNote" class="summary-note">Cadastre ativos e acompanhe a evolução do patrimônio, da meta e da rentabilidade.</div>
+          <div id="summaryNote" class="summary-note">Cadastre ativos e acompanhe patrimônio, meta e rentabilidade em um único painel.</div>
         </div>
 
         <div class="summary-super-card">
           <div class="section-kicker">Status patrimonial</div>
           <div class="summary-label">Ritmo e posicionamento</div>
           <div id="summarySecondaryHeadline" class="summary-value">Pronto para análise</div>
-          <div id="summarySecondaryNote" class="summary-note">A plataforma vai mostrar meta, concentração, risco e evolução histórica aqui.</div>
+          <div id="summarySecondaryNote" class="summary-note">Assim que sua carteira ganhar dados reais, esta área mostra o posicionamento executivo.</div>
         </div>
       </div>
 
@@ -1290,8 +1365,10 @@
             </div>
           </div>
 
-          <input id="asset" placeholder="Ativo (ex: PETR4, VALE3, BTC)" />
+          <label class="field-label" for="asset">Ativo</label>
+          <input id="asset" placeholder="Ex: PETR4, VALE3, BTC" />
 
+          <label class="field-label" for="category">Categoria</label>
           <select id="category">
             <option value="">Selecione a categoria</option>
             <option value="Ações">Ações</option>
@@ -1304,10 +1381,17 @@
           </select>
 
           <div class="field-grid">
-            <input id="quantity" type="number" min="0" step="any" placeholder="Quantidade" />
-            <input id="avgPrice" type="number" min="0" step="any" placeholder="Preço médio" />
+            <div>
+              <label class="field-label" for="quantity">Quantidade</label>
+              <input id="quantity" type="number" min="0" step="any" placeholder="Quantidade" />
+            </div>
+            <div>
+              <label class="field-label" for="avgPrice">Preço médio</label>
+              <input id="avgPrice" type="number" min="0" step="any" placeholder="Preço médio" />
+            </div>
           </div>
 
+          <label class="field-label" for="currentPrice">Preço atual</label>
           <input id="currentPrice" type="number" min="0" step="any" placeholder="Preço atual" />
 
           <div class="row-buttons">
@@ -1329,8 +1413,14 @@
           </div>
 
           <div class="field-grid">
-            <input id="targetValue" type="number" min="0" step="any" placeholder="Meta de patrimônio" />
-            <input id="monthlyContribution" type="number" min="0" step="any" placeholder="Aporte mensal planejado" />
+            <div>
+              <label class="field-label" for="targetValue">Meta de patrimônio</label>
+              <input id="targetValue" type="number" min="0" step="any" placeholder="Meta de patrimônio" />
+            </div>
+            <div>
+              <label class="field-label" for="monthlyContribution">Aporte mensal</label>
+              <input id="monthlyContribution" type="number" min="0" step="any" placeholder="Aporte mensal planejado" />
+            </div>
           </div>
 
           <button id="saveGoalBtn" class="gold" onclick="saveGoal()">Salvar meta</button>
@@ -1370,7 +1460,7 @@
           <div class="section-title-row">
             <div>
               <div class="section-kicker">Instant view</div>
-              <h3 style="margin:0;">Resumo rápido</h3>
+              <h3>Resumo rápido</h3>
             </div>
           </div>
           <div class="grid-2">
@@ -1397,7 +1487,7 @@
           <div class="section-title-row">
             <div>
               <div class="section-kicker">Insights</div>
-              <h3 style="margin:0;">Análise inteligente</h3>
+              <h3>Análise inteligente</h3>
             </div>
           </div>
           <div id="insightsList">Sem análise ainda.</div>
@@ -1407,7 +1497,7 @@
           <div class="section-title-row">
             <div>
               <div class="section-kicker">Top position</div>
-              <h3 style="margin:0;">Maior posição</h3>
+              <h3>Maior posição</h3>
             </div>
           </div>
           <div id="topHoldingBox">Sem dados.</div>
@@ -1419,7 +1509,7 @@
           <div>
             <div class="section-kicker">Historical engine</div>
             <h3>Histórico patrimonial real</h3>
-            <div class="muted">Gráfico premium mais forte, com meta sobreposta e leitura visual de evolução</div>
+            <div class="muted">Gráfico premium com meta sobreposta e leitura visual de evolução</div>
           </div>
           <span id="snapshotInfoBadge" class="muted">0 snapshots</span>
         </div>
@@ -1676,6 +1766,12 @@
     const summaryNote = document.getElementById("summaryNote");
     const summarySecondaryHeadline = document.getElementById("summarySecondaryHeadline");
     const summarySecondaryNote = document.getElementById("summarySecondaryNote");
+    const headerStripMain = document.getElementById("headerStripMain");
+    const headerStripMainNote = document.getElementById("headerStripMainNote");
+    const headerStripLastUpdate = document.getElementById("headerStripLastUpdate");
+    const headerStripGoal = document.getElementById("headerStripGoal");
+    const headerStripGoalNote = document.getElementById("headerStripGoalNote");
+    const headerStripSnapshots = document.getElementById("headerStripSnapshots");
 
     let rawInvestments = [];
     let allInvestments = [];
@@ -1864,21 +1960,26 @@
       const raw = loadLastUpdate(currentUserId);
       if (!raw) {
         lastUpdateTime.textContent = "--";
+        headerStripLastUpdate.textContent = "--";
         return;
       }
 
       const date = new Date(raw);
       if (Number.isNaN(date.getTime())) {
         lastUpdateTime.textContent = "--";
+        headerStripLastUpdate.textContent = "--";
         return;
       }
 
-      lastUpdateTime.textContent = date.toLocaleString("pt-BR", {
+      const formatted = date.toLocaleString("pt-BR", {
         day:"2-digit",
         month:"2-digit",
         hour:"2-digit",
         minute:"2-digit"
       });
+
+      lastUpdateTime.textContent = formatted;
+      headerStripLastUpdate.textContent = formatted;
     }
 
     function updateOfflineUI() {
@@ -2174,6 +2275,8 @@
         goalRemainingDisplay.textContent = "R$ 0,00";
         goalProgressFill.style.width = "0%";
         goalProgressFill.classList.remove("goal-hit");
+        headerStripGoal.textContent = "Sem meta";
+        headerStripGoalNote.textContent = "Configure uma meta para destravar a projeção premium.";
         return;
       }
 
@@ -2191,6 +2294,8 @@
         goalProgressFill.classList.remove("goal-hit");
         goalHealthBadge.textContent = "Meta: sem configuração";
         quickAboveGoal.textContent = "R$ 0,00";
+        headerStripGoal.textContent = "Sem meta";
+        headerStripGoalNote.textContent = "Configure uma meta para destravar a projeção premium.";
         return;
       }
 
@@ -2203,21 +2308,26 @@
         goalRemainingDisplay.textContent = `+ ${money(stats.aboveGoal)}`;
         goalHealthBadge.textContent = "Meta: alcançada";
         quickAboveGoal.textContent = money(stats.aboveGoal);
+        headerStripGoal.textContent = "Meta alcançada";
+        headerStripGoalNote.textContent = `Você já está ${money(stats.aboveGoal)} acima da meta.`;
         return;
       }
 
       goalRemainingDisplay.textContent = money(stats.remaining);
       quickAboveGoal.textContent = "R$ 0,00";
+      headerStripGoal.textContent = stats.progressDisplay;
 
       if (!stats.monthly || stats.monthly <= 0) {
         projectionText.textContent = "Defina aporte mensal";
         goalHealthBadge.textContent = `Meta: ${stats.progressDisplay}`;
+        headerStripGoalNote.textContent = "Defina o aporte mensal para calcular a projeção.";
         return;
       }
 
       const months = Math.ceil(stats.remaining / stats.monthly);
       projectionText.textContent = `${months} ${months === 1 ? "mês" : "meses"}`;
       goalHealthBadge.textContent = `Meta: ${stats.progressDisplay}`;
+      headerStripGoalNote.textContent = `Faltam ${money(stats.remaining)} para a meta patrimonial.`;
     }
 
     function makeLineChart(svgEl, values, options = {}) {
@@ -2307,12 +2417,10 @@
             <stop offset="0%" stop-color="${options.lineColorStart || "#22d3ee"}"/>
             <stop offset="100%" stop-color="${options.lineColorEnd || "#1d8cff"}"/>
           </linearGradient>
-
           <linearGradient id="${options.fillId || "fillGradient"}" x1="0" x2="0" y1="0" y2="1">
             <stop offset="0%" stop-color="${options.fillColor || "#22d3ee"}" stop-opacity="0.32"/>
             <stop offset="100%" stop-color="${options.fillColor || "#22d3ee"}" stop-opacity="0.03"/>
           </linearGradient>
-
           <filter id="${options.glowId || "chartGlow"}">
             <feGaussianBlur stdDeviation="4.5" result="blur"/>
             <feMerge>
@@ -2411,6 +2519,7 @@
         snapshotVariationValue.className = "mini-value small neutral";
         snapshotCountValue.textContent = "0";
         quickSnapshots.textContent = "0";
+        headerStripSnapshots.textContent = "0 snapshots";
         renderHistoricalChart([]);
         return;
       }
@@ -2433,6 +2542,7 @@
       snapshotGoalPercentValue.textContent = stats.target > 0 ? (stats.isReached ? "100%+" : percent(stats.progressVisual)) : "Sem meta";
       snapshotCountValue.textContent = String(items.length);
       quickSnapshots.textContent = String(items.length);
+      headerStripSnapshots.textContent = `${items.length} snapshots`;
 
       renderHistoricalChart(ordered);
 
@@ -2510,6 +2620,8 @@
         summaryNote.textContent = "Cadastre ativos e acompanhe patrimônio, meta e rentabilidade em um único painel.";
         summarySecondaryHeadline.textContent = "Pronto para análise";
         summarySecondaryNote.textContent = "Assim que sua carteira ganhar dados reais, esta área mostra o posicionamento executivo.";
+        headerStripMain.textContent = "Painel pronto";
+        headerStripMainNote.textContent = "Acompanhe a evolução da carteira, dos preços e da meta patrimonial.";
         return;
       }
 
@@ -2520,12 +2632,18 @@
       if (pnlTotal > 0) {
         summaryHeadline.textContent = `Carteira em lucro de ${money(pnlTotal)}`;
         summaryNote.textContent = `Seu resultado agregado está em ${percent(pnlPct)} com ${items.length} posição(ões) única(s) monitoradas.`;
+        headerStripMain.textContent = "Carteira no verde";
+        headerStripMainNote.textContent = `Resultado agregado em ${money(pnlTotal)}.`;
       } else if (pnlTotal < 0) {
         summaryHeadline.textContent = `Carteira em retração de ${money(Math.abs(pnlTotal))}`;
         summaryNote.textContent = `O resultado agregado está em ${percent(pnlPct)}. Acompanhe concentração, pior ativo e evolução histórica.`;
+        headerStripMain.textContent = "Carteira em retração";
+        headerStripMainNote.textContent = `Resultado agregado em queda de ${money(Math.abs(pnlTotal))}.`;
       } else {
         summaryHeadline.textContent = "Carteira em equilíbrio";
-        summaryNote.textContent = `Acompanhe a evolução dos ativos, da meta patrimonial e dos snapshots históricos.`;
+        summaryNote.textContent = "Acompanhe a evolução dos ativos, da meta patrimonial e dos snapshots históricos.";
+        headerStripMain.textContent = "Carteira neutra";
+        headerStripMainNote.textContent = "Sem lucro ou prejuízo agregado no momento.";
       }
 
       if (goal.target > 0) {
@@ -2538,7 +2656,7 @@
         }
       } else {
         summarySecondaryHeadline.textContent = `${money(totalCurrent)} em patrimônio atual`;
-        summarySecondaryNote.textContent = `Defina uma meta para destravar a projeção patrimonial e leitura de evolução mais completa.`;
+        summarySecondaryNote.textContent = "Defina uma meta para destravar a projeção patrimonial e leitura de evolução mais completa.";
       }
     }
 
@@ -3383,6 +3501,13 @@
       summaryNote.textContent = "Cadastre ativos e acompanhe patrimônio, meta e rentabilidade em um único painel.";
       summarySecondaryHeadline.textContent = "Pronto para análise";
       summarySecondaryNote.textContent = "Assim que sua carteira ganhar dados reais, esta área mostra o posicionamento executivo.";
+
+      headerStripMain.textContent = "Painel pronto";
+      headerStripMainNote.textContent = "Acompanhe a evolução da carteira, dos preços e da meta patrimonial.";
+      headerStripLastUpdate.textContent = "--";
+      headerStripGoal.textContent = "Sem meta";
+      headerStripGoalNote.textContent = "Configure uma meta para destravar a projeção premium.";
+      headerStripSnapshots.textContent = "0 snapshots";
 
       assetsList.innerHTML = `<div class="empty-state">Sem investimentos.</div>`;
       timeline.innerHTML = `<div class="empty-state">Sem histórico ainda.</div>`;
