@@ -51,6 +51,173 @@
 
 
 
+
+/* =========================
+   Etapa 4A.5.4.2 • Olho premium fixo no login
+   ========================= */
+.input-wrap{
+  overflow:visible;
+}
+
+.password-input{
+  padding-right:76px!important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+  -webkit-box-shadow:0 0 0 1000px #0d172b inset!important;
+  -webkit-text-fill-color:#ffffff!important;
+  caret-color:#ffffff!important;
+  border-color:rgba(56,189,248,.22)!important;
+  transition:background-color 9999s ease-in-out 0s!important;
+}
+
+.eye.eye-premium{
+  position:absolute;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  width:42px;
+  height:42px;
+  margin:0;
+  padding:0;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  z-index:5;
+  border:1px solid rgba(125,211,252,.14);
+  color:#bae6fd;
+  background:rgba(15,23,42,.22);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045);
+  transition:background .14s ease,border-color .14s ease,color .14s ease,box-shadow .14s ease;
+}
+
+.eye.eye-premium:hover{
+  transform:translateY(-50%);
+  background:rgba(14,165,233,.12);
+  border-color:rgba(56,189,248,.28);
+  color:#ffffff;
+  box-shadow:0 0 0 1px rgba(56,189,248,.06), inset 0 1px 0 rgba(255,255,255,.05);
+  filter:none;
+}
+
+.eye.eye-premium:active{
+  transform:translateY(-50%);
+}
+
+.eye.eye-premium.active{
+  color:#67e8f9;
+  border-color:rgba(34,211,238,.28);
+  background:rgba(34,211,238,.10);
+}
+
+.eye.eye-premium .eye-svg{
+  position:absolute;
+  width:21px;
+  height:21px;
+  opacity:0;
+  transform:scale(.92);
+  transition:opacity .14s ease, transform .14s ease;
+  pointer-events:none;
+}
+
+.eye.eye-premium .eye-svg.active{
+  opacity:1;
+  transform:scale(1);
+}
+
+.performance-mode .eye.eye-premium{
+  box-shadow:none!important;
+  background:rgba(15,23,42,.22)!important;
+}
+
+
+/* =========================
+   Etapa 4A.5 • Olho travado dentro do campo
+   ========================= */
+.input-wrap.password-wrap{
+  position:relative!important;
+  width:100%!important;
+  overflow:hidden!important;
+  border-radius:18px!important;
+}
+
+.input-wrap.password-wrap .password-input{
+  display:block!important;
+  width:100%!important;
+  padding-right:78px!important;
+}
+
+.input-wrap.password-wrap .eye.eye-premium{
+  position:absolute!important;
+  top:0!important;
+  right:0!important;
+  bottom:0!important;
+  left:auto!important;
+  transform:none!important;
+  width:62px!important;
+  height:100%!important;
+  min-height:0!important;
+  margin:0!important;
+  padding:0!important;
+  border-radius:0 18px 18px 0!important;
+  border:0!important;
+  border-left:1px solid rgba(125,211,252,.16)!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  z-index:6!important;
+  color:#8fe7ff!important;
+  background:
+    linear-gradient(180deg,rgba(56,189,248,.10),rgba(15,23,42,.06))!important;
+  box-shadow:none!important;
+  filter:none!important;
+  transition:background .14s ease,color .14s ease,border-color .14s ease!important;
+}
+
+.input-wrap.password-wrap .eye.eye-premium:hover,
+.input-wrap.password-wrap .eye.eye-premium:active,
+.input-wrap.password-wrap .eye.eye-premium:focus{
+  transform:none!important;
+  width:62px!important;
+  height:100%!important;
+  right:0!important;
+  top:0!important;
+  background:
+    linear-gradient(180deg,rgba(56,189,248,.16),rgba(15,23,42,.08))!important;
+  color:#ffffff!important;
+  box-shadow:none!important;
+  outline:none!important;
+}
+
+.input-wrap.password-wrap .eye.eye-premium.active{
+  background:
+    linear-gradient(180deg,rgba(34,211,238,.17),rgba(15,23,42,.08))!important;
+  color:#67e8f9!important;
+}
+
+.input-wrap.password-wrap .eye.eye-premium .eye-svg{
+  position:absolute!important;
+  width:21px!important;
+  height:21px!important;
+  left:50%!important;
+  top:50%!important;
+  transform:translate(-50%,-50%) scale(.92)!important;
+  opacity:0;
+  pointer-events:none!important;
+}
+
+.input-wrap.password-wrap .eye.eye-premium .eye-svg.active{
+  opacity:1!important;
+  transform:translate(-50%,-50%) scale(1)!important;
+}
+
+.input-wrap.password-wrap .eye.eye-premium::after{
+  display:none!important;
+}
+
 /* =========================
    Etapa 4A • Acabamento de app real
    ========================= */
@@ -458,7 +625,309 @@
 @media(max-width:900px){.compact-tools{grid-template-columns:1fr 1fr}.app-nav{top:6px;border-radius:18px}.nav-btn{font-size:12px;padding:10px 12px}}
 @media(max-width:560px){.compact-tools{grid-template-columns:1fr}}
 @media(max-width:1120px){.hero-grid,.split,.grid2,.grid3{grid-template-columns:1fr}.grid4,.grid5,.fields{grid-template-columns:1fr 1fr}}@media(max-width:760px){.container{padding:16px}h1{font-size:30px}.grid4,.grid5,.fields{grid-template-columns:1fr}.asset{grid-template-columns:1fr}.asset-right{text-align:left}.hero-value{font-size:clamp(38px,12vw,62px)}}
-  </style>
+  
+/* =========================
+   Etapa 4A.5 • Olho fintech refinado
+   - menor
+   - centralizado
+   - sem faixa lateral larga
+   - preso dentro do campo
+   ========================= */
+.input-wrap.password-wrap{
+  position:relative!important;
+  width:100%!important;
+  overflow:hidden!important;
+  border-radius:18px!important;
+}
+
+.input-wrap.password-wrap .password-input{
+  width:100%!important;
+  padding-right:62px!important;
+}
+
+.input-wrap.password-wrap .eye.eye-premium{
+  position:absolute!important;
+  top:50%!important;
+  right:10px!important;
+  bottom:auto!important;
+  left:auto!important;
+  transform:translateY(-50%)!important;
+  width:38px!important;
+  height:38px!important;
+  min-height:38px!important;
+  margin:0!important;
+  padding:0!important;
+  border-radius:14px!important;
+  border:1px solid rgba(125,211,252,.18)!important;
+  display:grid!important;
+  place-items:center!important;
+  z-index:10!important;
+  color:rgba(191,241,255,.82)!important;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(255,255,255,.10),transparent 42%),
+    linear-gradient(180deg,rgba(56,189,248,.095),rgba(15,23,42,.10))!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.045),
+    0 0 0 1px rgba(14,165,233,.035)!important;
+  filter:none!important;
+  transition:
+    background .14s ease,
+    color .14s ease,
+    border-color .14s ease!important;
+}
+
+.input-wrap.password-wrap .eye.eye-premium:hover,
+.input-wrap.password-wrap .eye.eye-premium:active,
+.input-wrap.password-wrap .eye.eye-premium:focus{
+  top:50%!important;
+  right:10px!important;
+  transform:translateY(-50%)!important;
+  width:38px!important;
+  height:38px!important;
+  min-height:38px!important;
+  border-color:rgba(103,232,249,.28)!important;
+  color:#ffffff!important;
+  background:
+    radial-gradient(circle at 50% 22%,rgba(103,232,249,.16),transparent 44%),
+    linear-gradient(180deg,rgba(56,189,248,.16),rgba(15,23,42,.12))!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 0 0 1px rgba(56,189,248,.055)!important;
+  outline:none!important;
+}
+
+.input-wrap.password-wrap .eye.eye-premium.active{
+  color:#67e8f9!important;
+  border-color:rgba(34,211,238,.30)!important;
+  background:
+    radial-gradient(circle at 50% 22%,rgba(34,211,238,.17),transparent 45%),
+    linear-gradient(180deg,rgba(34,211,238,.13),rgba(15,23,42,.10))!important;
+}
+
+.input-wrap.password-wrap .eye.eye-premium .eye-svg{
+  position:absolute!important;
+  width:19px!important;
+  height:19px!important;
+  left:50%!important;
+  top:50%!important;
+  transform:translate(-50%,-50%) scale(.94)!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+
+.input-wrap.password-wrap .eye.eye-premium .eye-svg.active{
+  opacity:1!important;
+  transform:translate(-50%,-50%) scale(1)!important;
+}
+
+.input-wrap.password-wrap .eye.eye-premium::before,
+.input-wrap.password-wrap .eye.eye-premium::after{
+  display:none!important;
+}
+
+
+/* ==========================================================
+   Etapa 4A.5 • Olhos premium finais
+   Corrige:
+   1) campo de senha com a mesma presença do e-mail
+   2) olho do login fixo, menor e 100% dentro do input
+   3) olho do dashboard com o mesmo padrão premium
+   ========================================================== */
+
+/* Login: e-mail e senha com altura, borda e raio equivalentes */
+.auth-panel input#email,
+.auth-panel .input-wrap.password-wrap .password-input{
+  height:68px!important;
+  min-height:68px!important;
+  box-sizing:border-box!important;
+  border-radius:20px!important;
+  border:1px solid rgba(207,250,254,.72)!important;
+  background:
+    radial-gradient(circle at 12% 0%,rgba(34,211,238,.09),transparent 38%),
+    linear-gradient(180deg,rgba(9,20,38,.92),rgba(4,11,22,.92))!important;
+  color:#fff!important;
+  font-size:16px!important;
+  font-weight:800!important;
+  letter-spacing:-.015em!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 0 0 1px rgba(14,165,233,.025)!important;
+}
+
+.auth-panel input#email{
+  padding:0 24px!important;
+}
+
+.auth-panel .input-wrap.password-wrap{
+  position:relative!important;
+  height:68px!important;
+  min-height:68px!important;
+  width:100%!important;
+  margin-top:12px!important;
+  overflow:visible!important;
+  border-radius:20px!important;
+  background:transparent!important;
+}
+
+.auth-panel .input-wrap.password-wrap .password-input{
+  display:block!important;
+  width:100%!important;
+  padding:0 72px 0 24px!important;
+}
+
+.auth-panel input#email:focus,
+.auth-panel .input-wrap.password-wrap .password-input:focus{
+  border-color:rgba(103,232,249,.96)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.055),
+    0 0 0 4px rgba(34,211,238,.085),
+    0 0 24px rgba(14,165,233,.08)!important;
+}
+
+/* Login: botão do olho refinado e preso dentro do campo */
+.auth-panel .input-wrap.password-wrap .eye.eye-premium{
+  position:absolute!important;
+  top:50%!important;
+  right:13px!important;
+  bottom:auto!important;
+  left:auto!important;
+  width:42px!important;
+  height:42px!important;
+  min-width:42px!important;
+  min-height:42px!important;
+  margin:0!important;
+  padding:0!important;
+  transform:translateY(-50%)!important;
+  border-radius:15px!important;
+  border:1px solid rgba(125,211,252,.20)!important;
+  display:grid!important;
+  place-items:center!important;
+  z-index:20!important;
+  color:rgba(219,250,255,.78)!important;
+  background:
+    radial-gradient(circle at 50% 18%,rgba(255,255,255,.13),transparent 42%),
+    linear-gradient(180deg,rgba(56,189,248,.12),rgba(15,23,42,.18))!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.055),
+    0 8px 18px rgba(2,6,23,.16)!important;
+  filter:none!important;
+  outline:none!important;
+  transition:background .14s ease,color .14s ease,border-color .14s ease!important;
+}
+
+.auth-panel .input-wrap.password-wrap .eye.eye-premium:hover,
+.auth-panel .input-wrap.password-wrap .eye.eye-premium:active,
+.auth-panel .input-wrap.password-wrap .eye.eye-premium:focus{
+  top:50%!important;
+  right:13px!important;
+  width:42px!important;
+  height:42px!important;
+  min-width:42px!important;
+  min-height:42px!important;
+  transform:translateY(-50%)!important;
+  border-color:rgba(103,232,249,.34)!important;
+  color:#ffffff!important;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(103,232,249,.18),transparent 44%),
+    linear-gradient(180deg,rgba(56,189,248,.18),rgba(15,23,42,.20))!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.07),
+    0 10px 22px rgba(2,6,23,.18)!important;
+}
+
+.auth-panel .input-wrap.password-wrap .eye.eye-premium.active{
+  color:#67e8f9!important;
+  border-color:rgba(34,211,238,.36)!important;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(34,211,238,.20),transparent 44%),
+    linear-gradient(180deg,rgba(34,211,238,.16),rgba(15,23,42,.18))!important;
+}
+
+.auth-panel .input-wrap.password-wrap .eye.eye-premium .eye-svg{
+  position:absolute!important;
+  width:20px!important;
+  height:20px!important;
+  left:50%!important;
+  top:50%!important;
+  transform:translate(-50%,-50%) scale(.94)!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+
+.auth-panel .input-wrap.password-wrap .eye.eye-premium .eye-svg.active{
+  opacity:1!important;
+  transform:translate(-50%,-50%) scale(1)!important;
+}
+
+.auth-panel .input-wrap.password-wrap .eye.eye-premium::before,
+.auth-panel .input-wrap.password-wrap .eye.eye-premium::after{
+  display:none!important;
+}
+
+/* Dashboard: botão de visualizar patrimônio padronizado */
+.balance-eye.premium-eye-button{
+  width:50px!important;
+  height:50px!important;
+  min-width:50px!important;
+  min-height:50px!important;
+  margin:0!important;
+  padding:0!important;
+  border-radius:17px!important;
+  border:1px solid rgba(125,211,252,.22)!important;
+  display:grid!important;
+  place-items:center!important;
+  color:#e0fbff!important;
+  background:
+    radial-gradient(circle at 35% 18%,rgba(255,255,255,.22),transparent 34%),
+    linear-gradient(180deg,rgba(34,211,238,.96),rgba(14,165,233,.88))!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.18),
+    0 14px 28px rgba(14,165,233,.24)!important;
+  transform:none!important;
+  filter:none!important;
+  transition:background .16s ease,border-color .16s ease,color .16s ease!important;
+}
+
+.balance-eye.premium-eye-button:hover,
+.balance-eye.premium-eye-button:active,
+.balance-eye.premium-eye-button:focus{
+  width:50px!important;
+  height:50px!important;
+  min-width:50px!important;
+  min-height:50px!important;
+  margin:0!important;
+  transform:none!important;
+  border-color:rgba(255,255,255,.36)!important;
+  color:#ffffff!important;
+  background:
+    radial-gradient(circle at 35% 18%,rgba(255,255,255,.26),transparent 36%),
+    linear-gradient(180deg,rgba(103,232,249,.98),rgba(14,165,233,.92))!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.20),
+    0 16px 30px rgba(14,165,233,.28)!important;
+  outline:none!important;
+}
+
+.balance-eye.premium-eye-button .eye-svg{
+  width:22px!important;
+  height:22px!important;
+  display:block!important;
+  opacity:.96!important;
+  transform:none!important;
+  pointer-events:none!important;
+}
+
+.performance-mode .auth-panel input#email,
+.performance-mode .auth-panel .input-wrap.password-wrap .password-input{
+  box-shadow:none!important;
+}
+
+.performance-mode .auth-panel .input-wrap.password-wrap .eye.eye-premium,
+.performance-mode .balance-eye.premium-eye-button{
+  box-shadow:none!important;
+}
+
+</style>
 </head>
 <body>
   <div id="boot" class="boot"><div class="bootbox"><h2>Wealth OS</h2><p class="muted">Carregando painel profissional...</p><div style="display:flex;justify-content:center"><div class="spinner"></div></div></div></div>
@@ -500,9 +969,20 @@
 
         <input id="email" type="email" placeholder="Seu e-mail" autocomplete="email">
 
-        <div class="input-wrap">
+        <div class="input-wrap password-wrap">
           <input id="password" class="password-input" type="password" placeholder="Sua senha" autocomplete="current-password">
-          <button class="eye" onclick="togglePassword()" type="button">👁️</button>
+          <button class="eye eye-premium" onclick="togglePassword()" type="button" aria-label="Mostrar ou ocultar senha">
+            <svg id="eyeIconOpen" class="eye-svg active" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M2.4 12.1C4.25 8.85 7.6 6.5 12 6.5s7.75 2.35 9.6 5.6c-1.85 3.25-5.2 5.6-9.6 5.6s-7.75-2.35-9.6-5.6Z" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12.1" r="2.85" stroke="currentColor" stroke-width="1.85"/>
+            </svg>
+            <svg id="eyeIconClosed" class="eye-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M3.2 3.4L20.8 20.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+              <path d="M10.65 6.7c.44-.07.89-.1 1.35-.1 4.4 0 7.75 2.35 9.6 5.5a13.1 13.1 0 0 1-3.55 4.05" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6.15 7.65A13.4 13.4 0 0 0 2.4 12.1c1.85 3.25 5.2 5.6 9.6 5.6.93 0 1.82-.11 2.65-.32" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9.9 10.05a2.85 2.85 0 0 0 4.05 4.05" stroke="currentColor" stroke-width="1.85" stroke-linecap="round"/>
+            </svg>
+          </button>
         </div>
 
         <button id="authBtn" onclick="handleAuth()">Entrar</button>
@@ -636,7 +1116,12 @@
       </div>
 
       
-      <div class="hero-grid grid" data-screen-block data-screens="overview"><div class="card hero"><div class="section"><div><div class="muted">Patrimônio atual da carteira</div><div id="greeting" class="badge">Olá 👋</div></div><button style="width:48px" onclick="toggleBalance()">👁️</button></div><h2 id="heroValue" class="hero-value">R$ 0,00</h2><p class="muted" style="position:relative;z-index:1;line-height:1.6">Painel organizado por telas: visão geral, ledger, renda passiva, projeções, histórico, metas e configurações.</p><div class="badges"><span id="walletBadge" class="badge">Carteira neutra</span><span id="goalBadge" class="badge">Meta sem configuração</span><span id="ledgerBadge" class="badge purple">Ledger aguardando dados</span></div><div class="grid grid4" style="margin-top:18px"><div class="mini"><div class="label">Usuário</div><div id="userEmail" class="value small">-</div></div><div class="mini"><div class="label">Investido atual</div><div id="investedValue" class="value">R$ 0,00</div></div><div class="mini"><div class="label">Valor atual</div><div id="currentValue" class="value">R$ 0,00</div></div><div class="mini"><div class="label">Lucro/prejuízo</div><div id="pnlValue" class="value">R$ 0,00</div></div></div><div class="grid grid5" style="margin-top:14px"><div class="mini"><div class="label">Rentabilidade</div><div id="returnPct" class="value small">0,0%</div></div><div class="mini"><div class="label">No lucro</div><div id="winners" class="value small">0</div></div><div class="mini"><div class="label">No prejuízo</div><div id="losers" class="value small">0</div></div><div class="mini"><div class="label">Posições</div><div id="positionsCount" class="value small">0</div></div><div class="mini"><div class="label">Última atualização</div><div id="lastUpdate" class="value small">--</div></div></div></div>
+      <div class="hero-grid grid" data-screen-block data-screens="overview"><div class="card hero"><div class="section"><div><div class="muted">Patrimônio atual da carteira</div><div id="greeting" class="badge">Olá 👋</div></div><button class="balance-eye premium-eye-button" onclick="toggleBalance()" type="button" aria-label="Mostrar ou ocultar patrimônio">
+            <svg class="eye-svg active" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M2.6 12C4.45 8.75 7.72 6.55 12 6.55S19.55 8.75 21.4 12C19.55 15.25 16.28 17.45 12 17.45S4.45 15.25 2.6 12Z" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="2.75" stroke="currentColor" stroke-width="1.85"/>
+            </svg>
+          </button></div><h2 id="heroValue" class="hero-value">R$ 0,00</h2><p class="muted" style="position:relative;z-index:1;line-height:1.6">Painel organizado por telas: visão geral, ledger, renda passiva, projeções, histórico, metas e configurações.</p><div class="badges"><span id="walletBadge" class="badge">Carteira neutra</span><span id="goalBadge" class="badge">Meta sem configuração</span><span id="ledgerBadge" class="badge purple">Ledger aguardando dados</span></div><div class="grid grid4" style="margin-top:18px"><div class="mini"><div class="label">Usuário</div><div id="userEmail" class="value small">-</div></div><div class="mini"><div class="label">Investido atual</div><div id="investedValue" class="value">R$ 0,00</div></div><div class="mini"><div class="label">Valor atual</div><div id="currentValue" class="value">R$ 0,00</div></div><div class="mini"><div class="label">Lucro/prejuízo</div><div id="pnlValue" class="value">R$ 0,00</div></div></div><div class="grid grid5" style="margin-top:14px"><div class="mini"><div class="label">Rentabilidade</div><div id="returnPct" class="value small">0,0%</div></div><div class="mini"><div class="label">No lucro</div><div id="winners" class="value small">0</div></div><div class="mini"><div class="label">No prejuízo</div><div id="losers" class="value small">0</div></div><div class="mini"><div class="label">Posições</div><div id="positionsCount" class="value small">0</div></div><div class="mini"><div class="label">Última atualização</div><div id="lastUpdate" class="value small">--</div></div></div></div>
       <div class="card"><div class="section"><div><div class="kicker">Atalhos</div><h3>Ações rápidas</h3><div class="muted">Controles da carteira e do ledger</div></div></div><button class="success" id="refreshPricesBtn" onclick="refreshAllPrices()">Atualizar preços reais</button><button class="gold" id="manualSnapshotBtn" onclick="saveManualSnapshot()">Salvar snapshot agora</button><button class="secondary" onclick="refreshEverything()">Recarregar painel</button><button class="secondary" onclick="openLogoutModal()">Sair</button><div class="grid grid2" style="margin-top:14px"><div class="mini"><div class="label">Movimentações</div><div id="quickMovements" class="value small">0</div></div><div class="mini"><div class="label">Renda passiva</div><div id="quickPassive" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Snapshots</div><div id="quickSnapshots" class="value small">0</div></div><div class="mini"><div class="label">Maior ativo</div><div id="quickBiggest" class="value small">-</div></div></div><div id="topStatus" class="status"></div></div></div>
 
       <div class="grid grid4" data-screen-block data-screens="overview ledger income"><div class="mini"><div class="label">Compras/entradas no ledger</div><div id="sumEntries" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Vendas/saídas no ledger</div><div id="sumExits" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Taxas + impostos</div><div id="sumCosts" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Renda passiva acumulada</div><div id="sumPassive" class="value small positive">R$ 0,00</div></div></div>
@@ -1092,7 +1577,19 @@
     function goalKey(){return `wealth_os_goal_${userId}`}
     function renderLast(){const raw=localStorage.getItem(lastKey());if(!raw){$('lastUpdate').textContent='--';return}const d=new Date(raw);$('lastUpdate').textContent=isNaN(d)?'--':d.toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}
     function syncChips(){const off=!navigator.onLine;$('offline').classList.toggle('show',off);$('syncChip').textContent=off?'Sync: Offline':'Sync: OK';$('ledgerChip').textContent=off?'Modo offline':'Ledger como fonte principal'}
-    window.togglePassword=()=>{$('password').type=$('password').type==='password'?'text':'password'}
+    window.togglePassword=()=>{
+      const p=$('password');
+      const open=$('eyeIconOpen');
+      const closed=$('eyeIconClosed');
+      const btn=document.querySelector('.eye-premium');
+      const willShow=p.type==='password';
+      p.type=willShow?'text':'password';
+      if(open&&closed){
+        open.classList.toggle('active',!willShow);
+        closed.classList.toggle('active',willShow);
+      }
+      if(btn)btn.classList.toggle('active',willShow);
+    }
     window.toggleAuthMode=()=>{loginMode=!loginMode;$('authTitle').textContent=loginMode?'Entrar':'Criar conta';$('authSubtitle').textContent=loginMode?'Faça login para acessar seu painel premium.':'Crie sua conta para começar.';$('authBtn').textContent=loginMode?'Entrar':'Cadastrar';$('toggleAuth').textContent=loginMode?'Criar conta':'Já tenho conta';status($('authStatus'),'')}
     window.handleAuth=async()=>{if(loading.auth)return;const email=$('email').value.trim(),password=$('password').value.trim();if(!email||!password){status($('authStatus'),'Preencha email e senha.','error');return}if(password.length<6){status($('authStatus'),'A senha precisa ter pelo menos 6 caracteres.','error');return}if(!requireOnline())return;loading.auth=true;btn($('authBtn'),true,loginMode?'Entrando...':'Criando...');try{const r=loginMode?await supabase.auth.signInWithPassword({email,password}):await supabase.auth.signUp({email,password});if(r.error)throw r.error;if(!loginMode){toast('Conta criada. Agora faça login.','success');loginMode=true;toggleAuthMode();}else toast('Login realizado.','success')}catch(e){status($('authStatus'),e.message||'Erro no acesso.','error');toast(e.message||'Erro no acesso.','error')}finally{loading.auth=false;btn($('authBtn'),false)}}
     
