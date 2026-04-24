@@ -53,7 +53,7 @@
 
 
 /* =========================
-   Etapa 4A.5.4.2 • Olho premium fixo no login
+   Etapa 4B.3.3 • Olho premium fixo no login
    ========================= */
 .input-wrap{
   overflow:visible;
@@ -135,7 +135,7 @@ input:-webkit-autofill:active{
 
 
 /* =========================
-   Etapa 4A.5 • Olho travado dentro do campo
+   Etapa 4B.3 • Olho travado dentro do campo
    ========================= */
 .input-wrap.password-wrap{
   position:relative!important;
@@ -219,7 +219,7 @@ input:-webkit-autofill:active{
 }
 
 /* =========================
-   Etapa 4A • Acabamento de app real
+   Etapa 4B.3 • Acabamento de app real
    ========================= */
 .auth-shell{
   position:relative;
@@ -399,7 +399,7 @@ input:-webkit-autofill:active{
 }
 
 /* =========================
-   Etapa 4A • Performance UX
+   Etapa 4B.3 • Performance UX
    ========================= */
 .chip-action{
   width:auto;
@@ -627,7 +627,7 @@ input:-webkit-autofill:active{
 @media(max-width:1120px){.hero-grid,.split,.grid2,.grid3{grid-template-columns:1fr}.grid4,.grid5,.fields{grid-template-columns:1fr 1fr}}@media(max-width:760px){.container{padding:16px}h1{font-size:30px}.grid4,.grid5,.fields{grid-template-columns:1fr}.asset{grid-template-columns:1fr}.asset-right{text-align:left}.hero-value{font-size:clamp(38px,12vw,62px)}}
   
 /* =========================
-   Etapa 4A.5 • Olho fintech refinado
+   Etapa 4B.3 • Olho fintech refinado
    - menor
    - centralizado
    - sem faixa lateral larga
@@ -727,7 +727,7 @@ input:-webkit-autofill:active{
 
 
 /* ==========================================================
-   Etapa 4A.5 • Olhos premium finais
+   Etapa 4B.3 • Olhos premium finais
    Corrige:
    1) campo de senha com a mesma presença do e-mail
    2) olho do login fixo, menor e 100% dentro do input
@@ -927,6 +927,370 @@ input:-webkit-autofill:active{
   box-shadow:none!important;
 }
 
+
+/* =========================
+   Etapa 4B.3 • Estabilidade e performance
+   ========================= */
+body.booting,
+body.booting *{
+  cursor:progress;
+}
+.performance-mode{
+  background:
+    radial-gradient(circle at 0 0,rgba(14,165,233,.14),transparent 22%),
+    linear-gradient(180deg,#030712,#07111f 52%,#0b1730)!important;
+}
+.performance-mode .hero-value,
+.performance-mode .command-headline,
+.performance-mode .projection-value,
+.performance-mode .freedom-title,
+.performance-mode .allocation-score{
+  text-shadow:none!important;
+}
+.performance-mode svg{
+  height:260px!important;
+}
+.performance-mode .toast,
+.performance-mode .modalbox{
+  backdrop-filter:none!important;
+}
+.performance-mode .card,
+.performance-mode .mini,
+.performance-mode .item{
+  contain:layout paint;
+}
+[data-screen-block].screen-hidden{
+  display:none!important;
+}
+.render-soft{
+  opacity:.96;
+}
+.quick-actions-stable button{
+  will-change:auto!important;
+}
+@media(max-width:760px){
+  svg{height:250px}
+  .performance-mode svg{height:220px!important}
+}
+
+
+/* =========================
+   Etapa 4B.3 • Login escuro corrigido
+   Corrige autofill branco do Chrome/Edge e mantém leitura premium.
+   ========================= */
+.auth-card input,
+.login-card input,
+.input-wrap input,
+.input-wrap .password-input{
+  color:#f8fafc!important;
+  -webkit-text-fill-color:#f8fafc!important;
+  caret-color:#67e8f9!important;
+  background:linear-gradient(180deg,rgba(14,32,57,.96),rgba(6,18,34,.96))!important;
+  border-color:rgba(125,211,252,.34)!important;
+  box-shadow:
+    inset 0 0 0 9999px rgba(8,24,44,.96),
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 0 0 1px rgba(125,211,252,.16)!important;
+}
+.auth-card input::placeholder,
+.login-card input::placeholder,
+.input-wrap input::placeholder{
+  color:rgba(226,244,255,.64)!important;
+  -webkit-text-fill-color:rgba(226,244,255,.64)!important;
+}
+.auth-card input:focus,
+.login-card input:focus,
+.input-wrap input:focus{
+  color:#ffffff!important;
+  -webkit-text-fill-color:#ffffff!important;
+  background:linear-gradient(180deg,rgba(12,39,70,.98),rgba(7,22,42,.98))!important;
+  border-color:rgba(103,232,249,.58)!important;
+  box-shadow:
+    inset 0 0 0 9999px rgba(9,30,55,.98),
+    0 0 0 2px rgba(103,232,249,.22),
+    0 0 34px rgba(34,211,238,.12)!important;
+}
+.auth-card input:-webkit-autofill,
+.auth-card input:-webkit-autofill:hover,
+.auth-card input:-webkit-autofill:focus,
+.auth-card input:-webkit-autofill:active,
+.login-card input:-webkit-autofill,
+.login-card input:-webkit-autofill:hover,
+.login-card input:-webkit-autofill:focus,
+.login-card input:-webkit-autofill:active,
+.input-wrap input:-webkit-autofill,
+.input-wrap input:-webkit-autofill:hover,
+.input-wrap input:-webkit-autofill:focus,
+.input-wrap input:-webkit-autofill:active{
+  -webkit-text-fill-color:#f8fafc!important;
+  color:#f8fafc!important;
+  caret-color:#67e8f9!important;
+  background:#081b31!important;
+  border-color:rgba(125,211,252,.45)!important;
+  -webkit-box-shadow:
+    inset 0 0 0 9999px #081b31,
+    0 0 0 1px rgba(125,211,252,.18)!important;
+  box-shadow:
+    inset 0 0 0 9999px #081b31,
+    0 0 0 1px rgba(125,211,252,.18)!important;
+  transition:background-color 999999s ease-in-out 0s,color 999999s ease-in-out 0s!important;
+}
+.auth-card input:autofill,
+.login-card input:autofill,
+.input-wrap input:autofill{
+  color:#f8fafc!important;
+  -webkit-text-fill-color:#f8fafc!important;
+  background:#081b31!important;
+  box-shadow:
+    inset 0 0 0 9999px #081b31,
+    0 0 0 1px rgba(125,211,252,.18)!important;
+}
+.input-wrap.password-wrap .eye.eye-premium{
+  background:
+    radial-gradient(circle at 50% 22%,rgba(103,232,249,.14),transparent 46%),
+    linear-gradient(180deg,rgba(15,42,68,.96),rgba(5,17,31,.96))!important;
+  color:#dff7ff!important;
+  border-color:rgba(125,211,252,.24)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 0 0 1px rgba(34,211,238,.06)!important;
+}
+.input-wrap.password-wrap .eye.eye-premium:hover{
+  background:
+    radial-gradient(circle at 50% 22%,rgba(103,232,249,.22),transparent 46%),
+    linear-gradient(180deg,rgba(15,56,88,.98),rgba(6,22,40,.98))!important;
+  color:#ffffff!important;
+}
+
+
+/* =========================
+   Etapa 4B.3 • Correção forte do autofill branco
+   Esta camada fica no final do CSS e vence o preenchimento automático do navegador.
+   ========================= */
+
+#email,
+#password,
+input#email,
+input#password,
+input[name="email"],
+input[name="password"],
+input[type="email"],
+input[type="password"]{
+  appearance:none!important;
+  -webkit-appearance:none!important;
+  color:#f8fafc!important;
+  -webkit-text-fill-color:#f8fafc!important;
+  caret-color:#67e8f9!important;
+  background-color:#071b31!important;
+  background-image:linear-gradient(180deg,#0b2541,#061729)!important;
+  border:1px solid rgba(125,211,252,.42)!important;
+  box-shadow:
+    inset 0 0 0 9999px #071b31,
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 0 0 1px rgba(103,232,249,.10)!important;
+  background-clip:padding-box!important;
+  -webkit-background-clip:padding-box!important;
+}
+
+#email::placeholder,
+#password::placeholder{
+  color:rgba(226,244,255,.62)!important;
+  -webkit-text-fill-color:rgba(226,244,255,.62)!important;
+}
+
+#email:focus,
+#password:focus{
+  color:#ffffff!important;
+  -webkit-text-fill-color:#ffffff!important;
+  background-color:#09213b!important;
+  background-image:linear-gradient(180deg,#0d2b4d,#071b31)!important;
+  border-color:rgba(103,232,249,.64)!important;
+  box-shadow:
+    inset 0 0 0 9999px #09213b,
+    0 0 0 2px rgba(103,232,249,.20),
+    0 0 30px rgba(34,211,238,.12)!important;
+}
+
+/* Chrome, Edge e navegadores Android */
+#email:-webkit-autofill,
+#password:-webkit-autofill,
+#email:-webkit-autofill:hover,
+#password:-webkit-autofill:hover,
+#email:-webkit-autofill:focus,
+#password:-webkit-autofill:focus,
+#email:-webkit-autofill:active,
+#password:-webkit-autofill:active{
+  -webkit-text-fill-color:#f8fafc!important;
+  color:#f8fafc!important;
+  caret-color:#67e8f9!important;
+  background-color:#071b31!important;
+  background-image:linear-gradient(180deg,#0b2541,#061729)!important;
+  border-color:rgba(125,211,252,.48)!important;
+  -webkit-box-shadow:
+    0 0 0 1000px #071b31 inset,
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 0 0 1px rgba(103,232,249,.10)!important;
+  box-shadow:
+    0 0 0 1000px #071b31 inset,
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 0 0 1px rgba(103,232,249,.10)!important;
+  transition:
+    background-color 9999999s ease-in-out 0s,
+    background-image 9999999s ease-in-out 0s,
+    color 9999999s ease-in-out 0s!important;
+}
+
+/* Firefox */
+#email:autofill,
+#password:autofill{
+  color:#f8fafc!important;
+  -webkit-text-fill-color:#f8fafc!important;
+  background-color:#071b31!important;
+  background-image:linear-gradient(180deg,#0b2541,#061729)!important;
+  box-shadow:
+    0 0 0 1000px #071b31 inset,
+    0 0 0 1px rgba(103,232,249,.10)!important;
+}
+
+/* Classe aplicada via JavaScript depois do preenchimento automático */
+#email.autofill-fixed,
+#password.autofill-fixed{
+  color:#f8fafc!important;
+  -webkit-text-fill-color:#f8fafc!important;
+  background-color:#071b31!important;
+  background-image:linear-gradient(180deg,#0b2541,#061729)!important;
+  box-shadow:
+    inset 0 0 0 9999px #071b31,
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 0 0 1px rgba(103,232,249,.10)!important;
+}
+
+.input-wrap.password-wrap{
+  background:transparent!important;
+}
+
+.input-wrap.password-wrap .eye.eye-premium{
+  background:
+    radial-gradient(circle at 50% 22%,rgba(103,232,249,.16),transparent 46%),
+    linear-gradient(180deg,rgba(15,42,68,.98),rgba(5,17,31,.98))!important;
+  color:#dff7ff!important;
+  border-color:rgba(125,211,252,.26)!important;
+}
+
+
+/* =========================
+   Etapa 4B.3 • E-mail autofill com espelho visual
+   Corrige definitivamente o campo de e-mail branco quando o navegador preenche sozinho.
+   ========================= */
+.auth-panel .email-wrap{
+  position:relative!important;
+  width:100%!important;
+  height:64px!important;
+  margin-top:10px!important;
+  overflow:hidden!important;
+  border-radius:22px!important;
+  border:1px solid rgba(125,211,252,.42)!important;
+  background:
+    radial-gradient(circle at 18% 0,rgba(103,232,249,.08),transparent 38%),
+    linear-gradient(180deg,#0b2541,#061729)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 0 0 1px rgba(103,232,249,.08)!important;
+}
+
+.auth-panel .email-wrap:focus-within{
+  border-color:rgba(103,232,249,.64)!important;
+  box-shadow:
+    0 0 0 2px rgba(103,232,249,.18),
+    0 0 30px rgba(34,211,238,.10)!important;
+}
+
+.auth-panel .email-wrap input#email{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  margin:0!important;
+  padding:0 22px!important;
+  border:0!important;
+  border-radius:22px!important;
+  outline:none!important;
+  font-size:16px!important;
+  font-weight:800!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:#f8fafc!important;
+  -webkit-text-fill-color:#f8fafc!important;
+  caret-color:#67e8f9!important;
+  z-index:2!important;
+}
+
+.auth-panel .email-wrap input#email:-webkit-autofill,
+.auth-panel .email-wrap input#email:-webkit-autofill:hover,
+.auth-panel .email-wrap input#email:-webkit-autofill:focus,
+.auth-panel .email-wrap input#email:-webkit-autofill:active{
+  -webkit-text-fill-color:#f8fafc!important;
+  color:#f8fafc!important;
+  caret-color:#67e8f9!important;
+  background:transparent!important;
+  -webkit-box-shadow:0 0 0 1000px #071b31 inset!important;
+  box-shadow:0 0 0 1000px #071b31 inset!important;
+  transition:background-color 9999999s ease-in-out 0s,color 9999999s ease-in-out 0s!important;
+}
+
+/* Quando o navegador insiste em pintar branco, escondemos o input real
+   e mostramos o e-mail no espelho escuro. O login continua usando o valor real. */
+.auth-panel .email-wrap.autofill-mirror-on input#email{
+  opacity:0!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+}
+
+.auth-panel .email-wrap .email-mirror{
+  position:absolute!important;
+  inset:0!important;
+  display:flex!important;
+  align-items:center!important;
+  padding:0 22px!important;
+  color:#f8fafc!important;
+  font-size:16px!important;
+  font-weight:800!important;
+  letter-spacing:-.02em!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  pointer-events:none!important;
+  opacity:0!important;
+  z-index:3!important;
+}
+
+.auth-panel .email-wrap.autofill-mirror-on .email-mirror{
+  opacity:1!important;
+}
+
+.auth-panel .email-wrap:not(.autofill-mirror-on) .email-mirror{
+  display:none!important;
+}
+
+.auth-panel .email-wrap input#email::placeholder{
+  color:rgba(226,244,255,.62)!important;
+  -webkit-text-fill-color:rgba(226,244,255,.62)!important;
+}
+
+/* Mantém o campo de senha no mesmo padrão visual do e-mail */
+.auth-panel .input-wrap.password-wrap{
+  height:64px!important;
+  border-radius:22px!important;
+}
+
+.auth-panel .input-wrap.password-wrap .password-input{
+  min-height:64px!important;
+  height:64px!important;
+  border-radius:22px!important;
+  font-size:16px!important;
+  font-weight:800!important;
+}
+
 </style>
 </head>
 <body>
@@ -934,7 +1298,7 @@ input:-webkit-autofill:active{
   <div class="container">
     <div id="offline" class="offline">Você está sem conexão. Algumas funções podem não responder até a internet voltar.</div>
     <div class="topbar"><div class="brand"><div class="logo">💎</div><div><h1>Wealth OS</h1><div class="subtitle">Sistema premium para carteira, ledger, renda passiva, perfil de investidor, alocação inteligente, onboarding e experiência de app real.</div></div></div><div class="chips">
-      <div class="chip premium">Etapa 4A</div>
+      <div class="chip premium">Etapa 4B.3</div>
       <button id="performanceToggleChip" class="chip chip-action" type="button" onclick="togglePerformanceMode()">Modo leve: Auto</button>
       <div id="syncChip" class="chip">Sync: OK</div>
       <div id="ledgerChip" class="chip">Ledger como fonte principal</div>
@@ -967,7 +1331,10 @@ input:-webkit-autofill:active{
           </div>
         </div>
 
-        <input id="email" type="email" placeholder="Seu e-mail" autocomplete="email">
+        <div class="input-wrap email-wrap">
+          <input id="email" type="email" placeholder="Seu e-mail" autocomplete="email" spellcheck="false">
+          <span id="emailMirror" class="email-mirror" aria-hidden="true"></span>
+        </div>
 
         <div class="input-wrap password-wrap">
           <input id="password" class="password-input" type="password" placeholder="Sua senha" autocomplete="current-password">
@@ -1018,7 +1385,7 @@ input:-webkit-autofill:active{
       <div class="card premium-panel" data-screen-block data-screens="app overview settings">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 4A • Acabamento de app real</div>
+            <div class="kicker">Etapa 4B.3 • Acabamento de app real</div>
             <h3>Onboarding, instalação e prontidão do produto</h3>
             <div class="muted">Um app profissional precisa guiar o usuário, funcionar bem no celular e mostrar o próximo passo com clareza.</div>
           </div>
@@ -1068,7 +1435,7 @@ input:-webkit-autofill:active{
       <div class="card premium-panel" data-screen-block data-screens="settings overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 4A • Otimização profissional</div>
+            <div class="kicker">Etapa 4B.3 • Otimização profissional</div>
             <h3>Central de performance e produto</h3>
             <div class="muted">Controle o modo visual do app, reduza travamentos e navegue como produto real por telas separadas.</div>
           </div>
@@ -1126,11 +1493,11 @@ input:-webkit-autofill:active{
 
       <div class="grid grid4" data-screen-block data-screens="overview ledger income"><div class="mini"><div class="label">Compras/entradas no ledger</div><div id="sumEntries" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Vendas/saídas no ledger</div><div id="sumExits" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Taxas + impostos</div><div id="sumCosts" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Renda passiva acumulada</div><div id="sumPassive" class="value small positive">R$ 0,00</div></div></div>
 
-      <div class="card premium-panel" data-screen-block data-screens="overview"><div class="section"><div><div class="kicker">Etapa 4A • Central de inteligência</div><h3>Dashboard premium do investidor</h3><div class="muted">Tela executiva com score visual, prioridades, resumo do mês e próxima ação recomendada.</div></div><span class="badge purple">Premium intelligence</span></div><div class="command-grid"><div class="score-shell"><div><div id="premiumScoreRing" class="score-ring"><div class="score-inner"><div id="premiumScoreNumber" class="score-number">0</div><div class="score-label">score / 100</div></div></div><div id="premiumScoreStatus" class="muted" style="margin-top:14px;line-height:1.45">Aguardando dados do ledger.</div></div></div><div><div class="command-metrics"><div class="command-card"><div class="label">Patrimônio analisado</div><div id="premiumAnalyzedWealth" class="command-headline">R$ 0,00</div><div id="premiumWealthNote" class="muted" style="font-size:12px;margin-top:6px">Ledger profissional</div></div><div class="command-card"><div class="label">Resultado atual</div><div id="premiumResult" class="command-headline">R$ 0,00</div><div id="premiumResultNote" class="muted" style="font-size:12px;margin-top:6px">Rentabilidade agregada</div></div><div class="command-card"><div class="label">Renda no mês</div><div id="premiumMonthlyIncome" class="command-headline">R$ 0,00</div><div id="premiumMonthlyIncomeNote" class="muted" style="font-size:12px;margin-top:6px">Proventos recebidos</div></div></div><div class="micro-grid"><div class="micro"><div class="label">Concentração principal</div><div id="advancedConcentration" class="value small">0%</div><div id="advancedConcentrationNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div><div class="micro"><div class="label">Diversificação</div><div id="advancedDiversification" class="value small">0 classes</div><div id="advancedDiversificationNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div><div class="micro"><div class="label">Renda passiva</div><div id="advancedPassive" class="value small positive">R$ 0,00</div><div id="advancedPassiveNote" class="muted" style="font-size:12px;margin-top:6px">Dividendos, juros e rendimentos.</div></div><div class="micro"><div class="label">Score técnico</div><div id="advancedScore" class="value small">0/100</div><div id="advancedScoreNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div></div></div></div><div class="intelligence-grid"><div class="item"><strong>O que aconteceu este mês</strong><div id="premiumMonthlyBrief" class="priority-stack" style="margin-top:10px">Sem movimentações no mês.</div></div><div class="item"><strong>Prioridades inteligentes</strong><div id="premiumPriorityAlerts" class="priority-stack" style="margin-top:10px">Sem alertas.</div></div><div class="item"><strong>Próxima ação recomendada</strong><div id="premiumPrimaryAction" class="action-hero">Cadastre movimentações no ledger para liberar a inteligência.</div><div id="premiumActionReason" class="muted" style="margin-top:10px;line-height:1.5"></div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Alocação por categoria</strong><div id="advancedAllocation" style="margin-top:10px">Sem dados.</div></div><div class="item"><strong>Alertas inteligentes</strong><div id="advancedAlerts" style="margin-top:10px">Sem alertas.</div></div><div class="item"><strong>Próximo passo sugerido</strong><div id="advancedNextStep" style="margin-top:10px">Cadastre movimentações no ledger para liberar a análise.</div></div></div></div>
+      <div class="card premium-panel" data-screen-block data-screens="overview"><div class="section"><div><div class="kicker">Etapa 4B.3 • Central de inteligência</div><h3>Dashboard premium do investidor</h3><div class="muted">Tela executiva com score visual, prioridades, resumo do mês e próxima ação recomendada.</div></div><span class="badge purple">Premium intelligence</span></div><div class="command-grid"><div class="score-shell"><div><div id="premiumScoreRing" class="score-ring"><div class="score-inner"><div id="premiumScoreNumber" class="score-number">0</div><div class="score-label">score / 100</div></div></div><div id="premiumScoreStatus" class="muted" style="margin-top:14px;line-height:1.45">Aguardando dados do ledger.</div></div></div><div><div class="command-metrics"><div class="command-card"><div class="label">Patrimônio analisado</div><div id="premiumAnalyzedWealth" class="command-headline">R$ 0,00</div><div id="premiumWealthNote" class="muted" style="font-size:12px;margin-top:6px">Ledger profissional</div></div><div class="command-card"><div class="label">Resultado atual</div><div id="premiumResult" class="command-headline">R$ 0,00</div><div id="premiumResultNote" class="muted" style="font-size:12px;margin-top:6px">Rentabilidade agregada</div></div><div class="command-card"><div class="label">Renda no mês</div><div id="premiumMonthlyIncome" class="command-headline">R$ 0,00</div><div id="premiumMonthlyIncomeNote" class="muted" style="font-size:12px;margin-top:6px">Proventos recebidos</div></div></div><div class="micro-grid"><div class="micro"><div class="label">Concentração principal</div><div id="advancedConcentration" class="value small">0%</div><div id="advancedConcentrationNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div><div class="micro"><div class="label">Diversificação</div><div id="advancedDiversification" class="value small">0 classes</div><div id="advancedDiversificationNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div><div class="micro"><div class="label">Renda passiva</div><div id="advancedPassive" class="value small positive">R$ 0,00</div><div id="advancedPassiveNote" class="muted" style="font-size:12px;margin-top:6px">Dividendos, juros e rendimentos.</div></div><div class="micro"><div class="label">Score técnico</div><div id="advancedScore" class="value small">0/100</div><div id="advancedScoreNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div></div></div></div><div class="intelligence-grid"><div class="item"><strong>O que aconteceu este mês</strong><div id="premiumMonthlyBrief" class="priority-stack" style="margin-top:10px">Sem movimentações no mês.</div></div><div class="item"><strong>Prioridades inteligentes</strong><div id="premiumPriorityAlerts" class="priority-stack" style="margin-top:10px">Sem alertas.</div></div><div class="item"><strong>Próxima ação recomendada</strong><div id="premiumPrimaryAction" class="action-hero">Cadastre movimentações no ledger para liberar a inteligência.</div><div id="premiumActionReason" class="muted" style="margin-top:10px;line-height:1.5"></div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Alocação por categoria</strong><div id="advancedAllocation" style="margin-top:10px">Sem dados.</div></div><div class="item"><strong>Alertas inteligentes</strong><div id="advancedAlerts" style="margin-top:10px">Sem alertas.</div></div><div class="item"><strong>Próximo passo sugerido</strong><div id="advancedNextStep" style="margin-top:10px">Cadastre movimentações no ledger para liberar a análise.</div></div></div></div>
 
-      <div class="card" data-screen-block data-screens="income overview"><div class="section"><div><div class="kicker">Etapa 4A • Renda passiva profissional</div><h3>Painel de proventos e renda passiva</h3><div class="muted">Dividendos, juros, rendimentos, yield sobre custo e ranking de ativos pagadores.</div></div><span id="passiveIncomeBadge" class="badge green">Renda: R$ 0,00</span></div><div class="grid grid4"><div class="mini"><div class="label">Renda passiva total</div><div id="passiveTotal" class="value small positive">R$ 0,00</div><div id="passiveTotalNote" class="muted" style="font-size:12px;margin-top:6px">Proventos registrados no ledger.</div></div><div class="mini"><div class="label">Yield sobre custo</div><div id="passiveYieldCost" class="value small">0,0%</div><div class="muted" style="font-size:12px;margin-top:6px">Renda ÷ capital investido.</div></div><div class="mini"><div class="label">Yield sobre patrimônio</div><div id="passiveYieldCurrent" class="value small">0,0%</div><div class="muted" style="font-size:12px;margin-top:6px">Renda ÷ valor atual.</div></div><div class="mini"><div class="label">Maior pagador</div><div id="passiveTopPayer" class="value small">-</div><div id="passiveTopPayerNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando proventos.</div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Ranking de renda por ativo</strong><div id="passiveRanking" style="margin-top:10px">Sem renda passiva registrada.</div></div><div class="item"><strong>Últimos proventos</strong><div id="passiveRecent" style="margin-top:10px">Nenhum provento ainda.</div></div><div class="item"><strong>Plano de renda</strong><div id="passivePlan" style="margin-top:10px">Registre dividendos, juros ou rendimentos para liberar análise de renda.</div><div class="row" style="margin-top:12px"><button class="success" onclick="preparePassiveIncome()">Registrar provento</button></div></div></div></div>
+      <div class="card" data-screen-block data-screens="income overview"><div class="section"><div><div class="kicker">Etapa 4B.3 • Renda passiva profissional</div><h3>Painel de proventos e renda passiva</h3><div class="muted">Dividendos, juros, rendimentos, yield sobre custo e ranking de ativos pagadores.</div></div><span id="passiveIncomeBadge" class="badge green">Renda: R$ 0,00</span></div><div class="grid grid4"><div class="mini"><div class="label">Renda passiva total</div><div id="passiveTotal" class="value small positive">R$ 0,00</div><div id="passiveTotalNote" class="muted" style="font-size:12px;margin-top:6px">Proventos registrados no ledger.</div></div><div class="mini"><div class="label">Yield sobre custo</div><div id="passiveYieldCost" class="value small">0,0%</div><div class="muted" style="font-size:12px;margin-top:6px">Renda ÷ capital investido.</div></div><div class="mini"><div class="label">Yield sobre patrimônio</div><div id="passiveYieldCurrent" class="value small">0,0%</div><div class="muted" style="font-size:12px;margin-top:6px">Renda ÷ valor atual.</div></div><div class="mini"><div class="label">Maior pagador</div><div id="passiveTopPayer" class="value small">-</div><div id="passiveTopPayerNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando proventos.</div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Ranking de renda por ativo</strong><div id="passiveRanking" style="margin-top:10px">Sem renda passiva registrada.</div></div><div class="item"><strong>Últimos proventos</strong><div id="passiveRecent" style="margin-top:10px">Nenhum provento ainda.</div></div><div class="item"><strong>Plano de renda</strong><div id="passivePlan" style="margin-top:10px">Registre dividendos, juros ou rendimentos para liberar análise de renda.</div><div class="row" style="margin-top:12px"><button class="success" onclick="preparePassiveIncome()">Registrar provento</button></div></div></div></div>
 
-      <div class="card" data-screen-block data-screens="income"><div class="section"><div><div class="kicker">Etapa 4A • Relatório mensal</div><h3>Fechamento do mês</h3><div class="muted">Compras, vendas, proventos, custos, fluxo líquido e meta mensal de renda passiva.</div></div><span id="monthlyReportBadge" class="badge purple">Mês atual</span></div><div class="grid grid5"><div class="mini"><div class="label">Renda no mês</div><div id="monthlyPassive" class="value small positive">R$ 0,00</div><div id="monthlyPassiveNote" class="muted" style="font-size:12px;margin-top:6px">Proventos do mês.</div></div><div class="mini"><div class="label">Compras no mês</div><div id="monthlyBuys" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Aportes e entradas.</div></div><div class="mini"><div class="label">Vendas no mês</div><div id="monthlySells" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Saídas do ledger.</div></div><div class="mini"><div class="label">Custos no mês</div><div id="monthlyCosts" class="value small negative">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Taxas e impostos.</div></div><div class="mini"><div class="label">Fluxo líquido</div><div id="monthlyNetFlow" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Entradas − saídas − custos.</div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Meta mensal de renda</strong><div class="fields" style="margin-top:10px"><input id="monthlyIncomeTarget" type="number" min="0" step="any" placeholder="Ex: 100"><button class="gold" onclick="saveMonthlyIncomeTarget()">Salvar meta</button></div><div class="bar" style="margin-top:12px"><div id="monthlyIncomeTargetFill" class="fill" style="width:0%"></div></div><div id="monthlyIncomeTargetText" class="muted" style="margin-top:8px">Defina uma meta mensal.</div></div><div class="item"><strong>Resumo do mês</strong><div id="monthlySummaryText" style="margin-top:10px">Sem movimentações no mês.</div></div><div class="item"><strong>Calendário de proventos</strong><div id="monthlyDividendCalendar" style="margin-top:10px">Nenhum provento no mês atual.</div></div></div><div class="grid grid2" style="margin-top:14px"><div class="item"><strong>Evolução mensal de proventos</strong><svg id="monthlyPassiveChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div><div class="item"><strong>Fluxo mensal de aportes</strong><svg id="monthlyFlowChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div></div></div>
+      <div class="card" data-screen-block data-screens="income"><div class="section"><div><div class="kicker">Etapa 4B.3 • Relatório mensal</div><h3>Fechamento do mês</h3><div class="muted">Compras, vendas, proventos, custos, fluxo líquido e meta mensal de renda passiva.</div></div><span id="monthlyReportBadge" class="badge purple">Mês atual</span></div><div class="grid grid5"><div class="mini"><div class="label">Renda no mês</div><div id="monthlyPassive" class="value small positive">R$ 0,00</div><div id="monthlyPassiveNote" class="muted" style="font-size:12px;margin-top:6px">Proventos do mês.</div></div><div class="mini"><div class="label">Compras no mês</div><div id="monthlyBuys" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Aportes e entradas.</div></div><div class="mini"><div class="label">Vendas no mês</div><div id="monthlySells" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Saídas do ledger.</div></div><div class="mini"><div class="label">Custos no mês</div><div id="monthlyCosts" class="value small negative">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Taxas e impostos.</div></div><div class="mini"><div class="label">Fluxo líquido</div><div id="monthlyNetFlow" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Entradas − saídas − custos.</div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Meta mensal de renda</strong><div class="fields" style="margin-top:10px"><input id="monthlyIncomeTarget" type="number" min="0" step="any" placeholder="Ex: 100"><button class="gold" onclick="saveMonthlyIncomeTarget()">Salvar meta</button></div><div class="bar" style="margin-top:12px"><div id="monthlyIncomeTargetFill" class="fill" style="width:0%"></div></div><div id="monthlyIncomeTargetText" class="muted" style="margin-top:8px">Defina uma meta mensal.</div></div><div class="item"><strong>Resumo do mês</strong><div id="monthlySummaryText" style="margin-top:10px">Sem movimentações no mês.</div></div><div class="item"><strong>Calendário de proventos</strong><div id="monthlyDividendCalendar" style="margin-top:10px">Nenhum provento no mês atual.</div></div></div><div class="grid grid2" style="margin-top:14px"><div class="item"><strong>Evolução mensal de proventos</strong><svg id="monthlyPassiveChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div><div class="item"><strong>Fluxo mensal de aportes</strong><svg id="monthlyFlowChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div></div></div>
 
       
       
@@ -1138,7 +1505,7 @@ input:-webkit-autofill:active{
       <div class="card premium-panel" data-screen-block data-screens="profile overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 4A • Perfil de investidor</div>
+            <div class="kicker">Etapa 4B.3 • Perfil de investidor</div>
             <h3>Carteira recomendada por perfil</h3>
             <div class="muted">Escolha um perfil, aplique a carteira-alvo automaticamente e compare seu momento atual com o modelo recomendado.</div>
           </div>
@@ -1205,7 +1572,7 @@ input:-webkit-autofill:active{
       <div class="card premium-panel" data-screen-block data-screens="allocation overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 4A • Inteligência de alocação</div>
+            <div class="kicker">Etapa 4B.3 • Inteligência de alocação</div>
             <h3>Carteira ideal e próximo aporte</h3>
             <div class="muted">Compare sua carteira atual com a carteira-alvo, identifique concentração e veja quanto aportar em cada categoria.</div>
           </div>
@@ -1277,7 +1644,7 @@ input:-webkit-autofill:active{
       <div class="card premium-panel" data-screen-block data-screens="liberty income projections overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 4A • Independência financeira</div>
+            <div class="kicker">Etapa 4B.3 • Independência financeira</div>
             <h3>Plano para viver de renda</h3>
             <div class="muted">Calcula patrimônio necessário, renda mensal desejada, yield esperado, prazo até a liberdade financeira e marcos de renda.</div>
           </div>
@@ -1374,9 +1741,9 @@ input:-webkit-autofill:active{
       </div>
 
 
-      <div class="card" data-screen-block data-screens="ledger overview"><div class="section"><div><div class="kicker">Etapa 4A • Preços reais do ledger</div><h3>Centro de preços por ativo</h3><div class="muted">Atualize preços reais diretamente no ledger e reduza a dependência do cadastro antigo.</div></div><span id="priceCenterBadge" class="badge purple">0 ativos</span></div><div id="priceCenterBox" class="empty">Sem ativos para atualizar.</div></div>
+      <div class="card" data-screen-block data-screens="ledger overview"><div class="section"><div><div class="kicker">Etapa 4B.3 • Preços reais do ledger</div><h3>Centro de preços por ativo</h3><div class="muted">Atualize preços reais diretamente no ledger e reduza a dependência do cadastro antigo.</div></div><span id="priceCenterBadge" class="badge purple">0 ativos</span></div><div id="priceCenterBox" class="empty">Sem ativos para atualizar.</div></div>
 
-      <div class="card" data-screen-block data-screens="overview ledger"><div class="section"><div><div class="kicker">Etapa 4A • Dashboard otimizado pelo ledger</div><h3>Carteira principal calculada por movimentações</h3><div class="muted">Dashboard avançado: ledger como fonte principal, score, concentração, diversificação e alertas inteligentes.</div></div><span id="movementPositionsBadge" class="badge purple">0 posições</span></div><div id="movementPositionsBox" class="empty">Sem posições calculadas ainda.</div></div>
+      <div class="card" data-screen-block data-screens="overview ledger"><div class="section"><div><div class="kicker">Etapa 4B.3 • Dashboard otimizado pelo ledger</div><h3>Carteira principal calculada por movimentações</h3><div class="muted">Dashboard avançado: ledger como fonte principal, score, concentração, diversificação e alertas inteligentes.</div></div><span id="movementPositionsBadge" class="badge purple">0 posições</span></div><div id="movementPositionsBox" class="empty">Sem posições calculadas ainda.</div></div>
 
       <div class="split grid" data-screen-block data-screens="ledger"><div class="card"><div class="section"><div><div class="kicker">Ledger profissional</div><h3>Registrar movimentação</h3><div class="muted">Compra, venda, dividendo, rendimento, juros, taxa, imposto e transferência com validação financeira.</div></div></div><div class="grid fields"><div><label>Tipo</label><select id="movementType"><option value="buy">Compra</option><option value="sell">Venda</option><option value="dividend">Dividendo</option><option value="interest">Juros</option><option value="yield">Rendimento</option><option value="fee">Taxa</option><option value="tax">Imposto</option><option value="transfer_in">Transferência de entrada</option><option value="transfer_out">Transferência de saída</option><option value="split">Split / desdobramento</option><option value="bonus">Bonificação</option><option value="other">Outro</option></select></div><div><label>Ativo</label><input id="movementAsset" placeholder="Ex: PETR4"></div></div><div class="grid fields"><div><label>Categoria</label><select id="movementCategory"><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select></div><div><label>Data</label><input id="movementDate" type="date"></div></div><div class="grid fields"><div><label>Quantidade</label><input id="movementQuantity" type="number" step="any" min="0" placeholder="0"></div><div><label>Preço unitário</label><input id="movementUnitPrice" type="number" step="any" min="0" placeholder="0"></div></div><div class="grid fields"><div><label>Valor bruto</label><input id="movementGross" type="number" step="any" min="0" placeholder="Auto: quantidade × preço"></div><div><label>Corretora</label><input id="movementBroker" placeholder="Ex: XP, NuInvest"></div></div><div class="grid fields"><div><label>Taxas</label><input id="movementFees" type="number" step="any" min="0" placeholder="0"></div><div><label>Impostos</label><input id="movementTaxes" type="number" step="any" min="0" placeholder="0"></div></div><label>Observações</label><textarea id="movementNotes" placeholder="Ex: compra mensal, dividendo recebido..."></textarea><div id="movementPreview" class="item" style="margin-top:12px;border-color:rgba(56,189,248,.18)"><strong>Prévia da movimentação</strong><br><span class="muted">Preencha quantidade e preço para calcular automaticamente.</span></div><div id="movementEditBanner" class="status status-info" style="display:none"></div><div class="row" style="margin-top:12px"><button id="saveMovementBtn" onclick="saveMovement()">Salvar movimentação validada</button><button id="cancelMovementEditBtn" class="secondary" style="display:none" onclick="cancelMovementEdit()">Cancelar edição</button></div><div id="movementStatus" class="status"></div></div>
       <div class="card"><div class="section"><div><div class="kicker">Extrato editável</div><h3>Controle financeiro de movimentações</h3><div class="muted">Filtre, edite, exclua e confira a consistência financeira dos lançamentos.</div></div><span id="movementFilteredCount" class="badge purple">0 registro(s)</span></div><div class="grid fields"><select id="movementFilterType" onchange="renderMovements()"><option value="">Todos os tipos</option><option value="buy">Compra</option><option value="sell">Venda</option><option value="dividend">Dividendo</option><option value="interest">Juros</option><option value="yield">Rendimento</option><option value="fee">Taxa</option><option value="tax">Imposto</option><option value="transfer_in">Entrada</option><option value="transfer_out">Saída</option><option value="split">Split</option><option value="bonus">Bonificação</option><option value="other">Outro</option></select><input id="movementFilterAsset" placeholder="Filtrar por ativo" oninput="renderMovements()"></div><div class="row" style="margin-top:10px"><select id="movementFilterCategory" onchange="renderMovements()" style="width:auto;min-width:180px"><option value="">Todas categorias</option><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select><button class="secondary" onclick="clearMovementFilters()">Limpar filtros</button></div><div id="movementsList" class="empty" style="margin-top:12px">Sem movimentações ainda.</div></div></div>
@@ -1388,7 +1755,7 @@ input:-webkit-autofill:active{
       <div class="card premium-panel" data-screen-block data-screens="projections goals overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 4A • Projeções avançadas</div>
+            <div class="kicker">Etapa 4B.3 • Projeções avançadas</div>
             <h3>Simulador patrimonial inteligente</h3>
             <div class="muted">Cenários conservador, moderado e agressivo com aporte mensal, meta e prazo estimado.</div>
           </div>
@@ -1473,7 +1840,7 @@ input:-webkit-autofill:active{
       <div class="card premium-panel" data-screen-block data-screens="projections goals overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 4A • Plano de ação patrimonial</div>
+            <div class="kicker">Etapa 4B.3 • Plano de ação patrimonial</div>
             <h3>Plano inteligente para chegar na meta</h3>
             <div class="muted">Transforma a projeção em ações: aporte, rentabilidade, prazo, gargalo principal e marcos patrimoniais.</div>
           </div>
@@ -1699,7 +2066,7 @@ input:-webkit-autofill:active{
       if(title)title.textContent=label;
       if(badge)badge.textContent=light?'Performance ativa':'Visual premium';
       if(note)note.textContent=light
-        ? 'Modo leve ativo: menos blur, menos sombra, menos animação e navegação mais rápida.'
+        ? 'Modo leve ativo: menos blur, menos sombra, menos animação, gráficos compactos e navegação mais rápida.'
         : 'Visual premium ativo: aparência mais forte, com efeitos visuais completos.';
       if(list){
         const cores=navigator.hardwareConcurrency||'N/D';
@@ -1708,7 +2075,7 @@ input:-webkit-autofill:active{
         list.innerHTML=[
           `<div class="pro-mode-row ${light?'good':'warn'}"><strong>${light?'Modo leve ativo':'Visual premium ativo'}</strong><br>${light?'Melhor para evitar travamentos.':'Mais bonito, porém pode pesar em máquina fraca.'}</div>`,
           `<div class="pro-mode-row"><strong>Dispositivo</strong><br>${cores} núcleo(s) • memória estimada ${mem} • layout ${screen}</div>`,
-          `<div class="pro-mode-row good"><strong>Navegação por telas</strong><br>As abas carregam apenas o necessário visualmente, reduzindo bagunça e melhorando uso no celular.</div>`,
+          `<div class="pro-mode-row good"><strong>Navegação por telas</strong><br>As abas carregam em blocos, reduzindo travamentos durante navegação e atualização.</div>`,
           `<div class="pro-mode-row warn"><strong>Dica de performance</strong><br>Evite usar a aba Tudo enquanto estiver testando em notebook fraco ou celular.</div>`
         ].join('');
       }
@@ -1736,13 +2103,13 @@ input:-webkit-autofill:active{
         const [title,text]=screenTexts[wanted];
         intro.innerHTML=`<strong>${title}</strong> — ${text}`;
       }
-      try{localStorage.setItem(navKey(),wanted)}catch{};updatePerformanceUI();updateAppReadiness();
+      try{localStorage.setItem(navKey(),wanted)}catch{};updatePerformanceUI();updateAppReadiness();scheduleScreenRender(wanted);
       if(smooth){const behavior=document.body.classList.contains('performance-mode')?'auto':'smooth';window.scrollTo({top:0,behavior});}
     }
     function restoreAppScreen(){let saved='overview';try{saved=localStorage.getItem(navKey())||'overview'}catch{};setTimeout(()=>showAppScreen(saved,false),0)}
 
     function showApp(u){userId=u.id;userEmail=u.email||'';$('authSection').style.display='none';$('appSection').style.display='grid';$('userEmail').textContent=userEmail;$('greeting').textContent='Olá, '+(userEmail.split('@')[0]||'investidor')+' 👋';balanceVisible=(localStorage.getItem(balKey())??'true')==='true';restoreAppScreen();setTimeout(updateAppReadiness,120)}
-    function showLogin(){userId=null;$('authSection').style.display='grid';$('appSection').style.display='none';setTimeout(updateAppReadiness,120)}
+    function showLogin(){setTimeout(startLoginAutofillGuard,60);setTimeout(startLoginAutofillGuard,600);userId=null;$('authSection').style.display='grid';$('appSection').style.display='none';setTimeout(updateAppReadiness,120)}
     window.toggleBalance=()=>{balanceVisible=!balanceVisible;localStorage.setItem(balKey(),String(balanceVisible));renderDashboard()}
     function consolidate(list){const m=new Map();list.forEach(i=>{const a=String(i.asset||'').trim().toUpperCase(),c=String(i.category||'Outros').trim()||'Outros',k=a+'__'+c,q=Number(i.quantity||0),amt=Number(i.amount||0),cur=q*Number(i.current_price||0);if(!m.has(k))m.set(k,{id:i.id,asset:a,category:c,quantity:0,amount:0,current_value:0,sourceIds:[],sourceItems:[],created_at:i.created_at});const g=m.get(k);g.quantity+=q;g.amount+=amt;g.current_value+=cur;g.sourceIds.push(i.id);g.sourceItems.push(i);if(new Date(i.created_at||0)>new Date(g.created_at||0))g.created_at=i.created_at});return [...m.values()].map(g=>({...g,avg_price:g.quantity?g.amount/g.quantity:0,current_price:g.quantity?g.current_value/g.quantity:0,sourceCount:g.sourceItems.length,isGrouped:g.sourceItems.length>1})).sort((a,b)=>new Date(b.created_at||0)-new Date(a.created_at||0))}
     function priceKey(asset){return `wealth_os_market_price_${userId}_${String(asset||'').trim().toUpperCase()}`}
@@ -2497,7 +2864,113 @@ input:-webkit-autofill:active{
     }
     window.clearLedgerPrice=(asset)=>{localStorage.removeItem(priceKey(asset));renderDashboard();renderAssets();renderPositions();renderPriceCenter();toast('Preço salvo de '+asset+' removido. O app volta a usar cadastro atual ou custo médio.','info')}
     
-    function renderDashboard(){const t=mainTotals(),list=t.list,inv=t.inv,cur=t.cur,pl=t.pl,r=t.ret,w=list.filter(i=>Number(i.current_value||0)-Number(i.amount||0)+Number(i.passive_income||0)>0).length,l=list.filter(i=>Number(i.current_value||0)-Number(i.amount||0)+Number(i.passive_income||0)<0).length;$('heroValue').textContent=balanceVisible?money(cur):'R$ ••••••••';$('investedValue').textContent=balanceVisible?money(inv):'R$ ••••••••';$('currentValue').textContent=balanceVisible?money(cur):'R$ ••••••••';$('pnlValue').textContent=balanceVisible?pnl(pl):'R$ ••••••••';$('pnlValue').className='value '+cls(pl);$('returnPct').textContent=pct(r);$('returnPct').className='value small '+cls(r);$('winners').textContent=w;$('losers').textContent=l;$('positionsCount').textContent=list.length;$('walletBadge').textContent=t.ledger?(pl>0?'Ledger no verde':pl<0?'Ledger em retração':'Ledger neutro'):(pl>0?'Carteira no verde':pl<0?'Carteira em retração':'Carteira neutra');$('ledgerBadge').textContent=t.ledger?'Dashboard: Ledger profissional':'Dashboard: Cadastro atual';const biggest=[...list].sort((a,b)=>Number(b.current_value||0)-Number(a.current_value||0))[0];$('quickBiggest').textContent=biggest?biggest.asset:'-';renderGoal(cur);loadProjectionSettings();loadFreedomSettings();loadAllocationSettings();loadInvestorProfileSettings();renderProjectionEngine();renderWealthActionPlan();renderFinancialFreedom();renderAllocationIntelligence();renderInvestorProfile();renderPremiumCommandCenter(inv,cur,pl);renderAdvancedDashboard(inv,cur,pl);renderPassiveIncomeDashboard(inv,cur);renderMonthlyReport();renderPriceCenter();renderInsights(inv,cur,pl);renderLast();updateAppReadiness()}
+
+    /* =========================
+       Etapa 4B.3 • Motor de renderização estável
+       ========================= */
+    let dashRenderToken=0;
+    function idleTask(fn,delay=0){
+      const run=()=>{try{fn()}catch(e){console.warn('Wealth OS render:',e)}};
+      if('requestIdleCallback' in window) return requestIdleCallback(run,{timeout:900});
+      return setTimeout(run,delay);
+    }
+    function chartPointLimit(){
+      if(document.body.classList.contains('performance-mode'))return 22;
+      if(window.innerWidth<760)return 24;
+      return 32;
+    }
+    function movementListLimit(){
+      if(document.body.classList.contains('performance-mode'))return 20;
+      if(window.innerWidth<760)return 18;
+      return 34;
+    }
+    function renderDashboardModules(inv,cur,pl){
+      const token=++dashRenderToken;
+      const alive=()=>token===dashRenderToken;
+      // Parte essencial instantânea.
+      renderGoal(cur);
+      renderLast();
+      updateAppReadiness();
+
+      // Parte pesada em blocos para evitar travamento visual.
+      idleTask(()=>{if(!alive())return;
+        loadProjectionSettings();
+        loadFreedomSettings();
+        loadAllocationSettings();
+        loadInvestorProfileSettings();
+      },20);
+
+      idleTask(()=>{if(!alive())return;
+        renderPremiumCommandCenter(inv,cur,pl);
+        renderAdvancedDashboard(inv,cur,pl);
+        renderInsights(inv,cur,pl);
+      },60);
+
+      idleTask(()=>{if(!alive())return;
+        renderPassiveIncomeDashboard(inv,cur);
+        renderMonthlyReport();
+        renderPriceCenter();
+      },100);
+
+      idleTask(()=>{if(!alive())return;
+        renderProjectionEngine();
+        renderWealthActionPlan();
+        renderFinancialFreedom();
+      },140);
+
+      idleTask(()=>{if(!alive())return;
+        renderAllocationIntelligence();
+        renderInvestorProfile();
+      },180);
+    }
+    function debounce4B(fn,ms=180){
+      let t;
+      return function(...args){
+        clearTimeout(t);
+        t=setTimeout(()=>fn.apply(this,args),ms);
+      }
+    }
+    function setup4BInputDebounce(){
+      const bind=(id,event,fn,ms=180)=>{
+        const el=$(id);
+        if(!el)return;
+        el.removeAttribute('oninput');
+        el.removeAttribute('onchange');
+        el.addEventListener(event,debounce4B(fn,ms));
+      };
+
+      bind('searchInput','input',renderAssets,160);
+      bind('filterCategory','change',renderAssets,80);
+
+      bind('movementFilterAsset','input',renderMovements,160);
+      bind('movementFilterType','change',renderMovements,80);
+      bind('movementFilterCategory','change',renderMovements,80);
+
+      ['allocTargetAcoes','allocTargetFiis','allocTargetRendaFixa','allocTargetEtf','allocTargetInternacional','allocTargetCripto','allocTargetOutros','allocationNextContribution']
+        .forEach(id=>bind(id,'input',renderAllocationIntelligence,220));
+
+      ['projectionYears','projectionConservativeRate','projectionModerateRate','projectionAggressiveRate']
+        .forEach(id=>bind(id,'input',()=>{renderProjectionEngine();renderWealthActionPlan()},220));
+
+      ['freedomMonthlyIncome','freedomYield','freedomSafetyMargin','freedomReinvest']
+        .forEach(id=>bind(id,'input',renderFinancialFreedom,220));
+    }
+    function scheduleScreenRender(screen){
+      idleTask(()=>{
+        const t=mainTotals(),inv=t.inv,cur=t.cur,pl=t.pl;
+        if(screen==='overview'){renderPremiumCommandCenter(inv,cur,pl);renderAdvancedDashboard(inv,cur,pl);renderInsights(inv,cur,pl);}
+        if(screen==='ledger'){renderSummary();renderMovements();renderPositions();renderAssets();renderPriceCenter();}
+        if(screen==='income'){renderPassiveIncomeDashboard(inv,cur);renderMonthlyReport();}
+        if(screen==='history'){renderSnapshots();renderCapitalChart();}
+        if(screen==='goals'){renderGoal(cur);renderFinancialFreedom();}
+        if(screen==='projection'){renderProjectionEngine();renderWealthActionPlan();}
+        if(screen==='allocation'){renderAllocationIntelligence();}
+        if(screen==='profile'){renderInvestorProfile();}
+        if(screen==='settings'){updatePerformanceUI();updateAppReadiness();}
+      },50);
+    }
+
+    function renderDashboard(){const t=mainTotals(),list=t.list,inv=t.inv,cur=t.cur,pl=t.pl,r=t.ret,w=list.filter(i=>Number(i.current_value||0)-Number(i.amount||0)+Number(i.passive_income||0)>0).length,l=list.filter(i=>Number(i.current_value||0)-Number(i.amount||0)+Number(i.passive_income||0)<0).length;$('heroValue').textContent=balanceVisible?money(cur):'R$ ••••••••';$('investedValue').textContent=balanceVisible?money(inv):'R$ ••••••••';$('currentValue').textContent=balanceVisible?money(cur):'R$ ••••••••';$('pnlValue').textContent=balanceVisible?pnl(pl):'R$ ••••••••';$('pnlValue').className='value '+cls(pl);$('returnPct').textContent=pct(r);$('returnPct').className='value small '+cls(r);$('winners').textContent=w;$('losers').textContent=l;$('positionsCount').textContent=list.length;$('walletBadge').textContent=t.ledger?(pl>0?'Ledger no verde':pl<0?'Ledger em retração':'Ledger neutro'):(pl>0?'Carteira no verde':pl<0?'Carteira em retração':'Carteira neutra');$('ledgerBadge').textContent=t.ledger?'Dashboard: Ledger profissional':'Dashboard: Cadastro atual';const biggest=[...list].sort((a,b)=>Number(b.current_value||0)-Number(a.current_value||0))[0];$('quickBiggest').textContent=biggest?biggest.asset:'-';renderDashboardModules(inv,cur,pl)}
     function renderAssets(){const source=mainAssets(),s=($('searchInput')?.value||'').trim().toUpperCase(),c=$('filterCategory')?.value||'';let list=[...source];if(s)list=list.filter(i=>String(i.asset||'').includes(s));if(c)list=list.filter(i=>i.category===c);if(!list.length){$('assetsList').className='empty';$('assetsList').innerHTML='Sem investimentos.';return}$('assetsList').className='';const total=list.reduce((a,i)=>a+Number(i.current_value||0),0);$('assetsList').innerHTML=list.map(i=>{const cur=Number(i.current_value||0),inv=Number(i.amount||0),pass=Number(i.passive_income||0),pl=cur-inv+pass,ret=inv?pl/inv*100:0,share=total?cur/total*100:0,ledger=!!i.ledger;const actions=ledger?`<button onclick="refreshLedgerPrice('${esc(i.asset)}',this)">Atualizar preço</button>${i.oldId?`<button class="secondary" onclick="refreshSingle('${String(i.oldId)}',this)">Sync cadastro</button>`:`<button class="secondary" onclick="prefillInvestmentFromLedger('${esc(i.asset)}','${esc(i.category)}','${Number(i.quantity||0)}','${Number(i.avg_price||0)}','${Number(i.current_price||0)}')">Criar preço</button>`}`:`<button onclick="refreshSingle('${String(i.id)}',this)">Atualizar</button><button class="danger" onclick="openDeleteModal('${String(i.id)}')">Excluir</button>`;return `<div class="item asset"><div><div class="asset-title">${esc(i.asset)} • ${esc(i.category)} ${ledger?'<span class="badge purple">Ledger</span>':''}</div><div class="asset-meta">Qtd: ${Number(i.quantity||0)} • PM: ${money(i.avg_price)} • Atual: ${money(i.current_price)}<br>${share.toFixed(1)}% da carteira • ${ret.toFixed(1)}% de rentabilidade${ledger?`<br>Fonte do preço: ${esc(i.priceSource||'-')} • Renda: ${money(pass)}`:''}</div><div class="bar"><div class="fill" style="width:${Math.min(share,100)}%"></div></div>${i.isGrouped?`<span class="badge">${i.sourceCount} registros consolidados</span>`:''}<div class="row" style="margin-top:10px">${actions}</div></div><div class="asset-right"><div>${money(cur)}</div><div class="${cls(pl)}">${pnl(pl)}<br><span style="font-size:13px">${pct(ret)}</span></div></div></div>`}).join('')}
     window.saveInvestment=async()=>{if(!requireOnline())return;const asset=$('asset').value.trim().toUpperCase(),category=$('category').value,q=Number($('quantity').value),avg=Number($('avgPrice').value),cur=Number($('currentPrice').value);if(!asset||!category||q<=0||avg<=0||cur<=0){status($('saveStatus'),'Preencha ativo, categoria, quantidade, preço médio e preço atual.','error');return}btn($('saveInvestBtn'),true,'Salvando...');try{const payload={user_id:userId,asset,category,amount:q*avg,quantity:q,avg_price:avg,current_price:cur};const {data,error}=await supabase.from('investments').insert([payload]).select().single();if(error)throw error;try{await supabase.from('investment_history').insert([{user_id:userId,investment_id:data.id,action:'create',asset,category,amount:payload.amount,quantity:q,avg_price:avg,current_price:cur}])}catch{}status($('saveStatus'),asset+' salvo com sucesso.','success');['asset','category','quantity','avgPrice','currentPrice'].forEach(id=>$(id).value='');await refreshEverything()}catch(e){status($('saveStatus'),e.message||'Erro ao salvar.','error')}finally{btn($('saveInvestBtn'),false)}}
     window.fetchSinglePrice=async()=>{const asset=$('asset').value.trim().toUpperCase();if(!asset){status($('saveStatus'),'Digite o ativo primeiro.','error');return}btn($('fetchPriceBtn'),true,'Buscando...');try{const {data,error}=await supabase.functions.invoke('quick-worker',{body:{ticker:asset}});if(error)throw error;const price=data?.results?.[0]?.regularMarketPrice;if(!price)throw new Error('Preço não encontrado.');$('currentPrice').value=Number(price);status($('saveStatus'),'Preço carregado.','success')}catch(e){status($('saveStatus'),e.message||'Erro ao buscar preço.','error')}finally{btn($('fetchPriceBtn'),false)}}
@@ -2576,7 +3049,7 @@ input:-webkit-autofill:active{
     function renderSummary(){const s=summary||fallbackSummary();$('quickMovements').textContent=Number(s.total_movements||0);$('quickPassive').textContent=money(s.total_passive_income||0);$('sumEntries').textContent=money(s.total_entries||0);$('sumExits').textContent=money(s.total_exits||0);$('sumCosts').textContent=money(Number(s.total_fees||0)+Number(s.total_taxes||0));$('sumPassive').textContent=money(s.total_passive_income||0);$('ledgerBadge').textContent=Number(s.total_movements||0)?`Ledger: ${s.total_movements} movimentação(ões)`:'Ledger aguardando dados'}
     function filteredMovements(){const t=$('movementFilterType')?.value||'',asset=($('movementFilterAsset')?.value||'').trim().toUpperCase(),cat=$('movementFilterCategory')?.value||'';return movements.filter(m=>(!t||m.movement_type===t)&&(!asset||String(m.asset||'').toUpperCase().includes(asset))&&(!cat||m.category===cat))}
     window.clearMovementFilters=()=>{$('movementFilterType').value='';$('movementFilterAsset').value='';$('movementFilterCategory').value='';renderMovements()}
-    function renderMovements(){const list=filteredMovements();if($('movementFilteredCount'))$('movementFilteredCount').textContent=list.length+' registro(s)';if(!movements.length){$('movementsList').className='empty';$('movementsList').innerHTML='Sem movimentações ainda.';return}if(!list.length){$('movementsList').className='empty';$('movementsList').innerHTML='Nenhum registro encontrado com esses filtros.';return}$('movementsList').className='';$('movementsList').innerHTML=list.slice(0,50).map(m=>{const val=moveValue(m),pos=['sell','dividend','interest','yield','transfer_out'].includes(m.movement_type),passive=['dividend','interest','yield'].includes(m.movement_type);return`<div class="item" style="margin-top:10px"><div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap"><div><span class="badge ${passive?'green':'purple'}">${moveLabel(m.movement_type)}</span><strong style="display:block;margin-top:8px">${esc(m.asset)} • ${esc(m.category||'Outros')}</strong><span class="muted">${m.movement_date?new Date(m.movement_date+'T00:00:00').toLocaleDateString('pt-BR'):'-'}</span><br>Qtd: ${Number(m.quantity||0)} • Preço: ${money(m.unit_price||0)}<br>Valor bruto: ${money(m.gross_amount||0)}${movementIntegrityHtml(m)}<br>Taxas: ${money(m.fees||0)} • Impostos: ${money(m.taxes||0)}${m.broker?'<br>Corretora: '+esc(m.broker):''}${m.notes?'<br><span class="muted">'+esc(m.notes)+'</span>':''}</div><div class="${pos?'positive':'negative'}" style="font-weight:900;text-align:right;min-width:120px">${pos?'+':'-'} ${money(Math.abs(val))}</div></div><div class="row" style="margin-top:12px"><button class="secondary" onclick="editMovement('${String(m.id)}')">Editar</button><button class="danger" onclick="openDeleteMovementModal('${String(m.id)}')">Excluir</button></div></div>`}).join('')}
+    function renderMovements(){const list=filteredMovements();if($('movementFilteredCount'))$('movementFilteredCount').textContent=list.length+' registro(s)';if(!movements.length){$('movementsList').className='empty';$('movementsList').innerHTML='Sem movimentações ainda.';return}if(!list.length){$('movementsList').className='empty';$('movementsList').innerHTML='Nenhum registro encontrado com esses filtros.';return}$('movementsList').className='';$('movementsList').innerHTML=list.slice(0,movementListLimit()).map(m=>{const val=moveValue(m),pos=['sell','dividend','interest','yield','transfer_out'].includes(m.movement_type),passive=['dividend','interest','yield'].includes(m.movement_type);return`<div class="item" style="margin-top:10px"><div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap"><div><span class="badge ${passive?'green':'purple'}">${moveLabel(m.movement_type)}</span><strong style="display:block;margin-top:8px">${esc(m.asset)} • ${esc(m.category||'Outros')}</strong><span class="muted">${m.movement_date?new Date(m.movement_date+'T00:00:00').toLocaleDateString('pt-BR'):'-'}</span><br>Qtd: ${Number(m.quantity||0)} • Preço: ${money(m.unit_price||0)}<br>Valor bruto: ${money(m.gross_amount||0)}${movementIntegrityHtml(m)}<br>Taxas: ${money(m.fees||0)} • Impostos: ${money(m.taxes||0)}${m.broker?'<br>Corretora: '+esc(m.broker):''}${m.notes?'<br><span class="muted">'+esc(m.notes)+'</span>':''}</div><div class="${pos?'positive':'negative'}" style="font-weight:900;text-align:right;min-width:120px">${pos?'+':'-'} ${money(Math.abs(val))}</div></div><div class="row" style="margin-top:12px"><button class="secondary" onclick="editMovement('${String(m.id)}')">Editar</button><button class="danger" onclick="openDeleteMovementModal('${String(m.id)}')">Excluir</button></div></div>`}).join('')}
     
     function renderPositions(){const active=ledgerAssets();$('movementPositionsBadge').textContent=active.length+' posição(ões)';if(!active.length){$('movementPositionsBox').className='empty';$('movementPositionsBox').innerHTML='Sem posições calculadas ainda.';return}$('movementPositionsBox').className='';$('movementPositionsBox').innerHTML=active.map(p=>{const qty=Number(p.quantity||0),avg=Number(p.avg_price||0),base=Number(p.amount||0),cur=Number(p.current_value||0),pl=cur-base+Number(p.passive_income||0),ret=base?pl/base*100:0;return`<div class="item asset"><div><div class="asset-title">${esc(p.asset)} • ${esc(p.category||'Outros')}</div><div class="asset-meta">Quantidade atual: ${qty}<br>Preço médio calculado: ${money(avg)}<br>Preço atual usado: ${money(p.current_price)} • ${esc(p.priceSource)}<br>Valor atual estimado: ${money(cur)}<br>Último movimento: ${p.last_movement_date?new Date(p.last_movement_date+'T00:00:00').toLocaleDateString('pt-BR'):'-'}</div><span class="badge purple">${Number(p.total_movements||0)} movimento(s)</span></div><div class="asset-right"><div>${money(cur)}</div><div class="${cls(pl)}">${pnl(pl)} • ${pct(ret)}</div><div class="positive" style="font-size:13px">Renda: ${money(p.passive_income||0)}</div><div class="neutral" style="font-size:13px">Vendas: ${money(p.total_sell_value||0)}</div></div></div>`}).join('')}
     
@@ -2707,17 +3180,66 @@ input:-webkit-autofill:active{
     window.closeResetSnapshotsModal=()=>{$('resetSnapshotsModal').classList.remove('show')}
     window.confirmResetSnapshots=async()=>{if(!requireOnline('Sem internet para resetar histórico.'))return;btn($('confirmResetSnapshotsBtn'),true,'Resetando...');btn($('resetSnapshotsBtn'),true,'Resetando...');try{const{error}=await supabase.from('portfolio_snapshots').delete().eq('user_id',userId);if(error)throw error;localStorage.removeItem(fpKey());localStorage.removeItem(fpKey()+'_time');localStorage.removeItem(fpKey()+'_value');snaps=[];renderSnapshots();status($('snapshotStatus'),'Histórico de snapshots resetado. Agora clique em Salvar snapshot agora para criar o primeiro ponto limpo.','success');toast('Histórico de snapshots resetado.','success');closeResetSnapshotsModal()}catch(e){status($('snapshotStatus'),e.message||'Erro ao resetar histórico.','error');toast(e.message||'Erro ao resetar histórico.','error')}finally{btn($('confirmResetSnapshotsBtn'),false);btn($('resetSnapshotsBtn'),false)}}
 
-    async function loadSnapshots(){const{data,error}=await supabase.from('portfolio_snapshots').select('*').eq('user_id',userId).order('created_at',{ascending:true}).limit(500);snaps=error?[]:(data||[]);renderSnapshots()}
-    function renderSnapshots(){if(!snaps.length){$('quickSnapshots').textContent='0';$('snapshotBadge').textContent='0 snapshots';$('snapLatest').textContent=money(0);$('snapHighest').textContent=money(0);$('snapVar').textContent=money(0);$('snapVar').className='value small neutral';drawChart($('historyChart'),[],{});return}const ordered=[...snaps].sort((a,b)=>new Date(a.created_at||0)-new Date(b.created_at||0)),first=ordered[0],last=ordered.at(-1),high=ordered.reduce((best,i)=>Number(i.total_current||0)>Number(best.total_current||0)?i:best,ordered[0]),variation=Number(last.total_current||0)-Number(first.total_current||0);$('quickSnapshots').textContent=ordered.length;$('snapshotBadge').textContent=ordered.length>36?ordered.length+' snapshots • renderização otimizada':ordered.length+' snapshots';$('snapLatest').textContent=money(last.total_current||0);$('snapHighest').textContent=money(high.total_current||0);$('snapVar').textContent=pnl(variation);$('snapVar').className='value small '+cls(variation);drawChart($('historyChart'),ordered.map(i=>Number(i.total_current||0)),{labels:ordered.map(i=>new Date(i.created_at||Date.now()).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})),goal:Number(goal.targetValue||0),maxPoints:36})}
+    async function loadSnapshots(){const{data,error}=await supabase.from('portfolio_snapshots').select('*').eq('user_id',userId).order('created_at',{ascending:true}).limit(180);snaps=error?[]:(data||[]);renderSnapshots()}
+    function renderSnapshots(){if(!snaps.length){$('quickSnapshots').textContent='0';$('snapshotBadge').textContent='0 snapshots';$('snapLatest').textContent=money(0);$('snapHighest').textContent=money(0);$('snapVar').textContent=money(0);$('snapVar').className='value small neutral';drawChart($('historyChart'),[],{});return}const ordered=[...snaps].sort((a,b)=>new Date(a.created_at||0)-new Date(b.created_at||0)),first=ordered[0],last=ordered.at(-1),high=ordered.reduce((best,i)=>Number(i.total_current||0)>Number(best.total_current||0)?i:best,ordered[0]),variation=Number(last.total_current||0)-Number(first.total_current||0);$('quickSnapshots').textContent=ordered.length;$('snapshotBadge').textContent=ordered.length>36?ordered.length+' snapshots • renderização otimizada':ordered.length+' snapshots';$('snapLatest').textContent=money(last.total_current||0);$('snapHighest').textContent=money(high.total_current||0);$('snapVar').textContent=pnl(variation);$('snapVar').className='value small '+cls(variation);drawChart($('historyChart'),ordered.map(i=>Number(i.total_current||0)),{labels:ordered.map(i=>new Date(i.created_at||Date.now()).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})),goal:Number(goal.targetValue||0),maxPoints:chartPointLimit()})}
     function compactSeries(values,labels=[],maxPoints=42){if(values.length<=maxPoints)return{values,labels};const idxs=[];const step=(values.length-1)/(maxPoints-1);for(let i=0;i<maxPoints;i++)idxs.push(Math.round(i*step));idxs[0]=0;idxs[idxs.length-1]=values.length-1;const unique=[...new Set(idxs)].sort((a,b)=>a-b);return{values:unique.map(i=>values[i]),labels:unique.map(i=>labels[i]||'')}}
-    function drawChart(svg,rawValues,opt={}){if(!rawValues.length){svg.innerHTML='<text x="50%" y="50%" text-anchor="middle" fill="#94a3b8" font-size="18">Sem dados</text>';return}const packed=compactSeries(rawValues,opt.labels||[],opt.maxPoints||44),values=packed.values,labels=packed.labels;const w=1000,h=320,pt=28,pb=46,pl=54,pr=26,extra=opt.goal?[opt.goal]:[],min0=Math.min(...values,...extra),max0=Math.max(...values,...extra),pad=Math.max((max0-min0)*.18,1);let min=min0-pad,max=max0+pad;if(max===min){min-=1;max+=1}const range=max-min,dw=w-pl-pr,dh=h-pt-pb,step=values.length===1?0:dw/(values.length-1),pts=values.map((v,i)=>({x:pl+i*step,y:pt+(dh-((v-min)/range)*dh),v})),path=pts.map((p,i)=>(i?'L':'M')+' '+p.x+' '+p.y).join(' '),area=path+` L ${pts.at(-1).x} ${h-pb} L ${pts[0].x} ${h-pb} Z`,gid='lg_'+(svg.id||'chart'),fid='fg_'+(svg.id||'chart'),labelEvery=Math.max(1,Math.ceil(pts.length/8)),dotEvery=Math.max(1,Math.ceil(pts.length/28));let goal='';if(opt.goal){const y=pt+(dh-((opt.goal-min)/range)*dh);goal=`<line x1="${pl}" y1="${y}" x2="${w-pr}" y2="${y}" stroke="#facc15" stroke-width="3" stroke-dasharray="12 8"/><text x="${w-pr}" y="${Math.max(y-10,16)}" text-anchor="end" fill="#fde68a" font-size="13">Meta ${money(opt.goal)}</text>`}svg.innerHTML=`<defs><linearGradient id="${gid}" x1="0" x2="1"><stop offset="0%" stop-color="#22d3ee"/><stop offset="100%" stop-color="#0ea5e9"/></linearGradient><linearGradient id="${fid}" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#22d3ee" stop-opacity=".32"/><stop offset="100%" stop-color="#22d3ee" stop-opacity=".03"/></linearGradient></defs>${[0,1,2,3,4].map(i=>{const y=pt+dh-(dh/4*i),v=min+range/4*i;return`<line x1="${pl}" y1="${y}" x2="${w-pr}" y2="${y}" stroke="rgba(255,255,255,.06)"/><text x="${pl-10}" y="${y+4}" text-anchor="end" fill="#8fa3c7" font-size="11">${money(v)}</text>`}).join('')}${goal}<path d="${area}" fill="url(#${fid})"/><path d="${path}" fill="none" stroke="url(#${gid})" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>${pts.map((p,i)=>{const showDot=i%dotEvery===0||i===pts.length-1,showLabel=i%labelEvery===0||i===pts.length-1;return`${showDot?`<circle cx="${p.x}" cy="${p.y}" r="4.5" fill="#f8fafc"><title>${money(p.v)}</title></circle>`:''}${showLabel?`<text x="${p.x}" y="${h-14}" text-anchor="middle" fill="#8fa3c7" font-size="11">${labels[i]||''}</text>`:''}`}).join('')}`}
-    function renderCapitalChart(){if(movements.length){const ordered=[...movements].sort((a,b)=>new Date((a.movement_date||a.created_at||0))-new Date((b.movement_date||b.created_at||0)));let acc=0;const vals=ordered.map(m=>{const base=Number(m.gross_amount||0)>0?Number(m.gross_amount||0):Number(m.quantity||0)*Number(m.unit_price||0),fees=Number(m.fees||0),taxes=Number(m.taxes||0);if(['buy','transfer_in'].includes(m.movement_type))acc+=base+fees+taxes;if(['sell','transfer_out'].includes(m.movement_type))acc-=base-fees-taxes;return Math.max(acc,0)});drawChart($('capitalChart'),vals,{labels:ordered.map(i=>new Date((i.movement_date||i.created_at||Date.now())+'T00:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})),maxPoints:36});return}const ordered=[...raw].sort((a,b)=>new Date(a.created_at||0)-new Date(b.created_at||0));let acc=0;drawChart($('capitalChart'),ordered.map(i=>acc+=Number(i.amount||0)),{labels:ordered.map(i=>new Date(i.created_at||Date.now()).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}))})}
+    function drawChart(svg,rawValues,opt={}){if(!rawValues.length){svg.innerHTML='<text x="50%" y="50%" text-anchor="middle" fill="#94a3b8" font-size="18">Sem dados</text>';return}const packed=compactSeries(rawValues,opt.labels||[],opt.maxPoints||chartPointLimit()),values=packed.values,labels=packed.labels;const w=1000,h=320,pt=28,pb=46,pl=54,pr=26,extra=opt.goal?[opt.goal]:[],min0=Math.min(...values,...extra),max0=Math.max(...values,...extra),pad=Math.max((max0-min0)*.18,1);let min=min0-pad,max=max0+pad;if(max===min){min-=1;max+=1}const range=max-min,dw=w-pl-pr,dh=h-pt-pb,step=values.length===1?0:dw/(values.length-1),pts=values.map((v,i)=>({x:pl+i*step,y:pt+(dh-((v-min)/range)*dh),v})),path=pts.map((p,i)=>(i?'L':'M')+' '+p.x+' '+p.y).join(' '),area=path+` L ${pts.at(-1).x} ${h-pb} L ${pts[0].x} ${h-pb} Z`,gid='lg_'+(svg.id||'chart'),fid='fg_'+(svg.id||'chart'),labelEvery=Math.max(1,Math.ceil(pts.length/8)),dotEvery=Math.max(1,Math.ceil(pts.length/28));let goal='';if(opt.goal){const y=pt+(dh-((opt.goal-min)/range)*dh);goal=`<line x1="${pl}" y1="${y}" x2="${w-pr}" y2="${y}" stroke="#facc15" stroke-width="3" stroke-dasharray="12 8"/><text x="${w-pr}" y="${Math.max(y-10,16)}" text-anchor="end" fill="#fde68a" font-size="13">Meta ${money(opt.goal)}</text>`}svg.innerHTML=`<defs><linearGradient id="${gid}" x1="0" x2="1"><stop offset="0%" stop-color="#22d3ee"/><stop offset="100%" stop-color="#0ea5e9"/></linearGradient><linearGradient id="${fid}" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#22d3ee" stop-opacity=".32"/><stop offset="100%" stop-color="#22d3ee" stop-opacity=".03"/></linearGradient></defs>${[0,1,2,3,4].map(i=>{const y=pt+dh-(dh/4*i),v=min+range/4*i;return`<line x1="${pl}" y1="${y}" x2="${w-pr}" y2="${y}" stroke="rgba(255,255,255,.06)"/><text x="${pl-10}" y="${y+4}" text-anchor="end" fill="#8fa3c7" font-size="11">${money(v)}</text>`}).join('')}${goal}<path d="${area}" fill="url(#${fid})"/><path d="${path}" fill="none" stroke="url(#${gid})" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>${pts.map((p,i)=>{const showDot=i%dotEvery===0||i===pts.length-1,showLabel=i%labelEvery===0||i===pts.length-1;return`${showDot?`<circle cx="${p.x}" cy="${p.y}" r="4.5" fill="#f8fafc"><title>${money(p.v)}</title></circle>`:''}${showLabel?`<text x="${p.x}" y="${h-14}" text-anchor="middle" fill="#8fa3c7" font-size="11">${labels[i]||''}</text>`:''}`}).join('')}`}
+    function renderCapitalChart(){if(movements.length){const ordered=[...movements].sort((a,b)=>new Date((a.movement_date||a.created_at||0))-new Date((b.movement_date||b.created_at||0)));let acc=0;const vals=ordered.map(m=>{const base=Number(m.gross_amount||0)>0?Number(m.gross_amount||0):Number(m.quantity||0)*Number(m.unit_price||0),fees=Number(m.fees||0),taxes=Number(m.taxes||0);if(['buy','transfer_in'].includes(m.movement_type))acc+=base+fees+taxes;if(['sell','transfer_out'].includes(m.movement_type))acc-=base-fees-taxes;return Math.max(acc,0)});drawChart($('capitalChart'),vals,{labels:ordered.map(i=>new Date((i.movement_date||i.created_at||Date.now())+'T00:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})),maxPoints:chartPointLimit()});return}const ordered=[...raw].sort((a,b)=>new Date(a.created_at||0)-new Date(b.created_at||0));let acc=0;drawChart($('capitalChart'),ordered.map(i=>acc+=Number(i.amount||0)),{labels:ordered.map(i=>new Date(i.created_at||Date.now()).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}))})}
     
     window.refreshLedgerPrice=async(asset,el)=>{if(!requireOnline())return;btn(el,true,'Atualizando...');try{const {data,error}=await supabase.functions.invoke('quick-worker',{body:{ticker:asset}});if(error)throw error;const price=data?.results?.[0]?.regularMarketPrice;if(!price)throw new Error('Preço não encontrado.');saveCachedPrice(asset,price);localStorage.setItem(lastKey(),new Date().toISOString());renderDashboard();renderAssets();renderPositions();renderPriceCenter();renderLast();toast('Preço real de '+asset+' atualizado no ledger.','success')}catch(e){toast(e.message||'Erro ao atualizar preço.','error')}finally{btn(el,false)}}
     window.prefillInvestmentFromLedger=(asset,category,quantity,avg,current)=>{$('asset').value=asset;$('category').value=category||'Outros';$('quantity').value=quantity||'';$('avgPrice').value=avg||'';$('currentPrice').value=current||'';document.getElementById('asset').scrollIntoView({behavior:'smooth',block:'center'});status($('saveStatus'),'Dados do ledger enviados para o cadastro atual. Use para criar uma referência de preço atual.','info')}
     window.refreshEverything=async()=>{await loadInvestments();await loadMovementData();restoreAppScreen();status($('topStatus'),'Painel atualizado.','success');setTimeout(()=>status($('topStatus'),''),1500)}
     window.openLogoutModal=()=>{$('logoutModal').classList.add('show')};window.closeLogoutModal=()=>{$('logoutModal').classList.remove('show')};window.confirmLogout=async()=>{btn($('logoutBtn'),true,'Saindo...');try{await supabase.auth.signOut()}finally{btn($('logoutBtn'),false);closeLogoutModal()}}
-    async function boot(){applyPerformanceMode(getPerformancePreference());syncChips();window.addEventListener('online',syncChips);window.addEventListener('offline',syncChips);window.addEventListener('resize',()=>{updatePerformanceUI();updateAppReadiness()},{passive:true});window.addEventListener('scroll',()=>{$('floatingTopBtn')?.classList.toggle('show',window.scrollY>620)},{passive:true});$('movementDate').value=new Date().toISOString().slice(0,10);['movementType','movementAsset','movementQuantity','movementUnitPrice','movementGross','movementFees','movementTaxes'].forEach(id=>$(id)?.addEventListener('input',renderMovementPreview));['movementType','movementCategory','movementDate'].forEach(id=>$(id)?.addEventListener('change',renderMovementPreview));renderMovementPreview();['email','password'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter')handleAuth()}));supabase.auth.onAuthStateChange((event,session)=>setTimeout(async()=>{if(!session?.user){showLogin();return}showApp(session.user);await loadGoal();await loadInvestments();await loadMovementData()},0));const u=await getUser();if(u){showApp(u);await loadGoal();await loadInvestments();await loadMovementData()}else showLogin();setBoot(false);updateAppReadiness()}
+
+    function fixLoginAutofill(){
+      const email=$('email');
+      const pass=$('password');
+      const wrap=email?.closest('.email-wrap');
+      const mirror=$('emailMirror');
+
+      if(email&&wrap&&mirror){
+        const value=(email.value||'').trim();
+        mirror.textContent=value;
+        if(value){
+          wrap.classList.add('autofill-mirror-on');
+        }else{
+          wrap.classList.remove('autofill-mirror-on');
+        }
+
+        // Ao clicar/editar, deixa o input real aparecer por um instante.
+        // Se o navegador voltar a pintar branco, o espelho assume de novo.
+        email.onfocus=()=>{
+          wrap.classList.remove('autofill-mirror-on');
+          email.style.opacity='1';
+          email.style.color='#f8fafc';
+          email.style.webkitTextFillColor='#f8fafc';
+        };
+        email.onblur=()=>setTimeout(fixLoginAutofill,80);
+        email.oninput=()=>setTimeout(fixLoginAutofill,40);
+        email.onchange=()=>setTimeout(fixLoginAutofill,40);
+      }
+
+      if(pass){
+        pass.style.color='#f8fafc';
+        pass.style.webkitTextFillColor='#f8fafc';
+        pass.style.backgroundColor='#071b31';
+        pass.style.boxShadow='inset 0 0 0 9999px #071b31, inset 0 1px 0 rgba(255,255,255,.06), 0 0 0 1px rgba(103,232,249,.10)';
+      }
+    }
+    function startLoginAutofillGuard(){
+      fixLoginAutofill();
+      [80,300,700,1400,2500].forEach(ms=>setTimeout(fixLoginAutofill,ms));
+      if(window.__loginAutofillGuard)clearInterval(window.__loginAutofillGuard);
+      window.__loginAutofillGuard=setInterval(()=>{
+        const authVisible=$('authSection')&&$('authSection').style.display!=='none';
+        if(authVisible)fixLoginAutofill();
+      },700);
+    }
+    startLoginAutofillGuard();
+    window.addEventListener('pageshow',startLoginAutofillGuard);
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden)startLoginAutofillGuard()});
+
+    async function boot(){document.body.classList.add('booting');applyPerformanceMode(getPerformancePreference());syncChips();window.addEventListener('online',syncChips);window.addEventListener('offline',syncChips);window.addEventListener('resize',()=>{updatePerformanceUI();updateAppReadiness()},{passive:true});window.addEventListener('scroll',()=>{$('floatingTopBtn')?.classList.toggle('show',window.scrollY>620)},{passive:true});$('movementDate').value=new Date().toISOString().slice(0,10);['movementType','movementAsset','movementQuantity','movementUnitPrice','movementGross','movementFees','movementTaxes'].forEach(id=>$(id)?.addEventListener('input',renderMovementPreview));['movementType','movementCategory','movementDate'].forEach(id=>$(id)?.addEventListener('change',renderMovementPreview));renderMovementPreview();setup4BInputDebounce();['email','password'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter')handleAuth()}));supabase.auth.onAuthStateChange((event,session)=>setTimeout(async()=>{if(!session?.user){showLogin();return}showApp(session.user);await loadGoal();await loadInvestments();await loadMovementData()},0));const u=await getUser();if(u){showApp(u);await loadGoal();await loadInvestments();await loadMovementData()}else showLogin();setBoot(false);document.body.classList.remove('booting');updateAppReadiness();toast('Etapa 4B.3 ativa: painel otimizado para menos travamento.','success')}
     boot();
   </script>
 </body>
