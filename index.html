@@ -49,6 +49,104 @@
 @media(max-width:900px){.compact-tools{grid-template-columns:1fr 1fr}.app-nav{top:6px;border-radius:18px}.nav-btn{font-size:12px;padding:10px 12px}}
 @media(max-width:560px){.compact-tools{grid-template-columns:1fr}}
 
+
+/* =========================
+   Etapa 3F • Performance UX
+   ========================= */
+.chip-action{
+  width:auto;
+  margin:0;
+  cursor:pointer;
+  font-weight:900;
+  color:#e0f2fe;
+  background:linear-gradient(135deg,rgba(14,165,233,.16),rgba(34,211,238,.08));
+}
+.chip-action:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.performance-mode,
+.performance-mode *{
+  scroll-behavior:auto!important;
+}
+.performance-mode *{
+  animation:none!important;
+}
+.performance-mode body::before,
+.performance-mode body::after,
+.performance-mode .logo,
+.performance-mode .card::before,
+.performance-mode .card::after,
+.performance-mode .mini::after,
+.performance-mode .stat-card::after,
+.performance-mode .quick-mini::after{
+  animation:none!important;
+}
+.performance-mode .premium-panel,
+.performance-mode .card,
+.performance-mode .mini,
+.performance-mode .item,
+.performance-mode .micro,
+.performance-mode .command-card,
+.performance-mode .allocation-card,
+.performance-mode .profile-card,
+.performance-mode .summary-super-card{
+  backdrop-filter:none!important;
+  box-shadow:0 8px 20px rgba(0,0,0,.20)!important;
+}
+.performance-mode .premium-panel::before,
+.performance-mode .premium-panel::after,
+.performance-mode .card::before,
+.performance-mode .card::after{
+  opacity:.35!important;
+}
+.performance-mode button,
+.performance-mode .nav-btn,
+.performance-mode .asset-item,
+.performance-mode .timeline-item{
+  transition:none!important;
+}
+.performance-mode button:hover,
+.performance-mode .nav-btn:hover,
+.performance-mode .card:hover,
+.performance-mode .mini:hover,
+.performance-mode .item:hover{
+  transform:none!important;
+}
+.pro-mode-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px;align-items:stretch}
+.pro-mode-hero{
+  border:1px solid rgba(56,189,248,.22);
+  border-radius:26px;
+  padding:20px;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(34,211,238,.13),transparent 28%),
+    linear-gradient(180deg,rgba(12,22,44,.94),rgba(7,13,26,.96));
+}
+.pro-mode-title{font-size:clamp(30px,4vw,54px);font-weight:950;letter-spacing:-.07em;line-height:1;margin-top:8px}
+.pro-mode-actions{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+.pro-mode-list{display:grid;gap:10px}
+.pro-mode-row{
+  padding:13px 14px;
+  border-radius:17px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.07);
+  line-height:1.45;
+}
+.pro-mode-row.good{border-color:rgba(34,197,94,.24);background:rgba(34,197,94,.07)}
+.pro-mode-row.warn{border-color:rgba(251,146,60,.24);background:rgba(251,146,60,.07)}
+.floating-top{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:120;
+  width:auto;
+  min-width:0;
+  padding:12px 14px;
+  border-radius:999px;
+  display:none;
+  box-shadow:0 18px 42px rgba(0,0,0,.32),0 0 24px rgba(34,211,238,.14);
+}
+.floating-top.show{display:block}
+@media(max-width:1120px){.pro-mode-grid{grid-template-columns:1fr}.pro-mode-actions{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.pro-mode-actions{grid-template-columns:1fr}.chip-action{font-size:12px}}
+
 .projection-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:stretch}
 .scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .scenario-card{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08);border-radius:22px;background:linear-gradient(180deg,rgba(12,22,44,.94),rgba(8,15,31,.94));padding:16px;min-height:132px}
@@ -185,7 +283,12 @@
   <div id="boot" class="boot"><div class="bootbox"><h2>Wealth OS</h2><p class="muted">Carregando painel profissional...</p><div style="display:flex;justify-content:center"><div class="spinner"></div></div></div></div>
   <div class="container">
     <div id="offline" class="offline">Você está sem conexão. Algumas funções podem não responder até a internet voltar.</div>
-    <div class="topbar"><div class="brand"><div class="logo">💎</div><div><h1>Wealth OS</h1><div class="subtitle">Sistema premium para carteira, ledger, renda passiva, perfil de investidor, alocação inteligente e metas patrimoniais.</div></div></div><div class="chips"><div class="chip premium">Etapa 3E</div><div id="syncChip" class="chip">Sync: OK</div><div id="ledgerChip" class="chip">Ledger como fonte principal</div></div></div>
+    <div class="topbar"><div class="brand"><div class="logo">💎</div><div><h1>Wealth OS</h1><div class="subtitle">Sistema premium para carteira, ledger, renda passiva, perfil de investidor, alocação inteligente, performance e metas patrimoniais.</div></div></div><div class="chips">
+      <div class="chip premium">Etapa 3F</div>
+      <button id="performanceToggleChip" class="chip chip-action" type="button" onclick="togglePerformanceMode()">Modo leve: Auto</button>
+      <div id="syncChip" class="chip">Sync: OK</div>
+      <div id="ledgerChip" class="chip">Ledger como fonte principal</div>
+    </div></div>
 
     <div id="authSection" class="card"><div class="section"><div><div class="kicker">Acesso</div><h2 id="authTitle">Entrar</h2><div id="authSubtitle" class="muted">Faça login para acessar seu painel premium.</div></div></div><input id="email" type="email" placeholder="Seu e-mail" autocomplete="email"><div class="input-wrap"><input id="password" class="password-input" type="password" placeholder="Sua senha" autocomplete="current-password"><button class="eye" onclick="togglePassword()" type="button">👁️</button></div><button id="authBtn" onclick="handleAuth()">Entrar</button><div id="toggleAuth" class="auth-toggle" onclick="toggleAuthMode()">Criar conta</div><div id="authStatus" class="status"></div></div>
 
@@ -204,17 +307,69 @@
         <button class="nav-btn" type="button" data-screen="all" onclick="showAppScreen('all')">🧩 Tudo</button>
       </div>
       <div id="screenIntro" class="screen-intro"><strong>Visão geral</strong> — painel executivo com patrimônio, inteligência, score e principais alertas.</div>
+
+
+      <div class="card premium-panel" data-screen-block data-screens="settings overview">
+        <div class="section">
+          <div>
+            <div class="kicker">Etapa 3F • Otimização profissional</div>
+            <h3>Central de performance e produto</h3>
+            <div class="muted">Controle o modo visual do app, reduza travamentos e navegue como produto real por telas separadas.</div>
+          </div>
+          <span id="proModeBadge" class="badge purple">Modo automático</span>
+        </div>
+
+        <div class="pro-mode-grid">
+          <div class="pro-mode-hero">
+            <div class="label">Modo atual do app</div>
+            <div id="proModeTitle" class="pro-mode-title">Auto</div>
+            <div id="proModeNote" class="muted" style="margin-top:10px;line-height:1.55">
+              O Wealth OS escolhe automaticamente entre visual premium e modo leve conforme o dispositivo.
+            </div>
+
+            <div class="pro-mode-actions">
+              <button class="success" type="button" onclick="setPerformanceMode('light')">Ativar modo leve</button>
+              <button class="secondary" type="button" onclick="setPerformanceMode('premium')">Visual premium</button>
+              <button class="gold" type="button" onclick="setPerformanceMode('auto')">Modo automático</button>
+              <button class="secondary" type="button" onclick="showAppScreen('ledger')">Abrir ledger</button>
+            </div>
+          </div>
+
+          <div class="item">
+            <strong>Diagnóstico de experiência</strong>
+            <div id="proModeChecklist" class="pro-mode-list" style="margin-top:12px">
+              <div class="pro-mode-row">Carregando diagnóstico...</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid3" style="margin-top:14px">
+          <div class="item">
+            <strong>Navegação recomendada</strong>
+            <div class="muted" style="margin-top:8px;line-height:1.5">Use as abas principais em vez de abrir “Tudo”. Isso deixa o app mais rápido no celular e no navegador.</div>
+          </div>
+          <div class="item">
+            <strong>Play Store / empresa</strong>
+            <div class="muted" style="margin-top:8px;line-height:1.5">A estrutura por telas melhora a experiência de PWA e prepara o produto para virar app empacotado.</div>
+          </div>
+          <div class="item">
+            <strong>Próximo ganho técnico</strong>
+            <div class="muted" style="margin-top:8px;line-height:1.5">Depois desta etapa, o ideal é separar o projeto em arquivos React/Vite para escalar como empresa.</div>
+          </div>
+        </div>
+      </div>
+
       
       <div class="hero-grid grid" data-screen-block data-screens="overview"><div class="card hero"><div class="section"><div><div class="muted">Patrimônio atual da carteira</div><div id="greeting" class="badge">Olá 👋</div></div><button style="width:48px" onclick="toggleBalance()">👁️</button></div><h2 id="heroValue" class="hero-value">R$ 0,00</h2><p class="muted" style="position:relative;z-index:1;line-height:1.6">Painel organizado por telas: visão geral, ledger, renda passiva, projeções, histórico, metas e configurações.</p><div class="badges"><span id="walletBadge" class="badge">Carteira neutra</span><span id="goalBadge" class="badge">Meta sem configuração</span><span id="ledgerBadge" class="badge purple">Ledger aguardando dados</span></div><div class="grid grid4" style="margin-top:18px"><div class="mini"><div class="label">Usuário</div><div id="userEmail" class="value small">-</div></div><div class="mini"><div class="label">Investido atual</div><div id="investedValue" class="value">R$ 0,00</div></div><div class="mini"><div class="label">Valor atual</div><div id="currentValue" class="value">R$ 0,00</div></div><div class="mini"><div class="label">Lucro/prejuízo</div><div id="pnlValue" class="value">R$ 0,00</div></div></div><div class="grid grid5" style="margin-top:14px"><div class="mini"><div class="label">Rentabilidade</div><div id="returnPct" class="value small">0,0%</div></div><div class="mini"><div class="label">No lucro</div><div id="winners" class="value small">0</div></div><div class="mini"><div class="label">No prejuízo</div><div id="losers" class="value small">0</div></div><div class="mini"><div class="label">Posições</div><div id="positionsCount" class="value small">0</div></div><div class="mini"><div class="label">Última atualização</div><div id="lastUpdate" class="value small">--</div></div></div></div>
       <div class="card"><div class="section"><div><div class="kicker">Atalhos</div><h3>Ações rápidas</h3><div class="muted">Controles da carteira e do ledger</div></div></div><button class="success" id="refreshPricesBtn" onclick="refreshAllPrices()">Atualizar preços reais</button><button class="gold" id="manualSnapshotBtn" onclick="saveManualSnapshot()">Salvar snapshot agora</button><button class="secondary" onclick="refreshEverything()">Recarregar painel</button><button class="secondary" onclick="openLogoutModal()">Sair</button><div class="grid grid2" style="margin-top:14px"><div class="mini"><div class="label">Movimentações</div><div id="quickMovements" class="value small">0</div></div><div class="mini"><div class="label">Renda passiva</div><div id="quickPassive" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Snapshots</div><div id="quickSnapshots" class="value small">0</div></div><div class="mini"><div class="label">Maior ativo</div><div id="quickBiggest" class="value small">-</div></div></div><div id="topStatus" class="status"></div></div></div>
 
       <div class="grid grid4" data-screen-block data-screens="overview ledger income"><div class="mini"><div class="label">Compras/entradas no ledger</div><div id="sumEntries" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Vendas/saídas no ledger</div><div id="sumExits" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Taxas + impostos</div><div id="sumCosts" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Renda passiva acumulada</div><div id="sumPassive" class="value small positive">R$ 0,00</div></div></div>
 
-      <div class="card premium-panel" data-screen-block data-screens="overview"><div class="section"><div><div class="kicker">Etapa 3E • Central de inteligência</div><h3>Dashboard premium do investidor</h3><div class="muted">Tela executiva com score visual, prioridades, resumo do mês e próxima ação recomendada.</div></div><span class="badge purple">Premium intelligence</span></div><div class="command-grid"><div class="score-shell"><div><div id="premiumScoreRing" class="score-ring"><div class="score-inner"><div id="premiumScoreNumber" class="score-number">0</div><div class="score-label">score / 100</div></div></div><div id="premiumScoreStatus" class="muted" style="margin-top:14px;line-height:1.45">Aguardando dados do ledger.</div></div></div><div><div class="command-metrics"><div class="command-card"><div class="label">Patrimônio analisado</div><div id="premiumAnalyzedWealth" class="command-headline">R$ 0,00</div><div id="premiumWealthNote" class="muted" style="font-size:12px;margin-top:6px">Ledger profissional</div></div><div class="command-card"><div class="label">Resultado atual</div><div id="premiumResult" class="command-headline">R$ 0,00</div><div id="premiumResultNote" class="muted" style="font-size:12px;margin-top:6px">Rentabilidade agregada</div></div><div class="command-card"><div class="label">Renda no mês</div><div id="premiumMonthlyIncome" class="command-headline">R$ 0,00</div><div id="premiumMonthlyIncomeNote" class="muted" style="font-size:12px;margin-top:6px">Proventos recebidos</div></div></div><div class="micro-grid"><div class="micro"><div class="label">Concentração principal</div><div id="advancedConcentration" class="value small">0%</div><div id="advancedConcentrationNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div><div class="micro"><div class="label">Diversificação</div><div id="advancedDiversification" class="value small">0 classes</div><div id="advancedDiversificationNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div><div class="micro"><div class="label">Renda passiva</div><div id="advancedPassive" class="value small positive">R$ 0,00</div><div id="advancedPassiveNote" class="muted" style="font-size:12px;margin-top:6px">Dividendos, juros e rendimentos.</div></div><div class="micro"><div class="label">Score técnico</div><div id="advancedScore" class="value small">0/100</div><div id="advancedScoreNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div></div></div></div><div class="intelligence-grid"><div class="item"><strong>O que aconteceu este mês</strong><div id="premiumMonthlyBrief" class="priority-stack" style="margin-top:10px">Sem movimentações no mês.</div></div><div class="item"><strong>Prioridades inteligentes</strong><div id="premiumPriorityAlerts" class="priority-stack" style="margin-top:10px">Sem alertas.</div></div><div class="item"><strong>Próxima ação recomendada</strong><div id="premiumPrimaryAction" class="action-hero">Cadastre movimentações no ledger para liberar a inteligência.</div><div id="premiumActionReason" class="muted" style="margin-top:10px;line-height:1.5"></div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Alocação por categoria</strong><div id="advancedAllocation" style="margin-top:10px">Sem dados.</div></div><div class="item"><strong>Alertas inteligentes</strong><div id="advancedAlerts" style="margin-top:10px">Sem alertas.</div></div><div class="item"><strong>Próximo passo sugerido</strong><div id="advancedNextStep" style="margin-top:10px">Cadastre movimentações no ledger para liberar a análise.</div></div></div></div>
+      <div class="card premium-panel" data-screen-block data-screens="overview"><div class="section"><div><div class="kicker">Etapa 3F • Central de inteligência</div><h3>Dashboard premium do investidor</h3><div class="muted">Tela executiva com score visual, prioridades, resumo do mês e próxima ação recomendada.</div></div><span class="badge purple">Premium intelligence</span></div><div class="command-grid"><div class="score-shell"><div><div id="premiumScoreRing" class="score-ring"><div class="score-inner"><div id="premiumScoreNumber" class="score-number">0</div><div class="score-label">score / 100</div></div></div><div id="premiumScoreStatus" class="muted" style="margin-top:14px;line-height:1.45">Aguardando dados do ledger.</div></div></div><div><div class="command-metrics"><div class="command-card"><div class="label">Patrimônio analisado</div><div id="premiumAnalyzedWealth" class="command-headline">R$ 0,00</div><div id="premiumWealthNote" class="muted" style="font-size:12px;margin-top:6px">Ledger profissional</div></div><div class="command-card"><div class="label">Resultado atual</div><div id="premiumResult" class="command-headline">R$ 0,00</div><div id="premiumResultNote" class="muted" style="font-size:12px;margin-top:6px">Rentabilidade agregada</div></div><div class="command-card"><div class="label">Renda no mês</div><div id="premiumMonthlyIncome" class="command-headline">R$ 0,00</div><div id="premiumMonthlyIncomeNote" class="muted" style="font-size:12px;margin-top:6px">Proventos recebidos</div></div></div><div class="micro-grid"><div class="micro"><div class="label">Concentração principal</div><div id="advancedConcentration" class="value small">0%</div><div id="advancedConcentrationNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div><div class="micro"><div class="label">Diversificação</div><div id="advancedDiversification" class="value small">0 classes</div><div id="advancedDiversificationNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div><div class="micro"><div class="label">Renda passiva</div><div id="advancedPassive" class="value small positive">R$ 0,00</div><div id="advancedPassiveNote" class="muted" style="font-size:12px;margin-top:6px">Dividendos, juros e rendimentos.</div></div><div class="micro"><div class="label">Score técnico</div><div id="advancedScore" class="value small">0/100</div><div id="advancedScoreNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div></div></div></div><div class="intelligence-grid"><div class="item"><strong>O que aconteceu este mês</strong><div id="premiumMonthlyBrief" class="priority-stack" style="margin-top:10px">Sem movimentações no mês.</div></div><div class="item"><strong>Prioridades inteligentes</strong><div id="premiumPriorityAlerts" class="priority-stack" style="margin-top:10px">Sem alertas.</div></div><div class="item"><strong>Próxima ação recomendada</strong><div id="premiumPrimaryAction" class="action-hero">Cadastre movimentações no ledger para liberar a inteligência.</div><div id="premiumActionReason" class="muted" style="margin-top:10px;line-height:1.5"></div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Alocação por categoria</strong><div id="advancedAllocation" style="margin-top:10px">Sem dados.</div></div><div class="item"><strong>Alertas inteligentes</strong><div id="advancedAlerts" style="margin-top:10px">Sem alertas.</div></div><div class="item"><strong>Próximo passo sugerido</strong><div id="advancedNextStep" style="margin-top:10px">Cadastre movimentações no ledger para liberar a análise.</div></div></div></div>
 
-      <div class="card" data-screen-block data-screens="income overview"><div class="section"><div><div class="kicker">Etapa 3E • Renda passiva profissional</div><h3>Painel de proventos e renda passiva</h3><div class="muted">Dividendos, juros, rendimentos, yield sobre custo e ranking de ativos pagadores.</div></div><span id="passiveIncomeBadge" class="badge green">Renda: R$ 0,00</span></div><div class="grid grid4"><div class="mini"><div class="label">Renda passiva total</div><div id="passiveTotal" class="value small positive">R$ 0,00</div><div id="passiveTotalNote" class="muted" style="font-size:12px;margin-top:6px">Proventos registrados no ledger.</div></div><div class="mini"><div class="label">Yield sobre custo</div><div id="passiveYieldCost" class="value small">0,0%</div><div class="muted" style="font-size:12px;margin-top:6px">Renda ÷ capital investido.</div></div><div class="mini"><div class="label">Yield sobre patrimônio</div><div id="passiveYieldCurrent" class="value small">0,0%</div><div class="muted" style="font-size:12px;margin-top:6px">Renda ÷ valor atual.</div></div><div class="mini"><div class="label">Maior pagador</div><div id="passiveTopPayer" class="value small">-</div><div id="passiveTopPayerNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando proventos.</div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Ranking de renda por ativo</strong><div id="passiveRanking" style="margin-top:10px">Sem renda passiva registrada.</div></div><div class="item"><strong>Últimos proventos</strong><div id="passiveRecent" style="margin-top:10px">Nenhum provento ainda.</div></div><div class="item"><strong>Plano de renda</strong><div id="passivePlan" style="margin-top:10px">Registre dividendos, juros ou rendimentos para liberar análise de renda.</div><div class="row" style="margin-top:12px"><button class="success" onclick="preparePassiveIncome()">Registrar provento</button></div></div></div></div>
+      <div class="card" data-screen-block data-screens="income overview"><div class="section"><div><div class="kicker">Etapa 3F • Renda passiva profissional</div><h3>Painel de proventos e renda passiva</h3><div class="muted">Dividendos, juros, rendimentos, yield sobre custo e ranking de ativos pagadores.</div></div><span id="passiveIncomeBadge" class="badge green">Renda: R$ 0,00</span></div><div class="grid grid4"><div class="mini"><div class="label">Renda passiva total</div><div id="passiveTotal" class="value small positive">R$ 0,00</div><div id="passiveTotalNote" class="muted" style="font-size:12px;margin-top:6px">Proventos registrados no ledger.</div></div><div class="mini"><div class="label">Yield sobre custo</div><div id="passiveYieldCost" class="value small">0,0%</div><div class="muted" style="font-size:12px;margin-top:6px">Renda ÷ capital investido.</div></div><div class="mini"><div class="label">Yield sobre patrimônio</div><div id="passiveYieldCurrent" class="value small">0,0%</div><div class="muted" style="font-size:12px;margin-top:6px">Renda ÷ valor atual.</div></div><div class="mini"><div class="label">Maior pagador</div><div id="passiveTopPayer" class="value small">-</div><div id="passiveTopPayerNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando proventos.</div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Ranking de renda por ativo</strong><div id="passiveRanking" style="margin-top:10px">Sem renda passiva registrada.</div></div><div class="item"><strong>Últimos proventos</strong><div id="passiveRecent" style="margin-top:10px">Nenhum provento ainda.</div></div><div class="item"><strong>Plano de renda</strong><div id="passivePlan" style="margin-top:10px">Registre dividendos, juros ou rendimentos para liberar análise de renda.</div><div class="row" style="margin-top:12px"><button class="success" onclick="preparePassiveIncome()">Registrar provento</button></div></div></div></div>
 
-      <div class="card" data-screen-block data-screens="income"><div class="section"><div><div class="kicker">Etapa 3E • Relatório mensal</div><h3>Fechamento do mês</h3><div class="muted">Compras, vendas, proventos, custos, fluxo líquido e meta mensal de renda passiva.</div></div><span id="monthlyReportBadge" class="badge purple">Mês atual</span></div><div class="grid grid5"><div class="mini"><div class="label">Renda no mês</div><div id="monthlyPassive" class="value small positive">R$ 0,00</div><div id="monthlyPassiveNote" class="muted" style="font-size:12px;margin-top:6px">Proventos do mês.</div></div><div class="mini"><div class="label">Compras no mês</div><div id="monthlyBuys" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Aportes e entradas.</div></div><div class="mini"><div class="label">Vendas no mês</div><div id="monthlySells" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Saídas do ledger.</div></div><div class="mini"><div class="label">Custos no mês</div><div id="monthlyCosts" class="value small negative">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Taxas e impostos.</div></div><div class="mini"><div class="label">Fluxo líquido</div><div id="monthlyNetFlow" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Entradas − saídas − custos.</div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Meta mensal de renda</strong><div class="fields" style="margin-top:10px"><input id="monthlyIncomeTarget" type="number" min="0" step="any" placeholder="Ex: 100"><button class="gold" onclick="saveMonthlyIncomeTarget()">Salvar meta</button></div><div class="bar" style="margin-top:12px"><div id="monthlyIncomeTargetFill" class="fill" style="width:0%"></div></div><div id="monthlyIncomeTargetText" class="muted" style="margin-top:8px">Defina uma meta mensal.</div></div><div class="item"><strong>Resumo do mês</strong><div id="monthlySummaryText" style="margin-top:10px">Sem movimentações no mês.</div></div><div class="item"><strong>Calendário de proventos</strong><div id="monthlyDividendCalendar" style="margin-top:10px">Nenhum provento no mês atual.</div></div></div><div class="grid grid2" style="margin-top:14px"><div class="item"><strong>Evolução mensal de proventos</strong><svg id="monthlyPassiveChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div><div class="item"><strong>Fluxo mensal de aportes</strong><svg id="monthlyFlowChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div></div></div>
+      <div class="card" data-screen-block data-screens="income"><div class="section"><div><div class="kicker">Etapa 3F • Relatório mensal</div><h3>Fechamento do mês</h3><div class="muted">Compras, vendas, proventos, custos, fluxo líquido e meta mensal de renda passiva.</div></div><span id="monthlyReportBadge" class="badge purple">Mês atual</span></div><div class="grid grid5"><div class="mini"><div class="label">Renda no mês</div><div id="monthlyPassive" class="value small positive">R$ 0,00</div><div id="monthlyPassiveNote" class="muted" style="font-size:12px;margin-top:6px">Proventos do mês.</div></div><div class="mini"><div class="label">Compras no mês</div><div id="monthlyBuys" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Aportes e entradas.</div></div><div class="mini"><div class="label">Vendas no mês</div><div id="monthlySells" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Saídas do ledger.</div></div><div class="mini"><div class="label">Custos no mês</div><div id="monthlyCosts" class="value small negative">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Taxas e impostos.</div></div><div class="mini"><div class="label">Fluxo líquido</div><div id="monthlyNetFlow" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Entradas − saídas − custos.</div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Meta mensal de renda</strong><div class="fields" style="margin-top:10px"><input id="monthlyIncomeTarget" type="number" min="0" step="any" placeholder="Ex: 100"><button class="gold" onclick="saveMonthlyIncomeTarget()">Salvar meta</button></div><div class="bar" style="margin-top:12px"><div id="monthlyIncomeTargetFill" class="fill" style="width:0%"></div></div><div id="monthlyIncomeTargetText" class="muted" style="margin-top:8px">Defina uma meta mensal.</div></div><div class="item"><strong>Resumo do mês</strong><div id="monthlySummaryText" style="margin-top:10px">Sem movimentações no mês.</div></div><div class="item"><strong>Calendário de proventos</strong><div id="monthlyDividendCalendar" style="margin-top:10px">Nenhum provento no mês atual.</div></div></div><div class="grid grid2" style="margin-top:14px"><div class="item"><strong>Evolução mensal de proventos</strong><svg id="monthlyPassiveChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div><div class="item"><strong>Fluxo mensal de aportes</strong><svg id="monthlyFlowChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div></div></div>
 
       
       
@@ -222,7 +377,7 @@
       <div class="card premium-panel" data-screen-block data-screens="profile overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 3E • Perfil de investidor</div>
+            <div class="kicker">Etapa 3F • Perfil de investidor</div>
             <h3>Carteira recomendada por perfil</h3>
             <div class="muted">Escolha um perfil, aplique a carteira-alvo automaticamente e compare seu momento atual com o modelo recomendado.</div>
           </div>
@@ -289,7 +444,7 @@
       <div class="card premium-panel" data-screen-block data-screens="allocation overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 3E • Inteligência de alocação</div>
+            <div class="kicker">Etapa 3F • Inteligência de alocação</div>
             <h3>Carteira ideal e próximo aporte</h3>
             <div class="muted">Compare sua carteira atual com a carteira-alvo, identifique concentração e veja quanto aportar em cada categoria.</div>
           </div>
@@ -361,7 +516,7 @@
       <div class="card premium-panel" data-screen-block data-screens="liberty income projections overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 3E • Independência financeira</div>
+            <div class="kicker">Etapa 3F • Independência financeira</div>
             <h3>Plano para viver de renda</h3>
             <div class="muted">Calcula patrimônio necessário, renda mensal desejada, yield esperado, prazo até a liberdade financeira e marcos de renda.</div>
           </div>
@@ -458,9 +613,9 @@
       </div>
 
 
-      <div class="card" data-screen-block data-screens="ledger overview"><div class="section"><div><div class="kicker">Etapa 3E • Preços reais do ledger</div><h3>Centro de preços por ativo</h3><div class="muted">Atualize preços reais diretamente no ledger e reduza a dependência do cadastro antigo.</div></div><span id="priceCenterBadge" class="badge purple">0 ativos</span></div><div id="priceCenterBox" class="empty">Sem ativos para atualizar.</div></div>
+      <div class="card" data-screen-block data-screens="ledger overview"><div class="section"><div><div class="kicker">Etapa 3F • Preços reais do ledger</div><h3>Centro de preços por ativo</h3><div class="muted">Atualize preços reais diretamente no ledger e reduza a dependência do cadastro antigo.</div></div><span id="priceCenterBadge" class="badge purple">0 ativos</span></div><div id="priceCenterBox" class="empty">Sem ativos para atualizar.</div></div>
 
-      <div class="card" data-screen-block data-screens="overview ledger"><div class="section"><div><div class="kicker">Etapa 3E • Dashboard otimizado pelo ledger</div><h3>Carteira principal calculada por movimentações</h3><div class="muted">Dashboard avançado: ledger como fonte principal, score, concentração, diversificação e alertas inteligentes.</div></div><span id="movementPositionsBadge" class="badge purple">0 posições</span></div><div id="movementPositionsBox" class="empty">Sem posições calculadas ainda.</div></div>
+      <div class="card" data-screen-block data-screens="overview ledger"><div class="section"><div><div class="kicker">Etapa 3F • Dashboard otimizado pelo ledger</div><h3>Carteira principal calculada por movimentações</h3><div class="muted">Dashboard avançado: ledger como fonte principal, score, concentração, diversificação e alertas inteligentes.</div></div><span id="movementPositionsBadge" class="badge purple">0 posições</span></div><div id="movementPositionsBox" class="empty">Sem posições calculadas ainda.</div></div>
 
       <div class="split grid" data-screen-block data-screens="ledger"><div class="card"><div class="section"><div><div class="kicker">Ledger profissional</div><h3>Registrar movimentação</h3><div class="muted">Compra, venda, dividendo, rendimento, juros, taxa, imposto e transferência com validação financeira.</div></div></div><div class="grid fields"><div><label>Tipo</label><select id="movementType"><option value="buy">Compra</option><option value="sell">Venda</option><option value="dividend">Dividendo</option><option value="interest">Juros</option><option value="yield">Rendimento</option><option value="fee">Taxa</option><option value="tax">Imposto</option><option value="transfer_in">Transferência de entrada</option><option value="transfer_out">Transferência de saída</option><option value="split">Split / desdobramento</option><option value="bonus">Bonificação</option><option value="other">Outro</option></select></div><div><label>Ativo</label><input id="movementAsset" placeholder="Ex: PETR4"></div></div><div class="grid fields"><div><label>Categoria</label><select id="movementCategory"><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select></div><div><label>Data</label><input id="movementDate" type="date"></div></div><div class="grid fields"><div><label>Quantidade</label><input id="movementQuantity" type="number" step="any" min="0" placeholder="0"></div><div><label>Preço unitário</label><input id="movementUnitPrice" type="number" step="any" min="0" placeholder="0"></div></div><div class="grid fields"><div><label>Valor bruto</label><input id="movementGross" type="number" step="any" min="0" placeholder="Auto: quantidade × preço"></div><div><label>Corretora</label><input id="movementBroker" placeholder="Ex: XP, NuInvest"></div></div><div class="grid fields"><div><label>Taxas</label><input id="movementFees" type="number" step="any" min="0" placeholder="0"></div><div><label>Impostos</label><input id="movementTaxes" type="number" step="any" min="0" placeholder="0"></div></div><label>Observações</label><textarea id="movementNotes" placeholder="Ex: compra mensal, dividendo recebido..."></textarea><div id="movementPreview" class="item" style="margin-top:12px;border-color:rgba(56,189,248,.18)"><strong>Prévia da movimentação</strong><br><span class="muted">Preencha quantidade e preço para calcular automaticamente.</span></div><div id="movementEditBanner" class="status status-info" style="display:none"></div><div class="row" style="margin-top:12px"><button id="saveMovementBtn" onclick="saveMovement()">Salvar movimentação validada</button><button id="cancelMovementEditBtn" class="secondary" style="display:none" onclick="cancelMovementEdit()">Cancelar edição</button></div><div id="movementStatus" class="status"></div></div>
       <div class="card"><div class="section"><div><div class="kicker">Extrato editável</div><h3>Controle financeiro de movimentações</h3><div class="muted">Filtre, edite, exclua e confira a consistência financeira dos lançamentos.</div></div><span id="movementFilteredCount" class="badge purple">0 registro(s)</span></div><div class="grid fields"><select id="movementFilterType" onchange="renderMovements()"><option value="">Todos os tipos</option><option value="buy">Compra</option><option value="sell">Venda</option><option value="dividend">Dividendo</option><option value="interest">Juros</option><option value="yield">Rendimento</option><option value="fee">Taxa</option><option value="tax">Imposto</option><option value="transfer_in">Entrada</option><option value="transfer_out">Saída</option><option value="split">Split</option><option value="bonus">Bonificação</option><option value="other">Outro</option></select><input id="movementFilterAsset" placeholder="Filtrar por ativo" oninput="renderMovements()"></div><div class="row" style="margin-top:10px"><select id="movementFilterCategory" onchange="renderMovements()" style="width:auto;min-width:180px"><option value="">Todas categorias</option><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select><button class="secondary" onclick="clearMovementFilters()">Limpar filtros</button></div><div id="movementsList" class="empty" style="margin-top:12px">Sem movimentações ainda.</div></div></div>
@@ -472,7 +627,7 @@
       <div class="card premium-panel" data-screen-block data-screens="projections goals overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 3E • Projeções avançadas</div>
+            <div class="kicker">Etapa 3F • Projeções avançadas</div>
             <h3>Simulador patrimonial inteligente</h3>
             <div class="muted">Cenários conservador, moderado e agressivo com aporte mensal, meta e prazo estimado.</div>
           </div>
@@ -557,7 +712,7 @@
       <div class="card premium-panel" data-screen-block data-screens="projections goals overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 3E • Plano de ação patrimonial</div>
+            <div class="kicker">Etapa 3F • Plano de ação patrimonial</div>
             <h3>Plano inteligente para chegar na meta</h3>
             <div class="muted">Transforma a projeção em ações: aporte, rentabilidade, prazo, gargalo principal e marcos patrimoniais.</div>
           </div>
@@ -622,11 +777,13 @@
 
       <div class="grid grid3" data-screen-block data-screens="overview"><div class="card"><div class="section"><div><div class="kicker">Insights</div><h3>Análise inteligente</h3></div></div><div id="insightsBox" class="empty">Sem análise ainda.</div></div><div class="card"><div class="section"><div><div class="kicker">Top position</div><h3>Maior posição</h3></div></div><div id="topHolding" class="empty">Sem dados.</div></div><div class="card"><div class="section"><div><div class="kicker">Risk & quality</div><h3>Saúde da carteira</h3></div></div><div id="healthBox" class="empty">Sem dados.</div></div></div>
 
-      <div class="grid grid2" data-screen-block data-screens="history"><div class="card"><div class="section"><div><div class="kicker">Contribution curve</div><h3>Capital investido acumulado</h3></div></div><svg id="capitalChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div><div class="card"><div class="section"><div><div class="kicker">Historical engine 3E</div><h3>Histórico patrimonial profissional</h3><div class="muted">Snapshot manual, com reset seguro para limpar histórico antigo sem apagar sua carteira.</div></div><span id="snapshotBadge" class="muted">0 snapshots</span></div><div class="grid grid3"><div class="mini"><div class="label">Recente</div><div id="snapLatest" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Maior</div><div id="snapHighest" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Variação</div><div id="snapVar" class="value small">R$ 0,00</div></div></div><div class="row" style="margin-top:12px"><button class="gold" id="manualSnapshotBtn2" onclick="saveManualSnapshot()">Salvar snapshot agora</button><button class="secondary" id="cleanSnapshotsBtn" onclick="cleanDuplicateSnapshots()">Limpar duplicados visuais</button><button class="danger" id="resetSnapshotsBtn" onclick="openResetSnapshotsModal()">Resetar histórico</button></div><div id="snapshotStatus" class="status status-info">Snapshots automáticos desativados. Use resetar histórico apenas se quiser apagar os snapshots antigos e começar um histórico limpo.</div><svg id="historyChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div></div>
+      <div class="grid grid2" data-screen-block data-screens="history"><div class="card"><div class="section"><div><div class="kicker">Contribution curve</div><h3>Capital investido acumulado</h3></div></div><svg id="capitalChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div><div class="card"><div class="section"><div><div class="kicker">Historical engine 3F</div><h3>Histórico patrimonial profissional</h3><div class="muted">Snapshot manual, com reset seguro para limpar histórico antigo sem apagar sua carteira.</div></div><span id="snapshotBadge" class="muted">0 snapshots</span></div><div class="grid grid3"><div class="mini"><div class="label">Recente</div><div id="snapLatest" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Maior</div><div id="snapHighest" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Variação</div><div id="snapVar" class="value small">R$ 0,00</div></div></div><div class="row" style="margin-top:12px"><button class="gold" id="manualSnapshotBtn2" onclick="saveManualSnapshot()">Salvar snapshot agora</button><button class="secondary" id="cleanSnapshotsBtn" onclick="cleanDuplicateSnapshots()">Limpar duplicados visuais</button><button class="danger" id="resetSnapshotsBtn" onclick="openResetSnapshotsModal()">Resetar histórico</button></div><div id="snapshotStatus" class="status status-info">Snapshots automáticos desativados. Use resetar histórico apenas se quiser apagar os snapshots antigos e começar um histórico limpo.</div><svg id="historyChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div></div>
 
       <div class="card" data-screen-block data-screens="ledger settings"><div class="section"><div><div class="kicker">Portfolio terminal</div><h3>Seus investimentos</h3><div class="muted">Cadastro atual consolidado visualmente.</div></div></div><div class="grid fields"><input id="searchInput" placeholder="Buscar ativo" oninput="renderAssets()"><select id="filterCategory" onchange="renderAssets()"><option value="">Todas as categorias</option><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select></div><div id="assetsList" style="margin-top:12px" class="empty">Sem investimentos.</div></div>
     </div>
   </div>
+
+  <button id="floatingTopBtn" class="floating-top secondary" type="button" onclick="window.scrollTo({top:0,behavior:document.body.classList.contains('performance-mode')?'auto':'smooth'})">↑ Topo</button>
 
   <div id="deleteModal" class="modal" onclick="if(event.target.id==='deleteModal')closeDeleteModal()"><div class="modalbox"><h3>Confirmar exclusão</h3><p id="deleteText" class="muted">Deseja excluir?</p><div class="row"><button class="secondary" onclick="closeDeleteModal()">Cancelar</button><button id="deleteBtn" class="danger" onclick="confirmDelete()">Excluir</button></div></div></div>
   <div id="logoutModal" class="modal" onclick="if(event.target.id==='logoutModal')closeLogoutModal()"><div class="modalbox"><h3>Confirmar saída</h3><p class="muted">Deseja realmente sair da conta?</p><div class="row"><button class="secondary" onclick="closeLogoutModal()">Cancelar</button><button id="logoutBtn" class="danger" onclick="confirmLogout()">Sair</button></div></div></div>
@@ -671,9 +828,62 @@
       history:['Histórico','controle snapshots manuais, gráficos e evolução patrimonial sem travar o app.'],
       goals:['Metas','configure meta patrimonial, aporte mensal e acompanhe projeção.'],
       projections:['Projeções','simule patrimônio futuro, cenários de rentabilidade e prazo para alcançar a meta.'],
-      settings:['Apoio','áreas de compatibilidade, terminal antigo e ferramentas auxiliares.'],
-      all:['Tudo','mostra todas as áreas do app para revisão completa.']
+      settings:['Apoio','central de performance, modo leve, compatibilidade e ferramentas auxiliares.'],
+      all:['Tudo','modo de revisão completa. Use apenas para conferir o app inteiro, pois é mais pesado.']
     };
+    
+    function performanceKey(){return 'wealth_os_performance_mode'}
+    function isLowPowerDevice(){
+      const cores=navigator.hardwareConcurrency||8;
+      const mobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      const memory=navigator.deviceMemory||8;
+      return mobile||cores<=4||memory<=4;
+    }
+    function getPerformancePreference(){
+      try{return localStorage.getItem(performanceKey())||'auto'}catch{return'auto'}
+    }
+    function shouldUseLightMode(mode){
+      if(mode==='light')return true;
+      if(mode==='premium')return false;
+      return isLowPowerDevice();
+    }
+    function applyPerformanceMode(mode=getPerformancePreference()){
+      const chosen=['auto','light','premium'].includes(mode)?mode:'auto';
+      const light=shouldUseLightMode(chosen);
+      document.body.classList.toggle('performance-mode',light);
+      try{localStorage.setItem(performanceKey(),chosen)}catch{}
+      updatePerformanceUI(chosen,light);
+    }
+    function updatePerformanceUI(mode=getPerformancePreference(),light=document.body.classList.contains('performance-mode')){
+      const title=$('proModeTitle'),note=$('proModeNote'),badge=$('proModeBadge'),chip=$('performanceToggleChip'),list=$('proModeChecklist');
+      const label=mode==='light'?'Modo leve':mode==='premium'?'Visual premium':'Auto';
+      if(chip)chip.textContent=light?'Modo leve: ON':'Modo leve: OFF';
+      if(title)title.textContent=label;
+      if(badge)badge.textContent=light?'Performance ativa':'Visual premium';
+      if(note)note.textContent=light
+        ? 'Modo leve ativo: menos blur, menos sombra, menos animação e navegação mais rápida.'
+        : 'Visual premium ativo: aparência mais forte, com efeitos visuais completos.';
+      if(list){
+        const cores=navigator.hardwareConcurrency||'N/D';
+        const mem=navigator.deviceMemory?`${navigator.deviceMemory} GB`:'N/D';
+        const screen=window.innerWidth<760?'mobile':window.innerWidth<1120?'tablet':'desktop';
+        list.innerHTML=[
+          `<div class="pro-mode-row ${light?'good':'warn'}"><strong>${light?'Modo leve ativo':'Visual premium ativo'}</strong><br>${light?'Melhor para evitar travamentos.':'Mais bonito, porém pode pesar em máquina fraca.'}</div>`,
+          `<div class="pro-mode-row"><strong>Dispositivo</strong><br>${cores} núcleo(s) • memória estimada ${mem} • layout ${screen}</div>`,
+          `<div class="pro-mode-row good"><strong>Navegação por telas</strong><br>As abas carregam apenas o necessário visualmente, reduzindo bagunça e melhorando uso no celular.</div>`,
+          `<div class="pro-mode-row warn"><strong>Dica de performance</strong><br>Evite usar a aba Tudo enquanto estiver testando em notebook fraco ou celular.</div>`
+        ].join('');
+      }
+    }
+    window.setPerformanceMode=function(mode){
+      applyPerformanceMode(mode);
+      toast(mode==='light'?'Modo leve ativado.':mode==='premium'?'Visual premium ativado.':'Modo automático ativado.','info');
+    }
+    window.togglePerformanceMode=function(){
+      const light=document.body.classList.contains('performance-mode');
+      setPerformanceMode(light?'premium':'light');
+    }
+
     function navKey(){return `wealth_os_active_screen_${userId||'guest'}`}
     window.showAppScreen=function(screen='overview',smooth=true){
       const wanted=screenTexts[screen]?screen:'overview';
@@ -688,8 +898,8 @@
         const [title,text]=screenTexts[wanted];
         intro.innerHTML=`<strong>${title}</strong> — ${text}`;
       }
-      try{localStorage.setItem(navKey(),wanted)}catch{}
-      if(smooth)window.scrollTo({top:0,behavior:'smooth'});
+      try{localStorage.setItem(navKey(),wanted)}catch{};updatePerformanceUI();
+      if(smooth){const behavior=document.body.classList.contains('performance-mode')?'auto':'smooth';window.scrollTo({top:0,behavior});}
     }
     function restoreAppScreen(){let saved='overview';try{saved=localStorage.getItem(navKey())||'overview'}catch{};setTimeout(()=>showAppScreen(saved,false),0)}
 
@@ -1669,7 +1879,7 @@
     window.prefillInvestmentFromLedger=(asset,category,quantity,avg,current)=>{$('asset').value=asset;$('category').value=category||'Outros';$('quantity').value=quantity||'';$('avgPrice').value=avg||'';$('currentPrice').value=current||'';document.getElementById('asset').scrollIntoView({behavior:'smooth',block:'center'});status($('saveStatus'),'Dados do ledger enviados para o cadastro atual. Use para criar uma referência de preço atual.','info')}
     window.refreshEverything=async()=>{await loadInvestments();await loadMovementData();restoreAppScreen();status($('topStatus'),'Painel atualizado.','success');setTimeout(()=>status($('topStatus'),''),1500)}
     window.openLogoutModal=()=>{$('logoutModal').classList.add('show')};window.closeLogoutModal=()=>{$('logoutModal').classList.remove('show')};window.confirmLogout=async()=>{btn($('logoutBtn'),true,'Saindo...');try{await supabase.auth.signOut()}finally{btn($('logoutBtn'),false);closeLogoutModal()}}
-    async function boot(){if((navigator.hardwareConcurrency||8)<=4||/Android|iPhone|iPad|iPod/i.test(navigator.userAgent))document.body.classList.add('performance-mode');syncChips();window.addEventListener('online',syncChips);window.addEventListener('offline',syncChips);$('movementDate').value=new Date().toISOString().slice(0,10);['movementType','movementAsset','movementQuantity','movementUnitPrice','movementGross','movementFees','movementTaxes'].forEach(id=>$(id)?.addEventListener('input',renderMovementPreview));['movementType','movementCategory','movementDate'].forEach(id=>$(id)?.addEventListener('change',renderMovementPreview));renderMovementPreview();['email','password'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter')handleAuth()}));supabase.auth.onAuthStateChange((event,session)=>setTimeout(async()=>{if(!session?.user){showLogin();return}showApp(session.user);await loadGoal();await loadInvestments();await loadMovementData()},0));const u=await getUser();if(u){showApp(u);await loadGoal();await loadInvestments();await loadMovementData()}else showLogin();setBoot(false)}
+    async function boot(){applyPerformanceMode(getPerformancePreference());syncChips();window.addEventListener('online',syncChips);window.addEventListener('offline',syncChips);window.addEventListener('scroll',()=>{$('floatingTopBtn')?.classList.toggle('show',window.scrollY>620)},{passive:true});$('movementDate').value=new Date().toISOString().slice(0,10);['movementType','movementAsset','movementQuantity','movementUnitPrice','movementGross','movementFees','movementTaxes'].forEach(id=>$(id)?.addEventListener('input',renderMovementPreview));['movementType','movementCategory','movementDate'].forEach(id=>$(id)?.addEventListener('change',renderMovementPreview));renderMovementPreview();['email','password'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter')handleAuth()}));supabase.auth.onAuthStateChange((event,session)=>setTimeout(async()=>{if(!session?.user){showLogin();return}showApp(session.user);await loadGoal();await loadInvestments();await loadMovementData()},0));const u=await getUser();if(u){showApp(u);await loadGoal();await loadInvestments();await loadMovementData()}else showLogin();setBoot(false)}
     boot();
   </script>
 </body>
