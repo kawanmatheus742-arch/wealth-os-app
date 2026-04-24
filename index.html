@@ -50,8 +50,189 @@
 @media(max-width:560px){.compact-tools{grid-template-columns:1fr}}
 
 
+
 /* =========================
-   Etapa 3F • Performance UX
+   Etapa 4A • Acabamento de app real
+   ========================= */
+.auth-shell{
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1.05fr .75fr;
+  gap:18px;
+  border:1px solid rgba(56,189,248,.18);
+  border-radius:30px;
+  padding:20px;
+  background:
+    radial-gradient(circle at 12% 0%,rgba(34,211,238,.16),transparent 28%),
+    radial-gradient(circle at 96% 10%,rgba(139,92,246,.12),transparent 30%),
+    linear-gradient(180deg,rgba(8,15,31,.92),rgba(7,13,26,.96));
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(16px);
+}
+.auth-shell:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.035),transparent);
+}
+.auth-copy,.auth-panel{position:relative;z-index:1}
+.auth-copy{
+  min-height:500px;
+  padding:26px;
+  border-radius:26px;
+  border:1px solid rgba(255,255,255,.08);
+  background:
+    radial-gradient(circle at 0% 0%,rgba(14,165,233,.14),transparent 35%),
+    linear-gradient(180deg,rgba(12,22,44,.82),rgba(7,13,26,.74));
+}
+.auth-copy h2{
+  margin:8px 0 12px;
+  max-width:760px;
+  font-size:clamp(36px,5vw,72px);
+  line-height:.98;
+  letter-spacing:-.08em;
+}
+.auth-copy p{
+  margin:0;
+  max-width:720px;
+  color:#dbeafe;
+  font-size:16px;
+  line-height:1.65;
+}
+.auth-feature-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:22px;
+}
+.auth-feature{
+  padding:14px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.04);
+}
+.auth-feature strong{display:block;margin-bottom:7px}
+.auth-feature span{display:block;color:var(--muted);font-size:13px;line-height:1.45}
+.auth-note{
+  margin-top:18px;
+  padding:14px;
+  border-radius:18px;
+  border:1px solid rgba(34,197,94,.22);
+  background:rgba(34,197,94,.08);
+  color:#dcfce7;
+  line-height:1.5;
+}
+.auth-panel{
+  align-self:center;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:26px;
+  padding:22px;
+  background:rgba(7,13,26,.70);
+  box-shadow:0 14px 40px rgba(0,0,0,.20);
+}
+.auth-security{
+  margin-top:14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.auth-security span{
+  display:inline-flex;
+  padding:7px 9px;
+  border-radius:999px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.07);
+  color:#dbeafe;
+  font-size:12px;
+}
+.start-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:16px;
+  align-items:stretch;
+}
+.start-hero{
+  border-radius:26px;
+  padding:20px;
+  border:1px solid rgba(56,189,248,.22);
+  background:
+    radial-gradient(circle at 12% 0%,rgba(34,211,238,.14),transparent 32%),
+    linear-gradient(180deg,rgba(12,22,44,.94),rgba(7,13,26,.96));
+}
+.start-score{
+  font-size:clamp(44px,5vw,82px);
+  font-weight:950;
+  line-height:.95;
+  letter-spacing:-.09em;
+  margin:10px 0;
+}
+.start-actions{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+.start-checklist{display:grid;gap:10px}
+.start-step{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:12px;
+  align-items:center;
+  padding:13px 14px;
+  border-radius:18px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.07);
+}
+.start-step.good{border-color:rgba(34,197,94,.25);background:rgba(34,197,94,.08)}
+.start-step.warn{border-color:rgba(251,146,60,.24);background:rgba(251,146,60,.07)}
+.start-step .step-icon{
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  background:rgba(56,189,248,.12);
+}
+.start-step strong{display:block;margin-bottom:3px}
+.start-step span{display:block;color:var(--muted);font-size:12px;line-height:1.35}
+.install-card{
+  padding:16px;
+  border-radius:22px;
+  border:1px solid rgba(56,189,248,.18);
+  background:linear-gradient(180deg,rgba(14,165,233,.09),rgba(255,255,255,.025));
+}
+.bottom-safe-space{height:0}
+@media(max-width:1120px){
+  .auth-shell,.start-grid{grid-template-columns:1fr}
+  .auth-copy{min-height:auto}
+}
+@media(max-width:760px){
+  .auth-shell{padding:14px;border-radius:24px}
+  .auth-copy,.auth-panel{padding:16px}
+  .auth-feature-grid{grid-template-columns:1fr}
+  .start-actions{grid-template-columns:1fr}
+  .app-nav{
+    position:fixed!important;
+    top:auto!important;
+    left:10px;
+    right:10px;
+    bottom:10px;
+    z-index:160;
+    border-radius:22px;
+    padding:8px;
+    box-shadow:0 18px 52px rgba(0,0,0,.45);
+  }
+  .container{padding-bottom:112px!important}
+  .floating-top{bottom:92px!important}
+  .nav-btn{padding:10px 12px;font-size:12px}
+  .bottom-safe-space{height:70px}
+}
+.performance-mode .auth-shell,
+.performance-mode .auth-panel,
+.performance-mode .auth-copy{
+  backdrop-filter:none!important;
+  box-shadow:0 8px 20px rgba(0,0,0,.20)!important;
+}
+
+/* =========================
+   Etapa 4A • Performance UX
    ========================= */
 .chip-action{
   width:auto;
@@ -283,14 +464,58 @@
   <div id="boot" class="boot"><div class="bootbox"><h2>Wealth OS</h2><p class="muted">Carregando painel profissional...</p><div style="display:flex;justify-content:center"><div class="spinner"></div></div></div></div>
   <div class="container">
     <div id="offline" class="offline">Você está sem conexão. Algumas funções podem não responder até a internet voltar.</div>
-    <div class="topbar"><div class="brand"><div class="logo">💎</div><div><h1>Wealth OS</h1><div class="subtitle">Sistema premium para carteira, ledger, renda passiva, perfil de investidor, alocação inteligente, performance e metas patrimoniais.</div></div></div><div class="chips">
-      <div class="chip premium">Etapa 3F</div>
+    <div class="topbar"><div class="brand"><div class="logo">💎</div><div><h1>Wealth OS</h1><div class="subtitle">Sistema premium para carteira, ledger, renda passiva, perfil de investidor, alocação inteligente, onboarding e experiência de app real.</div></div></div><div class="chips">
+      <div class="chip premium">Etapa 4A</div>
       <button id="performanceToggleChip" class="chip chip-action" type="button" onclick="togglePerformanceMode()">Modo leve: Auto</button>
       <div id="syncChip" class="chip">Sync: OK</div>
       <div id="ledgerChip" class="chip">Ledger como fonte principal</div>
     </div></div>
 
-    <div id="authSection" class="card"><div class="section"><div><div class="kicker">Acesso</div><h2 id="authTitle">Entrar</h2><div id="authSubtitle" class="muted">Faça login para acessar seu painel premium.</div></div></div><input id="email" type="email" placeholder="Seu e-mail" autocomplete="email"><div class="input-wrap"><input id="password" class="password-input" type="password" placeholder="Sua senha" autocomplete="current-password"><button class="eye" onclick="togglePassword()" type="button">👁️</button></div><button id="authBtn" onclick="handleAuth()">Entrar</button><div id="toggleAuth" class="auth-toggle" onclick="toggleAuthMode()">Criar conta</div><div id="authStatus" class="status"></div></div>
+    <div id="authSection" class="auth-shell">
+      <div class="auth-copy">
+        <div class="kicker">Wealth OS • App premium</div>
+        <h2>Controle sua carteira como uma plataforma profissional.</h2>
+        <p>Entre para acompanhar ledger, renda passiva, metas, projeções, liberdade financeira, alocação inteligente e histórico patrimonial em um só lugar.</p>
+
+        <div class="auth-feature-grid">
+          <div class="auth-feature"><strong>📒 Ledger profissional</strong><span>Compras, vendas, proventos, taxas e impostos.</span></div>
+          <div class="auth-feature"><strong>🧭 Alocação inteligente</strong><span>Perfil de investidor e sugestão do próximo aporte.</span></div>
+          <div class="auth-feature"><strong>🕊️ Liberdade financeira</strong><span>Plano para viver de renda e marcos mensais.</span></div>
+          <div class="auth-feature"><strong>📱 PWA instalável</strong><span>Base preparada para celular, desktop e Play Store.</span></div>
+        </div>
+
+        <div class="auth-note">
+          <strong>Primeiros passos:</strong> faça login, registre uma movimentação no Ledger, configure a meta e salve um snapshot manual.
+        </div>
+      </div>
+
+      <div class="auth-panel">
+        <div class="section">
+          <div>
+            <div class="kicker">Acesso seguro</div>
+            <h2 id="authTitle">Entrar</h2>
+            <div id="authSubtitle" class="muted">Faça login para acessar seu painel premium.</div>
+          </div>
+        </div>
+
+        <input id="email" type="email" placeholder="Seu e-mail" autocomplete="email">
+
+        <div class="input-wrap">
+          <input id="password" class="password-input" type="password" placeholder="Sua senha" autocomplete="current-password">
+          <button class="eye" onclick="togglePassword()" type="button">👁️</button>
+        </div>
+
+        <button id="authBtn" onclick="handleAuth()">Entrar</button>
+        <div id="toggleAuth" class="auth-toggle" onclick="toggleAuthMode()">Criar conta</div>
+        <div id="authStatus" class="status"></div>
+
+        <div class="auth-security">
+          <span>🔐 Login Supabase</span>
+          <span>☁️ Dados sincronizados</span>
+          <span>📊 Painel privado</span>
+        </div>
+      </div>
+    </div>
 
     <div id="appSection" class="grid">
       <div class="app-nav" id="appNav">
@@ -300,6 +525,7 @@
         <button class="nav-btn" type="button" data-screen="liberty" onclick="showAppScreen('liberty')">🕊️ Liberdade</button>
         <button class="nav-btn" type="button" data-screen="allocation" onclick="showAppScreen('allocation')">🧭 Alocação</button>
         <button class="nav-btn" type="button" data-screen="profile" onclick="showAppScreen('profile')">🧬 Perfil</button>
+        <button class="nav-btn" type="button" data-screen="app" onclick="showAppScreen('app')">📱 App</button>
         <button class="nav-btn" type="button" data-screen="history" onclick="showAppScreen('history')">📈 Histórico</button>
         <button class="nav-btn" type="button" data-screen="goals" onclick="showAppScreen('goals')">🎯 Metas</button>
         <button class="nav-btn" type="button" data-screen="projections" onclick="showAppScreen('projections')">🔮 Projeções</button>
@@ -309,10 +535,60 @@
       <div id="screenIntro" class="screen-intro"><strong>Visão geral</strong> — painel executivo com patrimônio, inteligência, score e principais alertas.</div>
 
 
+      <div class="card premium-panel" data-screen-block data-screens="app overview settings">
+        <div class="section">
+          <div>
+            <div class="kicker">Etapa 4A • Acabamento de app real</div>
+            <h3>Onboarding, instalação e prontidão do produto</h3>
+            <div class="muted">Um app profissional precisa guiar o usuário, funcionar bem no celular e mostrar o próximo passo com clareza.</div>
+          </div>
+          <span id="readinessBadge" class="badge purple">Prontidão</span>
+        </div>
+
+        <div class="start-grid">
+          <div class="start-hero">
+            <div class="label">Prontidão do Wealth OS</div>
+            <div id="appReadinessScore" class="start-score">0%</div>
+            <div id="appReadinessNote" class="muted" style="line-height:1.55">Carregando diagnóstico do produto...</div>
+
+            <div class="start-actions">
+              <button class="success" type="button" onclick="showAppScreen('ledger')">Registrar no Ledger</button>
+              <button class="gold" type="button" onclick="showAppScreen('goals')">Configurar meta</button>
+              <button class="secondary" type="button" onclick="showAppScreen('income')">Registrar renda</button>
+              <button class="secondary" type="button" onclick="installWealthOS()">Instalar app</button>
+            </div>
+          </div>
+
+          <div class="item">
+            <strong>Checklist de primeira experiência</strong>
+            <div id="appReadinessChecklist" class="start-checklist" style="margin-top:12px">
+              <div class="start-step warn"><div class="step-icon">⏳</div><div><strong>Carregando</strong><span>Preparando checklist.</span></div><div>...</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid3" style="margin-top:14px">
+          <div class="install-card">
+            <strong>📱 Instalação como app</strong>
+            <div class="muted" style="margin-top:8px;line-height:1.5">No celular, use “Adicionar à tela inicial”. No desktop, use o botão instalar do navegador quando aparecer.</div>
+          </div>
+          <div class="install-card">
+            <strong>🧭 Navegação de produto</strong>
+            <div class="muted" style="margin-top:8px;line-height:1.5">As abas separam o app por função: visão, ledger, renda, liberdade, perfil, alocação e histórico.</div>
+          </div>
+          <div class="install-card">
+            <strong>🏪 Caminho Play Store</strong>
+            <div class="muted" style="margin-top:8px;line-height:1.5">Depois do PWA estável, o próximo passo é empacotar com Capacitor para publicar como app Android.</div>
+          </div>
+        </div>
+      </div>
+
+
+
       <div class="card premium-panel" data-screen-block data-screens="settings overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 3F • Otimização profissional</div>
+            <div class="kicker">Etapa 4A • Otimização profissional</div>
             <h3>Central de performance e produto</h3>
             <div class="muted">Controle o modo visual do app, reduza travamentos e navegue como produto real por telas separadas.</div>
           </div>
@@ -365,11 +641,11 @@
 
       <div class="grid grid4" data-screen-block data-screens="overview ledger income"><div class="mini"><div class="label">Compras/entradas no ledger</div><div id="sumEntries" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Vendas/saídas no ledger</div><div id="sumExits" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Taxas + impostos</div><div id="sumCosts" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Renda passiva acumulada</div><div id="sumPassive" class="value small positive">R$ 0,00</div></div></div>
 
-      <div class="card premium-panel" data-screen-block data-screens="overview"><div class="section"><div><div class="kicker">Etapa 3F • Central de inteligência</div><h3>Dashboard premium do investidor</h3><div class="muted">Tela executiva com score visual, prioridades, resumo do mês e próxima ação recomendada.</div></div><span class="badge purple">Premium intelligence</span></div><div class="command-grid"><div class="score-shell"><div><div id="premiumScoreRing" class="score-ring"><div class="score-inner"><div id="premiumScoreNumber" class="score-number">0</div><div class="score-label">score / 100</div></div></div><div id="premiumScoreStatus" class="muted" style="margin-top:14px;line-height:1.45">Aguardando dados do ledger.</div></div></div><div><div class="command-metrics"><div class="command-card"><div class="label">Patrimônio analisado</div><div id="premiumAnalyzedWealth" class="command-headline">R$ 0,00</div><div id="premiumWealthNote" class="muted" style="font-size:12px;margin-top:6px">Ledger profissional</div></div><div class="command-card"><div class="label">Resultado atual</div><div id="premiumResult" class="command-headline">R$ 0,00</div><div id="premiumResultNote" class="muted" style="font-size:12px;margin-top:6px">Rentabilidade agregada</div></div><div class="command-card"><div class="label">Renda no mês</div><div id="premiumMonthlyIncome" class="command-headline">R$ 0,00</div><div id="premiumMonthlyIncomeNote" class="muted" style="font-size:12px;margin-top:6px">Proventos recebidos</div></div></div><div class="micro-grid"><div class="micro"><div class="label">Concentração principal</div><div id="advancedConcentration" class="value small">0%</div><div id="advancedConcentrationNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div><div class="micro"><div class="label">Diversificação</div><div id="advancedDiversification" class="value small">0 classes</div><div id="advancedDiversificationNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div><div class="micro"><div class="label">Renda passiva</div><div id="advancedPassive" class="value small positive">R$ 0,00</div><div id="advancedPassiveNote" class="muted" style="font-size:12px;margin-top:6px">Dividendos, juros e rendimentos.</div></div><div class="micro"><div class="label">Score técnico</div><div id="advancedScore" class="value small">0/100</div><div id="advancedScoreNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div></div></div></div><div class="intelligence-grid"><div class="item"><strong>O que aconteceu este mês</strong><div id="premiumMonthlyBrief" class="priority-stack" style="margin-top:10px">Sem movimentações no mês.</div></div><div class="item"><strong>Prioridades inteligentes</strong><div id="premiumPriorityAlerts" class="priority-stack" style="margin-top:10px">Sem alertas.</div></div><div class="item"><strong>Próxima ação recomendada</strong><div id="premiumPrimaryAction" class="action-hero">Cadastre movimentações no ledger para liberar a inteligência.</div><div id="premiumActionReason" class="muted" style="margin-top:10px;line-height:1.5"></div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Alocação por categoria</strong><div id="advancedAllocation" style="margin-top:10px">Sem dados.</div></div><div class="item"><strong>Alertas inteligentes</strong><div id="advancedAlerts" style="margin-top:10px">Sem alertas.</div></div><div class="item"><strong>Próximo passo sugerido</strong><div id="advancedNextStep" style="margin-top:10px">Cadastre movimentações no ledger para liberar a análise.</div></div></div></div>
+      <div class="card premium-panel" data-screen-block data-screens="overview"><div class="section"><div><div class="kicker">Etapa 4A • Central de inteligência</div><h3>Dashboard premium do investidor</h3><div class="muted">Tela executiva com score visual, prioridades, resumo do mês e próxima ação recomendada.</div></div><span class="badge purple">Premium intelligence</span></div><div class="command-grid"><div class="score-shell"><div><div id="premiumScoreRing" class="score-ring"><div class="score-inner"><div id="premiumScoreNumber" class="score-number">0</div><div class="score-label">score / 100</div></div></div><div id="premiumScoreStatus" class="muted" style="margin-top:14px;line-height:1.45">Aguardando dados do ledger.</div></div></div><div><div class="command-metrics"><div class="command-card"><div class="label">Patrimônio analisado</div><div id="premiumAnalyzedWealth" class="command-headline">R$ 0,00</div><div id="premiumWealthNote" class="muted" style="font-size:12px;margin-top:6px">Ledger profissional</div></div><div class="command-card"><div class="label">Resultado atual</div><div id="premiumResult" class="command-headline">R$ 0,00</div><div id="premiumResultNote" class="muted" style="font-size:12px;margin-top:6px">Rentabilidade agregada</div></div><div class="command-card"><div class="label">Renda no mês</div><div id="premiumMonthlyIncome" class="command-headline">R$ 0,00</div><div id="premiumMonthlyIncomeNote" class="muted" style="font-size:12px;margin-top:6px">Proventos recebidos</div></div></div><div class="micro-grid"><div class="micro"><div class="label">Concentração principal</div><div id="advancedConcentration" class="value small">0%</div><div id="advancedConcentrationNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div><div class="micro"><div class="label">Diversificação</div><div id="advancedDiversification" class="value small">0 classes</div><div id="advancedDiversificationNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div><div class="micro"><div class="label">Renda passiva</div><div id="advancedPassive" class="value small positive">R$ 0,00</div><div id="advancedPassiveNote" class="muted" style="font-size:12px;margin-top:6px">Dividendos, juros e rendimentos.</div></div><div class="micro"><div class="label">Score técnico</div><div id="advancedScore" class="value small">0/100</div><div id="advancedScoreNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div></div></div></div><div class="intelligence-grid"><div class="item"><strong>O que aconteceu este mês</strong><div id="premiumMonthlyBrief" class="priority-stack" style="margin-top:10px">Sem movimentações no mês.</div></div><div class="item"><strong>Prioridades inteligentes</strong><div id="premiumPriorityAlerts" class="priority-stack" style="margin-top:10px">Sem alertas.</div></div><div class="item"><strong>Próxima ação recomendada</strong><div id="premiumPrimaryAction" class="action-hero">Cadastre movimentações no ledger para liberar a inteligência.</div><div id="premiumActionReason" class="muted" style="margin-top:10px;line-height:1.5"></div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Alocação por categoria</strong><div id="advancedAllocation" style="margin-top:10px">Sem dados.</div></div><div class="item"><strong>Alertas inteligentes</strong><div id="advancedAlerts" style="margin-top:10px">Sem alertas.</div></div><div class="item"><strong>Próximo passo sugerido</strong><div id="advancedNextStep" style="margin-top:10px">Cadastre movimentações no ledger para liberar a análise.</div></div></div></div>
 
-      <div class="card" data-screen-block data-screens="income overview"><div class="section"><div><div class="kicker">Etapa 3F • Renda passiva profissional</div><h3>Painel de proventos e renda passiva</h3><div class="muted">Dividendos, juros, rendimentos, yield sobre custo e ranking de ativos pagadores.</div></div><span id="passiveIncomeBadge" class="badge green">Renda: R$ 0,00</span></div><div class="grid grid4"><div class="mini"><div class="label">Renda passiva total</div><div id="passiveTotal" class="value small positive">R$ 0,00</div><div id="passiveTotalNote" class="muted" style="font-size:12px;margin-top:6px">Proventos registrados no ledger.</div></div><div class="mini"><div class="label">Yield sobre custo</div><div id="passiveYieldCost" class="value small">0,0%</div><div class="muted" style="font-size:12px;margin-top:6px">Renda ÷ capital investido.</div></div><div class="mini"><div class="label">Yield sobre patrimônio</div><div id="passiveYieldCurrent" class="value small">0,0%</div><div class="muted" style="font-size:12px;margin-top:6px">Renda ÷ valor atual.</div></div><div class="mini"><div class="label">Maior pagador</div><div id="passiveTopPayer" class="value small">-</div><div id="passiveTopPayerNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando proventos.</div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Ranking de renda por ativo</strong><div id="passiveRanking" style="margin-top:10px">Sem renda passiva registrada.</div></div><div class="item"><strong>Últimos proventos</strong><div id="passiveRecent" style="margin-top:10px">Nenhum provento ainda.</div></div><div class="item"><strong>Plano de renda</strong><div id="passivePlan" style="margin-top:10px">Registre dividendos, juros ou rendimentos para liberar análise de renda.</div><div class="row" style="margin-top:12px"><button class="success" onclick="preparePassiveIncome()">Registrar provento</button></div></div></div></div>
+      <div class="card" data-screen-block data-screens="income overview"><div class="section"><div><div class="kicker">Etapa 4A • Renda passiva profissional</div><h3>Painel de proventos e renda passiva</h3><div class="muted">Dividendos, juros, rendimentos, yield sobre custo e ranking de ativos pagadores.</div></div><span id="passiveIncomeBadge" class="badge green">Renda: R$ 0,00</span></div><div class="grid grid4"><div class="mini"><div class="label">Renda passiva total</div><div id="passiveTotal" class="value small positive">R$ 0,00</div><div id="passiveTotalNote" class="muted" style="font-size:12px;margin-top:6px">Proventos registrados no ledger.</div></div><div class="mini"><div class="label">Yield sobre custo</div><div id="passiveYieldCost" class="value small">0,0%</div><div class="muted" style="font-size:12px;margin-top:6px">Renda ÷ capital investido.</div></div><div class="mini"><div class="label">Yield sobre patrimônio</div><div id="passiveYieldCurrent" class="value small">0,0%</div><div class="muted" style="font-size:12px;margin-top:6px">Renda ÷ valor atual.</div></div><div class="mini"><div class="label">Maior pagador</div><div id="passiveTopPayer" class="value small">-</div><div id="passiveTopPayerNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando proventos.</div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Ranking de renda por ativo</strong><div id="passiveRanking" style="margin-top:10px">Sem renda passiva registrada.</div></div><div class="item"><strong>Últimos proventos</strong><div id="passiveRecent" style="margin-top:10px">Nenhum provento ainda.</div></div><div class="item"><strong>Plano de renda</strong><div id="passivePlan" style="margin-top:10px">Registre dividendos, juros ou rendimentos para liberar análise de renda.</div><div class="row" style="margin-top:12px"><button class="success" onclick="preparePassiveIncome()">Registrar provento</button></div></div></div></div>
 
-      <div class="card" data-screen-block data-screens="income"><div class="section"><div><div class="kicker">Etapa 3F • Relatório mensal</div><h3>Fechamento do mês</h3><div class="muted">Compras, vendas, proventos, custos, fluxo líquido e meta mensal de renda passiva.</div></div><span id="monthlyReportBadge" class="badge purple">Mês atual</span></div><div class="grid grid5"><div class="mini"><div class="label">Renda no mês</div><div id="monthlyPassive" class="value small positive">R$ 0,00</div><div id="monthlyPassiveNote" class="muted" style="font-size:12px;margin-top:6px">Proventos do mês.</div></div><div class="mini"><div class="label">Compras no mês</div><div id="monthlyBuys" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Aportes e entradas.</div></div><div class="mini"><div class="label">Vendas no mês</div><div id="monthlySells" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Saídas do ledger.</div></div><div class="mini"><div class="label">Custos no mês</div><div id="monthlyCosts" class="value small negative">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Taxas e impostos.</div></div><div class="mini"><div class="label">Fluxo líquido</div><div id="monthlyNetFlow" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Entradas − saídas − custos.</div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Meta mensal de renda</strong><div class="fields" style="margin-top:10px"><input id="monthlyIncomeTarget" type="number" min="0" step="any" placeholder="Ex: 100"><button class="gold" onclick="saveMonthlyIncomeTarget()">Salvar meta</button></div><div class="bar" style="margin-top:12px"><div id="monthlyIncomeTargetFill" class="fill" style="width:0%"></div></div><div id="monthlyIncomeTargetText" class="muted" style="margin-top:8px">Defina uma meta mensal.</div></div><div class="item"><strong>Resumo do mês</strong><div id="monthlySummaryText" style="margin-top:10px">Sem movimentações no mês.</div></div><div class="item"><strong>Calendário de proventos</strong><div id="monthlyDividendCalendar" style="margin-top:10px">Nenhum provento no mês atual.</div></div></div><div class="grid grid2" style="margin-top:14px"><div class="item"><strong>Evolução mensal de proventos</strong><svg id="monthlyPassiveChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div><div class="item"><strong>Fluxo mensal de aportes</strong><svg id="monthlyFlowChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div></div></div>
+      <div class="card" data-screen-block data-screens="income"><div class="section"><div><div class="kicker">Etapa 4A • Relatório mensal</div><h3>Fechamento do mês</h3><div class="muted">Compras, vendas, proventos, custos, fluxo líquido e meta mensal de renda passiva.</div></div><span id="monthlyReportBadge" class="badge purple">Mês atual</span></div><div class="grid grid5"><div class="mini"><div class="label">Renda no mês</div><div id="monthlyPassive" class="value small positive">R$ 0,00</div><div id="monthlyPassiveNote" class="muted" style="font-size:12px;margin-top:6px">Proventos do mês.</div></div><div class="mini"><div class="label">Compras no mês</div><div id="monthlyBuys" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Aportes e entradas.</div></div><div class="mini"><div class="label">Vendas no mês</div><div id="monthlySells" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Saídas do ledger.</div></div><div class="mini"><div class="label">Custos no mês</div><div id="monthlyCosts" class="value small negative">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Taxas e impostos.</div></div><div class="mini"><div class="label">Fluxo líquido</div><div id="monthlyNetFlow" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Entradas − saídas − custos.</div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Meta mensal de renda</strong><div class="fields" style="margin-top:10px"><input id="monthlyIncomeTarget" type="number" min="0" step="any" placeholder="Ex: 100"><button class="gold" onclick="saveMonthlyIncomeTarget()">Salvar meta</button></div><div class="bar" style="margin-top:12px"><div id="monthlyIncomeTargetFill" class="fill" style="width:0%"></div></div><div id="monthlyIncomeTargetText" class="muted" style="margin-top:8px">Defina uma meta mensal.</div></div><div class="item"><strong>Resumo do mês</strong><div id="monthlySummaryText" style="margin-top:10px">Sem movimentações no mês.</div></div><div class="item"><strong>Calendário de proventos</strong><div id="monthlyDividendCalendar" style="margin-top:10px">Nenhum provento no mês atual.</div></div></div><div class="grid grid2" style="margin-top:14px"><div class="item"><strong>Evolução mensal de proventos</strong><svg id="monthlyPassiveChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div><div class="item"><strong>Fluxo mensal de aportes</strong><svg id="monthlyFlowChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div></div></div>
 
       
       
@@ -377,7 +653,7 @@
       <div class="card premium-panel" data-screen-block data-screens="profile overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 3F • Perfil de investidor</div>
+            <div class="kicker">Etapa 4A • Perfil de investidor</div>
             <h3>Carteira recomendada por perfil</h3>
             <div class="muted">Escolha um perfil, aplique a carteira-alvo automaticamente e compare seu momento atual com o modelo recomendado.</div>
           </div>
@@ -444,7 +720,7 @@
       <div class="card premium-panel" data-screen-block data-screens="allocation overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 3F • Inteligência de alocação</div>
+            <div class="kicker">Etapa 4A • Inteligência de alocação</div>
             <h3>Carteira ideal e próximo aporte</h3>
             <div class="muted">Compare sua carteira atual com a carteira-alvo, identifique concentração e veja quanto aportar em cada categoria.</div>
           </div>
@@ -516,7 +792,7 @@
       <div class="card premium-panel" data-screen-block data-screens="liberty income projections overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 3F • Independência financeira</div>
+            <div class="kicker">Etapa 4A • Independência financeira</div>
             <h3>Plano para viver de renda</h3>
             <div class="muted">Calcula patrimônio necessário, renda mensal desejada, yield esperado, prazo até a liberdade financeira e marcos de renda.</div>
           </div>
@@ -613,9 +889,9 @@
       </div>
 
 
-      <div class="card" data-screen-block data-screens="ledger overview"><div class="section"><div><div class="kicker">Etapa 3F • Preços reais do ledger</div><h3>Centro de preços por ativo</h3><div class="muted">Atualize preços reais diretamente no ledger e reduza a dependência do cadastro antigo.</div></div><span id="priceCenterBadge" class="badge purple">0 ativos</span></div><div id="priceCenterBox" class="empty">Sem ativos para atualizar.</div></div>
+      <div class="card" data-screen-block data-screens="ledger overview"><div class="section"><div><div class="kicker">Etapa 4A • Preços reais do ledger</div><h3>Centro de preços por ativo</h3><div class="muted">Atualize preços reais diretamente no ledger e reduza a dependência do cadastro antigo.</div></div><span id="priceCenterBadge" class="badge purple">0 ativos</span></div><div id="priceCenterBox" class="empty">Sem ativos para atualizar.</div></div>
 
-      <div class="card" data-screen-block data-screens="overview ledger"><div class="section"><div><div class="kicker">Etapa 3F • Dashboard otimizado pelo ledger</div><h3>Carteira principal calculada por movimentações</h3><div class="muted">Dashboard avançado: ledger como fonte principal, score, concentração, diversificação e alertas inteligentes.</div></div><span id="movementPositionsBadge" class="badge purple">0 posições</span></div><div id="movementPositionsBox" class="empty">Sem posições calculadas ainda.</div></div>
+      <div class="card" data-screen-block data-screens="overview ledger"><div class="section"><div><div class="kicker">Etapa 4A • Dashboard otimizado pelo ledger</div><h3>Carteira principal calculada por movimentações</h3><div class="muted">Dashboard avançado: ledger como fonte principal, score, concentração, diversificação e alertas inteligentes.</div></div><span id="movementPositionsBadge" class="badge purple">0 posições</span></div><div id="movementPositionsBox" class="empty">Sem posições calculadas ainda.</div></div>
 
       <div class="split grid" data-screen-block data-screens="ledger"><div class="card"><div class="section"><div><div class="kicker">Ledger profissional</div><h3>Registrar movimentação</h3><div class="muted">Compra, venda, dividendo, rendimento, juros, taxa, imposto e transferência com validação financeira.</div></div></div><div class="grid fields"><div><label>Tipo</label><select id="movementType"><option value="buy">Compra</option><option value="sell">Venda</option><option value="dividend">Dividendo</option><option value="interest">Juros</option><option value="yield">Rendimento</option><option value="fee">Taxa</option><option value="tax">Imposto</option><option value="transfer_in">Transferência de entrada</option><option value="transfer_out">Transferência de saída</option><option value="split">Split / desdobramento</option><option value="bonus">Bonificação</option><option value="other">Outro</option></select></div><div><label>Ativo</label><input id="movementAsset" placeholder="Ex: PETR4"></div></div><div class="grid fields"><div><label>Categoria</label><select id="movementCategory"><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select></div><div><label>Data</label><input id="movementDate" type="date"></div></div><div class="grid fields"><div><label>Quantidade</label><input id="movementQuantity" type="number" step="any" min="0" placeholder="0"></div><div><label>Preço unitário</label><input id="movementUnitPrice" type="number" step="any" min="0" placeholder="0"></div></div><div class="grid fields"><div><label>Valor bruto</label><input id="movementGross" type="number" step="any" min="0" placeholder="Auto: quantidade × preço"></div><div><label>Corretora</label><input id="movementBroker" placeholder="Ex: XP, NuInvest"></div></div><div class="grid fields"><div><label>Taxas</label><input id="movementFees" type="number" step="any" min="0" placeholder="0"></div><div><label>Impostos</label><input id="movementTaxes" type="number" step="any" min="0" placeholder="0"></div></div><label>Observações</label><textarea id="movementNotes" placeholder="Ex: compra mensal, dividendo recebido..."></textarea><div id="movementPreview" class="item" style="margin-top:12px;border-color:rgba(56,189,248,.18)"><strong>Prévia da movimentação</strong><br><span class="muted">Preencha quantidade e preço para calcular automaticamente.</span></div><div id="movementEditBanner" class="status status-info" style="display:none"></div><div class="row" style="margin-top:12px"><button id="saveMovementBtn" onclick="saveMovement()">Salvar movimentação validada</button><button id="cancelMovementEditBtn" class="secondary" style="display:none" onclick="cancelMovementEdit()">Cancelar edição</button></div><div id="movementStatus" class="status"></div></div>
       <div class="card"><div class="section"><div><div class="kicker">Extrato editável</div><h3>Controle financeiro de movimentações</h3><div class="muted">Filtre, edite, exclua e confira a consistência financeira dos lançamentos.</div></div><span id="movementFilteredCount" class="badge purple">0 registro(s)</span></div><div class="grid fields"><select id="movementFilterType" onchange="renderMovements()"><option value="">Todos os tipos</option><option value="buy">Compra</option><option value="sell">Venda</option><option value="dividend">Dividendo</option><option value="interest">Juros</option><option value="yield">Rendimento</option><option value="fee">Taxa</option><option value="tax">Imposto</option><option value="transfer_in">Entrada</option><option value="transfer_out">Saída</option><option value="split">Split</option><option value="bonus">Bonificação</option><option value="other">Outro</option></select><input id="movementFilterAsset" placeholder="Filtrar por ativo" oninput="renderMovements()"></div><div class="row" style="margin-top:10px"><select id="movementFilterCategory" onchange="renderMovements()" style="width:auto;min-width:180px"><option value="">Todas categorias</option><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select><button class="secondary" onclick="clearMovementFilters()">Limpar filtros</button></div><div id="movementsList" class="empty" style="margin-top:12px">Sem movimentações ainda.</div></div></div>
@@ -627,7 +903,7 @@
       <div class="card premium-panel" data-screen-block data-screens="projections goals overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 3F • Projeções avançadas</div>
+            <div class="kicker">Etapa 4A • Projeções avançadas</div>
             <h3>Simulador patrimonial inteligente</h3>
             <div class="muted">Cenários conservador, moderado e agressivo com aporte mensal, meta e prazo estimado.</div>
           </div>
@@ -712,7 +988,7 @@
       <div class="card premium-panel" data-screen-block data-screens="projections goals overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 3F • Plano de ação patrimonial</div>
+            <div class="kicker">Etapa 4A • Plano de ação patrimonial</div>
             <h3>Plano inteligente para chegar na meta</h3>
             <div class="muted">Transforma a projeção em ações: aporte, rentabilidade, prazo, gargalo principal e marcos patrimoniais.</div>
           </div>
@@ -777,11 +1053,13 @@
 
       <div class="grid grid3" data-screen-block data-screens="overview"><div class="card"><div class="section"><div><div class="kicker">Insights</div><h3>Análise inteligente</h3></div></div><div id="insightsBox" class="empty">Sem análise ainda.</div></div><div class="card"><div class="section"><div><div class="kicker">Top position</div><h3>Maior posição</h3></div></div><div id="topHolding" class="empty">Sem dados.</div></div><div class="card"><div class="section"><div><div class="kicker">Risk & quality</div><h3>Saúde da carteira</h3></div></div><div id="healthBox" class="empty">Sem dados.</div></div></div>
 
-      <div class="grid grid2" data-screen-block data-screens="history"><div class="card"><div class="section"><div><div class="kicker">Contribution curve</div><h3>Capital investido acumulado</h3></div></div><svg id="capitalChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div><div class="card"><div class="section"><div><div class="kicker">Historical engine 3F</div><h3>Histórico patrimonial profissional</h3><div class="muted">Snapshot manual, com reset seguro para limpar histórico antigo sem apagar sua carteira.</div></div><span id="snapshotBadge" class="muted">0 snapshots</span></div><div class="grid grid3"><div class="mini"><div class="label">Recente</div><div id="snapLatest" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Maior</div><div id="snapHighest" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Variação</div><div id="snapVar" class="value small">R$ 0,00</div></div></div><div class="row" style="margin-top:12px"><button class="gold" id="manualSnapshotBtn2" onclick="saveManualSnapshot()">Salvar snapshot agora</button><button class="secondary" id="cleanSnapshotsBtn" onclick="cleanDuplicateSnapshots()">Limpar duplicados visuais</button><button class="danger" id="resetSnapshotsBtn" onclick="openResetSnapshotsModal()">Resetar histórico</button></div><div id="snapshotStatus" class="status status-info">Snapshots automáticos desativados. Use resetar histórico apenas se quiser apagar os snapshots antigos e começar um histórico limpo.</div><svg id="historyChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div></div>
+      <div class="grid grid2" data-screen-block data-screens="history"><div class="card"><div class="section"><div><div class="kicker">Contribution curve</div><h3>Capital investido acumulado</h3></div></div><svg id="capitalChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div><div class="card"><div class="section"><div><div class="kicker">Historical engine 4A</div><h3>Histórico patrimonial profissional</h3><div class="muted">Snapshot manual, com reset seguro para limpar histórico antigo sem apagar sua carteira.</div></div><span id="snapshotBadge" class="muted">0 snapshots</span></div><div class="grid grid3"><div class="mini"><div class="label">Recente</div><div id="snapLatest" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Maior</div><div id="snapHighest" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Variação</div><div id="snapVar" class="value small">R$ 0,00</div></div></div><div class="row" style="margin-top:12px"><button class="gold" id="manualSnapshotBtn2" onclick="saveManualSnapshot()">Salvar snapshot agora</button><button class="secondary" id="cleanSnapshotsBtn" onclick="cleanDuplicateSnapshots()">Limpar duplicados visuais</button><button class="danger" id="resetSnapshotsBtn" onclick="openResetSnapshotsModal()">Resetar histórico</button></div><div id="snapshotStatus" class="status status-info">Snapshots automáticos desativados. Use resetar histórico apenas se quiser apagar os snapshots antigos e começar um histórico limpo.</div><svg id="historyChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div></div>
 
       <div class="card" data-screen-block data-screens="ledger settings"><div class="section"><div><div class="kicker">Portfolio terminal</div><h3>Seus investimentos</h3><div class="muted">Cadastro atual consolidado visualmente.</div></div></div><div class="grid fields"><input id="searchInput" placeholder="Buscar ativo" oninput="renderAssets()"><select id="filterCategory" onchange="renderAssets()"><option value="">Todas as categorias</option><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select></div><div id="assetsList" style="margin-top:12px" class="empty">Sem investimentos.</div></div>
     </div>
   </div>
+
+  <div class="bottom-safe-space"></div>
 
   <button id="floatingTopBtn" class="floating-top secondary" type="button" onclick="window.scrollTo({top:0,behavior:document.body.classList.contains('performance-mode')?'auto':'smooth'})">↑ Topo</button>
 
@@ -825,6 +1103,7 @@
       liberty:['Liberdade financeira','calcule quanto patrimônio precisa para viver de renda e acompanhe marcos de renda mensal.'],
       allocation:['Alocação inteligente','compare carteira atual com carteira-alvo e veja onde colocar o próximo aporte. A tela Perfil fica separada.'],
       profile:['Perfil de investidor','escolha conservador, moderado, arrojado ou personalizado. Depois aplique o perfil para atualizar a tela Alocação.'],
+      app:['App real','onboarding, instalação, experiência mobile e checklist para publicar como produto.'],
       history:['Histórico','controle snapshots manuais, gráficos e evolução patrimonial sem travar o app.'],
       goals:['Metas','configure meta patrimonial, aporte mensal e acompanhe projeção.'],
       projections:['Projeções','simule patrimônio futuro, cenários de rentabilidade e prazo para alcançar a meta.'],
@@ -832,6 +1111,68 @@
       all:['Tudo','modo de revisão completa. Use apenas para conferir o app inteiro, pois é mais pesado.']
     };
     
+    
+    let deferredInstallPrompt=null;
+    window.addEventListener('beforeinstallprompt',e=>{
+      e.preventDefault();
+      deferredInstallPrompt=e;
+      updateAppReadiness();
+    });
+    window.installWealthOS=async function(){
+      if(deferredInstallPrompt){
+        deferredInstallPrompt.prompt();
+        const choice=await deferredInstallPrompt.userChoice;
+        deferredInstallPrompt=null;
+        toast(choice?.outcome==='accepted'?'Instalação iniciada.':'Instalação cancelada.','info');
+        updateAppReadiness();
+        return;
+      }
+      toast('Se o botão instalar não aparecer, use o menu do navegador e escolha “Instalar app” ou “Adicionar à tela inicial”.','info');
+    }
+    function appReadinessKey(){return `wealth_os_first_run_done_${userId||'guest'}`}
+    function updateAppReadiness(){
+      const badge=$('readinessBadge'),scoreEl=$('appReadinessScore'),note=$('appReadinessNote'),listEl=$('appReadinessChecklist');
+      if(!scoreEl||!listEl)return;
+      const assetsList=typeof mainAssets==='function'?mainAssets():[];
+      const hasLedger=(movements||[]).length>0;
+      const hasAsset=assetsList.length>0;
+      const hasGoal=Number(goal?.targetValue||0)>0;
+      const hasContribution=Number(goal?.monthlyContribution||0)>0;
+      const hasIncome=(movements||[]).some(m=>['dividend','income','interest','rendimento'].includes(String(m.movement_type||'')));
+      const hasSnapshot=(snaps||[]).length>0;
+      const perfOn=document.body.classList.contains('performance-mode');
+      const pwaReady=!!deferredInstallPrompt || window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+      const checks=[
+        {ok:!!userId,icon:'🔐',title:'Login ativo',text:userId?'Sua sessão está carregada.':'Entre na conta para salvar dados reais.'},
+        {ok:hasLedger,icon:'📒',title:'Ledger iniciado',text:hasLedger?'Movimentações profissionais cadastradas.':'Registre uma compra, venda ou provento.'},
+        {ok:hasAsset,icon:'💼',title:'Carteira calculada',text:hasAsset?'O app já calcula posições e patrimônio.':'Cadastre pelo menos um ativo.'},
+        {ok:hasGoal&&hasContribution,icon:'🎯',title:'Meta patrimonial',text:hasGoal?'Meta e aporte configurados.':'Defina meta e aporte mensal.'},
+        {ok:hasIncome,icon:'💸',title:'Renda passiva',text:hasIncome?'Renda/provento registrado no ledger.':'Registre dividendos, juros ou rendimentos.'},
+        {ok:hasSnapshot,icon:'📈',title:'Histórico patrimonial',text:hasSnapshot?'Snapshot criado para acompanhar evolução.':'Salve um snapshot manual.'},
+        {ok:perfOn,icon:'⚡',title:'Performance mobile',text:perfOn?'Modo leve ativo ou automático.':'Ative modo leve se sentir travamento.'},
+        {ok:pwaReady,icon:'📱',title:'Instalação PWA',text:pwaReady?'O app está instalável ou já instalado.':'Use Instalar app / Adicionar à tela inicial.'}
+      ];
+      const done=checks.filter(c=>c.ok).length;
+      const score=Math.round(done/checks.length*100);
+      scoreEl.textContent=score+'%';
+      scoreEl.className='start-score '+(score>=75?'positive':score>=45?'neutral':'negative');
+      if(badge)badge.textContent=score>=75?'Produto quase pronto':score>=45?'Em construção':'Início';
+      if(note){
+        note.textContent=score>=75
+          ? 'Seu produto já tem boa base de uso real. Agora foque em acabamento visual, publicação e segurança.'
+          : score>=45
+            ? 'O app já está funcional, mas ainda faltam alguns passos para ficar com cara de produto publicado.'
+            : 'Comece pelo Ledger, pela meta patrimonial e por um snapshot para montar a experiência completa.';
+      }
+      listEl.innerHTML=checks.map(c=>`
+        <div class="start-step ${c.ok?'good':'warn'}">
+          <div class="step-icon">${c.icon}</div>
+          <div><strong>${c.title}</strong><span>${c.text}</span></div>
+          <div>${c.ok?'✅':'•'}</div>
+        </div>
+      `).join('');
+    }
+
     function performanceKey(){return 'wealth_os_performance_mode'}
     function isLowPowerDevice(){
       const cores=navigator.hardwareConcurrency||8;
@@ -898,13 +1239,13 @@
         const [title,text]=screenTexts[wanted];
         intro.innerHTML=`<strong>${title}</strong> — ${text}`;
       }
-      try{localStorage.setItem(navKey(),wanted)}catch{};updatePerformanceUI();
+      try{localStorage.setItem(navKey(),wanted)}catch{};updatePerformanceUI();updateAppReadiness();
       if(smooth){const behavior=document.body.classList.contains('performance-mode')?'auto':'smooth';window.scrollTo({top:0,behavior});}
     }
     function restoreAppScreen(){let saved='overview';try{saved=localStorage.getItem(navKey())||'overview'}catch{};setTimeout(()=>showAppScreen(saved,false),0)}
 
-    function showApp(u){userId=u.id;userEmail=u.email||'';$('authSection').style.display='none';$('appSection').style.display='grid';$('userEmail').textContent=userEmail;$('greeting').textContent='Olá, '+(userEmail.split('@')[0]||'investidor')+' 👋';balanceVisible=(localStorage.getItem(balKey())??'true')==='true';restoreAppScreen()}
-    function showLogin(){userId=null;$('authSection').style.display='block';$('appSection').style.display='none'}
+    function showApp(u){userId=u.id;userEmail=u.email||'';$('authSection').style.display='none';$('appSection').style.display='grid';$('userEmail').textContent=userEmail;$('greeting').textContent='Olá, '+(userEmail.split('@')[0]||'investidor')+' 👋';balanceVisible=(localStorage.getItem(balKey())??'true')==='true';restoreAppScreen();setTimeout(updateAppReadiness,120)}
+    function showLogin(){userId=null;$('authSection').style.display='grid';$('appSection').style.display='none';setTimeout(updateAppReadiness,120)}
     window.toggleBalance=()=>{balanceVisible=!balanceVisible;localStorage.setItem(balKey(),String(balanceVisible));renderDashboard()}
     function consolidate(list){const m=new Map();list.forEach(i=>{const a=String(i.asset||'').trim().toUpperCase(),c=String(i.category||'Outros').trim()||'Outros',k=a+'__'+c,q=Number(i.quantity||0),amt=Number(i.amount||0),cur=q*Number(i.current_price||0);if(!m.has(k))m.set(k,{id:i.id,asset:a,category:c,quantity:0,amount:0,current_value:0,sourceIds:[],sourceItems:[],created_at:i.created_at});const g=m.get(k);g.quantity+=q;g.amount+=amt;g.current_value+=cur;g.sourceIds.push(i.id);g.sourceItems.push(i);if(new Date(i.created_at||0)>new Date(g.created_at||0))g.created_at=i.created_at});return [...m.values()].map(g=>({...g,avg_price:g.quantity?g.amount/g.quantity:0,current_price:g.quantity?g.current_value/g.quantity:0,sourceCount:g.sourceItems.length,isGrouped:g.sourceItems.length>1})).sort((a,b)=>new Date(b.created_at||0)-new Date(a.created_at||0))}
     function priceKey(asset){return `wealth_os_market_price_${userId}_${String(asset||'').trim().toUpperCase()}`}
@@ -1659,7 +2000,7 @@
     }
     window.clearLedgerPrice=(asset)=>{localStorage.removeItem(priceKey(asset));renderDashboard();renderAssets();renderPositions();renderPriceCenter();toast('Preço salvo de '+asset+' removido. O app volta a usar cadastro atual ou custo médio.','info')}
     
-    function renderDashboard(){const t=mainTotals(),list=t.list,inv=t.inv,cur=t.cur,pl=t.pl,r=t.ret,w=list.filter(i=>Number(i.current_value||0)-Number(i.amount||0)+Number(i.passive_income||0)>0).length,l=list.filter(i=>Number(i.current_value||0)-Number(i.amount||0)+Number(i.passive_income||0)<0).length;$('heroValue').textContent=balanceVisible?money(cur):'R$ ••••••••';$('investedValue').textContent=balanceVisible?money(inv):'R$ ••••••••';$('currentValue').textContent=balanceVisible?money(cur):'R$ ••••••••';$('pnlValue').textContent=balanceVisible?pnl(pl):'R$ ••••••••';$('pnlValue').className='value '+cls(pl);$('returnPct').textContent=pct(r);$('returnPct').className='value small '+cls(r);$('winners').textContent=w;$('losers').textContent=l;$('positionsCount').textContent=list.length;$('walletBadge').textContent=t.ledger?(pl>0?'Ledger no verde':pl<0?'Ledger em retração':'Ledger neutro'):(pl>0?'Carteira no verde':pl<0?'Carteira em retração':'Carteira neutra');$('ledgerBadge').textContent=t.ledger?'Dashboard: Ledger profissional':'Dashboard: Cadastro atual';const biggest=[...list].sort((a,b)=>Number(b.current_value||0)-Number(a.current_value||0))[0];$('quickBiggest').textContent=biggest?biggest.asset:'-';renderGoal(cur);loadProjectionSettings();loadFreedomSettings();loadAllocationSettings();loadInvestorProfileSettings();renderProjectionEngine();renderWealthActionPlan();renderFinancialFreedom();renderAllocationIntelligence();renderInvestorProfile();renderPremiumCommandCenter(inv,cur,pl);renderAdvancedDashboard(inv,cur,pl);renderPassiveIncomeDashboard(inv,cur);renderMonthlyReport();renderPriceCenter();renderInsights(inv,cur,pl);renderLast()}
+    function renderDashboard(){const t=mainTotals(),list=t.list,inv=t.inv,cur=t.cur,pl=t.pl,r=t.ret,w=list.filter(i=>Number(i.current_value||0)-Number(i.amount||0)+Number(i.passive_income||0)>0).length,l=list.filter(i=>Number(i.current_value||0)-Number(i.amount||0)+Number(i.passive_income||0)<0).length;$('heroValue').textContent=balanceVisible?money(cur):'R$ ••••••••';$('investedValue').textContent=balanceVisible?money(inv):'R$ ••••••••';$('currentValue').textContent=balanceVisible?money(cur):'R$ ••••••••';$('pnlValue').textContent=balanceVisible?pnl(pl):'R$ ••••••••';$('pnlValue').className='value '+cls(pl);$('returnPct').textContent=pct(r);$('returnPct').className='value small '+cls(r);$('winners').textContent=w;$('losers').textContent=l;$('positionsCount').textContent=list.length;$('walletBadge').textContent=t.ledger?(pl>0?'Ledger no verde':pl<0?'Ledger em retração':'Ledger neutro'):(pl>0?'Carteira no verde':pl<0?'Carteira em retração':'Carteira neutra');$('ledgerBadge').textContent=t.ledger?'Dashboard: Ledger profissional':'Dashboard: Cadastro atual';const biggest=[...list].sort((a,b)=>Number(b.current_value||0)-Number(a.current_value||0))[0];$('quickBiggest').textContent=biggest?biggest.asset:'-';renderGoal(cur);loadProjectionSettings();loadFreedomSettings();loadAllocationSettings();loadInvestorProfileSettings();renderProjectionEngine();renderWealthActionPlan();renderFinancialFreedom();renderAllocationIntelligence();renderInvestorProfile();renderPremiumCommandCenter(inv,cur,pl);renderAdvancedDashboard(inv,cur,pl);renderPassiveIncomeDashboard(inv,cur);renderMonthlyReport();renderPriceCenter();renderInsights(inv,cur,pl);renderLast();updateAppReadiness()}
     function renderAssets(){const source=mainAssets(),s=($('searchInput')?.value||'').trim().toUpperCase(),c=$('filterCategory')?.value||'';let list=[...source];if(s)list=list.filter(i=>String(i.asset||'').includes(s));if(c)list=list.filter(i=>i.category===c);if(!list.length){$('assetsList').className='empty';$('assetsList').innerHTML='Sem investimentos.';return}$('assetsList').className='';const total=list.reduce((a,i)=>a+Number(i.current_value||0),0);$('assetsList').innerHTML=list.map(i=>{const cur=Number(i.current_value||0),inv=Number(i.amount||0),pass=Number(i.passive_income||0),pl=cur-inv+pass,ret=inv?pl/inv*100:0,share=total?cur/total*100:0,ledger=!!i.ledger;const actions=ledger?`<button onclick="refreshLedgerPrice('${esc(i.asset)}',this)">Atualizar preço</button>${i.oldId?`<button class="secondary" onclick="refreshSingle('${String(i.oldId)}',this)">Sync cadastro</button>`:`<button class="secondary" onclick="prefillInvestmentFromLedger('${esc(i.asset)}','${esc(i.category)}','${Number(i.quantity||0)}','${Number(i.avg_price||0)}','${Number(i.current_price||0)}')">Criar preço</button>`}`:`<button onclick="refreshSingle('${String(i.id)}',this)">Atualizar</button><button class="danger" onclick="openDeleteModal('${String(i.id)}')">Excluir</button>`;return `<div class="item asset"><div><div class="asset-title">${esc(i.asset)} • ${esc(i.category)} ${ledger?'<span class="badge purple">Ledger</span>':''}</div><div class="asset-meta">Qtd: ${Number(i.quantity||0)} • PM: ${money(i.avg_price)} • Atual: ${money(i.current_price)}<br>${share.toFixed(1)}% da carteira • ${ret.toFixed(1)}% de rentabilidade${ledger?`<br>Fonte do preço: ${esc(i.priceSource||'-')} • Renda: ${money(pass)}`:''}</div><div class="bar"><div class="fill" style="width:${Math.min(share,100)}%"></div></div>${i.isGrouped?`<span class="badge">${i.sourceCount} registros consolidados</span>`:''}<div class="row" style="margin-top:10px">${actions}</div></div><div class="asset-right"><div>${money(cur)}</div><div class="${cls(pl)}">${pnl(pl)}<br><span style="font-size:13px">${pct(ret)}</span></div></div></div>`}).join('')}
     window.saveInvestment=async()=>{if(!requireOnline())return;const asset=$('asset').value.trim().toUpperCase(),category=$('category').value,q=Number($('quantity').value),avg=Number($('avgPrice').value),cur=Number($('currentPrice').value);if(!asset||!category||q<=0||avg<=0||cur<=0){status($('saveStatus'),'Preencha ativo, categoria, quantidade, preço médio e preço atual.','error');return}btn($('saveInvestBtn'),true,'Salvando...');try{const payload={user_id:userId,asset,category,amount:q*avg,quantity:q,avg_price:avg,current_price:cur};const {data,error}=await supabase.from('investments').insert([payload]).select().single();if(error)throw error;try{await supabase.from('investment_history').insert([{user_id:userId,investment_id:data.id,action:'create',asset,category,amount:payload.amount,quantity:q,avg_price:avg,current_price:cur}])}catch{}status($('saveStatus'),asset+' salvo com sucesso.','success');['asset','category','quantity','avgPrice','currentPrice'].forEach(id=>$(id).value='');await refreshEverything()}catch(e){status($('saveStatus'),e.message||'Erro ao salvar.','error')}finally{btn($('saveInvestBtn'),false)}}
     window.fetchSinglePrice=async()=>{const asset=$('asset').value.trim().toUpperCase();if(!asset){status($('saveStatus'),'Digite o ativo primeiro.','error');return}btn($('fetchPriceBtn'),true,'Buscando...');try{const {data,error}=await supabase.functions.invoke('quick-worker',{body:{ticker:asset}});if(error)throw error;const price=data?.results?.[0]?.regularMarketPrice;if(!price)throw new Error('Preço não encontrado.');$('currentPrice').value=Number(price);status($('saveStatus'),'Preço carregado.','success')}catch(e){status($('saveStatus'),e.message||'Erro ao buscar preço.','error')}finally{btn($('fetchPriceBtn'),false)}}
@@ -1879,7 +2220,7 @@
     window.prefillInvestmentFromLedger=(asset,category,quantity,avg,current)=>{$('asset').value=asset;$('category').value=category||'Outros';$('quantity').value=quantity||'';$('avgPrice').value=avg||'';$('currentPrice').value=current||'';document.getElementById('asset').scrollIntoView({behavior:'smooth',block:'center'});status($('saveStatus'),'Dados do ledger enviados para o cadastro atual. Use para criar uma referência de preço atual.','info')}
     window.refreshEverything=async()=>{await loadInvestments();await loadMovementData();restoreAppScreen();status($('topStatus'),'Painel atualizado.','success');setTimeout(()=>status($('topStatus'),''),1500)}
     window.openLogoutModal=()=>{$('logoutModal').classList.add('show')};window.closeLogoutModal=()=>{$('logoutModal').classList.remove('show')};window.confirmLogout=async()=>{btn($('logoutBtn'),true,'Saindo...');try{await supabase.auth.signOut()}finally{btn($('logoutBtn'),false);closeLogoutModal()}}
-    async function boot(){applyPerformanceMode(getPerformancePreference());syncChips();window.addEventListener('online',syncChips);window.addEventListener('offline',syncChips);window.addEventListener('scroll',()=>{$('floatingTopBtn')?.classList.toggle('show',window.scrollY>620)},{passive:true});$('movementDate').value=new Date().toISOString().slice(0,10);['movementType','movementAsset','movementQuantity','movementUnitPrice','movementGross','movementFees','movementTaxes'].forEach(id=>$(id)?.addEventListener('input',renderMovementPreview));['movementType','movementCategory','movementDate'].forEach(id=>$(id)?.addEventListener('change',renderMovementPreview));renderMovementPreview();['email','password'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter')handleAuth()}));supabase.auth.onAuthStateChange((event,session)=>setTimeout(async()=>{if(!session?.user){showLogin();return}showApp(session.user);await loadGoal();await loadInvestments();await loadMovementData()},0));const u=await getUser();if(u){showApp(u);await loadGoal();await loadInvestments();await loadMovementData()}else showLogin();setBoot(false)}
+    async function boot(){applyPerformanceMode(getPerformancePreference());syncChips();window.addEventListener('online',syncChips);window.addEventListener('offline',syncChips);window.addEventListener('resize',()=>{updatePerformanceUI();updateAppReadiness()},{passive:true});window.addEventListener('scroll',()=>{$('floatingTopBtn')?.classList.toggle('show',window.scrollY>620)},{passive:true});$('movementDate').value=new Date().toISOString().slice(0,10);['movementType','movementAsset','movementQuantity','movementUnitPrice','movementGross','movementFees','movementTaxes'].forEach(id=>$(id)?.addEventListener('input',renderMovementPreview));['movementType','movementCategory','movementDate'].forEach(id=>$(id)?.addEventListener('change',renderMovementPreview));renderMovementPreview();['email','password'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter')handleAuth()}));supabase.auth.onAuthStateChange((event,session)=>setTimeout(async()=>{if(!session?.user){showLogin();return}showApp(session.user);await loadGoal();await loadInvestments();await loadMovementData()},0));const u=await getUser();if(u){showApp(u);await loadGoal();await loadInvestments();await loadMovementData()}else showLogin();setBoot(false);updateAppReadiness()}
     boot();
   </script>
 </body>
