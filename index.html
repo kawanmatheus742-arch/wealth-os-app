@@ -2744,7 +2744,487 @@ body.performance-mode.ui-ready .screen-intro{
   .legal-grid{grid-template-columns:1fr}
   .legal-actions button{width:100%!important}
 }
+/* =========================================================
+   WEALTH OS 6F.2 — CORREÇÃO FINAL DE RESPONSIVIDADE
+   Corrige:
+   1) barra de abas cortando no PC
+   2) tela Legal/Políticas cortando no celular
+   3) cards com largura estourando
+   4) botões ficando maiores que a tela
+   ========================================================= */
 
+*,
+*::before,
+*::after{
+  box-sizing:border-box !important;
+}
+
+html,
+body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden !important;
+}
+
+/* Containers principais */
+.container,
+.app-shell,
+.app-container,
+.page,
+.screen,
+.content,
+.main,
+main,
+section,
+.card,
+.panel,
+.box{
+  max-width:100% !important;
+  min-width:0 !important;
+}
+
+/* =========================================================
+   BARRA PRINCIPAL DE TELAS / ABAS
+   ========================================================= */
+
+.nav,
+.navbar,
+.tabs,
+.tabbar,
+.tab-bar,
+.tabs-bar,
+.screen-tabs,
+.section-tabs,
+.top-tabs,
+.menu-tabs,
+.main-tabs,
+.app-tabs,
+.quick-tabs,
+#tabs,
+#tabBar,
+#navTabs,
+#mainTabs,
+[role="tablist"]{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:10px !important;
+  padding-bottom:8px !important;
+  overflow-y:visible !important;
+  scrollbar-width:none !important;
+  -ms-overflow-style:none !important;
+}
+
+.nav::-webkit-scrollbar,
+.navbar::-webkit-scrollbar,
+.tabs::-webkit-scrollbar,
+.tabbar::-webkit-scrollbar,
+.tab-bar::-webkit-scrollbar,
+.tabs-bar::-webkit-scrollbar,
+.screen-tabs::-webkit-scrollbar,
+.section-tabs::-webkit-scrollbar,
+.top-tabs::-webkit-scrollbar,
+.menu-tabs::-webkit-scrollbar,
+.main-tabs::-webkit-scrollbar,
+.app-tabs::-webkit-scrollbar,
+.quick-tabs::-webkit-scrollbar,
+#tabs::-webkit-scrollbar,
+#tabBar::-webkit-scrollbar,
+#navTabs::-webkit-scrollbar,
+#mainTabs::-webkit-scrollbar,
+[role="tablist"]::-webkit-scrollbar{
+  display:none !important;
+}
+
+.nav > *,
+.navbar > *,
+.tabs > *,
+.tabbar > *,
+.tab-bar > *,
+.tabs-bar > *,
+.screen-tabs > *,
+.section-tabs > *,
+.top-tabs > *,
+.menu-tabs > *,
+.main-tabs > *,
+.app-tabs > *,
+.quick-tabs > *,
+#tabs > *,
+#tabBar > *,
+#navTabs > *,
+#mainTabs > *,
+[role="tablist"] > *{
+  flex:0 0 auto !important;
+  white-space:nowrap !important;
+}
+
+/* PC: deixa a barra quebrar linha, para não cortar o botão Tudo */
+@media (min-width:901px){
+  .nav,
+  .navbar,
+  .tabs,
+  .tabbar,
+  .tab-bar,
+  .tabs-bar,
+  .screen-tabs,
+  .section-tabs,
+  .top-tabs,
+  .menu-tabs,
+  .main-tabs,
+  .app-tabs,
+  .quick-tabs,
+  #tabs,
+  #tabBar,
+  #navTabs,
+  #mainTabs,
+  [role="tablist"]{
+    flex-wrap:wrap !important;
+    overflow-x:visible !important;
+  }
+}
+
+/* Celular: mantém rolagem horizontal suave */
+@media (max-width:900px){
+  .nav,
+  .navbar,
+  .tabs,
+  .tabbar,
+  .tab-bar,
+  .tabs-bar,
+  .screen-tabs,
+  .section-tabs,
+  .top-tabs,
+  .menu-tabs,
+  .main-tabs,
+  .app-tabs,
+  .quick-tabs,
+  #tabs,
+  #tabBar,
+  #navTabs,
+  #mainTabs,
+  [role="tablist"]{
+    flex-wrap:nowrap !important;
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+    -webkit-overflow-scrolling:touch !important;
+    scroll-snap-type:x proximity !important;
+  }
+
+  .nav > *,
+  .navbar > *,
+  .tabs > *,
+  .tabbar > *,
+  .tab-bar > *,
+  .tabs-bar > *,
+  .screen-tabs > *,
+  .section-tabs > *,
+  .top-tabs > *,
+  .menu-tabs > *,
+  .main-tabs > *,
+  .app-tabs > *,
+  .quick-tabs > *,
+  #tabs > *,
+  #tabBar > *,
+  #navTabs > *,
+  #mainTabs > *,
+  [role="tablist"] > *{
+    scroll-snap-align:start !important;
+  }
+}
+
+/* =========================================================
+   ÁREA LEGAL / SUPORTE / POLÍTICAS
+   ========================================================= */
+
+.legal-section,
+.legal-box,
+.legal-card,
+.legal-panel,
+.legal-grid,
+.legal-list,
+.legal-row,
+.legal-store-card,
+.policy-card,
+.support-card,
+.delete-card,
+.terms-card,
+.privacy-card,
+#legalSection,
+#legalScreen,
+#legal,
+[data-screen="legal"]{
+  max-width:100% !important;
+  min-width:0 !important;
+  width:100% !important;
+}
+
+.legal-grid{
+  display:grid !important;
+  grid-template-columns:repeat(auto-fit, minmax(min(280px, 100%), 1fr)) !important;
+  gap:16px !important;
+}
+
+.legal-box,
+.legal-card,
+.legal-panel,
+.legal-store-card,
+.policy-card,
+.support-card,
+.delete-card,
+.terms-card,
+.privacy-card{
+  overflow:hidden !important;
+  border-radius:24px;
+}
+
+.legal-box *,
+.legal-card *,
+.legal-panel *,
+.legal-store-card *,
+.policy-card *,
+.support-card *,
+.delete-card *,
+.terms-card *,
+.privacy-card *{
+  min-width:0 !important;
+  max-width:100% !important;
+  overflow-wrap:anywhere !important;
+  word-break:normal !important;
+}
+
+.legal-row{
+  display:flex !important;
+  align-items:flex-start !important;
+  gap:12px !important;
+}
+
+.legal-row > div:last-child{
+  flex:1 1 auto !important;
+  min-width:0 !important;
+}
+
+.legal-row b,
+.legal-row strong{
+  display:inline !important;
+  margin-right:6px !important;
+}
+
+.legal-row span,
+.legal-row p,
+.legal-row a{
+  overflow-wrap:anywhere !important;
+  word-break:normal !important;
+}
+
+.legal-box button,
+.legal-card button,
+.legal-panel button,
+.legal-store-card button,
+.policy-card button,
+.support-card button,
+.delete-card button,
+.terms-card button,
+.privacy-card button{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+}
+
+/* Corrige botões grandes tipo Copiar política / Copiar termos */
+.legal-box .btn,
+.legal-card .btn,
+.legal-panel .btn,
+.policy-card .btn,
+.support-card .btn,
+.delete-card .btn,
+.terms-card .btn,
+.privacy-card .btn,
+.legal-box a,
+.legal-card a,
+.legal-panel a{
+  max-width:100% !important;
+  overflow-wrap:anywhere !important;
+}
+
+/* =========================================================
+   CARDS E GRIDS GERAIS PARA NÃO ESTOURAREM
+   ========================================================= */
+
+.grid,
+.grid-2,
+.grid-3,
+.grid-4,
+.grid-5,
+.hero-grid,
+.split-grid,
+.quick-grid,
+.kpi-row,
+.exec-grid,
+.health-grid,
+.rank-grid,
+.detail-grid,
+.field-grid{
+  max-width:100% !important;
+  min-width:0 !important;
+}
+
+.grid > *,
+.grid-2 > *,
+.grid-3 > *,
+.grid-4 > *,
+.grid-5 > *,
+.hero-grid > *,
+.split-grid > *,
+.quick-grid > *,
+.kpi-row > *,
+.exec-grid > *,
+.health-grid > *,
+rank-grid > *,
+.detail-grid > *,
+.field-grid > *{
+  min-width:0 !important;
+  max-width:100% !important;
+}
+
+/* Textos longos, URLs e e-mails */
+a,
+p,
+span,
+div,
+strong,
+b,
+small{
+  overflow-wrap:break-word;
+}
+
+.email-value,
+.legal-pill,
+.chip,
+.pill,
+.badge{
+  max-width:100% !important;
+  overflow-wrap:anywhere !important;
+}
+
+/* =========================================================
+   AJUSTE ESPECÍFICO MOBILE
+   ========================================================= */
+
+@media (max-width:768px){
+  .container{
+    width:100% !important;
+    max-width:100% !important;
+    padding-left:14px !important;
+    padding-right:14px !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+
+  .card,
+  .panel,
+  .legal-box,
+  .legal-card,
+  .legal-panel,
+  .legal-store-card,
+  .policy-card,
+  .support-card,
+  .delete-card,
+  .terms-card,
+  .privacy-card{
+    width:100% !important;
+    max-width:100% !important;
+    padding-left:16px !important;
+    padding-right:16px !important;
+  }
+
+  .legal-grid,
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .grid-5,
+  .hero-grid,
+  .split-grid,
+  .quick-grid,
+  .kpi-row,
+  .exec-grid,
+  .health-grid,
+  .rank-grid,
+  .detail-grid,
+  .field-grid{
+    grid-template-columns:1fr !important;
+  }
+
+  .legal-row{
+    gap:10px !important;
+  }
+
+  .legal-row > div:first-child{
+    flex:0 0 auto !important;
+  }
+
+  .legal-row > div:last-child{
+    flex:1 1 0 !important;
+  }
+
+  h1{
+    max-width:100% !important;
+    overflow-wrap:break-word !important;
+  }
+
+  h2,
+  h3{
+    max-width:100% !important;
+    overflow-wrap:break-word !important;
+  }
+
+  button{
+    max-width:100% !important;
+  }
+}
+
+/* Celulares muito estreitos */
+@media (max-width:420px){
+  .container{
+    padding-left:12px !important;
+    padding-right:12px !important;
+  }
+
+  .card,
+  .panel,
+  .legal-box,
+  .legal-card,
+  .legal-panel,
+  .legal-store-card{
+    border-radius:22px !important;
+    padding-left:14px !important;
+    padding-right:14px !important;
+  }
+
+  .nav > *,
+  .navbar > *,
+  .tabs > *,
+  .tabbar > *,
+  .tab-bar > *,
+  .tabs-bar > *,
+  .screen-tabs > *,
+  .section-tabs > *,
+  .top-tabs > *,
+  .menu-tabs > *,
+  .main-tabs > *,
+  .app-tabs > *,
+  .quick-tabs > *,
+  #tabs > *,
+  #tabBar > *,
+  #navTabs > *,
+  #mainTabs > *,
+  [role="tablist"] > *{
+    font-size:14px !important;
+    padding-left:14px !important;
+    padding-right:14px !important;
+  }
+}
 </style>
 </head>
 <body>
