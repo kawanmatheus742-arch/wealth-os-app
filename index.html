@@ -4147,6 +4147,273 @@ input[inputmode="decimal"]{
   }
 }
 </style>
+
+<style>
+/* =========================================================
+   WEALTH OS 7.0.1 — COPILOTO WEALTH AI LOCAL
+   Camada nova sem remover o núcleo atual:
+   - análise educativa baseada no ledger/carteira/meta/projeções
+   - chat local com perguntas sobre a própria carteira
+   - preparado para futura Edge Function de IA real
+   ========================================================= */
+.ai-hero-grid{
+  display:grid;
+  grid-template-columns:.95fr 1.05fr;
+  gap:16px;
+  align-items:stretch;
+}
+.ai-oracle-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:28px;
+  padding:20px;
+  border:1px solid rgba(34,211,238,.24);
+  background:
+    radial-gradient(circle at 12% 0%,rgba(34,211,238,.18),transparent 34%),
+    radial-gradient(circle at 92% 0%,rgba(139,92,246,.14),transparent 32%),
+    linear-gradient(180deg,rgba(5,12,26,.96),rgba(2,6,23,.98));
+  box-shadow:0 24px 74px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.06);
+}
+.ai-oracle-card:after{
+  content:"";
+  position:absolute;
+  right:-70px;
+  bottom:-80px;
+  width:210px;
+  height:210px;
+  border-radius:999px;
+  background:radial-gradient(circle,rgba(34,211,238,.16),rgba(139,92,246,.08),transparent 70%);
+  pointer-events:none;
+}
+.ai-brain{
+  position:relative;
+  z-index:1;
+  width:76px;
+  height:76px;
+  border-radius:28px;
+  display:grid;
+  place-items:center;
+  font-size:34px;
+  background:
+    radial-gradient(circle at 35% 18%,rgba(255,255,255,.26),transparent 32%),
+    linear-gradient(135deg,rgba(34,211,238,.92),rgba(14,165,233,.70),rgba(139,92,246,.55));
+  border:1px solid rgba(226,244,255,.20);
+  box-shadow:0 18px 42px rgba(14,165,233,.22),inset 0 1px 0 rgba(255,255,255,.16);
+}
+.ai-title{
+  position:relative;
+  z-index:1;
+  margin-top:14px;
+  font-size:clamp(34px,4.4vw,64px);
+  line-height:.98;
+  letter-spacing:-.085em;
+  font-weight:950;
+  background:linear-gradient(120deg,#ffffff,#dffbff 42%,#67e8f9 68%,#fef3c7 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.ai-subtitle{
+  position:relative;
+  z-index:1;
+  margin-top:12px;
+  color:rgba(226,244,255,.76);
+  line-height:1.6;
+}
+.ai-score-line{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:16px;
+}
+.ai-score-pill{
+  padding:13px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.04);
+}
+.ai-score-pill strong{
+  display:block;
+  font-size:20px;
+  letter-spacing:-.045em;
+  margin-top:5px;
+}
+.ai-panel-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+.ai-metric-card{
+  min-height:126px;
+  padding:16px;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.08);
+  background:
+    radial-gradient(circle at 0 0,rgba(34,211,238,.08),transparent 38%),
+    rgba(255,255,255,.035);
+  position:relative;
+  overflow:hidden;
+}
+.ai-metric-card strong{
+  display:block;
+  font-size:24px;
+  line-height:1.05;
+  letter-spacing:-.055em;
+  margin-top:8px;
+}
+.ai-report-box{
+  padding:16px;
+  border-radius:22px;
+  border:1px solid rgba(34,211,238,.16);
+  background:
+    radial-gradient(circle at 0 0,rgba(34,211,238,.10),transparent 42%),
+    rgba(255,255,255,.035);
+  color:rgba(226,244,255,.84);
+  line-height:1.62;
+}
+.ai-report-box p{
+  margin:0 0 10px;
+}
+.ai-report-box p:last-child{
+  margin-bottom:0;
+}
+.ai-action-list{
+  display:grid;
+  gap:10px;
+}
+.ai-action-item{
+  padding:13px 14px;
+  border-radius:17px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.035);
+  line-height:1.45;
+}
+.ai-action-item.warn{
+  border-color:rgba(251,146,60,.28);
+  background:rgba(251,146,60,.08);
+}
+.ai-action-item.good{
+  border-color:rgba(34,197,94,.24);
+  background:rgba(34,197,94,.08);
+}
+.ai-chat-shell{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+}
+.ai-chat-log{
+  display:grid;
+  gap:10px;
+  max-height:420px;
+  overflow:auto;
+  padding:4px;
+}
+.ai-message{
+  padding:13px 14px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.035);
+  line-height:1.55;
+}
+.ai-message.user{
+  margin-left:32px;
+  border-color:rgba(34,211,238,.20);
+  background:rgba(34,211,238,.08);
+}
+.ai-message.assistant{
+  margin-right:32px;
+  border-color:rgba(139,92,246,.20);
+  background:rgba(139,92,246,.08);
+}
+.ai-message small{
+  display:block;
+  color:rgba(226,244,255,.56);
+  margin-bottom:5px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-size:10px;
+}
+.ai-question-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px;
+  align-items:end;
+}
+.ai-question-row textarea{
+  min-height:82px;
+}
+.ai-mini-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.ai-mini-actions button{
+  width:auto!important;
+  min-width:130px;
+}
+.ai-context-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+.ai-context-chip{
+  padding:12px;
+  border-radius:17px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.035);
+  color:rgba(226,244,255,.78);
+  line-height:1.35;
+  font-size:13px;
+}
+.ai-context-chip b{
+  display:block;
+  color:#f8fbff;
+  font-size:15px;
+  margin-bottom:4px;
+}
+.ai-disclaimer{
+  padding:14px;
+  border-radius:20px;
+  border:1px solid rgba(251,191,36,.22);
+  background:rgba(251,191,36,.08);
+  color:#fde68a;
+  line-height:1.55;
+}
+@media(max-width:1100px){
+  .ai-hero-grid,
+  .ai-panel-grid,
+  .ai-context-grid{
+    grid-template-columns:1fr;
+  }
+  .ai-score-line{
+    grid-template-columns:1fr;
+  }
+}
+@media(max-width:760px){
+  .ai-question-row{
+    grid-template-columns:1fr;
+  }
+  .ai-mini-actions button{
+    width:100%!important;
+  }
+  .ai-message.user,
+  .ai-message.assistant{
+    margin-left:0;
+    margin-right:0;
+  }
+}
+body.performance-mode .ai-oracle-card,
+body.performance-mode .ai-metric-card,
+body.performance-mode .ai-report-box,
+body.performance-mode .ai-message{
+  backdrop-filter:none!important;
+  box-shadow:0 12px 28px rgba(0,0,0,.22)!important;
+}
+</style>
+
 </head>
 
 
@@ -4165,7 +4432,7 @@ input[inputmode="decimal"]{
   <div class="container">
     <div id="offline" class="offline">Você está sem conexão. Algumas funções podem não responder até a internet voltar.</div>
     <div class="topbar"><div class="brand"><div class="logo" aria-label="Logo Wealth OS"><img src="data:image/webp;base64,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" alt="Logo Wealth OS" /></div><div><h1>Wealth OS</h1><div class="subtitle">Sistema premium para carteira, ledger, renda passiva, perfil, alocação, segurança e experiência de app real.</div></div></div><div class="chips">
-      <div class="chip premium">Etapa 6B.1</div>
+      <div class="chip premium">Etapa 7.0.1 • IA</div>
       <button id="performanceToggleChip" class="chip chip-action" type="button" onclick="togglePerformanceMode()">Modo leve: Auto</button>
       <div id="syncChip" class="chip">Sync: OK</div>
       <div id="ledgerChip" class="chip">Ledger como fonte principal</div>
@@ -4239,6 +4506,7 @@ input[inputmode="decimal"]{
         <button class="nav-btn" type="button" data-screen="liberty" onclick="showAppScreen('liberty')">🕊️ Liberdade</button>
         <button class="nav-btn" type="button" data-screen="allocation" onclick="showAppScreen('allocation')">🧭 Alocação</button>
         <button class="nav-btn" type="button" data-screen="profile" onclick="showAppScreen('profile')">🧬 Perfil</button>
+        <button class="nav-btn" type="button" data-screen="ai" onclick="showAppScreen('ai')">🤖 IA Wealth</button>
         <button class="nav-btn" type="button" data-screen="app" onclick="showAppScreen('app')">📱 App</button>
         <button class="nav-btn" type="button" data-screen="history" onclick="showAppScreen('history')">📈 Histórico</button>
         <button class="nav-btn" type="button" data-screen="goals" onclick="showAppScreen('goals')">🎯 Metas</button>
@@ -4281,6 +4549,141 @@ input[inputmode="decimal"]{
       </div>
 
 <div id="screenIntro" class="screen-intro"><strong>Visão geral</strong> — painel executivo com patrimônio, inteligência, score e principais alertas.</div>
+
+
+      <div class="card premium-panel" data-screen-block data-screens="ai">
+        <div class="section">
+          <div>
+            <div class="kicker">Etapa 7.0.1 • Copiloto Wealth AI</div>
+            <h3>Assistente inteligente da carteira</h3>
+            <div class="muted">Análise educativa baseada nos dados reais do seu app: ledger, patrimônio, metas, renda passiva, perfil e projeções.</div>
+          </div>
+          <span id="wealthAIStatusBadge" class="badge purple">IA local ativa</span>
+        </div>
+
+        <div class="ai-hero-grid">
+          <div class="ai-oracle-card">
+            <div class="ai-brain">🧠</div>
+            <div class="ai-title">Wealth AI</div>
+            <div id="wealthAISubtitle" class="ai-subtitle">
+              Toque em “Analisar minha carteira” para gerar um diagnóstico inteligente sem alterar seus dados.
+            </div>
+
+            <div class="ai-score-line">
+              <div class="ai-score-pill">
+                <div class="label">Score IA</div>
+                <strong id="wealthAIScore">0/100</strong>
+              </div>
+              <div class="ai-score-pill">
+                <div class="label">Risco principal</div>
+                <strong id="wealthAIRisk">Aguardando</strong>
+              </div>
+              <div class="ai-score-pill">
+                <div class="label">Foco do mês</div>
+                <strong id="wealthAIFocus">Diagnóstico</strong>
+              </div>
+            </div>
+
+            <div class="ai-mini-actions" style="margin-top:16px">
+              <button class="success" type="button" onclick="analyzeWealthAI()">Analisar minha carteira</button>
+              <button class="gold" type="button" onclick="copyWealthAIReport()">Copiar relatório</button>
+              <button class="secondary" type="button" onclick="resetWealthAIChat()">Limpar chat</button>
+            </div>
+          </div>
+
+          <div class="ai-panel-grid">
+            <div class="ai-metric-card">
+              <div class="label">Patrimônio analisado</div>
+              <strong id="wealthAIWealth">R$ 0,00</strong>
+              <div id="wealthAIWealthNote" class="muted" style="margin-top:8px;font-size:12px">Fonte: aguardando dados.</div>
+            </div>
+            <div class="ai-metric-card">
+              <div class="label">Meta patrimonial</div>
+              <strong id="wealthAIGoal">Sem meta</strong>
+              <div id="wealthAIGoalNote" class="muted" style="margin-top:8px;font-size:12px">Configure uma meta para liberar leitura completa.</div>
+            </div>
+            <div class="ai-metric-card">
+              <div class="label">Renda passiva</div>
+              <strong id="wealthAIPassive">R$ 0,00</strong>
+              <div id="wealthAIPassiveNote" class="muted" style="margin-top:8px;font-size:12px">Dividendos, juros e rendimentos registrados.</div>
+            </div>
+            <div class="ai-metric-card">
+              <div class="label">Maior concentração</div>
+              <strong id="wealthAIConcentration">0%</strong>
+              <div id="wealthAIConcentrationNote" class="muted" style="margin-top:8px;font-size:12px">Sem posição principal.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid2" style="margin-top:16px">
+          <div class="item">
+            <div class="section">
+              <div>
+                <div class="kicker">Resumo executivo</div>
+                <h3>Relatório inteligente</h3>
+              </div>
+            </div>
+            <div id="wealthAIReport" class="ai-report-box">
+              Aguardando análise. Clique em “Analisar minha carteira” para o Copiloto Wealth AI interpretar os dados atuais do app.
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="section">
+              <div>
+                <div class="kicker">Plano do mês</div>
+                <h3>Próximas ações</h3>
+              </div>
+            </div>
+            <div id="wealthAIActionPlan" class="ai-action-list">
+              <div class="ai-action-item">Aguardando dados para montar o plano.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item" style="margin-top:14px">
+          <div class="section">
+            <div>
+              <div class="kicker">Contexto usado pela IA</div>
+              <h3>Dados analisados</h3>
+            </div>
+          </div>
+          <div id="wealthAIContextGrid" class="ai-context-grid">
+            <div class="ai-context-chip"><b>Fonte</b>Aguardando</div>
+            <div class="ai-context-chip"><b>Posições</b>0</div>
+            <div class="ai-context-chip"><b>Movimentações</b>0</div>
+            <div class="ai-context-chip"><b>Perfil</b>Não selecionado</div>
+          </div>
+        </div>
+
+        <div class="item" style="margin-top:14px">
+          <div class="section">
+            <div>
+              <div class="kicker">Pergunte à IA</div>
+              <h3>Chat educativo da carteira</h3>
+              <div class="muted">Faça perguntas como: “minha carteira está boa?”, “por que minha meta está longe?” ou “qual meu maior risco?”.</div>
+            </div>
+          </div>
+
+          <div class="ai-chat-shell">
+            <div id="wealthAIChat" class="ai-chat-log">
+              <div class="ai-message assistant">
+                <small>Wealth AI</small>
+                Eu analiso os dados já existentes no app e respondo de forma educativa. Primeiro clique em “Analisar minha carteira” para atualizar o diagnóstico.
+              </div>
+            </div>
+
+            <div class="ai-question-row">
+              <textarea id="wealthAIQuestion" placeholder="Digite sua pergunta sobre sua carteira, meta, risco, renda passiva ou projeção..."></textarea>
+              <button type="button" onclick="askWealthAI()">Perguntar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ai-disclaimer" style="margin-top:14px">
+          <strong>Aviso importante:</strong> o Copiloto Wealth AI é uma ferramenta educativa e organizacional. Ele não faz recomendação individual de compra ou venda de ativos, não substitui consultoria financeira profissional e usa apenas os dados registrados no app.
+        </div>
+      </div>
 
 
       <div class="card premium-panel" data-screen-block data-screens="legal">
@@ -4951,7 +5354,7 @@ input[inputmode="decimal"]{
   </button>
 
   
-      <div class="inline-top-wrap" data-screen-block data-screens="overview ledger income freedom allocation profile app history goals projections settings">
+      <div class="inline-top-wrap" data-screen-block data-screens="overview ledger income freedom allocation profile ai app history goals projections settings">
         <button id="inlineTopBtn" class="inline-top-btn secondary" type="button" onclick="wealthScrollToTop(true)">↑ Topo</button>
       </div>
 
@@ -5092,6 +5495,7 @@ input[inputmode="decimal"]{
       liberty:['Liberdade financeira','calcule quanto patrimônio precisa para viver de renda e acompanhe marcos de renda mensal.'],
       allocation:['Alocação inteligente','compare carteira atual com carteira-alvo e veja onde colocar o próximo aporte. A tela Perfil fica separada.'],
       profile:['Perfil de investidor','escolha conservador, moderado, arrojado ou personalizado. Depois aplique o perfil para atualizar a tela Alocação.'],
+      ai:['IA Wealth','copiloto educativo que interpreta carteira, meta, renda passiva, risco, aporte e próximos passos.'],
       app:['App real','onboarding, instalação, experiência mobile e checklist para publicar como produto.'],
       history:['Histórico','controle snapshots manuais, gráficos e evolução patrimonial sem travar o app.'],
       goals:['Metas','configure meta patrimonial, aporte mensal e acompanhe projeção.'],
@@ -6178,6 +6582,249 @@ let deferredInstallPrompt=null;
       ['freedomMonthlyIncome','freedomYield','freedomSafetyMargin','freedomReinvest']
         .forEach(id=>bind(id,'input',renderFinancialFreedom,220));
     }
+
+    function wealthAIProfileName(){
+      try{
+        const p=getSelectedInvestorProfile?.();
+        if(p==='conservative')return'Conservador';
+        if(p==='moderate')return'Moderado';
+        if(p==='bold')return'Arrojado';
+        if(p==='income')return'Foco em renda';
+        if(p==='custom')return'Personalizado';
+      }catch{}
+      return'Não selecionado';
+    }
+
+    function wealthAIContext(){
+      const totals=mainTotals();
+      const state=scoreFromCurrentState(totals.inv,totals.cur,totals.pl);
+      const goalInfo=goalStats(totals.cur);
+      const buckets=monthlyBuckets();
+      const month=buckets.find(x=>x.key===currentMonthKey())||{passive:0,buys:0,sells:0,costs:0,net:0,count:0,passiveItems:[]};
+      let proj=defaultProjectionSettings();
+      try{proj={...proj,...readProjectionSettings()}}catch{}
+      const required=goalInfo.target?requiredMonthlyForTarget(totals.cur,goalInfo.target,proj.moderate,proj.years):0;
+      const eta=goalInfo.target?monthsToTarget(totals.cur,goalInfo.monthly,proj.moderate,80*12):null;
+      const gap=Math.max(required-Number(goalInfo.monthly||0),0);
+      const cats=state.cats||[];
+      const topCat=cats[0]||['Sem categoria',0];
+      return{
+        totals,state,goalInfo,month,proj,required,gap,eta,
+        source:totals.ledger?'Ledger profissional':'Cadastro atual',
+        profile:wealthAIProfileName(),
+        positions:state.list.length,
+        categories:cats.length,
+        topCategory:topCat[0],
+        topCategoryValue:topCat[1],
+        topAsset:state.top?.asset||'Sem ativo',
+        topAssetCategory:state.top?.category||'Outros',
+        topShare:Number(state.topShare||0),
+        passive:Number(summary?.total_passive_income||0),
+        movementsCount:Number(summary?.total_movements||movements.length||0),
+        ret:Number(totals.ret||0)
+      };
+    }
+
+    function wealthAIRiskLabel(ctx){
+      if(!ctx.positions)return'Aguardando';
+      if(ctx.topShare>=70)return'Concentração alta';
+      if(ctx.ret<-15)return'Retração forte';
+      if(ctx.positions<3)return'Baixa diversificação';
+      if(ctx.passive<=0)return'Renda passiva zerada';
+      if(ctx.goalInfo.target&&ctx.gap>0)return'Aporte insuficiente';
+      return'Estrutura saudável';
+    }
+
+    function wealthAIFocusLabel(ctx){
+      if(!ctx.positions)return'Criar base';
+      if(ctx.topShare>=70)return'Diversificar risco';
+      if(ctx.goalInfo.target&&ctx.gap>0)return'Ajustar aporte';
+      if(ctx.passive<=0)return'Criar renda';
+      if(ctx.movementsCount<5)return'Alimentar ledger';
+      return'Manter consistência';
+    }
+
+    function wealthAIReportParagraphs(ctx){
+      const t=ctx.totals,g=ctx.goalInfo,state=ctx.state;
+      if(!ctx.positions){
+        return[
+          'Ainda não há posições suficientes para uma análise completa. O primeiro passo é registrar movimentações no Ledger para o app conseguir calcular patrimônio, risco, concentração, renda passiva e evolução.',
+          'Depois que o ledger tiver compras, vendas ou proventos, o Copiloto Wealth AI passa a gerar diagnóstico mais preciso sobre carteira, meta patrimonial e plano mensal.'
+        ];
+      }
+      const lines=[];
+      lines.push(`Sua carteira está sendo analisada pela fonte “${ctx.source}”, com ${ctx.positions} posição(ões), patrimônio atual de ${money(t.cur)} e resultado agregado de ${pnl(t.pl)} (${pct(ctx.ret)}).`);
+      if(state.score>=75)lines.push(`O score inteligente está em ${state.score}/100, indicando uma estrutura boa para a fase atual. O foco deve ser manter consistência, atualizar preços e registrar movimentações com disciplina.`);
+      else if(state.score>=50)lines.push(`O score inteligente está em ${state.score}/100. A base é boa, mas ainda existem pontos claros de evolução, principalmente concentração, quantidade de posições, renda passiva ou distância até a meta.`);
+      else lines.push(`O score inteligente está em ${state.score}/100. A carteira ainda precisa de mais dados e equilíbrio antes de uma leitura forte: alimente o ledger, revise concentração e configure meta/renda.`);
+      if(ctx.topShare>=70)lines.push(`O maior ponto de atenção é a concentração: ${ctx.topAsset} representa aproximadamente ${ctx.topShare.toFixed(1)}% da carteira. Isso aumenta o risco específico de depender demais de uma única posição.`);
+      else if(ctx.topShare>=45)lines.push(`Existe concentração moderada em ${ctx.topAsset}, com aproximadamente ${ctx.topShare.toFixed(1)}% da carteira. Não é necessariamente um erro, mas merece acompanhamento.`);
+      else lines.push(`A concentração principal está controlada para a fase atual: ${ctx.topAsset} representa aproximadamente ${ctx.topShare.toFixed(1)}% da carteira.`);
+      if(g.target){
+        const progress=g.display;
+        const etaText=ctx.eta?formatEta(ctx.eta):'sem prazo estimado com o aporte atual';
+        lines.push(`Sua meta patrimonial é ${money(g.target)} e o progresso atual está em ${progress}. Com aporte mensal de ${money(g.monthly)} e cenário moderado de ${ctx.proj.moderate}% ao ano, o prazo estimado fica em ${etaText}.`);
+        if(ctx.gap>0)lines.push(`Para buscar a meta no prazo configurado de ${ctx.proj.years} ano(s), o aporte mensal estimado seria próximo de ${money(ctx.required)}. A diferença entre o aporte atual e o necessário é de aproximadamente ${money(ctx.gap)}.`);
+      }else{
+        lines.push('A meta patrimonial ainda não está configurada. Sem meta, a IA consegue avaliar carteira e risco, mas não consegue dizer se o ritmo atual está perto ou longe do objetivo.');
+      }
+      if(ctx.passive>0)lines.push(`A renda passiva acumulada registrada é ${money(ctx.passive)}. Esse dado fortalece a leitura de independência financeira e permite acompanhar evolução mensal de dividendos, juros e rendimentos.`);
+      else lines.push('A renda passiva ainda está zerada ou não foi registrada. Se você recebe dividendos, juros ou rendimentos, registrar isso no ledger melhora muito a análise.');
+      return lines;
+    }
+
+    function wealthAIActionItems(ctx){
+      if(!ctx.positions){
+        return[
+          {text:'Registrar a primeira compra ou posição no Ledger para liberar análise completa.',cls:'warn'},
+          {text:'Configurar a meta patrimonial e o aporte mensal.',cls:'warn'},
+          {text:'Depois de registrar dados, voltar nesta tela e tocar em “Analisar minha carteira”.',cls:'good'}
+        ];
+      }
+      const items=[];
+      if(ctx.topShare>=70)items.push({text:`Revisar a concentração em ${ctx.topAsset}; ela está acima de 70% da carteira.`,cls:'warn'});
+      else if(ctx.topShare>=45)items.push({text:`Acompanhar a concentração em ${ctx.topAsset}; ela já é relevante dentro da carteira.`,cls:'warn'});
+      if(ctx.goalInfo.target&&ctx.gap>0)items.push({text:`Comparar o aporte atual de ${money(ctx.goalInfo.monthly)} com o aporte estimado de ${money(ctx.required)} para o prazo configurado.`,cls:'warn'});
+      if(ctx.passive<=0)items.push({text:'Registrar proventos no ledger ou acompanhar ativos geradores de renda, se isso fizer sentido para seu objetivo.',cls:'warn'});
+      if(ctx.movementsCount<5)items.push({text:'Adicionar mais movimentações ao ledger para aumentar a precisão da análise.',cls:'warn'});
+      if(ctx.ret<0)items.push({text:'Revisar ativos em queda e conferir se os preços reais estão atualizados.',cls:'warn'});
+      items.push({text:'Salvar um snapshot patrimonial ao fim do mês para criar histórico limpo.',cls:'good'});
+      items.push({text:'Atualizar preços antes de tomar qualquer decisão baseada nos números.',cls:'good'});
+      return items.slice(0,6);
+    }
+
+    function renderWealthAI(){
+      if(!$('wealthAIReport'))return;
+      const ctx=wealthAIContext();
+      const risk=wealthAIRiskLabel(ctx);
+      const focus=wealthAIFocusLabel(ctx);
+      $('wealthAIStatusBadge').textContent=ctx.positions?'IA local ativa':'Aguardando dados';
+      $('wealthAIScore').textContent=`${ctx.state.score||0}/100`;
+      $('wealthAIRisk').textContent=risk;
+      $('wealthAIFocus').textContent=focus;
+      $('wealthAIWealth').textContent=money(ctx.totals.cur);
+      $('wealthAIWealthNote').textContent=`Fonte: ${ctx.source}. Resultado: ${pnl(ctx.totals.pl)} (${pct(ctx.ret)}).`;
+      $('wealthAIGoal').textContent=ctx.goalInfo.target?money(ctx.goalInfo.target):'Sem meta';
+      $('wealthAIGoalNote').textContent=ctx.goalInfo.target?`${ctx.goalInfo.display} concluída • aporte ${money(ctx.goalInfo.monthly)}`:'Configure meta e aporte para liberar análise de ritmo.';
+      $('wealthAIPassive').textContent=money(ctx.passive);
+      $('wealthAIPassiveNote').textContent=ctx.passive>0?'Renda passiva registrada no ledger.':'Nenhum provento registrado ainda.';
+      $('wealthAIConcentration').textContent=ctx.positions?`${ctx.topShare.toFixed(1)}%`:'0%';
+      $('wealthAIConcentrationNote').textContent=ctx.positions?`${ctx.topAsset} • ${ctx.topAssetCategory}`:'Sem posição principal.';
+      $('wealthAISubtitle').textContent=ctx.positions
+        ?`Diagnóstico atualizado: ${risk}. Foco recomendado: ${focus}.`
+        :'Ainda faltam posições no ledger/carteira para gerar diagnóstico completo.';
+      $('wealthAIReport').innerHTML=wealthAIReportParagraphs(ctx).map(p=>`<p>${esc(p)}</p>`).join('');
+      $('wealthAIActionPlan').innerHTML=wealthAIActionItems(ctx).map(i=>`<div class="ai-action-item ${i.cls||''}">${esc(i.text)}</div>`).join('');
+      $('wealthAIContextGrid').innerHTML=[
+        ['Fonte',ctx.source],
+        ['Posições',`${ctx.positions}`],
+        ['Movimentações',`${ctx.movementsCount}`],
+        ['Perfil',ctx.profile],
+        ['Categorias',`${ctx.categories}`],
+        ['Maior ativo',ctx.topAsset],
+        ['Categoria principal',ctx.topCategory],
+        ['Mês atual',`Aportes ${money(ctx.month.buys)} • Renda ${money(ctx.month.passive)}`]
+      ].map(([a,b])=>`<div class="ai-context-chip"><b>${esc(a)}</b>${esc(b)}</div>`).join('');
+    }
+
+    window.analyzeWealthAI=()=>{
+      renderWealthAI();
+      const chat=$('wealthAIChat');
+      if(chat){
+        const ctx=wealthAIContext();
+        const msg=`Análise atualizada. Score ${ctx.state.score}/100, risco principal: ${wealthAIRiskLabel(ctx)}, foco do mês: ${wealthAIFocusLabel(ctx)}. Use o relatório acima como leitura educativa da carteira.`;
+        chat.insertAdjacentHTML('beforeend',`<div class="ai-message assistant"><small>Wealth AI</small>${esc(msg)}</div>`);
+        chat.scrollTop=chat.scrollHeight;
+      }
+      toast('Wealth AI analisou sua carteira.','success');
+    }
+
+    function wealthAIAnswer(question,ctx){
+      const q=String(question||'').toLowerCase();
+      if(!ctx.positions)return'Eu ainda preciso de dados para responder bem. Registre movimentações no Ledger ou cadastre investimentos para que eu consiga analisar patrimônio, concentração, meta e renda passiva.';
+      if(q.includes('boa')||q.includes('saud')||q.includes('qualidade')){
+        return `Sua carteira tem score ${ctx.state.score}/100. ${ctx.state.score>=75?'Ela está com boa estrutura para a fase atual.':ctx.state.score>=50?'Ela tem uma boa base, mas ainda precisa de ajustes.':'Ela ainda precisa de mais dados e equilíbrio.'} O maior ponto de atenção agora é: ${wealthAIRiskLabel(ctx)}.`;
+      }
+      if(q.includes('risco')||q.includes('concentra')){
+        return ctx.topShare>=45
+          ?`O maior risco visível é concentração em ${ctx.topAsset}, que representa cerca de ${ctx.topShare.toFixed(1)}% da carteira. Quanto maior essa concentração, mais sua carteira depende do comportamento desse ativo.`
+          :`Pelo dado atual, a concentração principal está relativamente controlada: ${ctx.topAsset} representa cerca de ${ctx.topShare.toFixed(1)}% da carteira. Continue acompanhando por categoria e por ativo.`;
+      }
+      if(q.includes('meta')||q.includes('objetivo')||q.includes('chegar')){
+        if(!ctx.goalInfo.target)return'Sua meta patrimonial ainda não está configurada. Configure meta e aporte mensal para eu calcular progresso, prazo estimado e diferença entre aporte atual e aporte necessário.';
+        return `Sua meta é ${money(ctx.goalInfo.target)} e você está em ${ctx.goalInfo.display}. Com aporte mensal de ${money(ctx.goalInfo.monthly)}, a estimativa em cenário moderado é ${ctx.eta?formatEta(ctx.eta):'sem prazo claro com o aporte atual'}. Para buscar a meta em ${ctx.proj.years} ano(s), o aporte estimado seria ${money(ctx.required)} por mês.`;
+      }
+      if(q.includes('aporte')){
+        if(ctx.goalInfo.target&&ctx.gap>0)return `O aporte atual é ${money(ctx.goalInfo.monthly)}. Para o prazo configurado, o app estima algo próximo de ${money(ctx.required)} por mês, uma diferença de ${money(ctx.gap)}. Isso não é uma ordem de investimento; é uma leitura matemática do objetivo cadastrado.`;
+        return `Seu aporte mensal cadastrado é ${money(ctx.goalInfo.monthly||0)}. No momento, o foco é manter consistência, atualizar preços e registrar corretamente as movimentações.`;
+      }
+      if(q.includes('renda')||q.includes('dividendo')||q.includes('provento')){
+        return ctx.passive>0
+          ?`Sua renda passiva acumulada registrada é ${money(ctx.passive)}. No mês atual, o app identificou ${money(ctx.month.passive)} em renda. Continue registrando dividendos, juros e rendimentos para acompanhar evolução.`
+          :'Sua renda passiva ainda aparece zerada. Se você recebe dividendos, juros ou rendimentos, registre como provento no Ledger para o app calcular fluxo mensal e plano de liberdade financeira.';
+      }
+      if(q.includes('preju')||q.includes('queda')||q.includes('perda')||q.includes('negativo')){
+        return ctx.totals.pl<0
+          ?`O resultado agregado está negativo em ${pnl(ctx.totals.pl)} (${pct(ctx.ret)}). Antes de interpretar, confira se preços reais estão atualizados e se todas as compras/vendas estão corretas no ledger.`
+          :`No agregado, sua carteira não está negativa agora: resultado de ${pnl(ctx.totals.pl)} (${pct(ctx.ret)}). Mesmo assim, vale revisar posições individuais no dashboard.`;
+      }
+      if(q.includes('perfil')){
+        return `O perfil selecionado é ${ctx.profile}. Compare esse perfil com a tela de Alocação: se a carteira atual estiver muito diferente da carteira-alvo, o app pode indicar onde existe desequilíbrio.`;
+      }
+      if(q.includes('fazer')||q.includes('melhorar')||q.includes('próximo')||q.includes('proximo')){
+        return wealthAIActionItems(ctx).slice(0,3).map((i,idx)=>`${idx+1}. ${i.text}`).join(' ');
+      }
+      return `Pelo diagnóstico atual: patrimônio ${money(ctx.totals.cur)}, score ${ctx.state.score}/100, risco principal “${wealthAIRiskLabel(ctx)}” e foco “${wealthAIFocusLabel(ctx)}”. Pergunte sobre meta, risco, aporte, renda passiva, perfil ou próximos passos para eu detalhar.`;
+    }
+
+    window.askWealthAI=()=>{
+      renderWealthAI();
+      const input=$('wealthAIQuestion'),chat=$('wealthAIChat');
+      if(!input||!chat)return;
+      const q=input.value.trim();
+      if(!q){toast('Digite uma pergunta para a IA.','info');return}
+      const ctx=wealthAIContext();
+      const answer=wealthAIAnswer(q,ctx);
+      chat.insertAdjacentHTML('beforeend',`<div class="ai-message user"><small>Você</small>${esc(q)}</div>`);
+      chat.insertAdjacentHTML('beforeend',`<div class="ai-message assistant"><small>Wealth AI</small>${esc(answer)}</div>`);
+      input.value='';
+      chat.scrollTop=chat.scrollHeight;
+    }
+
+    window.resetWealthAIChat=()=>{
+      const chat=$('wealthAIChat');
+      if(!chat)return;
+      chat.innerHTML='<div class="ai-message assistant"><small>Wealth AI</small>Chat limpo. Clique em “Analisar minha carteira” ou faça uma nova pergunta sobre seus dados.</div>';
+      toast('Chat da IA limpo.','info');
+    }
+
+    window.copyWealthAIReport=async()=>{
+      renderWealthAI();
+      const ctx=wealthAIContext();
+      const text=[
+        'WEALTH OS — RELATÓRIO WEALTH AI',
+        `Fonte: ${ctx.source}`,
+        `Patrimônio: ${money(ctx.totals.cur)}`,
+        `Resultado: ${pnl(ctx.totals.pl)} (${pct(ctx.ret)})`,
+        `Score: ${ctx.state.score}/100`,
+        `Risco principal: ${wealthAIRiskLabel(ctx)}`,
+        `Foco do mês: ${wealthAIFocusLabel(ctx)}`,
+        '',
+        ...wealthAIReportParagraphs(ctx),
+        '',
+        'Plano de ação:',
+        ...wealthAIActionItems(ctx).map((i,idx)=>`${idx+1}. ${i.text}`),
+        '',
+        'Aviso: análise educativa, não recomendação de compra ou venda.'
+      ].join('\n');
+      try{
+        await navigator.clipboard.writeText(text);
+        toast('Relatório da IA copiado.','success');
+      }catch{
+        toast('Não consegui copiar automaticamente.','error');
+      }
+    }
+
     function scheduleScreenRender(screen){
       idleTask(()=>{
         const t=mainTotals(),inv=t.inv,cur=t.cur,pl=t.pl;
@@ -6186,10 +6833,12 @@ let deferredInstallPrompt=null;
         if(screen==='income'){renderPassiveIncomeDashboard(inv,cur);renderMonthlyReport();}
         if(screen==='history'){renderSnapshots();renderCapitalChart();}
         if(screen==='goals'){renderGoal(cur);renderFinancialFreedom();}
-        if(screen==='projection'){renderProjectionEngine();renderWealthActionPlan();}
+        if(screen==='projections'){renderProjectionEngine();renderWealthActionPlan();}
+        if(screen==='ai'){renderWealthAI();}
         if(screen==='allocation'){renderAllocationIntelligence();}
         if(screen==='profile'){renderInvestorProfile();}
         if(screen==='settings'){updatePerformanceUI();updateAppReadiness();}
+        if(screen==='all'){renderWealthAI();renderProjectionEngine();renderWealthActionPlan();}
       },50);
     }
 
