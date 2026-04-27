@@ -4150,7 +4150,7 @@ input[inputmode="decimal"]{
 
 <style>
 /* =========================================================
-   WEALTH OS 7.0.1 — COPILOTO WEALTH AI LOCAL
+   WEALTH OS 7.0.2 — COPILOTO WEALTH AI LOCAL
    Camada nova sem remover o núcleo atual:
    - análise educativa baseada no ledger/carteira/meta/projeções
    - chat local com perguntas sobre a própria carteira
@@ -4414,6 +4414,39 @@ body.performance-mode .ai-message{
 }
 </style>
 
+
+
+<style>
+/* =========================================================
+   WEALTH OS 7.0.2 — REFINAMENTO DA IA WEALTH
+   Ajustes desta etapa:
+   - tela IA mais compacta no celular
+   - botão Topo menor/discreto quando estiver na IA
+   - chat com campo mais curto e perguntas rápidas
+   - contexto do ledger mais claro quando a fonte for cadastro atual
+   ========================================================= */
+.ai-prompt-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:-2px}.ai-prompt-chips button{width:auto!important;min-width:0!important;margin:0!important;padding:9px 11px!important;min-height:38px!important;border-radius:999px!important;font-size:12px!important;font-weight:950!important;color:#dffbff!important;background:rgba(34,211,238,.08)!important;border:1px solid rgba(34,211,238,.16)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 8px 20px rgba(0,0,0,.14)!important}.ai-prompt-chips button:hover{border-color:rgba(103,232,249,.30)!important;background:rgba(34,211,238,.13)!important}body.screen-ai-active .wealth-floating-top{min-width:76px!important;height:46px!important;right:12px!important;bottom:calc(12px + env(safe-area-inset-bottom,0px))!important;padding:0 12px!important;opacity:.82!important;box-shadow:0 12px 30px rgba(0,0,0,.38),0 0 18px rgba(34,211,238,.12)!important}body.screen-ai-active .wealth-floating-top:hover{opacity:1!important}body.screen-ai-active .wealth-floating-top .top-icon{width:24px!important;height:24px!important}
+@media(max-width:820px){body.screen-ai-active .wealth-floating-top{width:48px!important;min-width:48px!important;height:48px!important;right:10px!important;bottom:calc(10px + env(safe-area-inset-bottom,0px))!important;padding:0!important;border-radius:18px!important;opacity:.74!important}body.screen-ai-active .wealth-floating-top span:not(.top-icon){display:none!important}body.screen-ai-active .wealth-floating-top .top-icon{width:28px!important;height:28px!important;font-size:15px!important}.card.premium-panel[data-screens="ai"]{padding:16px!important;border-radius:24px!important}.ai-hero-grid,.ai-panel-grid,.ai-context-grid{gap:10px!important}.ai-oracle-card{padding:16px!important;border-radius:24px!important}.ai-brain{width:58px!important;height:58px!important;border-radius:21px!important;font-size:27px!important}.ai-title{margin-top:10px!important;font-size:clamp(32px,10vw,46px)!important;letter-spacing:-.075em!important}.ai-subtitle{margin-top:10px!important;font-size:15px!important;line-height:1.45!important}.ai-score-line{margin-top:12px!important;gap:8px!important}.ai-score-pill{min-height:0!important;padding:11px 12px!important;border-radius:17px!important}.ai-score-pill strong{font-size:18px!important;line-height:1.12!important;margin-top:4px!important}.ai-mini-actions{display:grid!important;grid-template-columns:1fr!important;gap:8px!important;margin-top:12px!important}.ai-mini-actions button{min-height:50px!important;margin:0!important;border-radius:19px!important;font-size:15px!important}.ai-metric-card{min-height:auto!important;padding:14px!important;border-radius:20px!important}.ai-metric-card strong{font-size:22px!important;line-height:1.08!important;margin-top:6px!important}.ai-report-box{padding:14px!important;border-radius:20px!important;line-height:1.52!important;font-size:15px!important}.ai-report-box p{margin-bottom:9px!important}.ai-action-list{gap:8px!important}.ai-action-item{padding:12px!important;border-radius:17px!important;font-size:15px!important;line-height:1.42!important}.ai-context-chip{padding:11px 12px!important;border-radius:17px!important;font-size:13px!important}.ai-context-chip b{font-size:14px!important;margin-bottom:3px!important}.ai-chat-shell{gap:10px!important}.ai-chat-log{max-height:310px!important;gap:8px!important}.ai-message{padding:12px!important;border-radius:18px!important;font-size:15px!important;line-height:1.44!important}.ai-question-row{gap:8px!important}.ai-question-row textarea{min-height:62px!important;max-height:96px!important;padding:13px 14px!important;border-radius:20px!important;line-height:1.35!important;font-size:16px!important}.ai-question-row button{min-height:50px!important;margin:0!important;border-radius:19px!important;font-size:15px!important}.ai-prompt-chips{gap:7px!important}.ai-prompt-chips button{flex:1 1 calc(50% - 7px)!important;justify-content:center!important;min-height:38px!important;padding:8px 9px!important}.ai-disclaimer{padding:13px!important;border-radius:18px!important;font-size:14px!important;line-height:1.45!important}}
+@media(max-width:420px){.ai-title{font-size:36px!important}.ai-prompt-chips button{font-size:11.5px!important}}
+</style>
+
+
+
+<style>
+/* =========================================================
+   WEALTH OS 7.0.2B — IA Wealth visivelmente refinada
+   Painel mais compacto, chat mais claro, chips destacados e
+   botão Topo oculto dentro da IA para não cobrir conteúdo.
+   ========================================================= */
+body.screen-ai-active .wealth-floating-top{display:none!important;visibility:hidden!important;pointer-events:none!important;}
+.card.premium-panel[data-screens="ai"]{position:relative!important;overflow:hidden!important;border:1px solid rgba(34,211,238,.26)!important;background:radial-gradient(circle at 0% 0%,rgba(34,211,238,.16),transparent 32%),radial-gradient(circle at 100% 0%,rgba(139,92,246,.11),transparent 34%),linear-gradient(180deg,rgba(3,10,24,.97),rgba(1,5,13,.99))!important;}
+.card.premium-panel[data-screens="ai"]::after{content:"7.0.2B";position:absolute;top:16px;right:18px;z-index:1;padding:7px 10px;border-radius:999px;background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.24);color:#a5f3fc;font-size:11px;font-weight:950;letter-spacing:.08em;}
+.card.premium-panel[data-screens="ai"] > *{position:relative;z-index:2}.card.premium-panel[data-screens="ai"] .section{padding-right:82px!important;}
+.ai-hero-grid{grid-template-columns:.82fr 1.18fr!important;gap:12px!important;align-items:stretch!important}.ai-oracle-card{min-height:auto!important;padding:16px!important;border-radius:24px!important;border-color:rgba(34,211,238,.22)!important;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.018)),radial-gradient(circle at 16% 0%,rgba(34,211,238,.14),transparent 42%),rgba(4,12,27,.94)!important}.ai-brain{width:58px!important;height:58px!important;border-radius:21px!important;font-size:28px!important;margin-bottom:8px!important}.ai-title{margin-top:4px!important;font-size:clamp(34px,4vw,50px)!important;line-height:.95!important}.ai-title::after{content:"Refinado";display:inline-flex;vertical-align:middle;margin-left:9px;padding:6px 9px;border-radius:999px;background:rgba(34,197,94,.11);border:1px solid rgba(34,197,94,.20);color:#bbf7d0;font-size:11px;font-weight:950;letter-spacing:.02em}.ai-subtitle{margin-top:10px!important;font-size:14px!important;line-height:1.45!important}.ai-score-line{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:8px!important;margin-top:12px!important}.ai-score-pill{min-height:0!important;padding:10px!important;border-radius:17px!important;background:rgba(255,255,255,.045)!important}.ai-score-pill strong{margin-top:4px!important;font-size:18px!important;line-height:1.08!important}.ai-mini-actions{display:grid!important;grid-template-columns:1.2fr 1fr .9fr!important;gap:8px!important;margin-top:12px!important}.ai-mini-actions button{min-height:46px!important;margin:0!important;padding:0 12px!important;border-radius:17px!important;font-size:13px!important}.ai-panel-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}.ai-metric-card{min-height:118px!important;padding:14px!important;border-radius:20px!important;border-color:rgba(148,217,255,.13)!important}.ai-metric-card strong{margin-top:6px!important;font-size:22px!important;line-height:1.08!important}.ai-report-box{border-left:3px solid rgba(34,211,238,.76)!important;padding:14px!important;border-radius:18px!important;font-size:14.5px!important;line-height:1.52!important;background:rgba(34,211,238,.055)!important}.ai-action-list{gap:8px!important}.ai-action-item{padding:11px 12px!important;border-radius:16px!important;font-size:14.5px!important;line-height:1.42!important}.ai-context-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px!important}.ai-context-chip{padding:10px 11px!important;border-radius:16px!important;font-size:12.5px!important}.ai-context-chip b{font-size:13px!important;margin-bottom:3px!important;color:#67e8f9!important}.ai-chat-shell{gap:9px!important;padding:12px!important;border-radius:22px!important;border:1px solid rgba(34,211,238,.16)!important;background:radial-gradient(circle at 0% 0%,rgba(34,211,238,.08),transparent 38%),rgba(2,6,23,.36)!important}.ai-chat-log{max-height:270px!important;gap:8px!important}.ai-message{padding:11px 12px!important;border-radius:17px!important;font-size:14.5px!important;line-height:1.42!important}.ai-message.assistant{border-color:rgba(34,211,238,.18)!important}.ai-question-row{display:grid!important;grid-template-columns:1fr auto!important;gap:8px!important;align-items:stretch!important}.ai-question-row textarea{min-height:52px!important;max-height:78px!important;padding:13px 14px!important;border-radius:18px!important;line-height:1.30!important}.ai-question-row button{width:auto!important;min-width:104px!important;min-height:52px!important;margin:0!important;border-radius:18px!important}.ai-prompt-chips{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px!important;margin-top:2px!important}.ai-prompt-chips button{width:100%!important;min-height:40px!important;margin:0!important;padding:8px 9px!important;border-radius:16px!important;font-size:12px!important;color:#e0faff!important;background:linear-gradient(180deg,rgba(34,211,238,.13),rgba(15,23,42,.40))!important;border:1px solid rgba(34,211,238,.22)!important}.ai-disclaimer{margin-top:12px!important;padding:12px 13px!important;border-radius:18px!important;font-size:13.5px!important;line-height:1.45!important}
+@media(max-width:820px){.card.premium-panel[data-screens="ai"]{padding:14px!important;border-radius:24px!important}.card.premium-panel[data-screens="ai"]::after{top:12px;right:12px;padding:6px 8px;font-size:10px}.card.premium-panel[data-screens="ai"] .section{padding-right:72px!important}.ai-hero-grid{grid-template-columns:1fr!important;gap:10px!important}.ai-oracle-card{padding:14px!important}.ai-brain{width:52px!important;height:52px!important;border-radius:19px!important;font-size:25px!important}.ai-title{font-size:36px!important}.ai-title::after{margin-left:7px;padding:5px 8px;font-size:10px}.ai-score-line{grid-template-columns:1fr 1fr 1fr!important;gap:7px!important}.ai-score-pill{padding:9px 8px!important}.ai-score-pill strong{font-size:15px!important}.ai-mini-actions{grid-template-columns:1fr!important}.ai-panel-grid{grid-template-columns:1fr 1fr!important}.ai-metric-card{min-height:104px!important;padding:12px!important}.ai-metric-card strong{font-size:19px!important}.ai-context-grid{grid-template-columns:1fr 1fr!important}.ai-question-row{grid-template-columns:1fr!important}.ai-question-row button{width:100%!important}.ai-prompt-chips{grid-template-columns:1fr 1fr!important}}
+@media(max-width:420px){.ai-score-line{grid-template-columns:1fr!important}.ai-panel-grid,.ai-context-grid,.ai-prompt-chips{grid-template-columns:1fr!important}}
+</style>
+
 </head>
 
 
@@ -4432,7 +4465,7 @@ body.performance-mode .ai-message{
   <div class="container">
     <div id="offline" class="offline">Você está sem conexão. Algumas funções podem não responder até a internet voltar.</div>
     <div class="topbar"><div class="brand"><div class="logo" aria-label="Logo Wealth OS"><img src="data:image/webp;base64,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" alt="Logo Wealth OS" /></div><div><h1>Wealth OS</h1><div class="subtitle">Sistema premium para carteira, ledger, renda passiva, perfil, alocação, segurança e experiência de app real.</div></div></div><div class="chips">
-      <div class="chip premium">Etapa 7.0.1 • IA</div>
+      <div class="chip premium">Etapa 7.0.2B • IA refinada</div>
       <button id="performanceToggleChip" class="chip chip-action" type="button" onclick="togglePerformanceMode()">Modo leve: Auto</button>
       <div id="syncChip" class="chip">Sync: OK</div>
       <div id="ledgerChip" class="chip">Ledger como fonte principal</div>
@@ -4554,19 +4587,19 @@ body.performance-mode .ai-message{
       <div class="card premium-panel" data-screen-block data-screens="ai">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 7.0.1 • Copiloto Wealth AI</div>
-            <h3>Assistente inteligente da carteira</h3>
-            <div class="muted">Análise educativa baseada nos dados reais do seu app: ledger, patrimônio, metas, renda passiva, perfil e projeções.</div>
+            <div class="kicker">Etapa 7.0.2B • IA Wealth refinada</div>
+            <h3>Copiloto inteligente da carteira</h3>
+            <div class="muted">Nova camada visual 7.0.2B: painel mais compacto, chat mais claro, chips rápidos com destaque e botão Topo menos invasivo na aba da IA.</div>
           </div>
-          <span id="wealthAIStatusBadge" class="badge purple">IA local ativa</span>
+          <div style="display:flex;gap:8px;flex-wrap:wrap"><span id="wealthAIStatusBadge" class="badge purple">IA local ativa</span><span class="badge green">Layout 7.0.2B aplicado</span></div>
         </div>
 
         <div class="ai-hero-grid">
           <div class="ai-oracle-card">
             <div class="ai-brain">🧠</div>
-            <div class="ai-title">Wealth AI</div>
+            <div class="ai-title">Wealth AI Pro</div>
             <div id="wealthAISubtitle" class="ai-subtitle">
-              Toque em “Analisar minha carteira” para gerar um diagnóstico inteligente sem alterar seus dados.
+              Diagnóstico premium em modo compacto: analisa carteira, risco, meta, renda e próximos passos sem alterar seus dados.
             </div>
 
             <div class="ai-score-line">
@@ -4651,7 +4684,7 @@ body.performance-mode .ai-message{
           <div id="wealthAIContextGrid" class="ai-context-grid">
             <div class="ai-context-chip"><b>Fonte</b>Aguardando</div>
             <div class="ai-context-chip"><b>Posições</b>0</div>
-            <div class="ai-context-chip"><b>Movimentações</b>0</div>
+            <div class="ai-context-chip"><b>Mov. ledger</b>0</div>
             <div class="ai-context-chip"><b>Perfil</b>Não selecionado</div>
           </div>
         </div>
@@ -4674,8 +4707,14 @@ body.performance-mode .ai-message{
             </div>
 
             <div class="ai-question-row">
-              <textarea id="wealthAIQuestion" placeholder="Digite sua pergunta sobre sua carteira, meta, risco, renda passiva ou projeção..."></textarea>
+              <textarea id="wealthAIQuestion" placeholder="Pergunte sobre sua carteira..."></textarea>
               <button type="button" onclick="askWealthAI()">Perguntar</button>
+            </div>
+            <div class="ai-prompt-chips" aria-label="Perguntas rápidas da IA">
+              <button type="button" onclick="fillWealthAIQuestion('Minha carteira está boa?')">📊 Carteira</button>
+              <button type="button" onclick="fillWealthAIQuestion('Qual é meu maior risco?')">⚠️ Risco</button>
+              <button type="button" onclick="fillWealthAIQuestion('Por que minha meta está longe?')">🎯 Meta</button>
+              <button type="button" onclick="fillWealthAIQuestion('Como melhorar minha renda passiva?')">💸 Renda</button>
             </div>
           </div>
         </div>
@@ -5713,6 +5752,7 @@ let deferredInstallPrompt=null;
       const wanted=screenTexts[screen]?screen:'overview';
       try{
         document.body.classList.toggle('screen-all-active',wanted==='all');
+        document.body.classList.toggle('screen-ai-active',wanted==='ai');
         document.documentElement.style.overflowY='auto';
         document.body.style.overflowY='auto';
         document.body.style.height='auto';
@@ -6686,7 +6726,7 @@ let deferredInstallPrompt=null;
       else if(ctx.topShare>=45)items.push({text:`Acompanhar a concentração em ${ctx.topAsset}; ela já é relevante dentro da carteira.`,cls:'warn'});
       if(ctx.goalInfo.target&&ctx.gap>0)items.push({text:`Comparar o aporte atual de ${money(ctx.goalInfo.monthly)} com o aporte estimado de ${money(ctx.required)} para o prazo configurado.`,cls:'warn'});
       if(ctx.passive<=0)items.push({text:'Registrar proventos no ledger ou acompanhar ativos geradores de renda, se isso fizer sentido para seu objetivo.',cls:'warn'});
-      if(ctx.movementsCount<5)items.push({text:'Adicionar mais movimentações ao ledger para aumentar a precisão da análise.',cls:'warn'});
+      if(ctx.movementsCount<5)items.push({text:'Registrar movimentações no ledger para aumentar a precisão da análise; a IA já usou o cadastro atual quando não houver ledger.',cls:'warn'});
       if(ctx.ret<0)items.push({text:'Revisar ativos em queda e conferir se os preços reais estão atualizados.',cls:'warn'});
       items.push({text:'Salvar um snapshot patrimonial ao fim do mês para criar histórico limpo.',cls:'good'});
       items.push({text:'Atualizar preços antes de tomar qualquer decisão baseada nos números.',cls:'good'});
@@ -6712,13 +6752,13 @@ let deferredInstallPrompt=null;
       $('wealthAIConcentrationNote').textContent=ctx.positions?`${ctx.topAsset} • ${ctx.topAssetCategory}`:'Sem posição principal.';
       $('wealthAISubtitle').textContent=ctx.positions
         ?`Diagnóstico atualizado: ${risk}. Foco recomendado: ${focus}.`
-        :'Ainda faltam posições no ledger/carteira para gerar diagnóstico completo.';
+        :'Cadastre posições ou movimentações para liberar diagnóstico completo.';
       $('wealthAIReport').innerHTML=wealthAIReportParagraphs(ctx).map(p=>`<p>${esc(p)}</p>`).join('');
       $('wealthAIActionPlan').innerHTML=wealthAIActionItems(ctx).map(i=>`<div class="ai-action-item ${i.cls||''}">${esc(i.text)}</div>`).join('');
       $('wealthAIContextGrid').innerHTML=[
-        ['Fonte',ctx.source],
+        ['Fonte usada',ctx.source],
         ['Posições',`${ctx.positions}`],
-        ['Movimentações',`${ctx.movementsCount}`],
+        ['Mov. ledger',`${ctx.movementsCount}`],
         ['Perfil',ctx.profile],
         ['Categorias',`${ctx.categories}`],
         ['Maior ativo',ctx.topAsset],
@@ -6775,6 +6815,13 @@ let deferredInstallPrompt=null;
         return wealthAIActionItems(ctx).slice(0,3).map((i,idx)=>`${idx+1}. ${i.text}`).join(' ');
       }
       return `Pelo diagnóstico atual: patrimônio ${money(ctx.totals.cur)}, score ${ctx.state.score}/100, risco principal “${wealthAIRiskLabel(ctx)}” e foco “${wealthAIFocusLabel(ctx)}”. Pergunte sobre meta, risco, aporte, renda passiva, perfil ou próximos passos para eu detalhar.`;
+    }
+
+    window.fillWealthAIQuestion=(question)=>{
+      const input=$('wealthAIQuestion');
+      if(!input)return;
+      input.value=question||'';
+      try{input.focus()}catch{}
     }
 
     window.askWealthAI=()=>{
