@@ -4447,6 +4447,17 @@ body.screen-ai-active .wealth-floating-top{display:none!important;visibility:hid
 @media(max-width:420px){.ai-score-line{grid-template-columns:1fr!important}.ai-panel-grid,.ai-context-grid,.ai-prompt-chips{grid-template-columns:1fr!important}}
 </style>
 
+
+<style>
+/* WEALTH OS 7.0.3 — IA REAL SEGURA VIA EDGE FUNCTION */
+#wealthAIModeBadge{transition:all .18s ease!important}
+.ai-message.typing{opacity:.78;border-style:dashed!important}
+.ai-message.typing::after{content:"";display:inline-block;width:8px;height:8px;margin-left:8px;border-radius:999px;background:#67e8f9;box-shadow:14px 0 0 rgba(103,232,249,.55),28px 0 0 rgba(103,232,249,.30);animation:wealthAITyping 1s ease-in-out infinite alternate}
+@keyframes wealthAITyping{from{opacity:.45;transform:translateY(0)}to{opacity:1;transform:translateY(-1px)}}
+.ai-edge-note{margin-top:10px;padding:10px 12px;border-radius:16px;background:rgba(34,211,238,.07);border:1px solid rgba(34,211,238,.16);color:rgba(226,244,255,.78);font-size:12px;line-height:1.45}
+body.performance-mode .ai-message.typing::after{animation:none!important}
+@media(max-width:820px){.ai-edge-note{font-size:12px;padding:9px 10px}}
+</style>
 </head>
 
 
@@ -4587,19 +4598,19 @@ body.screen-ai-active .wealth-floating-top{display:none!important;visibility:hid
       <div class="card premium-panel" data-screen-block data-screens="ai">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 7.0.2B • IA Wealth refinada</div>
+            <div class="kicker">Etapa 7.0.3 • IA real segura</div>
             <h3>Copiloto inteligente da carteira</h3>
-            <div class="muted">Nova camada visual 7.0.2B: painel mais compacto, chat mais claro, chips rápidos com destaque e botão Topo menos invasivo na aba da IA.</div>
+            <div class="muted">Nova camada 7.0.3: usa IA real via Supabase Edge Function quando disponível e mantém fallback local seguro se a função ainda não estiver configurada.</div>
           </div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap"><span id="wealthAIStatusBadge" class="badge purple">IA local ativa</span><span class="badge green">Layout 7.0.2B aplicado</span></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap"><span id="wealthAIStatusBadge" class="badge purple">IA real preparada</span><span id="wealthAIModeBadge" class="badge green">Fallback local ativo</span></div>
         </div>
 
         <div class="ai-hero-grid">
           <div class="ai-oracle-card">
             <div class="ai-brain">🧠</div>
-            <div class="ai-title">Wealth AI Pro</div>
+            <div class="ai-title">Wealth AI Real</div>
             <div id="wealthAISubtitle" class="ai-subtitle">
-              Diagnóstico premium em modo compacto: analisa carteira, risco, meta, renda e próximos passos sem alterar seus dados.
+              Diagnóstico com IA real protegida por Edge Function: analisa carteira, risco, meta, renda e próximos passos sem expor chave no HTML.
             </div>
 
             <div class="ai-score-line">
@@ -4618,7 +4629,7 @@ body.screen-ai-active .wealth-floating-top{display:none!important;visibility:hid
             </div>
 
             <div class="ai-mini-actions" style="margin-top:16px">
-              <button class="success" type="button" onclick="analyzeWealthAI()">Analisar minha carteira</button>
+              <button class="success" type="button" onclick="analyzeWealthAI()">Analisar com IA real</button>
               <button class="gold" type="button" onclick="copyWealthAIReport()">Copiar relatório</button>
               <button class="secondary" type="button" onclick="resetWealthAIChat()">Limpar chat</button>
             </div>
@@ -4657,7 +4668,7 @@ body.screen-ai-active .wealth-floating-top{display:none!important;visibility:hid
               </div>
             </div>
             <div id="wealthAIReport" class="ai-report-box">
-              Aguardando análise. Clique em “Analisar minha carteira” para o Copiloto Wealth AI interpretar os dados atuais do app.
+              Aguardando análise. Clique em “Analisar com IA real” para tentar usar a Edge Function; se ela ainda não estiver configurada, o app usa a análise local automaticamente.
             </div>
           </div>
 
@@ -4702,7 +4713,7 @@ body.screen-ai-active .wealth-floating-top{display:none!important;visibility:hid
             <div id="wealthAIChat" class="ai-chat-log">
               <div class="ai-message assistant">
                 <small>Wealth AI</small>
-                Eu analiso os dados já existentes no app e respondo de forma educativa. Primeiro clique em “Analisar minha carteira” para atualizar o diagnóstico.
+                Eu analiso os dados já existentes no app. Na versão 7.0.3, tento responder com IA real via Supabase Edge Function e uso fallback local se a função ainda não estiver ativa.
               </div>
             </div>
 
@@ -4720,7 +4731,7 @@ body.screen-ai-active .wealth-floating-top{display:none!important;visibility:hid
         </div>
 
         <div class="ai-disclaimer" style="margin-top:14px">
-          <strong>Aviso importante:</strong> o Copiloto Wealth AI é uma ferramenta educativa e organizacional. Ele não faz recomendação individual de compra ou venda de ativos, não substitui consultoria financeira profissional e usa apenas os dados registrados no app.
+          <strong>Aviso importante:</strong> o Copiloto Wealth AI é uma ferramenta educativa e organizacional. Ele não faz recomendação individual de compra ou venda de ativos, não substitui consultoria financeira profissional e usa os dados registrados no app para gerar análise. Quando a IA real estiver ativa, o resumo da carteira será enviado para a Edge Function protegida.
         </div>
       </div>
 
@@ -6767,16 +6778,85 @@ let deferredInstallPrompt=null;
       ].map(([a,b])=>`<div class="ai-context-chip"><b>${esc(a)}</b>${esc(b)}</div>`).join('');
     }
 
-    window.analyzeWealthAI=()=>{
+    function setWealthAIMode(mode,text){
+      const status=$('wealthAIStatusBadge'),badge=$('wealthAIModeBadge');
+      if(status){
+        status.textContent=mode==='real'?'IA real ativa':mode==='loading'?'Consultando IA real...':mode==='error'?'IA local protegida':'IA real preparada';
+        status.className='badge '+(mode==='real'?'green':mode==='error'?'red':'purple');
+      }
+      if(badge){
+        badge.textContent=text|| (mode==='real'?'Edge Function respondeu':mode==='loading'?'Aguardando backend':mode==='error'?'Fallback local ativo':'Fallback local ativo');
+        badge.className='badge '+(mode==='real'?'green':mode==='error'?'red':'purple');
+      }
+    }
+
+    function compactWealthAIContext(ctx){
+      const positions=(ctx?.state?.list||[]).slice(0,18).map(i=>({
+        asset:String(i.asset||''),
+        category:String(i.category||''),
+        quantity:Number(i.quantity||0),
+        invested:Number(i.amount||0),
+        currentValue:Number(i.current_value||0),
+        avgPrice:Number(i.avg_price||0),
+        currentPrice:Number(i.current_price||0),
+        passiveIncome:Number(i.passive_income||0)
+      }));
+      return{
+        app:'Wealth OS',version:'7.0.3',language:'pt-BR',source:ctx.source,profile:ctx.profile,
+        score:Number(ctx.state?.score||0),risk:wealthAIRiskLabel(ctx),focus:wealthAIFocusLabel(ctx),
+        totals:{invested:Number(ctx.totals?.inv||0),current:Number(ctx.totals?.cur||0),pnl:Number(ctx.totals?.pl||0),returnPct:Number(ctx.ret||0),passive:Number(ctx.passive||0)},
+        goal:{target:Number(ctx.goalInfo?.target||0),progress:String(ctx.goalInfo?.display||'0%'),monthlyContribution:Number(ctx.goalInfo?.monthly||0),requiredMonthly:Number(ctx.required||0),gap:Number(ctx.gap||0),projectionYears:Number(ctx.proj?.years||0),moderateRate:Number(ctx.proj?.moderate||0),etaMonths:ctx.eta===null?null:Number(ctx.eta||0)},
+        concentration:{topAsset:ctx.topAsset,topAssetCategory:ctx.topAssetCategory,topShare:Number(ctx.topShare||0),topCategory:ctx.topCategory,categories:Number(ctx.categories||0),positions:Number(ctx.positions||0)},
+        month:{buys:Number(ctx.month?.buys||0),sells:Number(ctx.month?.sells||0),passive:Number(ctx.month?.passive||0),net:Number(ctx.month?.net||0),count:Number(ctx.month?.count||0)},
+        ledger:{movementsCount:Number(ctx.movementsCount||0)},
+        positions
+      };
+    }
+
+    async function callWealthAIReal(action,question,ctx){
+      if(!navigator.onLine)throw new Error('Sem conexão para chamar IA real.');
+      if(!supabase?.functions?.invoke)throw new Error('Supabase Functions indisponível.');
+      const payload={action:action||'chat',question:String(question||''),context:compactWealthAIContext(ctx)};
+      const {data,error}=await supabase.functions.invoke('wealth-ai',{body:payload});
+      if(error)throw new Error(error.message||'Edge Function wealth-ai falhou.');
+      if(!data?.ok)throw new Error(data?.error||'IA real não respondeu.');
+      return data;
+    }
+
+    function normalizeAIArray(v){
+      if(Array.isArray(v))return v.filter(Boolean).map(String);
+      if(typeof v==='string')return v.split(/\n{2,}|\n- |\n\d+\. /).map(s=>s.trim()).filter(Boolean);
+      return[];
+    }
+
+    window.analyzeWealthAI=async()=>{
       renderWealthAI();
       const chat=$('wealthAIChat');
+      const ctx=wealthAIContext();
+      const localMsg=`Análise atualizada. Score ${ctx.state.score}/100, risco principal: ${wealthAIRiskLabel(ctx)}, foco do mês: ${wealthAIFocusLabel(ctx)}. Use o relatório acima como leitura educativa da carteira.`;
+      setWealthAIMode('loading','Chamando wealth-ai');
       if(chat){
-        const ctx=wealthAIContext();
-        const msg=`Análise atualizada. Score ${ctx.state.score}/100, risco principal: ${wealthAIRiskLabel(ctx)}, foco do mês: ${wealthAIFocusLabel(ctx)}. Use o relatório acima como leitura educativa da carteira.`;
-        chat.insertAdjacentHTML('beforeend',`<div class="ai-message assistant"><small>Wealth AI</small>${esc(msg)}</div>`);
+        chat.insertAdjacentHTML('beforeend',`<div id="wealthAILoading" class="ai-message assistant typing"><small>Wealth AI</small>Consultando IA real protegida pela Edge Function...</div>`);
         chat.scrollTop=chat.scrollHeight;
       }
-      toast('Wealth AI analisou sua carteira.','success');
+      try{
+        const data=await callWealthAIReal('analyze','Analise minha carteira e gere relatório executivo.',ctx);
+        const report=normalizeAIArray(data.report_paragraphs||data.report);
+        const plan=normalizeAIArray(data.action_plan||data.actionPlan);
+        if(report.length)$('wealthAIReport').innerHTML=report.map(p=>`<p>${esc(p)}</p>`).join('');
+        if(plan.length)$('wealthAIActionPlan').innerHTML=plan.slice(0,6).map(t=>`<div class="ai-action-item warn">${esc(t)}</div>`).join('');
+        const headline=String(data.headline||data.answer||'IA real analisou sua carteira com sucesso.');
+        const loading=$('wealthAILoading');
+        if(loading)loading.outerHTML=`<div class="ai-message assistant"><small>Wealth AI Real</small>${esc(headline)}</div>`;
+        setWealthAIMode('real','Edge Function ativa');
+        toast('IA real analisou sua carteira.','success');
+      }catch(e){
+        const loading=$('wealthAILoading');
+        if(loading)loading.outerHTML=`<div class="ai-message assistant"><small>Wealth AI Local</small>${esc(localMsg)}<div class="ai-edge-note">IA real ainda não respondeu: ${esc(e.message||'configure a Edge Function wealth-ai')}. Mantive o fallback local para o app não quebrar.</div></div>`;
+        setWealthAIMode('error','Fallback local ativo');
+        toast('IA real ainda não configurada. Usei fallback local.','info');
+      }
+      if(chat)chat.scrollTop=chat.scrollHeight;
     }
 
     function wealthAIAnswer(question,ctx){
@@ -6824,24 +6904,38 @@ let deferredInstallPrompt=null;
       try{input.focus()}catch{}
     }
 
-    window.askWealthAI=()=>{
+    window.askWealthAI=async()=>{
       renderWealthAI();
       const input=$('wealthAIQuestion'),chat=$('wealthAIChat');
       if(!input||!chat)return;
       const q=input.value.trim();
       if(!q){toast('Digite uma pergunta para a IA.','info');return}
       const ctx=wealthAIContext();
-      const answer=wealthAIAnswer(q,ctx);
       chat.insertAdjacentHTML('beforeend',`<div class="ai-message user"><small>Você</small>${esc(q)}</div>`);
-      chat.insertAdjacentHTML('beforeend',`<div class="ai-message assistant"><small>Wealth AI</small>${esc(answer)}</div>`);
+      const waitId='wealthAIWait'+Date.now();
+      chat.insertAdjacentHTML('beforeend',`<div id="${waitId}" class="ai-message assistant typing"><small>Wealth AI</small>Consultando IA real...</div>`);
       input.value='';
+      chat.scrollTop=chat.scrollHeight;
+      setWealthAIMode('loading','Respondendo via Edge');
+      try{
+        const data=await callWealthAIReal('chat',q,ctx);
+        const answer=String(data.answer||data.headline||'IA real respondeu, mas não trouxe texto.');
+        const el=$(waitId);
+        if(el)el.outerHTML=`<div class="ai-message assistant"><small>Wealth AI Real</small>${esc(answer)}</div>`;
+        setWealthAIMode('real','Edge Function ativa');
+      }catch(e){
+        const answer=wealthAIAnswer(q,ctx);
+        const el=$(waitId);
+        if(el)el.outerHTML=`<div class="ai-message assistant"><small>Wealth AI Local</small>${esc(answer)}<div class="ai-edge-note">Fallback local usado porque a IA real ainda não respondeu: ${esc(e.message||'configure a função wealth-ai')}.</div></div>`;
+        setWealthAIMode('error','Fallback local ativo');
+      }
       chat.scrollTop=chat.scrollHeight;
     }
 
     window.resetWealthAIChat=()=>{
       const chat=$('wealthAIChat');
       if(!chat)return;
-      chat.innerHTML='<div class="ai-message assistant"><small>Wealth AI</small>Chat limpo. Clique em “Analisar minha carteira” ou faça uma nova pergunta sobre seus dados.</div>';
+      chat.innerHTML='<div class="ai-message assistant"><small>Wealth AI</small>Chat limpo. Clique em “Analisar com IA real” ou faça uma nova pergunta. Se a Edge Function ainda não estiver configurada, o fallback local responde.</div>';
       toast('Chat da IA limpo.','info');
     }
 
