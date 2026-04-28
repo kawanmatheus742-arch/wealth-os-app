@@ -4514,6 +4514,60 @@ body.performance-mode .ai-message.typing::after{animation:none!important}
   .ai-prompt-chips button{font-size:14px!important;min-height:46px!important}
 }
 </style>
+
+<style>
+/* =========================================================
+   WEALTH OS 7.0.5 — FREEMIUM + PAYWALL PREMIUM
+   Camada comercial sem cobrança real ainda:
+   - planos Free / Pro / Elite
+   - status do plano no topo
+   - limites de IA por plano
+   - paywall visual para recursos premium futuros
+   - base pronta para integrar pagamento depois
+   ========================================================= */
+.plan-chip-pro{background:linear-gradient(135deg,rgba(34,211,238,.16),rgba(20,184,166,.10))!important;border-color:rgba(34,211,238,.28)!important;color:#dffbff!important}
+.plan-chip-elite{background:linear-gradient(135deg,rgba(245,158,11,.18),rgba(139,92,246,.14),rgba(236,72,153,.10))!important;border-color:rgba(245,158,11,.28)!important;color:#fff7ed!important}
+.plan-chip-free{background:rgba(255,255,255,.045)!important;border-color:rgba(148,163,184,.14)!important;color:#dbeafe!important}
+.plans-hero-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:16px;align-items:stretch}
+.plans-hero{position:relative;overflow:hidden;border-radius:30px;padding:22px;border:1px solid rgba(34,211,238,.26);background:radial-gradient(circle at 10% 0%,rgba(34,211,238,.18),transparent 34%),radial-gradient(circle at 90% 0%,rgba(245,158,11,.13),transparent 34%),linear-gradient(180deg,rgba(5,12,26,.96),rgba(1,5,13,.98));box-shadow:0 26px 80px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.065)}
+.plans-hero:after{content:"";position:absolute;right:-80px;bottom:-90px;width:250px;height:250px;border-radius:999px;background:radial-gradient(circle,rgba(34,211,238,.18),rgba(139,92,246,.08),transparent 70%);pointer-events:none}
+.plan-orb{position:relative;z-index:1;width:76px;height:76px;border-radius:28px;display:grid;place-items:center;font-size:34px;background:linear-gradient(135deg,rgba(34,211,238,.95),rgba(139,92,246,.62),rgba(245,158,11,.55));border:1px solid rgba(226,244,255,.18);box-shadow:0 18px 44px rgba(14,165,233,.22),inset 0 1px 0 rgba(255,255,255,.16)}
+.plan-title{position:relative;z-index:1;margin-top:14px;font-size:clamp(36px,4.8vw,68px);line-height:.96;letter-spacing:-.09em;font-weight:950;background:linear-gradient(120deg,#ffffff,#dffbff 42%,#67e8f9 66%,#fef3c7 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.plan-subtitle{position:relative;z-index:1;margin-top:12px;color:rgba(226,244,255,.76);line-height:1.6}
+.plan-status-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px;position:relative;z-index:1}
+.plan-status-card{padding:13px;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04)}
+.plan-status-card strong{display:block;margin-top:5px;font-size:20px;letter-spacing:-.045em;color:#f8fbff}
+.plan-progress{height:12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.07);overflow:hidden;margin-top:12px;position:relative;z-index:1}
+.plan-progress span{display:block;height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#22d3ee,#0ea5e9,#8b5cf6,#f59e0b);box-shadow:0 0 20px rgba(34,211,238,.22)}
+.plan-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.plan-card{position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:100%;padding:18px;border-radius:26px;border:1px solid rgba(255,255,255,.09);background:radial-gradient(circle at 0 0,rgba(34,211,238,.08),transparent 38%),rgba(255,255,255,.035);box-shadow:0 18px 48px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.045)}
+.plan-card.active{border-color:rgba(34,211,238,.45);box-shadow:0 0 0 1px rgba(34,211,238,.12),0 24px 70px rgba(0,0,0,.34),0 0 32px rgba(34,211,238,.12)}
+.plan-card.elite{border-color:rgba(245,158,11,.22);background:radial-gradient(circle at 0 0,rgba(245,158,11,.12),transparent 38%),radial-gradient(circle at 100% 0,rgba(139,92,246,.10),transparent 40%),rgba(255,255,255,.035)}
+.plan-card h3{font-size:26px;letter-spacing:-.06em;margin:0}
+.plan-price{font-size:34px;font-weight:950;letter-spacing:-.075em;margin-top:8px;color:#f8fbff}
+.plan-price small{font-size:13px;color:rgba(226,244,255,.60);letter-spacing:0;font-weight:800}
+.plan-feature-list{display:grid;gap:9px;margin:14px 0 16px;color:rgba(226,244,255,.78);line-height:1.35;font-size:13px}
+.plan-feature-list div{padding:10px 11px;border-radius:15px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.065)}
+.plan-card button{margin-top:auto!important}
+.plan-badge{display:inline-flex;align-items:center;gap:7px;width:max-content;max-width:100%;padding:8px 11px;border-radius:999px;background:rgba(34,211,238,.10);border:1px solid rgba(34,211,238,.18);color:#bae6fd;font-size:12px;font-weight:950}
+.plan-badge.gold{background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.24);color:#fde68a}
+.premium-lock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.premium-lock-card{position:relative;overflow:hidden;min-height:152px;padding:16px;border-radius:22px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);cursor:pointer;transition:.18s ease}
+.premium-lock-card:hover{transform:translateY(-2px);border-color:rgba(34,211,238,.24)}
+.premium-lock-card.locked{border-color:rgba(245,158,11,.20);background:radial-gradient(circle at 0 0,rgba(245,158,11,.09),transparent 40%),rgba(255,255,255,.03)}
+.premium-lock-card.unlocked{border-color:rgba(34,197,94,.25);background:radial-gradient(circle at 0 0,rgba(34,197,94,.10),transparent 40%),rgba(255,255,255,.03)}
+.premium-lock-card strong{display:block;font-size:16px;margin-bottom:8px;color:#f8fbff}
+.premium-lock-card span{display:block;color:rgba(226,244,255,.68);font-size:13px;line-height:1.45}
+.lock-pill{position:absolute;right:12px;top:12px;padding:6px 9px;border-radius:999px;background:rgba(2,6,23,.65);border:1px solid rgba(255,255,255,.09);font-size:11px;font-weight:950;color:#fde68a}
+.unlocked .lock-pill{color:#bbf7d0;border-color:rgba(34,197,94,.20);background:rgba(34,197,94,.10)}
+.monetization-roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.monetization-step{padding:13px;border-radius:18px;border:1px solid rgba(255,255,255,.075);background:rgba(255,255,255,.035);line-height:1.42;color:rgba(226,244,255,.72);font-size:13px}
+.monetization-step b{display:block;color:#f8fbff;margin-bottom:5px}
+@media(max-width:1100px){.plans-hero-grid,.plan-cards,.premium-lock-grid,.monetization-roadmap{grid-template-columns:1fr}.plan-status-grid{grid-template-columns:1fr}}
+@media(max-width:760px){.plans-hero,.plan-card{border-radius:24px;padding:16px}.plan-title{font-size:clamp(36px,12vw,56px)}.plan-price{font-size:30px}.premium-lock-card{min-height:auto}}
+body.performance-mode .plans-hero,body.performance-mode .plan-card,body.performance-mode .premium-lock-card{backdrop-filter:none!important;box-shadow:0 14px 34px rgba(0,0,0,.24)!important}
+</style>
+
 </head>
 
 
@@ -4531,11 +4585,12 @@ body.performance-mode .ai-message.typing::after{animation:none!important}
   </div>
   <div class="container">
     <div id="offline" class="offline">Você está sem conexão. Algumas funções podem não responder até a internet voltar.</div>
-    <div class="topbar"><div class="brand"><div class="logo" aria-label="Logo Wealth OS"><img src="data:image/webp;base64,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" alt="Logo Wealth OS" /></div><div><h1>Wealth OS</h1><div class="subtitle">Sistema premium para carteira, ledger, renda passiva, perfil, alocação, segurança e experiência de app real.</div></div></div><div class="chips">
-      <div class="chip premium">Etapa 7.0.2B • IA refinada</div>
+    <div class="topbar"><div class="brand"><div class="logo" aria-label="Logo Wealth OS"><img src="data:image/webp;base64,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" alt="Logo Wealth OS" /></div><div><h1>Wealth OS</h1><div class="subtitle">Sistema premium para carteira, ledger, renda passiva, perfil, alocação, IA real, planos Free/Pro/Elite e experiência de app monetizável.</div></div></div><div class="chips">
+      <div class="chip premium">Etapa 7.0.5 • Freemium IA</div>
       <button id="performanceToggleChip" class="chip chip-action" type="button" onclick="togglePerformanceMode()">Modo leve: Auto</button>
       <div id="syncChip" class="chip">Sync: OK</div>
       <div id="ledgerChip" class="chip">Ledger como fonte principal</div>
+      <div id="planChip" class="chip plan-chip-free">Plano: Gratuito</div>
     </div></div>
 
     <div id="authSection" class="auth-shell">
@@ -4607,6 +4662,7 @@ body.performance-mode .ai-message.typing::after{animation:none!important}
         <button class="nav-btn" type="button" data-screen="allocation" onclick="showAppScreen('allocation')">🧭 Alocação</button>
         <button class="nav-btn" type="button" data-screen="profile" onclick="showAppScreen('profile')">🧬 Perfil</button>
         <button class="nav-btn" type="button" data-screen="ai" onclick="showAppScreen('ai')">🤖 IA Wealth</button>
+        <button class="nav-btn" type="button" data-screen="plans" onclick="showAppScreen('plans')">💎 Planos</button>
         <button class="nav-btn" type="button" data-screen="app" onclick="showAppScreen('app')">📱 App</button>
         <button class="nav-btn" type="button" data-screen="history" onclick="showAppScreen('history')">📈 Histórico</button>
         <button class="nav-btn" type="button" data-screen="goals" onclick="showAppScreen('goals')">🎯 Metas</button>
@@ -4650,19 +4706,66 @@ body.performance-mode .ai-message.typing::after{animation:none!important}
 
 <div id="screenIntro" class="screen-intro"><strong>Visão geral</strong> — painel executivo com patrimônio, inteligência, score e principais alertas.</div>
 
+      <div class="card premium-panel" data-screen-block data-screens="plans">
+        <div class="section">
+          <div>
+            <div class="kicker">Etapa 7.0.5 • Monetização</div>
+            <h3>Planos Free, Pro e Elite</h3>
+            <div class="muted">Base comercial pronta: plano gratuito para atrair usuários, plano Pro para monetização principal e plano Elite para posicionamento premium. Cobrança real fica para integração futura.</div>
+          </div>
+          <span id="planCurrentBadge" class="badge purple">Plano atual: Gratuito</span>
+        </div>
+
+        <div class="plans-hero-grid">
+          <div class="plans-hero">
+            <div class="plan-orb">💎</div>
+            <div class="plan-title">Wealth OS Premium</div>
+            <div id="planHeroSubtitle" class="plan-subtitle">Produto preparado para monetizar com IA real, paywall e limites por plano sem depender de pagamento agora.</div>
+            <div class="plan-status-grid">
+              <div class="plan-status-card"><div class="label">Plano atual</div><strong id="planHeroName">Gratuito</strong></div>
+              <div class="plan-status-card"><div class="label">Preço sugerido</div><strong id="planHeroPrice">R$ 0</strong></div>
+              <div class="plan-status-card"><div class="label">IA real</div><strong id="planHeroLimit">3/dia</strong></div>
+            </div>
+            <div class="plan-progress"><span id="planUsageBar"></span></div>
+            <div id="planUsageText" class="muted" style="margin-top:9px;position:relative;z-index:1">Uso de IA hoje: 0/3.</div>
+          </div>
+
+          <div>
+            <div id="wealthPlanCards" class="plan-cards"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid2" data-screen-block data-screens="plans">
+        <div class="card">
+          <div class="section"><div><div class="kicker">Paywall</div><h3>Recursos premium preparados</h3><div class="muted">Esses recursos já aparecem como valor percebido. No plano gratuito ficam bloqueados visualmente para criar desejo de upgrade.</div></div></div>
+          <div id="premiumLockGrid" class="premium-lock-grid"></div>
+        </div>
+        <div class="card">
+          <div class="section"><div><div class="kicker">Modelo comercial</div><h3>Estratégia de monetização</h3><div class="muted">A estrutura já separa atração, conversão e plano aspiracional.</div></div></div>
+          <div class="ai-disclaimer">O Wealth OS deve ser vendido como organização financeira, educação, inteligência e acompanhamento. A IA ajuda o usuário a entender dados, risco, meta e cenários, sem prometer lucro e sem recomendar compra ou venda específica.</div>
+          <div id="monetizationRoadmap" class="monetization-roadmap"></div>
+          <div class="row" style="margin-top:14px">
+            <button class="success" onclick="showAppScreen('ai')">Abrir IA Wealth</button>
+            <button class="secondary" onclick="copyWealthPricingText()">Copiar texto comercial</button>
+          </div>
+        </div>
+      </div>
+
+
 
       <div class="card premium-panel" data-screen-block data-screens="ai">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 7.0.4 • IA otimizada</div>
+            <div class="kicker">Etapa 7.0.5 • IA por plano</div>
             <h3>Copiloto inteligente da carteira</h3>
-            <div class="muted">Nova camada 7.0.4: IA real com resposta mais curta, melhor leitura no celular, controle de uso diário e fallback local seguro.</div>
+            <div class="muted">Camada 7.0.5: IA real com limite por plano, controle de custo, fallback local seguro e base pronta para monetização.</div>
           </div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap"><span id="wealthAIStatusBadge" class="badge purple">IA real preparada</span><span id="wealthAIModeBadge" class="badge green">Fallback local ativo</span><span id="wealthAIUsageBadge" class="badge gold">Uso IA: 0/12 hoje</span></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap"><span id="wealthAIStatusBadge" class="badge purple">IA real preparada</span><span id="wealthAIModeBadge" class="badge green">Fallback local ativo</span><span id="wealthAIUsageBadge" class="badge gold">Uso IA: 0/3 hoje</span></div>
         </div>
 
         <div class="ai-cost-strip" id="wealthAICostStrip">
-          <div><strong>Controle de IA real</strong><span id="wealthAICostText">Cada pergunta usa a Edge Function e pode consumir crédito da OpenAI. Limite inicial: 12 usos por dia.</span></div>
+          <div><strong>Controle de IA real</strong><span id="wealthAICostText">Cada pergunta usa a Edge Function e pode consumir crédito da OpenAI. O limite muda conforme o plano Free, Pro ou Elite.</span></div>
           <button type="button" class="secondary" onclick="syncWealthAIUsageBadges()">Atualizar status</button>
         </div>
 
@@ -5465,7 +5568,7 @@ body.performance-mode .ai-message.typing::after{animation:none!important}
   </button>
 
   
-      <div class="inline-top-wrap" data-screen-block data-screens="overview ledger income freedom allocation profile ai app history goals projections settings">
+      <div class="inline-top-wrap" data-screen-block data-screens="overview ledger income freedom allocation profile ai plans app history goals projections legal settings">
         <button id="inlineTopBtn" class="inline-top-btn secondary" type="button" onclick="wealthScrollToTop(true)">↑ Topo</button>
       </div>
 
@@ -5607,6 +5710,7 @@ body.performance-mode .ai-message.typing::after{animation:none!important}
       allocation:['Alocação inteligente','compare carteira atual com carteira-alvo e veja onde colocar o próximo aporte. A tela Perfil fica separada.'],
       profile:['Perfil de investidor','escolha conservador, moderado, arrojado ou personalizado. Depois aplique o perfil para atualizar a tela Alocação.'],
       ai:['IA Wealth','copiloto educativo que interpreta carteira, meta, renda passiva, risco, aporte e próximos passos.'],
+      plans:['Planos','modelo freemium com Gratuito, Pro e Elite, paywall premium, limites de IA e base de monetização.'],
       app:['App real','onboarding, instalação, experiência mobile e checklist para publicar como produto.'],
       history:['Histórico','controle snapshots manuais, gráficos e evolução patrimonial sem travar o app.'],
       goals:['Metas','configure meta patrimonial, aporte mensal e acompanhe projeção.'],
@@ -5847,7 +5951,7 @@ let deferredInstallPrompt=null;
     }
     function restoreAppScreen(){let saved='overview';try{saved=localStorage.getItem(navKey())||'overview'}catch{};setTimeout(()=>showAppScreen(saved,false),0)}
 
-    function showApp(u){userId=u.id;userEmail=u.email||'';$('authSection').style.display='none';$('appSection').style.display='grid';$('userEmail').textContent=userEmail;$('greeting').textContent='Olá, '+(userEmail.split('@')[0]||'investidor')+' 👋';balanceVisible=(localStorage.getItem(balKey())??'true')==='true';restoreAppScreen();setTimeout(updateAppReadiness,120)}
+    function showApp(u){userId=u.id;userEmail=u.email||'';$('authSection').style.display='none';$('appSection').style.display='grid';$('userEmail').textContent=userEmail;$('greeting').textContent='Olá, '+(userEmail.split('@')[0]||'investidor')+' 👋';balanceVisible=(localStorage.getItem(balKey())??'true')==='true';syncWealthAIUsageBadges();renderWealthPlans();restoreAppScreen();setTimeout(updateAppReadiness,120)}
     function showLogin(){setTimeout(startLoginAutofillGuard,60);setTimeout(startLoginAutofillGuard,600);userId=null;$('authSection').style.display='grid';$('appSection').style.display='none';setTimeout(updateAppReadiness,120)}
     window.toggleBalance=()=>{balanceVisible=!balanceVisible;localStorage.setItem(balKey(),String(balanceVisible));renderDashboard()}
     function consolidate(list){const m=new Map();list.forEach(i=>{const a=String(i.asset||'').trim().toUpperCase(),c=String(i.category||'Outros').trim()||'Outros',k=a+'__'+c,q=Number(i.quantity||0),amt=Number(i.amount||0),cur=q*Number(i.current_price||0);if(!m.has(k))m.set(k,{id:i.id,asset:a,category:c,quantity:0,amount:0,current_value:0,sourceIds:[],sourceItems:[],created_at:i.created_at});const g=m.get(k);g.quantity+=q;g.amount+=amt;g.current_value+=cur;g.sourceIds.push(i.id);g.sourceItems.push(i);if(new Date(i.created_at||0)>new Date(g.created_at||0))g.created_at=i.created_at});return [...m.values()].map(g=>({...g,avg_price:g.quantity?g.amount/g.quantity:0,current_price:g.quantity?g.current_value/g.quantity:0,sourceCount:g.sourceItems.length,isGrouped:g.sourceItems.length>1})).sort((a,b)=>new Date(b.created_at||0)-new Date(a.created_at||0))}
@@ -6852,8 +6956,28 @@ let deferredInstallPrompt=null;
       }
     }
 
-    const WEALTH_AI_DAILY_LIMIT=12;
-    const WEALTH_AI_SESSION_LIMIT=8;
+
+    /* =========================
+       Etapa 7.0.5 • Planos e monetização preparada
+       ========================= */
+    const WEALTH_PLAN_CONFIG={
+      free:{id:'free',name:'Gratuito',chip:'Gratuito',price:'R$ 0',priceLong:'R$ 0',limit:3,session:3,tag:'Começo',className:'plan-chip-free',subtitle:'Ideal para entrar no app, cadastrar carteira e testar a IA com limite controlado.',features:['Dashboard, ledger, metas e projeções básicas','IA real limitada a 3 usos por dia','Paywall visual nos recursos premium','Base perfeita para aquisição de usuários']},
+      pro:{id:'pro',name:'Pro',chip:'Pro',price:'R$ 19,90',priceLong:'R$ 19,90/mês',limit:40,session:16,tag:'Principal',className:'plan-chip-pro',subtitle:'Plano pago principal: mais IA, diagnóstico de carteira, alertas e relatórios premium.',features:['IA real ampliada: 40 usos por dia','Diagnóstico avançado da carteira','Relatório mensal premium e alertas inteligentes','Simulações e plano de ação mais completos']},
+      elite:{id:'elite',name:'Elite',chip:'Elite',price:'R$ 39,90',priceLong:'R$ 39,90/mês',limit:120,session:30,tag:'Executivo',className:'plan-chip-elite',subtitle:'Plano aspiracional para usuário avançado que quer uma experiência executiva com IA profunda.',features:['IA real prioritária: 120 usos por dia','Relatório executivo e radar de mercado','Simulações avançadas e exportação futura','Experiência premium máxima do Wealth OS']}
+    };
+
+    function wealthPlanKey(){return `wealth_os_plan_${userId||'guest'}`}
+    function currentWealthPlan(){
+      try{
+        const raw=localStorage.getItem(wealthPlanKey())||localStorage.getItem('wealth_os_plan_demo')||'free';
+        return WEALTH_PLAN_CONFIG[raw]?raw:'free';
+      }catch{return'free'}
+    }
+    function currentWealthPlanConfig(){return WEALTH_PLAN_CONFIG[currentWealthPlan()]||WEALTH_PLAN_CONFIG.free}
+    function wealthAIDailyLimit(){return Number(currentWealthPlanConfig().limit||3)}
+    function wealthAISessionLimit(){return Number(currentWealthPlanConfig().session||3)}
+    function isWealthPremium(){return currentWealthPlan()!=='free'}
+
     window.__wealthAIRealSessionCount=window.__wealthAIRealSessionCount||0;
 
     function wealthAITodayKey(){
@@ -6878,19 +7002,21 @@ let deferredInstallPrompt=null;
       const badge=$('wealthAIUsageBadge');
       const text=$('wealthAICostText');
       if(badge){
-        badge.textContent=`Uso IA: ${used}/${WEALTH_AI_DAILY_LIMIT} hoje`;
-        badge.className='badge '+(used>=WEALTH_AI_DAILY_LIMIT?'red':used>=Math.ceil(WEALTH_AI_DAILY_LIMIT*.75)?'gold':'purple');
+        badge.textContent=`Uso IA: ${used}/${wealthAIDailyLimit()} hoje`;
+        badge.className='badge '+(used>=wealthAIDailyLimit()?'red':used>=Math.ceil(wealthAIDailyLimit()*.75)?'gold':'purple');
       }
       if(text){
-        const rest=Math.max(0,WEALTH_AI_DAILY_LIMIT-used);
-        text.textContent=`Cada pergunta usa a Edge Function e pode consumir crédito da OpenAI. Restam ${rest} uso(s) de IA real hoje neste aparelho.`;
+        const rest=Math.max(0,wealthAIDailyLimit()-used);
+        text.textContent=`Plano ${currentWealthPlanConfig().name}: cada pergunta usa a Edge Function e pode consumir crédito da OpenAI. Restam ${rest} uso(s) de IA real hoje neste aparelho.`;
       }
+      updateWealthPlanChip();
+      if($('planHeroName'))renderWealthPlans();
     }
 
     function canUseWealthAIReal(){
       const used=getWealthAIUsage();
-      if(used>=WEALTH_AI_DAILY_LIMIT)return{ok:false,message:`Limite diário de ${WEALTH_AI_DAILY_LIMIT} usos de IA real atingido neste aparelho. Use o fallback local ou volte amanhã.`};
-      if(window.__wealthAIRealSessionCount>=WEALTH_AI_SESSION_LIMIT)return{ok:false,message:`Limite desta sessão atingido. Feche e abra o app novamente se precisar continuar.`};
+      if(used>=wealthAIDailyLimit())return{ok:false,message:`Limite diário de ${wealthAIDailyLimit()} usos de IA real atingido no plano ${currentWealthPlanConfig().name}. Use o fallback local ou volte amanhã.`};
+      if(window.__wealthAIRealSessionCount>=wealthAISessionLimit())return{ok:false,message:`Limite desta sessão atingido no plano ${currentWealthPlanConfig().name}. Feche e abra o app novamente se precisar continuar.`};
       return{ok:true};
     }
 
@@ -6904,6 +7030,95 @@ let deferredInstallPrompt=null;
       window.__wealthAIRealSessionCount=0;
       toast('Limite local da IA real zerado neste aparelho.','info');
     }
+
+    function updateWealthPlanChip(){
+      const plan=currentWealthPlanConfig();
+      const chip=$('planChip');
+      if(chip){
+        chip.textContent=`Plano: ${plan.name}`;
+        chip.className=`chip ${plan.className||'plan-chip-free'}`;
+      }
+      const badge=$('planCurrentBadge');
+      if(badge){
+        badge.textContent=`Plano atual: ${plan.name}`;
+        badge.className='badge '+(plan.id==='free'?'purple':plan.id==='pro'?'green':'gold');
+      }
+    }
+
+    function renderWealthPlans(){
+      const plan=currentWealthPlanConfig();
+      const used=getWealthAIUsage();
+      updateWealthPlanChip();
+      if($('planHeroName'))$('planHeroName').textContent=plan.name;
+      if($('planHeroPrice'))$('planHeroPrice').textContent=plan.price;
+      if($('planHeroLimit'))$('planHeroLimit').textContent=`${plan.limit}/dia`;
+      if($('planHeroSubtitle'))$('planHeroSubtitle').textContent=plan.subtitle;
+      if($('planUsageText'))$('planUsageText').textContent=`Uso de IA real hoje: ${used}/${plan.limit}. ${Math.max(0,plan.limit-used)} uso(s) restante(s) no plano ${plan.name}.`;
+      if($('planUsageBar'))$('planUsageBar').style.width=Math.max(0,Math.min(100,(used/Math.max(1,plan.limit))*100)).toFixed(1)+'%';
+
+      const cards=$('wealthPlanCards');
+      if(cards){
+        cards.innerHTML=Object.values(WEALTH_PLAN_CONFIG).map(p=>{
+          const active=p.id===plan.id;
+          const elite=p.id==='elite';
+          return `<div class="plan-card ${active?'active':''} ${elite?'elite':''}">
+            <span class="plan-badge ${elite?'gold':''}">${active?'✅ Plano atual':p.tag}</span>
+            <h3 style="margin-top:12px">${esc(p.name)}</h3>
+            <div class="plan-price">${esc(p.price)} <small>${p.id==='free'?'':'/mês'}</small></div>
+            <div class="muted" style="margin-top:6px;line-height:1.45">${esc(p.subtitle)}</div>
+            <div class="plan-feature-list">${p.features.map(f=>`<div>✓ ${esc(f)}</div>`).join('')}</div>
+            <button class="${p.id==='free'?'secondary':p.id==='pro'?'success':'gold'}" onclick="activateWealthPlanDemo('${p.id}')">${active?'Plano ativo':p.id==='free'?'Voltar para Free':'Simular '+p.name}</button>
+          </div>`;
+        }).join('');
+      }
+
+      const locks=[
+        ['📊 Relatório mensal premium','Resumo executivo de evolução, renda, meta, risco, aportes e próximos passos.','pro'],
+        ['🚨 Alertas inteligentes','Avisos quando concentração, queda, falta de aporte ou custo de IA exigirem atenção.','pro'],
+        ['📡 Radar de mercado','Camada futura para interpretar bolsa em alta/queda com leitura educativa.','elite'],
+        ['🧠 Diagnóstico avançado','Análise mais profunda de concentração, perfil, renda, meta e consistência.','pro'],
+        ['📁 Exportação executiva','Relatório em arquivo para acompanhar patrimônio e evolução mês a mês.','elite'],
+        ['⚡ IA prioritária','Mais limite diário e respostas mais avançadas no plano pago.','pro']
+      ];
+      const grid=$('premiumLockGrid');
+      if(grid){
+        grid.innerHTML=locks.map(([title,desc,min])=>{
+          const unlocked=(min==='pro'&&['pro','elite'].includes(plan.id))||(min==='elite'&&plan.id==='elite');
+          return `<div class="premium-lock-card ${unlocked?'unlocked':'locked'}" onclick="${unlocked?`toast('Recurso ${esc(title)} liberado no plano ${plan.name}.','success')`:`openWealthUpgrade('${esc(title)}')`}">
+            <div class="lock-pill">${unlocked?'Liberado':'🔒 '+min.toUpperCase()}</div>
+            <strong>${esc(title)}</strong><span>${esc(desc)}</span>
+          </div>`;
+        }).join('');
+      }
+
+      const roadmap=$('monetizationRoadmap');
+      if(roadmap){
+        roadmap.innerHTML=[
+          ['1. Atrair','Plano gratuito com valor real e IA limitada para o usuário sentir o produto.'],
+          ['2. Converter','Paywall mostra os ganhos do Pro: mais IA, relatórios e alertas.'],
+          ['3. Escalar','Elite posiciona o app como ferramenta executiva e aumenta ticket médio.'],
+          ['4. Integrar','Quando você avisar, conectamos pagamento real e Play Billing.']
+        ].map(([a,b])=>`<div class="monetization-step"><b>${esc(a)}</b>${esc(b)}</div>`).join('');
+      }
+    }
+
+    window.activateWealthPlanDemo=(planId)=>{
+      const plan=WEALTH_PLAN_CONFIG[planId]?planId:'free';
+      try{localStorage.setItem(wealthPlanKey(),plan);localStorage.setItem('wealth_os_plan_demo',plan)}catch{}
+      syncWealthAIUsageBadges();
+      renderWealthPlans();
+      toast(`Plano ${WEALTH_PLAN_CONFIG[plan].name} ativado em modo preparação. Cobrança real ainda não foi ligada.`,plan==='free'?'info':'success');
+    };
+
+    window.openWealthUpgrade=(feature='Recurso premium')=>{
+      try{showAppScreen('plans')}catch{}
+      toast(`${feature} faz parte do Wealth OS Pro/Elite. Pagamento real será integrado quando você decidir.`, 'info');
+    };
+
+    window.copyWealthPricingText=()=>{
+      const txt=`Wealth OS Premium\n\nPlano Gratuito: organize carteira, ledger, metas, projeções e teste a IA com limite diário.\n\nPlano Pro: IA avançada, diagnóstico de carteira, alertas inteligentes e relatório mensal premium. Preço sugerido: R$ 19,90/mês.\n\nPlano Elite: experiência executiva, IA prioritária, radar de mercado, simulações avançadas e relatórios premium. Preço sugerido: R$ 39,90/mês.\n\nAviso: o Wealth OS é uma ferramenta de organização e educação financeira. Não promete lucro e não substitui consultoria profissional.`;
+      copyTextSafe(txt,'Texto comercial dos planos copiado.');
+    };
 
     function wealthAIShortText(text,maxChars=460,maxSentences=3){
       const raw=String(text||'').replace(/\s+/g,' ').trim();
@@ -7124,10 +7339,11 @@ let deferredInstallPrompt=null;
         if(screen==='goals'){renderGoal(cur);renderFinancialFreedom();}
         if(screen==='projections'){renderProjectionEngine();renderWealthActionPlan();}
         if(screen==='ai'){renderWealthAI();}
+        if(screen==='plans'){renderWealthPlans();}
         if(screen==='allocation'){renderAllocationIntelligence();}
         if(screen==='profile'){renderInvestorProfile();}
         if(screen==='settings'){updatePerformanceUI();updateAppReadiness();}
-        if(screen==='all'){renderWealthAI();renderProjectionEngine();renderWealthActionPlan();}
+        if(screen==='all'){renderWealthAI();renderProjectionEngine();renderWealthActionPlan();renderWealthPlans();}
       },50);
     }
 
@@ -7680,7 +7896,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
       },6500);
 
       try{
-        document.body.classList.add('booting');applyFastPremiumDefaults();applyPerformanceMode(getPerformancePreference());syncChips();window.addEventListener('online',syncChips);window.addEventListener('offline',syncChips);window.addEventListener('resize',()=>{updatePerformanceUI();updateAppReadiness()},{passive:true});$('movementDate').value=new Date().toISOString().slice(0,10);['movementType','movementAsset','movementQuantity','movementUnitPrice','movementGross','movementFees','movementTaxes'].forEach(id=>$(id)?.addEventListener('input',renderMovementPreview));['movementType','movementCategory','movementDate'].forEach(id=>$(id)?.addEventListener('change',renderMovementPreview));renderMovementPreview();setup4BInputDebounce();['email','password'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter')handleAuth()}));supabase.auth.onAuthStateChange((event,session)=>setTimeout(async()=>{if(!session?.user){showLogin();return}showApp(session.user);await loadGoal();await loadInvestments();await loadMovementData()},0));const u=await getUser();if(u){showApp(u);await loadGoal();await loadInvestments();await loadMovementData()}else showLogin();setBoot(false);document.body.classList.remove('booting');updateAppReadiness();toast('Etapa 6F.7 ativa: Final Max Design, cores premium, animações leves e performance.','success')
+        document.body.classList.add('booting');applyFastPremiumDefaults();applyPerformanceMode(getPerformancePreference());syncChips();window.addEventListener('online',syncChips);window.addEventListener('offline',syncChips);window.addEventListener('resize',()=>{updatePerformanceUI();updateAppReadiness()},{passive:true});$('movementDate').value=new Date().toISOString().slice(0,10);['movementType','movementAsset','movementQuantity','movementUnitPrice','movementGross','movementFees','movementTaxes'].forEach(id=>$(id)?.addEventListener('input',renderMovementPreview));['movementType','movementCategory','movementDate'].forEach(id=>$(id)?.addEventListener('change',renderMovementPreview));renderMovementPreview();setup4BInputDebounce();['email','password'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter')handleAuth()}));supabase.auth.onAuthStateChange((event,session)=>setTimeout(async()=>{if(!session?.user){showLogin();return}showApp(session.user);await loadGoal();await loadInvestments();await loadMovementData()},0));const u=await getUser();if(u){showApp(u);await loadGoal();await loadInvestments();await loadMovementData()}else showLogin();setBoot(false);document.body.classList.remove('booting');updateAppReadiness();toast('Etapa 7.0.5 ativa: Freemium, Pro/Elite e paywall premium preparados.','success')
       }catch(e){
         console.error('Wealth OS boot error:',e);
         try{showLogin()}catch{}
