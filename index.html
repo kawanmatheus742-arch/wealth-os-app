@@ -4568,6 +4568,94 @@ body.performance-mode .ai-message.typing::after{animation:none!important}
 body.performance-mode .plans-hero,body.performance-mode .plan-card,body.performance-mode .premium-lock-card{backdrop-filter:none!important;box-shadow:0 14px 34px rgba(0,0,0,.24)!important}
 </style>
 
+
+
+<style>
+/* =========================================================
+   WEALTH OS 7.0.6 — PLANO INTERNO + LIMITE REAL + PAYWALL
+   Sem cobrança real ainda. Esta camada torna a monetização
+   obedecida pelo app: plano persistente, uso diário por usuário,
+   sessão protegida e bloqueio premium funcional.
+   ========================================================= */
+.plan-control-panel{border-color:rgba(34,211,238,.22)!important;background:radial-gradient(circle at 0 0,rgba(34,211,238,.13),transparent 38%),radial-gradient(circle at 100% 0,rgba(34,197,94,.08),transparent 34%),linear-gradient(180deg,rgba(5,12,26,.94),rgba(2,6,23,.98))!important}
+.plan-engine-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
+.plan-engine-card{position:relative;overflow:hidden;padding:15px;border-radius:20px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);min-height:118px}
+.plan-engine-card:after{content:"";position:absolute;right:-42px;bottom:-50px;width:120px;height:120px;border-radius:999px;background:radial-gradient(circle,rgba(34,211,238,.10),transparent 70%)}
+.plan-engine-card strong{position:relative;z-index:1;display:block;margin-top:7px;font-size:22px;letter-spacing:-.05em;line-height:1.08;color:#f8fbff}
+.plan-engine-card span{position:relative;z-index:1;display:block;margin-top:7px;color:rgba(226,244,255,.70);font-size:12px;line-height:1.42}
+.plan-engine-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.plan-engine-actions button{width:auto!important;min-width:150px;margin-top:0!important}
+.plan-card.plan-locked-next{opacity:.78;filter:saturate(.9)}
+.premium-lock-card.locked{cursor:pointer}
+.premium-lock-card.unlocked{border-color:rgba(34,197,94,.28)!important;background:radial-gradient(circle at 0 0,rgba(34,197,94,.12),transparent 42%),rgba(255,255,255,.035)!important}
+.lock-pill{width:max-content;max-width:100%;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09);color:#dbeafe;font-size:11px;font-weight:950;margin-bottom:10px}
+.premium-lock-card.locked .lock-pill{background:rgba(245,158,11,.13);border-color:rgba(245,158,11,.24);color:#fde68a}
+.premium-lock-card.unlocked .lock-pill{background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.24);color:#bbf7d0}
+.ai-limit-blocked{border:1px solid rgba(251,146,60,.28)!important;background:rgba(251,146,60,.09)!important;color:#fed7aa!important}
+.plan-gate-note{margin-top:10px;padding:12px;border-radius:16px;border:1px solid rgba(245,158,11,.22);background:rgba(245,158,11,.08);color:#fde68a;line-height:1.5;font-size:13px}
+body.plan-free .pro-only,body.plan-free .elite-only,body.plan-pro .elite-only{position:relative;overflow:hidden}
+body.plan-free .pro-only:before,body.plan-free .elite-only:before,body.plan-pro .elite-only:before{content:"🔒 Premium";position:absolute;right:12px;top:12px;z-index:5;padding:7px 9px;border-radius:999px;background:rgba(2,6,23,.82);border:1px solid rgba(245,158,11,.22);color:#fde68a;font-size:11px;font-weight:950}
+@media(max-width:1100px){.plan-engine-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.plan-engine-grid{grid-template-columns:1fr}.plan-engine-actions{display:grid;grid-template-columns:1fr}.plan-engine-actions button{width:100%!important}}
+
+/* =========================================================
+   WEALTH OS 7.0.7 — IA ADVISOR + SMART ALERTS
+   Central de radar inteligente, preparo para notificações e leitura de mercado.
+   ========================================================= */
+.smart-advisor-panel{
+  border-color:rgba(34,211,238,.28)!important;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(34,211,238,.18),transparent 34%),
+    radial-gradient(circle at 92% 0%,rgba(245,158,11,.12),transparent 32%),
+    linear-gradient(180deg,rgba(3,10,24,.98),rgba(1,5,13,.99))!important;
+}
+.smart-advisor-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:16px;align-items:stretch}
+.smart-advisor-hero{
+  position:relative;overflow:hidden;border-radius:30px;padding:20px;
+  border:1px solid rgba(34,211,238,.24);
+  background:radial-gradient(circle at 12% 0%,rgba(34,211,238,.14),transparent 38%),linear-gradient(180deg,rgba(12,22,44,.95),rgba(2,6,23,.97));
+}
+.smart-advisor-hero:after{content:"";position:absolute;right:-70px;bottom:-80px;width:220px;height:220px;border-radius:999px;background:radial-gradient(circle,rgba(34,211,238,.16),rgba(139,92,246,.08),transparent 72%);pointer-events:none}
+.smart-orb{position:relative;z-index:1;width:72px;height:72px;border-radius:28px;display:grid;place-items:center;font-size:34px;background:linear-gradient(135deg,rgba(34,211,238,.95),rgba(14,165,233,.62),rgba(245,158,11,.52));border:1px solid rgba(226,244,255,.20);box-shadow:0 18px 44px rgba(14,165,233,.22),inset 0 1px 0 rgba(255,255,255,.14)}
+.smart-title{position:relative;z-index:1;margin-top:12px;font-size:clamp(34px,4.4vw,62px);line-height:.96;letter-spacing:-.09em;font-weight:950;background:linear-gradient(120deg,#fff,#dffbff 45%,#67e8f9 72%,#fde68a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.smart-subtitle{position:relative;z-index:1;margin-top:12px;color:rgba(226,244,255,.76);line-height:1.58}
+.smart-kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px;position:relative;z-index:1}
+.smart-kpi{padding:13px;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04)}
+.smart-kpi strong{display:block;margin-top:5px;font-size:21px;line-height:1.05;letter-spacing:-.05em;color:#f8fbff}
+.smart-market-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;position:relative;z-index:1}
+.smart-market-grid select,.smart-market-grid input{height:50px!important;border-radius:17px!important}
+.smart-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.smart-actions button{margin:0!important;min-height:48px!important;border-radius:17px!important;padding:0 12px!important;font-size:13px!important}
+.smart-alerts-shell{display:grid;gap:10px}
+.smart-alert-card{
+  position:relative;overflow:hidden;padding:14px;border-radius:20px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.035);
+}
+.smart-alert-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:rgba(34,211,238,.75)}
+.smart-alert-card.high{border-color:rgba(239,68,68,.30);background:rgba(239,68,68,.075)}
+.smart-alert-card.high:before{background:#ef4444}
+.smart-alert-card.mid{border-color:rgba(251,146,60,.30);background:rgba(251,146,60,.075)}
+.smart-alert-card.mid:before{background:#fb923c}
+.smart-alert-card.good{border-color:rgba(34,197,94,.30);background:rgba(34,197,94,.075)}
+.smart-alert-card.good:before{background:#22c55e}
+.smart-alert-card.locked{opacity:.72;filter:saturate(.86)}
+.smart-alert-top{position:relative;z-index:1;display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.smart-alert-title{font-weight:950;line-height:1.25}
+.smart-alert-body{position:relative;z-index:1;margin-top:7px;color:rgba(226,244,255,.78);font-size:13px;line-height:1.48}
+.smart-alert-action{position:relative;z-index:1;margin-top:9px;padding:10px 11px;border-radius:15px;background:rgba(2,6,23,.22);border:1px solid rgba(255,255,255,.065);font-size:12px;color:#dbeafe;line-height:1.4}
+.smart-pill{display:inline-flex;align-items:center;gap:6px;width:max-content;max-width:100%;padding:7px 9px;border-radius:999px;background:rgba(34,211,238,.10);border:1px solid rgba(34,211,238,.18);color:#bae6fd;font-size:11px;font-weight:950;white-space:nowrap}
+.smart-pill.high{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.25);color:#fecaca}
+.smart-pill.mid{background:rgba(251,146,60,.12);border-color:rgba(251,146,60,.25);color:#fed7aa}
+.smart-pill.good{background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.25);color:#bbf7d0}
+.smart-timeline{display:grid;gap:9px}
+.smart-timeline-row{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:flex-start;padding:11px;border-radius:16px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.032);line-height:1.42}
+.smart-dot{width:28px;height:28px;border-radius:12px;display:grid;place-items:center;background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.18)}
+body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{box-shadow:none!important;backdrop-filter:none!important}
+@media(max-width:1120px){.smart-advisor-grid,.smart-market-grid{grid-template-columns:1fr}.smart-actions{grid-template-columns:1fr 1fr}.smart-kpi-grid{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:760px){.smart-advisor-hero{border-radius:24px;padding:16px}.smart-title{font-size:clamp(36px,12vw,56px)}.smart-kpi-grid,.smart-actions{grid-template-columns:1fr}.smart-actions button{width:100%!important}}
+
+</style>
 </head>
 
 
@@ -4585,8 +4673,8 @@ body.performance-mode .plans-hero,body.performance-mode .plan-card,body.performa
   </div>
   <div class="container">
     <div id="offline" class="offline">Você está sem conexão. Algumas funções podem não responder até a internet voltar.</div>
-    <div class="topbar"><div class="brand"><div class="logo" aria-label="Logo Wealth OS"><img src="data:image/webp;base64,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" alt="Logo Wealth OS" /></div><div><h1>Wealth OS</h1><div class="subtitle">Sistema premium para carteira, ledger, renda passiva, perfil, alocação, IA real, planos Free/Pro/Elite e experiência de app monetizável.</div></div></div><div class="chips">
-      <div class="chip premium">Etapa 7.0.5 • Freemium IA</div>
+    <div class="topbar"><div class="brand"><div class="logo" aria-label="Logo Wealth OS"><img src="data:image/webp;base64,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" alt="Logo Wealth OS" /></div><div><h1>Wealth OS</h1><div class="subtitle">Sistema premium para carteira, ledger, renda passiva, perfil, alocação, IA real, Radar IA, planos Free/Pro/Elite e experiência de app monetizável.</div></div></div><div class="chips">
+      <div class="chip premium">Etapa 7.0.7 • IA Advisor</div>
       <button id="performanceToggleChip" class="chip chip-action" type="button" onclick="togglePerformanceMode()">Modo leve: Auto</button>
       <div id="syncChip" class="chip">Sync: OK</div>
       <div id="ledgerChip" class="chip">Ledger como fonte principal</div>
@@ -4662,6 +4750,7 @@ body.performance-mode .plans-hero,body.performance-mode .plan-card,body.performa
         <button class="nav-btn" type="button" data-screen="allocation" onclick="showAppScreen('allocation')">🧭 Alocação</button>
         <button class="nav-btn" type="button" data-screen="profile" onclick="showAppScreen('profile')">🧬 Perfil</button>
         <button class="nav-btn" type="button" data-screen="ai" onclick="showAppScreen('ai')">🤖 IA Wealth</button>
+        <button class="nav-btn" type="button" data-screen="advisor" onclick="showAppScreen('advisor')">🚨 Radar IA</button>
         <button class="nav-btn" type="button" data-screen="plans" onclick="showAppScreen('plans')">💎 Planos</button>
         <button class="nav-btn" type="button" data-screen="app" onclick="showAppScreen('app')">📱 App</button>
         <button class="nav-btn" type="button" data-screen="history" onclick="showAppScreen('history')">📈 Histórico</button>
@@ -4709,9 +4798,9 @@ body.performance-mode .plans-hero,body.performance-mode .plan-card,body.performa
       <div class="card premium-panel" data-screen-block data-screens="plans">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 7.0.5 • Monetização</div>
+            <div class="kicker">Etapa 7.0.6 • Monetização real interna</div>
             <h3>Planos Free, Pro e Elite</h3>
-            <div class="muted">Base comercial pronta: plano gratuito para atrair usuários, plano Pro para monetização principal e plano Elite para posicionamento premium. Cobrança real fica para integração futura.</div>
+            <div class="muted">Base comercial pronta: plano gratuito para atrair usuários, plano Pro para monetização principal e plano Elite para posicionamento premium. A 7.0.6 já aplica plano interno, limites e bloqueios reais no app; cobrança real fica para integração futura.</div>
           </div>
           <span id="planCurrentBadge" class="badge purple">Plano atual: Gratuito</span>
         </div>
@@ -4720,7 +4809,7 @@ body.performance-mode .plans-hero,body.performance-mode .plan-card,body.performa
           <div class="plans-hero">
             <div class="plan-orb">💎</div>
             <div class="plan-title">Wealth OS Premium</div>
-            <div id="planHeroSubtitle" class="plan-subtitle">Produto preparado para monetizar com IA real, paywall e limites por plano sem depender de pagamento agora.</div>
+            <div id="planHeroSubtitle" class="plan-subtitle">Produto preparado para monetizar com IA real, plano interno persistente, paywall funcional e limites por plano sem pagamento real agora.</div>
             <div class="plan-status-grid">
               <div class="plan-status-card"><div class="label">Plano atual</div><strong id="planHeroName">Gratuito</strong></div>
               <div class="plan-status-card"><div class="label">Preço sugerido</div><strong id="planHeroPrice">R$ 0</strong></div>
@@ -4733,6 +4822,28 @@ body.performance-mode .plans-hero,body.performance-mode .plan-card,body.performa
           <div>
             <div id="wealthPlanCards" class="plan-cards"></div>
           </div>
+        </div>
+      </div>
+
+      <div class="card plan-control-panel" data-screen-block data-screens="plans">
+        <div class="section">
+          <div>
+            <div class="kicker">Etapa 7.0.6 • Controle interno</div>
+            <h3>Plano do usuário e limite real de IA</h3>
+            <div class="muted">Esta camada não cobra ainda, mas já faz o app obedecer ao plano ativo: uso diário de IA, sessão, paywall premium e registro interno por usuário.</div>
+          </div>
+          <span id="planEngineBadge" class="badge green">Motor 7.0.6 ativo</span>
+        </div>
+        <div id="planEngineGrid" class="plan-engine-grid">
+          <div class="plan-engine-card"><div class="label">Status</div><strong>Carregando</strong><span>Aguardando sincronização do plano.</span></div>
+          <div class="plan-engine-card"><div class="label">Uso de IA</div><strong>0/3</strong><span>Limite diário por usuário.</span></div>
+          <div class="plan-engine-card"><div class="label">Sessão</div><strong>0/3</strong><span>Proteção contra uso excessivo.</span></div>
+          <div class="plan-engine-card"><div class="label">Paywall</div><strong>Ativo</strong><span>Recursos premium bloqueiam no Free.</span></div>
+        </div>
+        <div class="plan-engine-actions">
+          <button class="secondary" type="button" onclick="syncWealthAIUsageBadges()">Atualizar controle</button>
+          <button class="secondary" type="button" onclick="copyWealthPlanInternalStatus()">Copiar status interno</button>
+          <button class="danger" type="button" onclick="resetWealthAILocalLimit()">Zerar uso local de IA</button>
         </div>
       </div>
 
@@ -4757,9 +4868,9 @@ body.performance-mode .plans-hero,body.performance-mode .plan-card,body.performa
       <div class="card premium-panel" data-screen-block data-screens="ai">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 7.0.5 • IA por plano</div>
+            <div class="kicker">Etapa 7.0.7 • IA Advisor ativa</div>
             <h3>Copiloto inteligente da carteira</h3>
-            <div class="muted">Camada 7.0.5: IA real com limite por plano, controle de custo, fallback local seguro e base pronta para monetização.</div>
+            <div class="muted">Camada 7.0.7: IA real protegida, plano interno, limite de uso, paywall e Radar IA para alertas inteligentes da carteira.</div>
           </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap"><span id="wealthAIStatusBadge" class="badge purple">IA real preparada</span><span id="wealthAIModeBadge" class="badge green">Fallback local ativo</span><span id="wealthAIUsageBadge" class="badge gold">Uso IA: 0/3 hoje</span></div>
         </div>
@@ -4877,7 +4988,7 @@ body.performance-mode .plans-hero,body.performance-mode .plan-card,body.performa
             <div id="wealthAIChat" class="ai-chat-log">
               <div class="ai-message assistant">
                 <small>Wealth AI</small>
-                Eu analiso os dados já existentes no app. Na versão 7.0.4, respondo com IA real de forma mais curta e organizada, com limite de uso para proteger créditos e fallback local se necessário.
+                Eu analiso os dados já existentes no app. Na versão 7.0.7, respondo com IA real e também alimento o Radar IA com alertas, prioridade e próximos passos educativos.
               </div>
             </div>
 
@@ -4896,6 +5007,105 @@ body.performance-mode .plans-hero,body.performance-mode .plan-card,body.performa
 
         <div class="ai-disclaimer" style="margin-top:14px">
           <strong>Aviso importante:</strong> o Copiloto Wealth AI é uma ferramenta educativa e organizacional. Ele não faz recomendação individual de compra ou venda de ativos, não substitui consultoria financeira profissional e usa os dados registrados no app para gerar análise. Quando a IA real estiver ativa, o resumo da carteira será enviado para a Edge Function protegida.
+        </div>
+      </div>
+
+
+
+      <div class="card premium-panel smart-advisor-panel" data-screen-block data-screens="advisor ai overview">
+        <div class="section">
+          <div>
+            <div class="kicker">Etapa 7.0.7 • IA Advisor & Smart Alerts</div>
+            <h3>Radar IA: alertas inteligentes da carteira</h3>
+            <div class="muted">Central que transforma dados da carteira em alertas, prioridade, contexto de mercado e preparo para futuras notificações push no PWA/Android.</div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <span id="smartAdvisorBadge" class="badge purple">Radar carregando</span>
+            <span id="smartAdvisorPlanBadge" class="badge gold">Plano: Gratuito</span>
+            <span id="smartAdvisorNotifyBadge" class="badge purple">Notificação: não ativada</span>
+          </div>
+        </div>
+
+        <div class="smart-advisor-grid">
+          <div class="smart-advisor-hero">
+            <div class="smart-orb">🚨</div>
+            <div class="smart-title">Advisor ativo</div>
+            <div id="smartAdvisorHeadline" class="smart-subtitle">Aguardando dados da carteira para gerar alertas inteligentes.</div>
+
+            <div class="smart-kpi-grid">
+              <div class="smart-kpi"><div class="label">Score do radar</div><strong id="smartAdvisorScore">0/100</strong></div>
+              <div class="smart-kpi"><div class="label">Alertas ativos</div><strong id="smartAdvisorAlertCount">0</strong></div>
+              <div class="smart-kpi"><div class="label">Alta prioridade</div><strong id="smartAdvisorRiskCount">0</strong></div>
+            </div>
+
+            <div class="smart-market-grid">
+              <div>
+                <label>Cenário de mercado observado</label>
+                <select id="marketScenarioSelect">
+                  <option value="neutral">Neutro / sem leitura externa</option>
+                  <option value="bullish">Bolsa em alta / apetite a risco</option>
+                  <option value="bearish">Bolsa em queda / aversão a risco</option>
+                  <option value="high_rates">Juros altos / renda fixa forte</option>
+                  <option value="volatile">Mercado volátil / incerteza elevada</option>
+                </select>
+              </div>
+              <div>
+                <label>Nota rápida do mercado</label>
+                <input id="marketNoteInput" placeholder="Ex: Ibovespa caiu hoje, dólar subiu...">
+              </div>
+            </div>
+
+            <div class="smart-actions">
+              <button class="success" type="button" onclick="runSmartAdvisorAI()">Gerar Radar IA</button>
+              <button class="gold" type="button" onclick="requestWealthSmartNotifications()">Ativar notificação</button>
+              <button class="secondary" type="button" onclick="markSmartAlertsRead()">Marcar lidos</button>
+              <button class="secondary" type="button" onclick="copySmartAdvisorReport()">Copiar radar</button>
+            </div>
+
+            <div id="smartAdvisorStatus" class="status status-info">Radar local ativo. Alertas avançados usam plano Pro/Elite e a IA real quando disponível.</div>
+          </div>
+
+          <div>
+            <div class="grid grid2">
+              <div class="item">
+                <strong>Leitura do mercado</strong>
+                <div id="smartAdvisorMarketMood" class="action-hero" style="margin-top:8px">Neutro</div>
+                <div id="smartAdvisorMarketNote" class="muted" style="margin-top:8px;line-height:1.5">Sem cenário externo informado. O radar usa principalmente os dados da carteira.</div>
+              </div>
+              <div class="item">
+                <strong>Estado dos alertas</strong>
+                <div id="smartAdvisorUnreadCount" class="action-hero" style="margin-top:8px">0 novos</div>
+                <div class="muted" style="margin-top:8px;line-height:1.5">Os alertas ficam salvos como lidos neste usuário/aparelho e preparam a lógica de push real futura.</div>
+              </div>
+            </div>
+
+            <div class="item" style="margin-top:12px">
+              <div class="section">
+                <div>
+                  <div class="kicker">Alertas priorizados</div>
+                  <h3>O que merece atenção agora</h3>
+                </div>
+              </div>
+              <div id="smartAdvisorAlertsList" class="smart-alerts-shell">
+                <div class="empty">Aguardando geração dos alertas.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid2" style="margin-top:14px">
+          <div class="item">
+            <strong>Plano de ação do Advisor</strong>
+            <div id="smartAdvisorActionsList" class="step-list">Aguardando dados.</div>
+          </div>
+          <div class="item">
+            <strong>Linha do tempo inteligente</strong>
+            <div id="smartAdvisorTimeline" class="smart-timeline">Aguardando eventos.</div>
+          </div>
+        </div>
+
+        <div class="ai-disclaimer" style="margin-top:14px">
+          <strong>Importante:</strong> o Radar IA é educativo e organizacional. Ele não recomenda compra ou venda de ativos. A leitura de mercado desta etapa é manual/simulada dentro do app; a conexão com dados reais de mercado pode ser feita em uma próxima etapa pelo backend.
         </div>
       </div>
 
@@ -5568,7 +5778,7 @@ body.performance-mode .plans-hero,body.performance-mode .plan-card,body.performa
   </button>
 
   
-      <div class="inline-top-wrap" data-screen-block data-screens="overview ledger income freedom allocation profile ai plans app history goals projections legal settings">
+      <div class="inline-top-wrap" data-screen-block data-screens="overview ledger income freedom allocation profile ai advisor plans app history goals projections legal settings">
         <button id="inlineTopBtn" class="inline-top-btn secondary" type="button" onclick="wealthScrollToTop(true)">↑ Topo</button>
       </div>
 
@@ -5710,6 +5920,7 @@ body.performance-mode .plans-hero,body.performance-mode .plan-card,body.performa
       allocation:['Alocação inteligente','compare carteira atual com carteira-alvo e veja onde colocar o próximo aporte. A tela Perfil fica separada.'],
       profile:['Perfil de investidor','escolha conservador, moderado, arrojado ou personalizado. Depois aplique o perfil para atualizar a tela Alocação.'],
       ai:['IA Wealth','copiloto educativo que interpreta carteira, meta, renda passiva, risco, aporte e próximos passos.'],
+      advisor:['Radar IA','central de alertas inteligentes, cenário de mercado, prioridade, notificações locais e preparo para push futuro.'],
       plans:['Planos','modelo freemium com Gratuito, Pro e Elite, paywall premium, limites de IA e base de monetização.'],
       app:['App real','onboarding, instalação, experiência mobile e checklist para publicar como produto.'],
       history:['Histórico','controle snapshots manuais, gráficos e evolução patrimonial sem travar o app.'],
@@ -6962,25 +7173,25 @@ let deferredInstallPrompt=null;
        ========================= */
     const WEALTH_PLAN_CONFIG={
       free:{id:'free',name:'Gratuito',chip:'Gratuito',price:'R$ 0',priceLong:'R$ 0',limit:3,session:3,tag:'Começo',className:'plan-chip-free',subtitle:'Ideal para entrar no app, cadastrar carteira e testar a IA com limite controlado.',features:['Dashboard, ledger, metas e projeções básicas','IA real limitada a 3 usos por dia','Paywall visual nos recursos premium','Base perfeita para aquisição de usuários']},
-      pro:{id:'pro',name:'Pro',chip:'Pro',price:'R$ 19,90',priceLong:'R$ 19,90/mês',limit:40,session:16,tag:'Principal',className:'plan-chip-pro',subtitle:'Plano pago principal: mais IA, diagnóstico de carteira, alertas e relatórios premium.',features:['IA real ampliada: 40 usos por dia','Diagnóstico avançado da carteira','Relatório mensal premium e alertas inteligentes','Simulações e plano de ação mais completos']},
+      pro:{id:'pro',name:'Pro',chip:'Pro',price:'R$ 19,90',priceLong:'R$ 19,90/mês',limit:40,session:16,tag:'Principal',className:'plan-chip-pro',subtitle:'Plano pago principal: mais IA, diagnóstico de carteira, alertas e relatórios premium.',features:['IA real ampliada: 40 usos por dia','Diagnóstico avançado da carteira','Relatório mensal premium, Radar IA e alertas inteligentes','Simulações e plano de ação mais completos']},
       elite:{id:'elite',name:'Elite',chip:'Elite',price:'R$ 39,90',priceLong:'R$ 39,90/mês',limit:120,session:30,tag:'Executivo',className:'plan-chip-elite',subtitle:'Plano aspiracional para usuário avançado que quer uma experiência executiva com IA profunda.',features:['IA real prioritária: 120 usos por dia','Relatório executivo e radar de mercado','Simulações avançadas e exportação futura','Experiência premium máxima do Wealth OS']}
     };
 
     function wealthPlanKey(){return `wealth_os_plan_${userId||'guest'}`}
-    function currentWealthPlan(){
+    function legacy705_currentWealthPlan(){
       try{
         const raw=localStorage.getItem(wealthPlanKey())||localStorage.getItem('wealth_os_plan_demo')||'free';
         return WEALTH_PLAN_CONFIG[raw]?raw:'free';
       }catch{return'free'}
     }
-    function currentWealthPlanConfig(){return WEALTH_PLAN_CONFIG[currentWealthPlan()]||WEALTH_PLAN_CONFIG.free}
-    function wealthAIDailyLimit(){return Number(currentWealthPlanConfig().limit||3)}
-    function wealthAISessionLimit(){return Number(currentWealthPlanConfig().session||3)}
-    function isWealthPremium(){return currentWealthPlan()!=='free'}
+    function legacy705_currentWealthPlanConfig(){return WEALTH_PLAN_CONFIG[currentWealthPlan()]||WEALTH_PLAN_CONFIG.free}
+    function legacy705_wealthAIDailyLimit(){return Number(currentWealthPlanConfig().limit||3)}
+    function legacy705_wealthAISessionLimit(){return Number(currentWealthPlanConfig().session||3)}
+    function legacy705_isWealthPremium(){return currentWealthPlan()!=='free'}
 
     window.__wealthAIRealSessionCount=window.__wealthAIRealSessionCount||0;
 
-    function wealthAITodayKey(){
+    function legacy705_wealthAITodayKey(){
       const d=new Date();
       const yyyy=d.getFullYear();
       const mm=String(d.getMonth()+1).padStart(2,'0');
@@ -6988,16 +7199,16 @@ let deferredInstallPrompt=null;
       return `wealth_ai_real_usage_${yyyy}-${mm}-${dd}`;
     }
 
-    function getWealthAIUsage(){
+    function legacy705_getWealthAIUsage(){
       try{return Number(localStorage.getItem(wealthAITodayKey())||0)||0}catch{return 0}
     }
 
-    function setWealthAIUsage(n){
+    function legacy705_setWealthAIUsage(n){
       try{localStorage.setItem(wealthAITodayKey(),String(Math.max(0,Number(n)||0)))}catch{}
       syncWealthAIUsageBadges();
     }
 
-    function syncWealthAIUsageBadges(){
+    function legacy705_syncWealthAIUsageBadges(){
       const used=getWealthAIUsage();
       const badge=$('wealthAIUsageBadge');
       const text=$('wealthAICostText');
@@ -7013,14 +7224,14 @@ let deferredInstallPrompt=null;
       if($('planHeroName'))renderWealthPlans();
     }
 
-    function canUseWealthAIReal(){
+    function legacy705_canUseWealthAIReal(){
       const used=getWealthAIUsage();
       if(used>=wealthAIDailyLimit())return{ok:false,message:`Limite diário de ${wealthAIDailyLimit()} usos de IA real atingido no plano ${currentWealthPlanConfig().name}. Use o fallback local ou volte amanhã.`};
       if(window.__wealthAIRealSessionCount>=wealthAISessionLimit())return{ok:false,message:`Limite desta sessão atingido no plano ${currentWealthPlanConfig().name}. Feche e abra o app novamente se precisar continuar.`};
       return{ok:true};
     }
 
-    function registerWealthAIRealUse(){
+    function legacy705_registerWealthAIRealUse(){
       window.__wealthAIRealSessionCount=(window.__wealthAIRealSessionCount||0)+1;
       setWealthAIUsage(getWealthAIUsage()+1);
     }
@@ -7031,7 +7242,7 @@ let deferredInstallPrompt=null;
       toast('Limite local da IA real zerado neste aparelho.','info');
     }
 
-    function updateWealthPlanChip(){
+    function legacy705_updateWealthPlanChip(){
       const plan=currentWealthPlanConfig();
       const chip=$('planChip');
       if(chip){
@@ -7045,7 +7256,7 @@ let deferredInstallPrompt=null;
       }
     }
 
-    function renderWealthPlans(){
+    function legacy705_renderWealthPlans(){
       const plan=currentWealthPlanConfig();
       const used=getWealthAIUsage();
       updateWealthPlanChip();
@@ -7075,7 +7286,7 @@ let deferredInstallPrompt=null;
       const locks=[
         ['📊 Relatório mensal premium','Resumo executivo de evolução, renda, meta, risco, aportes e próximos passos.','pro'],
         ['🚨 Alertas inteligentes','Avisos quando concentração, queda, falta de aporte ou custo de IA exigirem atenção.','pro'],
-        ['📡 Radar de mercado','Camada futura para interpretar bolsa em alta/queda com leitura educativa.','elite'],
+        ['📡 Radar IA e leitura de mercado','Camada futura para interpretar bolsa em alta/queda com leitura educativa.','elite'],
         ['🧠 Diagnóstico avançado','Análise mais profunda de concentração, perfil, renda, meta e consistência.','pro'],
         ['📁 Exportação executiva','Relatório em arquivo para acompanhar patrimônio e evolução mês a mês.','elite'],
         ['⚡ IA prioritária','Mais limite diário e respostas mais avançadas no plano pago.','pro']
@@ -7158,7 +7369,7 @@ let deferredInstallPrompt=null;
         passiveIncome:Number(i.passive_income||0)
       }));
       return{
-        app:'Wealth OS',version:'7.0.4',language:'pt-BR',source:ctx.source,profile:ctx.profile,
+        app:'Wealth OS',version:'7.0.7',language:'pt-BR',source:ctx.source,profile:ctx.profile,
         score:Number(ctx.state?.score||0),risk:wealthAIRiskLabel(ctx),focus:wealthAIFocusLabel(ctx),
         totals:{invested:Number(ctx.totals?.inv||0),current:Number(ctx.totals?.cur||0),pnl:Number(ctx.totals?.pl||0),returnPct:Number(ctx.ret||0),passive:Number(ctx.passive||0)},
         goal:{target:Number(ctx.goalInfo?.target||0),progress:String(ctx.goalInfo?.display||'0%'),monthlyContribution:Number(ctx.goalInfo?.monthly||0),requiredMonthly:Number(ctx.required||0),gap:Number(ctx.gap||0),projectionYears:Number(ctx.proj?.years||0),moderateRate:Number(ctx.proj?.moderate||0),etaMonths:ctx.eta===null?null:Number(ctx.eta||0)},
@@ -7169,7 +7380,7 @@ let deferredInstallPrompt=null;
       };
     }
 
-    async function callWealthAIReal(action,question,ctx){
+    async function legacy705_callWealthAIReal(action,question,ctx){
       if(!navigator.onLine)throw new Error('Sem conexão para chamar IA real.');
       if(!supabase?.functions?.invoke)throw new Error('Supabase Functions indisponível.');
       const gate=canUseWealthAIReal();
@@ -7298,7 +7509,7 @@ let deferredInstallPrompt=null;
     window.resetWealthAIChat=()=>{
       const chat=$('wealthAIChat');
       if(!chat)return;
-      chat.innerHTML='<div class="ai-message assistant"><small>Wealth AI</small>Chat limpo. Na versão 7.0.4, a IA real responde de forma curta e o app controla uso diário para proteger créditos.</div>';
+      chat.innerHTML='<div class="ai-message assistant"><small>Wealth AI</small>Chat limpo. Na versão 7.0.6, a IA real responde de forma curta, obedece ao plano interno e controla uso diário para proteger créditos.</div>';
       toast('Chat da IA limpo.','info');
     }
 
@@ -7338,12 +7549,13 @@ let deferredInstallPrompt=null;
         if(screen==='history'){renderSnapshots();renderCapitalChart();}
         if(screen==='goals'){renderGoal(cur);renderFinancialFreedom();}
         if(screen==='projections'){renderProjectionEngine();renderWealthActionPlan();}
-        if(screen==='ai'){renderWealthAI();}
-        if(screen==='plans'){renderWealthPlans();}
+        if(screen==='ai'){renderWealthAI();renderSmartAdvisor();}
+        if(screen==='plans'){renderWealthPlans();renderSmartAdvisor();}
         if(screen==='allocation'){renderAllocationIntelligence();}
         if(screen==='profile'){renderInvestorProfile();}
         if(screen==='settings'){updatePerformanceUI();updateAppReadiness();}
-        if(screen==='all'){renderWealthAI();renderProjectionEngine();renderWealthActionPlan();renderWealthPlans();}
+        if(screen==='advisor'){renderSmartAdvisor();}
+        if(screen==='all'){renderWealthAI();renderSmartAdvisor();renderProjectionEngine();renderWealthActionPlan();renderWealthPlans();}
       },50);
     }
 
@@ -7896,7 +8108,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
       },6500);
 
       try{
-        document.body.classList.add('booting');applyFastPremiumDefaults();applyPerformanceMode(getPerformancePreference());syncChips();window.addEventListener('online',syncChips);window.addEventListener('offline',syncChips);window.addEventListener('resize',()=>{updatePerformanceUI();updateAppReadiness()},{passive:true});$('movementDate').value=new Date().toISOString().slice(0,10);['movementType','movementAsset','movementQuantity','movementUnitPrice','movementGross','movementFees','movementTaxes'].forEach(id=>$(id)?.addEventListener('input',renderMovementPreview));['movementType','movementCategory','movementDate'].forEach(id=>$(id)?.addEventListener('change',renderMovementPreview));renderMovementPreview();setup4BInputDebounce();['email','password'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter')handleAuth()}));supabase.auth.onAuthStateChange((event,session)=>setTimeout(async()=>{if(!session?.user){showLogin();return}showApp(session.user);await loadGoal();await loadInvestments();await loadMovementData()},0));const u=await getUser();if(u){showApp(u);await loadGoal();await loadInvestments();await loadMovementData()}else showLogin();setBoot(false);document.body.classList.remove('booting');updateAppReadiness();toast('Etapa 7.0.5 ativa: Freemium, Pro/Elite e paywall premium preparados.','success')
+        document.body.classList.add('booting');applyFastPremiumDefaults();applyPerformanceMode(getPerformancePreference());syncChips();window.addEventListener('online',syncChips);window.addEventListener('offline',syncChips);window.addEventListener('resize',()=>{updatePerformanceUI();updateAppReadiness()},{passive:true});$('movementDate').value=new Date().toISOString().slice(0,10);['movementType','movementAsset','movementQuantity','movementUnitPrice','movementGross','movementFees','movementTaxes'].forEach(id=>$(id)?.addEventListener('input',renderMovementPreview));['movementType','movementCategory','movementDate'].forEach(id=>$(id)?.addEventListener('change',renderMovementPreview));renderMovementPreview();setup4BInputDebounce();['email','password'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter')handleAuth()}));supabase.auth.onAuthStateChange((event,session)=>setTimeout(async()=>{if(!session?.user){showLogin();return}showApp(session.user);await loadGoal();await loadInvestments();await loadMovementData()},0));const u=await getUser();if(u){showApp(u);await loadGoal();await loadInvestments();await loadMovementData()}else showLogin();setBoot(false);document.body.classList.remove('booting');updateAppReadiness();toast('Etapa 7.0.7 ativa: IA Advisor, Radar IA e alertas inteligentes preparados.','success')
       }catch(e){
         console.error('Wealth OS boot error:',e);
         try{showLogin()}catch{}
@@ -8194,6 +8406,387 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
         }
       }catch{}
     }
+
+
+
+    /* =========================================================
+       Etapa 7.0.6 • Plano interno, limite real e paywall funcional
+       ========================================================= */
+    const WEALTH_PLAN_RANK={free:0,pro:1,elite:2};
+
+    function wealthPlanRecordKey(){return `wealth_os_plan_record_${userId||'guest'}`}
+    function wealthUsageUserKey(){return userId||userEmail||'guest'}
+    function todayISOKey(){
+      const d=new Date();
+      return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    }
+    function normalizeWealthPlanRecord(record){
+      const now=new Date().toISOString();
+      const raw=(record&&typeof record==='object')?record:{};
+      const plan=WEALTH_PLAN_CONFIG[raw.plan]?raw.plan:(WEALTH_PLAN_CONFIG[raw.id]?raw.id:'free');
+      return{plan,status:raw.status||'internal_active',source:raw.source||'local_internal_7_0_6',updatedAt:raw.updatedAt||now,createdAt:raw.createdAt||now,expiresAt:raw.expiresAt||null,aiResetDay:raw.aiResetDay||todayISOKey()};
+    }
+    function readWealthPlanRecord(){
+      try{
+        const raw=localStorage.getItem(wealthPlanRecordKey())||localStorage.getItem('wealth_os_plan_record_guest');
+        if(raw)return normalizeWealthPlanRecord(JSON.parse(raw));
+        const legacy=localStorage.getItem(wealthPlanKey())||localStorage.getItem('wealth_os_plan_demo')||'free';
+        return normalizeWealthPlanRecord({plan:legacy,status:'internal_active',source:'legacy_7_0_5_import'});
+      }catch{return normalizeWealthPlanRecord({plan:'free'});}
+    }
+    function saveWealthPlanRecord(record,{syncRemote=true}={}){
+      const normalized=normalizeWealthPlanRecord({...record,updatedAt:new Date().toISOString()});
+      try{localStorage.setItem(wealthPlanRecordKey(),JSON.stringify(normalized));localStorage.setItem('wealth_os_plan_record_guest',JSON.stringify(normalized));localStorage.setItem(wealthPlanKey(),normalized.plan);localStorage.setItem('wealth_os_plan_demo',normalized.plan);}catch{}
+      if(syncRemote && userId && window.supabase?.auth?.updateUser){
+        try{supabase.auth.updateUser({data:{wealth_os_plan_preview:normalized.plan,wealth_os_plan_status:normalized.status,wealth_os_plan_source:normalized.source,wealth_os_plan_updated_at:normalized.updatedAt}}).catch(()=>{});}catch{}
+      }
+      return normalized;
+    }
+
+    function currentWealthPlan(){const rec=readWealthPlanRecord();return WEALTH_PLAN_CONFIG[rec.plan]?rec.plan:'free'}
+    function currentWealthPlanConfig(){return WEALTH_PLAN_CONFIG[currentWealthPlan()]||WEALTH_PLAN_CONFIG.free}
+    function wealthAIDailyLimit(){return Number(currentWealthPlanConfig().limit||3)}
+    function wealthAISessionLimit(){return Number(currentWealthPlanConfig().session||3)}
+    function isWealthPremium(){return WEALTH_PLAN_RANK[currentWealthPlan()]>=WEALTH_PLAN_RANK.pro}
+    function wealthPlanRank(planId){return WEALTH_PLAN_RANK[planId]??0}
+    function wealthAITodayKey(){return `wealth_ai_real_usage_${wealthUsageUserKey()}_${todayISOKey()}`}
+    function wealthAISessionKey(){return `wealth_ai_real_session_${wealthUsageUserKey()}_${todayISOKey()}`}
+    function getWealthAIUsage(){try{return Number(localStorage.getItem(wealthAITodayKey())||0)||0}catch{return 0}}
+    function getWealthAISessionUsage(){try{return Number(sessionStorage.getItem(wealthAISessionKey())||window.__wealthAIRealSessionCount||0)||0}catch{return Number(window.__wealthAIRealSessionCount||0)||0}}
+    function setWealthAIUsage(n){try{localStorage.setItem(wealthAITodayKey(),String(Math.max(0,Number(n)||0)))}catch{};syncWealthAIUsageBadges();}
+    function setWealthAISessionUsage(n){window.__wealthAIRealSessionCount=Math.max(0,Number(n)||0);try{sessionStorage.setItem(wealthAISessionKey(),String(window.__wealthAIRealSessionCount))}catch{}}
+    function canUseWealthAIReal(){
+      const used=getWealthAIUsage(),sessionUsed=getWealthAISessionUsage(),plan=currentWealthPlanConfig();
+      if(used>=wealthAIDailyLimit())return{ok:false,message:`Limite diário de ${wealthAIDailyLimit()} uso(s) de IA real atingido no plano ${plan.name}. O chat local educativo continua disponível, mas novas chamadas para a Edge Function ficam bloqueadas para proteger custo.`};
+      if(sessionUsed>=wealthAISessionLimit())return{ok:false,message:`Limite desta sessão atingido no plano ${plan.name}. Isso evita gasto excessivo de IA real em uma única abertura do app.`};
+      return{ok:true};
+    }
+    function reserveWealthAIRealUse(){const gate=canUseWealthAIReal();if(!gate.ok)throw new Error(gate.message);setWealthAISessionUsage(getWealthAISessionUsage()+1);setWealthAIUsage(getWealthAIUsage()+1);return true;}
+    function registerWealthAIRealUse(){syncWealthAIUsageBadges();}
+
+    async function callWealthAIReal(action,question,ctx){
+      if(!window.supabase?.functions?.invoke)throw new Error('Supabase Functions indisponível neste ambiente.');
+      reserveWealthAIRealUse();
+      const compact=compactWealthAIContext(ctx);
+      const payload={action:action||'chat',question:wealthAIShortQuestion(action||'chat',question),plan:currentWealthPlan(),plan_limit:wealthAIDailyLimit(),usage_today:getWealthAIUsage(),context:compact};
+      const {data,error}=await supabase.functions.invoke('wealth-ai',{body:payload});
+      if(error)throw new Error(error.message||'Edge Function wealth-ai falhou.');
+      return data||{};
+    }
+
+    function requireWealthPlan(minPlan='pro',feature='Recurso premium'){
+      const current=currentWealthPlan();
+      if(wealthPlanRank(current)>=wealthPlanRank(minPlan))return true;
+      const minName=WEALTH_PLAN_CONFIG[minPlan]?.name||'Pro';
+      try{showAppScreen('plans')}catch{}
+      toast(`${feature} faz parte do Wealth OS ${minName}. Na 7.0.6 o paywall já bloqueia este recurso no plano ${currentWealthPlanConfig().name}.`, 'info');
+      return false;
+    }
+
+    function updateWealthPlanChip(){
+      const plan=currentWealthPlanConfig();
+      document.body.classList.remove('plan-free','plan-pro','plan-elite');
+      document.body.classList.add(`plan-${plan.id}`);
+      const chip=$('planChip');
+      if(chip){chip.textContent=`Plano: ${plan.name}`;chip.className=`chip ${plan.className||'plan-chip-free'}`;}
+      const badge=$('planCurrentBadge');
+      if(badge){badge.textContent=`Plano atual: ${plan.name}`;badge.className='badge '+(plan.id==='free'?'purple':plan.id==='pro'?'green':'gold');}
+      const engine=$('planEngineBadge');
+      if(engine){engine.textContent=`Motor 7.0.6 • ${plan.name}`;engine.className='badge '+(plan.id==='free'?'purple':plan.id==='pro'?'green':'gold');}
+    }
+
+    function syncWealthAIUsageBadges(){
+      const used=getWealthAIUsage(),sessionUsed=getWealthAISessionUsage(),plan=currentWealthPlanConfig();
+      const badge=$('wealthAIUsageBadge'),text=$('wealthAICostText');
+      if(badge){badge.textContent=`Uso IA: ${used}/${plan.limit} hoje`;badge.className='badge '+(used>=plan.limit?'red':used>=Math.ceil(plan.limit*.75)?'gold':'purple');}
+      if(text){const rest=Math.max(0,plan.limit-used);text.textContent=`Plano ${plan.name}: limite real de ${plan.limit} chamada(s) por dia e ${plan.session} por sessão. Restam ${rest} uso(s) de IA real hoje neste usuário/aparelho.`;}
+      updateWealthPlanChip();
+      const grid=$('planEngineGrid');
+      if(grid){
+        const rec=readWealthPlanRecord(),rest=Math.max(0,plan.limit-used);
+        grid.innerHTML=[['Status',plan.name,`Registro: ${rec.status.replace(/_/g,' ')} • fonte ${rec.source}`],['Uso de IA',`${used}/${plan.limit}`,`${rest} uso(s) restante(s) hoje por usuário.`],['Sessão',`${sessionUsed}/${plan.session}`,`Proteção contra rajadas em uma única abertura.`],['Paywall',plan.id==='free'?'Free bloqueado':'Premium liberado',plan.id==='free'?'Pro/Elite exigidos para relatório premium, alertas e radar.':`Recursos do plano ${plan.name} ativos.`]].map(([a,b,c])=>`<div class="plan-engine-card"><div class="label">${esc(a)}</div><strong>${esc(b)}</strong><span>${esc(c)}</span></div>`).join('');
+      }
+      if($('planHeroName'))renderWealthPlans();
+    }
+
+    function renderWealthPlans(){
+      const plan=currentWealthPlanConfig(),used=getWealthAIUsage(),sessionUsed=getWealthAISessionUsage();
+      updateWealthPlanChip();
+      if($('planHeroName'))$('planHeroName').textContent=plan.name;
+      if($('planHeroPrice'))$('planHeroPrice').textContent=plan.price;
+      if($('planHeroLimit'))$('planHeroLimit').textContent=`${plan.limit}/dia`;
+      if($('planHeroSubtitle'))$('planHeroSubtitle').textContent=`${plan.subtitle} A 7.0.6 salva o plano interno e aplica limite real de IA: ${used}/${plan.limit} hoje, ${sessionUsed}/${plan.session} nesta sessão.`;
+      if($('planUsageText'))$('planUsageText').textContent=`Uso de IA real hoje: ${used}/${plan.limit}. ${Math.max(0,plan.limit-used)} uso(s) restante(s) no plano ${plan.name}. Sessão: ${sessionUsed}/${plan.session}.`;
+      if($('planUsageBar'))$('planUsageBar').style.width=Math.max(0,Math.min(100,(used/Math.max(1,plan.limit))*100)).toFixed(1)+'%';
+      const cards=$('wealthPlanCards');
+      if(cards){cards.innerHTML=Object.values(WEALTH_PLAN_CONFIG).map(p=>{const active=p.id===plan.id,elite=p.id==='elite',lockedNext=wealthPlanRank(p.id)>wealthPlanRank(plan.id);return `<div class="plan-card ${active?'active':''} ${elite?'elite':''} ${lockedNext?'plan-locked-next':''}"><span class="plan-badge ${elite?'gold':''}">${active?'✅ Plano atual':p.tag}</span><h3 style="margin-top:12px">${esc(p.name)}</h3><div class="plan-price">${esc(p.price)} <small>${p.id==='free'?'':'/mês'}</small></div><div class="muted" style="margin-top:6px;line-height:1.45">${esc(p.subtitle)}</div><div class="plan-feature-list">${p.features.map(f=>`<div>✓ ${esc(f)}</div>`).join('')}<div>✓ Controle interno 7.0.6: ${p.limit} usos/dia e ${p.session} por sessão</div></div><button class="${p.id==='free'?'secondary':p.id==='pro'?'success':'gold'}" onclick="activateWealthPlanDemo('${p.id}')">${active?'Plano ativo':p.id==='free'?'Voltar para Free':'Simular '+p.name}</button></div>`;}).join('');}
+      const locks=[['📊 Relatório mensal premium','Resumo executivo de evolução, renda, meta, risco, aportes e próximos passos.','pro'],['🚨 Alertas inteligentes','Avisos quando concentração, queda, falta de aporte ou custo de IA exigirem atenção.','pro'],['📡 Radar IA e leitura de mercado','Camada futura para interpretar bolsa em alta/queda com leitura educativa.','elite'],['🧠 Diagnóstico avançado','Análise mais profunda de concentração, perfil, renda, meta e consistência.','pro'],['📁 Exportação executiva','Relatório em arquivo para acompanhar patrimônio e evolução mês a mês.','elite'],['⚡ IA prioritária','Mais limite diário e respostas mais avançadas no plano pago.','pro']];
+      const grid=$('premiumLockGrid');
+      if(grid){grid.innerHTML=locks.map(([title,desc,min])=>{const unlocked=wealthPlanRank(plan.id)>=wealthPlanRank(min);const safeTitle=String(title).replace(/'/g,'’');return `<div class="premium-lock-card ${unlocked?'unlocked':'locked'}" onclick="${unlocked?`toast('Recurso liberado no plano ${plan.name}: ${safeTitle}','success')`:`openWealthUpgrade('${safeTitle}','${min}')`}"><div class="lock-pill">${unlocked?'✅ Liberado':'🔒 '+min.toUpperCase()}</div><strong>${esc(title)}</strong><span>${esc(desc)}</span>${unlocked?'':'<div class="plan-gate-note">Bloqueado de verdade na 7.0.6 para criar conversão do plano gratuito.</div>'}</div>`;}).join('');}
+      const roadmap=$('monetizationRoadmap');
+      if(roadmap){roadmap.innerHTML=[['1. Atrair','Plano gratuito com valor real e IA limitada para o usuário sentir o produto.'],['2. Converter','Paywall agora bloqueia recursos premium e mostra claramente os ganhos do Pro/Elite.'],['3. Escalar','Elite posiciona o app como ferramenta executiva e aumenta ticket médio.'],['4. Integrar','Quando você avisar, conectamos pagamento real e Play Billing sem refazer a base.']].map(([a,b])=>`<div class="monetization-step"><b>${esc(a)}</b>${esc(b)}</div>`).join('');}
+    }
+
+    window.activateWealthPlanDemo=(planId)=>{const plan=WEALTH_PLAN_CONFIG[planId]?planId:'free';saveWealthPlanRecord({plan,status:'internal_active',source:'manual_simulation_7_0_6'});syncWealthAIUsageBadges();renderWealthPlans();const msg=plan==='free'?'Plano Gratuito ativado. Limite reduzido e paywall premium aplicado.':`Plano ${WEALTH_PLAN_CONFIG[plan].name} ativado em modo interno 7.0.6. Cobrança real ainda não foi ligada, mas limites e paywall já obedecem ao plano.`;toast(msg,plan==='free'?'info':'success');};
+    window.openWealthUpgrade=(feature='Recurso premium',minPlan='pro')=>{const minName=WEALTH_PLAN_CONFIG[minPlan]?.name||'Pro';try{showAppScreen('plans')}catch{};toast(`${feature} exige Wealth OS ${minName}. O pagamento real ainda não está ligado, mas o bloqueio premium já está funcionando.`, 'info');};
+    window.resetWealthAILocalLimit=()=>{setWealthAIUsage(0);setWealthAISessionUsage(0);syncWealthAIUsageBadges();toast('Uso local da IA real zerado neste usuário/aparelho.','info');};
+    window.copyWealthPlanInternalStatus=()=>{const rec=readWealthPlanRecord(),plan=currentWealthPlanConfig();const txt=['WEALTH OS 7.0.6 — STATUS INTERNO DO PLANO',`Usuário: ${userEmail||userId||'guest'}`,`Plano: ${plan.name}`,`Status: ${rec.status}`,`Fonte: ${rec.source}`,`Atualizado em: ${rec.updatedAt}`,`IA hoje: ${getWealthAIUsage()}/${plan.limit}`,`IA sessão: ${getWealthAISessionUsage()}/${plan.session}`,'Cobrança real: ainda não integrada por decisão do projeto.'].join('\n');copyTextSafe(txt,'Status interno do plano copiado.');};
+
+    const wealthOriginalCopyAIReport=window.copyWealthAIReport;
+    window.copyWealthAIReport=async()=>{if(!requireWealthPlan('pro','Relatório premium'))return;if(typeof wealthOriginalCopyAIReport==='function')return wealthOriginalCopyAIReport();};
+    function wealthPlan760RefreshAll(){try{saveWealthPlanRecord(readWealthPlanRecord(),{syncRemote:false})}catch{};try{syncWealthAIUsageBadges()}catch{};try{renderWealthPlans()}catch{}}
+    setTimeout(wealthPlan760RefreshAll,120);
+    setTimeout(wealthPlan760RefreshAll,900);
+
+
+
+    /* =========================================================
+       Etapa 7.0.7 • IA Advisor + Smart Alerts
+       ========================================================= */
+    function smartAdvisorKey(name='state'){return `wealth_os_smart_advisor_${name}_${userId||userEmail||'guest'}`}
+    function readSmartAdvisorStore(){
+      try{return JSON.parse(localStorage.getItem(smartAdvisorKey('store'))||'{}')||{}}catch{return{}}
+    }
+    function saveSmartAdvisorStore(patch={}){
+      const next={...readSmartAdvisorStore(),...patch,updatedAt:new Date().toISOString()};
+      try{localStorage.setItem(smartAdvisorKey('store'),JSON.stringify(next))}catch{}
+      return next;
+    }
+    function smartAdvisorScenario(){
+      const store=readSmartAdvisorStore();
+      return {
+        scenario:store.scenario||$('marketScenarioSelect')?.value||'neutral',
+        note:store.note||$('marketNoteInput')?.value||''
+      };
+    }
+    function smartAdvisorScenarioLabel(v){
+      return ({
+        neutral:'Neutro',
+        bullish:'Bolsa em alta',
+        bearish:'Bolsa em queda',
+        high_rates:'Juros altos',
+        volatile:'Mercado volátil'
+      })[v]||'Neutro';
+    }
+    function smartAdvisorScenarioText(v,note=''){
+      const base={
+        neutral:'Sem cenário externo informado. O radar usa principalmente os dados cadastrados na carteira.',
+        bullish:'Cenário de maior apetite a risco. O Advisor prioriza disciplina, controle de euforia e revisão de concentração antes de aumentar exposição.',
+        bearish:'Cenário de queda ou aversão a risco. O Advisor prioriza caixa, prazo, diversificação e evita decisões emocionais.',
+        high_rates:'Cenário de juros altos. O Advisor destaca custo de oportunidade, renda fixa, liquidez e coerência com perfil.',
+        volatile:'Cenário incerto. O Advisor prioriza controle de risco, atualização de preços e aportes com regra clara.'
+      }[v]||'Sem leitura externa.';
+      return note?`${base} Nota: ${note}`:base;
+    }
+    function smartAdvisorLevelRank(level){return level==='high'?3:level==='mid'?2:level==='good'?1:0}
+    function smartAdvisorLevelLabel(level){return level==='high'?'Alta':level==='mid'?'Média':level==='good'?'Boa':'Info'}
+    function smartAdvisorIsRead(alertId){
+      try{
+        const read=JSON.parse(localStorage.getItem(smartAdvisorKey('read'))||'[]');
+        return Array.isArray(read)&&read.includes(alertId);
+      }catch{return false}
+    }
+    function saveSmartAdvisorRead(ids=[]){
+      try{localStorage.setItem(smartAdvisorKey('read'),JSON.stringify([...new Set(ids.filter(Boolean))]))}catch{}
+    }
+    function buildSmartAdvisorAlerts(){
+      const ctx=wealthAIContext();
+      const plan=currentWealthPlanConfig();
+      const market=smartAdvisorScenario();
+      const alerts=[];
+      const add=(id,level,title,body,action,minPlan='free',kind='portfolio')=>{
+        alerts.push({id,level,title,body,action,minPlan,kind,locked:wealthPlanRank(plan.id)<wealthPlanRank(minPlan),read:smartAdvisorIsRead(id)});
+      };
+
+      if(!ctx.positions){
+        add('start-ledger','high','Carteira ainda sem base para IA','O Radar IA precisa de posições ou movimentações para calcular concentração, risco, renda e meta com precisão.','Registre uma compra no Ledger ou cadastre um ativo para liberar o diagnóstico completo.');
+        add('start-goal','mid','Meta patrimonial ainda não configurada','Sem meta, a IA consegue organizar dados, mas não mede se o ritmo está perto ou longe do objetivo.','Configure meta e aporte mensal na tela Metas.');
+      }else{
+        if(ctx.topShare>=70)add('concentration-critical','high','Concentração muito alta',`${ctx.topAsset} representa cerca de ${ctx.topShare.toFixed(1)}% da carteira. Isso aumenta a dependência de um único ativo.`,`Revise se essa concentração combina com seu perfil ${ctx.profile}.`, 'pro');
+        else if(ctx.topShare>=45)add('concentration-watch','mid','Concentração relevante',`${ctx.topAsset} já tem peso de ${ctx.topShare.toFixed(1)}% da carteira. Não é automaticamente ruim, mas merece monitoramento.`,`Acompanhe essa posição antes de novos aportes concentrados.`, 'pro');
+        else add('concentration-ok','good','Concentração sob controle',`A maior posição é ${ctx.topAsset}, com aproximadamente ${ctx.topShare.toFixed(1)}% da carteira.`,`Mantenha atualização de preços e continue acompanhando a alocação.`);
+
+        if(ctx.ret<=-15)add('portfolio-drawdown','high','Resultado agregado em retração forte',`A carteira mostra resultado de ${pnl(ctx.totals.pl)} (${pct(ctx.ret)}).`,`Antes de agir, atualize preços e confira se todas as movimentações foram registradas corretamente.`, 'pro');
+        else if(ctx.ret<0)add('portfolio-negative','mid','Carteira no negativo',`O resultado agregado está em ${pnl(ctx.totals.pl)} (${pct(ctx.ret)}).`,`Use o Ledger e o histórico para separar queda de mercado, preço desatualizado e erro de registro.`, 'pro');
+        else if(ctx.ret>10)add('portfolio-positive','good','Carteira no positivo',`Resultado agregado atual: ${pnl(ctx.totals.pl)} (${pct(ctx.ret)}).`,`Evite euforia: mantenha disciplina, meta e controle de alocação.`);
+
+        if(ctx.goalInfo.target&&ctx.gap>0){
+          add('goal-gap','high','Aporte atual abaixo do necessário',`Para o prazo configurado, o app estima aporte de ${money(ctx.required)}; seu aporte atual é ${money(ctx.goalInfo.monthly)}.`,`Compare a diferença de ${money(ctx.gap)} com sua realidade mensal antes de mudar o plano.`, 'pro');
+        }else if(!ctx.goalInfo.target){
+          add('goal-missing','mid','Meta ausente','A carteira tem dados, mas a IA ainda não sabe qual objetivo patrimonial você quer alcançar.','Defina meta e aporte para liberar alertas de progresso.');
+        }else{
+          add('goal-ok','good','Meta configurada',`Progresso atual da meta: ${ctx.goalInfo.display}.`,`Salve snapshots mensais para acompanhar se o caminho está funcionando.`);
+        }
+
+        if(ctx.passive<=0)add('passive-zero','mid','Renda passiva ainda zerada','Não há dividendos, juros ou rendimentos registrados. Isso limita o plano de liberdade financeira.','Registre proventos no Ledger quando existirem.');
+        else add('passive-active','good','Renda passiva registrada',`Renda passiva acumulada: ${money(ctx.passive)}. No mês atual: ${money(ctx.month.passive)}.`,`Acompanhe a evolução mensal e compare com sua meta de liberdade.`);
+
+        if(ctx.movementsCount<5)add('ledger-low','mid','Ledger ainda pouco alimentado',`O app identificou ${ctx.movementsCount} movimentação(ões). Quanto mais completo o ledger, melhor a IA.`,`Registre compras, vendas, taxas e proventos para aumentar a precisão.`);
+        if(ctx.month.count<=0)add('month-empty','mid','Sem movimentações no mês','O mês atual ainda não tem eventos registrados no Ledger.','Atualize aportes, proventos ou salve snapshot se houve mudança patrimonial.');
+      }
+
+      if(market.scenario==='bearish'){
+        add('market-bearish','high','Mercado em queda informado','Você marcou cenário de bolsa em queda ou aversão a risco. O app deve priorizar controle emocional, liquidez e coerência com perfil.','Antes de qualquer decisão, compare sua carteira com a meta e evite agir só pela queda do dia.','pro','market');
+      }
+      if(market.scenario==='bullish'){
+        add('market-bullish','mid','Mercado em alta informado','Você marcou cenário de alta. O maior risco costuma ser excesso de confiança e aumento de concentração.','Use a tela Alocação antes de aumentar exposição.','pro','market');
+      }
+      if(market.scenario==='high_rates'){
+        add('market-rates','mid','Juros altos informados','Em cenário de juros altos, o custo de oportunidade muda e renda fixa/liquidez ganham peso na análise.','Compare sua alocação atual com seu perfil de investidor.','pro','market');
+      }
+      if(market.scenario==='volatile'){
+        add('market-volatility','high','Volatilidade elevada informada','Em mercado incerto, o Radar prioriza risco, caixa, diversificação e consistência de aportes.','Evite decisões grandes sem atualizar preços e revisar concentração.','pro','market');
+      }
+
+      if(plan.id==='free'){
+        add('plan-upgrade-alerts','mid','Radar avançado bloqueado no Gratuito','O plano Gratuito mostra alertas essenciais. Alertas avançados, leitura de mercado e notificação inteligente ficam preparados para Pro/Elite.','Use a tela Planos para simular Pro quando quiser testar a experiência premium.','pro','plan');
+      }else{
+        add('plan-premium-active','good',`Radar premium ativo no plano ${plan.name}`,`Seu plano libera alertas avançados e maior uso de IA real: ${getWealthAIUsage()}/${plan.limit} hoje.`,`Use “Gerar Radar IA” após atualizar preços e registrar movimentações.`,plan.id,'plan');
+      }
+
+      return alerts.sort((a,b)=>smartAdvisorLevelRank(b.level)-smartAdvisorLevelRank(a.level)||String(a.id).localeCompare(String(b.id))).slice(0,10);
+    }
+    function renderSmartAdvisor(){
+      if(!$('smartAdvisorAlertsList'))return;
+      const ctx=wealthAIContext();
+      const plan=currentWealthPlanConfig();
+      const store=readSmartAdvisorStore();
+      if($('marketScenarioSelect'))$('marketScenarioSelect').value=store.scenario||'neutral';
+      if($('marketNoteInput'))$('marketNoteInput').value=store.note||'';
+      const market=smartAdvisorScenario();
+      const alerts=buildSmartAdvisorAlerts();
+      const high=alerts.filter(a=>a.level==='high').length;
+      const unread=alerts.filter(a=>!a.read).length;
+      const score=Math.max(0,Math.min(100,Number(ctx.state?.score||0)-high*8+(market.scenario==='neutral'?0:-3)));
+      const headline=alerts[0]?.title||'Radar sem alertas críticos';
+
+      const setText=(id,value)=>{const el=$(id);if(el)el.textContent=value};
+      setText('smartAdvisorScore',`${Math.round(score)}/100`);
+      setText('smartAdvisorAlertCount',String(alerts.length));
+      setText('smartAdvisorRiskCount',String(high));
+      setText('smartAdvisorUnreadCount',`${unread} novo${unread===1?'':'s'}`);
+      setText('smartAdvisorHeadline',ctx.positions?`${headline}. Patrimônio analisado: ${money(ctx.totals.cur)} • risco: ${wealthAIRiskLabel(ctx)}.`:'Cadastre dados para o Advisor analisar sua carteira.');
+      setText('smartAdvisorMarketMood',smartAdvisorScenarioLabel(market.scenario));
+      setText('smartAdvisorMarketNote',smartAdvisorScenarioText(market.scenario,market.note));
+      const badge=$('smartAdvisorBadge');
+      if(badge){badge.textContent=high?`${high} alerta(s) alto(s)`:'Radar saudável';badge.className='badge '+(high?'red':'green');}
+      const planBadge=$('smartAdvisorPlanBadge');
+      if(planBadge){planBadge.textContent=`Plano: ${plan.name}`;planBadge.className='badge '+(plan.id==='free'?'purple':plan.id==='pro'?'green':'gold');}
+      const notifyBadge=$('smartAdvisorNotifyBadge');
+      if(notifyBadge){
+        const perm=('Notification' in window)?Notification.permission:'indisponível';
+        notifyBadge.textContent=perm==='granted'?'Notificação: ativa':perm==='denied'?'Notificação: bloqueada':'Notificação: não ativada';
+        notifyBadge.className='badge '+(perm==='granted'?'green':perm==='denied'?'red':'purple');
+      }
+
+      $('smartAdvisorAlertsList').innerHTML=alerts.length?alerts.map(a=>{
+        const lock=a.locked?`<span class="smart-pill mid">🔒 ${a.minPlan.toUpperCase()}</span>`:`<span class="smart-pill ${a.level}">${a.read?'Lido':smartAdvisorLevelLabel(a.level)}</span>`;
+        const body=a.locked?`${a.body} Este alerta avançado está preparado, mas completo no plano ${WEALTH_PLAN_CONFIG[a.minPlan]?.name||'Pro'}.`:a.body;
+        return `<div class="smart-alert-card ${a.level} ${a.locked?'locked':''}"><div class="smart-alert-top"><div class="smart-alert-title">${esc(a.title)}</div>${lock}</div><div class="smart-alert-body">${esc(body)}</div><div class="smart-alert-action">${esc(a.action)}</div></div>`;
+      }).join(''):'<div class="empty">Nenhum alerta ativo no momento.</div>';
+
+      const actions=wealthAIActionItems(ctx).slice(0,5);
+      $('smartAdvisorActionsList').innerHTML=actions.length?actions.map(i=>`<div class="step-item ${i.cls==='warn'?'important':''}">${esc(i.text)}</div>`).join(''):'<div class="step-item">Alimente o ledger para liberar plano de ação.</div>';
+
+      const timeline=[
+        ['📊','Radar calculado',`Score ${Math.round(score)}/100 • ${alerts.length} alerta(s) ativos.`],
+        ['🧠','IA Advisor',`${wealthAIFocusLabel(ctx)} • ${wealthAIRiskLabel(ctx)}.`],
+        ['📡','Mercado',smartAdvisorScenarioLabel(market.scenario)],
+        ['🔔','Notificação futura',('Notification' in window&&Notification.permission==='granted')?'Permissão local ativa.':'Permissão local ainda não ativada.']
+      ];
+      $('smartAdvisorTimeline').innerHTML=timeline.map(([icon,title,body])=>`<div class="smart-timeline-row"><div class="smart-dot">${icon}</div><div><strong>${esc(title)}</strong><br><span class="muted">${esc(body)}</span></div></div>`).join('');
+    }
+    window.saveSmartAdvisorMarketScenario=function(){
+      const scenario=$('marketScenarioSelect')?.value||'neutral';
+      const note=String($('marketNoteInput')?.value||'').trim();
+      saveSmartAdvisorStore({scenario,note});
+      renderSmartAdvisor();
+      toast('Cenário de mercado salvo no Radar IA.','success');
+    };
+    window.runSmartAdvisorAI=async function(){
+      saveSmartAdvisorStore({scenario:$('marketScenarioSelect')?.value||'neutral',note:String($('marketNoteInput')?.value||'').trim(),lastRun:new Date().toISOString()});
+      renderSmartAdvisor();
+      if(!isWealthPremium()){
+        status($('smartAdvisorStatus'),'Radar básico gerado. No Gratuito, alertas avançados e leitura profunda de mercado ficam bloqueados para criar valor no Pro/Elite.','info');
+        toast('Radar IA básico gerado. Pro/Elite liberam alertas avançados.','info');
+        return;
+      }
+      try{
+        status($('smartAdvisorStatus'),'Chamando Wealth AI real para reforçar o Radar...', 'info');
+        if(typeof window.analyzeWealthAI==='function')await window.analyzeWealthAI();
+        renderSmartAdvisor();
+        status($('smartAdvisorStatus'),'Radar IA atualizado com base na carteira e no plano atual.','success');
+      }catch(e){
+        renderSmartAdvisor();
+        status($('smartAdvisorStatus'),'Radar local atualizado. IA real não respondeu agora: '+(e.message||'erro desconhecido'),'info');
+      }
+    };
+    window.markSmartAlertsRead=function(){
+      const ids=buildSmartAdvisorAlerts().map(a=>a.id);
+      saveSmartAdvisorRead(ids);
+      renderSmartAdvisor();
+      toast('Alertas do Radar IA marcados como lidos.','success');
+    };
+    window.copySmartAdvisorReport=function(){
+      renderSmartAdvisor();
+      const ctx=wealthAIContext();
+      const market=smartAdvisorScenario();
+      const alerts=buildSmartAdvisorAlerts();
+      const txt=[
+        'WEALTH OS 7.0.7 — RADAR IA',
+        `Plano: ${currentWealthPlanConfig().name}`,
+        `Patrimônio: ${money(ctx.totals.cur)}`,
+        `Score IA: ${ctx.state.score}/100`,
+        `Risco principal: ${wealthAIRiskLabel(ctx)}`,
+        `Foco: ${wealthAIFocusLabel(ctx)}`,
+        `Cenário de mercado: ${smartAdvisorScenarioLabel(market.scenario)}`,
+        market.note?`Nota de mercado: ${market.note}`:'',
+        '',
+        'Alertas:',
+        ...alerts.map((a,i)=>`${i+1}. [${smartAdvisorLevelLabel(a.level)}] ${a.title} — ${a.body} Ação: ${a.action}${a.locked?' (premium preparado)':''}`),
+        '',
+        'Aviso: conteúdo educativo. Não é recomendação de compra ou venda.'
+      ].filter(Boolean).join('\n');
+      copyTextSafe(txt,'Radar IA copiado.');
+    };
+    window.requestWealthSmartNotifications=async function(){
+      try{
+        if(!('Notification' in window)){
+          toast('Este navegador não oferece Notification API para alerta local. Push real fica para a próxima etapa.','info');
+          renderSmartAdvisor();
+          return;
+        }
+        const permission=Notification.permission==='default'?await Notification.requestPermission():Notification.permission;
+        renderSmartAdvisor();
+        if(permission!=='granted'){
+          toast('Permissão de notificação não liberada. O Radar continua funcionando dentro do app.','info');
+          return;
+        }
+        const top=buildSmartAdvisorAlerts()[0];
+        if(top){
+          new Notification('Wealth OS • Radar IA',{body:`${top.title}: ${top.action}`,tag:'wealth-os-radar-ia',renotify:false});
+          toast('Notificação local de teste enviada. Push real fica preparado para próxima etapa.','success');
+        }else{
+          toast('Notificações locais ativadas. Sem alerta crítico agora.','success');
+        }
+      }catch(e){
+        toast(e.message||'Não foi possível ativar notificação local.','error');
+      }
+    };
+    ['marketScenarioSelect','marketNoteInput'].forEach(id=>{
+      try{
+        const el=$(id);
+        if(el){
+          const ev=id==='marketScenarioSelect'?'change':'input';
+          el.addEventListener(ev,()=>{saveSmartAdvisorStore({scenario:$('marketScenarioSelect')?.value||'neutral',note:String($('marketNoteInput')?.value||'').trim()});renderSmartAdvisor();});
+        }
+      }catch{}
+    });
+    const wealthAdvisorOriginalRenderDashboard=window.renderDashboard;
+    setTimeout(()=>{try{renderSmartAdvisor()}catch{}},200);
+    setTimeout(()=>{try{renderSmartAdvisor()}catch{}},1000);
+
+
 
     bindWealthFastScrollGuards();
     wealthApplyFinalFastSystem();
