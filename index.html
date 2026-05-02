@@ -8756,19 +8756,59 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
           renderSmartAdvisor();
           return;
         }
+
         const permission=Notification.permission==='default'?await Notification.requestPermission():Notification.permission;
         renderSmartAdvisor();
+
         if(permission!=='granted'){
           toast('Permissão de notificação não liberada. O Radar continua funcionando dentro do app.','info');
           return;
         }
-        const top=buildSmartAdvisorAlerts()[0];
-        if(top){
-          new Notification('Dymivra • Radar IA',{body:`${top.title}: ${top.action}`,tag:'wealth-os-radar-ia',renotify:false});
-          toast('Notificação local de teste enviada. Push real fica preparado para próxima etapa.','success');
-        }else{
-          toast('Notificações locais ativadas. Sem alerta crítico agora.','success');
+
+        if(!('serviceWorker' in navigator)){
+          toast('Este navegador não oferece Service Worker para notificação no Android/PWA. O Radar continua ativo dentro do app.','info');
+          return;
         }
+
+        let registration=null;
+        try{
+          registration=await navigator.serviceWorker.getRegistration('/');
+        }catch(e){}
+
+        if(!registration){
+          try{
+            registration=await navigator.serviceWorker.register('/sw.js',{scope:'/'});
+            registration.update?.();
+          }catch(e){}
+        }
+
+        if(!registration || typeof registration.showNotification!=='function'){
+          toast('Service Worker ainda não está pronto para notificação. Atualize o app e tente novamente.','info');
+          return;
+        }
+
+        let readyRegistration=registration;
+        try{
+          readyRegistration=await Promise.race([
+            navigator.serviceWorker.ready,
+            new Promise(resolve=>setTimeout(()=>resolve(registration),2500))
+          ]);
+        }catch(e){
+          readyRegistration=registration;
+        }
+
+        const top=buildSmartAdvisorAlerts()[0];
+        const body=top?`${top.title}: ${top.action}`:'Radar IA ativado. Você receberá alertas importantes dentro do app.';
+        await readyRegistration.showNotification('Dymivra • Radar IA',{
+          body,
+          tag:'dymivra-radar-ia',
+          renotify:false,
+          icon:'/icon-192.png',
+          badge:'/icon-192.png',
+          data:{source:'smart-advisor',createdAt:Date.now()}
+        });
+
+        toast(top?'Notificação de teste enviada pelo Service Worker.':'Notificações ativadas pelo Service Worker. Sem alerta crítico agora.','success');
       }catch(e){
         toast(e.message||'Não foi possível ativar notificação local.','error');
       }
