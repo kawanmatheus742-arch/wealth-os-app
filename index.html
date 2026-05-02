@@ -3974,7 +3974,7 @@ html:not(.modal-open){
 
 
 /* =========================
-   Dymivra 7.4.0 • Radar IA Pro
+   Dymivra 7.4.1 • Radar IA Pro
    Camada visual isolada, sem alterar base do app.
    ========================= */
 .dymivra740-panel{
@@ -5152,16 +5152,60 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
           </div>
         </div>
 
+        
+        <div id="dymivra740Panel" class="dymivra740-panel">
+          <div class="dymivra740-head">
+            <div>
+              <div class="kicker">Dymivra 7.4.1 • Radar IA Pro visível</div>
+              <div class="dymivra740-title">Análise Pro da carteira</div>
+              <div class="muted">Nova camada avançada: score de atenção, postura sugerida, matriz de risco e próximos passos educativos.</div>
+            </div>
+            <span id="dymivra740ModeBadge" class="badge purple">Modo educativo</span>
+          </div>
+          <div class="dymivra740-grid">
+            <div class="dymivra740-score-card">
+              <div class="label">Score de atenção Pro</div>
+              <div id="dymivra740Score" class="dymivra740-score">0/100</div>
+              <div id="dymivra740Summary" class="dymivra740-summary">Aguardando dados para leitura avançada.</div>
+            </div>
+            <div>
+              <div class="dymivra740-insight-grid">
+                <div class="dymivra740-insight"><strong>Postura sugerida</strong><span id="dymivra740Posture">Equilibrada</span></div>
+                <div class="dymivra740-insight"><strong>Mercado informado</strong><span id="dymivra740Market">Neutro</span></div>
+                <div class="dymivra740-insight"><strong>Prioridade</strong><span id="dymivra740Priority">Aguardando análise</span></div>
+              </div>
+              <div class="grid grid2" style="margin-top:12px">
+                <div class="item">
+                  <strong>Matriz de risco Pro</strong>
+                  <div id="dymivra740RiskList" class="dymivra740-risk-list">
+                    <div class="empty">Aguardando análise.</div>
+                  </div>
+                </div>
+                <div class="item">
+                  <strong>Próximos passos educativos</strong>
+                  <div id="dymivra740NextList" class="dymivra740-next-list">
+                    <div class="empty">Aguardando análise.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ai-disclaimer" style="margin-top:14px">
+            <strong>Aviso:</strong> esta leitura é educativa e organizacional. Não é recomendação individualizada de compra, venda ou manutenção de investimentos.
+          </div>
+        </div>
+
+
         <div class="smart-advisor-grid">
           <div class="smart-advisor-hero">
             <div class="smart-orb">🚨</div>
-            <div class="smart-title">Advisor ativo</div>
+            <div class="smart-title">Radar Pro ativo</div>
             <div id="smartAdvisorHeadline" class="smart-subtitle">Aguardando dados da carteira para gerar alertas inteligentes.</div>
 
             <div class="smart-kpi-grid">
-              <div class="smart-kpi"><div class="label">Score do radar</div><strong id="smartAdvisorScore">0/100</strong></div>
-              <div class="smart-kpi"><div class="label">Alertas ativos</div><strong id="smartAdvisorAlertCount">0</strong></div>
-              <div class="smart-kpi"><div class="label">Alta prioridade</div><strong id="smartAdvisorRiskCount">0</strong></div>
+              <div class="smart-kpi"><div class="label">Score base</div><strong id="smartAdvisorScore">0/100</strong></div>
+              <div class="smart-kpi"><div class="label">Alertas IA</div><strong id="smartAdvisorAlertCount">0</strong></div>
+              <div class="smart-kpi"><div class="label">Prioridade alta</div><strong id="smartAdvisorRiskCount">0</strong></div>
             </div>
 
             <div class="smart-market-grid">
@@ -5182,10 +5226,10 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
             </div>
 
             <div class="smart-actions">
-              <button class="success" type="button" onclick="runSmartAdvisorAI()">Gerar Radar IA</button>
+              <button class="success" type="button" onclick="runSmartAdvisorAI()">Gerar Radar IA Pro</button>
               <button class="gold" type="button" onclick="requestWealthSmartNotifications()">Ativar notificação</button>
               <button class="secondary" type="button" onclick="markSmartAlertsRead()">Marcar lidos</button>
-              <button class="secondary" type="button" onclick="copySmartAdvisorReport()">Copiar radar</button>
+              <button class="secondary" type="button" onclick="copySmartAdvisorReport()">Copiar Radar Pro</button>
             </div>
 
             <div id="smartAdvisorStatus" class="status status-info">Radar Pro local ativo. Use o cenário de mercado e os dados da carteira para gerar leitura educativa avançada.</div>
@@ -8859,7 +8903,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
       const market=smartAdvisorScenario();
       const alerts=buildSmartAdvisorAlerts();
       const txt=[
-        'DYMIVRA 7.4.0 — RADAR IA PRO',
+        'DYMIVRA 7.4.1 — RADAR IA PRO',
         `Plano: ${currentWealthPlanConfig().name}`,
         `Patrimônio: ${money(ctx.totals.cur)}`,
         `Score IA: ${ctx.state.score}/100`,
@@ -8950,7 +8994,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
     });
 
     /* =========================
-       Dymivra 7.4.0 • Radar IA Pro
+       Dymivra 7.4.1 • Radar IA Pro
        Camada isolada: melhora leitura do Radar sem mexer no core.
        ========================= */
     function dymivra740SafeMoney(value){
@@ -9001,7 +9045,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
       panel.innerHTML=`
         <div class="dymivra740-head">
           <div>
-            <div class="kicker">Dymivra 7.4.0 • Radar IA Pro</div>
+            <div class="kicker">Dymivra 7.4.1 • Radar IA Pro</div>
             <div class="dymivra740-title">Leitura avançada da carteira</div>
             <div class="muted">Combina carteira, meta, renda passiva, cenário manual de mercado e alertas para indicar pontos de atenção.</div>
           </div>
@@ -9085,12 +9129,12 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
     try{
       const dymivra740OriginalRenderSmartAdvisor=renderSmartAdvisor;
       renderSmartAdvisor=function(){
-        try{dymivra740OriginalRenderSmartAdvisor.apply(this,arguments)}catch(e){console.warn('Dymivra 7.4.0: render original falhou',e)}
-        try{renderDymivra740RadarPro()}catch(e){console.warn('Dymivra 7.4.0: render pro falhou',e)}
+        try{dymivra740OriginalRenderSmartAdvisor.apply(this,arguments)}catch(e){console.warn('Dymivra 7.4.1: render original falhou',e)}
+        try{renderDymivra740RadarPro()}catch(e){console.warn('Dymivra 7.4.1: render pro falhou',e)}
       };
       window.renderSmartAdvisor=renderSmartAdvisor;
     }catch(e){
-      console.warn('Dymivra 7.4.0: não foi possível acoplar Radar Pro.',e);
+      console.warn('Dymivra 7.4.1: não foi possível acoplar Radar Pro.',e);
     }
     try{
       const dymivra740OriginalCopySmartAdvisor=window.copySmartAdvisorReport;
@@ -9099,7 +9143,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
           const data=dymivra740AdvisorData();
           const ctx=data.ctx;
           const report=[
-            'DYMIVRA 7.4.0 — RADAR IA PRO',
+            'DYMIVRA 7.4.1 — RADAR IA PRO',
             `Plano: ${data.plan.name}`,
             `Domínio oficial: https://www.dymivra.pro`,
             `Patrimônio analisado: ${dymivra740SafeMoney(ctx.totals?.cur)}`,
@@ -9124,6 +9168,22 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
     }catch(e){}
     setTimeout(()=>{try{renderDymivra740RadarPro()}catch{}},300);
     setTimeout(()=>{try{renderDymivra740RadarPro()}catch{}},1200);
+
+    /* Dymivra 7.4.1 • reforço de render do Radar Pro visível */
+    try{
+      document.addEventListener('click', function(ev){
+        const btn = ev.target && ev.target.closest ? ev.target.closest('[data-screen], .nav-btn') : null;
+        if(btn){
+          setTimeout(()=>{try{renderDymivra740RadarPro()}catch(e){}}, 250);
+          setTimeout(()=>{try{renderDymivra740RadarPro()}catch(e){}}, 900);
+        }
+      });
+      setInterval(()=>{try{
+        const panel=$('dymivra740Panel');
+        if(panel && panel.offsetParent!==null)renderDymivra740RadarPro();
+      }catch(e){}}, 5000);
+    }catch(e){}
+
 
 
     const wealthAdvisorOriginalRenderDashboard=window.renderDashboard;
