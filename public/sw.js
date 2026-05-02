@@ -1,69 +1,84 @@
-// Wealth OS Premium — Etapa 5A.1 Service Worker seguro
-// Esta versão evita travar o app durante testes no StackBlitz/Vite.
-// Ela prepara PWA sem prender HTML antigo no cache.
+/* Dymivra Service Worker 7.1.9
+   Atualiza identidade do PWA e mantém suporte a notificações Android/PWA.
+   Mantém cache leve para não travar novas versões do index.html.
+*/
 
-const CACHE_NAME = 'wealth-os-premium-v5a1';
+const DYMIVRA_CACHE = "dymivra-cache-v7-1-9";
+const DYMIVRA_ASSETS = [
+  "/",
+  "/manifest.json",
+  "/icon-192.png",
+  "/icon-512.png"
+];
 
-self.addEventListener('install', (event) => {
-  self.skipWaiting();
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(DYMIVRA_CACHE)
+      .then((cache) => cache.addAll(DYMIVRA_ASSETS).catch(() => null))
+      .then(() => self.skipWaiting())
+  );
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys()
-      .then((keys) =>
-        Promise.all(
-          keys
-            .filter((key) => key !== CACHE_NAME)
-            .map((key) => caches.delete(key))
-        )
-      )
+      .then((keys) => Promise.all(
+        keys
+          .filter((key) => key !== DYMIVRA_CACHE)
+          .map((key) => caches.delete(key))
+      ))
       .then(() => self.clients.claim())
   );
 });
 
-self.addEventListener('fetch', (event) => {
+self.addEventListener("fetch", (event) => {
   const req = event.request;
 
-  if (req.method !== 'GET') return;
+  if (req.method !== "GET") return;
 
   const url = new URL(req.url);
 
-  // Não mexe em Supabase, APIs externas, StackBlitz/Vite ou navegação HTML.
-  if (
-    url.hostname.includes('supabase.co') ||
-    url.hostname.includes('brapi.dev') ||
-    url.hostname.includes('brapi.com.br') ||
-    url.hostname.includes('stackblitz') ||
-    url.hostname.includes('webcontainer') ||
-    req.mode === 'navigate'
-  ) {
+  // Para HTML/navegação, tenta rede primeiro para evitar app preso em versão antiga.
+  if (req.mode === "navigate" || req.headers.get("accept")?.includes("text/html")) {
+    event.respondWith(
+      fetch(req)
+        .then((res) => {
+          const copy = res.clone();
+          caches.open(DYMIVRA_CACHE).then((cache) => cache.put(req, copy)).catch(() => null);
+          return res;
+        })
+        .catch(() => caches.match(req).then((cached) => cached || caches.match("/")))
+    );
     return;
   }
 
-  // Cache leve apenas para ícones e manifest do próprio app.
-  if (
-    url.origin === self.location.origin &&
-    (
-      url.pathname.endsWith('.png') ||
-      url.pathname.endsWith('.svg') ||
-      url.pathname.endsWith('/manifest.json')
-    )
-  ) {
-    event.respondWith(
-      caches.match(req).then((cached) => {
-        return cached || fetch(req).then((res) => {
-          if (res && res.status === 200) {
-            const clone = res.clone();
-
-            caches.open(CACHE_NAME)
-              .then((cache) => cache.put(req, clone))
-              .catch(() => null);
+  // Para arquivos estáticos, cache primeiro com atualização em segundo plano.
+  event.respondWith(
+    caches.match(req).then((cached) => {
+      const fetchPromise = fetch(req)
+        .then((res) => {
+          if (res && res.status === 200 && url.origin === self.location.origin) {
+            const copy = res.clone();
+            caches.open(DYMIVRA_CACHE).then((cache) => cache.put(req, copy)).catch(() => null);
           }
-
           return res;
-        });
-      })
-    );
-  }
+        })
+        .catch(() => cached);
+
+      return cached || fetchPromise;
+    })
+  );
+});
+
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+
+  event.waitUntil(
+    clients.matchAll({ type: "window", includeUncontrolled: true }).then((clientList) => {
+      for (const client of clientList) {
+        if ("focus" in client) return client.focus();
+      }
+      if (clients.openWindow) return clients.openWindow("/");
+    })
+  );
 });
