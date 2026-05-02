@@ -3972,6 +3972,132 @@ html:not(.modal-open){
   overflow-y:auto!important;
 }
 
+
+/* =========================
+   Dymivra 7.4.0 • Radar IA Pro
+   Camada visual isolada, sem alterar base do app.
+   ========================= */
+.dymivra740-panel{
+  margin-top:14px;
+  border:1px solid rgba(34,211,238,.18);
+  border-radius:26px;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(34,211,238,.12),transparent 32%),
+    radial-gradient(circle at 88% 0%,rgba(139,92,246,.10),transparent 30%),
+    linear-gradient(180deg,rgba(12,22,44,.92),rgba(7,13,26,.96));
+  padding:18px;
+  overflow:hidden;
+  position:relative;
+}
+.dymivra740-panel:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.035),transparent);
+}
+.dymivra740-panel > *{position:relative;z-index:1}
+.dymivra740-head{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  align-items:flex-start;
+  margin-bottom:14px;
+}
+.dymivra740-title{
+  font-size:clamp(24px,3vw,38px);
+  font-weight:950;
+  line-height:1.03;
+  letter-spacing:-.07em;
+  margin-top:5px;
+}
+.dymivra740-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:14px;
+  align-items:stretch;
+}
+.dymivra740-score-card{
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:24px;
+  padding:18px;
+  background:rgba(255,255,255,.035);
+}
+.dymivra740-score{
+  font-size:clamp(46px,6vw,82px);
+  font-weight:950;
+  letter-spacing:-.10em;
+  line-height:.95;
+  margin:8px 0;
+}
+.dymivra740-insight-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.dymivra740-insight{
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;
+  padding:13px;
+  background:rgba(255,255,255,.035);
+  min-height:112px;
+}
+.dymivra740-insight strong{display:block;margin-bottom:7px}
+.dymivra740-insight span{display:block;color:var(--muted);font-size:12px;line-height:1.45}
+.dymivra740-risk-list,.dymivra740-next-list{
+  display:grid;
+  gap:9px;
+  margin-top:10px;
+}
+.dymivra740-risk-row,.dymivra740-next-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px;
+  align-items:center;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  padding:11px 12px;
+  background:rgba(255,255,255,.035);
+  line-height:1.35;
+}
+.dymivra740-next-row{
+  grid-template-columns:auto 1fr;
+}
+.dymivra740-pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  padding:6px 9px;
+  min-width:68px;
+  font-size:11px;
+  font-weight:950;
+  border:1px solid rgba(255,255,255,.10);
+}
+.dymivra740-pill.high{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.28);color:#fecaca}
+.dymivra740-pill.mid{background:rgba(251,146,60,.11);border-color:rgba(251,146,60,.28);color:#fed7aa}
+.dymivra740-pill.good{background:rgba(34,197,94,.10);border-color:rgba(34,197,94,.26);color:#bbf7d0}
+.dymivra740-pill.info{background:rgba(34,211,238,.10);border-color:rgba(34,211,238,.24);color:#cffafe}
+.dymivra740-summary{
+  margin-top:14px;
+  padding:14px;
+  border-radius:18px;
+  border:1px solid rgba(34,211,238,.18);
+  background:rgba(34,211,238,.07);
+  color:#dbeafe;
+  line-height:1.55;
+}
+.performance-mode .dymivra740-panel,
+.performance-mode .dymivra740-score-card,
+.performance-mode .dymivra740-insight{
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+}
+@media(max-width:1120px){
+  .dymivra740-grid,.dymivra740-insight-grid{grid-template-columns:1fr}
+}
+
 </style>
 
 <style>
@@ -4674,7 +4800,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
   <div class="container">
     <div id="offline" class="offline">Você está sem conexão. Algumas funções podem não responder até a internet voltar.</div>
     <div class="topbar"><div class="brand"><div class="logo" aria-label="Logo Dymivra"><img src="data:image/webp;base64,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" alt="Logo Dymivra" /></div><div><h1>Dymivra</h1><div class="subtitle">Sistema premium para carteira, ledger, renda passiva, perfil, alocação, IA real, Radar IA, planos Free/Pro/Elite e experiência de app monetizável.</div></div></div><div class="chips">
-      <div class="chip premium">Etapa 7.0.7 • IA Advisor</div>
+      <div class="chip premium">Etapa 7.4.0 • Radar IA Pro</div>
       <button id="performanceToggleChip" class="chip chip-action" type="button" onclick="togglePerformanceMode()">Modo leve: Auto</button>
       <div id="syncChip" class="chip">Sync: OK</div>
       <div id="ledgerChip" class="chip">Ledger como fonte principal</div>
@@ -4868,7 +4994,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
       <div class="card premium-panel" data-screen-block data-screens="ai">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 7.0.7 • IA Advisor ativa</div>
+            <div class="kicker">Etapa 7.4.0 • Radar IA Pro ativa</div>
             <h3>Copiloto inteligente da carteira</h3>
             <div class="muted">Camada 7.0.7: IA real protegida, plano interno, limite de uso, paywall e Radar IA para alertas inteligentes da carteira.</div>
           </div>
@@ -5015,9 +5141,9 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
       <div class="card premium-panel smart-advisor-panel" data-screen-block data-screens="advisor ai overview">
         <div class="section">
           <div>
-            <div class="kicker">Etapa 7.0.7 • IA Advisor & Smart Alerts</div>
-            <h3>Radar IA: alertas inteligentes da carteira</h3>
-            <div class="muted">Central que transforma dados da carteira em alertas, prioridade, contexto de mercado e preparo para futuras notificações push no PWA/Android.</div>
+            <div class="kicker">Etapa 7.4.0 • Radar IA Pro & Smart Alerts</div>
+            <h3>Radar IA Pro: mercado, carteira e alertas</h3>
+            <div class="muted">Central avançada que cruza carteira, perfil, metas, alertas e cenário de mercado informado para orientar atenção sem recomendar compra ou venda.</div>
           </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
             <span id="smartAdvisorBadge" class="badge purple">Radar carregando</span>
@@ -5062,7 +5188,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
               <button class="secondary" type="button" onclick="copySmartAdvisorReport()">Copiar radar</button>
             </div>
 
-            <div id="smartAdvisorStatus" class="status status-info">Radar local ativo. Alertas avançados usam plano Pro/Elite e a IA real quando disponível.</div>
+            <div id="smartAdvisorStatus" class="status status-info">Radar Pro local ativo. Use o cenário de mercado e os dados da carteira para gerar leitura educativa avançada.</div>
           </div>
 
           <div>
@@ -8541,7 +8667,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
 
 
     /* =========================================================
-       Etapa 7.0.7 • IA Advisor + Smart Alerts
+       Etapa 7.4.0 • Radar IA Pro + Smart Alerts
        ========================================================= */
     function smartAdvisorKey(name='state'){return `wealth_os_smart_advisor_${name}_${userId||userEmail||'guest'}`}
     function readSmartAdvisorStore(){
@@ -8733,7 +8859,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
       const market=smartAdvisorScenario();
       const alerts=buildSmartAdvisorAlerts();
       const txt=[
-        'DYMIVRA 7.0.7 — RADAR IA',
+        'DYMIVRA 7.4.0 — RADAR IA PRO',
         `Plano: ${currentWealthPlanConfig().name}`,
         `Patrimônio: ${money(ctx.totals.cur)}`,
         `Score IA: ${ctx.state.score}/100`,
@@ -8822,6 +8948,184 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
         }
       }catch{}
     });
+
+    /* =========================
+       Dymivra 7.4.0 • Radar IA Pro
+       Camada isolada: melhora leitura do Radar sem mexer no core.
+       ========================= */
+    function dymivra740SafeMoney(value){
+      try{return money(Number(value||0))}catch{return `R$ ${Number(value||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}`}
+    }
+    function dymivra740SafePct(value){
+      try{return pct(Number(value||0))}catch{return `${Number(value||0).toFixed(1)}%`}
+    }
+    function dymivra740AdvisorData(){
+      const ctx=wealthAIContext();
+      const plan=currentWealthPlanConfig();
+      const market=smartAdvisorScenario();
+      const alerts=buildSmartAdvisorAlerts();
+      const high=alerts.filter(a=>a.level==='high').length;
+      const mid=alerts.filter(a=>a.level==='mid').length;
+      const locked=alerts.filter(a=>a.locked).length;
+      const baseScore=Number(ctx.state?.score||0);
+      const marketPenalty=market.scenario==='volatile'||market.scenario==='bearish'?7:market.scenario==='high_rates'?4:market.scenario==='bullish'?2:0;
+      const proScore=Math.max(0,Math.min(100,Math.round(baseScore-(high*8)-(mid*3)-marketPenalty+(ctx.positions?6:0))));
+      const posture=market.scenario==='bearish'?'Defensiva'
+        :market.scenario==='volatile'?'Cautelosa'
+        :market.scenario==='high_rates'?'Liquidez e custo de oportunidade'
+        :market.scenario==='bullish'?'Oportunidade com disciplina'
+        :'Equilibrada';
+      const riskLevel=high>=2?'high':high===1||mid>=3?'mid':ctx.positions?'good':'info';
+      const marketLevel=market.scenario==='bearish'||market.scenario==='volatile'?'high':market.scenario==='high_rates'||market.scenario==='bullish'?'mid':'good';
+      const concentrationLevel=!ctx.positions?'info':ctx.topShare>=70?'high':ctx.topShare>=45?'mid':'good';
+      const dataLevel=!ctx.positions||ctx.movementsCount<3?'mid':ctx.movementsCount<8?'info':'good';
+      const goalLevel=!ctx.goalInfo?.target?'mid':ctx.gap>0?'high':'good';
+      const passiveLevel=ctx.passive>0?'good':'mid';
+      return {ctx,plan,market,alerts,high,mid,locked,proScore,posture,riskLevel,marketLevel,concentrationLevel,dataLevel,goalLevel,passiveLevel};
+    }
+    function dymivra740Pill(level){
+      return level==='high'?'Alto':level==='mid'?'Médio':level==='good'?'OK':'Info';
+    }
+    function dymivra740RiskRow(name,detail,level){
+      return `<div class="dymivra740-risk-row"><div><strong>${esc(name)}</strong><br><span class="muted">${esc(detail)}</span></div><span class="dymivra740-pill ${level}">${dymivra740Pill(level)}</span></div>`;
+    }
+    function dymivra740NextRow(icon,text){
+      return `<div class="dymivra740-next-row"><div class="smart-dot">${icon}</div><div>${esc(text)}</div></div>`;
+    }
+    function dymivra740BuildPanel(){
+      const target=document.querySelector('.smart-advisor-panel');
+      if(!target || $('dymivra740Panel'))return;
+      const panel=document.createElement('div');
+      panel.id='dymivra740Panel';
+      panel.className='dymivra740-panel';
+      panel.innerHTML=`
+        <div class="dymivra740-head">
+          <div>
+            <div class="kicker">Dymivra 7.4.0 • Radar IA Pro</div>
+            <div class="dymivra740-title">Leitura avançada da carteira</div>
+            <div class="muted">Combina carteira, meta, renda passiva, cenário manual de mercado e alertas para indicar pontos de atenção.</div>
+          </div>
+          <span id="dymivra740ModeBadge" class="badge purple">Modo educativo</span>
+        </div>
+        <div class="dymivra740-grid">
+          <div class="dymivra740-score-card">
+            <div class="label">Score de atenção Pro</div>
+            <div id="dymivra740Score" class="dymivra740-score">0/100</div>
+            <div id="dymivra740Summary" class="dymivra740-summary">Aguardando dados para leitura avançada.</div>
+          </div>
+          <div>
+            <div class="dymivra740-insight-grid">
+              <div class="dymivra740-insight"><strong>Postura sugerida</strong><span id="dymivra740Posture">Equilibrada</span></div>
+              <div class="dymivra740-insight"><strong>Mercado informado</strong><span id="dymivra740Market">Neutro</span></div>
+              <div class="dymivra740-insight"><strong>Prioridade</strong><span id="dymivra740Priority">Aguardando análise</span></div>
+            </div>
+            <div class="grid grid2" style="margin-top:12px">
+              <div class="item">
+                <strong>Matriz de risco</strong>
+                <div id="dymivra740RiskList" class="dymivra740-risk-list"></div>
+              </div>
+              <div class="item">
+                <strong>Próximos passos educativos</strong>
+                <div id="dymivra740NextList" class="dymivra740-next-list"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ai-disclaimer" style="margin-top:14px">
+          <strong>Aviso:</strong> esta leitura é educativa e organizacional. Não é recomendação individualizada de compra, venda ou manutenção de investimentos.
+        </div>
+      `;
+      const anchor=target.querySelector('.grid.grid2[style*="margin-top:14px"]') || target.querySelector('.ai-disclaimer') || target.lastElementChild;
+      target.insertBefore(panel, anchor);
+    }
+    function renderDymivra740RadarPro(){
+      dymivra740BuildPanel();
+      if(!$('dymivra740Panel'))return;
+      const data=dymivra740AdvisorData();
+      const ctx=data.ctx;
+      const topAlert=data.alerts[0];
+      const priority=topAlert?`${smartAdvisorLevelLabel(topAlert.level)} • ${topAlert.title}`:'Sem alerta crítico';
+      const summary=ctx.positions
+        ? `Patrimônio analisado: ${dymivra740SafeMoney(ctx.totals?.cur)}. Maior posição: ${ctx.topAsset||'—'} (${Number(ctx.topShare||0).toFixed(1)}%). Resultado agregado: ${dymivra740SafePct(ctx.ret||0)}. Foco atual: ${wealthAIFocusLabel(ctx)}.`
+        : 'Cadastre posições, movimentações e meta para liberar leitura avançada de concentração, renda, risco e progresso.';
+      const next=[];
+      if(!ctx.positions){
+        next.push(['🧾','Cadastrar pelo menos uma movimentação no Ledger para criar base de análise.']);
+        next.push(['🎯','Definir meta patrimonial e aporte mensal para medir distância do objetivo.']);
+      }else{
+        next.push(['🔄','Atualizar preços e registrar movimentações antes de interpretar qualquer alerta.']);
+        if(data.concentrationLevel==='high'||data.concentrationLevel==='mid')next.push(['⚖️',`Revisar o peso de ${ctx.topAsset||'maior posição'} em relação ao seu perfil ${ctx.profile||'informado'}.`]);
+        if(data.goalLevel==='high')next.push(['🎯',`Comparar o aporte necessário estimado com o aporte atual antes de mudar o plano financeiro.`]);
+        if(data.passiveLevel!=='good')next.push(['💸','Registrar proventos, juros ou dividendos quando existirem para acompanhar renda passiva.']);
+        if(data.market.scenario==='bearish'||data.market.scenario==='volatile')next.push(['🧘','Evitar decisões emocionais em cenário de queda ou volatilidade; priorizar revisão e dados atualizados.']);
+        if(data.market.scenario==='bullish')next.push(['📈','Evitar euforia em cenário positivo; conferir concentração antes de novos aportes.']);
+        if(next.length<4)next.push(['📌','Salvar um snapshot mensal para comparar evolução da carteira com a meta.']);
+      }
+      const modeBadge=$('dymivra740ModeBadge');
+      if(modeBadge){
+        modeBadge.textContent=data.plan.id==='free'?'Leitura essencial • Free':`Leitura avançada • ${data.plan.name}`;
+        modeBadge.className='badge '+(data.plan.id==='free'?'purple':'green');
+      }
+      const set=(id,value)=>{const el=$(id);if(el)el.textContent=value};
+      set('dymivra740Score',`${data.proScore}/100`);
+      set('dymivra740Summary',summary);
+      set('dymivra740Posture',`${data.posture}. Use como orientação de atenção, não como ordem de investimento.`);
+      set('dymivra740Market',smartAdvisorScenarioText(data.market.scenario,data.market.note));
+      set('dymivra740Priority',priority);
+      const riskRows=[
+        dymivra740RiskRow('Concentração',ctx.positions?`${ctx.topAsset||'Maior posição'} com ${Number(ctx.topShare||0).toFixed(1)}% da carteira.`:'Sem posições suficientes.',data.concentrationLevel),
+        dymivra740RiskRow('Cenário de mercado',smartAdvisorScenarioLabel(data.market.scenario),data.marketLevel),
+        dymivra740RiskRow('Meta patrimonial',ctx.goalInfo?.target?(ctx.gap>0?`Aporte atual abaixo do estimado em ${dymivra740SafeMoney(ctx.gap)}.`:'Meta com progresso compatível pelos dados atuais.'):'Meta ainda ausente.',data.goalLevel),
+        dymivra740RiskRow('Qualidade dos dados',`${ctx.movementsCount||0} movimentação(ões) registradas.`,data.dataLevel),
+        dymivra740RiskRow('Renda passiva',ctx.passive>0?`Acumulado de ${dymivra740SafeMoney(ctx.passive)}.`:'Sem renda passiva registrada.',data.passiveLevel)
+      ].join('');
+      const riskEl=$('dymivra740RiskList');if(riskEl)riskEl.innerHTML=riskRows;
+      const nextEl=$('dymivra740NextList');if(nextEl)nextEl.innerHTML=next.slice(0,5).map(([i,t])=>dymivra740NextRow(i,t)).join('');
+    }
+    try{
+      const dymivra740OriginalRenderSmartAdvisor=renderSmartAdvisor;
+      renderSmartAdvisor=function(){
+        try{dymivra740OriginalRenderSmartAdvisor.apply(this,arguments)}catch(e){console.warn('Dymivra 7.4.0: render original falhou',e)}
+        try{renderDymivra740RadarPro()}catch(e){console.warn('Dymivra 7.4.0: render pro falhou',e)}
+      };
+      window.renderSmartAdvisor=renderSmartAdvisor;
+    }catch(e){
+      console.warn('Dymivra 7.4.0: não foi possível acoplar Radar Pro.',e);
+    }
+    try{
+      const dymivra740OriginalCopySmartAdvisor=window.copySmartAdvisorReport;
+      window.copySmartAdvisorReport=function(){
+        try{
+          const data=dymivra740AdvisorData();
+          const ctx=data.ctx;
+          const report=[
+            'DYMIVRA 7.4.0 — RADAR IA PRO',
+            `Plano: ${data.plan.name}`,
+            `Domínio oficial: https://www.dymivra.pro`,
+            `Patrimônio analisado: ${dymivra740SafeMoney(ctx.totals?.cur)}`,
+            `Score de atenção Pro: ${data.proScore}/100`,
+            `Postura sugerida: ${data.posture}`,
+            `Cenário de mercado: ${smartAdvisorScenarioLabel(data.market.scenario)}`,
+            data.market.note?`Nota de mercado: ${data.market.note}`:'',
+            `Risco principal: ${wealthAIRiskLabel(ctx)}`,
+            `Foco atual: ${wealthAIFocusLabel(ctx)}`,
+            '',
+            'Alertas priorizados:',
+            ...data.alerts.map((a,i)=>`${i+1}. [${smartAdvisorLevelLabel(a.level)}] ${a.title} — ${a.body} Ação educativa: ${a.action}${a.locked?' (premium preparado)':''}`),
+            '',
+            'Aviso: conteúdo educativo e organizacional. Não é recomendação individualizada de compra, venda ou manutenção de investimentos.'
+          ].filter(Boolean).join('\n');
+          copyTextSafe(report,'Radar IA Pro copiado.');
+        }catch(e){
+          if(typeof dymivra740OriginalCopySmartAdvisor==='function')return dymivra740OriginalCopySmartAdvisor();
+          toast('Não foi possível copiar o Radar IA Pro.','error');
+        }
+      };
+    }catch(e){}
+    setTimeout(()=>{try{renderDymivra740RadarPro()}catch{}},300);
+    setTimeout(()=>{try{renderDymivra740RadarPro()}catch{}},1200);
+
+
     const wealthAdvisorOriginalRenderDashboard=window.renderDashboard;
     setTimeout(()=>{try{renderSmartAdvisor()}catch{}},200);
     setTimeout(()=>{try{renderSmartAdvisor()}catch{}},1000);
