@@ -2,479 +2,93 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Termos de Uso | Wealth OS</title>
-  <meta name="description" content="Termos de Uso oficiais do Wealth OS." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#07111f" />
-
+  <title>Termos de Uso — Dymivra</title>
   <style>
-    :root {
-      --bg: #030712;
-      --panel: rgba(8, 15, 31, .88);
-      --line: rgba(255, 255, 255, .10);
-      --line2: rgba(56, 189, 248, .28);
-      --text: #f8fafc;
-      --muted: #9ca3af;
-      --muted2: #cbd5e1;
-      --cyan: #22d3ee;
-      --green: #86efac;
-      --warning: #fbbf24;
-      --radius: 28px;
-      --shadow: 0 30px 80px rgba(0, 0, 0, .45);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 20% 0%, rgba(34, 211, 238, .18), transparent 32%),
-        radial-gradient(circle at 85% 15%, rgba(59, 130, 246, .16), transparent 35%),
-        linear-gradient(180deg, #020617 0%, #06111f 42%, #020617 100%);
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-      background-size: 42px 42px;
-      opacity: .25;
-      pointer-events: none;
-      mask-image: linear-gradient(to bottom, black, transparent 85%);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .wrap {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 32px 0 64px;
-    }
-
-    .hero {
-      position: relative;
-      padding: 34px;
-      border: 1px solid var(--line2);
-      border-radius: 36px;
-      background:
-        linear-gradient(135deg, rgba(14, 165, 233, .16), rgba(15, 23, 42, .92)),
-        rgba(8, 15, 31, .86);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 420px;
-      height: 420px;
-      right: -150px;
-      top: -180px;
-      background: radial-gradient(circle, rgba(34, 211, 238, .24), transparent 65%);
-      filter: blur(10px);
-    }
-
-    .brand {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 30px;
-    }
-
-    .logo {
-      width: 72px;
-      height: 72px;
-      border-radius: 24px;
-      display: grid;
-      place-items: center;
-      background:
-        linear-gradient(145deg, rgba(34, 211, 238, .28), rgba(37, 99, 235, .16)),
-        rgba(15, 23, 42, .8);
-      border: 1px solid rgba(125, 211, 252, .26);
-      box-shadow: 0 18px 46px rgba(34, 211, 238, .16);
-      font-size: 36px;
-    }
-
-    h1 {
-      position: relative;
-      z-index: 2;
-      margin: 0;
-      font-size: clamp(2.4rem, 8vw, 5.5rem);
-      line-height: .92;
-      letter-spacing: -0.08em;
-    }
-
-    .subtitle {
-      position: relative;
-      z-index: 2;
-      margin: 18px 0 0;
-      max-width: 780px;
-      color: var(--muted2);
-      font-size: clamp(1.05rem, 2.4vw, 1.35rem);
-      line-height: 1.65;
-    }
-
-    .badges {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .badge {
-      padding: 12px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, .22);
-      background: rgba(15, 23, 42, .62);
-      color: var(--muted2);
-      font-weight: 800;
-      font-size: .92rem;
-    }
-
-    .badge.good {
-      color: #bbf7d0;
-      border-color: rgba(34, 197, 94, .24);
-      background: rgba(22, 101, 52, .16);
-    }
-
-    .nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 24px 0;
-    }
-
-    .nav a {
-      padding: 12px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(15, 23, 42, .72);
-      color: var(--muted2);
-      font-weight: 800;
-      transition: .2s ease;
-    }
-
-    .nav a:hover {
-      border-color: rgba(34, 211, 238, .45);
-      color: white;
-      transform: translateY(-1px);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
-
-    .card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(180deg, rgba(15, 23, 42, .92), rgba(2, 6, 23, .9));
-      box-shadow: 0 22px 70px rgba(0, 0, 0, .30);
-      padding: 26px;
-    }
-
-    .card h2 {
-      margin: 0 0 14px;
-      font-size: clamp(1.35rem, 3vw, 2rem);
-      letter-spacing: -.04em;
-    }
-
-    .card p,
-    .card li {
-      color: var(--muted2);
-      font-size: 1rem;
-      line-height: 1.75;
-    }
-
-    .card ul {
-      padding-left: 20px;
-      margin: 10px 0 0;
-    }
-
-    .alert {
-      border-color: rgba(251, 191, 36, .28);
-      background:
-        linear-gradient(180deg, rgba(120, 53, 15, .24), rgba(15, 23, 42, .9));
-    }
-
-    .alert strong {
-      color: #fde68a;
-    }
-
-    .footer {
-      margin-top: 22px;
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      background: rgba(2, 6, 23, .58);
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .footer strong {
-      color: var(--text);
-    }
-
-    .top {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 20;
-      padding: 13px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(34, 211, 238, .32);
-      background: rgba(2, 6, 23, .78);
-      color: white;
-      font-weight: 900;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 18px 45px rgba(0,0,0,.35);
-    }
-
-    @media (max-width: 700px) {
-      .wrap {
-        width: min(100% - 22px, 1120px);
-        padding-top: 18px;
-      }
-
-      .hero,
-      .card {
-        padding: 22px;
-      }
-
-      .brand {
-        align-items: flex-start;
-      }
-
-      .logo {
-        width: 62px;
-        height: 62px;
-        border-radius: 20px;
-      }
-    }
-  </style>
+:root{--bg:#030712;--bg2:#07111f;--card:rgba(8,15,31,.92);--line:rgba(255,255,255,.10);--text:#f8fafc;--muted:#9fb3d5;--cyan:#22d3ee;--blue:#0ea5e9;--green:#22c55e;--orange:#fb923c;--red:#ef4444}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Inter,Arial,sans-serif;color:var(--text);background:radial-gradient(circle at 0 0,rgba(14,165,233,.18),transparent 25%),radial-gradient(circle at 100% 0,rgba(34,211,238,.08),transparent 28%),linear-gradient(180deg,var(--bg),var(--bg2));line-height:1.65}
+.container{max-width:980px;margin:auto;padding:28px 18px 64px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:26px;box-shadow:0 18px 45px rgba(0,0,0,.28)}
+.logo{width:64px;height:64px;border-radius:22px;display:grid;place-items:center;margin-bottom:18px;background:linear-gradient(135deg,rgba(14,165,233,.85),rgba(34,211,238,.25));border:1px solid rgba(255,255,255,.12);font-weight:950;font-size:30px}
+h1{font-size:clamp(34px,6vw,62px);line-height:.98;letter-spacing:-.08em;margin:0 0 12px}
+h2{font-size:24px;letter-spacing:-.04em;margin:32px 0 8px}
+h3{font-size:18px;margin:22px 0 6px}
+p,li{color:#dbeafe}
+.muted{color:var(--muted)}
+.notice{border:1px solid rgba(34,211,238,.24);background:rgba(34,211,238,.08);border-radius:18px;padding:14px 16px;margin:18px 0;color:#e0f2fe}
+.warn{border-color:rgba(251,146,60,.30);background:rgba(251,146,60,.08);color:#ffedd5}
+.danger{border-color:rgba(239,68,68,.30);background:rgba(239,68,68,.08);color:#fee2e2}
+ul{padding-left:20px}
+a{color:#67e8f9}
+hr{border:0;border-top:1px solid var(--line);margin:28px 0}
+.footer{margin-top:28px;color:var(--muted);font-size:13px}
+.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);border-radius:999px;padding:8px 12px;color:#dbeafe;font-size:13px;margin:6px 6px 0 0}
+</style>
 </head>
-
 <body>
-  <a class="top" href="#top">↑ Topo</a>
-
-  <main id="top" class="wrap">
-    <section class="hero">
-      <div class="brand">
-        <div class="logo">💎</div>
-        <div>
-          <strong>Wealth OS</strong>
-          <div style="color: var(--muted); margin-top: 4px;">Sistema premium para organização financeira</div>
-        </div>
-      </div>
-
+  <main class="container">
+    <section class="card">
+      <div class="logo">D</div>
       <h1>Termos de Uso</h1>
-      <p class="subtitle">
-        Estes Termos de Uso regulam o acesso e a utilização do aplicativo Wealth OS, do site oficial e dos recursos relacionados ao serviço.
-      </p>
+      <p class="muted">Regras de uso, limites de responsabilidade e aviso de uso educativo.</p>
+      <div class="badge">Dymivra</div>
+      <div class="badge">Versão legal 7.2.0</div>
+      <div class="badge">Atualizado em 01/05/2026</div>
+      
+<div class="notice warn">
+  <strong>Aviso importante:</strong> o Dymivra é uma ferramenta de organização financeira pessoal, simulação e educação. O aplicativo não presta consultoria de valores mobiliários, não realiza gestão de carteira, não intermedeia investimentos e não recomenda compra, venda ou manutenção de ativos específicos.
+</div>
 
-      <div class="badges">
-        <span class="badge good">Documento oficial</span>
-        <span class="badge">Última atualização: 25/04/2026</span>
-        <span class="badge">Contato: suportewealthos@gmail.com</span>
-      </div>
+<h2>1. Aceitação dos termos</h2>
+<p>Ao acessar ou usar o Dymivra, você declara que leu, compreendeu e concorda com estes Termos de Uso. Se não concordar, não utilize o aplicativo.</p>
+
+<h2>2. Finalidade do aplicativo</h2>
+<p>O Dymivra tem como finalidade auxiliar o usuário a organizar informações financeiras pessoais, acompanhar patrimônio, metas, ledger, renda passiva, projeções e alertas educativos gerados com apoio de inteligência artificial.</p>
+<p>As informações exibidas dependem dos dados inseridos pelo próprio usuário e podem conter imprecisões, atrasos, limitações ou interpretações incompletas.</p>
+
+<h2>3. Ausência de recomendação de investimento</h2>
+<p>O Dymivra não realiza recomendação individualizada de investimento. Nenhuma informação, alerta, análise, projeção, simulação, resposta de IA ou conteúdo do aplicativo deve ser interpretado como ordem, sugestão direta, garantia, promessa de rentabilidade ou aconselhamento profissional para comprar, vender ou manter investimentos.</p>
+<p>Decisões financeiras e de investimento são de responsabilidade exclusiva do usuário. Antes de tomar decisões, procure profissionais devidamente habilitados, quando necessário.</p>
+
+<h2>4. Inteligência artificial</h2>
+<p>O Dymivra pode usar inteligência artificial para organizar dados, gerar resumos, explicar cenários, criar alertas e simular possibilidades. As respostas da IA são probabilísticas, podem conter erros e devem ser usadas apenas como apoio informativo.</p>
+<p>O usuário deve revisar criticamente qualquer resposta gerada por IA antes de utilizá-la.</p>
+
+<h2>5. Dados inseridos pelo usuário</h2>
+<p>O usuário é responsável pela veracidade, atualização e legalidade dos dados que inserir no aplicativo. O Dymivra não verifica automaticamente a autenticidade de todos os dados informados.</p>
+
+<h2>6. Planos, recursos e limitações</h2>
+<p>O Dymivra pode oferecer planos gratuitos e pagos, com limites de uso, recursos premium, paywall, limites de IA e funcionalidades adicionais. Os recursos disponíveis podem mudar ao longo do tempo.</p>
+
+<h2>7. Notificações</h2>
+<p>O aplicativo pode solicitar permissão para enviar notificações relacionadas a alertas, radar IA, lembretes e informações do próprio app. O usuário pode negar ou revogar permissões a qualquer momento nas configurações do navegador ou do sistema.</p>
+
+<h2>8. Responsabilidades do usuário</h2>
+<ul>
+  <li>Usar o aplicativo de forma legal e responsável.</li>
+  <li>Não inserir dados de terceiros sem autorização.</li>
+  <li>Não usar o app para atividades ilícitas, fraudulentas ou abusivas.</li>
+  <li>Manter suas credenciais protegidas.</li>
+  <li>Não tentar explorar falhas, burlar limites ou acessar áreas não autorizadas.</li>
+</ul>
+
+<h2>9. Limitação de responsabilidade</h2>
+<p>Na máxima extensão permitida pela legislação aplicável, o Dymivra não se responsabiliza por perdas financeiras, decisões de investimento, oportunidades perdidas, indisponibilidade temporária, erros de dados, falhas de terceiros, falhas de conexão, resultados de IA ou uso indevido do aplicativo.</p>
+
+<h2>10. Propriedade intelectual</h2>
+<p>A marca Dymivra, interfaces, organização visual, textos, código, elementos gráficos e demais componentes do app pertencem aos seus titulares ou licenciantes. O usuário não recebe direito de copiar, revender, modificar, explorar comercialmente ou distribuir o aplicativo sem autorização.</p>
+
+<h2>11. Disponibilidade e alterações</h2>
+<p>O aplicativo pode passar por manutenção, atualização, mudanças de nome, marca, domínio, funcionalidades ou planos. Podemos alterar estes Termos de Uso a qualquer momento, informando a data de atualização.</p>
+
+<h2>12. Contato</h2>
+<p>Para suporte, dúvidas ou solicitações relacionadas ao aplicativo, utilize os canais oficiais disponibilizados no próprio app ou no site oficial do Dymivra.</p>
+
+      <p class="footer">© 2026 Dymivra. Documento informativo do aplicativo. Esta página deve ser revisada por profissional qualificado antes de uso comercial definitivo.</p>
     </section>
-
-    <nav class="nav">
-      <a href="/index.html">Início</a>
-      <a href="/privacy.html">Política de Privacidade</a>
-      <a href="/support.html">Suporte</a>
-      <a href="/delete-account.html">Exclusão de dados</a>
-    </nav>
-
-    <section class="grid">
-      <article class="card">
-        <h2>1. Aceitação dos Termos</h2>
-        <p>
-          Ao acessar ou utilizar o Wealth OS, você declara que leu, compreendeu e concorda com estes Termos de Uso e com a Política de Privacidade.
-        </p>
-        <p>
-          Caso não concorde com estes termos, você não deve utilizar o aplicativo ou os serviços relacionados.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>2. Sobre o Wealth OS</h2>
-        <p>
-          O Wealth OS é uma ferramenta de organização financeira e acompanhamento de carteira de investimentos. O aplicativo permite registrar informações, acompanhar movimentações, visualizar categorias, metas, renda passiva, projeções e histórico.
-        </p>
-        <p>
-          O Wealth OS tem finalidade de controle pessoal, organização e visualização de dados informados pelo próprio usuário.
-        </p>
-      </article>
-
-      <article class="card alert">
-        <h2>3. Aviso financeiro</h2>
-        <p>
-          <strong>O Wealth OS não é banco, corretora, instituição financeira, consultoria de investimentos, casa de análise ou recomendador de compra e venda de ativos.</strong>
-        </p>
-        <p>
-          O aplicativo não executa operações financeiras, não movimenta dinheiro, não realiza ordens de compra ou venda e não substitui orientação profissional.
-        </p>
-        <p>
-          Qualquer decisão financeira tomada pelo usuário é de responsabilidade exclusiva do próprio usuário.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>4. Conta do usuário</h2>
-        <p>
-          Para utilizar determinados recursos, pode ser necessário criar uma conta com e-mail e senha ou outro método de autenticação disponível.
-        </p>
-        <p>
-          O usuário é responsável por manter a confidencialidade das credenciais de acesso e por todas as atividades realizadas em sua conta.
-        </p>
-        <p>
-          O usuário deve fornecer informações verdadeiras e manter seus dados atualizados sempre que necessário.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>5. Dados cadastrados pelo usuário</h2>
-        <p>
-          O usuário é responsável pelas informações que cadastra no Wealth OS, incluindo ativos, valores, quantidades, movimentações, categorias, metas, observações e demais dados financeiros.
-        </p>
-        <p>
-          O Wealth OS pode processar esses dados para exibir dashboards, histórico, relatórios, projeções, indicadores e outros recursos visuais dentro do aplicativo.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>6. Uso permitido</h2>
-        <p>Ao usar o Wealth OS, o usuário concorda em não:</p>
-        <ul>
-          <li>Usar o serviço para fins ilegais, fraudulentos ou abusivos.</li>
-          <li>Tentar acessar dados de outros usuários.</li>
-          <li>Interferir na segurança, estabilidade ou funcionamento do app.</li>
-          <li>Realizar engenharia reversa, cópia indevida ou exploração não autorizada do sistema.</li>
-          <li>Inserir informações falsas com objetivo de prejudicar o funcionamento do serviço.</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h2>7. Disponibilidade do serviço</h2>
-        <p>
-          Buscamos manter o Wealth OS disponível e funcional, mas não garantimos operação ininterrupta, ausência total de erros ou disponibilidade permanente.
-        </p>
-        <p>
-          O serviço pode passar por manutenções, atualizações, instabilidades técnicas ou interrupções causadas por provedores externos, internet, banco de dados, hospedagem ou outros fatores.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>8. Projeções, simulações e informações exibidas</h2>
-        <p>
-          Projeções, cálculos, gráficos e simulações exibidos no Wealth OS são estimativas baseadas em dados cadastrados pelo usuário ou em regras internas do aplicativo.
-        </p>
-        <p>
-          Essas informações não representam garantia de resultado, recomendação financeira ou promessa de rentabilidade.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>9. Preços, cotações e informações de mercado</h2>
-        <p>
-          Caso o Wealth OS exiba preços, cotações ou informações de mercado, esses dados podem ser fornecidos por serviços externos e podem sofrer atrasos, falhas, indisponibilidade ou divergências.
-        </p>
-        <p>
-          O usuário deve verificar informações relevantes em fontes oficiais antes de tomar qualquer decisão financeira.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>10. Privacidade e proteção de dados</h2>
-        <p>
-          O tratamento de dados pessoais e informações associadas ao uso do aplicativo é descrito na Política de Privacidade.
-        </p>
-        <p>
-          Consulte a página:
-          <a href="/privacy.html" style="color: var(--cyan); font-weight: 900;">Política de Privacidade</a>
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>11. Exclusão de conta e dados</h2>
-        <p>
-          O usuário pode solicitar a exclusão da conta e dos dados associados por meio da página oficial de exclusão.
-        </p>
-        <p>
-          Acesse:
-          <a href="/delete-account.html" style="color: var(--cyan); font-weight: 900;">Exclusão de dados e conta</a>
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>12. Suporte</h2>
-        <p>
-          Para dúvidas, problemas de login, solicitações relacionadas à conta, suporte técnico ou exclusão de dados, entre em contato pelo e-mail:
-        </p>
-        <p>
-          <strong>suportewealthos@gmail.com</strong>
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>13. Alterações no app e nestes Termos</h2>
-        <p>
-          O Wealth OS pode ser atualizado, modificado, suspenso ou descontinuado, total ou parcialmente, conforme necessidades técnicas, comerciais, legais ou de segurança.
-        </p>
-        <p>
-          Estes Termos de Uso também podem ser atualizados periodicamente. A versão mais recente será publicada nesta página.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>14. Limitação de responsabilidade</h2>
-        <p>
-          O Wealth OS não se responsabiliza por perdas financeiras, decisões de investimento, erros de cadastro feitos pelo usuário, indisponibilidades de serviços externos, falhas de conexão, interpretações incorretas de dados ou resultados obtidos a partir do uso do aplicativo.
-        </p>
-        <p>
-          O uso do app é feito por conta e responsabilidade do usuário.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>15. Contato oficial</h2>
-        <p>
-          E-mail de suporte: <strong>suportewealthos@gmail.com</strong>
-        </p>
-        <p>
-          Site oficial: <strong>https://www.wealthos.pro</strong>
-        </p>
-      </article>
-    </section>
-
-    <footer class="footer">
-      <strong>Wealth OS</strong><br />
-      Termos de Uso oficiais do aplicativo Wealth OS.<br />
-      Última atualização: 25/04/2026.
-    </footer>
   </main>
 </body>
 </html>
