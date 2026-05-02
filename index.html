@@ -3974,7 +3974,7 @@ html:not(.modal-open){
 
 
 /* =========================
-   Dymivra 7.4.1 • Radar IA Pro
+   Dymivra 7.5.0 • Radar IA Pro
    Camada visual isolada, sem alterar base do app.
    ========================= */
 .dymivra740-panel{
@@ -4096,6 +4096,149 @@ html:not(.modal-open){
 }
 @media(max-width:1120px){
   .dymivra740-grid,.dymivra740-insight-grid{grid-template-columns:1fr}
+}
+
+
+/* =========================
+   Dymivra 7.5.0 • Radar de Mercado
+   Camada isolada, sem alterar core do app.
+   ========================= */
+.dymivra750-market{
+  margin-top:14px;
+  border:1px solid rgba(34,197,94,.20);
+  border-radius:26px;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(34,197,94,.12),transparent 34%),
+    radial-gradient(circle at 92% 0%,rgba(34,211,238,.10),transparent 30%),
+    linear-gradient(180deg,rgba(12,22,44,.94),rgba(7,13,26,.96));
+  padding:18px;
+  position:relative;
+  overflow:hidden;
+}
+.dymivra750-market:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.035),transparent);
+}
+.dymivra750-market>*{position:relative;z-index:1}
+.dymivra750-head{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+}
+.dymivra750-title{
+  font-size:clamp(24px,3vw,38px);
+  font-weight:950;
+  line-height:1.03;
+  letter-spacing:-.07em;
+  margin-top:5px;
+}
+.dymivra750-grid{
+  display:grid;
+  grid-template-columns:.95fr 1.05fr;
+  gap:14px;
+  align-items:stretch;
+}
+.dymivra750-card{
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:22px;
+  padding:15px;
+  background:rgba(255,255,255,.035);
+}
+.dymivra750-card strong{display:block;margin-bottom:7px}
+.dymivra750-metrics{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:10px;
+}
+.dymivra750-metric{
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:12px;
+  background:rgba(255,255,255,.035);
+  min-height:96px;
+}
+.dymivra750-metric .label{margin-bottom:4px}
+.dymivra750-metric .value{font-size:20px}
+.dymivra750-status{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:7px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.05);
+  color:#dbeafe;
+  font-size:12px;
+  font-weight:900;
+}
+.dymivra750-status.online{border-color:rgba(34,197,94,.25);background:rgba(34,197,94,.10);color:#bbf7d0}
+.dymivra750-status.manual{border-color:rgba(251,146,60,.28);background:rgba(251,146,60,.09);color:#fed7aa}
+.dymivra750-status.error{border-color:rgba(239,68,68,.28);background:rgba(239,68,68,.09);color:#fecaca}
+.dymivra750-actions{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:12px;
+}
+.dymivra750-actions button{
+  margin-top:0;
+}
+.dymivra750-fields{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:10px;
+}
+.dymivra750-fields label{margin-top:0}
+.dymivra750-analysis{
+  margin-top:12px;
+  padding:14px;
+  border-radius:18px;
+  border:1px solid rgba(34,211,238,.18);
+  background:rgba(34,211,238,.07);
+  line-height:1.55;
+  color:#dbeafe;
+}
+.dymivra750-list{
+  display:grid;
+  gap:9px;
+  margin-top:10px;
+}
+.dymivra750-row{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:10px;
+  align-items:flex-start;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  padding:11px 12px;
+  background:rgba(255,255,255,.035);
+  line-height:1.4;
+}
+.dymivra750-dot{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  background:rgba(34,211,238,.10);
+  border:1px solid rgba(34,211,238,.14);
+}
+@media(max-width:1120px){
+  .dymivra750-grid,.dymivra750-metrics,.dymivra750-fields,.dymivra750-actions{grid-template-columns:1fr}
+}
+.performance-mode .dymivra750-market,
+.performance-mode .dymivra750-card,
+.performance-mode .dymivra750-metric{
+  box-shadow:none!important;
+  backdrop-filter:none!important;
 }
 
 </style>
@@ -5153,10 +5296,87 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
         </div>
 
         
+        
+        <div id="dymivra750MarketPanel" class="dymivra750-market">
+          <div class="dymivra750-head">
+            <div>
+              <div class="kicker">Dymivra 7.5.0 • Radar de Mercado</div>
+              <div class="dymivra750-title">Cenário de mercado conectado</div>
+              <div class="muted">Leitura educativa de juros, inflação, câmbio, bolsa e cripto para cruzar com a carteira. Não recomenda compra ou venda.</div>
+            </div>
+            <span id="dymivra750Status" class="dymivra750-status manual">Modo manual seguro</span>
+          </div>
+          <div class="dymivra750-grid">
+            <div class="dymivra750-card">
+              <strong>Snapshot de mercado</strong>
+              <div class="muted">Preencha manualmente agora ou conecte depois uma Edge Function/API de mercado. O app nunca inventa cotação real.</div>
+              <div class="dymivra750-fields">
+                <div>
+                  <label>Selic / juros (%)</label>
+                  <input id="marketSelic" type="number" step="0.01" placeholder="Ex: 10.50" />
+                </div>
+                <div>
+                  <label>Inflação/IPCA (%)</label>
+                  <input id="marketInflation" type="number" step="0.01" placeholder="Ex: 4.20" />
+                </div>
+                <div>
+                  <label>Dólar (R$)</label>
+                  <input id="marketDollar" type="number" step="0.01" placeholder="Ex: 5.15" />
+                </div>
+                <div>
+                  <label>Ibovespa (%)</label>
+                  <input id="marketIbov" type="number" step="0.01" placeholder="Variação do dia/mês" />
+                </div>
+                <div>
+                  <label>Bitcoin (%)</label>
+                  <input id="marketBtc" type="number" step="0.01" placeholder="Variação do dia/mês" />
+                </div>
+                <div>
+                  <label>FIIs (%)</label>
+                  <input id="marketFiis" type="number" step="0.01" placeholder="Variação IFIX/FIIs" />
+                </div>
+              </div>
+              <div class="dymivra750-actions">
+                <button type="button" onclick="updateDymivra750MarketRadar()">Analisar mercado</button>
+                <button type="button" class="secondary" onclick="fetchDymivra750MarketRadar()">Buscar via backend</button>
+                <button type="button" class="secondary" onclick="copyDymivra750MarketReport()">Copiar mercado</button>
+              </div>
+              <div class="status status-info" id="dymivra750FetchStatus"></div>
+            </div>
+            <div class="dymivra750-card">
+              <strong>Leitura educativa do cenário</strong>
+              <div id="dymivra750MarketAnalysis" class="dymivra750-analysis">
+                Informe os dados de mercado ou conecte o backend para gerar a leitura.
+              </div>
+              <div class="dymivra750-metrics">
+                <div class="dymivra750-metric">
+                  <div class="label">Pressão de juros</div>
+                  <div id="dymivra750RatePressure" class="value small">—</div>
+                </div>
+                <div class="dymivra750-metric">
+                  <div class="label">Apetite a risco</div>
+                  <div id="dymivra750RiskAppetite" class="value small">—</div>
+                </div>
+                <div class="dymivra750-metric">
+                  <div class="label">Atenção cambial</div>
+                  <div id="dymivra750FxAttention" class="value small">—</div>
+                </div>
+              </div>
+              <div class="dymivra750-list" id="dymivra750MarketSteps">
+                <div class="dymivra750-row"><div class="dymivra750-dot">📌</div><div>Atualize os indicadores para cruzar mercado + carteira + metas.</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="ai-disclaimer" style="margin-top:14px">
+            <strong>Aviso:</strong> dados de mercado precisam vir de fonte confiável. Esta leitura é educativa e não é recomendação individualizada.
+          </div>
+        </div>
+
+
         <div id="dymivra740Panel" class="dymivra740-panel">
           <div class="dymivra740-head">
             <div>
-              <div class="kicker">Dymivra 7.4.1 • Radar IA Pro visível</div>
+              <div class="kicker">Dymivra 7.5.0 • Radar IA Pro visível</div>
               <div class="dymivra740-title">Análise Pro da carteira</div>
               <div class="muted">Nova camada avançada: score de atenção, postura sugerida, matriz de risco e próximos passos educativos.</div>
             </div>
@@ -8903,7 +9123,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
       const market=smartAdvisorScenario();
       const alerts=buildSmartAdvisorAlerts();
       const txt=[
-        'DYMIVRA 7.4.1 — RADAR IA PRO',
+        'DYMIVRA 7.5.0 — RADAR IA PRO',
         `Plano: ${currentWealthPlanConfig().name}`,
         `Patrimônio: ${money(ctx.totals.cur)}`,
         `Score IA: ${ctx.state.score}/100`,
@@ -8994,7 +9214,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
     });
 
     /* =========================
-       Dymivra 7.4.1 • Radar IA Pro
+       Dymivra 7.5.0 • Radar IA Pro
        Camada isolada: melhora leitura do Radar sem mexer no core.
        ========================= */
     function dymivra740SafeMoney(value){
@@ -9045,7 +9265,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
       panel.innerHTML=`
         <div class="dymivra740-head">
           <div>
-            <div class="kicker">Dymivra 7.4.1 • Radar IA Pro</div>
+            <div class="kicker">Dymivra 7.5.0 • Radar IA Pro</div>
             <div class="dymivra740-title">Leitura avançada da carteira</div>
             <div class="muted">Combina carteira, meta, renda passiva, cenário manual de mercado e alertas para indicar pontos de atenção.</div>
           </div>
@@ -9129,12 +9349,12 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
     try{
       const dymivra740OriginalRenderSmartAdvisor=renderSmartAdvisor;
       renderSmartAdvisor=function(){
-        try{dymivra740OriginalRenderSmartAdvisor.apply(this,arguments)}catch(e){console.warn('Dymivra 7.4.1: render original falhou',e)}
-        try{renderDymivra740RadarPro()}catch(e){console.warn('Dymivra 7.4.1: render pro falhou',e)}
+        try{dymivra740OriginalRenderSmartAdvisor.apply(this,arguments)}catch(e){console.warn('Dymivra 7.5.0: render original falhou',e)}
+        try{renderDymivra740RadarPro()}catch(e){console.warn('Dymivra 7.5.0: render pro falhou',e)}
       };
       window.renderSmartAdvisor=renderSmartAdvisor;
     }catch(e){
-      console.warn('Dymivra 7.4.1: não foi possível acoplar Radar Pro.',e);
+      console.warn('Dymivra 7.5.0: não foi possível acoplar Radar Pro.',e);
     }
     try{
       const dymivra740OriginalCopySmartAdvisor=window.copySmartAdvisorReport;
@@ -9143,7 +9363,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
           const data=dymivra740AdvisorData();
           const ctx=data.ctx;
           const report=[
-            'DYMIVRA 7.4.1 — RADAR IA PRO',
+            'DYMIVRA 7.5.0 — RADAR IA PRO',
             `Plano: ${data.plan.name}`,
             `Domínio oficial: https://www.dymivra.pro`,
             `Patrimônio analisado: ${dymivra740SafeMoney(ctx.totals?.cur)}`,
@@ -9169,7 +9389,194 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
     setTimeout(()=>{try{renderDymivra740RadarPro()}catch{}},300);
     setTimeout(()=>{try{renderDymivra740RadarPro()}catch{}},1200);
 
-    /* Dymivra 7.4.1 • reforço de render do Radar Pro visível */
+
+    /* =========================
+       Dymivra 7.5.0 • Radar de Mercado
+       Busca opcional por backend + fallback manual seguro.
+       ========================= */
+    function dymivra750Num(id){
+      const el=$(id);
+      if(!el)return null;
+      const raw=String(el.value||'').replace(',','.');
+      const n=Number(raw);
+      return Number.isFinite(n)?n:null;
+    }
+    function dymivra750Set(id,value){
+      const el=$(id);
+      if(el)el.textContent=value;
+    }
+    function dymivra750Status(type,text){
+      const el=$('dymivra750Status');
+      if(!el)return;
+      el.className='dymivra750-status '+(type||'manual');
+      el.textContent=text||'Modo manual seguro';
+    }
+    function dymivra750MarketSnapshot(){
+      return {
+        selic: dymivra750Num('marketSelic'),
+        inflation: dymivra750Num('marketInflation'),
+        dollar: dymivra750Num('marketDollar'),
+        ibov: dymivra750Num('marketIbov'),
+        btc: dymivra750Num('marketBtc'),
+        fiis: dymivra750Num('marketFiis'),
+        updatedAt: new Date().toISOString()
+      };
+    }
+    function dymivra750ClassifyMarket(s){
+      const highRates = s.selic!==null && s.selic>=10;
+      const inflationPressure = s.inflation!==null && s.inflation>=5;
+      const dollarPressure = s.dollar!==null && s.dollar>=5.5;
+      const riskOff = (s.ibov!==null && s.ibov<0) || (s.btc!==null && s.btc<-3) || (s.fiis!==null && s.fiis<0);
+      const riskOn = (s.ibov!==null && s.ibov>0) && (s.btc===null || s.btc>=0);
+      return {
+        highRates,
+        inflationPressure,
+        dollarPressure,
+        riskOff,
+        riskOn,
+        ratePressure: highRates ? 'Alta' : inflationPressure ? 'Moderada' : 'Controlada',
+        riskAppetite: riskOff ? 'Baixo / cauteloso' : riskOn ? 'Positivo com disciplina' : 'Neutro',
+        fxAttention: dollarPressure ? 'Alta' : s.dollar!==null ? 'Monitorar' : 'Sem dado',
+      };
+    }
+    function dymivra750BuildMarketText(s,c){
+      const parts=[];
+      if(s.selic!==null)parts.push(`juros em ${s.selic.toFixed(2)}%`);
+      if(s.inflation!==null)parts.push(`inflação em ${s.inflation.toFixed(2)}%`);
+      if(s.dollar!==null)parts.push(`dólar em R$ ${s.dollar.toFixed(2)}`);
+      if(s.ibov!==null)parts.push(`Ibovespa ${s.ibov.toFixed(2)}%`);
+      if(s.btc!==null)parts.push(`Bitcoin ${s.btc.toFixed(2)}%`);
+      if(s.fiis!==null)parts.push(`FIIs ${s.fiis.toFixed(2)}%`);
+      const base = parts.length ? `Snapshot informado: ${parts.join(', ')}.` : 'Nenhum indicador foi informado ainda.';
+      let reading = 'Cenário neutro: priorize dados atualizados, diversificação e revisão periódica.';
+      if(c.highRates && c.inflationPressure) reading='Juros e inflação pressionados: atenção a liquidez, custo de oportunidade, renda fixa, dívidas e metas de longo prazo.';
+      else if(c.highRates) reading='Juros elevados: atenção ao custo de oportunidade, caixa, renda fixa e ao ritmo de aportes.';
+      else if(c.riskOff) reading='Mercado em modo cautela: evite decisões emocionais e revise concentração antes de agir.';
+      else if(c.riskOn) reading='Mercado positivo: mantenha disciplina, não confunda alta com garantia e revise risco antes de novos aportes.';
+      if(c.dollarPressure) reading += ' Dólar pressionado aumenta a importância de monitorar exposição cambial e ativos dolarizados.';
+      return `${base} ${reading}`;
+    }
+    function dymivra750Steps(s,c){
+      const steps=[];
+      if(c.highRates)steps.push(['🏦','Revisar caixa, liquidez e custo de oportunidade antes de aumentar risco.']);
+      if(c.inflationPressure)steps.push(['🛒','Conferir se metas e aportes estão protegidos contra perda de poder de compra.']);
+      if(c.dollarPressure)steps.push(['💱','Mapear exposição cambial direta e indireta da carteira.']);
+      if(c.riskOff)steps.push(['🧘','Evitar decisões impulsivas em queda; revisar dados e estratégia antes de alterar posições.']);
+      if(c.riskOn)steps.push(['📈','Em mercado positivo, revisar concentração e não assumir que o movimento continuará.']);
+      if(!steps.length)steps.push(['📌','Manter atualização mensal de indicadores e carteira para melhorar o Radar IA Pro.']);
+      steps.push(['⚖️','Cruzar cenário com perfil, meta, liquidez e horizonte antes de qualquer decisão.']);
+      return steps.slice(0,5);
+    }
+    function renderDymivra750Market(snapshot,source){
+      const s=snapshot||dymivra750MarketSnapshot();
+      const c=dymivra750ClassifyMarket(s);
+      dymivra750Set('dymivra750RatePressure',c.ratePressure);
+      dymivra750Set('dymivra750RiskAppetite',c.riskAppetite);
+      dymivra750Set('dymivra750FxAttention',c.fxAttention);
+      const analysis=$('dymivra750MarketAnalysis');
+      if(analysis)analysis.textContent=dymivra750BuildMarketText(s,c);
+      const steps=$('dymivra750MarketSteps');
+      if(steps){
+        steps.innerHTML=dymivra750Steps(s,c).map(([icon,text])=>`<div class="dymivra750-row"><div class="dymivra750-dot">${icon}</div><div>${esc(text)}</div></div>`).join('');
+      }
+      dymivra750Status(source==='backend'?'online':'manual',source==='backend'?'Backend conectado':'Modo manual seguro');
+      try{localStorage.setItem('dymivra_market_snapshot_v1',JSON.stringify(s));}catch{}
+      try{
+        const scenario=$('smartMarketScenario');
+        const note=$('smartMarketNote');
+        if(scenario){
+          if(c.riskOff)scenario.value='bearish';
+          else if(c.highRates)scenario.value='high_rates';
+          else if(c.riskOn)scenario.value='bullish';
+          else scenario.value='neutral';
+        }
+        if(note)note.value=dymivra750BuildMarketText(s,c).slice(0,280);
+        if(typeof renderSmartAdvisor==='function')renderSmartAdvisor();
+      }catch(e){}
+    }
+    function updateDymivra750MarketRadar(){
+      renderDymivra750Market(dymivra750MarketSnapshot(),'manual');
+      toast('Radar de Mercado atualizado.','success');
+    }
+    async function fetchDymivra750MarketRadar(){
+      const status=$('dymivra750FetchStatus');
+      if(status){status.textContent='Tentando buscar mercado via backend...';status.className='status status-info'}
+      try{
+        if(!sb)throw new Error('Supabase indisponível.');
+        const {data,error}=await sb.functions.invoke('market-radar',{body:{app:'Dymivra',version:'7.5.0'}});
+        if(error)throw error;
+        const payload=data&&data.market?data.market:data;
+        if(!payload)throw new Error('Backend não retornou dados de mercado.');
+        const map={
+          selic:Number(payload.selic ?? payload.rate ?? payload.interest ?? NaN),
+          inflation:Number(payload.inflation ?? payload.ipca ?? NaN),
+          dollar:Number(payload.dollar ?? payload.usdbrl ?? NaN),
+          ibov:Number(payload.ibov ?? payload.ibovespa ?? NaN),
+          btc:Number(payload.btc ?? payload.bitcoin ?? NaN),
+          fiis:Number(payload.fiis ?? payload.ifix ?? NaN),
+          updatedAt:payload.updatedAt || new Date().toISOString()
+        };
+        Object.entries({marketSelic:map.selic,marketInflation:map.inflation,marketDollar:map.dollar,marketIbov:map.ibov,marketBtc:map.btc,marketFiis:map.fiis}).forEach(([id,val])=>{
+          const el=$(id); if(el && Number.isFinite(val))el.value=String(val);
+        });
+        renderDymivra750Market({
+          selic:Number.isFinite(map.selic)?map.selic:null,
+          inflation:Number.isFinite(map.inflation)?map.inflation:null,
+          dollar:Number.isFinite(map.dollar)?map.dollar:null,
+          ibov:Number.isFinite(map.ibov)?map.ibov:null,
+          btc:Number.isFinite(map.btc)?map.btc:null,
+          fiis:Number.isFinite(map.fiis)?map.fiis:null,
+          updatedAt:map.updatedAt
+        },'backend');
+        if(status){status.textContent='Mercado atualizado pelo backend.';status.className='status status-success'}
+      }catch(e){
+        console.warn('Dymivra 7.5.0 market backend fallback:',e);
+        dymivra750Status('manual','Backend não conectado');
+        if(status){status.textContent='Backend de mercado ainda não conectado. Use o modo manual por enquanto.';status.className='status status-info'}
+        renderDymivra750Market(dymivra750MarketSnapshot(),'manual');
+      }
+    }
+    function copyDymivra750MarketReport(){
+      const s=dymivra750MarketSnapshot();
+      const c=dymivra750ClassifyMarket(s);
+      const report=[
+        'DYMIVRA 7.5.0 — RADAR DE MERCADO',
+        'Domínio oficial: https://www.dymivra.pro',
+        `Selic/Juros: ${s.selic===null?'sem dado':s.selic.toFixed(2)+'%'}`,
+        `Inflação/IPCA: ${s.inflation===null?'sem dado':s.inflation.toFixed(2)+'%'}`,
+        `Dólar: ${s.dollar===null?'sem dado':'R$ '+s.dollar.toFixed(2)}`,
+        `Ibovespa: ${s.ibov===null?'sem dado':s.ibov.toFixed(2)+'%'}`,
+        `Bitcoin: ${s.btc===null?'sem dado':s.btc.toFixed(2)+'%'}`,
+        `FIIs: ${s.fiis===null?'sem dado':s.fiis.toFixed(2)+'%'}`,
+        '',
+        `Pressão de juros: ${c.ratePressure}`,
+        `Apetite a risco: ${c.riskAppetite}`,
+        `Atenção cambial: ${c.fxAttention}`,
+        '',
+        dymivra750BuildMarketText(s,c),
+        '',
+        'Aviso: conteúdo educativo. Não é recomendação individualizada de compra, venda ou manutenção de investimentos.'
+      ].join('\n');
+      copyTextSafe(report,'Radar de Mercado copiado.');
+    }
+    function dymivra750RestoreMarket(){
+      try{
+        const saved=JSON.parse(localStorage.getItem('dymivra_market_snapshot_v1')||'null');
+        if(saved){
+          const fill={marketSelic:saved.selic,marketInflation:saved.inflation,marketDollar:saved.dollar,marketIbov:saved.ibov,marketBtc:saved.btc,marketFiis:saved.fiis};
+          Object.entries(fill).forEach(([id,val])=>{const el=$(id);if(el && val!==null && val!==undefined)el.value=String(val)});
+          renderDymivra750Market(saved,'manual');
+        }
+      }catch{}
+    }
+    window.updateDymivra750MarketRadar=updateDymivra750MarketRadar;
+    window.fetchDymivra750MarketRadar=fetchDymivra750MarketRadar;
+    window.copyDymivra750MarketReport=copyDymivra750MarketReport;
+    setTimeout(dymivra750RestoreMarket,500);
+    setTimeout(()=>{try{if($('dymivra750MarketPanel'))renderDymivra750Market(dymivra750MarketSnapshot(),'manual')}catch{}},1500);
+
+
+    /* Dymivra 7.5.0 • reforço de render do Radar Pro visível */
     try{
       document.addEventListener('click', function(ev){
         const btn = ev.target && ev.target.closest ? ev.target.closest('[data-screen], .nav-btn') : null;
