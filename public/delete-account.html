@@ -2,452 +2,76 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Exclusão de Conta e Dados | Wealth OS</title>
-  <meta name="description" content="Solicite a exclusão da sua conta e dos dados associados ao Wealth OS." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#07111f" />
-
+  <title>Exclusão de Conta e Dados — Dymivra</title>
   <style>
-    :root {
-      --bg: #030712;
-      --line: rgba(255, 255, 255, .10);
-      --line2: rgba(56, 189, 248, .28);
-      --text: #f8fafc;
-      --muted: #9ca3af;
-      --muted2: #cbd5e1;
-      --cyan: #22d3ee;
-      --green: #86efac;
-      --warning: #fbbf24;
-      --danger: #fb7185;
-      --radius: 28px;
-      --shadow: 0 30px 80px rgba(0, 0, 0, .45);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 20% 0%, rgba(34, 211, 238, .18), transparent 32%),
-        radial-gradient(circle at 85% 15%, rgba(59, 130, 246, .16), transparent 35%),
-        linear-gradient(180deg, #020617 0%, #06111f 42%, #020617 100%);
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-      background-size: 42px 42px;
-      opacity: .25;
-      pointer-events: none;
-      mask-image: linear-gradient(to bottom, black, transparent 85%);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .wrap {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 32px 0 64px;
-    }
-
-    .hero {
-      position: relative;
-      padding: 34px;
-      border: 1px solid var(--line2);
-      border-radius: 36px;
-      background:
-        linear-gradient(135deg, rgba(14, 165, 233, .16), rgba(15, 23, 42, .92)),
-        rgba(8, 15, 31, .86);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 420px;
-      height: 420px;
-      right: -150px;
-      top: -180px;
-      background: radial-gradient(circle, rgba(34, 211, 238, .24), transparent 65%);
-      filter: blur(10px);
-    }
-
-    .brand {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 30px;
-    }
-
-    .logo {
-      width: 72px;
-      height: 72px;
-      border-radius: 24px;
-      display: grid;
-      place-items: center;
-      background:
-        linear-gradient(145deg, rgba(34, 211, 238, .28), rgba(37, 99, 235, .16)),
-        rgba(15, 23, 42, .8);
-      border: 1px solid rgba(125, 211, 252, .26);
-      box-shadow: 0 18px 46px rgba(34, 211, 238, .16);
-      font-size: 36px;
-    }
-
-    h1 {
-      position: relative;
-      z-index: 2;
-      margin: 0;
-      font-size: clamp(2.4rem, 8vw, 5.5rem);
-      line-height: .92;
-      letter-spacing: -0.08em;
-    }
-
-    .subtitle {
-      position: relative;
-      z-index: 2;
-      margin: 18px 0 0;
-      max-width: 780px;
-      color: var(--muted2);
-      font-size: clamp(1.05rem, 2.4vw, 1.35rem);
-      line-height: 1.65;
-    }
-
-    .badges {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .badge {
-      padding: 12px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, .22);
-      background: rgba(15, 23, 42, .62);
-      color: var(--muted2);
-      font-weight: 800;
-      font-size: .92rem;
-    }
-
-    .badge.danger {
-      color: #fecdd3;
-      border-color: rgba(251, 113, 133, .34);
-      background: rgba(127, 29, 29, .18);
-    }
-
-    .nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 24px 0;
-    }
-
-    .nav a {
-      padding: 12px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(15, 23, 42, .72);
-      color: var(--muted2);
-      font-weight: 800;
-      transition: .2s ease;
-    }
-
-    .nav a:hover {
-      border-color: rgba(34, 211, 238, .45);
-      color: white;
-      transform: translateY(-1px);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
-
-    .card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(180deg, rgba(15, 23, 42, .92), rgba(2, 6, 23, .9));
-      box-shadow: 0 22px 70px rgba(0, 0, 0, .30);
-      padding: 26px;
-    }
-
-    .card h2 {
-      margin: 0 0 14px;
-      font-size: clamp(1.35rem, 3vw, 2rem);
-      letter-spacing: -.04em;
-    }
-
-    .card h3 {
-      margin: 22px 0 8px;
-    }
-
-    .card p,
-    .card li {
-      color: var(--muted2);
-      font-size: 1rem;
-      line-height: 1.75;
-    }
-
-    .card ul,
-    .card ol {
-      padding-left: 22px;
-      margin: 10px 0 0;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 14px;
-      padding: 15px 18px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #fb7185, #f97316);
-      color: #fff7ed;
-      font-weight: 950;
-      box-shadow: 0 18px 40px rgba(251, 113, 133, .18);
-    }
-
-    .button.secondary {
-      background: rgba(15, 23, 42, .75);
-      color: white;
-      border: 1px solid rgba(148, 163, 184, .22);
-      box-shadow: none;
-    }
-
-    .alert {
-      border-color: rgba(251, 191, 36, .28);
-      background:
-        linear-gradient(180deg, rgba(120, 53, 15, .24), rgba(15, 23, 42, .9));
-    }
-
-    .alert strong {
-      color: #fde68a;
-    }
-
-    .danger-card {
-      border-color: rgba(251, 113, 133, .30);
-      background:
-        linear-gradient(180deg, rgba(127, 29, 29, .20), rgba(15, 23, 42, .92));
-    }
-
-    .danger-card strong {
-      color: #fecdd3;
-    }
-
-    .footer {
-      margin-top: 22px;
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      background: rgba(2, 6, 23, .58);
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .footer strong {
-      color: var(--text);
-    }
-
-    .top {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 20;
-      padding: 13px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(34, 211, 238, .32);
-      background: rgba(2, 6, 23, .78);
-      color: white;
-      font-weight: 900;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 18px 45px rgba(0,0,0,.35);
-    }
-
-    @media (max-width: 700px) {
-      .wrap {
-        width: min(100% - 22px, 1120px);
-        padding-top: 18px;
-      }
-
-      .hero,
-      .card {
-        padding: 22px;
-      }
-
-      .brand {
-        align-items: flex-start;
-      }
-
-      .logo {
-        width: 62px;
-        height: 62px;
-        border-radius: 20px;
-      }
-    }
-  </style>
+:root{--bg:#030712;--bg2:#07111f;--card:rgba(8,15,31,.92);--line:rgba(255,255,255,.10);--text:#f8fafc;--muted:#9fb3d5;--cyan:#22d3ee;--blue:#0ea5e9;--green:#22c55e;--orange:#fb923c;--red:#ef4444}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Inter,Arial,sans-serif;color:var(--text);background:radial-gradient(circle at 0 0,rgba(14,165,233,.18),transparent 25%),radial-gradient(circle at 100% 0,rgba(34,211,238,.08),transparent 28%),linear-gradient(180deg,var(--bg),var(--bg2));line-height:1.65}
+.container{max-width:980px;margin:auto;padding:28px 18px 64px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:26px;box-shadow:0 18px 45px rgba(0,0,0,.28)}
+.brand{display:flex;gap:14px;align-items:center;margin-bottom:18px}
+.logo{width:64px;height:64px;border-radius:22px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(14,165,233,.85),rgba(34,211,238,.25));border:1px solid rgba(255,255,255,.12);font-weight:950;font-size:30px}
+.brand strong{display:block;font-size:22px}.brand span{display:block;color:var(--muted)}
+h1{font-size:clamp(34px,6vw,62px);line-height:.98;letter-spacing:-.08em;margin:0 0 12px}
+h2{font-size:24px;letter-spacing:-.04em;margin:32px 0 8px}
+p,li{color:#dbeafe}
+.muted{color:var(--muted)}
+.notice{border:1px solid rgba(34,211,238,.24);background:rgba(34,211,238,.08);border-radius:18px;padding:14px 16px;margin:18px 0;color:#e0f2fe}
+.warn{border-color:rgba(251,146,60,.30);background:rgba(251,146,60,.08);color:#ffedd5}
+.danger{border-color:rgba(239,68,68,.30);background:rgba(239,68,68,.08);color:#fee2e2}
+.contact{border:1px solid rgba(255,255,255,.11);background:rgba(255,255,255,.04);border-radius:18px;padding:16px;margin:16px 0}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.nav a{display:inline-flex;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:#e0f2fe;text-decoration:none;font-weight:800}
+ul{padding-left:20px}
+a{color:#67e8f9}
+.footer{margin-top:28px;color:var(--muted);font-size:13px}
+</style>
 </head>
-
 <body>
-  <a class="top" href="#top">↑ Topo</a>
-
-  <main id="top" class="wrap">
-    <section class="hero">
+  <main class="container">
+    <section class="card">
       <div class="brand">
         <div class="logo">💎</div>
         <div>
-          <strong>Wealth OS</strong>
-          <div style="color: var(--muted); margin-top: 4px;">Sistema premium para organização financeira</div>
+          <strong>Dymivra</strong>
+          <span>Sistema para organização financeira pessoal</span>
         </div>
       </div>
-
       <h1>Exclusão de Conta e Dados</h1>
-      <p class="subtitle">
-        Use esta página para solicitar a exclusão da sua conta Wealth OS e dos dados associados ao seu cadastro.
-      </p>
+      <p class="muted">Solicitação de exclusão da conta Dymivra e dados associados.</p>
+      
+<div class="notice warn">
+  Use esta página para solicitar a exclusão da sua conta Dymivra e dos dados associados ao seu cadastro.
+</div>
 
-      <div class="badges">
-        <span class="badge danger">Solicitação oficial</span>
-        <span class="badge">Contato: suportewealthos@gmail.com</span>
-        <span class="badge">Última atualização: 25/04/2026</span>
+<h2>Como solicitar exclusão</h2>
+<p>Envie uma solicitação pelo canal de suporte oficial informado no aplicativo, usando o mesmo e-mail cadastrado na sua conta.</p>
+
+<div class="contact">
+  <p><strong>Assunto sugerido:</strong> Exclusão de conta Dymivra</p>
+  <p><strong>Mensagem sugerida:</strong> Solicito a exclusão da minha conta Dymivra e dos dados associados ao meu cadastro.</p>
+</div>
+
+<h2>Prazo e confirmação</h2>
+<p>Após recebermos a solicitação, poderemos confirmar a titularidade da conta antes de realizar a exclusão. Dados podem ser mantidos quando necessário para cumprir obrigações legais, segurança, prevenção a fraudes ou defesa de direitos.</p>
+
+<h2>Importante</h2>
+<p>A exclusão pode remover histórico, metas, ledger, projeções, alertas e demais informações vinculadas à conta. Essa ação pode ser irreversível.</p>
+
+<p class="muted">Última atualização: 01/05/2026</p>
+
+      <div class="nav">
+        <a href="/">Início</a>
+        <a href="/privacy.html">Política de Privacidade</a>
+        <a href="/terms.html">Termos de Uso</a>
+        <a href="/delete-account.html">Exclusão de Conta</a>
+        <a href="/support.html">Suporte</a>
+        <a href="/disclaimer.html">Aviso Legal</a>
       </div>
+      <p class="footer">© 2026 Dymivra. Página oficial do aplicativo.</p>
     </section>
-
-    <nav class="nav">
-      <a href="/index.html">Início</a>
-      <a href="/privacy.html">Política de Privacidade</a>
-      <a href="/terms.html">Termos de Uso</a>
-      <a href="/support.html">Suporte</a>
-    </nav>
-
-    <section class="grid">
-      <article class="card danger-card">
-        <h2>Solicitar exclusão da conta</h2>
-        <p>
-          Para solicitar a exclusão da sua conta Wealth OS, envie um e-mail para o suporte oficial usando o mesmo e-mail cadastrado no aplicativo, sempre que possível.
-        </p>
-        <p>
-          No e-mail, informe que deseja excluir sua conta e os dados associados.
-        </p>
-
-        <a class="button" href="mailto:suportewealthos@gmail.com?subject=Solicita%C3%A7%C3%A3o%20de%20exclus%C3%A3o%20de%20conta%20-%20Wealth%20OS&body=Ol%C3%A1%2C%20quero%20solicitar%20a%20exclus%C3%A3o%20da%20minha%20conta%20Wealth%20OS%20e%20dos%20dados%20associados.%0A%0AE-mail%20da%20conta%3A%20%0AConfirma%C3%A7%C3%A3o%3A%20Solicito%20a%20exclus%C3%A3o%20da%20minha%20conta%20e%20dos%20dados%20vinculados.%0A">
-          Solicitar exclusão por e-mail
-        </a>
-      </article>
-
-      <article class="card">
-        <h2>Como solicitar pelo aplicativo</h2>
-        <p>
-          Dentro do app Wealth OS, você também pode iniciar a solicitação pela área legal e de suporte.
-        </p>
-        <ol>
-          <li>Abra o aplicativo Wealth OS.</li>
-          <li>Acesse a aba <strong>Legal</strong> ou <strong>Suporte</strong>.</li>
-          <li>Toque em <strong>Solicitar exclusão</strong>.</li>
-          <li>Envie o e-mail com a solicitação usando a conta associada ao cadastro.</li>
-        </ol>
-      </article>
-
-      <article class="card">
-        <h2>Dados que podem ser excluídos</h2>
-        <p>
-          Após confirmação da solicitação, podemos excluir ou anonimizar dados associados à conta, incluindo:
-        </p>
-        <ul>
-          <li>Conta de usuário vinculada ao e-mail.</li>
-          <li>Dados de perfil.</li>
-          <li>Carteira, ativos e categorias cadastradas.</li>
-          <li>Movimentações, histórico, metas e projeções.</li>
-          <li>Dados de organização financeira inseridos pelo próprio usuário.</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h2>Dados que podem ser mantidos temporariamente</h2>
-        <p>
-          Alguns dados podem ser mantidos por período limitado quando necessário para:
-        </p>
-        <ul>
-          <li>Cumprimento de obrigações legais.</li>
-          <li>Segurança, prevenção de abuso ou fraude.</li>
-          <li>Registros técnicos de auditoria e integridade do serviço.</li>
-          <li>Backups temporários até o ciclo normal de substituição ou remoção.</li>
-        </ul>
-        <p>
-          Quando não houver necessidade legítima de retenção, os dados serão removidos ou anonimizados.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>Prazo de processamento</h2>
-        <p>
-          Após o recebimento da solicitação, o Wealth OS poderá solicitar confirmação de identidade ou confirmação do e-mail cadastrado antes de concluir a exclusão.
-        </p>
-        <p>
-          O processamento será realizado em prazo razoável, considerando validação da conta, segurança, sistemas de armazenamento e backups.
-        </p>
-      </article>
-
-      <article class="card alert">
-        <h2>Importante</h2>
-        <p>
-          <strong>A exclusão da conta pode ser irreversível.</strong>
-          Depois que a conta e os dados associados forem removidos, pode não ser possível recuperar carteira, histórico, metas, movimentações ou demais informações cadastradas no Wealth OS.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>Antes de solicitar</h2>
-        <p>
-          Recomendamos que o usuário revise seus dados e salve qualquer informação que deseje manter antes de solicitar a exclusão definitiva da conta.
-        </p>
-      </article>
-
-      <article class="card">
-        <h2>Contato oficial</h2>
-        <p>
-          E-mail para exclusão de conta e suporte:
-        </p>
-        <p>
-          <strong>suportewealthos@gmail.com</strong>
-        </p>
-        <p>
-          Site oficial:
-        </p>
-        <p>
-          <strong>https://www.wealthos.pro</strong>
-        </p>
-      </article>
-    </section>
-
-    <footer class="footer">
-      <strong>Wealth OS</strong><br />
-      Página oficial para solicitação de exclusão de conta e dados do aplicativo Wealth OS.<br />
-      Última atualização: 25/04/2026.
-    </footer>
   </main>
 </body>
 </html>
