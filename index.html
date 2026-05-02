@@ -3974,7 +3974,7 @@ html:not(.modal-open){
 
 
 /* =========================
-   Dymivra 7.5.0 • Radar IA Pro
+   Dymivra 7.5.2 • Radar IA Pro
    Camada visual isolada, sem alterar base do app.
    ========================= */
 .dymivra740-panel{
@@ -4100,7 +4100,7 @@ html:not(.modal-open){
 
 
 /* =========================
-   Dymivra 7.5.0 • Radar de Mercado
+   Dymivra 7.5.2 • Radar de Mercado
    Camada isolada, sem alterar core do app.
    ========================= */
 .dymivra750-market{
@@ -5300,7 +5300,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
         <div id="dymivra750MarketPanel" class="dymivra750-market">
           <div class="dymivra750-head">
             <div>
-              <div class="kicker">Dymivra 7.5.0 • Radar de Mercado</div>
+              <div class="kicker">Dymivra 7.5.2 • Radar de Mercado</div>
               <div class="dymivra750-title">Cenário de mercado conectado</div>
               <div class="muted">Leitura educativa de juros, inflação, câmbio, bolsa e cripto para cruzar com a carteira. Não recomenda compra ou venda.</div>
             </div>
@@ -5376,7 +5376,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
         <div id="dymivra740Panel" class="dymivra740-panel">
           <div class="dymivra740-head">
             <div>
-              <div class="kicker">Dymivra 7.5.0 • Radar IA Pro visível</div>
+              <div class="kicker">Dymivra 7.5.2 • Radar IA Pro visível</div>
               <div class="dymivra740-title">Análise Pro da carteira</div>
               <div class="muted">Nova camada avançada: score de atenção, postura sugerida, matriz de risco e próximos passos educativos.</div>
             </div>
@@ -9123,7 +9123,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
       const market=smartAdvisorScenario();
       const alerts=buildSmartAdvisorAlerts();
       const txt=[
-        'DYMIVRA 7.5.0 — RADAR IA PRO',
+        'DYMIVRA 7.5.2 — RADAR IA PRO',
         `Plano: ${currentWealthPlanConfig().name}`,
         `Patrimônio: ${money(ctx.totals.cur)}`,
         `Score IA: ${ctx.state.score}/100`,
@@ -9214,7 +9214,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
     });
 
     /* =========================
-       Dymivra 7.5.0 • Radar IA Pro
+       Dymivra 7.5.2 • Radar IA Pro
        Camada isolada: melhora leitura do Radar sem mexer no core.
        ========================= */
     function dymivra740SafeMoney(value){
@@ -9265,7 +9265,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
       panel.innerHTML=`
         <div class="dymivra740-head">
           <div>
-            <div class="kicker">Dymivra 7.5.0 • Radar IA Pro</div>
+            <div class="kicker">Dymivra 7.5.2 • Radar IA Pro</div>
             <div class="dymivra740-title">Leitura avançada da carteira</div>
             <div class="muted">Combina carteira, meta, renda passiva, cenário manual de mercado e alertas para indicar pontos de atenção.</div>
           </div>
@@ -9349,12 +9349,12 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
     try{
       const dymivra740OriginalRenderSmartAdvisor=renderSmartAdvisor;
       renderSmartAdvisor=function(){
-        try{dymivra740OriginalRenderSmartAdvisor.apply(this,arguments)}catch(e){console.warn('Dymivra 7.5.0: render original falhou',e)}
-        try{renderDymivra740RadarPro()}catch(e){console.warn('Dymivra 7.5.0: render pro falhou',e)}
+        try{dymivra740OriginalRenderSmartAdvisor.apply(this,arguments)}catch(e){console.warn('Dymivra 7.5.2: render original falhou',e)}
+        try{renderDymivra740RadarPro()}catch(e){console.warn('Dymivra 7.5.2: render pro falhou',e)}
       };
       window.renderSmartAdvisor=renderSmartAdvisor;
     }catch(e){
-      console.warn('Dymivra 7.5.0: não foi possível acoplar Radar Pro.',e);
+      console.warn('Dymivra 7.5.2: não foi possível acoplar Radar Pro.',e);
     }
     try{
       const dymivra740OriginalCopySmartAdvisor=window.copySmartAdvisorReport;
@@ -9363,7 +9363,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
           const data=dymivra740AdvisorData();
           const ctx=data.ctx;
           const report=[
-            'DYMIVRA 7.5.0 — RADAR IA PRO',
+            'DYMIVRA 7.5.2 — RADAR IA PRO',
             `Plano: ${data.plan.name}`,
             `Domínio oficial: https://www.dymivra.pro`,
             `Patrimônio analisado: ${dymivra740SafeMoney(ctx.totals?.cur)}`,
@@ -9391,7 +9391,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
 
 
     /* =========================
-       Dymivra 7.5.0 • Radar de Mercado
+       Dymivra 7.5.2 • Radar de Mercado
        Busca opcional por backend + fallback manual seguro.
        ========================= */
     function dymivra750Num(id){
@@ -9500,12 +9500,10 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
     }
     async function fetchDymivra750MarketRadar(){
       const status=$('dymivra750FetchStatus');
-      if(status){status.textContent='Tentando buscar mercado via backend...';status.className='status status-info'}
-      try{
-        if(!sb)throw new Error('Supabase indisponível.');
-        const {data,error}=await sb.functions.invoke('market-radar',{body:{app:'Dymivra',version:'7.5.0'}});
-        if(error)throw error;
-        const payload=data&&data.market?data.market:data;
+      const MARKET_RADAR_URL='https://sqvessdsrpdfvfxcnwwa.supabase.co/functions/v1/market-radar';
+
+      function normalizeMarketPayload(raw){
+        const payload = raw && raw.market ? raw.market : raw;
         if(!payload)throw new Error('Backend não retornou dados de mercado.');
         const map={
           selic:Number(payload.selic ?? payload.rate ?? payload.interest ?? NaN),
@@ -9516,23 +9514,78 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
           fiis:Number(payload.fiis ?? payload.ifix ?? NaN),
           updatedAt:payload.updatedAt || new Date().toISOString()
         };
-        Object.entries({marketSelic:map.selic,marketInflation:map.inflation,marketDollar:map.dollar,marketIbov:map.ibov,marketBtc:map.btc,marketFiis:map.fiis}).forEach(([id,val])=>{
-          const el=$(id); if(el && Number.isFinite(val))el.value=String(val);
-        });
-        renderDymivra750Market({
+        return {
           selic:Number.isFinite(map.selic)?map.selic:null,
           inflation:Number.isFinite(map.inflation)?map.inflation:null,
           dollar:Number.isFinite(map.dollar)?map.dollar:null,
           ibov:Number.isFinite(map.ibov)?map.ibov:null,
           btc:Number.isFinite(map.btc)?map.btc:null,
           fiis:Number.isFinite(map.fiis)?map.fiis:null,
-          updatedAt:map.updatedAt
-        },'backend');
-        if(status){status.textContent='Mercado atualizado pelo backend.';status.className='status status-success'}
+          updatedAt:map.updatedAt,
+          raw
+        };
+      }
+
+      function applyMarketPayload(market){
+        Object.entries({
+          marketSelic:market.selic,
+          marketInflation:market.inflation,
+          marketDollar:market.dollar,
+          marketIbov:market.ibov,
+          marketBtc:market.btc,
+          marketFiis:market.fiis
+        }).forEach(([id,val])=>{
+          const el=$(id);
+          if(el && val!==null && val!==undefined && Number.isFinite(Number(val)))el.value=String(val);
+        });
+        renderDymivra750Market(market,'backend');
+        dymivra750Status('online','Backend conectado');
+        if(status){
+          const missing=[];
+          if(market.dollar===null)missing.push('dólar');
+          if(market.ibov===null)missing.push('Ibovespa');
+          if(market.fiis===null)missing.push('FIIs');
+          status.textContent=missing.length
+            ? `Backend conectado. Alguns dados vieram indisponíveis: ${missing.join(', ')}.`
+            : 'Mercado atualizado pelo backend.';
+          status.className='status status-success';
+        }
+      }
+
+      if(status){status.textContent='Tentando buscar mercado via backend...';status.className='status status-info'}
+      let lastError=null;
+
+      try{
+        if(sb && sb.functions && typeof sb.functions.invoke==='function'){
+          const {data,error}=await sb.functions.invoke('market-radar',{body:{app:'Dymivra',version:'7.5.2'}});
+          if(error)throw error;
+          applyMarketPayload(normalizeMarketPayload(data));
+          return;
+        }
       }catch(e){
-        console.warn('Dymivra 7.5.0 market backend fallback:',e);
+        lastError=e;
+        console.warn('Dymivra 7.5.2: Supabase client falhou, tentando URL direta.',e);
+      }
+
+      try{
+        const res=await fetch(MARKET_RADAR_URL,{
+          method:'GET',
+          headers:{'Accept':'application/json'},
+          cache:'no-store'
+        });
+        if(!res.ok)throw new Error(`HTTP ${res.status}`);
+        const data=await res.json();
+        if(data && data.ok===false)throw new Error(data.error||'Backend retornou erro.');
+        applyMarketPayload(normalizeMarketPayload(data));
+        return;
+      }catch(e){
+        lastError=e;
+        console.warn('Dymivra 7.5.2 market backend fallback:',e);
         dymivra750Status('manual','Backend não conectado');
-        if(status){status.textContent='Backend de mercado ainda não conectado. Use o modo manual por enquanto.';status.className='status status-info'}
+        if(status){
+          status.textContent='Não consegui conectar ao market-radar pelo app. A função existe, mas a chamada do navegador falhou. Use o modo manual por enquanto.';
+          status.className='status status-info';
+        }
         renderDymivra750Market(dymivra750MarketSnapshot(),'manual');
       }
     }
@@ -9540,7 +9593,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
       const s=dymivra750MarketSnapshot();
       const c=dymivra750ClassifyMarket(s);
       const report=[
-        'DYMIVRA 7.5.0 — RADAR DE MERCADO',
+        'DYMIVRA 7.5.2 — RADAR DE MERCADO',
         'Domínio oficial: https://www.dymivra.pro',
         `Selic/Juros: ${s.selic===null?'sem dado':s.selic.toFixed(2)+'%'}`,
         `Inflação/IPCA: ${s.inflation===null?'sem dado':s.inflation.toFixed(2)+'%'}`,
@@ -9576,7 +9629,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
     setTimeout(()=>{try{if($('dymivra750MarketPanel'))renderDymivra750Market(dymivra750MarketSnapshot(),'manual')}catch{}},1500);
 
 
-    /* Dymivra 7.5.0 • reforço de render do Radar Pro visível */
+    /* Dymivra 7.5.2 • reforço de render do Radar Pro visível */
     try{
       document.addEventListener('click', function(ev){
         const btn = ev.target && ev.target.closest ? ev.target.closest('[data-screen], .nav-btn') : null;
