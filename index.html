@@ -9274,7 +9274,7 @@ let deferredInstallPrompt=null;
       if((p.enabled||manual)&&messages.length){
         messages.forEach(([title,body],idx)=>{
           setTimeout(()=>dymivra764Notify(title,body),idx*900);
-        }));
+        });
         dymivra764ScheduleNext(24);
         dymivra764SetLog(`${messages.length} lembrete(s) verificado(s). Próxima checagem local em até 24 horas quando o app estiver ativo.`);
       }
