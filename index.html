@@ -4110,7 +4110,7 @@ html:not(.modal-open){
 
 
 /* =========================
-   Dymivra 7.7.0 • Radar IA Pro
+   Dymivra 7.8.0 • Radar IA Pro
    Camada visual isolada, sem alterar base do app.
    ========================= */
 .dymivra740-panel{
@@ -4236,7 +4236,7 @@ html:not(.modal-open){
 
 
 /* =========================
-   Dymivra 7.7.0 • Radar de Mercado
+   Dymivra 7.8.0 • Radar de Mercado
    Camada isolada, sem alterar core do app.
    ========================= */
 .dymivra750-market{
@@ -4379,7 +4379,7 @@ html:not(.modal-open){
 
 
 /* =========================================================
-   DYMIVRA 7.7.0 — Preparação para cobrança real
+   DYMIVRA 7.8.0 — Preparação para cobrança real
    ========================================================= */
 .dymivra770-billing{
   margin-top:14px;
@@ -4481,6 +4481,118 @@ html:not(.modal-open){
 }
 @media(max-width:920px){
   .dymivra770-statusgrid,.dymivra770-form,.dymivra770-flow{grid-template-columns:1fr}
+}
+
+
+/* =========================================================
+   DYMIVRA 7.8.0 — Organização e Aparência Final
+   Camada visual/UX sem alterar motor do app.
+   ========================================================= */
+:root{
+  --dym780-card:rgba(15,23,42,.74);
+  --dym780-border:rgba(148,163,184,.14);
+  --dym780-cyan:#22d3ee;
+  --dym780-green:#22c55e;
+  --dym780-gold:#facc15;
+  --dym780-purple:#8b5cf6;
+  --dym780-shadow:0 22px 70px rgba(0,0,0,.34);
+}
+html{scroll-behavior:smooth}
+body.dymivra780-readability{
+  background:
+    radial-gradient(circle at 10% -10%,rgba(34,211,238,.10),transparent 34%),
+    radial-gradient(circle at 90% 0%,rgba(139,92,246,.10),transparent 30%),
+    radial-gradient(circle at 40% 110%,rgba(34,197,94,.08),transparent 34%),
+    linear-gradient(180deg,#020617,#030712 48%,#050b16) !important;
+}
+.card,.panel,.premium-panel,.dymivra760-panel,.dymivra770-billing,.dymivra766-premium-ladder,.dymivra765-progress,.dymivra764-reminders,.dymivra763-plan30,.dymivra762-checkup{
+  border-color:var(--dym780-border) !important;
+  box-shadow:var(--dym780-shadow);
+  backdrop-filter:blur(14px);
+}
+.card:hover,.dymivra780-hub-card:hover{
+  border-color:rgba(125,211,252,.28) !important;
+  transform:translateY(-1px);
+  transition:.22s ease;
+}
+.section h3{letter-spacing:-.035em}
+.kicker{letter-spacing:.05em;text-transform:uppercase}
+.muted{line-height:1.5}
+button:not(.nav-btn),.btn{border-radius:16px !important;min-height:44px;box-shadow:0 10px 28px rgba(0,0,0,.18)}
+button.success,.btn.success{background:linear-gradient(135deg,#16a34a,#22c55e) !important}
+button.secondary,.btn.secondary{background:linear-gradient(135deg,rgba(15,23,42,.98),rgba(30,41,59,.96)) !important;border:1px solid rgba(148,163,184,.18) !important}
+button.gold,.btn.gold{background:linear-gradient(135deg,#ca8a04,#facc15) !important;color:#111827 !important}
+button.danger,.btn.danger{background:linear-gradient(135deg,#be123c,#fb7185) !important}
+input,select,textarea{border-radius:16px !important}
+.badge,.status,.plan-chip{border-radius:999px !important}
+.screen-intro{
+  border:1px solid rgba(125,211,252,.18) !important;
+  background:
+    radial-gradient(circle at 0% 0%,rgba(34,211,238,.10),transparent 35%),
+    linear-gradient(135deg,rgba(15,23,42,.88),rgba(2,8,18,.88)) !important;
+  color:#dbeafe !important;
+  border-radius:22px !important;
+  padding:15px 16px !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+}
+.nav-btn{position:relative;overflow:hidden}
+.nav-btn::after{
+  content:"";position:absolute;inset:auto 12px 6px 12px;height:2px;border-radius:999px;
+  background:linear-gradient(90deg,var(--dym780-cyan),var(--dym780-purple));
+  opacity:0;transform:scaleX(.35);transition:.22s ease;
+}
+.nav-btn.active::after,.nav-btn:hover::after{opacity:1;transform:scaleX(1)}
+.dymivra780-toolbar{
+  position:sticky;top:0;z-index:30;margin:-8px 0 16px;
+  border:1px solid rgba(125,211,252,.16);
+  background:radial-gradient(circle at 5% 0%,rgba(34,211,238,.12),transparent 30%),rgba(2,8,18,.82);
+  backdrop-filter:blur(18px);
+  border-radius:24px;padding:12px;box-shadow:0 18px 52px rgba(0,0,0,.26);
+}
+.dymivra780-toolbar-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.dymivra780-toolbar-title{display:flex;align-items:center;gap:10px;min-width:0}
+.dymivra780-orb{
+  width:38px;height:38px;border-radius:15px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(34,211,238,.28),rgba(139,92,246,.22));
+  border:1px solid rgba(125,211,252,.20);box-shadow:0 12px 30px rgba(34,211,238,.10);
+}
+.dymivra780-toolbar-title b{display:block;color:#fff;font-size:15px;letter-spacing:-.02em}
+.dymivra780-toolbar-title span{display:block;color:#94a3b8;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dymivra780-toolbar-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.dymivra780-mini{
+  border:1px solid rgba(148,163,184,.16);background:rgba(15,23,42,.76);color:#e5e7eb;
+  border-radius:999px !important;padding:9px 11px;min-height:36px !important;font-weight:850;font-size:12px;
+}
+.dymivra780-mini.primary{border-color:rgba(34,211,238,.26);background:rgba(14,165,233,.12);color:#bae6fd}
+.dymivra780-hub{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.dymivra780-hub-card{
+  cursor:pointer;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);
+  border-radius:18px;padding:12px;min-height:92px;transition:.22s ease;
+}
+.dymivra780-hub-card b{display:block;color:#fff;font-size:14px;margin-bottom:5px}
+.dymivra780-hub-card span{display:block;color:#cbd5e1;font-size:12px;line-height:1.35}
+.dymivra780-hub-card em{
+  display:inline-grid;place-items:center;width:30px;height:30px;border-radius:12px;
+  background:rgba(34,211,238,.10);border:1px solid rgba(34,211,238,.14);font-style:normal;margin-bottom:8px;
+}
+.dymivra780-quality{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:0 0 16px}
+.dymivra780-quality div{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);border-radius:18px;padding:11px}
+.dymivra780-quality span{display:block;color:#94a3b8;font-size:12px;font-weight:850;margin-bottom:4px}
+.dymivra780-quality strong{display:block;color:#fff;font-size:15px}
+.dymivra780-readability .card{margin-bottom:14px}
+.dymivra780-readability [data-screen-block]{scroll-margin-top:110px}
+@media(max-width:1100px){
+  .dymivra780-hub{grid-template-columns:repeat(2,1fr)}
+  .dymivra780-quality{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:720px){
+  .dymivra780-toolbar{top:0;border-radius:0 0 24px 24px;margin:-12px -12px 14px}
+  .dymivra780-toolbar-top{align-items:flex-start;flex-direction:column}
+  .dymivra780-toolbar-actions{width:100%;justify-content:stretch}
+  .dymivra780-mini{flex:1 1 120px}
+  .dymivra780-hub{grid-template-columns:1fr}
+  .dymivra780-quality{grid-template-columns:1fr}
+  .section{flex-direction:column}
 }
 
 </style>
@@ -5170,7 +5282,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
 
 <style>
 /* =========================================================
-   DYMIVRA 7.7.0 — Mentor Financeiro Completo
+   DYMIVRA 7.8.0 — Mentor Financeiro Completo
    Camada guiada: diagnóstico, plano, jornada, alertas,
    simulador, análise de carteira e evolução patrimonial.
    ========================================================= */
@@ -5830,7 +5942,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
 </head>
 
 
-<body>
+<body class="dymivra780-readability">
   <div id="wealthAuroraStage" class="wealth-aurora-stage" aria-hidden="true"><span class="aurora-orb orb-a"></span><span class="aurora-orb orb-b"></span><span class="aurora-orb orb-c"></span><span class="aurora-grid"></span></div>
   <div id="wealthScrollProgress" class="wealth-scroll-progress" aria-hidden="true"><span id="wealthScrollProgressFill"></span></div>
   <div id="boot" class="boot"><div class="bootbox"><h2>Dymivra</h2><p class="muted">Carregando painel profissional...</p><div style="display:flex;justify-content:center"><div class="spinner"></div></div></div></div>
@@ -5965,13 +6077,46 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
         </div>
       </div>
 
-<div id="screenIntro" class="screen-intro"><strong>Visão geral</strong> — painel executivo com patrimônio, inteligência, score e principais alertas.</div>
+<div id="screenIntro" class="screen-intro"><strong>Visão geral</strong> — o ponto de partida: patrimônio, carteira, metas, alertas e próximos passos em uma leitura única.</div>
+
+      <div class="dymivra780-toolbar" id="dymivra780Toolbar">
+        <div class="dymivra780-toolbar-top">
+          <div class="dymivra780-toolbar-title">
+            <div class="dymivra780-orb">◆</div>
+            <div>
+              <b id="dymivra780ContextTitle">Central Dymivra</b>
+              <span id="dymivra780ContextSub">Organização, IA, mercado, mentor, planos e cobrança em um fluxo só.</span>
+            </div>
+          </div>
+          <div class="dymivra780-toolbar-actions">
+            <button class="dymivra780-mini primary" type="button" onclick="showAppScreen('mentor')">Abrir Mentor</button>
+            <button class="dymivra780-mini" type="button" onclick="showAppScreen('advisor')">Radar IA</button>
+            <button class="dymivra780-mini" type="button" onclick="showAppScreen('plans')">Planos</button>
+            <button class="dymivra780-mini" type="button" onclick="dymivra780ScrollTop()">Topo</button>
+          </div>
+        </div>
+        <div class="dymivra780-hub">
+          <div class="dymivra780-hub-card" onclick="showAppScreen('overview')"><em>🏠</em><b>Começar</b><span>Dashboard, patrimônio, carteira e visão geral.</span></div>
+          <div class="dymivra780-hub-card" onclick="showAppScreen('mentor')"><em>🧠</em><b>Ser guiado</b><span>Check-up, plano, progresso, lembretes e IA.</span></div>
+          <div class="dymivra780-hub-card" onclick="showAppScreen('advisor')"><em>📡</em><b>Ler cenário</b><span>Market Radar, alertas e análise de mercado.</span></div>
+          <div class="dymivra780-hub-card" onclick="showAppScreen('plans')"><em>💎</em><b>Assinar</b><span>Free, Pro, Elite e preparação de cobrança.</span></div>
+        </div>
+      </div>
+
+      <div id="dymivra780Quality" class="dymivra780-quality">
+        <div><span>Produto</span><strong>Jornada guiada</strong></div>
+        <div><span>Motor</span><strong>IA + Supabase</strong></div>
+        <div><span>Mercado</span><strong>Radar conectado</strong></div>
+        <div><span>Execução</span><strong>Plano + lembretes</strong></div>
+        <div><span>Monetização</span><strong>Pro / Elite</strong></div>
+      </div>
+
 
 
       <div class="card dymivra760-panel" data-screen-block data-screens="mentor">
         <div class="dymivra760-head">
           <div>
-            <div class="kicker">Dymivra 7.7.0 • Mentor financeiro</div>
+            <div class="kicker">Dymivra 7.8.0 • Mentor financeiro</div>
             <div class="dymivra760-title">Do começo ao fim, com próximos passos</div>
             <div class="dymivra760-sub">O Dymivra cruza carteira, ledger, metas, renda passiva, cenário de mercado e histórico para transformar dados em uma trilha educativa. Não recomenda compra ou venda; organiza decisões, riscos, prioridade e evolução.</div>
           </div>
@@ -6269,7 +6414,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
       <div class="card dymivra766-premium-ladder" data-screen-block data-screens="plans">
         <div class="section">
           <div>
-            <div class="kicker">Dymivra 7.7.0 • Premium mais claro</div>
+            <div class="kicker">Dymivra 7.8.0 • Premium mais claro</div>
             <h3>Planos desenhados para uma jornada completa</h3>
             <div class="muted">Agora o valor de cada plano fica explícito: Free organiza a base, Pro guia o usuário com Mentor e IA, Elite entrega a experiência completa de acompanhamento.</div>
           </div>
@@ -6341,7 +6486,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
       <div class="card dymivra770-billing" data-screen-block data-screens="plans">
         <div class="section">
           <div>
-            <div class="kicker">Dymivra 7.7.0 • Cobrança real</div>
+            <div class="kicker">Dymivra 7.8.0 • Cobrança real</div>
             <h3>Preparação para ativar assinaturas Pro e Elite</h3>
             <div class="muted">Esta área prepara o app para checkout real, webhook e ativação automática de plano. Por segurança, a cobrança real ainda fica desligada até conectarmos o provedor e o backend.</div>
           </div>
@@ -6631,7 +6776,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
         <div id="dymivra750MarketPanel" class="dymivra750-market">
           <div class="dymivra750-head">
             <div>
-              <div class="kicker">Dymivra 7.7.0 • Radar de Mercado</div>
+              <div class="kicker">Dymivra 7.8.0 • Radar de Mercado</div>
               <div class="dymivra750-title">Cenário de mercado conectado</div>
               <div class="muted">Leitura educativa de juros, inflação, câmbio, bolsa e cripto para cruzar com a carteira. Não recomenda compra ou venda.</div>
             </div>
@@ -6707,7 +6852,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
         <div id="dymivra740Panel" class="dymivra740-panel">
           <div class="dymivra740-head">
             <div>
-              <div class="kicker">Dymivra 7.7.0 • Radar IA Pro visível</div>
+              <div class="kicker">Dymivra 7.8.0 • Radar IA Pro visível</div>
               <div class="dymivra740-title">Análise Pro da carteira</div>
               <div class="muted">Nova camada avançada: score de atenção, postura sugerida, matriz de risco e próximos passos educativos.</div>
             </div>
@@ -7634,15 +7779,15 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
     window.handleAuth=async()=>{if(loading.auth)return;const email=$('email').value.trim(),password=$('password').value.trim();if(!email||!password){status($('authStatus'),'Preencha email e senha.','error');return}if(password.length<6){status($('authStatus'),'A senha precisa ter pelo menos 6 caracteres.','error');return}if(!requireOnline())return;loading.auth=true;btn($('authBtn'),true,loginMode?'Entrando...':'Criando...');showActionOverlay(loginMode?'Entrando com segurança':'Criando conta','Validando acesso pelo Supabase...','🔐');try{const r=loginMode?await supabase.auth.signInWithPassword({email,password}):await supabase.auth.signUp({email,password});if(r.error)throw r.error;if(!loginMode){toast('Conta criada. Agora faça login.','success');loginMode=true;toggleAuthMode();}else toast('Login realizado.','success')}catch(e){status($('authStatus'),e.message||'Erro no acesso.','error');toast(e.message||'Erro no acesso.','error')}finally{loading.auth=false;btn($('authBtn'),false);hideActionOverlay()}}
     
     const screenTexts={
-      overview:['Visão geral','painel executivo com patrimônio, inteligência, score e principais alertas.'],
+      overview:['Visão geral','o ponto de partida: patrimônio, carteira, metas, alertas e próximos passos em uma leitura única.'],
       ledger:['Ledger','registre, edite e exclua movimentações; atualize preços reais e acompanhe posições calculadas.'],
       income:['Renda passiva','acompanhe proventos, yield, meta mensal de renda e fechamento do mês.'],
       liberty:['Liberdade financeira','calcule quanto patrimônio precisa para viver de renda e acompanhe marcos de renda mensal.'],
       allocation:['Alocação inteligente','compare carteira atual com carteira-alvo e veja onde colocar o próximo aporte. A tela Perfil fica separada.'],
       profile:['Perfil de investidor','escolha conservador, moderado, arrojado ou personalizado. Depois aplique o perfil para atualizar a tela Alocação.'],
       ai:['IA Dymivra','copiloto educativo que interpreta carteira, meta, renda passiva, risco, aporte e próximos passos.'],
-      advisor:['Radar IA','central de alertas inteligentes, cenário de mercado, prioridade, notificações locais e preparo para push futuro.'],
-      mentor:['Mentor Dymivra','diagnóstico financeiro, plano de ação, jornada, alertas, simulador, análise da carteira e evolução patrimonial.'],
+      advisor:['Radar IA','leitura de cenário, mercado, alertas inteligentes e interpretação educativa para apoiar decisões.'],
+      mentor:['Mentor Dymivra','o centro da jornada: check-up, plano, IA, lembretes, progresso e execução guiada.'],
       plans:['Planos','modelo freemium com Gratuito, Pro e Elite, paywall premium, limites de IA e base de monetização.'],
       app:['App real','onboarding, instalação, experiência mobile e checklist para publicar como produto.'],
       history:['Histórico','controle snapshots manuais, gráficos e evolução patrimonial sem travar o app.'],
@@ -9264,7 +9409,7 @@ let deferredInstallPrompt=null;
 
 
     /* =========================================================
-       Dymivra 7.7.0 — Mentor Financeiro Completo
+       Dymivra 7.8.0 — Mentor Financeiro Completo
        ========================================================= */
     function dymivra760Market(){
       try{
@@ -9451,7 +9596,7 @@ let deferredInstallPrompt=null;
 
 
     /* =========================================================
-       Dymivra 7.7.0 — Check-up financeiro inicial
+       Dymivra 7.8.0 — Check-up financeiro inicial
        ========================================================= */
     const DYMIVRA762_KEY='dymivra_checkup_v1';
 
@@ -9572,22 +9717,22 @@ let deferredInstallPrompt=null;
     window.copyDymivra762Checkup=async function(){
       const data=dymivra762Saved()||dymivra762Read();
       const a=dymivra762Analyze(data);
-      const text=`Dymivra 7.7.0 — Check-up financeiro inicial\n\nScore base: ${a.score}/100\nPrioridade: ${a.priority}\nPróxima ação: ${a.next}\nAlerta: ${a.alert}\n\nRenda: ${money(data.income)}\nGastos: ${money(data.expense)}\nSobra: ${money(a.sobra)} (${a.savingsRate.toFixed(1)}%)\nDívidas: ${money(data.debt)}\nReserva: ${money(data.reserve)} (${a.monthsReserve.toFixed(1)} meses)\n\nAviso: conteúdo educativo, sem recomendação individualizada de compra ou venda.`;
+      const text=`Dymivra 7.8.0 — Check-up financeiro inicial\n\nScore base: ${a.score}/100\nPrioridade: ${a.priority}\nPróxima ação: ${a.next}\nAlerta: ${a.alert}\n\nRenda: ${money(data.income)}\nGastos: ${money(data.expense)}\nSobra: ${money(a.sobra)} (${a.savingsRate.toFixed(1)}%)\nDívidas: ${money(data.debt)}\nReserva: ${money(data.reserve)} (${a.monthsReserve.toFixed(1)} meses)\n\nAviso: conteúdo educativo, sem recomendação individualizada de compra ou venda.`;
       try{await navigator.clipboard.writeText(text);toast('Diagnóstico do check-up copiado.','success')}
       catch{toast('Não consegui copiar automaticamente.','error')}
     }
 
 
     /* =========================================================
-       Dymivra 7.7.0 — Plano de ação de 30 dias
+       Dymivra 7.8.0 — Plano de ação de 30 dias
        ========================================================= */
 
     /* =========================================================
-       Dymivra 7.7.0 — Lembretes inteligentes locais
+       Dymivra 7.8.0 — Lembretes inteligentes locais
        ========================================================= */
 
     /* =========================================================
-       Dymivra 7.7.0 — Painel de progresso do usuário
+       Dymivra 7.8.0 — Painel de progresso do usuário
        ========================================================= */
     function dymivra765SafeNumber(v){
       const n=Number(v);
@@ -9689,7 +9834,7 @@ let deferredInstallPrompt=null;
     window.copyDymivra765Progress=async function(){
       const data=dymivra765CollectProgress();
       const nextText=data.next?`${data.next.title||'Próxima ação'} — ${data.next.text||''}`:'Revisar mensalmente e gerar nova análise com IA.';
-      const text=`Dymivra 7.7.0 — Painel de progresso do usuário
+      const text=`Dymivra 7.8.0 — Painel de progresso do usuário
 
 Progresso geral: ${data.journey}%
 Score Mentor: ${data.mentorScore}/100
@@ -10056,7 +10201,7 @@ Aviso: conteúdo educativo, sem recomendação individualizada de compra ou vend
       const done=dymivra763DoneMap();
       const prog=dymivra763Progress(tasks,done);
       const next=dymivra763Next(tasks,done);
-      const text=`Dymivra 7.7.0 — Plano de ação de 30 dias\n\nProgresso: ${prog.completed}/${prog.total} (${prog.pct}%)\nPróxima ação: ${next?`${next.title} — ${next.text}`:'plano concluído'}\n\n`+
+      const text=`Dymivra 7.8.0 — Plano de ação de 30 dias\n\nProgresso: ${prog.completed}/${prog.total} (${prog.pct}%)\nPróxima ação: ${next?`${next.title} — ${next.text}`:'plano concluído'}\n\n`+
       [1,2,3,4].map(w=>`Semana ${w}\n`+tasks.filter(t=>t.week===w).map(t=>`${done[t.id]?'✅':'⬜'} ${t.title}: ${t.text}`).join('\n')).join('\n\n')+
       `\n\nAviso: conteúdo educativo, sem recomendação individualizada de compra ou venda.`;
       try{await navigator.clipboard.writeText(text);toast('Plano de 30 dias copiado.','success')}
@@ -10191,9 +10336,61 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
       const ctx=dymivra760Ctx(),score=dymivra760Score(ctx),st=dymivra760Stage(score,ctx);
       const plan=dymivra760Plan(ctx).map((i,idx)=>`${idx+1}. ${i.title}: ${i.text}`).join('\n');
       const alerts=dymivra760Alerts(ctx).map(i=>`- ${i.title}: ${i.text}`).join('\n');
-      const text=`Dymivra 7.7.0 — Mentor financeiro\n\nScore: ${score}/100\nEtapa: ${st.stage}\nFoco: ${st.focus}\n\nCarteira: ${money(ctx.current)}\nInvestido: ${money(ctx.invested)}\nResultado: ${pnl(ctx.pl)} (${pct(ctx.ret)})\nMeta: ${Number(goal.targetValue||0)>0?ctx.goalInfo.display:'não definida'}\n\nPlano de ação:\n${plan}\n\nAlertas:\n${alerts}\n\nAviso: conteúdo educativo, sem recomendação individualizada de compra ou venda.`;
+      const text=`Dymivra 7.8.0 — Mentor financeiro\n\nScore: ${score}/100\nEtapa: ${st.stage}\nFoco: ${st.focus}\n\nCarteira: ${money(ctx.current)}\nInvestido: ${money(ctx.invested)}\nResultado: ${pnl(ctx.pl)} (${pct(ctx.ret)})\nMeta: ${Number(goal.targetValue||0)>0?ctx.goalInfo.display:'não definida'}\n\nPlano de ação:\n${plan}\n\nAlertas:\n${alerts}\n\nAviso: conteúdo educativo, sem recomendação individualizada de compra ou venda.`;
       try{await navigator.clipboard.writeText(text);toast('Plano do Mentor copiado.','success')}
       catch{toast('Não consegui copiar automaticamente.','error')}
+    }
+
+
+
+    /* =========================================================
+       Dymivra 7.8.0 — Organização e Aparência Final
+       ========================================================= */
+    function dymivra780ScrollTop(){
+      try{window.scrollTo({top:0,behavior:'smooth'})}catch{window.scrollTo(0,0)}
+    }
+    function dymivra780ContextFor(screen){
+      const map={
+        overview:['Central Dymivra','Visão geral do patrimônio, carteira e próximos passos.'],
+        ledger:['Dados organizados','Ledger, ativos, movimentações e renda passiva.'],
+        goals:['Direção financeira','Metas, aporte, horizonte e progresso.'],
+        ai:['IA Dymivra','Análise inteligente com contexto financeiro.'],
+        advisor:['Radar IA','Mercado, alertas, cenário e leitura educativa.'],
+        mentor:['Mentor financeiro','Check-up, plano, progresso, lembretes e IA guiada.'],
+        plans:['Planos e cobrança','Free, Pro, Elite e preparação de checkout.'],
+        legal:['Central legal','Privacidade, termos, aviso legal e exclusão de conta.'],
+        all:['Mapa completo','Todas as áreas do app em uma visão expandida.']
+      };
+      return map[screen]||map.overview;
+    }
+    function renderDymivra780Polish(screen){
+      const ctx=dymivra780ContextFor(screen||currentScreen||'overview');
+      const title=$('dymivra780ContextTitle');
+      const sub=$('dymivra780ContextSub');
+      if(title)title.textContent=ctx[0];
+      if(sub)sub.textContent=ctx[1];
+
+      const q=$('dymivra780Quality');
+      if(q){
+        let mentorScore='-';
+        let planPct='-';
+        try{mentorScore=String(dymivra760Score(dymivra760Ctx()))+'/100'}catch{}
+        try{
+          const tasks=dymivra763BuildTasks();
+          const done=dymivra763DoneMap();
+          planPct=String(dymivra763Progress(tasks,done).pct)+'%';
+        }catch{}
+        const market=(()=>{try{return window.marketState&&window.marketState.last&&window.marketState.last.market?'Conectado':'Pendente'}catch{return 'Pendente'}})();
+        const reminder=(()=>{try{return dymivra764Prefs().enabled?'Ativos':'Off'}catch{return 'Off'}})();
+        const plan=(()=>{try{return currentWealthPlanConfig().name}catch{return 'Free'}})();
+        q.innerHTML=[
+          ['Mentor',mentorScore],
+          ['Plano 30 dias',planPct],
+          ['Market Radar',market],
+          ['Lembretes',reminder],
+          ['Plano atual',plan]
+        ].map(i=>`<div><span>${esc(i[0])}</span><strong>${esc(i[1])}</strong></div>`).join('');
+      }
     }
 
 
@@ -11170,7 +11367,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
 
 
     /* =========================================================
-       Dymivra 7.7.0 — Preparação para cobrança real
+       Dymivra 7.8.0 — Preparação para cobrança real
        ========================================================= */
     const DYMIVRA770_BILLING_KEY='dymivra_billing_prep_v1';
 
@@ -11265,7 +11462,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
     }
     window.copyDymivra770BillingStatus=async function(){
       const b=dymivra770Billing();
-      const text=`Dymivra 7.7.0 — Status de cobrança
+      const text=`Dymivra 7.8.0 — Status de cobrança
 
 Provedor: ${dymivra770ProviderLabel(b.provider)}
 Modo: ${dymivra770ModeLabel(b.mode)}
@@ -11523,7 +11720,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
       const market=smartAdvisorScenario();
       const alerts=buildSmartAdvisorAlerts();
       const txt=[
-        'DYMIVRA 7.7.0 — RADAR IA PRO',
+        'DYMIVRA 7.8.0 — RADAR IA PRO',
         `Plano: ${currentWealthPlanConfig().name}`,
         `Patrimônio: ${money(ctx.totals.cur)}`,
         `Score IA: ${ctx.state.score}/100`,
@@ -11614,7 +11811,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
     });
 
     /* =========================
-       Dymivra 7.7.0 • Radar IA Pro
+       Dymivra 7.8.0 • Radar IA Pro
        Camada isolada: melhora leitura do Radar sem mexer no core.
        ========================= */
     function dymivra740SafeMoney(value){
@@ -11665,7 +11862,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
       panel.innerHTML=`
         <div class="dymivra740-head">
           <div>
-            <div class="kicker">Dymivra 7.7.0 • Radar IA Pro</div>
+            <div class="kicker">Dymivra 7.8.0 • Radar IA Pro</div>
             <div class="dymivra740-title">Leitura avançada da carteira</div>
             <div class="muted">Combina carteira, meta, renda passiva, cenário manual de mercado e alertas para indicar pontos de atenção.</div>
           </div>
@@ -11749,12 +11946,12 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
     try{
       const dymivra740OriginalRenderSmartAdvisor=renderSmartAdvisor;
       renderSmartAdvisor=function(){
-        try{dymivra740OriginalRenderSmartAdvisor.apply(this,arguments)}catch(e){console.warn('Dymivra 7.7.0: render original falhou',e)}
-        try{renderDymivra740RadarPro()}catch(e){console.warn('Dymivra 7.7.0: render pro falhou',e)}
+        try{dymivra740OriginalRenderSmartAdvisor.apply(this,arguments)}catch(e){console.warn('Dymivra 7.8.0: render original falhou',e)}
+        try{renderDymivra740RadarPro()}catch(e){console.warn('Dymivra 7.8.0: render pro falhou',e)}
       };
       window.renderSmartAdvisor=renderSmartAdvisor;
     }catch(e){
-      console.warn('Dymivra 7.7.0: não foi possível acoplar Radar Pro.',e);
+      console.warn('Dymivra 7.8.0: não foi possível acoplar Radar Pro.',e);
     }
     try{
       const dymivra740OriginalCopySmartAdvisor=window.copySmartAdvisorReport;
@@ -11763,7 +11960,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
           const data=dymivra740AdvisorData();
           const ctx=data.ctx;
           const report=[
-            'DYMIVRA 7.7.0 — RADAR IA PRO',
+            'DYMIVRA 7.8.0 — RADAR IA PRO',
             `Plano: ${data.plan.name}`,
             `Domínio oficial: https://www.dymivra.pro`,
             `Patrimônio analisado: ${dymivra740SafeMoney(ctx.totals?.cur)}`,
@@ -11791,7 +11988,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
 
 
     /* =========================
-       Dymivra 7.7.0 • Radar de Mercado
+       Dymivra 7.8.0 • Radar de Mercado
        Busca opcional por backend + fallback manual seguro.
        ========================= */
     function dymivra750Num(id){
@@ -12023,7 +12220,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
         applyMarketPayload(normalizeMarketPayload(data),'fetch');
         return;
       }catch(e){
-        console.warn('Dymivra 7.7.0: fetch direto falhou. Tentando JSONP.',e);
+        console.warn('Dymivra 7.8.0: fetch direto falhou. Tentando JSONP.',e);
       }
 
       try{
@@ -12032,7 +12229,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
         applyMarketPayload(normalizeMarketPayload(data),'jsonp');
         return;
       }catch(e){
-        console.warn('Dymivra 7.7.0: JSONP também falhou.',e);
+        console.warn('Dymivra 7.8.0: JSONP também falhou.',e);
         dymivra750Status('manual','Backend não conectado');
         if(status){
           status.textContent='Não consegui conectar ao market-radar. Verifique internet/cache do app e tente novamente.';
@@ -12045,7 +12242,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
       const s=dymivra750MarketSnapshot();
       const c=dymivra750ClassifyMarket(s);
       const report=[
-        'DYMIVRA 7.7.0 — RADAR DE MERCADO',
+        'DYMIVRA 7.8.0 — RADAR DE MERCADO',
         'Domínio oficial: https://www.dymivra.pro',
         `Selic/Juros: ${s.selic===null?'sem dado':s.selic.toFixed(2)+'%'}`,
         `Inflação/IPCA: ${s.inflation===null?'sem dado':s.inflation.toFixed(2)+'%'}`,
@@ -12081,7 +12278,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
     setTimeout(()=>{try{if($('dymivra750MarketPanel'))renderDymivra750Market(dymivra750MarketSnapshot(),'manual')}catch{}},1500);
 
 
-    /* Dymivra 7.7.0 • reforço de render do Radar Pro visível */
+    /* Dymivra 7.8.0 • reforço de render do Radar Pro visível */
     try{
       document.addEventListener('click', function(ev){
         const btn = ev.target && ev.target.closest ? ev.target.closest('[data-screen], .nav-btn') : null;
@@ -12108,6 +12305,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
     wealthApplyFinalFastSystem();
 
     boot();
-  </script>
+      setTimeout(()=>{try{renderDymivra780Polish(currentScreen||'overview')}catch{}},1200);
+</script>
 </body>
 </html>
