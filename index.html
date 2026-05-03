@@ -4110,7 +4110,7 @@ html:not(.modal-open){
 
 
 /* =========================
-   Dymivra 8.1.3 • Radar IA Pro
+   Dymivra 8.2.0 • Radar IA Pro
    Camada visual isolada, sem alterar base do app.
    ========================= */
 .dymivra740-panel{
@@ -4236,7 +4236,7 @@ html:not(.modal-open){
 
 
 /* =========================
-   Dymivra 8.1.3 • Radar de Mercado
+   Dymivra 8.2.0 • Radar de Mercado
    Camada isolada, sem alterar core do app.
    ========================= */
 .dymivra750-market{
@@ -4379,7 +4379,7 @@ html:not(.modal-open){
 
 
 /* =========================================================
-   DYMIVRA 8.1.3 — Preparação para cobrança real
+   DYMIVRA 8.2.0 — Preparação para cobrança real
    ========================================================= */
 .dymivra770-billing{
   margin-top:14px;
@@ -4485,7 +4485,7 @@ html:not(.modal-open){
 
 
 /* =========================================================
-   DYMIVRA 8.1.3 — Polimento premium responsivo
+   DYMIVRA 8.2.0 — Polimento premium responsivo
    Base: 7.7.0 estável. Camada visual segura.
    Não altera Market Radar, IA, Supabase, Mentor, PWA, cobrança ou páginas legais.
    ========================================================= */
@@ -4827,7 +4827,7 @@ input,select,textarea{
 
 
 /* =========================================================
-   DYMIVRA 8.1.3 — Correção de carregamento + seletores seguros
+   DYMIVRA 8.2.0 — Correção de carregamento + seletores seguros
    Base segura. Sem MutationObserver pesado e sem bloquear boot.
    ========================================================= */
 html,body{
@@ -4973,1292 +4973,508 @@ select.dymivra783-hidden{
 
 
 /* =========================================================
-   DYMIVRA 8.1.3 — VISUAL SYSTEM ULTRA PREMIUM
-   Camada visual máxima segura baseada na 7.8.3.
-   Sem alterar motor: IA, Market Radar, Mentor, Supabase, cobrança,
-   PWA, páginas legais, seletores premium ou lógica interna.
+   DYMIVRA 8.2.0 — VISUAL MAX STABLE
+   Base: 7.8.3 estável.
+   Regra principal: rolagem nativa lisa, sem scroll artificial.
+   Sem alterar motor: IA, Market Radar, Mentor, Supabase, PWA,
+   cobrança, páginas legais ou seletores premium.
    ========================================================= */
-:root{
-  --d800-bg:#020617;
-  --d800-bg2:#050b18;
-  --d800-card:rgba(7,14,29,.78);
-  --d800-card-strong:rgba(11,21,42,.88);
-  --d800-glass:rgba(255,255,255,.055);
-  --d800-line:rgba(148,163,184,.16);
-  --d800-line-hot:rgba(103,232,249,.30);
-  --d800-cyan:#22d3ee;
-  --d800-blue:#2563eb;
-  --d800-purple:#8b5cf6;
-  --d800-pink:#ec4899;
-  --d800-green:#22c55e;
-  --d800-gold:#facc15;
-  --d800-text:#f8fafc;
-  --d800-muted:#cbd5e1;
-  --d800-soft:#94a3b8;
-  --d800-shadow:0 30px 90px rgba(0,0,0,.44);
-  --d800-shadow-soft:0 18px 55px rgba(0,0,0,.32);
-  --d800-radius:30px;
-}
+
 html,
 body{
-  max-width:100%;
-  overflow-x:hidden!important;
-  scroll-behavior:smooth;
-}
-*{box-sizing:border-box}
-body{
-  color:var(--d800-text);
-  background:
-    radial-gradient(circle at 12% -10%,rgba(34,211,238,.18),transparent 31%),
-    radial-gradient(circle at 82% -6%,rgba(139,92,246,.18),transparent 34%),
-    radial-gradient(circle at 50% 112%,rgba(34,197,94,.10),transparent 38%),
-    linear-gradient(180deg,#020617 0%,#06101f 42%,#020617 100%)!important;
-}
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-2;
-  background:
-    linear-gradient(90deg,rgba(34,211,238,.040) 1px,transparent 1px),
-    linear-gradient(180deg,rgba(34,211,238,.028) 1px,transparent 1px),
-    radial-gradient(circle at 50% 0%,rgba(255,255,255,.075),transparent 50%);
-  background-size:44px 44px,44px 44px,100% 100%;
-  mask-image:linear-gradient(180deg,rgba(0,0,0,.96),rgba(0,0,0,.62) 58%,transparent 100%);
-}
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 10% 20%,rgba(34,211,238,.05),transparent 28%),
-    radial-gradient(circle at 90% 25%,rgba(139,92,246,.05),transparent 28%);
-  filter:blur(1px);
-}
-.app,main,.container,.wrap,#appSection{
-  max-width:100%;
-  overflow-x:hidden;
-}
-
-/* Ultra premium command center */
-.dym800-command-center{
   width:100%;
-  max-width:100%;
-  position:relative;
-  overflow:hidden;
-  margin:16px 0 22px;
-  padding:22px;
-  border-radius:34px;
-  border:1px solid rgba(103,232,249,.24);
-  background:
-    radial-gradient(circle at 8% 0%,rgba(34,211,238,.26),transparent 33%),
-    radial-gradient(circle at 92% 0%,rgba(139,92,246,.22),transparent 34%),
-    radial-gradient(circle at 50% 105%,rgba(34,197,94,.11),transparent 36%),
-    linear-gradient(135deg,rgba(15,23,42,.94),rgba(2,8,18,.82));
-  box-shadow:
-    0 38px 120px rgba(0,0,0,.50),
-    0 0 0 1px rgba(255,255,255,.035) inset,
-    0 1px 0 rgba(255,255,255,.08) inset;
-}
-.dym800-command-center::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(135deg,rgba(255,255,255,.10),transparent 22%,transparent 75%,rgba(34,211,238,.07)),
-    repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 1px,transparent 1px 18px);
-  opacity:.65;
-}
-.dym800-aurora{
-  position:absolute;
-  inset:auto -18% -48% -18%;
-  height:72%;
-  background:
-    radial-gradient(ellipse at 35% 50%,rgba(34,211,238,.24),transparent 60%),
-    radial-gradient(ellipse at 65% 45%,rgba(139,92,246,.22),transparent 62%);
-  filter:blur(12px);
-  pointer-events:none;
-}
-.dym800-command-head{
-  position:relative;
-  z-index:1;
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:18px;
-}
-.dym800-brand-lockup{
-  display:flex;
-  align-items:flex-start;
-  gap:15px;
-  min-width:0;
-}
-.dym800-diamond{
-  flex:0 0 auto;
-  width:60px;
-  height:60px;
-  border-radius:24px;
-  display:grid;
-  place-items:center;
-  color:#fff;
-  font-size:30px;
-  background:
-    radial-gradient(circle at 30% 18%,rgba(255,255,255,.35),transparent 26%),
-    conic-gradient(from 210deg,#22d3ee,#2563eb,#8b5cf6,#ec4899,#22d3ee);
-  border:1px solid rgba(255,255,255,.22);
-  box-shadow:
-    0 22px 60px rgba(34,211,238,.24),
-    inset 0 1px 0 rgba(255,255,255,.18);
-}
-.dym800-eyebrow{
-  color:#67e8f9;
-  font-size:11px;
-  font-weight:950;
-  letter-spacing:.17em;
-  text-transform:uppercase;
-  margin-bottom:9px;
-}
-.dym800-command-center h2{
-  margin:0;
-  color:#fff;
-  font-size:clamp(28px,5vw,54px);
-  line-height:.95;
-  letter-spacing:-.075em;
-  text-wrap:balance;
-}
-.dym800-command-center p{
-  margin:12px 0 0;
-  color:#dbeafe;
-  max-width:760px;
-  font-size:clamp(14px,2.4vw,18px);
-  line-height:1.50;
-}
-.dym800-plan-orb{
-  flex:0 0 auto;
-  width:112px;
-  min-height:112px;
-  border-radius:32px;
-  display:grid;
-  place-items:center;
-  align-content:center;
-  gap:3px;
-  border:1px solid rgba(250,204,21,.28);
-  background:
-    radial-gradient(circle at 28% 20%,rgba(255,255,255,.20),transparent 28%),
-    linear-gradient(135deg,rgba(217,119,6,.28),rgba(250,204,21,.16));
-  box-shadow:0 24px 70px rgba(250,204,21,.13), inset 0 1px 0 rgba(255,255,255,.10);
-}
-.dym800-plan-orb span{
-  color:#fde68a;
-  font-size:11px;
-  font-weight:950;
-  text-transform:uppercase;
-  letter-spacing:.12em;
-}
-.dym800-plan-orb strong{
-  color:#fff;
-  font-size:18px;
-  letter-spacing:-.04em;
-}
-.dym800-dashboard-line{
-  position:relative;
-  z-index:1;
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:12px;
-  margin-top:18px;
-}
-.dym800-kpi{
-  min-width:0;
-  border:1px solid rgba(255,255,255,.09);
-  border-radius:22px;
-  padding:14px;
-  background:
-    radial-gradient(circle at 0% 0%,rgba(34,211,238,.10),transparent 34%),
-    rgba(255,255,255,.052);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.055);
-}
-.dym800-kpi span{
-  display:block;
-  color:#94a3b8;
-  font-size:11px;
-  font-weight:950;
-  text-transform:uppercase;
-  letter-spacing:.10em;
-  margin-bottom:6px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-.dym800-kpi strong{
-  display:block;
-  color:#fff;
-  font-size:clamp(17px,2vw,24px);
-  line-height:1.05;
-  letter-spacing:-.045em;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-.dym800-kpi em{
-  display:block;
-  margin-top:5px;
-  color:#cbd5e1;
-  font-size:12px;
-  font-style:normal;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-.dym800-flow-nav{
-  position:relative;
-  z-index:1;
-  display:grid;
-  grid-template-columns:repeat(5,minmax(0,1fr));
-  gap:10px;
-  margin-top:14px;
-}
-.dym800-flow-nav button{
-  min-width:0;
-  min-height:66px!important;
-  border-radius:20px!important;
-  border:1px solid rgba(125,211,252,.18)!important;
-  background:
-    radial-gradient(circle at 0% 0%,rgba(34,211,238,.10),transparent 36%),
-    rgba(2,8,18,.34)!important;
-  color:#e0f2fe!important;
-  padding:11px!important;
-  text-align:left;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.05)!important;
-}
-.dym800-flow-nav button b{
-  display:block;
-  color:#67e8f9;
-  font-size:10px;
-  letter-spacing:.14em;
-  margin-bottom:6px;
-}
-.dym800-flow-nav button span{
-  display:block;
-  color:#fff;
-  font-weight:950;
-  font-size:13px;
-  line-height:1.1;
-}
-
-/* App-wide premium redesign */
-.screen-intro{
-  border:1px solid rgba(103,232,249,.22)!important;
-  background:
-    radial-gradient(circle at 0% 0%,rgba(34,211,238,.15),transparent 34%),
-    radial-gradient(circle at 100% 0%,rgba(139,92,246,.11),transparent 34%),
-    linear-gradient(135deg,rgba(15,23,42,.92),rgba(2,8,18,.88))!important;
-  border-radius:28px!important;
-  padding:18px 20px!important;
-  color:#dbeafe!important;
-  box-shadow:var(--d800-shadow-soft), inset 0 1px 0 rgba(255,255,255,.07)!important;
-}
-.card,.panel,.premium-panel,.hero,.mini,.item,
-.dymivra760-panel,.dymivra770-billing,.dymivra766-premium-ladder,.dymivra765-progress,.dymivra764-reminders,.dymivra763-plan30,.dymivra762-checkup{
-  position:relative;
-  overflow:hidden;
-  border-color:var(--d800-line)!important;
-  background:
-    radial-gradient(circle at 10% 0%,rgba(34,211,238,.105),transparent 34%),
-    radial-gradient(circle at 95% 0%,rgba(139,92,246,.085),transparent 32%),
-    linear-gradient(180deg,rgba(15,23,42,.86),rgba(2,8,18,.74))!important;
-  box-shadow:
-    var(--d800-shadow),
-    inset 0 1px 0 rgba(255,255,255,.060)!important;
-}
-.card::after,.panel::after,.premium-panel::after,.hero::after,
-.dymivra760-panel::after,.dymivra770-billing::after,.dymivra766-premium-ladder::after,.dymivra765-progress::after,.dymivra764-reminders::after,.dymivra763-plan30::after,.dymivra762-checkup::after{
-  content:"";
-  position:absolute;
-  pointer-events:none;
-  inset:0;
-  border-radius:inherit;
-  background:
-    linear-gradient(135deg,rgba(255,255,255,.08),transparent 22%,transparent 74%,rgba(34,211,238,.055)),
-    radial-gradient(circle at 50% 0%,rgba(255,255,255,.055),transparent 48%);
-  opacity:.76;
-}
-.card>*,.panel>*,.premium-panel>*,.hero>*,
-.dymivra760-panel>*,.dymivra770-billing>*,.dymivra766-premium-ladder>*,.dymivra765-progress>*,.dymivra764-reminders>*,.dymivra763-plan30>*,.dymivra762-checkup>*{
-  position:relative;
-  z-index:1;
-}
-.hero{
-  border-color:rgba(34,211,238,.27)!important;
-  background:
-    radial-gradient(circle at 16% 0%,rgba(34,211,238,.19),transparent 34%),
-    radial-gradient(circle at 86% 8%,rgba(139,92,246,.16),transparent 32%),
-    linear-gradient(180deg,rgba(15,23,42,.93),rgba(2,8,18,.76))!important;
-}
-.section{align-items:flex-start;gap:16px}
-.section h3,.dymivra760-title,.dymivra763-plan30 h3,.dymivra762-checkup h3{
-  letter-spacing:-.055em;
-  line-height:1.04;
-}
-h1,h2,h3,h4{ text-wrap:balance; }
-.kicker{
-  letter-spacing:.15em!important;
-  color:#67e8f9!important;
-  text-transform:uppercase;
-  text-shadow:0 0 24px rgba(34,211,238,.25);
-}
-.muted,.card p,.panel p{
-  color:#cbd5e1!important;
-  line-height:1.56;
-}
-.app-nav,.app-nav-pro{
-  border:1px solid rgba(103,232,249,.18)!important;
-  background:
-    radial-gradient(circle at 8% 0%,rgba(34,211,238,.12),transparent 28%),
-    radial-gradient(circle at 92% 0%,rgba(139,92,246,.10),transparent 28%),
-    rgba(2,8,18,.74)!important;
-  box-shadow:0 18px 55px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.05)!important;
-  max-width:100%;
-  overflow-x:auto!important;
-  overflow-y:hidden!important;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
-}
-.app-nav::-webkit-scrollbar,.app-nav-pro::-webkit-scrollbar{display:none}
-.nav-btn{
-  position:relative;
-  overflow:hidden;
-  white-space:nowrap;
-  border-color:rgba(148,163,184,.13)!important;
-  background:rgba(15,23,42,.70)!important;
-  color:#dbeafe!important;
-}
-.nav-btn.active{
-  color:#fff!important;
-  background:
-    radial-gradient(circle at 20% 0%,rgba(255,255,255,.20),transparent 34%),
-    linear-gradient(135deg,rgba(34,211,238,.96),rgba(37,99,235,.93) 58%,rgba(139,92,246,.90))!important;
-  border-color:rgba(125,211,252,.45)!important;
-  box-shadow:0 18px 44px rgba(14,165,233,.25)!important;
-}
-.nav-btn::after{
-  content:"";
-  position:absolute;
-  left:16px;
-  right:16px;
-  bottom:7px;
-  height:2px;
-  border-radius:999px;
-  background:linear-gradient(90deg,#fff,rgba(255,255,255,.20));
-  opacity:0;
-  transform:scaleX(.35);
-  transition:.2s ease;
-}
-.nav-btn.active::after{opacity:.85;transform:scaleX(1)}
-button:not(.nav-btn),.btn,.dymivra783-button{
-  border-radius:20px!important;
-  box-shadow:
-    0 16px 40px rgba(0,0,0,.28),
-    inset 0 1px 0 rgba(255,255,255,.075)!important;
-}
-button.success,.btn.success{
-  background:radial-gradient(circle at 20% 0%,rgba(255,255,255,.16),transparent 34%),linear-gradient(135deg,#16a34a,#22c55e)!important;
-}
-button.secondary,.btn.secondary{
-  background:linear-gradient(135deg,rgba(15,23,42,.98),rgba(30,41,59,.96))!important;
-  border:1px solid rgba(148,163,184,.22)!important;
-}
-button.gold,.btn.gold{
-  background:radial-gradient(circle at 20% 0%,rgba(255,255,255,.20),transparent 34%),linear-gradient(135deg,#d97706,#facc15)!important;
-  color:#111827!important;
-}
-button.danger,.btn.danger{
-  background:linear-gradient(135deg,#be123c,#fb7185)!important;
-}
-input,textarea,select,.dymivra783-button{
-  border-radius:20px!important;
-  border-color:rgba(125,211,252,.22)!important;
-  background:
-    radial-gradient(circle at 8% 0%,rgba(34,211,238,.08),transparent 32%),
-    linear-gradient(180deg,rgba(5,12,24,.98),rgba(2,8,18,.96))!important;
-}
-.badge,.status,.plan-chip{border-radius:999px!important}
-.item,.mini,.projection-row,.dymivra765-card,.dymivra770-status,.dymivra766-tier,.dymivra766-meter-card,.dymivra764-card,.dymivra763-task,.dymivra762-field{
-  border-color:rgba(148,163,184,.14)!important;
-  background:
-    radial-gradient(circle at 0% 0%,rgba(34,211,238,.075),transparent 34%),
-    rgba(2,8,18,.38)!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.045);
-}
-.dymivra766-tier.pro{
-  border-color:rgba(34,211,238,.34)!important;
-  box-shadow:0 26px 76px rgba(14,165,233,.15), inset 0 1px 0 rgba(255,255,255,.055)!important;
-}
-.dymivra766-tier.elite{
-  border-color:rgba(250,204,21,.34)!important;
-  box-shadow:0 26px 76px rgba(250,204,21,.13), inset 0 1px 0 rgba(255,255,255,.055)!important;
-}
-.dymivra783-menu{
-  background:
-    radial-gradient(circle at 12% 0%,rgba(34,211,238,.18),transparent 32%),
-    radial-gradient(circle at 90% 0%,rgba(139,92,246,.16),transparent 32%),
-    rgba(10,17,32,.988)!important;
-  border-color:rgba(125,211,252,.30)!important;
-  box-shadow:0 36px 120px rgba(0,0,0,.68), inset 0 1px 0 rgba(255,255,255,.075)!important;
-}
-.dymivra783-option{
-  background:rgba(255,255,255,.030);
-  border-color:rgba(255,255,255,.045);
-  margin-bottom:8px;
-}
-.dymivra783-option:last-child{margin-bottom:0}
-.dymivra783-option.selected{
-  background:
-    radial-gradient(circle at 0% 0%,rgba(255,255,255,.16),transparent 34%),
-    linear-gradient(135deg,rgba(34,211,238,.95),rgba(37,99,235,.92) 58%,rgba(139,92,246,.88))!important;
-  color:#fff!important;
-  border-color:rgba(255,255,255,.26)!important;
-}
-@media(hover:hover){
-  .card:hover,.panel:hover,.premium-panel:hover,.dymivra760-panel:hover,.dymivra770-billing:hover,.dymivra766-premium-ladder:hover,.dymivra765-progress:hover,.dymivra764-reminders:hover,.dymivra763-plan30:hover,.dymivra762-checkup:hover{
-    border-color:rgba(103,232,249,.28)!important;
-    transform:translateY(-2px);
-    transition:.25s ease;
-  }
-  button:not(.nav-btn):hover,.btn:hover{
-    transform:translateY(-1px);
-    filter:saturate(1.10) brightness(1.03);
-  }
-}
-@media(max-width:900px){
-  .dym800-dashboard-line{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-  .dym800-flow-nav{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-}
-@media(max-width:760px){
-  body{
-    background:
-      radial-gradient(circle at 20% -8%,rgba(34,211,238,.13),transparent 30%),
-      radial-gradient(circle at 86% 0%,rgba(139,92,246,.12),transparent 28%),
-      linear-gradient(180deg,#020617 0%,#06101f 50%,#020617 100%)!important;
-  }
-  .dym800-command-center{
-    border-radius:28px;
-    padding:16px;
-    margin:12px 0 18px;
-  }
-  .dym800-command-head{
-    flex-direction:column;
-  }
-  .dym800-brand-lockup{
-    gap:12px;
-  }
-  .dym800-diamond{
-    width:48px;
-    height:48px;
-    border-radius:19px;
-    font-size:23px;
-  }
-  .dym800-command-center h2{
-    font-size:30px;
-  }
-  .dym800-command-center p{
-    font-size:14px;
-  }
-  .dym800-plan-orb{
-    width:auto;
-    min-height:0;
-    min-width:132px;
-    border-radius:999px;
-    padding:10px 14px;
-    display:block;
-  }
-  .dym800-plan-orb span,.dym800-plan-orb strong{
-    display:inline;
-  }
-  .dym800-dashboard-line{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:8px;
-  }
-  .dym800-kpi{
-    padding:11px;
-    border-radius:18px;
-  }
-  .dym800-flow-nav{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:8px;
-  }
-  .dym800-flow-nav button{
-    min-height:58px!important;
-    border-radius:18px!important;
-  }
-  .section{flex-direction:column}
-  .card,.panel,.premium-panel,.hero,.dymivra760-panel,.dymivra770-billing,.dymivra766-premium-ladder,.dymivra765-progress,.dymivra764-reminders,.dymivra763-plan30,.dymivra762-checkup{
-    max-width:100%!important;
-    width:100%!important;
-    border-radius:26px!important;
-  }
-  .screen-intro{
-    padding:15px!important;
-    border-radius:24px!important;
-  }
-  .app-nav,.app-nav-pro{
-    border-radius:24px!important;
-    padding:8px!important;
-  }
-  .nav-btn{
-    padding:10px 12px!important;
-    font-size:12px!important;
-  }
-  input,textarea,.dymivra783-button{
-    min-height:54px;
-  }
-  .dymivra770-statusgrid,.dymivra770-form,.dymivra770-flow,.dymivra766-ladder-grid,.dymivra766-meter-grid,.dymivra765-headgrid,.dymivra765-grid,.dymivra764-statusbar,.dymivra764-grid{
-    grid-template-columns:1fr!important;
-  }
-}
-@media(max-width:420px){
-  .dym800-dashboard-line,
-  .dym800-flow-nav{
-    grid-template-columns:1fr;
-  }
-  .dym800-kpi strong{
-    white-space:normal;
-  }
-}
-
-
-/* =========================================================
-   DYMIVRA 8.1.3 — FULL VISUAL UPGRADE
-   Objetivo: fazer os módulos antigos parecerem novos.
-   Base: 8.0.0 / 7.8.3 estável.
-   Não altera motor: IA, Market Radar, Supabase, Mentor, PWA,
-   cobrança, páginas legais, seletores premium ou dados.
-   ========================================================= */
-body.dymivra810-system{
-  --d810-bg:#020617;
-  --d810-ink:#f8fafc;
-  --d810-muted:#dbeafe;
-  --d810-soft:#94a3b8;
-  --d810-cyan:#22d3ee;
-  --d810-blue:#2563eb;
-  --d810-purple:#8b5cf6;
-  --d810-green:#22c55e;
-  --d810-gold:#facc15;
-  --d810-red:#fb7185;
-  --d810-card:rgba(7,14,29,.80);
-  --d810-card2:rgba(15,23,42,.76);
-  --d810-line:rgba(148,163,184,.16);
-  --d810-line-hot:rgba(103,232,249,.30);
-  --d810-shadow:0 30px 90px rgba(0,0,0,.44);
-  --d810-shadow-soft:0 18px 56px rgba(0,0,0,.32);
-}
-body.dymivra810-system,
-body.dymivra810-system *{
-  box-sizing:border-box;
-}
-body.dymivra810-system{
-  max-width:100%;
-  overflow-x:hidden!important;
-  background:
-    radial-gradient(circle at 10% -8%,rgba(34,211,238,.18),transparent 30%),
-    radial-gradient(circle at 90% -4%,rgba(139,92,246,.17),transparent 34%),
-    radial-gradient(circle at 50% 115%,rgba(34,197,94,.10),transparent 38%),
-    linear-gradient(180deg,#020617 0%,#06101f 44%,#020617 100%)!important;
-}
-body.dymivra810-system::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-2;
-  pointer-events:none;
-  background:
-    linear-gradient(90deg,rgba(34,211,238,.044) 1px,transparent 1px),
-    linear-gradient(180deg,rgba(34,211,238,.030) 1px,transparent 1px),
-    radial-gradient(circle at 50% 0%,rgba(255,255,255,.08),transparent 50%);
-  background-size:42px 42px,42px 42px,100% 100%;
-  mask-image:linear-gradient(180deg,rgba(0,0,0,.96),rgba(0,0,0,.64) 56%,transparent 100%);
-}
-body.dymivra810-system::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 12% 25%,rgba(34,211,238,.06),transparent 27%),
-    radial-gradient(circle at 88% 20%,rgba(139,92,246,.055),transparent 29%),
-    radial-gradient(circle at 50% 80%,rgba(34,197,94,.035),transparent 33%);
-}
-body.dymivra810-system .app,
-body.dymivra810-system main,
-body.dymivra810-system .container,
-body.dymivra810-system .wrap,
-body.dymivra810-system #appSection{
-  max-width:100%;
-  overflow-x:hidden!important;
-}
-
-/* Signature in command center */
-.dym810-signature{
-  position:absolute;
-  top:14px;
-  right:14px;
-  z-index:3;
-  display:grid;
-  gap:2px;
-  border:1px solid rgba(103,232,249,.20);
-  background:rgba(2,8,18,.42);
-  backdrop-filter:blur(14px);
-  border-radius:999px;
-  padding:9px 13px;
-  max-width:min(360px,calc(100% - 28px));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
-}
-.dym810-signature span{
-  color:#67e8f9;
-  font-size:10px;
-  font-weight:950;
-  text-transform:uppercase;
-  letter-spacing:.15em;
-}
-.dym810-signature strong{
-  color:#fff;
-  font-size:12px;
-  line-height:1.15;
-}
-
-/* Every screen block becomes a premium module frame */
-body.dymivra810-system .dym810-module-frame{
-  position:relative!important;
-  max-width:100%!important;
-  overflow:hidden!important;
-  scroll-margin-top:110px;
-}
-body.dymivra810-system .dym810-module-frame[data-dym810-index]::before{
-  content:attr(data-dym810-index);
-  position:absolute;
-  top:12px;
-  right:12px;
-  z-index:5;
-  min-width:34px;
-  height:24px;
-  display:grid;
-  place-items:center;
-  border-radius:999px;
-  border:1px solid rgba(103,232,249,.22);
-  background:rgba(2,8,18,.50);
-  color:#67e8f9;
-  font-size:10px;
-  font-weight:950;
-  letter-spacing:.10em;
-  pointer-events:none;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
-}
-body.dymivra810-system .dym810-surface,
-body.dymivra810-system .card,
-body.dymivra810-system .panel,
-body.dymivra810-system .premium-panel,
-body.dymivra810-system .hero,
-body.dymivra810-system .item,
-body.dymivra810-system .mini,
-body.dymivra810-system .command-card,
-body.dymivra810-system .ai-oracle-card,
-body.dymivra810-system .ai-metric-card,
-body.dymivra810-system .allocation-card,
-body.dymivra810-system .freedom-card,
-body.dymivra810-system .legal-card,
-body.dymivra810-system .plan-card,
-body.dymivra810-system .smart-advisor-panel,
-body.dymivra810-system .dymivra760-panel,
-body.dymivra810-system .dymivra770-billing,
-body.dymivra810-system .dymivra766-premium-ladder,
-body.dymivra810-system .dymivra765-progress,
-body.dymivra810-system .dymivra764-reminders,
-body.dymivra810-system .dymivra763-plan30,
-body.dymivra810-system .dymivra762-checkup{
-  position:relative;
-  overflow:hidden;
-  border-color:rgba(148,163,184,.16)!important;
-  background:
-    radial-gradient(circle at 8% 0%,rgba(34,211,238,.105),transparent 34%),
-    radial-gradient(circle at 95% 0%,rgba(139,92,246,.090),transparent 32%),
-    linear-gradient(180deg,rgba(15,23,42,.88),rgba(2,8,18,.74))!important;
-  box-shadow:
-    0 30px 90px rgba(0,0,0,.42),
-    inset 0 1px 0 rgba(255,255,255,.06)!important;
-}
-body.dymivra810-system .dym810-surface::after,
-body.dymivra810-system .card::after,
-body.dymivra810-system .panel::after,
-body.dymivra810-system .premium-panel::after,
-body.dymivra810-system .hero::after,
-body.dymivra810-system .dymivra760-panel::after,
-body.dymivra810-system .dymivra770-billing::after,
-body.dymivra810-system .dymivra766-premium-ladder::after,
-body.dymivra810-system .dymivra765-progress::after,
-body.dymivra810-system .dymivra764-reminders::after,
-body.dymivra810-system .dymivra763-plan30::after,
-body.dymivra810-system .dymivra762-checkup::after{
-  content:"";
-  position:absolute;
-  pointer-events:none;
-  inset:0;
-  border-radius:inherit;
-  background:
-    linear-gradient(135deg,rgba(255,255,255,.085),transparent 22%,transparent 74%,rgba(34,211,238,.055)),
-    radial-gradient(circle at 50% 0%,rgba(255,255,255,.052),transparent 48%);
-  opacity:.78;
-}
-body.dymivra810-system .card>*,
-body.dymivra810-system .panel>*,
-body.dymivra810-system .premium-panel>*,
-body.dymivra810-system .hero>*,
-body.dymivra810-system .dymivra760-panel>*,
-body.dymivra810-system .dymivra770-billing>*,
-body.dymivra810-system .dymivra766-premium-ladder>*,
-body.dymivra810-system .dymivra765-progress>*,
-body.dymivra810-system .dymivra764-reminders>*,
-body.dymivra810-system .dymivra763-plan30>*,
-body.dymivra810-system .dymivra762-checkup>*{
-  position:relative;
-  z-index:1;
-}
-
-/* Grid blocks are no longer loose: they become premium trays */
-body.dymivra810-system .grid,
-body.dymivra810-system .hero-grid,
-body.dymivra810-system .split,
-body.dymivra810-system .command-grid,
-body.dymivra810-system .micro-grid,
-body.dymivra810-system .ai-hero-grid,
-body.dymivra810-system .ai-panel-grid,
-body.dymivra810-system .ai-context-grid,
-body.dymivra810-system .allocation-grid,
-body.dymivra810-system .allocation-kpis,
-body.dymivra810-system .freedom-grid,
-body.dymivra810-system .freedom-kpis,
-body.dymivra810-system .legal-grid,
-body.dymivra810-system .action-plan-grid,
-body.dymivra810-system .dymivra750-grid,
-body.dymivra810-system .dymivra740-grid,
-body.dymivra810-system .dymivra760-grid,
-body.dymivra810-system .dymivra760-kpis,
-body.dymivra810-system .dymivra762-form,
-body.dymivra810-system .dymivra763-weeks,
-body.dymivra810-system .dymivra764-grid,
-body.dymivra810-system .dymivra765-grid,
-body.dymivra810-system .dymivra766-ladder-grid,
-body.dymivra810-system .dymivra770-statusgrid,
-body.dymivra810-system .dymivra770-flow{
-  gap:14px!important;
-}
-
-/* Module headers and text hierarchy */
-body.dymivra810-system h1,
-body.dymivra810-system h2,
-body.dymivra810-system h3,
-body.dymivra810-system h4{
-  text-wrap:balance;
-}
-body.dymivra810-system .section h3,
-body.dymivra810-system .hero h1,
-body.dymivra810-system .hero h2,
-body.dymivra810-system .card h3,
-body.dymivra810-system .premium-panel h3,
-body.dymivra810-system .dymivra760-title,
-body.dymivra810-system .dymivra763-plan30 h3,
-body.dymivra810-system .dymivra762-checkup h3,
-body.dymivra810-system .smartAdvisorHeadline,
-body.dymivra810-system .ai-title{
-  letter-spacing:-.060em!important;
-  line-height:1.03!important;
-}
-body.dymivra810-system .kicker,
-body.dymivra810-system .dymivra760-badge,
-body.dymivra810-system .dymivra766-tag,
-body.dymivra810-system .legal-pill,
-body.dymivra810-system .chip{
-  color:#67e8f9!important;
-  letter-spacing:.14em!important;
-  text-transform:uppercase;
-  text-shadow:0 0 24px rgba(34,211,238,.24);
-}
-body.dymivra810-system .muted,
-body.dymivra810-system .card p,
-body.dymivra810-system .panel p,
-body.dymivra810-system .legal-text,
-body.dymivra810-system .ai-subtitle,
-body.dymivra810-system .dymivra760-sub{
-  color:#cbd5e1!important;
-  line-height:1.57!important;
-}
-
-/* Navigation transformed */
-body.dymivra810-system .app-nav,
-body.dymivra810-system .app-nav-pro{
-  border:1px solid rgba(103,232,249,.20)!important;
-  background:
-    radial-gradient(circle at 6% 0%,rgba(34,211,238,.13),transparent 28%),
-    radial-gradient(circle at 94% 0%,rgba(139,92,246,.12),transparent 28%),
-    rgba(2,8,18,.78)!important;
-  box-shadow:0 22px 66px rgba(0,0,0,.36), inset 0 1px 0 rgba(255,255,255,.055)!important;
-  max-width:100%;
-  overflow-x:auto!important;
-  overflow-y:hidden!important;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
-}
-body.dymivra810-system .app-nav::-webkit-scrollbar,
-body.dymivra810-system .app-nav-pro::-webkit-scrollbar{display:none}
-body.dymivra810-system .nav-btn{
-  position:relative;
-  overflow:hidden;
-  white-space:nowrap;
-  border-color:rgba(148,163,184,.13)!important;
-  background:rgba(15,23,42,.72)!important;
-  color:#dbeafe!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.04)!important;
-}
-body.dymivra810-system .nav-btn.active{
-  color:#fff!important;
-  background:
-    radial-gradient(circle at 20% 0%,rgba(255,255,255,.22),transparent 34%),
-    linear-gradient(135deg,rgba(34,211,238,.97),rgba(37,99,235,.94) 58%,rgba(139,92,246,.91))!important;
-  border-color:rgba(125,211,252,.48)!important;
-  box-shadow:0 20px 48px rgba(14,165,233,.28)!important;
-}
-
-/* Inputs, selects and buttons become consistent */
-body.dymivra810-system button:not(.nav-btn),
-body.dymivra810-system .btn,
-body.dymivra810-system .dymivra783-button{
-  border-radius:20px!important;
-  box-shadow:
-    0 16px 42px rgba(0,0,0,.28),
-    inset 0 1px 0 rgba(255,255,255,.080)!important;
-  font-weight:950!important;
-}
-body.dymivra810-system button.success,
-body.dymivra810-system .btn.success{
-  background:
-    radial-gradient(circle at 20% 0%,rgba(255,255,255,.18),transparent 34%),
-    linear-gradient(135deg,#16a34a,#22c55e)!important;
-}
-body.dymivra810-system button.secondary,
-body.dymivra810-system .btn.secondary{
-  background:
-    radial-gradient(circle at 10% 0%,rgba(34,211,238,.08),transparent 32%),
-    linear-gradient(135deg,rgba(15,23,42,.98),rgba(30,41,59,.96))!important;
-  border:1px solid rgba(148,163,184,.22)!important;
-}
-body.dymivra810-system button.gold,
-body.dymivra810-system .btn.gold{
-  background:
-    radial-gradient(circle at 20% 0%,rgba(255,255,255,.23),transparent 34%),
-    linear-gradient(135deg,#d97706,#facc15)!important;
-  color:#111827!important;
-}
-body.dymivra810-system button.danger,
-body.dymivra810-system .btn.danger{
-  background:linear-gradient(135deg,#be123c,#fb7185)!important;
-}
-body.dymivra810-system input,
-body.dymivra810-system textarea,
-body.dymivra810-system select,
-body.dymivra810-system .dymivra783-button{
-  border-radius:20px!important;
-  border-color:rgba(125,211,252,.23)!important;
-  background:
-    radial-gradient(circle at 8% 0%,rgba(34,211,238,.09),transparent 32%),
-    linear-gradient(180deg,rgba(5,12,24,.99),rgba(2,8,18,.97))!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.045), 0 12px 30px rgba(0,0,0,.18)!important;
-}
-body.dymivra810-system label,
-body.dymivra810-system .label{
-  color:#dbeafe!important;
-  font-weight:900;
-}
-
-/* Old stat blocks now look new */
-body.dymivra810-system .item,
-body.dymivra810-system .mini,
-body.dymivra810-system .projection-row,
-body.dymivra810-system .asset,
-body.dymivra810-system .allocation-row,
-body.dymivra810-system .legal-row,
-body.dymivra810-system .ai-action-item,
-body.dymivra810-system .ai-message,
-body.dymivra810-system .dymivra750-metric,
-body.dymivra810-system .dymivra750-card,
-body.dymivra810-system .dymivra740-score-card,
-body.dymivra810-system .dymivra740-insight,
-body.dymivra810-system .dymivra740-risk-row,
-body.dymivra810-system .dymivra740-next-row,
-body.dymivra810-system .dymivra760-card,
-body.dymivra810-system .dymivra760-kpi,
-body.dymivra810-system .dymivra760-item,
-body.dymivra810-system .dymivra762-field,
-body.dymivra810-system .dymivra762-pill,
-body.dymivra810-system .dymivra763-task,
-body.dymivra810-system .dymivra764-card,
-body.dymivra810-system .dymivra764-status,
-body.dymivra810-system .dymivra765-card,
-body.dymivra810-system .dymivra765-pill,
-body.dymivra810-system .dymivra766-tier,
-body.dymivra810-system .dymivra766-meter-card,
-body.dymivra810-system .dymivra770-status,
-body.dymivra810-system .dymivra770-step{
-  border:1px solid rgba(148,163,184,.14)!important;
-  background:
-    radial-gradient(circle at 0% 0%,rgba(34,211,238,.075),transparent 36%),
-    rgba(2,8,18,.40)!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.045), 0 12px 32px rgba(0,0,0,.18)!important;
-  border-radius:22px!important;
-}
-
-/* Important premium modules */
-body.dymivra810-system .hero,
-body.dymivra810-system .ai-oracle-card,
-body.dymivra810-system .allocation-hero,
-body.dymivra810-system .freedom-hero,
-body.dymivra810-system .legal-hero,
-body.dymivra810-system .dymivra750-market,
-body.dymivra810-system .dymivra740-panel,
-body.dymivra810-system .dymivra760-panel,
-body.dymivra810-system .dymivra762-checkup,
-body.dymivra810-system .dymivra763-plan30,
-body.dymivra810-system .dymivra764-reminders,
-body.dymivra810-system .dymivra765-progress,
-body.dymivra810-system .dymivra766-premium-ladder,
-body.dymivra810-system .dymivra770-billing{
-  border-color:rgba(103,232,249,.22)!important;
-}
-
-/* Score/ring visual */
-body.dymivra810-system .premiumScoreRing,
-body.dymivra810-system .dymivra763-ring,
-body.dymivra810-system .dymivra765-ring,
-body.dymivra810-system .allocation-score,
-body.dymivra810-system .dymivra740-score{
-  box-shadow:
-    0 24px 70px rgba(34,211,238,.13),
-    inset 0 1px 0 rgba(255,255,255,.075)!important;
-  border-color:rgba(103,232,249,.24)!important;
-}
-
-/* Plan cards */
-body.dymivra810-system .dymivra766-tier.free,
-body.dymivra810-system .plan-card.free{
-  border-color:rgba(148,163,184,.18)!important;
-}
-body.dymivra810-system .dymivra766-tier.pro,
-body.dymivra810-system .plan-card.pro{
-  border-color:rgba(34,211,238,.36)!important;
-  box-shadow:0 28px 80px rgba(14,165,233,.16), inset 0 1px 0 rgba(255,255,255,.06)!important;
-}
-body.dymivra810-system .dymivra766-tier.elite,
-body.dymivra810-system .plan-card.elite{
-  border-color:rgba(250,204,21,.36)!important;
-  box-shadow:0 28px 80px rgba(250,204,21,.14), inset 0 1px 0 rgba(255,255,255,.06)!important;
-}
-
-/* Tables and rows */
-body.dymivra810-system table,
-body.dymivra810-system .allocation-table{
-  border-collapse:separate!important;
-  border-spacing:0 8px!important;
-}
-body.dymivra810-system tr,
-body.dymivra810-system .history-row{
-  border-radius:18px!important;
-}
-body.dymivra810-system td,
-body.dymivra810-system th{
-  border-color:rgba(148,163,184,.10)!important;
-}
-
-/* Custom select menu preserved and upgraded */
-body.dymivra810-system .dymivra783-menu{
-  background:
-    radial-gradient(circle at 12% 0%,rgba(34,211,238,.18),transparent 32%),
-    radial-gradient(circle at 90% 0%,rgba(139,92,246,.16),transparent 32%),
-    rgba(10,17,32,.988)!important;
-  border-color:rgba(125,211,252,.31)!important;
-  box-shadow:0 36px 120px rgba(0,0,0,.68), inset 0 1px 0 rgba(255,255,255,.075)!important;
-}
-body.dymivra810-system .dymivra783-option{
-  background:rgba(255,255,255,.030);
-  border-color:rgba(255,255,255,.045);
-  margin-bottom:8px;
-}
-body.dymivra810-system .dymivra783-option:last-child{margin-bottom:0}
-body.dymivra810-system .dymivra783-option.selected{
-  background:
-    radial-gradient(circle at 0% 0%,rgba(255,255,255,.16),transparent 34%),
-    linear-gradient(135deg,rgba(34,211,238,.96),rgba(37,99,235,.93) 58%,rgba(139,92,246,.90))!important;
-  color:#fff!important;
-  border-color:rgba(255,255,255,.26)!important;
-}
-
-/* Hover polish on desktop */
-@media(hover:hover){
-  body.dymivra810-system .card:hover,
-  body.dymivra810-system .panel:hover,
-  body.dymivra810-system .premium-panel:hover,
-  body.dymivra810-system .dymivra760-panel:hover,
-  body.dymivra810-system .dymivra770-billing:hover,
-  body.dymivra810-system .dymivra766-premium-ladder:hover,
-  body.dymivra810-system .dymivra765-progress:hover,
-  body.dymivra810-system .dymivra764-reminders:hover,
-  body.dymivra810-system .dymivra763-plan30:hover,
-  body.dymivra810-system .dymivra762-checkup:hover{
-    border-color:rgba(103,232,249,.30)!important;
-    transform:translateY(-2px);
-    transition:.25s ease;
-  }
-  body.dymivra810-system button:not(.nav-btn):hover,
-  body.dymivra810-system .btn:hover{
-    transform:translateY(-1px);
-    filter:saturate(1.10) brightness(1.03);
-  }
-}
-
-/* Mobile safety */
-@media(max-width:900px){
-  .dym810-signature{
-    position:relative;
-    top:auto;
-    right:auto;
-    margin:0 0 12px;
-    border-radius:20px;
-    max-width:100%;
-  }
-}
-@media(max-width:760px){
-  body.dymivra810-system{
-    background:
-      radial-gradient(circle at 20% -8%,rgba(34,211,238,.13),transparent 30%),
-      radial-gradient(circle at 86% 0%,rgba(139,92,246,.12),transparent 28%),
-      linear-gradient(180deg,#020617 0%,#06101f 50%,#020617 100%)!important;
-  }
-  body.dymivra810-system .section{
-    flex-direction:column;
-  }
-  body.dymivra810-system .card,
-  body.dymivra810-system .panel,
-  body.dymivra810-system .premium-panel,
-  body.dymivra810-system .hero,
-  body.dymivra810-system .dymivra760-panel,
-  body.dymivra810-system .dymivra770-billing,
-  body.dymivra810-system .dymivra766-premium-ladder,
-  body.dymivra810-system .dymivra765-progress,
-  body.dymivra810-system .dymivra764-reminders,
-  body.dymivra810-system .dymivra763-plan30,
-  body.dymivra810-system .dymivra762-checkup{
-    width:100%!important;
-    max-width:100%!important;
-    border-radius:26px!important;
-  }
-  body.dymivra810-system .screen-intro{
-    padding:15px!important;
-    border-radius:24px!important;
-  }
-  body.dymivra810-system .app-nav,
-  body.dymivra810-system .app-nav-pro{
-    border-radius:24px!important;
-    padding:8px!important;
-  }
-  body.dymivra810-system .nav-btn{
-    padding:10px 12px!important;
-    font-size:12px!important;
-  }
-  body.dymivra810-system input,
-  body.dymivra810-system textarea,
-  body.dymivra810-system .dymivra783-button{
-    min-height:54px;
-  }
-  body.dymivra810-system .grid4,
-  body.dymivra810-system .grid5,
-  body.dymivra810-system .dymivra770-statusgrid,
-  body.dymivra810-system .dymivra770-form,
-  body.dymivra810-system .dymivra770-flow,
-  body.dymivra810-system .dymivra766-ladder-grid,
-  body.dymivra810-system .dymivra766-meter-grid,
-  body.dymivra810-system .dymivra765-headgrid,
-  body.dymivra810-system .dymivra765-grid,
-  body.dymivra810-system .dymivra764-statusbar,
-  body.dymivra810-system .dymivra764-grid,
-  body.dymivra810-system .dymivra760-grid,
-  body.dymivra810-system .dymivra760-kpis{
-    grid-template-columns:1fr!important;
-  }
-  body.dymivra810-system .dym810-module-frame[data-dym810-index]::before{
-    top:10px;
-    right:10px;
-    opacity:.78;
-  }
-}
-
-
-/* =========================================================
-   DYMIVRA 8.1.3 — ROLAGEM MESTRA DEFINITIVA
-   Mantém o Full Visual Upgrade, mas elimina o travamento de tela.
-   Estratégia: .container vira o scroller oficial do app.
-   Também há ponte JS para wheel/touch/teclado caso o WebView bloqueie.
-   ========================================================= */
-html,
-body{
-  width:100%!important;
-  height:100%!important;
-  min-height:100%!important;
-  max-height:100%!important;
-  overflow:hidden!important;
-  overflow-x:hidden!important;
-  overflow-y:hidden!important;
-  position:static!important;
-  overscroll-behavior:none!important;
-}
-
-body.dymivra813-scroll-master{
-  width:100%!important;
-  height:100%!important;
-  min-height:100%!important;
-  max-height:100%!important;
-  overflow:hidden!important;
-  overflow-x:hidden!important;
-  overflow-y:hidden!important;
-  position:static!important;
-  touch-action:auto!important;
-  -webkit-overflow-scrolling:auto!important;
-}
-
-body.dymivra813-scroll-master .container{
-  display:block!important;
-  position:relative!important;
-  z-index:2!important;
-  width:100%!important;
-  max-width:var(--max,1500px)!important;
-  height:100dvh!important;
-  min-height:100dvh!important;
-  max-height:100dvh!important;
-  margin-left:auto!important;
-  margin-right:auto!important;
+  min-height:100%;
+  height:auto!important;
+  max-height:none!important;
   overflow-x:hidden!important;
   overflow-y:auto!important;
-  -webkit-overflow-scrolling:touch!important;
-  overscroll-behavior-y:contain!important;
-  touch-action:pan-y!important;
-  scroll-behavior:smooth!important;
-  padding-bottom:calc(150px + env(safe-area-inset-bottom,0px))!important;
+  position:static!important;
+  scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-y:auto;
+  touch-action:auto;
 }
 
-@supports not (height:100dvh){
-  body.dymivra813-scroll-master .container{
-    height:100vh!important;
-    min-height:100vh!important;
-    max-height:100vh!important;
-  }
+body.dymivra820-max-stable{
+  --d820-bg:#020617;
+  --d820-surface:#081224;
+  --d820-surface2:#0b1830;
+  --d820-card:rgba(8,18,36,.86);
+  --d820-line:rgba(148,163,184,.18);
+  --d820-line2:rgba(56,189,248,.26);
+  --d820-cyan:#22d3ee;
+  --d820-blue:#2563eb;
+  --d820-purple:#7c3aed;
+  --d820-green:#22c55e;
+  --d820-gold:#facc15;
+  --d820-text:#f8fafc;
+  --d820-muted:#cbd5e1;
+  --d820-soft:#94a3b8;
+
+  min-height:100vh!important;
+  height:auto!important;
+  max-height:none!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  position:static!important;
+  background:
+    radial-gradient(circle at 16% -8%,rgba(34,211,238,.12),transparent 30%),
+    radial-gradient(circle at 86% -4%,rgba(124,58,237,.12),transparent 32%),
+    linear-gradient(180deg,#020617 0%,#07111f 45%,#020617 100%)!important;
+  color:var(--d820-text);
 }
 
-body.dymivra813-scroll-master #appSection,
-body.dymivra813-scroll-master #authSection,
-body.dymivra813-scroll-master #app,
-body.dymivra813-scroll-master main,
-body.dymivra813-scroll-master .app,
-body.dymivra813-scroll-master .wrap,
-body.dymivra813-scroll-master .screen,
-body.dymivra813-scroll-master .content,
-body.dymivra813-scroll-master [data-screen-block],
-body.dymivra813-scroll-master [data-screen-block]:not(.screen-hidden){
+body.dymivra820-max-stable *{
+  box-sizing:border-box;
+}
+
+body.dymivra820-max-stable::before,
+body.dymivra820-max-stable::after{
+  pointer-events:none!important;
+}
+
+/* Nunca travar containers */
+body.dymivra820-max-stable .container,
+body.dymivra820-max-stable .app,
+body.dymivra820-max-stable main,
+body.dymivra820-max-stable .wrap,
+body.dymivra820-max-stable #appSection,
+body.dymivra820-max-stable #authSection,
+body.dymivra820-max-stable [data-screen-block],
+body.dymivra820-max-stable .screen,
+body.dymivra820-max-stable .content{
   height:auto!important;
   min-height:0!important;
   max-height:none!important;
-  overflow:visible!important;
-  overflow-x:visible!important;
+  overflow-x:hidden!important;
   overflow-y:visible!important;
   position:relative;
 }
 
-body.dymivra813-scroll-master .card,
-body.dymivra813-scroll-master .panel,
-body.dymivra813-scroll-master .premium-panel,
-body.dymivra813-scroll-master .hero,
-body.dymivra813-scroll-master .dym800-command-center,
-body.dymivra813-scroll-master .dymivra760-panel,
-body.dymivra813-scroll-master .dymivra770-billing,
-body.dymivra813-scroll-master .dymivra766-premium-ladder,
-body.dymivra813-scroll-master .dymivra765-progress,
-body.dymivra813-scroll-master .dymivra764-reminders,
-body.dymivra813-scroll-master .dymivra763-plan30,
-body.dymivra813-scroll-master .dymivra762-checkup{
-  max-height:none!important;
+/* Header premium leve e perceptível */
+.dym820-exec-header{
+  width:100%;
+  max-width:100%;
+  position:relative;
+  overflow:hidden;
+  margin:14px 0 18px;
+  padding:18px;
+  border-radius:30px;
+  border:1px solid rgba(56,189,248,.24);
+  background:
+    linear-gradient(135deg,rgba(8,18,36,.94),rgba(10,20,42,.88)),
+    radial-gradient(circle at 0% 0%,rgba(34,211,238,.16),transparent 34%),
+    radial-gradient(circle at 100% 0%,rgba(124,58,237,.12),transparent 34%);
+  box-shadow:0 18px 52px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.dym820-exec-header::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.07),transparent 26%,transparent 72%,rgba(34,211,238,.05)),
+    linear-gradient(90deg,rgba(34,211,238,.045) 1px,transparent 1px);
+  background-size:100% 100%,34px 100%;
+  opacity:.75;
+}
+.dym820-head-main{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+}
+.dym820-icon{
+  flex:0 0 auto;
+  width:58px;
+  height:58px;
+  display:grid;
+  place-items:center;
+  border-radius:22px;
+  color:#fff;
+  font-size:28px;
+  background:linear-gradient(135deg,#22d3ee,#2563eb 55%,#7c3aed);
+  box-shadow:0 16px 44px rgba(34,211,238,.20);
+  border:1px solid rgba(255,255,255,.18);
+}
+.dym820-titlebox{min-width:0}
+.dym820-kicker{
+  color:#67e8f9;
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.dym820-exec-header h2{
+  margin:0;
+  color:#fff;
+  font-size:clamp(28px,5vw,48px);
+  line-height:.98;
+  letter-spacing:-.07em;
+}
+.dym820-exec-header p{
+  margin:10px 0 0;
+  color:#dbeafe;
+  line-height:1.5;
+  max-width:760px;
+}
+.dym820-state-grid{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin-top:15px;
+}
+.dym820-state-grid button{
+  min-width:0;
+  min-height:58px!important;
+  border-radius:18px!important;
+  border:1px solid rgba(125,211,252,.20)!important;
+  background:rgba(2,8,18,.42)!important;
+  color:#fff!important;
+  text-align:left;
+  padding:10px 12px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05)!important;
+}
+.dym820-state-grid span{
+  display:block;
+  color:#67e8f9;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.14em;
+  margin-bottom:5px;
+}
+.dym820-state-grid b{
+  display:block;
+  font-size:14px;
+  line-height:1.1;
 }
 
-/* Navegação continua horizontal, mas não captura a rolagem vertical */
-body.dymivra813-scroll-master .app-nav,
-body.dymivra813-scroll-master .app-nav-pro{
+/* Login e tela inicial mais premium sem pesar */
+body.dymivra820-max-stable .auth,
+body.dymivra820-max-stable #authSection,
+body.dymivra820-max-stable .login,
+body.dymivra820-max-stable .login-card,
+body.dymivra820-max-stable .auth-card{
+  border-color:rgba(56,189,248,.22)!important;
+  background:
+    linear-gradient(180deg,rgba(8,18,36,.90),rgba(2,8,18,.82))!important;
+  box-shadow:0 18px 50px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.05)!important;
+}
+
+/* Cards antigos com visual novo, mas leve */
+body.dymivra820-max-stable .card,
+body.dymivra820-max-stable .panel,
+body.dymivra820-max-stable .premium-panel,
+body.dymivra820-max-stable .hero,
+body.dymivra820-max-stable .item,
+body.dymivra820-max-stable .mini,
+body.dymivra820-max-stable .command-card,
+body.dymivra820-max-stable .ai-oracle-card,
+body.dymivra820-max-stable .ai-metric-card,
+body.dymivra820-max-stable .allocation-card,
+body.dymivra820-max-stable .freedom-card,
+body.dymivra820-max-stable .legal-card,
+body.dymivra820-max-stable .plan-card,
+body.dymivra820-max-stable .dymivra760-panel,
+body.dymivra820-max-stable .dymivra770-billing,
+body.dymivra820-max-stable .dymivra766-premium-ladder,
+body.dymivra820-max-stable .dymivra765-progress,
+body.dymivra820-max-stable .dymivra764-reminders,
+body.dymivra820-max-stable .dymivra763-plan30,
+body.dymivra820-max-stable .dymivra762-checkup{
+  max-height:none!important;
+  overflow:hidden;
+  border-color:rgba(148,163,184,.16)!important;
+  background:
+    linear-gradient(180deg,rgba(8,18,36,.88),rgba(2,8,18,.72))!important;
+  box-shadow:0 16px 46px rgba(0,0,0,.26), inset 0 1px 0 rgba(255,255,255,.05)!important;
+}
+body.dymivra820-max-stable .card::before,
+body.dymivra820-max-stable .panel::before,
+body.dymivra820-max-stable .premium-panel::before,
+body.dymivra820-max-stable .hero::before,
+body.dymivra820-max-stable .dymivra760-panel::before,
+body.dymivra820-max-stable .dymivra770-billing::before,
+body.dymivra820-max-stable .dymivra766-premium-ladder::before,
+body.dymivra820-max-stable .dymivra765-progress::before,
+body.dymivra820-max-stable .dymivra764-reminders::before,
+body.dymivra820-max-stable .dymivra763-plan30::before,
+body.dymivra820-max-stable .dymivra762-checkup::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 8% 0%,rgba(34,211,238,.10),transparent 32%),
+    radial-gradient(circle at 96% 0%,rgba(124,58,237,.07),transparent 30%);
+  opacity:.9;
+}
+body.dymivra820-max-stable .card>*,
+body.dymivra820-max-stable .panel>*,
+body.dymivra820-max-stable .premium-panel>*,
+body.dymivra820-max-stable .hero>*,
+body.dymivra820-max-stable .dymivra760-panel>*,
+body.dymivra820-max-stable .dymivra770-billing>*,
+body.dymivra820-max-stable .dymivra766-premium-ladder>*,
+body.dymivra820-max-stable .dymivra765-progress>*,
+body.dymivra820-max-stable .dymivra764-reminders>*,
+body.dymivra820-max-stable .dymivra763-plan30>*,
+body.dymivra820-max-stable .dymivra762-checkup>*{
+  position:relative;
+  z-index:1;
+}
+
+/* Navegação mais moderna sem mexer em rolagem */
+body.dymivra820-max-stable .app-nav,
+body.dymivra820-max-stable .app-nav-pro{
+  max-width:100%;
   overflow-x:auto!important;
   overflow-y:hidden!important;
-  touch-action:pan-x pan-y!important;
   -webkit-overflow-scrolling:touch!important;
+  touch-action:pan-x pan-y!important;
+  scrollbar-width:none;
+  border:1px solid rgba(56,189,248,.18)!important;
+  background:rgba(2,8,18,.70)!important;
+  box-shadow:0 14px 40px rgba(0,0,0,.26), inset 0 1px 0 rgba(255,255,255,.04)!important;
+}
+body.dymivra820-max-stable .app-nav::-webkit-scrollbar,
+body.dymivra820-max-stable .app-nav-pro::-webkit-scrollbar{
+  display:none;
+}
+body.dymivra820-max-stable .nav-btn{
+  white-space:nowrap;
+  background:rgba(15,23,42,.72)!important;
+  border-color:rgba(148,163,184,.14)!important;
+  color:#dbeafe!important;
+}
+body.dymivra820-max-stable .nav-btn.active{
+  background:linear-gradient(135deg,#22d3ee,#2563eb)!important;
+  color:#fff!important;
+  border-color:rgba(125,211,252,.42)!important;
+  box-shadow:0 14px 30px rgba(14,165,233,.20)!important;
 }
 
-/* Menus premium continuam rolando por dentro quando abertos */
-body.dymivra813-scroll-master .dymivra783-menu{
+/* Textos e hierarquia */
+body.dymivra820-max-stable h1,
+body.dymivra820-max-stable h2,
+body.dymivra820-max-stable h3,
+body.dymivra820-max-stable h4{
+  text-wrap:balance;
+}
+body.dymivra820-max-stable .section h3,
+body.dymivra820-max-stable .hero h1,
+body.dymivra820-max-stable .hero h2,
+body.dymivra820-max-stable .card h3,
+body.dymivra820-max-stable .premium-panel h3,
+body.dymivra820-max-stable .dymivra760-title,
+body.dymivra820-max-stable .dymivra763-plan30 h3,
+body.dymivra820-max-stable .dymivra762-checkup h3{
+  letter-spacing:-.045em!important;
+  line-height:1.06!important;
+}
+body.dymivra820-max-stable .kicker,
+body.dymivra820-max-stable .chip,
+body.dymivra820-max-stable .badge,
+body.dymivra820-max-stable .dymivra760-badge,
+body.dymivra820-max-stable .dymivra766-tag{
+  color:#67e8f9!important;
+  letter-spacing:.12em!important;
+}
+body.dymivra820-max-stable .muted,
+body.dymivra820-max-stable .card p,
+body.dymivra820-max-stable .panel p{
+  color:#cbd5e1!important;
+  line-height:1.55!important;
+}
+
+/* Inputs, botões, selects */
+body.dymivra820-max-stable button:not(.nav-btn),
+body.dymivra820-max-stable .btn,
+body.dymivra820-max-stable .dymivra783-button{
+  border-radius:18px!important;
+  box-shadow:0 12px 30px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.06)!important;
+}
+body.dymivra820-max-stable input,
+body.dymivra820-max-stable textarea,
+body.dymivra820-max-stable select,
+body.dymivra820-max-stable .dymivra783-button{
+  max-width:100%;
+  border-radius:18px!important;
+  border-color:rgba(125,211,252,.22)!important;
+  background:linear-gradient(180deg,rgba(5,12,24,.98),rgba(2,8,18,.96))!important;
+}
+body.dymivra820-max-stable button.success,
+body.dymivra820-max-stable .btn.success{
+  background:linear-gradient(135deg,#16a34a,#22c55e)!important;
+}
+body.dymivra820-max-stable button.secondary,
+body.dymivra820-max-stable .btn.secondary{
+  background:linear-gradient(135deg,rgba(15,23,42,.98),rgba(30,41,59,.96))!important;
+  border:1px solid rgba(148,163,184,.20)!important;
+}
+body.dymivra820-max-stable button.gold,
+body.dymivra820-max-stable .btn.gold{
+  background:linear-gradient(135deg,#d97706,#facc15)!important;
+  color:#111827!important;
+}
+body.dymivra820-max-stable button.danger,
+body.dymivra820-max-stable .btn.danger{
+  background:linear-gradient(135deg,#be123c,#fb7185)!important;
+}
+
+/* Blocos internos antigos */
+body.dymivra820-max-stable .item,
+body.dymivra820-max-stable .mini,
+body.dymivra820-max-stable .projection-row,
+body.dymivra820-max-stable .asset,
+body.dymivra820-max-stable .dymivra760-card,
+body.dymivra820-max-stable .dymivra760-kpi,
+body.dymivra820-max-stable .dymivra760-item,
+body.dymivra820-max-stable .dymivra762-field,
+body.dymivra820-max-stable .dymivra763-task,
+body.dymivra820-max-stable .dymivra764-card,
+body.dymivra820-max-stable .dymivra765-card,
+body.dymivra820-max-stable .dymivra766-tier,
+body.dymivra820-max-stable .dymivra766-meter-card,
+body.dymivra820-max-stable .dymivra770-status,
+body.dymivra820-max-stable .dymivra770-step{
+  border:1px solid rgba(148,163,184,.14)!important;
+  background:rgba(2,8,18,.34)!important;
+  border-radius:20px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04)!important;
+}
+
+/* Planos com mais presença */
+body.dymivra820-max-stable .dymivra766-tier.pro,
+body.dymivra820-max-stable .plan-card.pro{
+  border-color:rgba(34,211,238,.34)!important;
+  box-shadow:0 18px 50px rgba(14,165,233,.12), inset 0 1px 0 rgba(255,255,255,.05)!important;
+}
+body.dymivra820-max-stable .dymivra766-tier.elite,
+body.dymivra820-max-stable .plan-card.elite{
+  border-color:rgba(250,204,21,.34)!important;
+  box-shadow:0 18px 50px rgba(250,204,21,.12), inset 0 1px 0 rgba(255,255,255,.05)!important;
+}
+
+/* Menu premium preservado e liso */
+body.dymivra820-max-stable .dymivra783-menu{
   overflow-y:auto!important;
   -webkit-overflow-scrolling:touch!important;
   touch-action:pan-y!important;
+  background:linear-gradient(180deg,rgba(10,17,32,.99),rgba(2,8,18,.98))!important;
+  border-color:rgba(125,211,252,.28)!important;
+  box-shadow:0 22px 70px rgba(0,0,0,.52)!important;
+}
+body.dymivra820-max-stable .dymivra783-option.selected{
+  background:linear-gradient(135deg,#22d3ee,#2563eb)!important;
+  border-color:rgba(255,255,255,.24)!important;
 }
 
-/* Elementos fixos não bloqueiam gesto de rolagem */
-body.dymivra813-scroll-master::before,
-body.dymivra813-scroll-master::after,
-body.dymivra813-scroll-master .wealth-aurora-stage{
-  pointer-events:none!important;
+/* Desktop polish leve */
+@media(hover:hover){
+  body.dymivra820-max-stable .card:hover,
+  body.dymivra820-max-stable .panel:hover,
+  body.dymivra820-max-stable .premium-panel:hover{
+    border-color:rgba(56,189,248,.26)!important;
+    transform:translateY(-1px);
+    transition:.18s ease;
+  }
 }
 
-/* Botão topo acompanha o scroller da container */
-body.dymivra813-scroll-master .wealth-floating-top,
-body.dymivra813-scroll-master .floating-top,
-body.dymivra813-scroll-master #floatingTop,
-body.dymivra813-scroll-master #topBtn,
-body.dymivra813-scroll-master .top-btn{
-  pointer-events:auto!important;
+/* Mobile proteção */
+@media(max-width:900px){
+  .dym820-state-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
 }
-
 @media(max-width:760px){
-  html,
-  body,
-  body.dymivra813-scroll-master{
-    height:100%!important;
-    max-height:100%!important;
-    overflow:hidden!important;
-  }
-
-  body.dymivra813-scroll-master .container{
-    height:100dvh!important;
-    min-height:100dvh!important;
-    max-height:100dvh!important;
+  body.dymivra820-max-stable{
     overflow-y:auto!important;
-    overflow-x:hidden!important;
-    padding-left:14px!important;
-    padding-right:14px!important;
-    padding-bottom:calc(170px + env(safe-area-inset-bottom,0px))!important;
-  }
-
-  body.dymivra813-scroll-master #appSection,
-  body.dymivra813-scroll-master [data-screen-block]:not(.screen-hidden){
-    overflow:visible!important;
     height:auto!important;
+    min-height:100vh!important;
     max-height:none!important;
+  }
+  body.dymivra820-max-stable .container{
+    height:auto!important;
+    min-height:100vh!important;
+    max-height:none!important;
+    overflow-y:visible!important;
+    overflow-x:hidden!important;
+  }
+  body.dymivra820-max-stable .section{
+    flex-direction:column;
+  }
+  body.dymivra820-max-stable .card,
+  body.dymivra820-max-stable .panel,
+  body.dymivra820-max-stable .premium-panel,
+  body.dymivra820-max-stable .hero,
+  body.dymivra820-max-stable .dymivra760-panel,
+  body.dymivra820-max-stable .dymivra770-billing,
+  body.dymivra820-max-stable .dymivra766-premium-ladder,
+  body.dymivra820-max-stable .dymivra765-progress,
+  body.dymivra820-max-stable .dymivra764-reminders,
+  body.dymivra820-max-stable .dymivra763-plan30,
+  body.dymivra820-max-stable .dymivra762-checkup{
+    width:100%!important;
+    max-width:100%!important;
+    border-radius:24px!important;
+  }
+  .dym820-exec-header{
+    border-radius:26px;
+    padding:15px;
+  }
+  .dym820-head-main{
+    gap:11px;
+  }
+  .dym820-icon{
+    width:48px;
+    height:48px;
+    border-radius:18px;
+    font-size:22px;
+  }
+  .dym820-exec-header h2{
+    font-size:30px;
+  }
+  .dym820-exec-header p{
+    font-size:14px;
+  }
+  .dym820-state-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+  }
+  .dym820-state-grid button{
+    min-height:54px!important;
+  }
+  body.dymivra820-max-stable .app-nav,
+  body.dymivra820-max-stable .app-nav-pro{
+    border-radius:24px!important;
+    padding:8px!important;
+  }
+  body.dymivra820-max-stable .nav-btn{
+    padding:10px 12px!important;
+    font-size:12px!important;
+  }
+  body.dymivra820-max-stable .dymivra770-statusgrid,
+  body.dymivra820-max-stable .dymivra770-form,
+  body.dymivra820-max-stable .dymivra770-flow,
+  body.dymivra820-max-stable .dymivra766-ladder-grid,
+  body.dymivra820-max-stable .dymivra766-meter-grid,
+  body.dymivra820-max-stable .dymivra765-headgrid,
+  body.dymivra820-max-stable .dymivra765-grid,
+  body.dymivra820-max-stable .dymivra764-statusbar,
+  body.dymivra820-max-stable .dymivra764-grid,
+  body.dymivra820-max-stable .dymivra760-grid,
+  body.dymivra820-max-stable .dymivra760-kpis{
+    grid-template-columns:1fr!important;
+  }
+}
+@media(max-width:420px){
+  .dym820-state-grid{
+    grid-template-columns:1fr;
   }
 }
 
@@ -6949,7 +6165,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
 
 <style>
 /* =========================================================
-   DYMIVRA 8.1.3 — Mentor Financeiro Completo
+   DYMIVRA 8.2.0 — Mentor Financeiro Completo
    Camada guiada: diagnóstico, plano, jornada, alertas,
    simulador, análise de carteira e evolução patrimonial.
    ========================================================= */
@@ -7609,7 +6825,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
 </head>
 
 
-<body class="dymivra781-premium dymivra810-system dymivra813-scroll-master">
+<body class="dymivra781-premium dymivra820-max-stable">
   <div id="wealthAuroraStage" class="wealth-aurora-stage" aria-hidden="true"><span class="aurora-orb orb-a"></span><span class="aurora-orb orb-b"></span><span class="aurora-orb orb-c"></span><span class="aurora-grid"></span></div>
   <div id="wealthScrollProgress" class="wealth-scroll-progress" aria-hidden="true"><span id="wealthScrollProgressFill"></span></div>
   <div id="boot" class="boot"><div class="bootbox"><h2>Dymivra</h2><p class="muted">Carregando painel profissional...</p><div style="display:flex;justify-content:center"><div class="spinner"></div></div></div></div>
@@ -7746,40 +6962,20 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
 
 <div id="screenIntro" class="screen-intro"><strong>Visão geral</strong> — painel executivo com patrimônio, inteligência, score e principais alertas.</div>
 
-      <section class="dym800-command-center" id="dym800CommandCenter">
-        <div class="dym800-aurora"></div>
-        <div class="dym810-signature">
-          <span>Full Visual Upgrade</span>
-          <strong>Todos os módulos redesenhados visualmente</strong>
-        </div>
-        <div class="dym800-command-head">
-          <div class="dym800-brand-lockup">
-            <div class="dym800-diamond">◆</div>
-            <div>
-              <div class="dym800-eyebrow">DYMIVRA 8.1.3 • ULTRA PREMIUM SYSTEM</div>
-              <h2 id="dym800Title">Central financeira inteligente</h2>
-              <p id="dym800Subtitle">Uma experiência executiva para organizar, analisar, acompanhar e evoluir decisões financeiras.</p>
-            </div>
-          </div>
-          <div class="dym800-plan-orb" id="dym800PlanOrb">
-            <span>Plano</span>
-            <strong>Ativo</strong>
+      <section class="dym820-exec-header" id="dym820ExecHeader">
+        <div class="dym820-head-main">
+          <div class="dym820-icon">◆</div>
+          <div class="dym820-titlebox">
+            <div class="dym820-kicker">DYMIVRA 8.2.0 • VISUAL MAX STABLE</div>
+            <h2 id="dym820Title">Sistema financeiro premium</h2>
+            <p id="dym820Subtitle">Uma experiência mais moderna, organizada e executiva — mantendo a rolagem nativa lisa.</p>
           </div>
         </div>
-
-        <div class="dym800-dashboard-line">
-          <div class="dym800-kpi"><span>Mentor</span><strong id="dym800KpiMentor">Pronto</strong><em>check-up + IA</em></div>
-          <div class="dym800-kpi"><span>Execução</span><strong id="dym800KpiPlan">30 dias</strong><em>jornada guiada</em></div>
-          <div class="dym800-kpi"><span>Mercado</span><strong id="dym800KpiMarket">Radar</strong><em>cenário conectado</em></div>
-          <div class="dym800-kpi"><span>Premium</span><strong id="dym800KpiPremium">Pro/Elite</strong><em>assinatura preparada</em></div>
-        </div>
-
-        <div class="dym800-flow-nav">
-          <button type="button" onclick="showAppScreen('overview')"><b>01</b><span>Visão geral</span></button>
-          <button type="button" onclick="showAppScreen('ledger')"><b>02</b><span>Carteira</span></button>
-          <button type="button" onclick="showAppScreen('mentor')"><b>03</b><span>Mentor</span></button>
-          <button type="button" onclick="showAppScreen('advisor')"><b>04</b><span>Radar IA</span></button>
-          <button type="button" onclick="showAppScreen('plans')"><b>05</b><span>Planos</span></button>
+        <div class="dym820-state-grid" id="dym820StateGrid">
+          <button type="button" onclick="showAppScreen('overview')"><span>01</span><b>Início</b></button>
+          <button type="button" onclick="showAppScreen('mentor')"><span>02</span><b>Mentor</b></button>
+          <button type="button" onclick="showAppScreen('advisor')"><span>03</span><b>Radar</b></button>
+          <button type="button" onclick="showAppScreen('plans')"><span>04</span><b>Planos</b></button>
         </div>
       </section>
 
@@ -7814,7 +7010,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
       <div class="card dymivra760-panel" data-screen-block data-screens="mentor">
         <div class="dymivra760-head">
           <div>
-            <div class="kicker">Dymivra 8.1.3 • Mentor financeiro</div>
+            <div class="kicker">Dymivra 8.2.0 • Mentor financeiro</div>
             <div class="dymivra760-title">Do começo ao fim, com próximos passos</div>
             <div class="dymivra760-sub">O Dymivra cruza carteira, ledger, metas, renda passiva, cenário de mercado e histórico para transformar dados em uma trilha educativa. Não recomenda compra ou venda; organiza decisões, riscos, prioridade e evolução.</div>
           </div>
@@ -8112,7 +7308,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
       <div class="card dymivra766-premium-ladder" data-screen-block data-screens="plans">
         <div class="section">
           <div>
-            <div class="kicker">Dymivra 8.1.3 • Premium mais claro</div>
+            <div class="kicker">Dymivra 8.2.0 • Premium mais claro</div>
             <h3>Planos desenhados para uma jornada completa</h3>
             <div class="muted">Agora o valor de cada plano fica explícito: Free organiza a base, Pro guia o usuário com Mentor e IA, Elite entrega a experiência completa de acompanhamento.</div>
           </div>
@@ -8184,7 +7380,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
       <div class="card dymivra770-billing" data-screen-block data-screens="plans">
         <div class="section">
           <div>
-            <div class="kicker">Dymivra 8.1.3 • Cobrança real</div>
+            <div class="kicker">Dymivra 8.2.0 • Cobrança real</div>
             <h3>Preparação para ativar assinaturas Pro e Elite</h3>
             <div class="muted">Esta área prepara o app para checkout real, webhook e ativação automática de plano. Por segurança, a cobrança real ainda fica desligada até conectarmos o provedor e o backend.</div>
           </div>
@@ -8474,7 +7670,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
         <div id="dymivra750MarketPanel" class="dymivra750-market">
           <div class="dymivra750-head">
             <div>
-              <div class="kicker">Dymivra 8.1.3 • Radar de Mercado</div>
+              <div class="kicker">Dymivra 8.2.0 • Radar de Mercado</div>
               <div class="dymivra750-title">Cenário de mercado conectado</div>
               <div class="muted">Leitura educativa de juros, inflação, câmbio, bolsa e cripto para cruzar com a carteira. Não recomenda compra ou venda.</div>
             </div>
@@ -8550,7 +7746,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
         <div id="dymivra740Panel" class="dymivra740-panel">
           <div class="dymivra740-head">
             <div>
-              <div class="kicker">Dymivra 8.1.3 • Radar IA Pro visível</div>
+              <div class="kicker">Dymivra 8.2.0 • Radar IA Pro visível</div>
               <div class="dymivra740-title">Análise Pro da carteira</div>
               <div class="muted">Nova camada avançada: score de atenção, postura sugerida, matriz de risco e próximos passos educativos.</div>
             </div>
@@ -11107,7 +10303,7 @@ let deferredInstallPrompt=null;
 
 
     /* =========================================================
-       Dymivra 8.1.3 — Mentor Financeiro Completo
+       Dymivra 8.2.0 — Mentor Financeiro Completo
        ========================================================= */
     function dymivra760Market(){
       try{
@@ -11294,7 +10490,7 @@ let deferredInstallPrompt=null;
 
 
     /* =========================================================
-       Dymivra 8.1.3 — Check-up financeiro inicial
+       Dymivra 8.2.0 — Check-up financeiro inicial
        ========================================================= */
     const DYMIVRA762_KEY='dymivra_checkup_v1';
 
@@ -11415,22 +10611,22 @@ let deferredInstallPrompt=null;
     window.copyDymivra762Checkup=async function(){
       const data=dymivra762Saved()||dymivra762Read();
       const a=dymivra762Analyze(data);
-      const text=`Dymivra 8.1.3 — Check-up financeiro inicial\n\nScore base: ${a.score}/100\nPrioridade: ${a.priority}\nPróxima ação: ${a.next}\nAlerta: ${a.alert}\n\nRenda: ${money(data.income)}\nGastos: ${money(data.expense)}\nSobra: ${money(a.sobra)} (${a.savingsRate.toFixed(1)}%)\nDívidas: ${money(data.debt)}\nReserva: ${money(data.reserve)} (${a.monthsReserve.toFixed(1)} meses)\n\nAviso: conteúdo educativo, sem recomendação individualizada de compra ou venda.`;
+      const text=`Dymivra 8.2.0 — Check-up financeiro inicial\n\nScore base: ${a.score}/100\nPrioridade: ${a.priority}\nPróxima ação: ${a.next}\nAlerta: ${a.alert}\n\nRenda: ${money(data.income)}\nGastos: ${money(data.expense)}\nSobra: ${money(a.sobra)} (${a.savingsRate.toFixed(1)}%)\nDívidas: ${money(data.debt)}\nReserva: ${money(data.reserve)} (${a.monthsReserve.toFixed(1)} meses)\n\nAviso: conteúdo educativo, sem recomendação individualizada de compra ou venda.`;
       try{await navigator.clipboard.writeText(text);toast('Diagnóstico do check-up copiado.','success')}
       catch{toast('Não consegui copiar automaticamente.','error')}
     }
 
 
     /* =========================================================
-       Dymivra 8.1.3 — Plano de ação de 30 dias
+       Dymivra 8.2.0 — Plano de ação de 30 dias
        ========================================================= */
 
     /* =========================================================
-       Dymivra 8.1.3 — Lembretes inteligentes locais
+       Dymivra 8.2.0 — Lembretes inteligentes locais
        ========================================================= */
 
     /* =========================================================
-       Dymivra 8.1.3 — Painel de progresso do usuário
+       Dymivra 8.2.0 — Painel de progresso do usuário
        ========================================================= */
     function dymivra765SafeNumber(v){
       const n=Number(v);
@@ -11532,7 +10728,7 @@ let deferredInstallPrompt=null;
     window.copyDymivra765Progress=async function(){
       const data=dymivra765CollectProgress();
       const nextText=data.next?`${data.next.title||'Próxima ação'} — ${data.next.text||''}`:'Revisar mensalmente e gerar nova análise com IA.';
-      const text=`Dymivra 8.1.3 — Painel de progresso do usuário
+      const text=`Dymivra 8.2.0 — Painel de progresso do usuário
 
 Progresso geral: ${data.journey}%
 Score Mentor: ${data.mentorScore}/100
@@ -11899,7 +11095,7 @@ Aviso: conteúdo educativo, sem recomendação individualizada de compra ou vend
       const done=dymivra763DoneMap();
       const prog=dymivra763Progress(tasks,done);
       const next=dymivra763Next(tasks,done);
-      const text=`Dymivra 8.1.3 — Plano de ação de 30 dias\n\nProgresso: ${prog.completed}/${prog.total} (${prog.pct}%)\nPróxima ação: ${next?`${next.title} — ${next.text}`:'plano concluído'}\n\n`+
+      const text=`Dymivra 8.2.0 — Plano de ação de 30 dias\n\nProgresso: ${prog.completed}/${prog.total} (${prog.pct}%)\nPróxima ação: ${next?`${next.title} — ${next.text}`:'plano concluído'}\n\n`+
       [1,2,3,4].map(w=>`Semana ${w}\n`+tasks.filter(t=>t.week===w).map(t=>`${done[t.id]?'✅':'⬜'} ${t.title}: ${t.text}`).join('\n')).join('\n\n')+
       `\n\nAviso: conteúdo educativo, sem recomendação individualizada de compra ou venda.`;
       try{await navigator.clipboard.writeText(text);toast('Plano de 30 dias copiado.','success')}
@@ -12034,7 +11230,7 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
       const ctx=dymivra760Ctx(),score=dymivra760Score(ctx),st=dymivra760Stage(score,ctx);
       const plan=dymivra760Plan(ctx).map((i,idx)=>`${idx+1}. ${i.title}: ${i.text}`).join('\n');
       const alerts=dymivra760Alerts(ctx).map(i=>`- ${i.title}: ${i.text}`).join('\n');
-      const text=`Dymivra 8.1.3 — Mentor financeiro\n\nScore: ${score}/100\nEtapa: ${st.stage}\nFoco: ${st.focus}\n\nCarteira: ${money(ctx.current)}\nInvestido: ${money(ctx.invested)}\nResultado: ${pnl(ctx.pl)} (${pct(ctx.ret)})\nMeta: ${Number(goal.targetValue||0)>0?ctx.goalInfo.display:'não definida'}\n\nPlano de ação:\n${plan}\n\nAlertas:\n${alerts}\n\nAviso: conteúdo educativo, sem recomendação individualizada de compra ou venda.`;
+      const text=`Dymivra 8.2.0 — Mentor financeiro\n\nScore: ${score}/100\nEtapa: ${st.stage}\nFoco: ${st.focus}\n\nCarteira: ${money(ctx.current)}\nInvestido: ${money(ctx.invested)}\nResultado: ${pnl(ctx.pl)} (${pct(ctx.ret)})\nMeta: ${Number(goal.targetValue||0)>0?ctx.goalInfo.display:'não definida'}\n\nPlano de ação:\n${plan}\n\nAlertas:\n${alerts}\n\nAviso: conteúdo educativo, sem recomendação individualizada de compra ou venda.`;
       try{await navigator.clipboard.writeText(text);toast('Plano do Mentor copiado.','success')}
       catch{toast('Não consegui copiar automaticamente.','error')}
     }
@@ -12042,7 +11238,7 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
 
 
     /* =========================================================
-       Dymivra 8.1.3 — Polimento premium responsivo
+       Dymivra 8.2.0 — Polimento premium responsivo
        ========================================================= */
     function renderDymivra781Premium(screen){
       const map={
@@ -13062,7 +12258,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
 
 
     /* =========================================================
-       Dymivra 8.1.3 — Preparação para cobrança real
+       Dymivra 8.2.0 — Preparação para cobrança real
        ========================================================= */
     const DYMIVRA770_BILLING_KEY='dymivra_billing_prep_v1';
 
@@ -13157,7 +12353,7 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
     }
     window.copyDymivra770BillingStatus=async function(){
       const b=dymivra770Billing();
-      const text=`Dymivra 8.1.3 — Status de cobrança
+      const text=`Dymivra 8.2.0 — Status de cobrança
 
 Provedor: ${dymivra770ProviderLabel(b.provider)}
 Modo: ${dymivra770ModeLabel(b.mode)}
@@ -13415,7 +12611,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
       const market=smartAdvisorScenario();
       const alerts=buildSmartAdvisorAlerts();
       const txt=[
-        'DYMIVRA 8.1.3 — RADAR IA PRO',
+        'DYMIVRA 8.2.0 — RADAR IA PRO',
         `Plano: ${currentWealthPlanConfig().name}`,
         `Patrimônio: ${money(ctx.totals.cur)}`,
         `Score IA: ${ctx.state.score}/100`,
@@ -13506,7 +12702,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
     });
 
     /* =========================
-       Dymivra 8.1.3 • Radar IA Pro
+       Dymivra 8.2.0 • Radar IA Pro
        Camada isolada: melhora leitura do Radar sem mexer no core.
        ========================= */
     function dymivra740SafeMoney(value){
@@ -13557,7 +12753,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
       panel.innerHTML=`
         <div class="dymivra740-head">
           <div>
-            <div class="kicker">Dymivra 8.1.3 • Radar IA Pro</div>
+            <div class="kicker">Dymivra 8.2.0 • Radar IA Pro</div>
             <div class="dymivra740-title">Leitura avançada da carteira</div>
             <div class="muted">Combina carteira, meta, renda passiva, cenário manual de mercado e alertas para indicar pontos de atenção.</div>
           </div>
@@ -13641,12 +12837,12 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
     try{
       const dymivra740OriginalRenderSmartAdvisor=renderSmartAdvisor;
       renderSmartAdvisor=function(){
-        try{dymivra740OriginalRenderSmartAdvisor.apply(this,arguments)}catch(e){console.warn('Dymivra 8.1.3: render original falhou',e)}
-        try{renderDymivra740RadarPro()}catch(e){console.warn('Dymivra 8.1.3: render pro falhou',e)}
+        try{dymivra740OriginalRenderSmartAdvisor.apply(this,arguments)}catch(e){console.warn('Dymivra 8.2.0: render original falhou',e)}
+        try{renderDymivra740RadarPro()}catch(e){console.warn('Dymivra 8.2.0: render pro falhou',e)}
       };
       window.renderSmartAdvisor=renderSmartAdvisor;
     }catch(e){
-      console.warn('Dymivra 8.1.3: não foi possível acoplar Radar Pro.',e);
+      console.warn('Dymivra 8.2.0: não foi possível acoplar Radar Pro.',e);
     }
     try{
       const dymivra740OriginalCopySmartAdvisor=window.copySmartAdvisorReport;
@@ -13655,7 +12851,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
           const data=dymivra740AdvisorData();
           const ctx=data.ctx;
           const report=[
-            'DYMIVRA 8.1.3 — RADAR IA PRO',
+            'DYMIVRA 8.2.0 — RADAR IA PRO',
             `Plano: ${data.plan.name}`,
             `Domínio oficial: https://www.dymivra.pro`,
             `Patrimônio analisado: ${dymivra740SafeMoney(ctx.totals?.cur)}`,
@@ -13683,7 +12879,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
 
 
     /* =========================
-       Dymivra 8.1.3 • Radar de Mercado
+       Dymivra 8.2.0 • Radar de Mercado
        Busca opcional por backend + fallback manual seguro.
        ========================= */
     function dymivra750Num(id){
@@ -13915,7 +13111,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
         applyMarketPayload(normalizeMarketPayload(data),'fetch');
         return;
       }catch(e){
-        console.warn('Dymivra 8.1.3: fetch direto falhou. Tentando JSONP.',e);
+        console.warn('Dymivra 8.2.0: fetch direto falhou. Tentando JSONP.',e);
       }
 
       try{
@@ -13924,7 +13120,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
         applyMarketPayload(normalizeMarketPayload(data),'jsonp');
         return;
       }catch(e){
-        console.warn('Dymivra 8.1.3: JSONP também falhou.',e);
+        console.warn('Dymivra 8.2.0: JSONP também falhou.',e);
         dymivra750Status('manual','Backend não conectado');
         if(status){
           status.textContent='Não consegui conectar ao market-radar. Verifique internet/cache do app e tente novamente.';
@@ -13937,7 +13133,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
       const s=dymivra750MarketSnapshot();
       const c=dymivra750ClassifyMarket(s);
       const report=[
-        'DYMIVRA 8.1.3 — RADAR DE MERCADO',
+        'DYMIVRA 8.2.0 — RADAR DE MERCADO',
         'Domínio oficial: https://www.dymivra.pro',
         `Selic/Juros: ${s.selic===null?'sem dado':s.selic.toFixed(2)+'%'}`,
         `Inflação/IPCA: ${s.inflation===null?'sem dado':s.inflation.toFixed(2)+'%'}`,
@@ -13973,7 +13169,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
     setTimeout(()=>{try{if($('dymivra750MarketPanel'))renderDymivra750Market(dymivra750MarketSnapshot(),'manual')}catch{}},1500);
 
 
-    /* Dymivra 8.1.3 • reforço de render do Radar Pro visível */
+    /* Dymivra 8.2.0 • reforço de render do Radar Pro visível */
     try{
       document.addEventListener('click', function(ev){
         const btn = ev.target && ev.target.closest ? ev.target.closest('[data-screen], .nav-btn') : null;
@@ -14003,7 +13199,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
       setTimeout(()=>{try{renderDymivra781Premium(currentScreen||'overview')}catch{}},1200);
 
     /* =========================================================
-       Dymivra 8.1.3 — Seletores premium seguros
+       Dymivra 8.2.0 — Seletores premium seguros
        ========================================================= */
     (function(){
       var activeSelect=null;
@@ -14152,254 +13348,30 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
 
 
     /* =========================================================
-       Dymivra 8.1.3 — Ultra Premium Command Center
+       Dymivra 8.2.0 — Header visual leve, sem controle de scroll
        ========================================================= */
-    function renderDymivra800CommandCenter(screen){
+    function renderDymivra820Header(screen){
       try{
         const map={
-          overview:['Central financeira inteligente','Uma experiência executiva para organizar, analisar, acompanhar e evoluir decisões financeiras.'],
-          ledger:['Carteira em modo profissional','Ativos, movimentações, renda passiva e histórico com leitura mais clara.'],
-          goals:['Metas com direção clara','Objetivo, aporte, horizonte e evolução financeira com mais presença visual.'],
-          ai:['IA Dymivra executiva','Análises em linguagem natural com contexto da carteira, risco, radar e progresso.'],
-          advisor:['Radar inteligente de mercado','Cenário, alertas, bolsa, juros, câmbio e leitura educativa em alto nível.'],
+          overview:['Sistema financeiro premium','Visão geral, carteira, alertas e próximos passos em uma experiência mais executiva.'],
+          ledger:['Carteira mais organizada','Ledger, ativos, movimentações e renda passiva com visual mais limpo e premium.'],
+          goals:['Metas com direção','Objetivos, aportes, horizonte e evolução em uma leitura mais clara.'],
+          ai:['IA Dymivra premium','Análise em linguagem natural com contexto da carteira, risco, cenário e progresso.'],
+          advisor:['Radar IA avançado','Cenário de mercado, alertas e leitura educativa com aparência mais profissional.'],
           mentor:['Mentor financeiro completo','Check-up, plano de ação, IA, lembretes e progresso em uma jornada guiada.'],
-          plans:['Planos e monetização premium','Free, Pro, Elite e preparação de cobrança real em uma área mais comercial.'],
-          legal:['Central legal organizada','Privacidade, termos, disclaimer e exclusão de conta em uma área segura.'],
-          all:['Mapa completo do Dymivra','Todas as áreas do app em visão expandida para revisão final.']
+          plans:['Planos e cobrança','Free, Pro, Elite e preparação de cobrança real com visual mais comercial.'],
+          legal:['Central legal','Privacidade, termos, aviso legal e exclusão de conta organizados.'],
+          all:['Dymivra completo','Todas as áreas do app em uma experiência visual mais avançada.']
         };
         const ctx=map[screen||currentScreen]||map.overview;
-        const title=$('dym800Title');
-        const sub=$('dym800Subtitle');
+        const title=$('dym820Title');
+        const sub=$('dym820Subtitle');
         if(title)title.textContent=ctx[0];
         if(sub)sub.textContent=ctx[1];
-
-        let planName='Ativo';
-        try{planName=currentWealthPlanConfig().name||'Ativo'}catch{}
-        const orb=$('dym800PlanOrb');
-        if(orb)orb.innerHTML='<span>Plano</span><strong>'+esc(planName)+'</strong>';
-
-        let mentor='Pronto', plan30='30 dias', market='Radar', premium=planName;
-        try{mentor=String(dymivra760Score(dymivra760Ctx()))+'/100'}catch{}
-        try{
-          const tasks=dymivra763BuildTasks();
-          const done=dymivra763DoneMap();
-          plan30=String(dymivra763Progress(tasks,done).pct)+'%';
-        }catch{}
-        try{market=(window.marketState&&window.marketState.last&&window.marketState.last.market)?'Conectado':'Pendente'}catch{}
-        try{premium=currentWealthPlanConfig().name||premium}catch{}
-
-        const set=(id,val)=>{const el=$(id);if(el)el.textContent=val};
-        set('dym800KpiMentor',mentor);
-        set('dym800KpiPlan',plan30);
-        set('dym800KpiMarket',market);
-        set('dym800KpiPremium',premium);
       }catch{}
     }
 
-    setTimeout(()=>{try{renderDymivra800CommandCenter(currentScreen||'overview')}catch{}},1450);
-
-    /* =========================================================
-       Dymivra 8.1.3 — Full Visual Upgrade helper
-       ========================================================= */
-    function applyDymivra810FullVisualUpgrade(screen){
-      try{
-        document.body.classList.add('dymivra810-system');
-
-        const blocks=document.querySelectorAll('[data-screen-block]');
-        blocks.forEach((el,i)=>{
-          el.classList.add('dym810-module-frame');
-          if(!el.getAttribute('data-dym810-index')){
-            el.setAttribute('data-dym810-index',String(i+1).padStart(2,'0'));
-          }
-        });
-
-        const surfaces=document.querySelectorAll('.card,.panel,.premium-panel,.hero,.item,.mini,.command-card,.ai-oracle-card,.ai-metric-card,.allocation-card,.freedom-card,.legal-card,.plan-card,.dymivra750-card,.dymivra740-insight,.dymivra760-card,.dymivra765-card,.dymivra764-card,.dymivra763-task,.dymivra770-status,.dymivra766-tier');
-        surfaces.forEach(el=>el.classList.add('dym810-surface'));
-
-        try{renderDymivra800CommandCenter(screen||currentScreen||'overview')}catch{}
-      }catch{}
-    }
-
-    setTimeout(()=>{try{applyDymivra810FullVisualUpgrade(currentScreen||'overview')}catch{}
-    try{dymivra813Unlock()}catch{}},1500);
-    setTimeout(()=>{try{applyDymivra810FullVisualUpgrade(currentScreen||'overview')}catch{}},3500);
-
-    /* =========================================================
-       Dymivra 8.1.3 — Ponte de rolagem definitiva
-       ========================================================= */
-    function dymivra813Scroller(){
-      return document.querySelector('.container') || document.scrollingElement || document.documentElement || document.body;
-    }
-
-    function dymivra813CanScroll(el){
-      try{return !!el && el.scrollHeight > el.clientHeight + 8}catch{return false}
-    }
-
-    function dymivra813IsInteractive(target){
-      try{
-        if(!target || !target.closest)return false;
-        return !!target.closest('input,textarea,select,button,a,[contenteditable="true"],.dymivra783-menu,.dymivra783-option,.dymivra783-button');
-      }catch{return false}
-    }
-
-    function dymivra813Unlock(){
-      try{
-        document.body.classList.add('dymivra813-scroll-master');
-        const html=document.documentElement;
-        const body=document.body;
-        const scroller=dymivra813Scroller();
-
-        html.style.height='100%';
-        html.style.maxHeight='100%';
-        html.style.overflow='hidden';
-
-        body.style.height='100%';
-        body.style.maxHeight='100%';
-        body.style.overflow='hidden';
-        body.style.position='static';
-
-        if(scroller){
-          scroller.style.height='100dvh';
-          scroller.style.minHeight='100dvh';
-          scroller.style.maxHeight='100dvh';
-          scroller.style.overflowY='auto';
-          scroller.style.overflowX='hidden';
-          scroller.style.webkitOverflowScrolling='touch';
-          scroller.style.touchAction='pan-y';
-          if(!scroller.dataset.dymivra813Ready)scroller.dataset.dymivra813Ready='1';
-        }
-
-        ['appSection','authSection','app'].forEach(id=>{
-          const el=document.getElementById(id);
-          if(el){
-            el.style.height='auto';
-            el.style.maxHeight='none';
-            el.style.overflow='visible';
-          }
-        });
-      }catch{}
-    }
-
-    function dymivra813ScrollBy(delta){
-      try{
-        const scroller=dymivra813Scroller();
-        if(!scroller)return;
-        scroller.scrollTop += delta;
-      }catch{}
-    }
-
-    function dymivra813ScrollToTop(smooth=true){
-      try{
-        const scroller=dymivra813Scroller();
-        if(scroller && typeof scroller.scrollTo==='function'){
-          scroller.scrollTo({top:0,behavior:smooth?'smooth':'auto'});
-        }else if(scroller){
-          scroller.scrollTop=0;
-        }
-      }catch{}
-    }
-
-    try{
-      window.wealthScrollToTop=function(smooth=true){
-        dymivra813Unlock();
-        dymivra813ScrollToTop(smooth);
-      };
-    }catch{}
-
-    function dymivra813BindScrollBridge(){
-      try{
-        if(document.body.dataset.dymivra813Bridge==='1')return;
-        document.body.dataset.dymivra813Bridge='1';
-
-        let lastY=null;
-
-        window.addEventListener('wheel',function(ev){
-          try{
-            const scroller=dymivra813Scroller();
-            if(!dymivra813CanScroll(scroller))return;
-            if(dymivra813IsInteractive(ev.target))return;
-            dymivra813ScrollBy(ev.deltaY);
-            ev.preventDefault();
-          }catch{}
-        },{passive:false});
-
-        window.addEventListener('touchstart',function(ev){
-          try{
-            if(ev.touches && ev.touches.length)lastY=ev.touches[0].clientY;
-          }catch{}
-        },{passive:true});
-
-        window.addEventListener('touchmove',function(ev){
-          try{
-            const scroller=dymivra813Scroller();
-            if(!dymivra813CanScroll(scroller))return;
-            if(dymivra813IsInteractive(ev.target))return;
-            if(!ev.touches || !ev.touches.length)return;
-            const y=ev.touches[0].clientY;
-            if(lastY===null){lastY=y;return;}
-            const delta=lastY-y;
-            lastY=y;
-            if(Math.abs(delta)>0){
-              dymivra813ScrollBy(delta);
-              ev.preventDefault();
-            }
-          }catch{}
-        },{passive:false});
-
-        window.addEventListener('touchend',function(){lastY=null},{passive:true});
-        window.addEventListener('touchcancel',function(){lastY=null},{passive:true});
-
-        window.addEventListener('keydown',function(ev){
-          try{
-            if(dymivra813IsInteractive(ev.target))return;
-            const scroller=dymivra813Scroller();
-            if(!dymivra813CanScroll(scroller))return;
-            const h=Math.max(320,window.innerHeight||700);
-            const keys={
-              ArrowDown:70,
-              ArrowUp:-70,
-              PageDown:h*.85,
-              PageUp:-h*.85,
-              Home:'home',
-              End:'end',
-              Space:ev.shiftKey?-h*.85:h*.85
-            };
-            if(!(ev.key in keys))return;
-            const val=keys[ev.key];
-            if(val==='home')scroller.scrollTop=0;
-            else if(val==='end')scroller.scrollTop=scroller.scrollHeight;
-            else dymivra813ScrollBy(val);
-            ev.preventDefault();
-          }catch{}
-        },{passive:false});
-
-        const scroller=dymivra813Scroller();
-        if(scroller){
-          scroller.addEventListener('scroll',function(){
-            try{
-              const progress=$('wealthScrollProgressFill');
-              if(progress){
-                const max=Math.max(1,scroller.scrollHeight-scroller.clientHeight);
-                progress.style.width=Math.max(0,Math.min(100,(scroller.scrollTop/max)*100)).toFixed(2)+'%';
-              }
-              const topBtn=$('wealthFloatingTopBtn');
-              if(topBtn){
-                const app=$('appSection');
-                const appVisible=!!app && getComputedStyle(app).display!=='none';
-                topBtn.classList.toggle('show',appVisible && scroller.scrollTop>320);
-              }
-            }catch{}
-          },{passive:true});
-        }
-      }catch{}
-    }
-
-    setTimeout(()=>{try{dymivra813Unlock();dymivra813BindScrollBridge()}catch{}},200);
-    setTimeout(()=>{try{dymivra813Unlock();dymivra813BindScrollBridge()}catch{}},900);
-    setTimeout(()=>{try{dymivra813Unlock();dymivra813BindScrollBridge()}catch{}},2200);
-    window.addEventListener('resize',()=>setTimeout(dymivra813Unlock,120),{passive:true});
-    window.addEventListener('orientationchange',()=>setTimeout(dymivra813Unlock,260),{passive:true});
-
+    setTimeout(()=>{try{renderDymivra820Header(currentScreen||'overview')}catch{}},1200);
 </script>
 </body>
 </html>
