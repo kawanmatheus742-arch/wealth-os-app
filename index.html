@@ -5958,355 +5958,6 @@ body{
   }
 }
 
-
-
-/* ==========================================================
-   Dymivra 8.3.6 • Visão Geral Ultra Premium
-   Atualiza apenas a tela "Visão geral" mantendo login, Supabase,
-   IA, planos, paywall e demais telas preservados.
-   ========================================================== */
-.dym836-overview{
-  position:relative;
-  overflow:hidden;
-  border-color:rgba(56,189,248,.24)!important;
-  background:
-    radial-gradient(circle at 10% -10%,rgba(34,211,238,.18),transparent 34%),
-    radial-gradient(circle at 92% 0%,rgba(139,92,246,.16),transparent 30%),
-    radial-gradient(circle at 50% 120%,rgba(14,165,233,.10),transparent 42%),
-    linear-gradient(180deg,rgba(8,15,31,.98),rgba(7,13,26,.96))!important;
-}
-.dym836-overview:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(120deg,transparent,rgba(255,255,255,.045),transparent 58%),
-    linear-gradient(180deg,rgba(255,255,255,.03),transparent 30%);
-}
-.dym836-overview>*{position:relative;z-index:1}
-.dym836-hero{
-  display:grid;
-  grid-template-columns:1.25fr .75fr;
-  gap:18px;
-  align-items:stretch;
-}
-.dym836-hero-copy{
-  min-height:330px;
-  border:1px solid rgba(255,255,255,.09);
-  border-radius:30px;
-  padding:24px;
-  background:
-    radial-gradient(circle at 0% 0%,rgba(14,165,233,.16),transparent 35%),
-    linear-gradient(180deg,rgba(12,22,44,.90),rgba(5,11,24,.78));
-}
-.dym836-eyebrow,.dym836-small-label{
-  display:block;
-  color:#bae6fd;
-  text-transform:uppercase;
-  letter-spacing:.15em;
-  font-size:11px;
-  font-weight:950;
-}
-.dym836-hero-copy h2{
-  margin:10px 0 12px;
-  max-width:860px;
-  font-size:clamp(38px,5.8vw,78px);
-  line-height:.94;
-  letter-spacing:-.085em;
-}
-.dym836-hero-copy p{
-  max-width:760px;
-  color:#dbeafe;
-  line-height:1.65;
-  font-size:16px;
-  margin:0;
-}
-.dym836-actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:20px;
-}
-.dym836-actions button,
-.dym836-analytics-head button{
-  width:auto;
-  margin:0;
-  min-width:132px;
-  padding:11px 14px;
-  border-radius:999px;
-}
-.dym836-score-card{
-  display:grid;
-  gap:12px;
-}
-.dym836-score-shell{
-  min-height:260px;
-  display:grid;
-  place-items:center;
-  text-align:center;
-  border-radius:30px;
-  padding:22px;
-  border:1px solid rgba(56,189,248,.22);
-  background:
-    radial-gradient(circle at 50% 0%,rgba(34,211,238,.12),transparent 40%),
-    linear-gradient(180deg,rgba(12,22,44,.94),rgba(3,7,18,.86));
-}
-.dym836-score-ring{
-  width:190px!important;
-  height:190px!important;
-  box-shadow:0 0 42px rgba(34,211,238,.16), inset 0 0 0 1px rgba(255,255,255,.04)!important;
-}
-.dym836-score-status{
-  max-width:280px;
-  margin:16px auto 0;
-  color:#cbd5e1;
-  line-height:1.5;
-}
-.dym836-mini-source{
-  border-radius:24px;
-  padding:16px;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(255,255,255,.04);
-}
-.dym836-mini-source span,
-.dym836-kpi-card span,
-.dym836-pulse-card span{
-  display:block;
-  color:#8ea3c7;
-  font-size:12px;
-  font-weight:900;
-  margin-bottom:7px;
-}
-.dym836-mini-source strong{font-size:18px}
-.dym836-kpi-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  margin-top:14px;
-}
-.dym836-kpi-card,.dym836-pulse-card,.dym836-command-card,.dym836-analytics-card,.dym836-status-card{
-  border:1px solid rgba(255,255,255,.085);
-  background:rgba(12,22,44,.72);
-  border-radius:24px;
-  padding:16px;
-  overflow:hidden;
-}
-.dym836-kpi-card{
-  min-height:138px;
-  background:
-    radial-gradient(circle at 100% 0%,rgba(34,211,238,.08),transparent 40%),
-    rgba(12,22,44,.72);
-}
-.dym836-kpi-card strong{
-  display:block;
-  color:#fff;
-  font-size:clamp(22px,2.3vw,34px);
-  line-height:1.04;
-  letter-spacing:-.06em;
-  word-break:break-word;
-}
-.dym836-kpi-card em,.dym836-pulse-card em{
-  display:block;
-  margin-top:7px;
-  color:#8ea3c7;
-  font-style:normal;
-  font-size:12px;
-  line-height:1.4;
-}
-.dym836-command-grid{
-  display:grid;
-  grid-template-columns:1.25fr .875fr .875fr;
-  gap:12px;
-  margin-top:14px;
-}
-.dym836-command-card{
-  min-height:205px;
-  background:
-    radial-gradient(circle at 10% 0%,rgba(14,165,233,.09),transparent 38%),
-    rgba(9,18,36,.78);
-}
-.dym836-primary-action{
-  border-color:rgba(34,211,238,.20);
-}
-.dym836-card-top{
-  display:flex;
-  justify-content:space-between;
-  gap:14px;
-  align-items:flex-start;
-}
-.dym836-card-top h3{
-  margin:8px 0 0;
-  font-size:clamp(24px,3vw,42px);
-  line-height:1.02;
-  letter-spacing:-.07em;
-}
-.dym836-icon{
-  width:48px;
-  height:48px;
-  border-radius:18px;
-  display:grid;
-  place-items:center;
-  color:#fff;
-  font-size:24px;
-  font-weight:950;
-  background:linear-gradient(135deg,rgba(14,165,233,.90),rgba(34,211,238,.62));
-  box-shadow:0 12px 28px rgba(14,165,233,.16);
-}
-.dym836-command-card p{
-  color:#cbd5e1;
-  line-height:1.55;
-  margin:12px 0 0;
-}
-.dym836-route{
-  margin-top:14px;
-  padding:12px;
-  border-radius:16px;
-  border:1px solid rgba(34,211,238,.14);
-  background:rgba(34,211,238,.07);
-  color:#e0f2fe;
-  line-height:1.45;
-  font-size:13px;
-  font-weight:850;
-}
-.dym836-stack{
-  display:grid;
-  gap:9px;
-  margin-top:12px!important;
-}
-.dym836-stack .priority-item{
-  margin:0!important;
-  border-radius:16px!important;
-  padding:11px 12px!important;
-}
-.dym836-pulse-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  margin-top:14px;
-}
-.dym836-pulse-card strong{
-  display:block;
-  font-size:clamp(20px,2vw,30px);
-  letter-spacing:-.055em;
-  line-height:1.05;
-}
-.dym836-analytics-grid{
-  display:grid;
-  grid-template-columns:1.1fr .95fr .95fr;
-  gap:12px;
-  margin-top:14px;
-}
-.dym836-analytics-card{
-  min-height:280px;
-  background:
-    radial-gradient(circle at 90% 0%,rgba(139,92,246,.08),transparent 42%),
-    rgba(9,18,36,.74);
-}
-.dym836-analytics-head{
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  align-items:flex-start;
-  margin-bottom:12px;
-}
-.dym836-analytics-head h3{
-  margin:7px 0 0;
-  font-size:22px;
-  letter-spacing:-.045em;
-}
-.dym836-allocation,
-.dym836-alerts,
-.dym836-next{
-  color:#dbeafe;
-  line-height:1.5;
-}
-.dym836-allocation .bar{
-  height:10px;
-  background:rgba(255,255,255,.065);
-}
-.dym836-alerts .badge{
-  white-space:normal;
-  border-radius:14px;
-  line-height:1.35;
-}
-.dym836-bottom-grid{
-  display:grid;
-  grid-template-columns:1.05fr .95fr .95fr;
-  gap:12px;
-  margin-top:14px;
-}
-.dym836-status-card{
-  min-height:150px;
-  background:
-    radial-gradient(circle at 0% 0%,rgba(34,197,94,.08),transparent 38%),
-    rgba(9,18,36,.74);
-}
-.dym836-status-card h3{
-  margin:8px 0 8px;
-  font-size:26px;
-  letter-spacing:-.055em;
-  line-height:1.04;
-}
-.dym836-status-card p{
-  margin:0;
-  color:#cbd5e1;
-  line-height:1.52;
-}
-.dym836-goal-bar{
-  height:12px;
-  border-radius:999px;
-  overflow:hidden;
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.06);
-  margin:11px 0;
-}
-.dym836-goal-bar span{
-  display:block;
-  height:100%;
-  border-radius:999px;
-  background:linear-gradient(90deg,var(--blue),var(--cyan),var(--green));
-  box-shadow:0 0 22px rgba(34,211,238,.16);
-}
-.performance-mode .dym836-overview,
-.performance-mode .dym836-hero-copy,
-.performance-mode .dym836-score-shell,
-.performance-mode .dym836-kpi-card,
-.performance-mode .dym836-pulse-card,
-.performance-mode .dym836-command-card,
-.performance-mode .dym836-analytics-card,
-.performance-mode .dym836-status-card{
-  box-shadow:0 8px 20px rgba(0,0,0,.20)!important;
-  backdrop-filter:none!important;
-}
-@media(max-width:1120px){
-  .dym836-hero,
-  .dym836-command-grid,
-  .dym836-analytics-grid,
-  .dym836-bottom-grid{
-    grid-template-columns:1fr;
-  }
-  .dym836-kpi-grid,
-  .dym836-pulse-grid{
-    grid-template-columns:1fr 1fr;
-  }
-}
-@media(max-width:760px){
-  .dym836-hero-copy{min-height:auto;padding:18px;border-radius:24px}
-  .dym836-score-ring{width:160px!important;height:160px!important}
-  .dym836-kpi-grid,
-  .dym836-pulse-grid{
-    grid-template-columns:1fr;
-  }
-  .dym836-actions button,
-  .dym836-analytics-head button{
-    width:100%;
-  }
-  .dym836-analytics-head{
-    display:grid;
-  }
-}
-
 </style>
 
 <style>
@@ -7651,6 +7302,258 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
 }
 </style>
 
+
+<style>
+/* ==========================================================
+   DYMIVRA 8.3.6 — VISÃO GERAL PREMIUM TOTAL
+   Reforma completa da tela geral: hero, comando, métricas,
+   inteligência, cartões compartilhados e experiência mobile.
+   ========================================================== */
+body.screen-overview-active{
+  background:
+    radial-gradient(circle at 18% 0%,rgba(34,211,238,.18),transparent 30%),
+    radial-gradient(circle at 100% 8%,rgba(139,92,246,.16),transparent 31%),
+    radial-gradient(circle at 50% 100%,rgba(14,165,233,.08),transparent 32%),
+    linear-gradient(180deg,#020617 0%,#061323 45%,#081428 100%)!important;
+}
+body.screen-overview-active #screenIntro{
+  position:relative!important;
+  overflow:hidden!important;
+  border:1px solid rgba(103,232,249,.22)!important;
+  border-radius:26px!important;
+  padding:18px 18px 18px 58px!important;
+  background:
+    radial-gradient(circle at 0% 0%,rgba(34,211,238,.18),transparent 36%),
+    radial-gradient(circle at 100% 0%,rgba(139,92,246,.13),transparent 34%),
+    linear-gradient(180deg,rgba(8,20,38,.92),rgba(3,7,18,.86))!important;
+  box-shadow:0 18px 48px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.04)!important;
+  color:#dbeafe!important;
+}
+body.screen-overview-active #screenIntro:before{
+  content:"◆";
+  position:absolute;
+  left:16px;
+  top:50%;
+  transform:translateY(-50%);
+  width:30px;height:30px;border-radius:12px;
+  display:grid;place-items:center;
+  color:#67e8f9;
+  background:rgba(34,211,238,.10);
+  border:1px solid rgba(103,232,249,.22);
+  box-shadow:0 0 24px rgba(34,211,238,.14);
+}
+body.screen-overview-active #screenIntro strong{font-size:16px;letter-spacing:-.02em;color:#fff!important}
+body.screen-overview-active [data-screen-block]:not(.screen-hidden){margin-top:16px!important}
+body.screen-overview-active .overview-total-hero{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.22fr) minmax(320px,.78fr)!important;
+  gap:16px!important;
+  align-items:stretch!important;
+  margin-top:16px!important;
+}
+body.screen-overview-active .overview-hero-main,
+body.screen-overview-active .overview-command-card,
+body.screen-overview-active .overview-intelligence-suite,
+body.screen-overview-active [data-screen-block]:not(.screen-hidden).card,
+body.screen-overview-active [data-screen-block]:not(.screen-hidden) > .card{
+  border-radius:30px!important;
+  border:1px solid rgba(103,232,249,.16)!important;
+  box-shadow:0 22px 58px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.04)!important;
+}
+body.screen-overview-active .overview-hero-main{
+  overflow:hidden!important;
+  padding:22px!important;
+  min-height:620px!important;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(34,211,238,.20),transparent 34%),
+    radial-gradient(circle at 88% 8%,rgba(139,92,246,.16),transparent 32%),
+    linear-gradient(135deg,rgba(5,12,26,.98),rgba(9,20,38,.94) 52%,rgba(3,7,18,.98))!important;
+}
+body.screen-overview-active .overview-hero-main:after{
+  content:"";position:absolute;left:0;right:0;top:0;height:4px;
+  background:linear-gradient(90deg,rgba(34,211,238,.16),rgba(103,232,249,.95),rgba(139,92,246,.38));
+}
+body.screen-overview-active .overview-glow-dot{position:absolute;border-radius:50%;filter:blur(28px);opacity:.48;pointer-events:none}
+body.screen-overview-active .overview-glow-dot.one{width:180px;height:180px;background:rgba(34,211,238,.20);left:-60px;top:80px}
+body.screen-overview-active .overview-glow-dot.two{width:220px;height:220px;background:rgba(139,92,246,.13);right:-70px;bottom:40px}
+body.screen-overview-active .overview-hero-head{position:relative;z-index:1;display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+body.screen-overview-active .overview-eyebrow,
+body.screen-overview-active .overview-panel-kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  color:#a5f3fc!important;
+  font-size:11px!important;
+  font-weight:950!important;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+}
+body.screen-overview-active .overview-main-title{
+  margin:10px 0 10px!important;
+  max-width:760px;
+  font-size:clamp(34px,5vw,72px)!important;
+  line-height:.95!important;
+  letter-spacing:-.085em!important;
+  font-weight:950!important;
+  color:#fff!important;
+}
+body.screen-overview-active .overview-greeting{width:max-content;background:rgba(34,211,238,.10)!important;border-color:rgba(103,232,249,.22)!important}
+body.screen-overview-active .overview-wealth-label{position:relative;z-index:1;margin-top:28px;color:#93c5fd;font-size:13px;font-weight:850;letter-spacing:.02em}
+body.screen-overview-active .overview-wealth-value{position:relative;z-index:1;margin-top:8px!important;font-size:clamp(54px,8vw,104px)!important;line-height:.9!important;letter-spacing:-.10em!important;text-shadow:0 0 30px rgba(34,211,238,.18)!important}
+body.screen-overview-active .overview-hero-copy{position:relative;z-index:1;max-width:860px;margin:16px 0 0;color:#cbd5e1;line-height:1.64;font-size:15px}
+body.screen-overview-active .overview-badge-row{position:relative;z-index:1;display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+body.screen-overview-active .overview-badge-row .badge{padding:8px 11px;border-color:rgba(255,255,255,.10);background:rgba(255,255,255,.055)}
+body.screen-overview-active .overview-wealth-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}
+body.screen-overview-active .overview-metric-tile,
+body.screen-overview-active .overview-signal-grid div,
+body.screen-overview-active .overview-quick-grid div,
+body.screen-overview-active .overview-command-metric,
+body.screen-overview-active .overview-quality-grid div,
+body.screen-overview-active .overview-decision-card,
+body.screen-overview-active .overview-deep-card,
+body.screen-overview-active .overview-flow-card{
+  position:relative;overflow:hidden;border-radius:22px;
+  border:1px solid rgba(255,255,255,.085);
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.022));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+}
+body.screen-overview-active .overview-metric-tile{padding:15px;min-height:126px}
+body.screen-overview-active .overview-metric-tile.featured{border-color:rgba(34,211,238,.24);background:linear-gradient(180deg,rgba(34,211,238,.10),rgba(255,255,255,.026))}
+body.screen-overview-active .overview-metric-tile span,
+body.screen-overview-active .overview-signal-grid span,
+body.screen-overview-active .overview-quick-grid span,
+body.screen-overview-active .overview-command-metric span,
+body.screen-overview-active .overview-quality-grid span,
+body.screen-overview-active .overview-flow-card span{display:block;color:#91a4c6;font-size:12px;font-weight:850;margin-bottom:6px}
+body.screen-overview-active .overview-metric-tile strong{display:block;color:#fff;font-size:clamp(17px,2vw,25px);font-weight:950;letter-spacing:-.055em;line-height:1.08;word-break:break-word}
+body.screen-overview-active .overview-metric-tile.identity strong{font-size:14px;letter-spacing:-.03em;line-height:1.25}
+body.screen-overview-active .overview-metric-tile small,
+body.screen-overview-active .overview-flow-card small,
+body.screen-overview-active .overview-command-metric small,
+body.screen-overview-active .overview-quality-grid small{display:block;color:#7487a8;font-size:12px;line-height:1.35;margin-top:7px}
+body.screen-overview-active .overview-signal-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:12px}
+body.screen-overview-active .overview-signal-grid div{padding:12px 13px;min-height:82px}
+body.screen-overview-active .overview-signal-grid strong{display:block;font-size:19px;font-weight:950;color:#fff;letter-spacing:-.04em;line-height:1.1}
+body.screen-overview-active .overview-command-card{padding:20px!important;background:radial-gradient(circle at 12% 0%,rgba(56,189,248,.14),transparent 34%),linear-gradient(180deg,rgba(7,15,30,.96),rgba(3,7,18,.98))!important}
+body.screen-overview-active .overview-command-card h3{font-size:clamp(28px,3.5vw,46px)!important;line-height:.98!important;letter-spacing:-.075em!important;margin:10px 0 10px!important}
+body.screen-overview-active .overview-command-card p{color:#cbd5e1;line-height:1.55;margin:0 0 14px}
+body.screen-overview-active .overview-action-stack{display:grid;gap:9px;margin-top:12px}
+body.screen-overview-active .overview-action-stack button,
+body.screen-overview-active .overview-command-links button{min-height:50px;margin:0!important;border-radius:18px!important;font-size:14px!important;box-shadow:0 12px 30px rgba(0,0,0,.22)!important}
+body.screen-overview-active .overview-quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+body.screen-overview-active .overview-quick-grid div{padding:12px;min-height:86px}
+body.screen-overview-active .overview-quick-grid strong{display:block;font-size:20px;font-weight:950;color:#fff;letter-spacing:-.05em;line-height:1.1;word-break:break-word}
+body.screen-overview-active .overview-command-links{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+body.screen-overview-active .overview-status{margin-top:10px!important}
+body.screen-overview-active .overview-flow-strip{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:12px!important;margin-top:16px!important}
+body.screen-overview-active .overview-flow-card{padding:16px;min-height:126px;background:radial-gradient(circle at 0 0,rgba(255,255,255,.065),transparent 40%),linear-gradient(180deg,rgba(8,18,35,.94),rgba(3,7,18,.92))}
+body.screen-overview-active .overview-flow-card strong{display:block;font-size:clamp(20px,2.4vw,31px);font-weight:950;color:#fff;letter-spacing:-.06em;line-height:1.02;word-break:break-word}
+body.screen-overview-active .overview-flow-card.in{border-color:rgba(34,197,94,.20)}
+body.screen-overview-active .overview-flow-card.out{border-color:rgba(251,146,60,.20)}
+body.screen-overview-active .overview-flow-card.cost{border-color:rgba(239,68,68,.20)}
+body.screen-overview-active .overview-flow-card.income{border-color:rgba(34,211,238,.22)}
+body.screen-overview-active .overview-intelligence-suite{padding:22px!important;background:radial-gradient(circle at 8% 0%,rgba(34,211,238,.18),transparent 32%),radial-gradient(circle at 96% 0%,rgba(139,92,246,.13),transparent 34%),linear-gradient(180deg,rgba(4,12,26,.98),rgba(3,7,18,.99))!important}
+body.screen-overview-active .overview-suite-head h3{font-size:clamp(30px,4vw,58px)!important;line-height:.98!important;letter-spacing:-.08em!important;margin:8px 0!important}
+body.screen-overview-active .overview-intel-grid{display:grid;grid-template-columns:minmax(260px,.42fr) minmax(0,.58fr);gap:14px;margin-top:16px}
+body.screen-overview-active .overview-score-card{display:grid;place-items:center;text-align:center;min-height:344px;border-radius:28px;border:1px solid rgba(34,211,238,.18);background:radial-gradient(circle at 50% 0%,rgba(34,211,238,.16),transparent 42%),linear-gradient(180deg,rgba(8,20,38,.96),rgba(2,6,23,.98));padding:18px;overflow:hidden}
+body.screen-overview-active .overview-score-ring{width:190px!important;height:190px!important;box-shadow:0 0 42px rgba(34,211,238,.18)!important}
+body.screen-overview-active .overview-score-copy{margin-top:15px!important;line-height:1.5!important;max-width:280px}
+body.screen-overview-active .overview-command-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+body.screen-overview-active .overview-command-metric{padding:15px;min-height:120px}
+body.screen-overview-active .overview-command-metric strong{display:block;font-size:clamp(19px,2.2vw,30px);font-weight:950;color:#fff;letter-spacing:-.06em;line-height:1.04;word-break:break-word}
+body.screen-overview-active .overview-quality-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+body.screen-overview-active .overview-quality-grid div{padding:14px;min-height:116px}
+body.screen-overview-active .overview-quality-grid strong{display:block;font-size:clamp(17px,1.9vw,24px);font-weight:950;color:#fff;letter-spacing:-.04em;line-height:1.08}
+body.screen-overview-active .overview-decision-grid{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:12px;margin-top:14px}
+body.screen-overview-active .overview-decision-card,
+body.screen-overview-active .overview-deep-card{padding:16px;line-height:1.48}
+body.screen-overview-active .overview-decision-card > strong,
+body.screen-overview-active .overview-deep-card > strong{display:block;color:#fff;font-size:16px;letter-spacing:-.025em;margin-bottom:10px}
+body.screen-overview-active .overview-decision-card.primary{border-color:rgba(34,211,238,.24);background:radial-gradient(circle at 0 0,rgba(34,211,238,.11),transparent 44%),linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.022))}
+body.screen-overview-active .overview-decision-card .priority-stack{margin-top:8px!important;display:grid;gap:9px}
+body.screen-overview-active .overview-action-reason{margin-top:10px!important;line-height:1.52!important}
+body.screen-overview-active .overview-deep-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px}
+body.screen-overview-active .overview-deep-card{min-height:160px}
+body.screen-overview-active [data-screen-block]:not(.screen-hidden) .mini,
+body.screen-overview-active [data-screen-block]:not(.screen-hidden) .item,
+body.screen-overview-active [data-screen-block]:not(.screen-hidden) .micro,
+body.screen-overview-active [data-screen-block]:not(.screen-hidden) .command-card,
+body.screen-overview-active [data-screen-block]:not(.screen-hidden) .profile-card,
+body.screen-overview-active [data-screen-block]:not(.screen-hidden) .allocation-card,
+body.screen-overview-active [data-screen-block]:not(.screen-hidden) .freedom-card,
+body.screen-overview-active [data-screen-block]:not(.screen-hidden) .scenario-card,
+body.screen-overview-active [data-screen-block]:not(.screen-hidden) .path-card{
+  border-radius:22px!important;
+  border-color:rgba(255,255,255,.09)!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.052),rgba(255,255,255,.022))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04)!important;
+}
+body.screen-overview-active [data-screen-block]:not(.screen-hidden).card:not(.overview-intelligence-suite):not(.smart-advisor-panel),
+body.screen-overview-active [data-screen-block]:not(.screen-hidden) > .card:not(.overview-hero-main):not(.overview-command-card){
+  background:radial-gradient(circle at 0% 0%,rgba(34,211,238,.10),transparent 28%),linear-gradient(180deg,rgba(6,16,32,.95),rgba(3,7,18,.97))!important;
+}
+body.screen-overview-active [data-screen-block]:not(.screen-hidden) h3{
+  letter-spacing:-.055em!important;
+}
+body.screen-overview-active [data-screen-block]:not(.screen-hidden) .kicker{
+  color:#a5f3fc!important;
+  letter-spacing:.14em!important;
+  font-weight:950!important;
+}
+body.screen-overview-active .smart-advisor-panel{
+  border-color:rgba(103,232,249,.19)!important;
+  background:radial-gradient(circle at 0% 0%,rgba(34,211,238,.13),transparent 34%),radial-gradient(circle at 100% 0%,rgba(139,92,246,.10),transparent 34%),linear-gradient(180deg,rgba(4,12,26,.98),rgba(3,7,18,.99))!important;
+}
+body.screen-overview-active .app-nav{
+  border-color:rgba(103,232,249,.15)!important;
+  background:rgba(3,9,20,.82)!important;
+}
+body.screen-overview-active .nav-btn.active{
+  box-shadow:0 0 26px rgba(34,211,238,.22)!important;
+}
+body.screen-overview-active.performance-mode .overview-hero-main,
+body.screen-overview-active.performance-mode .overview-command-card,
+body.screen-overview-active.performance-mode .overview-intelligence-suite,
+body.screen-overview-active.performance-mode [data-screen-block]:not(.screen-hidden).card,
+body.screen-overview-active.performance-mode [data-screen-block]:not(.screen-hidden) > .card{
+  backdrop-filter:none!important;
+  box-shadow:0 10px 26px rgba(0,0,0,.24)!important;
+}
+@media(max-width:1180px){
+  body.screen-overview-active .overview-total-hero,
+  body.screen-overview-active .overview-intel-grid{grid-template-columns:1fr!important}
+  body.screen-overview-active .overview-wealth-grid,
+  body.screen-overview-active .overview-flow-strip{grid-template-columns:1fr 1fr!important}
+  body.screen-overview-active .overview-quality-grid,
+  body.screen-overview-active .overview-command-metrics{grid-template-columns:1fr 1fr!important}
+  body.screen-overview-active .overview-decision-grid,
+  body.screen-overview-active .overview-deep-grid{grid-template-columns:1fr!important}
+}
+@media(max-width:760px){
+  body.screen-overview-active #screenIntro{padding:15px 15px 15px 52px!important;border-radius:22px!important;font-size:14px!important;line-height:1.45!important}
+  body.screen-overview-active .overview-total-hero{gap:12px!important;margin-top:12px!important}
+  body.screen-overview-active .overview-hero-main,
+  body.screen-overview-active .overview-command-card,
+  body.screen-overview-active .overview-intelligence-suite{padding:16px!important;border-radius:25px!important;min-height:auto!important}
+  body.screen-overview-active .overview-hero-head{align-items:flex-start!important}
+  body.screen-overview-active .overview-main-title{font-size:clamp(34px,10vw,46px)!important;letter-spacing:-.078em!important}
+  body.screen-overview-active .overview-wealth-value{font-size:clamp(50px,15vw,72px)!important;letter-spacing:-.095em!important}
+  body.screen-overview-active .overview-hero-copy{font-size:14px;line-height:1.52}
+  body.screen-overview-active .overview-wealth-grid,
+  body.screen-overview-active .overview-signal-grid,
+  body.screen-overview-active .overview-flow-strip,
+  body.screen-overview-active .overview-quality-grid,
+  body.screen-overview-active .overview-command-metrics,
+  body.screen-overview-active .overview-quick-grid,
+  body.screen-overview-active .overview-command-links{grid-template-columns:1fr!important}
+  body.screen-overview-active .overview-metric-tile,
+  body.screen-overview-active .overview-flow-card{min-height:auto!important;padding:14px!important}
+  body.screen-overview-active .overview-score-card{min-height:250px!important;padding:16px!important}
+  body.screen-overview-active .overview-score-ring{width:158px!important;height:158px!important}
+  body.screen-overview-active .overview-score-ring .score-number{font-size:36px!important}
+  body.screen-overview-active .overview-command-card h3,
+  body.screen-overview-active .overview-suite-head h3{font-size:32px!important;letter-spacing:-.07em!important}
+}
+</style>
+
 </head>
 
 
@@ -7815,7 +7718,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
         </div>
       </div>
 
-<div id="screenIntro" class="screen-intro"><strong>Visão geral</strong> — cockpit executivo com patrimônio, score, renda, riscos, meta e próxima ação em uma leitura única.</div>
+<div id="screenIntro" class="screen-intro"><strong>Visão geral</strong> — painel executivo com patrimônio, inteligência, score e principais alertas.</div>
 
       <div class="dymivra781-command">
         <div class="dymivra781-command-top">
@@ -8940,168 +8843,212 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
       </div>
 
       
-      <div class="hero-grid grid" data-screen-block data-screens="overview"><div class="card hero"><div class="section"><div><div class="muted">Patrimônio atual da carteira</div><div id="greeting" class="badge">Olá 👋</div></div><button class="balance-eye premium-eye-button" onclick="toggleBalance()" type="button" aria-label="Mostrar ou ocultar patrimônio">
-            <svg class="eye-svg active" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M2.6 12C4.45 8.75 7.72 6.55 12 6.55S19.55 8.75 21.4 12C19.55 15.25 16.28 17.45 12 17.45S4.45 15.25 2.6 12Z" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="12" cy="12" r="2.75" stroke="currentColor" stroke-width="1.85"/>
-            </svg>
-          </button></div><h2 id="heroValue" class="hero-value">R$ 0,00</h2><p class="muted" style="position:relative;z-index:1;line-height:1.6">Painel organizado por telas: visão geral, ledger, renda passiva, projeções, histórico, metas e configurações.</p><div class="badges"><span id="walletBadge" class="badge">Carteira neutra</span><span id="goalBadge" class="badge">Meta sem configuração</span><span id="ledgerBadge" class="badge purple">Ledger aguardando dados</span></div><div class="grid grid4" style="margin-top:18px"><div class="mini"><div class="label">Usuário</div><div id="userEmail" class="value small">-</div></div><div class="mini"><div class="label">Investido atual</div><div id="investedValue" class="value">R$ 0,00</div></div><div class="mini"><div class="label">Valor atual</div><div id="currentValue" class="value">R$ 0,00</div></div><div class="mini"><div class="label">Lucro/prejuízo</div><div id="pnlValue" class="value">R$ 0,00</div></div></div><div class="grid grid5" style="margin-top:14px"><div class="mini"><div class="label">Rentabilidade</div><div id="returnPct" class="value small">0,0%</div></div><div class="mini"><div class="label">No lucro</div><div id="winners" class="value small">0</div></div><div class="mini"><div class="label">No prejuízo</div><div id="losers" class="value small">0</div></div><div class="mini"><div class="label">Posições</div><div id="positionsCount" class="value small">0</div></div><div class="mini"><div class="label">Última atualização</div><div id="lastUpdate" class="value small">--</div></div></div></div>
-      <div class="card"><div class="section"><div><div class="kicker">Atalhos</div><h3>Ações rápidas</h3><div class="muted">Controles da carteira e do ledger</div></div></div><button class="success" id="refreshPricesBtn" onclick="refreshAllPrices()">Atualizar preços reais</button><button class="gold" id="manualSnapshotBtn" onclick="saveManualSnapshot()">Salvar snapshot agora</button><button class="secondary" onclick="refreshEverything()">Recarregar painel</button><button class="secondary" onclick="openLogoutModal()">Sair</button><div class="grid grid2" style="margin-top:14px"><div class="mini"><div class="label">Movimentações</div><div id="quickMovements" class="value small">0</div></div><div class="mini"><div class="label">Renda passiva</div><div id="quickPassive" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Snapshots</div><div id="quickSnapshots" class="value small">0</div></div><div class="mini"><div class="label">Maior ativo</div><div id="quickBiggest" class="value small">-</div></div></div><div id="topStatus" class="status"></div></div></div>
 
-      <div class="grid grid4" data-screen-block data-screens="overview ledger income"><div class="mini"><div class="label">Compras/entradas no ledger</div><div id="sumEntries" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Vendas/saídas no ledger</div><div id="sumExits" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Taxas + impostos</div><div id="sumCosts" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Renda passiva acumulada</div><div id="sumPassive" class="value small positive">R$ 0,00</div></div></div>
+      <div class="overview-total-hero" data-screen-block data-screens="overview">
+        <div class="card hero overview-hero-main">
+          <div class="overview-glow-dot one"></div>
+          <div class="overview-glow-dot two"></div>
+          <div class="overview-hero-head">
+            <div>
+              <div class="overview-eyebrow"><span>◆</span> Dymivra 8.3.6 • Painel Geral Premium Total</div>
+              <h2 class="overview-main-title">Painel executivo da sua vida financeira</h2>
+              <div id="greeting" class="badge overview-greeting">Olá 👋</div>
+            </div>
+            <button class="balance-eye premium-eye-button" onclick="toggleBalance()" type="button" aria-label="Mostrar ou ocultar patrimônio">
+              <svg class="eye-svg active" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M2.6 12C4.45 8.75 7.72 6.55 12 6.55S19.55 8.75 21.4 12C19.55 15.25 16.28 17.45 12 17.45S4.45 15.25 2.6 12Z" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="2.75" stroke="currentColor" stroke-width="1.85"/>
+              </svg>
+            </button>
+          </div>
 
-      
-      <div class="card premium-panel dym836-overview" data-screen-block data-screens="overview">
-        <div class="dym836-hero">
-          <div class="dym836-hero-copy">
-            <div class="dym836-eyebrow">Dymivra 8.3.6 • Visão Geral Ultra Premium</div>
-            <h2>Painel executivo da sua vida financeira</h2>
-            <p>Uma leitura única de patrimônio, resultado, renda passiva, risco, diversificação, meta e próxima ação. O app continua educativo: organiza dados e decisões, sem recomendar compra ou venda.</p>
-            <div class="dym836-actions">
-              <button type="button" onclick="showAppScreen('ledger')">Atualizar carteira</button>
-              <button type="button" class="secondary" onclick="showAppScreen('mentor')">Abrir Mentor</button>
-              <button type="button" class="secondary" onclick="showAppScreen('advisor')">Radar IA</button>
+          <div class="overview-wealth-label">Patrimônio atual da carteira</div>
+          <h2 id="heroValue" class="hero-value overview-wealth-value">R$ 0,00</h2>
+          <p class="overview-hero-copy">Uma leitura única de patrimônio, resultado, renda passiva, risco, diversificação, meta e próxima ação. O app continua educativo: organiza dados e decisões, sem recomendar compra ou venda.</p>
+
+          <div class="overview-badge-row">
+            <span id="walletBadge" class="badge">Carteira neutra</span>
+            <span id="goalBadge" class="badge">Meta sem configuração</span>
+            <span id="ledgerBadge" class="badge purple">Ledger aguardando dados</span>
+          </div>
+
+          <div class="overview-wealth-grid">
+            <div class="overview-metric-tile identity">
+              <span>Usuário</span>
+              <strong id="userEmail">-</strong>
+              <small>Conta conectada ao painel</small>
+            </div>
+            <div class="overview-metric-tile">
+              <span>Investido atual</span>
+              <strong id="investedValue">R$ 0,00</strong>
+              <small>Capital de entrada</small>
+            </div>
+            <div class="overview-metric-tile featured">
+              <span>Valor atual</span>
+              <strong id="currentValue">R$ 0,00</strong>
+              <small>Patrimônio marcado</small>
+            </div>
+            <div class="overview-metric-tile">
+              <span>Lucro/prejuízo</span>
+              <strong id="pnlValue">R$ 0,00</strong>
+              <small>Resultado agregado</small>
             </div>
           </div>
 
-          <div class="dym836-score-card">
-            <div class="dym836-score-shell">
-              <div id="premiumScoreRing" class="score-ring dym836-score-ring">
-                <div class="score-inner">
-                  <div id="premiumScoreNumber" class="score-number">0</div>
-                  <div class="score-label">score / 100</div>
-                </div>
+          <div class="overview-signal-grid">
+            <div><span>Rentabilidade</span><strong id="returnPct">0,0%</strong></div>
+            <div><span>No lucro</span><strong id="winners">0</strong></div>
+            <div><span>No prejuízo</span><strong id="losers">0</strong></div>
+            <div><span>Posições</span><strong id="positionsCount">0</strong></div>
+            <div><span>Última atualização</span><strong id="lastUpdate">--</strong></div>
+          </div>
+        </div>
+
+        <div class="card overview-command-card">
+          <div class="overview-panel-kicker">Central de comando</div>
+          <h3>Ações rápidas</h3>
+          <p>Atualize preços, salve um retrato da carteira e navegue para os pontos mais importantes sem sair da Visão Geral.</p>
+
+          <div class="overview-action-stack">
+            <button class="success" id="refreshPricesBtn" onclick="refreshAllPrices()">Atualizar preços reais</button>
+            <button class="gold" id="manualSnapshotBtn" onclick="saveManualSnapshot()">Salvar snapshot agora</button>
+            <button class="secondary" onclick="refreshEverything()">Recarregar painel</button>
+            <button class="secondary" onclick="openLogoutModal()">Sair</button>
+          </div>
+
+          <div class="overview-quick-grid">
+            <div><span>Movimentações</span><strong id="quickMovements">0</strong></div>
+            <div><span>Renda passiva</span><strong id="quickPassive">R$ 0,00</strong></div>
+            <div><span>Snapshots</span><strong id="quickSnapshots">0</strong></div>
+            <div><span>Maior ativo</span><strong id="quickBiggest">-</strong></div>
+          </div>
+
+          <div class="overview-command-links">
+            <button class="secondary" type="button" onclick="showAppScreen('ledger')">Abrir Ledger</button>
+            <button class="secondary" type="button" onclick="showAppScreen('ai')">Abrir IA</button>
+          </div>
+          <div id="topStatus" class="status overview-status"></div>
+        </div>
+      </div>
+
+
+      <div class="overview-flow-strip" data-screen-block data-screens="overview ledger income">
+        <div class="overview-flow-card in">
+          <span>Compras/entradas no ledger</span>
+          <strong id="sumEntries">R$ 0,00</strong>
+          <small>capital registrado</small>
+        </div>
+        <div class="overview-flow-card out">
+          <span>Vendas/saídas no ledger</span>
+          <strong id="sumExits">R$ 0,00</strong>
+          <small>reduções e resgates</small>
+        </div>
+        <div class="overview-flow-card cost">
+          <span>Taxas + impostos</span>
+          <strong id="sumCosts">R$ 0,00</strong>
+          <small>custos rastreados</small>
+        </div>
+        <div class="overview-flow-card income">
+          <span>Renda passiva acumulada</span>
+          <strong id="sumPassive">R$ 0,00</strong>
+          <small>proventos e rendimentos</small>
+        </div>
+      </div>
+
+
+      <div class="card premium-panel overview-intelligence-suite" data-screen-block data-screens="overview">
+        <div class="section overview-suite-head">
+          <div>
+            <div class="overview-eyebrow"><span>✦</span> Inteligência executiva</div>
+            <h3>Centro de decisão da Visão Geral</h3>
+            <div class="muted">Score, prioridades, resumo do mês, alocação e próxima ação em uma experiência mais limpa, forte e profissional.</div>
+          </div>
+          <span class="badge purple">Premium intelligence</span>
+        </div>
+
+        <div class="overview-intel-grid">
+          <div class="overview-score-card">
+            <div id="premiumScoreRing" class="score-ring overview-score-ring">
+              <div class="score-inner">
+                <div id="premiumScoreNumber" class="score-number">0</div>
+                <div class="score-label">score / 100</div>
               </div>
-              <div id="premiumScoreStatus" class="dym836-score-status">Aguardando dados do ledger.</div>
             </div>
-            <div class="dym836-mini-source">
-              <span>Fonte principal</span>
-              <strong id="dym836DataSource">Ledger profissional</strong>
+            <div id="premiumScoreStatus" class="muted overview-score-copy">Aguardando dados do ledger.</div>
+          </div>
+
+          <div class="overview-intel-main">
+            <div class="overview-command-metrics">
+              <div class="overview-command-metric">
+                <span>Patrimônio analisado</span>
+                <strong id="premiumAnalyzedWealth">R$ 0,00</strong>
+                <small id="premiumWealthNote">Ledger profissional</small>
+              </div>
+              <div class="overview-command-metric">
+                <span>Resultado atual</span>
+                <strong id="premiumResult">R$ 0,00</strong>
+                <small id="premiumResultNote">Rentabilidade agregada</small>
+              </div>
+              <div class="overview-command-metric">
+                <span>Renda no mês</span>
+                <strong id="premiumMonthlyIncome">R$ 0,00</strong>
+                <small id="premiumMonthlyIncomeNote">Proventos recebidos</small>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="dym836-kpi-grid">
-          <div class="dym836-kpi-card">
-            <span>Patrimônio analisado</span>
-            <strong id="premiumAnalyzedWealth">R$ 0,00</strong>
-            <em id="premiumWealthNote">Ledger profissional</em>
-          </div>
-          <div class="dym836-kpi-card">
-            <span>Resultado atual</span>
-            <strong id="premiumResult">R$ 0,00</strong>
-            <em id="premiumResultNote">Rentabilidade agregada</em>
-          </div>
-          <div class="dym836-kpi-card">
-            <span>Renda no mês</span>
-            <strong id="premiumMonthlyIncome">R$ 0,00</strong>
-            <em id="premiumMonthlyIncomeNote">Proventos recebidos</em>
-          </div>
-          <div class="dym836-kpi-card">
-            <span>Score técnico</span>
-            <strong id="advancedScore">0/100</strong>
-            <em id="advancedScoreNote">Aguardando dados.</em>
-          </div>
-        </div>
-
-        <div class="dym836-command-grid">
-          <div class="dym836-command-card dym836-primary-action">
-            <div class="dym836-card-top">
+            <div class="overview-quality-grid">
               <div>
-                <span class="dym836-small-label">Próxima melhor ação</span>
-                <h3 id="premiumPrimaryAction">Cadastre movimentações no ledger para liberar a inteligência.</h3>
+                <span>Concentração principal</span>
+                <strong id="advancedConcentration">0%</strong>
+                <small id="advancedConcentrationNote">Aguardando dados.</small>
               </div>
-              <div class="dym836-icon">→</div>
+              <div>
+                <span>Diversificação</span>
+                <strong id="advancedDiversification">0 classes</strong>
+                <small id="advancedDiversificationNote">Aguardando dados.</small>
+              </div>
+              <div>
+                <span>Renda passiva</span>
+                <strong id="advancedPassive" class="positive">R$ 0,00</strong>
+                <small id="advancedPassiveNote">Dividendos, juros e rendimentos.</small>
+              </div>
+              <div>
+                <span>Score técnico</span>
+                <strong id="advancedScore">0/100</strong>
+                <small id="advancedScoreNote">Aguardando dados.</small>
+              </div>
             </div>
-            <p id="premiumActionReason">Quanto mais movimentações e preços reais, melhor fica a inteligência do painel.</p>
-            <div id="dym836Route" class="dym836-route">Rota: preencher ledger → definir meta → acompanhar renda → revisar alocação.</div>
-          </div>
-
-          <div class="dym836-command-card">
-            <span class="dym836-small-label">Resumo executivo do mês</span>
-            <div id="premiumMonthlyBrief" class="priority-stack dym836-stack">Sem movimentações no mês.</div>
-          </div>
-
-          <div class="dym836-command-card">
-            <span class="dym836-small-label">Prioridades inteligentes</span>
-            <div id="premiumPriorityAlerts" class="priority-stack dym836-stack">Sem alertas.</div>
           </div>
         </div>
 
-        <div class="dym836-pulse-grid">
-          <div class="dym836-pulse-card">
-            <span>Concentração principal</span>
-            <strong id="advancedConcentration">0%</strong>
-            <em id="advancedConcentrationNote">Aguardando dados.</em>
+        <div class="overview-decision-grid">
+          <div class="overview-decision-card">
+            <strong>O que aconteceu este mês</strong>
+            <div id="premiumMonthlyBrief" class="priority-stack">Sem movimentações no mês.</div>
           </div>
-          <div class="dym836-pulse-card">
-            <span>Diversificação</span>
-            <strong id="advancedDiversification">0 classes</strong>
-            <em id="advancedDiversificationNote">Aguardando dados.</em>
+          <div class="overview-decision-card">
+            <strong>Prioridades inteligentes</strong>
+            <div id="premiumPriorityAlerts" class="priority-stack">Sem alertas.</div>
           </div>
-          <div class="dym836-pulse-card">
-            <span>Renda passiva total</span>
-            <strong id="advancedPassive">R$ 0,00</strong>
-            <em id="advancedPassiveNote">Dividendos, juros e rendimentos.</em>
-          </div>
-          <div class="dym836-pulse-card">
-            <span>Mapa da carteira</span>
-            <strong id="dym836AssetCount">0 ativos</strong>
-            <em id="dym836ClassCount">0 categorias</em>
+          <div class="overview-decision-card primary">
+            <strong>Próxima ação recomendada</strong>
+            <div id="premiumPrimaryAction" class="action-hero">Cadastre movimentações no ledger para liberar a inteligência.</div>
+            <div id="premiumActionReason" class="muted overview-action-reason"></div>
           </div>
         </div>
 
-        <div class="dym836-analytics-grid">
-          <div class="dym836-analytics-card">
-            <div class="dym836-analytics-head">
-              <div>
-                <span class="dym836-small-label">Alocação por categoria</span>
-                <h3>Onde o patrimônio está concentrado</h3>
-              </div>
-              <button type="button" onclick="showAppScreen('allocation')">Abrir alocação</button>
-            </div>
-            <div id="advancedAllocation" class="dym836-allocation">Sem dados.</div>
+        <div class="overview-deep-grid">
+          <div class="overview-deep-card">
+            <strong>Alocação por categoria</strong>
+            <div id="advancedAllocation">Sem dados.</div>
           </div>
-
-          <div class="dym836-analytics-card">
-            <div class="dym836-analytics-head">
-              <div>
-                <span class="dym836-small-label">Alertas inteligentes</span>
-                <h3>O que merece atenção</h3>
-              </div>
-              <button type="button" class="secondary" onclick="showAppScreen('advisor')">Radar</button>
-            </div>
-            <div id="advancedAlerts" class="dym836-alerts">Sem alertas.</div>
+          <div class="overview-deep-card">
+            <strong>Alertas inteligentes</strong>
+            <div id="advancedAlerts">Sem alertas.</div>
           </div>
-
-          <div class="dym836-analytics-card">
-            <div class="dym836-analytics-head">
-              <div>
-                <span class="dym836-small-label">Plano imediato</span>
-                <h3>Próximo passo sugerido</h3>
-              </div>
-              <button type="button" class="secondary" onclick="showAppScreen('goals')">Metas</button>
-            </div>
-            <div id="advancedNextStep" class="dym836-next">Cadastre movimentações no ledger para liberar a análise.</div>
-          </div>
-        </div>
-
-        <div class="dym836-bottom-grid">
-          <div class="dym836-status-card">
-            <span class="dym836-small-label">Pulso financeiro</span>
-            <h3 id="dym836HealthTitle">Carteira em preparação</h3>
-            <p id="dym836HealthBody">Quando houver ativos, preços, renda e metas, a Visão Geral passa a funcionar como um cockpit financeiro.</p>
-          </div>
-          <div class="dym836-status-card">
-            <span class="dym836-small-label">Fluxo do mês</span>
-            <h3 id="dym836CapitalFlow">R$ 0,00</h3>
-            <p id="dym836MonthOps">Sem movimentações registradas no mês atual.</p>
-          </div>
-          <div class="dym836-status-card">
-            <span class="dym836-small-label">Meta patrimonial</span>
-            <h3 id="dym836GoalStatus">Meta não definida</h3>
-            <div class="dym836-goal-bar"><span id="dym836GoalBar" style="width:0%"></span></div>
-            <p id="dym836GoalNote">Defina uma meta para o painel medir avanço.</p>
+          <div class="overview-deep-card">
+            <strong>Próximo passo sugerido</strong>
+            <div id="advancedNextStep">Cadastre movimentações no ledger para liberar a análise.</div>
           </div>
         </div>
       </div>
@@ -9664,7 +9611,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
     window.handleAuth=async()=>{if(loading.auth)return;const email=$('email').value.trim(),password=$('password').value.trim();if(!email||!password){status($('authStatus'),'Preencha email e senha.','error');return}if(password.length<6){status($('authStatus'),'A senha precisa ter pelo menos 6 caracteres.','error');return}if(!requireOnline())return;loading.auth=true;btn($('authBtn'),true,loginMode?'Entrando...':'Criando...');showActionOverlay(loginMode?'Entrando com segurança':'Criando conta','Validando acesso pelo Supabase...','🔐');try{const r=loginMode?await supabase.auth.signInWithPassword({email,password}):await supabase.auth.signUp({email,password});if(r.error)throw r.error;if(!loginMode){toast('Conta criada. Agora faça login.','success');loginMode=true;toggleAuthMode();}else toast('Login realizado.','success')}catch(e){status($('authStatus'),e.message||'Erro no acesso.','error');toast(e.message||'Erro no acesso.','error')}finally{loading.auth=false;btn($('authBtn'),false);hideActionOverlay()}}
     
     const screenTexts={
-      overview:['Visão geral','painel executivo com patrimônio, inteligência, score e principais alertas.'],
+      overview:['Visão geral','cockpit premium total com patrimônio, comandos, inteligência, renda, risco, alocação e próximos passos.'],
       ledger:['Ledger','registre, edite e exclua movimentações; atualize preços reais e acompanhe posições calculadas.'],
       income:['Renda passiva','acompanhe proventos, yield, meta mensal de renda e fechamento do mês.'],
       liberty:['Liberdade financeira','calcule quanto patrimônio precisa para viver de renda e acompanhe marcos de renda mensal.'],
@@ -9892,6 +9839,7 @@ let deferredInstallPrompt=null;
       try{
         document.body.classList.toggle('screen-all-active',wanted==='all');
         document.body.classList.toggle('screen-ai-active',wanted==='ai');
+        document.body.classList.toggle('screen-overview-active',wanted==='overview');
         document.documentElement.style.overflowY='auto';
         document.body.style.overflowY='auto';
         document.body.style.height='auto';
@@ -14372,175 +14320,6 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
         setTimeout(dym835RenderWelcome,900);
       }catch{}
     })();
-
-
-
-
-/* ==========================================================
-   Dymivra 8.3.6 • Motor visual da Visão Geral
-   Usa os mesmos dados e funções já existentes no app.
-   ========================================================== */
-(function(){
-  function dym836Text(id,value){
-    const el=document.getElementById(id);
-    if(el)el.textContent=value;
-  }
-  function dym836Html(id,value){
-    const el=document.getElementById(id);
-    if(el)el.innerHTML=value;
-  }
-  function dym836Money(v){
-    try{return typeof money==='function'?money(Number(v||0)):'R$ '+Number(v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}
-    catch{return 'R$ 0,00'}
-  }
-  function dym836Pnl(v){
-    try{return typeof pnl==='function'?pnl(Number(v||0)):dym836Money(v)}
-    catch{return dym836Money(v)}
-  }
-  function dym836Pct(v){
-    try{return typeof pct==='function'?pct(Number(v||0)):Number(v||0).toFixed(1)+'%'}
-    catch{return '0,0%'}
-  }
-  function dym836Esc(v){
-    try{return typeof esc==='function'?esc(String(v??'')):String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-    catch{return String(v??'')}
-  }
-
-  window.dym836RenderOverview=function(inv,cur,pl){
-    try{
-      const list=typeof mainAssets==='function'?mainAssets():[];
-      const total=Number(cur||0);
-      const invested=Number(inv||0);
-      const result=Number(pl||0);
-      const passive=Number((window.summary&&summary.total_passive_income)||0);
-      const ledger=typeof usingLedger==='function'?usingLedger():false;
-      dym836Text('dym836DataSource',ledger?'Ledger profissional':'Cadastro atual');
-
-      const byCat={};
-      list.forEach(item=>{
-        const cat=item.category||'Outros';
-        byCat[cat]=(byCat[cat]||0)+Number(item.current_value||0);
-      });
-      const cats=Object.entries(byCat).sort((a,b)=>b[1]-a[1]);
-      dym836Text('dym836AssetCount',`${list.length} ${list.length===1?'ativo':'ativos'}`);
-      dym836Text('dym836ClassCount',`${cats.length} ${cats.length===1?'categoria':'categorias'}`);
-
-      const sorted=[...list].sort((a,b)=>Number(b.current_value||0)-Number(a.current_value||0));
-      const top=sorted[0];
-      const topShare=total>0&&top?Number(top.current_value||0)/total*100:0;
-      const ret=invested?result/invested*100:0;
-
-      let month={passive:0,buys:0,sells:0,costs:0,net:0,count:0,passiveItems:[]};
-      try{
-        if(typeof currentMonthKey==='function'&&typeof monthlyBuckets==='function'){
-          const key=currentMonthKey();
-          month=monthlyBuckets().find(x=>x.key===key)||month;
-        }
-      }catch{}
-
-      dym836Text('dym836CapitalFlow',dym836Pnl(month.net||0));
-      dym836Text('dym836MonthOps',month.count?`${month.count} movimentação(ões) no mês • Compras: ${dym836Money(month.buys||0)} • Renda: ${dym836Money(month.passive||0)}`:'Sem movimentações registradas no mês atual.');
-
-      let goalPct=0,goalLabel='Meta não definida',goalNote='Defina uma meta para o painel medir avanço.';
-      try{
-        if(typeof goalStats==='function'){
-          const g=goalStats(total);
-          if(g&&g.target){
-            goalPct=Math.max(0,Math.min(100,Number(g.progress||0)));
-            goalLabel=(g.display||`${goalPct.toFixed(1)}% concluída`);
-            goalNote=`Meta: ${dym836Money(g.target)} • Falta: ${dym836Money(Math.max(Number(g.target||0)-total,0))}`;
-          }
-        }else if(window.goal&&Number(goal.targetValue)>0){
-          goalPct=Math.max(0,Math.min(100,total/Number(goal.targetValue)*100));
-          goalLabel=goalPct.toFixed(1)+'% concluída';
-          goalNote=`Meta: ${dym836Money(goal.targetValue)} • Falta: ${dym836Money(Math.max(Number(goal.targetValue)-total,0))}`;
-        }
-      }catch{}
-      dym836Text('dym836GoalStatus',goalLabel);
-      dym836Text('dym836GoalNote',goalNote);
-      const goalBar=document.getElementById('dym836GoalBar');
-      if(goalBar)goalBar.style.width=goalPct+'%';
-
-      let healthTitle='Carteira em preparação';
-      let healthBody='Quando houver ativos, preços, renda e metas, a Visão Geral passa a funcionar como um cockpit financeiro.';
-      if(list.length){
-        if(topShare>=70){
-          healthTitle='Atenção à concentração';
-          healthBody=`${dym836Esc(top?.asset||'Um ativo')} concentra ${topShare.toFixed(1)}% da carteira. O painel vai priorizar equilíbrio, diversificação e acompanhamento.`;
-        }else if(cats.length>=3&&ret>=0&&passive>0){
-          healthTitle='Base financeira saudável';
-          healthBody='A carteira tem diversificação, resultado não negativo e renda passiva registrada. O próximo nível é acompanhar metas e evolução mensal.';
-        }else if(cats.length>=2){
-          healthTitle='Carteira em evolução';
-          healthBody='Já existe uma base organizada. Agora o foco é melhorar qualidade dos dados, renda, metas e equilíbrio por categoria.';
-        }else{
-          healthTitle='Primeira camada montada';
-          healthBody='Os dados começaram a aparecer. Adicione mais categorias, preços e movimentações para liberar análises melhores.';
-        }
-      }
-      dym836Text('dym836HealthTitle',healthTitle);
-      dym836Text('dym836HealthBody',healthBody);
-
-      let route='Rota: preencher ledger → definir meta → acompanhar renda → revisar alocação.';
-      if(!list.length)route='Rota: registrar primeiro ativo → atualizar preço → criar meta.';
-      else if(!goalPct)route='Rota: definir meta patrimonial → medir avanço → ajustar aportes.';
-      else if(passive<=0)route='Rota: registrar proventos → acompanhar renda mensal → projetar liberdade.';
-      else if(topShare>=55)route='Rota: revisar concentração → comparar categorias → planejar próximos aportes.';
-      else route='Rota: manter atualização mensal → salvar snapshots → acompanhar evolução.';
-      dym836Text('dym836Route',route);
-
-      if(!list.length){
-        dym836Html('premiumMonthlyBrief','<div class="priority-item mid">Comece pelo ledger para o Dymivra transformar dados em inteligência.</div>');
-        dym836Html('premiumPriorityAlerts','<div class="priority-item mid">Sem carteira suficiente para avaliar risco, renda e diversificação.</div>');
-      }
-    }catch(e){
-      console.warn('Dymivra 8.3.6 overview render:',e);
-    }
-  };
-
-  function dym836WrapRenderers(){
-    try{
-      if(typeof window.renderPremiumCommandCenter==='function'&&!window.__dym836PremiumWrapped){
-        const original=window.renderPremiumCommandCenter;
-        window.__dym836PremiumWrapped=true;
-        window.renderPremiumCommandCenter=function(inv,cur,pl){
-          const out=original.apply(this,arguments);
-          setTimeout(()=>window.dym836RenderOverview(inv,cur,pl),0);
-          return out;
-        };
-      }
-      if(typeof window.renderAdvancedDashboard==='function'&&!window.__dym836AdvancedWrapped){
-        const originalAdvanced=window.renderAdvancedDashboard;
-        window.__dym836AdvancedWrapped=true;
-        window.renderAdvancedDashboard=function(inv,cur,pl){
-          const out=originalAdvanced.apply(this,arguments);
-          setTimeout(()=>window.dym836RenderOverview(inv,cur,pl),0);
-          return out;
-        };
-      }
-      if(typeof window.showAppScreen==='function'&&!window.__dym836ScreenWrapped){
-        const originalScreen=window.showAppScreen;
-        window.__dym836ScreenWrapped=true;
-        window.showAppScreen=function(screen){
-          const out=originalScreen.apply(this,arguments);
-          setTimeout(()=>window.dym836RenderOverview(
-            Number((window.summary&&summary.total_invested)||0),
-            Number((window.summary&&summary.current_value)||0),
-            Number((window.summary&&summary.profit_loss)||0)
-          ),80);
-          return out;
-        };
-      }
-    }catch(e){}
-  }
-  dym836WrapRenderers();
-  setTimeout(dym836WrapRenderers,300);
-  setTimeout(()=>window.dym836RenderOverview(
-    Number((window.summary&&summary.total_invested)||0),
-    Number((window.summary&&summary.current_value)||0),
-    Number((window.summary&&summary.profit_loss)||0)
-  ),600);
-})();
 
 </script>
 </body>
