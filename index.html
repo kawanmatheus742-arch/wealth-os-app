@@ -14,7 +14,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.4.0</title>
+<title>Dymivra 8.4.1</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -8457,7 +8457,7 @@ body.screen-overview-active.performance-mode [data-screen-block]:not(.screen-hid
 </style>
 <style>
 /* ==========================================================
-   Dymivra 8.4.0 • Renovação visual total corrigida
+   Dymivra 8.4.1 • Pulse Motor de Decisão
    Corrige as telas Liberdade em diante:
    - remove o hero clonado 8.3.9
    - telas com identidade visual própria
@@ -8776,6 +8776,82 @@ body.screen-all-active .v840-side{display:none!important;}
 body.performance-mode .dymivra840-stage,
 body.mobile-device .dymivra840-stage{box-shadow:0 12px 30px rgba(0,0,0,.25)!important;}
 body.performance-mode .v840-radar span{animation:none!important;}
+
+
+/* =========================================================
+   Dymivra 8.4.1 • Pulse Motor de Decisão
+   Nova função avançada: prioridade, impacto, risco e plano.
+   ========================================================= */
+.pulse-nav-highlight{
+  background:linear-gradient(135deg,rgba(250,204,21,.92),rgba(34,211,238,.76))!important;
+  color:#06111f!important;
+  border-color:rgba(254,240,138,.72)!important;
+  box-shadow:0 0 30px rgba(250,204,21,.16),0 14px 34px rgba(14,165,233,.12)!important;
+}
+.pulse-screen{
+  position:relative;
+  overflow:hidden;
+  border-radius:34px;
+  padding:0!important;
+  border:1px solid rgba(125,211,252,.18)!important;
+  background:
+    radial-gradient(circle at 8% 0%,rgba(250,204,21,.16),transparent 26%),
+    radial-gradient(circle at 96% 6%,rgba(34,211,238,.17),transparent 27%),
+    radial-gradient(circle at 60% 100%,rgba(139,92,246,.13),transparent 31%),
+    linear-gradient(180deg,rgba(5,13,28,.98),rgba(3,8,20,.98))!important;
+  box-shadow:0 26px 80px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.07)!important;
+}
+.pulse-screen *{min-width:0;box-sizing:border-box}
+.pulse-orb{position:absolute;inset:auto -90px -120px auto;width:280px;height:280px;border-radius:999px;background:radial-gradient(circle,rgba(34,211,238,.22),transparent 68%);filter:blur(2px);pointer-events:none}
+.pulse-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(180deg,#000,transparent 88%);opacity:.6;pointer-events:none}
+.pulse-shell{position:relative;z-index:1;padding:24px;display:grid;gap:18px}
+.pulse-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);gap:18px;align-items:stretch}
+.pulse-main,.pulse-score-panel,.pulse-card,.pulse-console,.pulse-simulator,.pulse-lane{
+  border:1px solid rgba(255,255,255,.09);
+  background:linear-gradient(180deg,rgba(15,28,52,.72),rgba(4,11,24,.78));
+  border-radius:30px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.055);
+}
+.pulse-main{padding:24px;min-height:360px;display:flex;flex-direction:column;justify-content:space-between;gap:22px}
+.pulse-kicker{display:inline-flex;align-items:center;gap:9px;max-width:100%;width:max-content;padding:9px 12px;border-radius:999px;border:1px solid rgba(125,211,252,.22);background:rgba(34,211,238,.08);color:#bff8ff;font-size:12px;font-weight:950;letter-spacing:.15em;text-transform:uppercase;white-space:normal;line-height:1.25}
+.pulse-title{margin:16px 0 0;color:#fff;font-weight:950;line-height:.94;letter-spacing:-.085em;font-size:clamp(42px,6vw,86px);max-width:900px;overflow-wrap:anywhere}
+.pulse-sub{margin:18px 0 0;color:#cbd5e1;line-height:1.62;font-size:clamp(15px,1.55vw,19px);max-width:860px}
+.pulse-actions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:4px}
+.pulse-actions button,.pulse-mini-actions button{margin:0!important;border-radius:18px!important;min-height:48px!important;padding:12px!important;font-size:13px!important}
+.pulse-score-panel{padding:22px;display:grid;grid-template-rows:auto 1fr auto;gap:16px;overflow:hidden}
+.pulse-score-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pulse-live{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:rgba(34,197,94,.10);border:1px solid rgba(34,197,94,.22);color:#bbf7d0;font-size:12px;font-weight:900}
+.pulse-ring-wrap{display:grid;place-items:center;min-height:210px}
+.pulse-ring{--p:0%;width:200px;height:200px;border-radius:999px;display:grid;place-items:center;background:conic-gradient(#22d3ee var(--p),rgba(255,255,255,.07) 0);box-shadow:0 0 46px rgba(34,211,238,.14),inset 0 1px 0 rgba(255,255,255,.08);position:relative}
+.pulse-ring:before{content:"";position:absolute;inset:15px;border-radius:inherit;background:linear-gradient(180deg,#0d172b,#050b16);border:1px solid rgba(255,255,255,.08)}
+.pulse-ring-inner{position:relative;text-align:center}
+.pulse-ring-inner strong{display:block;font-size:46px;line-height:.9;letter-spacing:-.08em;color:#fff}
+.pulse-ring-inner span{display:block;margin-top:8px;color:#91a4c6;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.12em}
+.pulse-score-caption{padding:14px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#dbeafe;line-height:1.5}
+.pulse-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.pulse-card{padding:16px;min-height:140px;position:relative;overflow:hidden}
+.pulse-card:after{content:"";position:absolute;right:-48px;bottom:-60px;width:140px;height:140px;border-radius:999px;background:radial-gradient(circle,rgba(34,211,238,.10),transparent 72%)}
+.pulse-card span,.pulse-card strong,.pulse-card small{position:relative;z-index:1}
+.pulse-card span{display:block;color:#9eb3d2;font-size:12px;font-weight:950;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.pulse-card strong{display:block;color:#fff;font-size:clamp(21px,2.3vw,34px);line-height:1.02;letter-spacing:-.055em;overflow-wrap:anywhere}
+.pulse-card small{display:block;color:#90a4c5;margin-top:9px;line-height:1.42}
+.pulse-lanes{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;align-items:start}
+.pulse-lane{padding:20px;display:grid;gap:12px}
+.pulse-section-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:2px}
+.pulse-section-head h3{margin:0!important;color:#fff;font-size:clamp(25px,3.2vw,44px)!important;letter-spacing:-.07em!important;line-height:1!important}
+.pulse-section-head p{margin:8px 0 0;color:#9eb3d2;line-height:1.5;max-width:660px}
+.pulse-signal{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:13px;border-radius:18px;border:1px solid rgba(255,255,255,.075);background:rgba(255,255,255,.035)}
+.pulse-signal .dot{width:38px;height:38px;border-radius:15px;display:grid;place-items:center;background:rgba(34,211,238,.10);border:1px solid rgba(34,211,238,.17)}
+.pulse-signal b{display:block;color:#fff;margin-bottom:4px;letter-spacing:-.02em}.pulse-signal span{display:block;color:#9eb3d2;line-height:1.35;font-size:13px}
+.pulse-signal .grade{font-weight:950;font-size:13px;white-space:nowrap;color:#dbeafe}.pulse-signal.danger{border-color:rgba(239,68,68,.24);background:rgba(239,68,68,.07)}.pulse-signal.warn{border-color:rgba(251,146,60,.24);background:rgba(251,146,60,.07)}.pulse-signal.good{border-color:rgba(34,197,94,.23);background:rgba(34,197,94,.07)}
+.pulse-task{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.075)}
+.pulse-task button{width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;margin:0!important;padding:0!important;border-radius:14px!important;background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.10)!important;box-shadow:none!important}.pulse-task.done{border-color:rgba(34,197,94,.26);background:rgba(34,197,94,.075)}.pulse-task.done button{background:linear-gradient(135deg,#16a34a,#22c55e)!important}.pulse-task b{display:block;color:#fff;margin-bottom:4px}.pulse-task span{display:block;color:#9eb3d2;line-height:1.35;font-size:13px}.pulse-task .screen-tag{font-size:12px;font-weight:900;color:#bff8ff;white-space:nowrap}
+.pulse-simulator{padding:20px;display:grid;gap:14px}.pulse-sim-grid{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end}.pulse-simulator label{font-size:11px!important;text-transform:uppercase;letter-spacing:.12em;font-weight:950;color:#bff8ff!important}.pulse-simulator input,.pulse-simulator select{height:54px!important;border-radius:18px!important;background:rgba(2,8,18,.54)!important;border-color:rgba(125,211,252,.15)!important}.pulse-output{padding:16px;border-radius:22px;background:linear-gradient(180deg,rgba(34,211,238,.08),rgba(255,255,255,.03));border:1px solid rgba(125,211,252,.15);color:#dbeafe;line-height:1.55}.pulse-output strong{color:#fff}.pulse-impact-bars{display:grid;gap:10px}.pulse-impact-row{display:grid;grid-template-columns:130px minmax(0,1fr) auto;gap:10px;align-items:center;color:#cbd5e1;font-size:13px}.pulse-impact-track{height:10px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden;border:1px solid rgba(255,255,255,.055)}.pulse-impact-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#22c55e,#22d3ee)}
+.pulse-console{padding:20px}.pulse-console-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.pulse-command{padding:15px;border-radius:20px;border:1px solid rgba(255,255,255,.075);background:rgba(255,255,255,.035);display:grid;gap:10px}.pulse-command b{color:#fff;font-size:18px}.pulse-command span{color:#9eb3d2;line-height:1.42;font-size:13px}.pulse-mini-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pulse-disclaimer{color:#91a4c6;line-height:1.45;font-size:12px;margin-top:12px}
+body.performance-mode .pulse-screen,.performance-mode .pulse-main,.performance-mode .pulse-score-panel,.performance-mode .pulse-card,.performance-mode .pulse-console,.performance-mode .pulse-simulator,.performance-mode .pulse-lane{box-shadow:0 10px 24px rgba(0,0,0,.22)!important;backdrop-filter:none!important}
+@media(max-width:1180px){.pulse-hero,.pulse-lanes{grid-template-columns:1fr}.pulse-metrics{grid-template-columns:1fr 1fr}.pulse-actions{grid-template-columns:1fr 1fr}.pulse-sim-grid{grid-template-columns:1fr 1fr}.pulse-sim-grid button{grid-column:1/-1}}
+@media(max-width:760px){.pulse-shell{padding:14px;gap:14px}.pulse-screen{border-radius:26px}.pulse-main,.pulse-score-panel,.pulse-lane,.pulse-simulator,.pulse-console{border-radius:24px;padding:16px}.pulse-kicker{font-size:10.5px;letter-spacing:.1em;width:100%;justify-content:center;text-align:center}.pulse-title{font-size:clamp(36px,12vw,56px);letter-spacing:-.075em;line-height:.96}.pulse-sub{font-size:15px;line-height:1.55}.pulse-ring{width:160px;height:160px}.pulse-ring-inner strong{font-size:36px}.pulse-metrics,.pulse-actions,.pulse-console-grid,.pulse-mini-actions,.pulse-sim-grid{grid-template-columns:1fr}.pulse-signal,.pulse-task{grid-template-columns:auto minmax(0,1fr)}.pulse-signal .grade,.pulse-task .screen-tag{grid-column:2}.pulse-impact-row{grid-template-columns:1fr}.pulse-impact-row > span:last-child{text-align:left}.pulse-card{min-height:auto}.pulse-card strong{font-size:25px}}
+
 </style></head>
 <body class="dymivra781-premium">
 <div aria-hidden="true" class="wealth-aurora-stage" id="wealthAuroraStage"><span class="aurora-orb orb-a"></span><span class="aurora-orb orb-b"></span><span class="aurora-orb orb-c"></span><span class="aurora-grid"></span></div>
@@ -8878,6 +8954,7 @@ body.performance-mode .v840-radar span{animation:none!important;}
 <div class="grid" id="appSection">
 <div aria-label="Navegação principal" class="app-nav app-nav-pro" id="appNav" role="navigation">
 <button class="nav-btn active" data-screen="overview" onclick="showAppScreen('overview')" type="button">🏠 Visão geral</button>
+<button class="nav-btn pulse-nav-highlight" data-screen="pulse" onclick="showAppScreen('pulse')" type="button">⚡ Pulse</button>
 <button class="nav-btn" data-screen="ledger" onclick="showAppScreen('ledger')" type="button">📒 Ledger</button>
 <button class="nav-btn" data-screen="income" onclick="showAppScreen('income')" type="button">💸 Renda</button>
 <button class="nav-btn" data-screen="liberty" onclick="showAppScreen('liberty')" type="button">🕊️ Liberdade</button>
@@ -8950,6 +9027,81 @@ body.performance-mode .v840-radar span{animation:none!important;}
 <div><span>Plano atual</span><strong>Free/Pro/Elite</strong></div>
 </div>
 </div>
+
+<div class="card pulse-screen" data-screen-block="" data-screens="pulse">
+  <div class="pulse-grid-bg"></div>
+  <div class="pulse-orb"></div>
+  <div class="pulse-shell">
+    <div class="pulse-hero">
+      <div class="pulse-main">
+        <div>
+          <div class="pulse-kicker">⚡ Dymivra 8.4.1 • Pulse Motor de Decisão</div>
+          <h2 class="pulse-title">O que fazer agora, com base na sua carteira real</h2>
+          <p class="pulse-sub">O Pulse cruza Ledger, patrimônio, renda, meta, concentração, alocação e histórico para transformar o app em uma central de decisão educativa. Não é recomendação de compra ou venda: é prioridade, impacto e próxima ação.</p>
+        </div>
+        <div class="pulse-actions">
+          <button class="gold" onclick="runDymivra841Pulse()" type="button">Atualizar Pulse</button>
+          <button onclick="copyDymivra841Pulse()" type="button">Copiar plano</button>
+          <button class="secondary" onclick="showAppScreen('ledger')" type="button">Abrir Ledger</button>
+          <button class="secondary" onclick="showAppScreen('goals')" type="button">Abrir Metas</button>
+        </div>
+      </div>
+      <div class="pulse-score-panel">
+        <div class="pulse-score-top">
+          <div>
+            <div class="pulse-kicker" style="width:auto">Score de clareza</div>
+          </div>
+          <span class="pulse-live" id="pulseRiskTag">Analisando</span>
+        </div>
+        <div class="pulse-ring-wrap">
+          <div class="pulse-ring" id="pulseRing" style="--p:0%">
+            <div class="pulse-ring-inner"><strong id="pulseScore">0</strong><span>Pulse</span></div>
+          </div>
+        </div>
+        <div class="pulse-score-caption" id="pulsePriorityText">Cadastre dados para o Dymivra gerar prioridade.</div>
+      </div>
+    </div>
+    <div class="pulse-metrics">
+      <div class="pulse-card"><span>Prioridade agora</span><strong id="pulsePriority">Base de dados</strong><small id="pulsePrimaryMetric">Aguardando leitura.</small></div>
+      <div class="pulse-card"><span>Gargalo</span><strong id="pulseBottleneck">Sem diagnóstico</strong><small id="pulseSecondaryMetric">O motor precisa de Ledger, meta e renda.</small></div>
+      <div class="pulse-card"><span>Impacto estimado</span><strong id="pulseImpactLine">—</strong><small>Leitura educativa com base nos números atuais.</small></div>
+      <div class="pulse-card"><span>Foco da semana</span><strong id="pulseWeekFocus">Organização</strong><small id="pulseTertiaryMetric">Plano prático em 7 dias.</small></div>
+    </div>
+    <div class="pulse-lanes">
+      <div class="pulse-lane">
+        <div class="pulse-section-head"><div><h3>Sinais que o Pulse leu</h3><p>Os blocos abaixo mostram por que essa prioridade apareceu.</p></div></div>
+        <div id="pulseSignals"></div>
+      </div>
+      <div class="pulse-lane">
+        <div class="pulse-section-head"><div><h3>Plano de 7 dias</h3><p>Checklist direto para tirar a análise do papel.</p></div><button class="secondary" onclick="resetDymivra841Tasks()" type="button">Resetar</button></div>
+        <div id="pulsePlan"></div>
+      </div>
+    </div>
+    <div class="pulse-simulator">
+      <div class="pulse-section-head"><div><h3>Simulador rápido de ação</h3><p>Veja como um próximo aporte hipotético muda progresso da meta e leitura de prioridade.</p></div></div>
+      <div class="pulse-sim-grid">
+        <div><label>Valor do próximo aporte</label><input id="pulseContribution" inputmode="decimal" min="0" oninput="renderDymivra841Simulation()" placeholder="Ex: 500" step="any" type="number"/></div>
+        <div><label>Foco do aporte</label><select id="pulseFocus" onchange="renderDymivra841Simulation()"><option value="allocation">Corrigir alocação</option><option value="income">Renda passiva</option><option value="goal">Acelerar meta</option><option value="risk">Reduzir risco</option></select></div>
+        <button class="success" onclick="applyDymivra841Contribution()" type="button">Usar aporte da meta</button>
+      </div>
+      <div class="pulse-output" id="pulseSimulatorOutput">Digite um valor para simular.</div>
+      <div class="pulse-impact-bars">
+        <div class="pulse-impact-row"><span>Meta</span><div class="pulse-impact-track"><div class="pulse-impact-fill" id="pulseGoalBar" style="width:0%"></div></div><span id="pulseGoalBarText">0%</span></div>
+        <div class="pulse-impact-row"><span>Diversificação</span><div class="pulse-impact-track"><div class="pulse-impact-fill" id="pulseDiversificationBar" style="width:0%"></div></div><span id="pulseDiversificationText">0%</span></div>
+        <div class="pulse-impact-row"><span>Renda/caixa</span><div class="pulse-impact-track"><div class="pulse-impact-fill" id="pulseIncomeBar" style="width:0%"></div></div><span id="pulseIncomeText">0%</span></div>
+      </div>
+    </div>
+    <div class="pulse-console">
+      <div class="pulse-section-head"><div><h3>Comandos inteligentes</h3><p>Atalhos para executar a prioridade dentro do app.</p></div></div>
+      <div class="pulse-console-grid">
+        <div class="pulse-command"><b id="pulseCommandOneTitle">1. Organizar base</b><span id="pulseCommandOneText">Comece alimentando o Ledger e a meta para o motor ter contexto.</span><div class="pulse-mini-actions"><button onclick="showAppScreen('ledger')" type="button">Ledger</button><button class="secondary" onclick="showAppScreen('goals')" type="button">Metas</button></div></div>
+        <div class="pulse-command"><b id="pulseCommandTwoTitle">2. Pedir leitura da IA</b><span id="pulseCommandTwoText">Depois do Pulse, use a IA para transformar diagnóstico em explicação.</span><div class="pulse-mini-actions"><button onclick="showAppScreen('ai')" type="button">IA</button><button class="secondary" onclick="showAppScreen('mentor')" type="button">Mentor</button></div></div>
+      </div>
+      <div class="pulse-disclaimer">Aviso: o Pulse é uma ferramenta educativa de organização e simulação. Ele não indica compra, venda ou manutenção individualizada de ativos.</div>
+    </div>
+  </div>
+</div>
+
 <div class="card dymivra760-panel dymivra839-upgraded dymivra839-mentor" data-screen-block="" data-screens="mentor"><div class="dymivra840-stage dymivra840-mentor dymivra839-only-mentor">
 <div aria-hidden="true" class="v840-ambient"></div>
 <div class="v840-main">
@@ -11071,6 +11223,7 @@ body.performance-mode .v840-radar span{animation:none!important;}
     
     const screenTexts={
       overview:['Visão geral','cockpit premium total com patrimônio, comandos, inteligência, renda, risco, alocação e próximos passos.'],
+      pulse:['Pulse 8.4.1','motor de decisão educativo que lê carteira, ledger, renda, metas, risco e alocação para mostrar prioridade, impacto e plano de 7 dias.'],
       ledger:['Ledger Premium Total','registre movimentações, audite preços, acompanhe posições calculadas e controle o extrato em uma tela de comando premium.'],
       income:['Renda Premium Total','cockpit premium para proventos, yield, maior pagador, ranking, meta mensal, fechamento do mês e calendário de renda passiva.'],
       liberty:['Liberdade 8.4.0','mapa renovado de independência financeira com renda desejada, patrimônio necessário, progresso, marcos, prazo e plano de ação.'],
@@ -11296,7 +11449,7 @@ let deferredInstallPrompt=null;
     window.showAppScreen=function(screen='overview',smooth=true){
       const wanted=screenTexts[screen]?screen:'overview';
       try{
-        const dymivra839Screens=['all','overview','ledger','income','liberty','allocation','profile','ai','advisor','mentor','plans','app','history','goals','projections','legal','settings'];
+        const dymivra839Screens=['all','overview','pulse','ledger','income','liberty','allocation','profile','ai','advisor','mentor','plans','app','history','goals','projections','legal','settings'];
         dymivra839Screens.forEach(sc=>document.body.classList.toggle(`screen-${sc}-active`,wanted===sc));
         document.documentElement.style.overflowY='auto';
         document.body.style.overflowY='auto';
@@ -13640,6 +13793,7 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
     function renderDymivra781Premium(screen){
       const map={
         overview:['Central Dymivra','Patrimônio, carteira, metas e próximos passos em uma visão limpa.'],
+        pulse:['Dymivra Pulse','Prioridade agora, impacto estimado, sinais de risco e plano de 7 dias.'],
         ledger:['Ledger organizado','Ativos, movimentações, renda passiva e histórico em ordem.'],
         goals:['Metas claras','Objetivo, aporte, horizonte e progresso do plano financeiro.'],
         ai:['IA Dymivra','Análise com contexto da carteira, radar, risco e próximos passos.'],
@@ -13686,6 +13840,7 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
       idleTask(()=>{
         const t=mainTotals(),inv=t.inv,cur=t.cur,pl=t.pl;
         if(screen==='overview'){renderPremiumCommandCenter(inv,cur,pl);renderAdvancedDashboard(inv,cur,pl);renderInsights(inv,cur,pl);}
+        if(screen==='pulse'){renderDymivra841Pulse();}
         if(screen==='ledger'){renderSummary();renderMovements();renderPositions();renderAssets();renderPriceCenter();}
         if(screen==='income'){renderPassiveIncomeDashboard(inv,cur);renderMonthlyReport();}
         if(screen==='history'){renderSnapshots();renderCapitalChart();}
@@ -13698,11 +13853,189 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
         if(screen==='settings'){updatePerformanceUI();updateAppReadiness();}
         if(screen==='advisor'){renderSmartAdvisor();}
         if(screen==='mentor'){renderDymivra760Mentor();}
-        if(screen==='all'){renderWealthAI();renderSmartAdvisor();renderProjectionEngine();renderWealthActionPlan();renderWealthPlans();try{renderDymivra770Billing()}catch{};renderDymivra760Mentor();}
+        if(screen==='all'){renderWealthAI();renderSmartAdvisor();renderProjectionEngine();renderWealthActionPlan();renderWealthPlans();try{renderDymivra770Billing()}catch{};renderDymivra760Mentor();renderDymivra841Pulse();}
       },50);
     }
 
-    function renderDashboard(){const t=mainTotals(),list=t.list,inv=t.inv,cur=t.cur,pl=t.pl,r=t.ret,w=list.filter(i=>Number(i.current_value||0)-Number(i.amount||0)+Number(i.passive_income||0)>0).length,l=list.filter(i=>Number(i.current_value||0)-Number(i.amount||0)+Number(i.passive_income||0)<0).length;$('heroValue').textContent=balanceVisible?money(cur):'R$ ••••••••';$('investedValue').textContent=balanceVisible?money(inv):'R$ ••••••••';$('currentValue').textContent=balanceVisible?money(cur):'R$ ••••••••';$('pnlValue').textContent=balanceVisible?pnl(pl):'R$ ••••••••';$('pnlValue').className='value '+cls(pl);$('returnPct').textContent=pct(r);$('returnPct').className='value small '+cls(r);$('winners').textContent=w;$('losers').textContent=l;$('positionsCount').textContent=list.length;$('walletBadge').textContent=t.ledger?(pl>0?'Ledger no verde':pl<0?'Ledger em retração':'Ledger neutro'):(pl>0?'Carteira no verde':pl<0?'Carteira em retração':'Carteira neutra');$('ledgerBadge').textContent=t.ledger?'Dashboard: Ledger profissional':'Dashboard: Cadastro atual';const biggest=[...list].sort((a,b)=>Number(b.current_value||0)-Number(a.current_value||0))[0];$('quickBiggest').textContent=biggest?biggest.asset:'-';renderDashboardModules(inv,cur,pl)}
+
+
+    /* =========================================================
+       Dymivra 8.4.1 — Pulse Motor de Decisão
+       ========================================================= */
+    function dymivra841Clamp(n,min=0,max=100){return Math.max(min,Math.min(max,Number(n||0)))}
+    function dymivra841MonthlyTarget(){try{return typeof getMonthlyIncomeTarget==='function'?Number(getMonthlyIncomeTarget()||0):0}catch{return 0}}
+    function dymivra841TaskKey(){return `dymivra_pulse_tasks_841_${userId||'guest'}`}
+    function dymivra841TaskState(){try{return JSON.parse(localStorage.getItem(dymivra841TaskKey())||'{}')||{}}catch{return{}}}
+    function dymivra841SaveTaskState(map){try{localStorage.setItem(dymivra841TaskKey(),JSON.stringify(map||{}))}catch{}}
+    function dymivra841CategoryStats(list,total){
+      const by={};
+      list.forEach(i=>{const cat=typeof normalizeCategory==='function'?normalizeCategory(i.category):String(i.category||'Outros');by[cat]=(by[cat]||0)+Number(i.current_value||0)});
+      const entries=Object.entries(by).map(([cat,value])=>({cat,value,pct:total?value/total*100:0})).sort((a,b)=>b.value-a.value);
+      return {entries,top:entries[0]||null,count:entries.filter(e=>e.value>0).length};
+    }
+    function dymivra841Context(){
+      const t=typeof mainTotals==='function'?mainTotals():{list:[],ledger:false,inv:0,cur:0,passive:0,pl:0,ret:0};
+      const list=t.list||[];
+      const cur=Number(t.cur||0),inv=Number(t.inv||0),pl=Number(t.pl||0),ret=Number(t.ret||0);
+      const passive=Number((summary&&summary.total_passive_income)||t.passive||0);
+      const g=typeof goalStats==='function'?goalStats(cur):{target:0,monthly:0,progress:0,remaining:0,reached:false};
+      const monthlyTarget=dymivra841MonthlyTarget();
+      const topAsset=list.slice().sort((a,b)=>Number(b.current_value||0)-Number(a.current_value||0))[0]||null;
+      const topShare=cur&&topAsset?Number(topAsset.current_value||0)/cur*100:0;
+      const cats=dymivra841CategoryStats(list,cur);
+      const hasLedger=!!t.ledger || (movements||[]).length>0;
+      const hasGoal=Number(g.target||0)>0;
+      const hasContribution=Number(g.monthly||0)>0;
+      const hasPassive=passive>0;
+      const hasSnapshot=(snaps||[]).length>0;
+      const monthsToGoal=hasGoal&&hasContribution&&!g.reached?Math.ceil(Number(g.remaining||0)/Math.max(1,Number(g.monthly||0))):null;
+      const incomeProgress=monthlyTarget?dymivra841Clamp(passive/monthlyTarget*100,0,100):0;
+      let score=18;
+      if(hasLedger)score+=18;
+      if(list.length>=3)score+=14;else if(list.length>=1)score+=6;
+      if(hasGoal)score+=14;
+      if(hasContribution)score+=10;
+      if(hasPassive)score+=8;
+      if(cats.count>=3)score+=10;else if(cats.count>=2)score+=5;
+      if(topShare>0&&topShare<=35)score+=8;else if(topShare>55)score-=8;
+      if(hasSnapshot)score+=6;
+      score=dymivra841Clamp(Math.round(score));
+      const issues=[];
+      if(!hasLedger)issues.push({type:'danger',icon:'📒',title:'Base real ausente',text:'O Ledger ainda não tem movimentações suficientes para uma decisão confiável.',grade:'Alta'});
+      if(!hasGoal)issues.push({type:'danger',icon:'🎯',title:'Meta não definida',text:'Sem meta patrimonial, o app não sabe qual progresso medir.',grade:'Alta'});
+      if(hasGoal&&!hasContribution&&!g.reached)issues.push({type:'warn',icon:'💵',title:'Aporte mensal vazio',text:'A meta existe, mas o ritmo mensal ainda não foi informado.',grade:'Média'});
+      if(topShare>55)issues.push({type:'danger',icon:'⚠️',title:'Concentração elevada',text:`${topAsset?.asset||'Um ativo'} representa ${topShare.toFixed(1)}% da carteira.`,grade:'Alta'});
+      else if(topShare>35)issues.push({type:'warn',icon:'🧭',title:'Concentração moderada',text:`${topAsset?.asset||'O maior ativo'} pesa ${topShare.toFixed(1)}% da carteira.`,grade:'Média'});
+      if(cats.count>0&&cats.count<3)issues.push({type:'warn',icon:'🧩',title:'Poucas classes ativas',text:`A carteira aparece distribuída em ${cats.count} classe(s).`,grade:'Média'});
+      if(monthlyTarget>0&&incomeProgress<35)issues.push({type:'warn',icon:'💸',title:'Renda abaixo da meta',text:`Renda registrada cobre ${incomeProgress.toFixed(1)}% da meta mensal configurada.`,grade:'Média'});
+      if(hasGoal&&monthsToGoal&&monthsToGoal>120)issues.push({type:'warn',icon:'⏳',title:'Prazo longo',text:`No ritmo atual, a meta levaria cerca de ${monthsToGoal} meses sem considerar rentabilidade.`,grade:'Média'});
+      if(!hasSnapshot)issues.push({type:'warn',icon:'📈',title:'Sem marco histórico',text:'Um snapshot ajuda a medir evolução real mês a mês.',grade:'Baixa'});
+      const positives=[];
+      if(hasLedger)positives.push({type:'good',icon:'✅',title:'Ledger ativo',text:`${(movements||[]).length} movimentação(ões) alimentando o motor.`,grade:'OK'});
+      if(hasGoal)positives.push({type:'good',icon:'🎯',title:'Meta rastreada',text:`Progresso atual: ${Number(g.progress||0).toFixed(1)}%.`,grade:'OK'});
+      if(cats.count>=3)positives.push({type:'good',icon:'🧭',title:'Diversificação inicial',text:`${cats.count} classes aparecem na carteira.`,grade:'OK'});
+      if(ret>0)positives.push({type:'good',icon:'📊',title:'Resultado positivo',text:`Resultado agregado em ${pct(ret)}.`,grade:'OK'});
+      let priority={title:'Criar base real',subtitle:'Comece pelo Ledger e pela meta para liberar uma leitura mais forte.',focus:'Organização',screen:'ledger',bottleneck:'Dados insuficientes'};
+      if(!hasLedger)priority={title:'Registrar carteira real no Ledger',subtitle:'O Pulse precisa de movimentações reais para cruzar posição, preço, renda e histórico.',focus:'Base real',screen:'ledger',bottleneck:'Ledger vazio'};
+      else if(!hasGoal)priority={title:'Definir meta patrimonial',subtitle:'Sem meta, o app mostra dados, mas não consegue dizer se você está evoluindo no caminho certo.',focus:'Direção',screen:'goals',bottleneck:'Meta ausente'};
+      else if(topShare>55)priority={title:'Revisar concentração antes de avançar',subtitle:'O maior ativo está pesando muito na leitura da carteira. Priorize diagnóstico de alocação.',focus:'Risco',screen:'allocation',bottleneck:'Concentração alta'};
+      else if(monthlyTarget>0&&incomeProgress<35)priority={title:'Fortalecer o motor de renda',subtitle:'A renda registrada ainda está distante da meta mensal. Foque em medir, registrar e acompanhar proventos.',focus:'Renda',screen:'income',bottleneck:'Renda baixa'};
+      else if(hasGoal&&monthsToGoal&&monthsToGoal>120)priority={title:'Ajustar aporte ou prazo da meta',subtitle:'O caminho atual está muito longo. Simule aporte, prazo e cenários antes de tomar decisão.',focus:'Velocidade',screen:'projections',bottleneck:'Prazo longo'};
+      else if(cats.count<3)priority={title:'Melhorar leitura de alocação',subtitle:'A carteira tem poucas classes ativas. Use a aba Alocação para enxergar pesos e alvo.',focus:'Diversificação',screen:'allocation',bottleneck:'Poucas classes'};
+      else priority={title:'Executar revisão semanal inteligente',subtitle:'Base boa. Agora mantenha rotina: atualizar preços, salvar snapshot e gerar análise da IA.',focus:'Execução',screen:'mentor',bottleneck:'Disciplina'};
+      return{...t,list,cur,inv,pl,ret,passive,g,monthlyTarget,incomeProgress,topAsset,topShare,cats,score,issues,positives,priority,monthsToGoal};
+    }
+    function dymivra841Tasks(ctx){
+      const p=ctx.priority;
+      const common=[
+        {id:'pulse-review-ledger',screen:'ledger',title:'Conferir Ledger',text:'Revisar se compras, vendas, taxas e proventos estão atualizados.'},
+        {id:'pulse-update-prices',screen:'ledger',title:'Atualizar preços',text:'Deixar o patrimônio atual mais próximo da realidade antes de analisar.'},
+        {id:'pulse-snapshot',screen:'history',title:'Salvar snapshot',text:'Criar um marco para comparar evolução no próximo mês.'}
+      ];
+      if(p.screen==='ledger')return[
+        {id:'pulse-ledger-first',screen:'ledger',title:'Registrar primeira movimentação',text:'Cadastre compra, venda ou provento para criar base real.'},
+        {id:'pulse-ledger-price',screen:'ledger',title:'Confirmar preço atual',text:'Atualize preço do ativo para calcular patrimônio e resultado.'},
+        {id:'pulse-goal-after-ledger',screen:'goals',title:'Criar meta após a base',text:'Depois do Ledger, defina patrimônio alvo e aporte mensal.'}
+      ];
+      if(p.screen==='goals')return[
+        {id:'pulse-goal-target',screen:'goals',title:'Definir valor-alvo',text:'Escolha o patrimônio objetivo que o Dymivra deve acompanhar.'},
+        {id:'pulse-goal-contribution',screen:'goals',title:'Informar aporte mensal',text:'Esse número libera prazo estimado e gargalo do plano.'},
+        ...common.slice(0,1)
+      ];
+      if(p.screen==='allocation')return[
+        {id:'pulse-allocation-target',screen:'allocation',title:'Revisar carteira-alvo',text:'Compare peso atual x peso ideal por classe.'},
+        {id:'pulse-allocation-concentration',screen:'allocation',title:'Analisar maior peso',text:'Entenda se um ativo ou classe domina demais a carteira.'},
+        {id:'pulse-allocation-contribution',screen:'allocation',title:'Simular próximo aporte',text:'Use o próximo aporte para reduzir desvio da carteira-alvo.'}
+      ];
+      if(p.screen==='income')return[
+        {id:'pulse-income-target',screen:'income',title:'Definir meta mensal de renda',text:'Coloque uma meta para medir evolução dos proventos.'},
+        {id:'pulse-income-register',screen:'ledger',title:'Registrar proventos no Ledger',text:'Dividendos, juros e rendimentos precisam entrar como movimentação.'},
+        {id:'pulse-income-ranking',screen:'income',title:'Ler ranking de renda',text:'Identifique quem está carregando sua renda passiva.'}
+      ];
+      if(p.screen==='projections')return[
+        {id:'pulse-projection-scenarios',screen:'projections',title:'Comparar cenários',text:'Veja conservador, moderado e agressivo antes de ajustar plano.'},
+        {id:'pulse-projection-gap',screen:'projections',title:'Medir gap da meta',text:'Compare prazo atual com o prazo desejado.'},
+        {id:'pulse-goal-adjust',screen:'goals',title:'Ajustar aporte ou meta',text:'Recalibre o plano de acordo com sua realidade.'}
+      ];
+      return[
+        {id:'pulse-week-ledger',screen:'ledger',title:'Atualizar dados da semana',text:'Ledger, preços e renda precisam estar em dia.'},
+        {id:'pulse-week-ai',screen:'ai',title:'Gerar análise com IA',text:'Peça explicação educativa usando a carteira atual.'},
+        {id:'pulse-week-mentor',screen:'mentor',title:'Executar plano do Mentor',text:'Transforme o diagnóstico em rotina de 30 dias.'}
+      ];
+    }
+    function renderDymivra841Signals(ctx){
+      const box=$('pulseSignals');if(!box)return;
+      const signals=[...ctx.issues.slice(0,5),...ctx.positives.slice(0,5)].slice(0,7);
+      if(!signals.length){box.innerHTML='<div class="pulse-signal good"><div class="dot">✅</div><div><b>Sem alertas principais</b><span>O Pulse não encontrou gargalo forte agora. Mantenha a rotina semanal.</span></div><div class="grade">OK</div></div>';return}
+      box.innerHTML=signals.map(s=>`<div class="pulse-signal ${s.type}"><div class="dot">${s.icon}</div><div><b>${esc(s.title)}</b><span>${esc(s.text)}</span></div><div class="grade">${esc(s.grade)}</div></div>`).join('');
+    }
+    function renderDymivra841Tasks(ctx){
+      const box=$('pulsePlan');if(!box)return;
+      const state=dymivra841TaskState();
+      const tasks=dymivra841Tasks(ctx);
+      box.innerHTML=tasks.map(t=>`<div class="pulse-task ${state[t.id]?'done':''}"><button onclick="toggleDymivra841Task('${esc(t.id)}')" type="button">${state[t.id]?'✓':'○'}</button><div><b>${esc(t.title)}</b><span>${esc(t.text)}</span></div><div class="screen-tag">${esc(t.screen)}</div></div>`).join('');
+    }
+    window.toggleDymivra841Task=function(id){const s=dymivra841TaskState();s[id]=!s[id];if(!s[id])delete s[id];dymivra841SaveTaskState(s);renderDymivra841Pulse()}
+    window.resetDymivra841Tasks=function(){dymivra841SaveTaskState({});renderDymivra841Pulse();toast('Checklist do Pulse reiniciado.','info')}
+    function renderDymivra841Simulation(){
+      const ctx=dymivra841Context();
+      const amount=Number($('pulseContribution')?.value||0);
+      const focus=$('pulseFocus')?.value||'allocation';
+      const out=$('pulseSimulatorOutput');
+      const after=ctx.cur+Math.max(0,amount);
+      const goalNow=ctx.g.target?dymivra841Clamp(ctx.cur/ctx.g.target*100):0;
+      const goalAfter=ctx.g.target?dymivra841Clamp(after/ctx.g.target*100):0;
+      const divScore=ctx.list.length?dymivra841Clamp((ctx.cats.count/5*55)+(Math.max(0,60-ctx.topShare)/60*45)):0;
+      const incomeScore=ctx.monthlyTarget?ctx.incomeProgress:ctx.passive>0?55:0;
+      if($('pulseGoalBar'))$('pulseGoalBar').style.width=goalAfter+'%';
+      if($('pulseGoalBarText'))$('pulseGoalBarText').textContent=ctx.g.target?`${goalNow.toFixed(1)}% → ${goalAfter.toFixed(1)}%`:'Sem meta';
+      if($('pulseDiversificationBar'))$('pulseDiversificationBar').style.width=dymivra841Clamp(divScore)+'%';
+      if($('pulseDiversificationText'))$('pulseDiversificationText').textContent=ctx.list.length?`${Math.round(divScore)}/100`:'Sem carteira';
+      if($('pulseIncomeBar'))$('pulseIncomeBar').style.width=dymivra841Clamp(incomeScore)+'%';
+      if($('pulseIncomeText'))$('pulseIncomeText').textContent=ctx.monthlyTarget?`${ctx.incomeProgress.toFixed(1)}% da meta`:ctx.passive>0?'Renda registrada':'Sem renda';
+      if(!out)return;
+      if(amount<=0){out.innerHTML='Digite um valor para simular o próximo movimento. O Pulse não executa operação; ele só mostra impacto educativo.';return}
+      const focusText={allocation:'corrigir desvios de alocação',income:'fortalecer renda passiva',goal:'acelerar a meta patrimonial',risk:'reduzir concentração e risco'}[focus]||'organizar a carteira';
+      const monthsBefore=ctx.g.target&&ctx.g.monthly&&!ctx.g.reached?Math.ceil(ctx.g.remaining/Math.max(1,ctx.g.monthly)):null;
+      const monthsAfter=ctx.g.target&&ctx.g.monthly&&!ctx.g.reached?Math.ceil(Math.max(ctx.g.target-after,0)/Math.max(1,ctx.g.monthly)):null;
+      const gain=monthsBefore&&monthsAfter?Math.max(0,monthsBefore-monthsAfter):0;
+      out.innerHTML=`Com um aporte hipotético de <strong>${money(amount)}</strong> focado em <strong>${esc(focusText)}</strong>, o patrimônio simulado iria para <strong>${money(after)}</strong>. ${ctx.g.target?`A meta mudaria de <strong>${goalNow.toFixed(1)}%</strong> para <strong>${goalAfter.toFixed(1)}%</strong>.`: 'Defina uma meta para ver progresso real.'} ${gain?`No ritmo de aporte atual, isso reduziria cerca de <strong>${gain} mês(es)</strong> do caminho linear.`:'O impacto em prazo depende do aporte mensal e da meta configurados.'}`;
+    }
+    window.applyDymivra841Contribution=function(){if($('pulseContribution'))$('pulseContribution').value=Number(goal?.monthlyContribution||0)||500;renderDymivra841Simulation();toast('Aporte da meta aplicado na simulação.','info')}
+    window.runDymivra841Pulse=function(){renderDymivra841Pulse();toast('Pulse atualizado com os dados atuais.','success')}
+    window.copyDymivra841Pulse=async function(){
+      const ctx=dymivra841Context();
+      const tasks=dymivra841Tasks(ctx).map((t,i)=>`${i+1}. ${t.title}: ${t.text}`).join('\n');
+      const top=ctx.topAsset?`${ctx.topAsset.asset} (${ctx.topShare.toFixed(1)}%)`:'sem ativo dominante';
+      const text=`Dymivra Pulse 8.4.1\n\nScore de clareza: ${ctx.score}/100\nPrioridade agora: ${ctx.priority.title}\nMotivo: ${ctx.priority.subtitle}\nGargalo: ${ctx.priority.bottleneck}\nPatrimônio atual: ${money(ctx.cur)}\nMeta: ${ctx.g.target?money(ctx.g.target):'não definida'}\nMaior peso: ${top}\nRenda registrada: ${money(ctx.passive)}\n\nPlano de 7 dias:\n${tasks}\n\nAviso: conteúdo educativo. Não é recomendação individualizada de compra ou venda.`;
+      try{await navigator.clipboard.writeText(text);toast('Plano do Pulse copiado.','success')}catch{toast('Não consegui copiar automaticamente.','error')}
+    }
+    function renderDymivra841Pulse(){
+      if(!$('pulseScore'))return;
+      const ctx=dymivra841Context();
+      const p=ctx.priority;
+      $('pulseScore').textContent=ctx.score;
+      if($('pulseRing'))$('pulseRing').style.setProperty('--p',ctx.score+'%');
+      $('pulseRiskTag').textContent=ctx.score>=75?'Clareza alta':ctx.score>=50?'Clareza média':'Precisa de base';
+      $('pulsePriority').textContent=p.title;
+      $('pulsePriorityText').textContent=p.subtitle;
+      $('pulseBottleneck').textContent=p.bottleneck;
+      $('pulseWeekFocus').textContent=p.focus;
+      $('pulsePrimaryMetric').textContent=ctx.list.length?`${ctx.list.length} posição(ões) • patrimônio ${money(ctx.cur)}`:'Carteira ainda sem posições calculadas.';
+      $('pulseSecondaryMetric').textContent=ctx.topAsset?`Maior peso: ${ctx.topAsset.asset} com ${ctx.topShare.toFixed(1)}%.`:'Sem ativo dominante ainda.';
+      $('pulseTertiaryMetric').textContent=ctx.g.target?`Meta: ${ctx.g.display} concluída.`:'Defina uma meta para o Pulse medir progresso.';
+      $('pulseImpactLine').textContent=ctx.monthsToGoal?`${ctx.monthsToGoal} meses`:ctx.g.reached?'Meta batida':'Base inicial';
+      if($('pulseContribution')&&!$('pulseContribution').value){$('pulseContribution').value=Number(goal?.monthlyContribution||0)||500;}
+      $('pulseCommandOneTitle').textContent=p.screen==='ledger'?'1. Criar base real':p.screen==='goals'?'1. Dar direção ao app':p.screen==='allocation'?'1. Corrigir leitura de risco':p.screen==='income'?'1. Medir renda':p.screen==='projections'?'1. Recalibrar prazo':'1. Executar rotina';
+      $('pulseCommandOneText').textContent=p.subtitle;
+      $('pulseCommandTwoTitle').textContent='2. Transformar diagnóstico em explicação';
+      $('pulseCommandTwoText').textContent='Depois de executar a primeira ação, gere uma leitura na IA ou no Mentor para registrar a evolução.';
+      renderDymivra841Signals(ctx);
+      renderDymivra841Tasks(ctx);
+      renderDymivra841Simulation();
+    }
+
+    function renderDashboard(){const t=mainTotals(),list=t.list,inv=t.inv,cur=t.cur,pl=t.pl,r=t.ret,w=list.filter(i=>Number(i.current_value||0)-Number(i.amount||0)+Number(i.passive_income||0)>0).length,l=list.filter(i=>Number(i.current_value||0)-Number(i.amount||0)+Number(i.passive_income||0)<0).length;$('heroValue').textContent=balanceVisible?money(cur):'R$ ••••••••';$('investedValue').textContent=balanceVisible?money(inv):'R$ ••••••••';$('currentValue').textContent=balanceVisible?money(cur):'R$ ••••••••';$('pnlValue').textContent=balanceVisible?pnl(pl):'R$ ••••••••';$('pnlValue').className='value '+cls(pl);$('returnPct').textContent=pct(r);$('returnPct').className='value small '+cls(r);$('winners').textContent=w;$('losers').textContent=l;$('positionsCount').textContent=list.length;$('walletBadge').textContent=t.ledger?(pl>0?'Ledger no verde':pl<0?'Ledger em retração':'Ledger neutro'):(pl>0?'Carteira no verde':pl<0?'Carteira em retração':'Carteira neutra');$('ledgerBadge').textContent=t.ledger?'Dashboard: Ledger profissional':'Dashboard: Cadastro atual';const biggest=[...list].sort((a,b)=>Number(b.current_value||0)-Number(a.current_value||0))[0];$('quickBiggest').textContent=biggest?biggest.asset:'-';renderDashboardModules(inv,cur,pl);try{renderDymivra841Pulse()}catch{}}
     function renderAssets(){const source=mainAssets(),s=($('searchInput')?.value||'').trim().toUpperCase(),c=$('filterCategory')?.value||'';let list=[...source];if(s)list=list.filter(i=>String(i.asset||'').includes(s));if(c)list=list.filter(i=>i.category===c);if(!list.length){$('assetsList').className='empty';$('assetsList').innerHTML='<strong>Nenhum investimento encontrado</strong><span>Registre uma compra no Ledger para montar sua carteira principal.</span>';return}$('assetsList').className='';const total=list.reduce((a,i)=>a+Number(i.current_value||0),0);$('assetsList').innerHTML=list.map(i=>{const cur=Number(i.current_value||0),inv=Number(i.amount||0),pass=Number(i.passive_income||0),pl=cur-inv+pass,ret=inv?pl/inv*100:0,share=total?cur/total*100:0,ledger=!!i.ledger;const actions=ledger?`<button onclick="refreshLedgerPrice('${esc(i.asset)}',this)">Atualizar preço</button>${i.oldId?`<button class="secondary" onclick="refreshSingle('${String(i.oldId)}',this)">Sync cadastro</button>`:`<button class="secondary" onclick="prefillInvestmentFromLedger('${esc(i.asset)}','${esc(i.category)}','${Number(i.quantity||0)}','${Number(i.avg_price||0)}','${Number(i.current_price||0)}')">Criar preço</button>`}`:`<button onclick="refreshSingle('${String(i.id)}',this)">Atualizar</button><button class="danger" onclick="openDeleteModal('${String(i.id)}')">Excluir</button>`;return `<div class="item asset"><div><div class="asset-title">${esc(i.asset)} • ${esc(i.category)} ${ledger?'<span class="badge purple">Ledger</span>':''}</div><div class="asset-meta">Qtd: ${Number(i.quantity||0)} • PM: ${money(i.avg_price)} • Atual: ${money(i.current_price)}<br>${share.toFixed(1)}% da carteira • ${ret.toFixed(1)}% de rentabilidade${ledger?`<br>Fonte do preço: ${esc(i.priceSource||'-')} • Renda: ${money(pass)}`:''}</div><div class="bar"><div class="fill" style="width:${Math.min(share,100)}%"></div></div>${i.isGrouped?`<span class="badge">${i.sourceCount} registros consolidados</span>`:''}<div class="row" style="margin-top:10px">${actions}</div></div><div class="asset-right"><div>${money(cur)}</div><div class="${cls(pl)}">${pnl(pl)}<br><span style="font-size:13px">${pct(ret)}</span></div></div></div>`}).join('')}
     window.saveInvestment=async()=>{if(!requireOnline())return;const asset=$('asset').value.trim().toUpperCase(),category=$('category').value,q=Number($('quantity').value),avg=Number($('avgPrice').value),cur=Number($('currentPrice').value);if(!asset||!category||q<=0||avg<=0||cur<=0){status($('saveStatus'),'Preencha ativo, categoria, quantidade, preço médio e preço atual.','error');return}btn($('saveInvestBtn'),true,'Salvando...');try{const payload={user_id:userId,asset,category,amount:q*avg,quantity:q,avg_price:avg,current_price:cur};const {data,error}=await supabase.from('investments').insert([payload]).select().single();if(error)throw error;try{await supabase.from('investment_history').insert([{user_id:userId,investment_id:data.id,action:'create',asset,category,amount:payload.amount,quantity:q,avg_price:avg,current_price:cur}])}catch{}status($('saveStatus'),asset+' salvo com sucesso.','success');['asset','category','quantity','avgPrice','currentPrice'].forEach(id=>$(id).value='');await refreshEverything()}catch(e){status($('saveStatus'),e.message||'Erro ao salvar.','error')}finally{btn($('saveInvestBtn'),false)}}
     window.fetchSinglePrice=async()=>{const asset=$('asset').value.trim().toUpperCase();if(!asset){status($('saveStatus'),'Digite o ativo primeiro.','error');return}btn($('fetchPriceBtn'),true,'Buscando...');try{const {data,error}=await supabase.functions.invoke('quick-worker',{body:{ticker:asset}});if(error)throw error;const price=data?.results?.[0]?.regularMarketPrice;if(!price)throw new Error('Preço não encontrado.');$('currentPrice').value=Number(price);status($('saveStatus'),'Preço carregado.','success')}catch(e){status($('saveStatus'),e.message||'Erro ao buscar preço.','error')}finally{btn($('fetchPriceBtn'),false)}}
