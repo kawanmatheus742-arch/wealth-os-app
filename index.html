@@ -8855,7 +8855,7 @@ body.performance-mode .pulse-screen,.performance-mode .pulse-main,.performance-m
 </style><style>
 
 /* =========================================================
-   Dymivra 8.4.3 — Jornada Guiada Premium
+   Dymivra 8.4.4 — Jornada Guiada Premium
    Organização real da experiência: Comece aqui, etapas, trilha,
    próximos passos e navegação agrupada sem quebrar lógica existente.
    ========================================================= */
@@ -8983,7 +8983,7 @@ body.performance-mode .dymivra842-rail,body.performance-mode .dymivra842-shell,b
 
 <style>
 /* =========================================================
-   Dymivra 8.4.3 — Navegação Organizada Premium
+   Dymivra 8.4.4 — Navegação Organizada Premium
    Troca a fileira única por um mapa em grupos, com telas por área,
    cartão de orientação e ordem recomendada sem alterar as funções.
    ========================================================= */
@@ -9158,6 +9158,175 @@ body.performance-mode .dymivra843-nav-shell,body.performance-mode .dymivra843-cu
 }
 </style>
 
+
+<style id="dymivra844-premium-navigation-style">
+/* =========================================================
+   Dymivra 8.4.4 — Navegação Premium Máxima
+   Reforma visual real da organização: mais produto, menos bloco.
+   Mantém IDs/classes da 8.4.3 para preservar a lógica existente.
+   ========================================================= */
+#appSection .app-nav.dymivra844-app-nav{
+  display:block!important;
+  position:sticky!important;
+  top:max(8px,env(safe-area-inset-top,0px))!important;
+  z-index:92!important;
+  width:100%!important;
+  margin:0 0 18px!important;
+  padding:0!important;
+  overflow:visible!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+}
+#appSection .dymivra844-nav-shell{
+  position:relative;
+  display:grid;
+  gap:14px;
+  width:100%;
+  min-width:0;
+  padding:0;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+  overflow:visible;
+}
+#appSection .dymivra844-nav-shell *{box-sizing:border-box;min-width:0}
+.dymivra844-top-tabs{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+  padding:7px;
+  border-radius:999px;
+  border:1px solid rgba(125,211,252,.13);
+  background:
+    linear-gradient(180deg,rgba(12,23,45,.86),rgba(3,8,20,.86));
+  box-shadow:
+    0 18px 42px rgba(0,0,0,.34),
+    inset 0 1px 0 rgba(255,255,255,.06);
+  backdrop-filter:blur(18px);
+}
+#appSection .dymivra844-top-tab{
+  width:100%!important;
+  min-height:64px!important;
+  margin:0!important;
+  padding:12px 12px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:10px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(255,255,255,.055)!important;
+  color:#b8c9e7!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04)!important;
+  font-size:15px!important;
+  font-weight:950!important;
+  line-height:1.1!important;
+  letter-spacing:-.025em!important;
+  text-align:center!important;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease!important;
+}
+#appSection .dymivra844-top-tab .dymivra844-tab-icon{
+  width:30px;height:30px;border-radius:12px;display:grid;place-items:center;
+  color:#8bdfff;background:rgba(14,165,233,.08);border:1px solid rgba(125,211,252,.12);
+  font-size:18px;
+}
+#appSection .dymivra844-top-tab b{display:block;color:inherit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#appSection .dymivra844-top-tab.active{
+  color:#fff8df!important;
+  border-color:rgba(250,204,21,.52)!important;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,255,255,.20),transparent 42%),
+    linear-gradient(135deg,rgba(250,204,21,.38),rgba(146,91,28,.42))!important;
+  box-shadow:
+    0 0 0 1px rgba(250,204,21,.18),
+    0 18px 46px rgba(250,204,21,.14),
+    inset 0 1px 0 rgba(255,255,255,.22)!important;
+}
+#appSection .dymivra844-top-tab.active .dymivra844-tab-icon{color:#fef3c7;background:rgba(2,8,18,.28);border-color:rgba(250,204,21,.30)}
+.dymivra844-hero-card,
+.dymivra844-roadmap-card,
+.dymivra844-current-card,
+.dymivra844-next-card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(78,164,255,.15);
+  background:
+    radial-gradient(circle at 18% 0%,rgba(14,165,233,.12),transparent 32%),
+    radial-gradient(circle at 88% 0%,rgba(139,92,246,.13),transparent 28%),
+    linear-gradient(180deg,rgba(5,13,28,.94),rgba(2,7,18,.96));
+  border-radius:30px;
+  box-shadow:
+    0 22px 60px rgba(0,0,0,.34),
+    inset 0 1px 0 rgba(255,255,255,.055);
+  backdrop-filter:blur(16px);
+}
+.dymivra844-hero-card:before,
+.dymivra844-roadmap-card:before,
+.dymivra844-current-card:before,
+.dymivra844-next-card:before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.035),transparent 62%);
+  opacity:.75;
+}
+.dymivra844-hero-card{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(180px,.72fr);gap:18px;align-items:center;padding:28px}
+.dymivra844-hero-copy{position:relative;z-index:2;display:grid;gap:14px}
+.dymivra844-kicker{display:flex;align-items:center;gap:10px;color:#f8d88a;font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.26em;line-height:1.25}
+.dymivra844-kicker .dot{width:7px;height:7px;border-radius:99px;background:#facc15;box-shadow:0 0 18px rgba(250,204,21,.65)}
+.dymivra844-hero-title{margin:0!important;color:#fff!important;font-size:clamp(40px,5.8vw,78px)!important;line-height:.96!important;letter-spacing:-.075em!important;font-weight:950!important;max-width:760px;text-wrap:balance;overflow-wrap:normal!important}
+.dymivra844-hero-text{margin:0!important;color:#bccae4!important;font-size:clamp(15px,1.65vw,19px)!important;line-height:1.55!important;max-width:640px}
+.dymivra844-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+#appSection .dymivra844-action{
+  width:100%!important;min-height:58px!important;margin:0!important;padding:14px 16px!important;
+  border-radius:18px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important;
+  color:#fff!important;font-size:15px!important;font-weight:950!important;line-height:1.1!important;
+  border:1px solid rgba(125,211,252,.28)!important;
+  background:linear-gradient(135deg,rgba(14,165,233,.18),rgba(37,99,235,.18))!important;
+  box-shadow:0 14px 32px rgba(14,165,233,.12),inset 0 1px 0 rgba(255,255,255,.08)!important;
+}
+#appSection .dymivra844-action.primary{
+  border-color:rgba(168,85,247,.38)!important;
+  background:linear-gradient(135deg,rgba(168,85,247,.38),rgba(79,70,229,.28))!important;
+  box-shadow:0 16px 40px rgba(139,92,246,.15),inset 0 1px 0 rgba(255,255,255,.10)!important;
+}
+.dymivra844-action-icon{width:34px;height:34px;border-radius:13px;display:grid;place-items:center;background:rgba(255,255,255,.075);border:1px solid rgba(255,255,255,.10);font-size:19px;flex:0 0 auto}.dymivra844-chevron{opacity:.88;font-size:24px;line-height:1}
+.dymivra844-compass{position:relative;z-index:1;min-height:220px;display:grid;place-items:center;isolation:isolate}
+.dymivra844-compass:before{content:"";position:absolute;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.18),transparent 62%);filter:blur(4px);opacity:.9}
+.dymivra844-compass-ring{position:relative;width:210px;height:210px;border-radius:50%;border:1px solid rgba(250,204,21,.20);background:radial-gradient(circle at 50% 50%,rgba(250,204,21,.13),rgba(14,165,233,.08) 36%,transparent 67%);box-shadow:0 0 44px rgba(14,165,233,.18),inset 0 0 28px rgba(250,204,21,.08);transform:rotate(-12deg)}
+.dymivra844-compass-ring:before,.dymivra844-compass-ring:after{content:"";position:absolute;inset:24px;border-radius:50%;border:1px solid rgba(34,211,238,.28);box-shadow:0 0 30px rgba(34,211,238,.16)}
+.dymivra844-compass-ring:after{inset:52px;border-color:rgba(139,92,246,.32);transform:rotate(34deg)}
+.dymivra844-needle{position:absolute;left:50%;top:50%;width:118px;height:18px;transform:translate(-50%,-50%) rotate(-34deg);background:linear-gradient(90deg,transparent 0 8%,#fef3c7 8% 50%,#f59e0b 50% 92%,transparent 92%);clip-path:polygon(0 50%,46% 12%,50% 0,54% 12%,100% 50%,54% 88%,50% 100%,46% 88%);filter:drop-shadow(0 0 14px rgba(250,204,21,.55))}
+.dymivra844-roadmap-card{padding:20px 18px 18px;display:grid;gap:15px}
+.dymivra844-card-head{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.dymivra844-card-head span{color:#c7f9ff;font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.22em}.dymivra844-card-head button{width:auto!important;margin:0!important;padding:8px 10px!important;border-radius:999px!important;background:rgba(255,255,255,.035)!important;border:1px solid rgba(255,255,255,.08)!important;color:#b8c9e7!important;box-shadow:none!important;font-size:12px!important;font-weight:900!important}
+.dymivra844-path-scroll{position:relative;z-index:1;overflow-x:auto;padding:4px 2px 2px;scrollbar-width:none}.dymivra844-path-scroll::-webkit-scrollbar{display:none}
+#appSection .dymivra844-path.dymivra843-group-tabs{display:grid!important;grid-template-columns:repeat(6,minmax(116px,1fr))!important;gap:0!important;min-width:760px!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important}
+#appSection .dymivra844-path .dymivra843-group-tab{position:relative!important;width:auto!important;min-height:182px!important;margin:0!important;padding:0 10px!important;display:grid!important;grid-template-rows:auto auto auto!important;place-items:center!important;text-align:center!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:#dbeafe!important;overflow:visible!important}
+#appSection .dymivra844-path .dymivra843-group-tab:before{content:"";position:absolute;left:50%;right:-50%;top:40px;height:2px;background:linear-gradient(90deg,rgba(34,211,238,.70),rgba(250,204,21,.45),rgba(139,92,246,.55));opacity:.72;z-index:0}
+#appSection .dymivra844-path .dymivra843-group-tab:last-child:before{display:none}
+.dymivra844-node{position:relative!important;z-index:1;width:70px!important;height:70px!important;border-radius:999px!important;display:grid!important;place-items:center!important;background:radial-gradient(circle at 50% 25%,rgba(255,255,255,.18),rgba(14,165,233,.14) 44%,rgba(2,8,18,.92) 72%)!important;border:1px solid rgba(56,189,248,.46)!important;box-shadow:0 0 28px rgba(14,165,233,.24),inset 0 1px 0 rgba(255,255,255,.10)!important;color:#fff!important;margin-bottom:10px!important}
+.dymivra844-node i{font-style:normal;font-size:25px;line-height:1}.dymivra844-node em{position:absolute;left:50%;bottom:-24px;transform:translateX(-50%);font-style:normal;font-size:11px;font-weight:950;letter-spacing:.08em;color:#8eefff}.dymivra844-node.gold{border-color:rgba(250,204,21,.50)!important;box-shadow:0 0 30px rgba(250,204,21,.20),inset 0 1px 0 rgba(255,255,255,.11)!important;background:radial-gradient(circle at 50% 24%,rgba(255,255,255,.20),rgba(250,204,21,.18) 44%,rgba(2,8,18,.92) 72%)!important}.dymivra844-node.purple{border-color:rgba(168,85,247,.54)!important;box-shadow:0 0 30px rgba(139,92,246,.23),inset 0 1px 0 rgba(255,255,255,.11)!important;background:radial-gradient(circle at 50% 24%,rgba(255,255,255,.18),rgba(139,92,246,.18) 44%,rgba(2,8,18,.92) 72%)!important}.dymivra844-node.teal{border-color:rgba(45,212,191,.48)!important;box-shadow:0 0 30px rgba(45,212,191,.18),inset 0 1px 0 rgba(255,255,255,.11)!important}
+#appSection .dymivra844-path .dymivra843-group-tab b{position:relative;z-index:1;display:block;margin-top:22px;color:#eaf6ff!important;font-size:17px!important;line-height:1.05!important;letter-spacing:-.045em!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important}
+#appSection .dymivra844-path .dymivra843-group-tab small{position:relative;z-index:1;display:block;margin-top:8px;color:#9fb1cf!important;font-size:12.5px!important;line-height:1.35!important;white-space:pre-line!important;overflow:visible!important;text-overflow:clip!important;font-weight:800!important}
+#appSection .dymivra844-path .dymivra843-group-tab.active .dymivra844-node{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,255,255,.09),0 0 38px rgba(34,211,238,.36),inset 0 1px 0 rgba(255,255,255,.14)!important}.dymivra844-path .dymivra843-group-tab.active b{color:#fff!important}.dymivra844-path .dymivra843-group-tab.active small{color:#cfe8ff!important}
+.dymivra844-mid-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:14px;align-items:stretch}
+.dymivra844-current-card{padding:22px;min-height:230px;display:grid;grid-template-columns:minmax(0,1fr) minmax(130px,.55fr);gap:14px;align-items:center}.dymivra844-current-content{position:relative;z-index:1}.dymivra844-current-kicker{color:#34e7ff!important;font-size:11px!important;font-weight:950!important;letter-spacing:.24em!important;text-transform:uppercase!important;margin-bottom:10px!important}.dymivra844-current-card strong{display:block;color:#fff!important;font-size:clamp(32px,4.5vw,52px)!important;line-height:.95!important;letter-spacing:-.075em!important}.dymivra844-current-card p{margin:12px 0 0!important;color:#b9c8e2!important;font-size:15px!important;line-height:1.5!important}.dymivra844-current-next{display:inline-flex;margin-top:14px!important;padding:12px 14px!important;border-radius:17px!important;background:rgba(250,204,21,.10)!important;border:1px solid rgba(250,204,21,.22)!important;color:#fff2bf!important;font-size:13px!important;font-weight:900!important;line-height:1.3!important}.dymivra844-vortex{position:relative;z-index:1;min-height:150px}.dymivra844-vortex:before{content:"";position:absolute;inset:0;margin:auto;width:170px;height:105px;border-radius:50%;border:4px solid rgba(34,211,238,.64);transform:rotate(-18deg);box-shadow:0 0 28px rgba(34,211,238,.38),inset 0 0 26px rgba(139,92,246,.38)}.dymivra844-vortex:after{content:"";position:absolute;inset:0;margin:auto;width:130px;height:78px;border-radius:50%;border:3px solid rgba(168,85,247,.65);transform:rotate(-18deg);box-shadow:0 0 30px rgba(139,92,246,.36)}
+.dymivra844-next-card{padding:20px;display:grid;gap:12px}.dymivra844-next-head{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:12px}.dymivra844-next-head span{color:#c7f9ff;font-size:11px;font-weight:950;letter-spacing:.22em;text-transform:uppercase}.dymivra844-next-head small{color:#9fb1cf;font-size:13px}.dymivra844-screen-area{position:relative;z-index:1;display:block!important}.dymivra844-screen-area .dymivra843-screen-pane{display:none!important;grid-template-columns:1fr!important;gap:10px!important}.dymivra844-screen-area .dymivra843-screen-pane.active{display:grid!important}.dymivra844-screen-area .dymivra843-pane-title{display:none!important}
+#appSection .dymivra844-screen-area .dymivra843-screen-btn{width:100%!important;min-height:74px!important;margin:0!important;padding:12px 14px!important;border-radius:18px!important;display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;grid-template-rows:auto auto!important;gap:3px 13px!important;align-items:center!important;text-align:left!important;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.014))!important;border:1px solid rgba(255,255,255,.075)!important;color:#fff!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)!important;overflow:hidden!important}
+#appSection .dymivra844-screen-area .dymivra843-screen-btn>span{grid-row:1/3!important;width:48px!important;height:48px!important;border-radius:18px!important;display:grid!important;place-items:center!important;background:rgba(14,165,233,.10)!important;border:1px solid rgba(125,211,252,.16)!important;font-size:24px!important}.dymivra844-screen-area .dymivra843-screen-btn:after{content:'›';grid-row:1/3;grid-column:3;align-self:center;justify-self:end;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);font-size:29px;color:#cfe8ff}.dymivra844-screen-area .dymivra843-screen-btn:before{display:none!important}.dymivra844-screen-area .dymivra843-screen-btn>b{display:block!important;color:#fff!important;font-size:20px!important;line-height:1.06!important;letter-spacing:-.05em!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important}.dymivra844-screen-area .dymivra843-screen-btn>small{display:block!important;color:#9fb1cf!important;font-size:13px!important;line-height:1.28!important;font-weight:800!important;white-space:normal!important;overflow:visible!important}.dymivra844-screen-area .dymivra843-screen-btn.active{border-color:rgba(250,204,21,.28)!important;background:linear-gradient(135deg,rgba(250,204,21,.12),rgba(14,165,233,.055))!important;box-shadow:0 0 0 1px rgba(250,204,21,.08),inset 0 1px 0 rgba(255,255,255,.06)!important}.dymivra844-screen-area .dymivra843-screen-btn.active>span{border-color:rgba(250,204,21,.28)!important;background:rgba(250,204,21,.11)!important}.dymivra844-screen-area .dymivra843-screen-btn.active>b,.dymivra844-screen-area .dymivra843-screen-btn.active>small{color:#fff!important}
+#appSection .dymivra844-nav-shell.map-open .dymivra844-screen-area .dymivra843-screen-pane{display:grid!important;margin-top:12px!important}.dymivra844-nav-shell.map-open .dymivra843-pane-title{display:flex!important;align-items:center;justify-content:space-between;gap:12px;margin:4px 0 0!important;padding:9px 4px!important}.dymivra844-nav-shell.map-open .dymivra843-pane-title span{color:#c7f9ff!important;font-size:11px!important;font-weight:950!important;letter-spacing:.18em!important;text-transform:uppercase!important}.dymivra844-nav-shell.map-open .dymivra843-pane-title b{color:#9fb1cf!important;font-size:12px!important;text-align:right!important;line-height:1.25!important}
+.dymivra844-route-line{display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none;padding:11px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.075);background:rgba(2,8,18,.42);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.dymivra844-route-line::-webkit-scrollbar{display:none}.dymivra844-route-line span{flex:0 0 auto;color:#c7f9ff;font-size:10.5px;font-weight:950;letter-spacing:.18em;text-transform:uppercase}.dymivra844-route-line b{flex:0 0 auto;padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);color:#dbeafe;font-size:12px;white-space:nowrap}.dymivra844-route-line i{flex:0 0 auto;width:16px;height:1px;border-radius:999px;background:linear-gradient(90deg,rgba(34,211,238,.25),rgba(250,204,21,.55))}
+body.performance-mode .dymivra844-top-tabs,body.performance-mode .dymivra844-hero-card,body.performance-mode .dymivra844-roadmap-card,body.performance-mode .dymivra844-current-card,body.performance-mode .dymivra844-next-card{backdrop-filter:none!important;box-shadow:0 8px 22px rgba(0,0,0,.22)!important}
+@media(max-width:1050px){.dymivra844-hero-card{grid-template-columns:1fr}.dymivra844-compass{min-height:160px}.dymivra844-compass-ring{width:170px;height:170px}.dymivra844-mid-grid{grid-template-columns:1fr}}
+@media(max-width:760px){
+  #appSection .app-nav.dymivra844-app-nav{top:max(6px,env(safe-area-inset-top,0px))!important;margin:8px 0 14px!important;position:sticky!important;left:auto!important;right:auto!important;bottom:auto!important;padding:0!important;border:0!important;box-shadow:none!important;background:transparent!important}
+  #appSection .dymivra844-nav-shell{gap:12px}
+  .dymivra844-top-tabs{gap:6px;padding:6px;border-radius:24px}.dymivra844-top-tab{min-height:58px!important;padding:10px 9px!important;font-size:13px!important}.dymivra844-top-tab .dymivra844-tab-icon{width:26px;height:26px;border-radius:10px;font-size:16px}.dymivra844-hero-card,.dymivra844-roadmap-card,.dymivra844-current-card,.dymivra844-next-card{border-radius:26px}.dymivra844-hero-card{padding:20px;gap:10px}.dymivra844-kicker{font-size:10.5px;letter-spacing:.18em}.dymivra844-hero-title{font-size:clamp(38px,13vw,58px)!important;line-height:.98!important}.dymivra844-hero-text{font-size:15px!important;line-height:1.52!important}.dymivra844-actions{grid-template-columns:1fr;gap:10px}.dymivra844-compass{min-height:118px;opacity:.92}.dymivra844-compass-ring{width:130px;height:130px}.dymivra844-needle{width:88px}.dymivra844-roadmap-card{padding:17px 14px}.dymivra844-card-head span{font-size:10.5px;letter-spacing:.18em}.dymivra844-path-scroll{margin:0 -2px}.dymivra844-path.dymivra843-group-tabs{min-width:680px!important}.dymivra844-node{width:58px!important;height:58px!important}.dymivra844-node i{font-size:21px}.dymivra844-node em{bottom:-21px;font-size:10px}.dymivra844-path .dymivra843-group-tab{min-height:160px!important;padding:0 8px!important}.dymivra844-path .dymivra843-group-tab b{font-size:15px!important;margin-top:20px!important}.dymivra844-path .dymivra843-group-tab small{font-size:11.5px!important}.dymivra844-current-card{grid-template-columns:1fr;padding:18px;min-height:0}.dymivra844-vortex{min-height:96px;display:none}.dymivra844-current-card strong{font-size:clamp(30px,10vw,44px)!important}.dymivra844-current-card p{font-size:14px!important}.dymivra844-current-next{font-size:12px!important}.dymivra844-next-card{padding:16px}.dymivra844-next-head{align-items:flex-start}.dymivra844-next-head span{font-size:10.5px;letter-spacing:.18em}.dymivra844-next-head small{font-size:12px;text-align:right}.dymivra844-screen-area .dymivra843-screen-btn{min-height:70px!important;border-radius:17px!important}.dymivra844-screen-area .dymivra843-screen-btn>span{width:44px!important;height:44px!important;border-radius:16px!important;font-size:22px!important}.dymivra844-screen-area .dymivra843-screen-btn>b{font-size:18px!important}.dymivra844-screen-area .dymivra843-screen-btn>small{font-size:12.5px!important}.dymivra844-route-line{border-radius:18px;padding:9px 10px}.dymivra844-route-line b{font-size:11.5px;padding:7px 9px}
+}
+@media(max-width:380px){#appSection .dymivra844-top-tab{font-size:12px!important;gap:6px!important}.dymivra844-top-tab .dymivra844-tab-icon{display:none}.dymivra844-hero-card{padding:17px}.dymivra844-hero-title{font-size:40px!important}}
+</style>
+
 </head>
 <body class="dymivra781-premium">
 <div aria-hidden="true" class="wealth-aurora-stage" id="wealthAuroraStage"><span class="aurora-orb orb-a"></span><span class="aurora-orb orb-b"></span><span class="aurora-orb orb-c"></span><span class="aurora-grid"></span></div>
@@ -9258,84 +9427,107 @@ body.performance-mode .dymivra843-nav-shell,body.performance-mode .dymivra843-cu
 </div>
 </div>
 <div class="grid" id="appSection">
-<div aria-label="Navegação principal organizada" class="app-nav app-nav-pro dymivra843-app-nav" id="appNav" role="navigation">
-  <div class="dymivra843-nav-shell" id="dymivra843NavShell">
-    <div class="dymivra843-nav-head">
-      <div class="dymivra843-nav-title">
-        <span>🧭 Navegação organizada</span>
-        <strong id="dymivra843NavTitle">Comece pelo caminho certo</strong>
-        <small id="dymivra843NavHint">Escolha uma área, veja só as telas daquele momento e siga a ordem recomendada.</small>
-      </div>
-      <div class="dymivra843-nav-actions">
-        <button class="dymivra843-nav-action" onclick="dymivra843ToggleNavMap()" type="button" id="dymivra843MapBtn">Mapa completo</button>
-        <button class="dymivra843-nav-action primary" onclick="showAppScreen('journey')" type="button">Me guiar</button>
-      </div>
+<div aria-label="Navegação principal premium" class="app-nav app-nav-pro dymivra843-app-nav dymivra844-app-nav" id="appNav" role="navigation">
+  <div class="dymivra843-nav-shell dymivra844-nav-shell" id="dymivra843NavShell">
+    <div class="dymivra844-top-tabs" aria-label="Atalhos principais do Dymivra">
+      <button class="nav-btn dymivra844-top-tab" data-screen="overview" data-nav-title="Visão geral" data-nav-desc="Resumo executivo do seu patrimônio, rentabilidade, renda e saúde da carteira." onclick="showAppScreen('overview')" type="button"><span class="dymivra844-tab-icon">▦</span><b>Visão geral</b></button>
+      <button class="nav-btn dymivra844-top-tab" data-screen="journey" data-nav-title="Jornada" data-nav-desc="Roteiro guiado com ordem certa de preenchimento e próxima ação." onclick="showAppScreen('journey')" type="button"><span class="dymivra844-tab-icon">◉</span><b>Jornada</b></button>
+      <button class="nav-btn dymivra844-top-tab" data-screen="pulse" data-nav-title="Pulse" data-nav-desc="Motor de decisão que responde o que fazer agora com base nos dados do usuário." onclick="showAppScreen('pulse')" type="button"><span class="dymivra844-tab-icon">⌁</span><b>Pulse</b></button>
     </div>
 
-    <div aria-label="Grupos de navegação" class="dymivra843-group-tabs" id="dymivra843GroupTabs" role="tablist">
-      <button aria-selected="true" class="dymivra843-group-tab active" data-nav-group="start" onclick="dymivra843SetNavGroup('start')" type="button"><span>01</span><b>Comece</b><small>Jornada, Pulse e visão</small></button>
-      <button aria-selected="false" class="dymivra843-group-tab" data-nav-group="setup" onclick="dymivra843SetNavGroup('setup')" type="button"><span>02</span><b>Preparar</b><small>Perfil, metas e ledger</small></button>
-      <button aria-selected="false" class="dymivra843-group-tab" data-nav-group="portfolio" onclick="dymivra843SetNavGroup('portfolio')" type="button"><span>03</span><b>Carteira</b><small>Alocação, renda e histórico</small></button>
-      <button aria-selected="false" class="dymivra843-group-tab" data-nav-group="future" onclick="dymivra843SetNavGroup('future')" type="button"><span>04</span><b>Futuro</b><small>Projeções e liberdade</small></button>
-      <button aria-selected="false" class="dymivra843-group-tab" data-nav-group="intel" onclick="dymivra843SetNavGroup('intel')" type="button"><span>05</span><b>Inteligência</b><small>IA, Radar e Mentor</small></button>
-      <button aria-selected="false" class="dymivra843-group-tab" data-nav-group="account" onclick="dymivra843SetNavGroup('account')" type="button"><span>06</span><b>Conta</b><small>Planos, app e suporte</small></button>
-    </div>
+    <section class="dymivra844-hero-card" aria-label="Navegação inteligente do Dymivra">
+      <div class="dymivra844-hero-copy">
+        <div class="dymivra844-kicker"><span class="dot"></span> Navegação inteligente</div>
+        <h2 class="dymivra844-hero-title" id="dymivra843NavTitle">Comece pelo caminho certo</h2>
+        <p class="dymivra844-hero-text" id="dymivra843NavHint">O Dymivra guia você na ordem ideal para investir melhor, tomar decisões com confiança e alcançar sua liberdade financeira.</p>
+        <div class="dymivra844-actions">
+          <button class="dymivra844-action" onclick="dymivra843ToggleNavMap()" type="button" id="dymivra843MapBtn"><span class="dymivra844-action-icon">▱</span><b>Mapa completo</b><span class="dymivra844-chevron">›</span></button>
+          <button class="dymivra844-action primary" onclick="showAppScreen('journey')" type="button"><span class="dymivra844-action-icon">✦</span><b>Me guiar</b><span class="dymivra844-chevron">›</span></button>
+        </div>
+      </div>
+      <div class="dymivra844-compass" aria-hidden="true">
+        <div class="dymivra844-compass-ring"><div class="dymivra844-needle"></div></div>
+      </div>
+    </section>
 
-    <div class="dymivra843-nav-body">
-      <aside class="dymivra843-current-card" aria-live="polite">
-        <div class="dymivra843-current-kicker">Agora no app</div>
-        <strong id="dymivra843CurrentScreen">Visão geral</strong>
-        <p id="dymivra843CurrentDesc">Resumo executivo da carteira e do estado financeiro.</p>
-        <div class="dymivra843-current-next" id="dymivra843CurrentNext">Próximo recomendado: Jornada.</div>
+    <section class="dymivra844-roadmap-card" aria-label="Mapa da jornada ideal">
+      <div class="dymivra844-card-head">
+        <span>✦ Sua jornada ideal</span>
+        <button onclick="dymivra843ToggleNavMap()" type="button">Ver detalhes ›</button>
+      </div>
+      <div class="dymivra844-path-scroll">
+        <div aria-label="Grupos de navegação" class="dymivra843-group-tabs dymivra844-path" id="dymivra843GroupTabs" role="tablist">
+          <button aria-selected="true" class="dymivra843-group-tab active" data-nav-group="start" onclick="dymivra843SetNavGroup('start')" type="button"><span class="dymivra844-node"><i>🚀</i><em>01</em></span><b>Comece</b><small>Visão geral<br>Jornada<br>Pulse</small></button>
+          <button aria-selected="false" class="dymivra843-group-tab" data-nav-group="setup" onclick="dymivra843SetNavGroup('setup')" type="button"><span class="dymivra844-node teal"><i>☑</i><em>02</em></span><b>Preparar</b><small>Perfil<br>Metas<br>Ledger</small></button>
+          <button aria-selected="false" class="dymivra843-group-tab" data-nav-group="portfolio" onclick="dymivra843SetNavGroup('portfolio')" type="button"><span class="dymivra844-node gold"><i>◔</i><em>03</em></span><b>Carteira</b><small>Alocação<br>Renda<br>Histórico</small></button>
+          <button aria-selected="false" class="dymivra843-group-tab" data-nav-group="future" onclick="dymivra843SetNavGroup('future')" type="button"><span class="dymivra844-node purple"><i>↗</i><em>04</em></span><b>Futuro</b><small>Projeções<br>Liberdade</small></button>
+          <button aria-selected="false" class="dymivra843-group-tab" data-nav-group="intel" onclick="dymivra843SetNavGroup('intel')" type="button"><span class="dymivra844-node purple"><i>✺</i><em>05</em></span><b>Inteligência</b><small>IA Dymivra<br>Radar<br>Mentor</small></button>
+          <button aria-selected="false" class="dymivra843-group-tab" data-nav-group="account" onclick="dymivra843SetNavGroup('account')" type="button"><span class="dymivra844-node"><i>▣</i><em>06</em></span><b>Conta</b><small>Planos<br>App<br>Legal<br>Apoio</small></button>
+        </div>
+      </div>
+    </section>
+
+    <div class="dymivra844-mid-grid">
+      <aside class="dymivra843-current-card dymivra844-current-card" aria-live="polite">
+        <div class="dymivra844-current-content">
+          <div class="dymivra843-current-kicker dymivra844-current-kicker">Agora no app</div>
+          <strong id="dymivra843CurrentScreen">Visão geral</strong>
+          <p id="dymivra843CurrentDesc">Resumo executivo da carteira e do estado financeiro.</p>
+          <div class="dymivra843-current-next dymivra844-current-next" id="dymivra843CurrentNext">Próximo recomendado: Jornada.</div>
+        </div>
+        <div class="dymivra844-vortex" aria-hidden="true"></div>
       </aside>
 
-      <div class="dymivra843-screen-area">
-        <div class="dymivra843-screen-pane active" data-nav-pane="start">
-          <div class="dymivra843-pane-title"><span>Comece aqui</span><b>Abra o app sem se perder.</b></div>
-          <button class="nav-btn dymivra843-screen-btn active" data-screen="overview" data-nav-title="Visão geral" data-nav-desc="Resumo executivo do seu patrimônio, rentabilidade, renda e saúde da carteira." onclick="showAppScreen('overview')" type="button"><span>🏠</span><b>Visão geral</b><small>O retrato atual do app</small></button>
-          <button class="nav-btn dymivra843-screen-btn journey-nav-primary" data-screen="journey" data-nav-title="Jornada" data-nav-desc="Roteiro guiado com ordem certa de preenchimento e próxima ação." onclick="showAppScreen('journey')" type="button"><span>🧭</span><b>Jornada</b><small>A ordem certa para usar</small></button>
-          <button class="nav-btn dymivra843-screen-btn pulse-nav-highlight" data-screen="pulse" data-nav-title="Pulse" data-nav-desc="Motor de decisão que responde o que fazer agora com base nos dados do usuário." onclick="showAppScreen('pulse')" type="button"><span>⚡</span><b>Pulse</b><small>O que fazer agora</small></button>
-        </div>
+      <section class="dymivra844-next-card" aria-label="Próximos passos da navegação">
+        <div class="dymivra844-next-head"><span>Próximos passos</span><small>Abra o app sem se perder.</small></div>
+        <div class="dymivra843-screen-area dymivra844-screen-area">
+          <div class="dymivra843-screen-pane active" data-nav-pane="start">
+            <div class="dymivra843-pane-title"><span>Comece aqui</span><b>Abra o app sem se perder.</b></div>
+            <button class="nav-btn dymivra843-screen-btn active" data-screen="overview" data-nav-title="Visão geral" data-nav-desc="Resumo executivo do seu patrimônio, rentabilidade, renda e saúde da carteira." onclick="showAppScreen('overview')" type="button"><span>🏠</span><b>Visão geral</b><small>O retrato atual do seu patrimônio</small></button>
+            <button class="nav-btn dymivra843-screen-btn journey-nav-primary" data-screen="journey" data-nav-title="Jornada" data-nav-desc="Roteiro guiado com ordem certa de preenchimento e próxima ação." onclick="showAppScreen('journey')" type="button"><span>🧭</span><b>Jornada</b><small>Continue sua jornada passo a passo</small></button>
+            <button class="nav-btn dymivra843-screen-btn pulse-nav-highlight" data-screen="pulse" data-nav-title="Pulse" data-nav-desc="Motor de decisão que responde o que fazer agora com base nos dados do usuário." onclick="showAppScreen('pulse')" type="button"><span>⚡</span><b>Pulse</b><small>O que fazer agora</small></button>
+          </div>
 
-        <div class="dymivra843-screen-pane" data-nav-pane="setup">
-          <div class="dymivra843-pane-title"><span>Preparar base</span><b>Primeiro cadastre quem você é e para onde quer ir.</b></div>
-          <button class="nav-btn dymivra843-screen-btn" data-screen="profile" data-nav-title="Perfil" data-nav-desc="Define risco, modelo de investidor e compatibilidade da carteira." onclick="showAppScreen('profile')" type="button"><span>🧬</span><b>Perfil</b><small>Quem é o investidor</small></button>
-          <button class="nav-btn dymivra843-screen-btn" data-screen="goals" data-nav-title="Metas" data-nav-desc="Define patrimônio alvo, aporte mensal, prazo e plano de execução." onclick="showAppScreen('goals')" type="button"><span>🎯</span><b>Metas</b><small>Para onde o usuário vai</small></button>
-          <button class="nav-btn dymivra843-screen-btn" data-screen="ledger" data-nav-title="Ledger" data-nav-desc="Registra compras, vendas, proventos, custos e alimenta os cálculos do app." onclick="showAppScreen('ledger')" type="button"><span>📒</span><b>Ledger</b><small>A fonte dos dados</small></button>
-        </div>
+          <div class="dymivra843-screen-pane" data-nav-pane="setup">
+            <div class="dymivra843-pane-title"><span>Preparar base</span><b>Primeiro cadastre quem você é e para onde quer ir.</b></div>
+            <button class="nav-btn dymivra843-screen-btn" data-screen="profile" data-nav-title="Perfil" data-nav-desc="Define risco, modelo de investidor e compatibilidade da carteira." onclick="showAppScreen('profile')" type="button"><span>🧬</span><b>Perfil</b><small>Seus dados, metas e preferências</small></button>
+            <button class="nav-btn dymivra843-screen-btn" data-screen="goals" data-nav-title="Metas" data-nav-desc="Define patrimônio alvo, aporte mensal, prazo e plano de execução." onclick="showAppScreen('goals')" type="button"><span>🎯</span><b>Metas</b><small>Objetivo patrimonial e renda alvo</small></button>
+            <button class="nav-btn dymivra843-screen-btn" data-screen="ledger" data-nav-title="Ledger" data-nav-desc="Registra compras, vendas, proventos, custos e alimenta os cálculos do app." onclick="showAppScreen('ledger')" type="button"><span>📒</span><b>Ledger</b><small>A fonte dos dados da carteira</small></button>
+          </div>
 
-        <div class="dymivra843-screen-pane" data-nav-pane="portfolio">
-          <div class="dymivra843-pane-title"><span>Carteira</span><b>Depois organize, compare e acompanhe os ativos.</b></div>
-          <button class="nav-btn dymivra843-screen-btn" data-screen="allocation" data-nav-title="Alocação" data-nav-desc="Compara carteira atual com alvo e mostra desvios, concentração e próximo aporte." onclick="showAppScreen('allocation')" type="button"><span>🧭</span><b>Alocação</b><small>Equilíbrio da carteira</small></button>
-          <button class="nav-btn dymivra843-screen-btn" data-screen="income" data-nav-title="Renda" data-nav-desc="Mostra renda passiva, proventos, yield, ranking e potencial de renda mensal." onclick="showAppScreen('income')" type="button"><span>💸</span><b>Renda</b><small>Proventos e renda passiva</small></button>
-          <button class="nav-btn dymivra843-screen-btn" data-screen="history" data-nav-title="Histórico" data-nav-desc="Acompanha evolução patrimonial, snapshots, comparação e curva de capital." onclick="showAppScreen('history')" type="button"><span>📈</span><b>Histórico</b><small>Evolução ao longo do tempo</small></button>
-        </div>
+          <div class="dymivra843-screen-pane" data-nav-pane="portfolio">
+            <div class="dymivra843-pane-title"><span>Carteira</span><b>Depois organize, compare e acompanhe os ativos.</b></div>
+            <button class="nav-btn dymivra843-screen-btn" data-screen="allocation" data-nav-title="Alocação" data-nav-desc="Compara carteira atual com alvo e mostra desvios, concentração e próximo aporte." onclick="showAppScreen('allocation')" type="button"><span>🧭</span><b>Alocação</b><small>Equilíbrio da carteira</small></button>
+            <button class="nav-btn dymivra843-screen-btn" data-screen="income" data-nav-title="Renda" data-nav-desc="Mostra renda passiva, proventos, yield, ranking e potencial de renda mensal." onclick="showAppScreen('income')" type="button"><span>💸</span><b>Renda</b><small>Proventos e renda passiva</small></button>
+            <button class="nav-btn dymivra843-screen-btn" data-screen="history" data-nav-title="Histórico" data-nav-desc="Acompanha evolução patrimonial, snapshots, comparação e curva de capital." onclick="showAppScreen('history')" type="button"><span>📈</span><b>Histórico</b><small>Evolução ao longo do tempo</small></button>
+          </div>
 
-        <div class="dymivra843-screen-pane" data-nav-pane="future">
-          <div class="dymivra843-pane-title"><span>Futuro</span><b>Transforme dados atuais em cenário, prazo e liberdade.</b></div>
-          <button class="nav-btn dymivra843-screen-btn" data-screen="projections" data-nav-title="Projeções" data-nav-desc="Simula cenários, crescimento, aportes e evolução do patrimônio." onclick="showAppScreen('projections')" type="button"><span>🔮</span><b>Projeções</b><small>Cenários futuros</small></button>
-          <button class="nav-btn dymivra843-screen-btn" data-screen="liberty" data-nav-title="Liberdade" data-nav-desc="Traduz carteira, renda e metas em independência financeira e plano para viver de renda." onclick="showAppScreen('liberty')" type="button"><span>🕊️</span><b>Liberdade</b><small>Independência financeira</small></button>
-        </div>
+          <div class="dymivra843-screen-pane" data-nav-pane="future">
+            <div class="dymivra843-pane-title"><span>Futuro</span><b>Transforme dados atuais em cenário, prazo e liberdade.</b></div>
+            <button class="nav-btn dymivra843-screen-btn" data-screen="projections" data-nav-title="Projeções" data-nav-desc="Simula cenários, crescimento, aportes e evolução do patrimônio." onclick="showAppScreen('projections')" type="button"><span>🔮</span><b>Projeções</b><small>Cenários futuros</small></button>
+            <button class="nav-btn dymivra843-screen-btn" data-screen="liberty" data-nav-title="Liberdade" data-nav-desc="Traduz carteira, renda e metas em independência financeira e plano para viver de renda." onclick="showAppScreen('liberty')" type="button"><span>🕊️</span><b>Liberdade</b><small>Independência financeira</small></button>
+          </div>
 
-        <div class="dymivra843-screen-pane" data-nav-pane="intel">
-          <div class="dymivra843-pane-title"><span>Inteligência</span><b>Use IA e leitura de risco quando a base já estiver preenchida.</b></div>
-          <button class="nav-btn dymivra843-screen-btn" data-screen="ai" data-nav-title="IA Dymivra" data-nav-desc="Copiloto educativo para perguntas, relatório e leitura da carteira." onclick="showAppScreen('ai')" type="button"><span>🤖</span><b>IA Dymivra</b><small>Análise educativa</small></button>
-          <button class="nav-btn dymivra843-screen-btn" data-screen="advisor" data-nav-title="Radar IA" data-nav-desc="Central de alertas, cenário, prioridade, mercado e riscos." onclick="showAppScreen('advisor')" type="button"><span>🚨</span><b>Radar IA</b><small>Alertas e mercado</small></button>
-          <button class="nav-btn dymivra843-screen-btn" data-screen="mentor" data-nav-title="Mentor" data-nav-desc="Acompanhamento guiado, checklist de evolução e plano de 30 dias." onclick="showAppScreen('mentor')" type="button"><span>🧠</span><b>Mentor</b><small>Acompanhamento</small></button>
-        </div>
+          <div class="dymivra843-screen-pane" data-nav-pane="intel">
+            <div class="dymivra843-pane-title"><span>Inteligência</span><b>Use IA e leitura de risco quando a base já estiver preenchida.</b></div>
+            <button class="nav-btn dymivra843-screen-btn" data-screen="ai" data-nav-title="IA Dymivra" data-nav-desc="Copiloto educativo para perguntas, relatório e leitura da carteira." onclick="showAppScreen('ai')" type="button"><span>🤖</span><b>IA Dymivra</b><small>Análise educativa</small></button>
+            <button class="nav-btn dymivra843-screen-btn" data-screen="advisor" data-nav-title="Radar IA" data-nav-desc="Central de alertas, cenário, prioridade, mercado e riscos." onclick="showAppScreen('advisor')" type="button"><span>🚨</span><b>Radar IA</b><small>Alertas e mercado</small></button>
+            <button class="nav-btn dymivra843-screen-btn" data-screen="mentor" data-nav-title="Mentor" data-nav-desc="Acompanhamento guiado, checklist de evolução e plano de 30 dias." onclick="showAppScreen('mentor')" type="button"><span>🧠</span><b>Mentor</b><small>Acompanhamento guiado</small></button>
+          </div>
 
-        <div class="dymivra843-screen-pane" data-nav-pane="account">
-          <div class="dymivra843-pane-title"><span>Conta e produto</span><b>Configuração, monetização, loja e suporte.</b></div>
-          <button class="nav-btn dymivra843-screen-btn" data-screen="plans" data-nav-title="Planos" data-nav-desc="Free, Pro, Elite, paywall, limites e valor percebido." onclick="showAppScreen('plans')" type="button"><span>💎</span><b>Planos</b><small>Monetização</small></button>
-          <button class="nav-btn dymivra843-screen-btn" data-screen="app" data-nav-title="App" data-nav-desc="Instalação PWA, checklist inicial, Android e prontidão do produto." onclick="showAppScreen('app')" type="button"><span>📱</span><b>App</b><small>Instalação e produto</small></button>
-          <button class="nav-btn dymivra843-screen-btn" data-screen="legal" data-nav-title="Legal" data-nav-desc="Política, termos, suporte, privacidade e preparação para loja." onclick="showAppScreen('legal')" type="button"><span>⚖️</span><b>Legal</b><small>Confiança e loja</small></button>
-          <button class="nav-btn dymivra843-screen-btn" data-screen="settings" data-nav-title="Apoio" data-nav-desc="Suporte, status, ajustes internos e utilidades do app." onclick="showAppScreen('settings')" type="button"><span>⚙️</span><b>Apoio</b><small>Configurações</small></button>
-          <button class="nav-btn dymivra843-screen-btn" data-screen="all" data-nav-title="Tudo" data-nav-desc="Mostra todas as telas em sequência. Use apenas para revisar o app completo." onclick="showAppScreen('all')" type="button"><span>🧩</span><b>Tudo</b><small>Revisão completa</small></button>
+          <div class="dymivra843-screen-pane" data-nav-pane="account">
+            <div class="dymivra843-pane-title"><span>Conta e produto</span><b>Configuração, monetização, loja e suporte.</b></div>
+            <button class="nav-btn dymivra843-screen-btn" data-screen="plans" data-nav-title="Planos" data-nav-desc="Free, Pro, Elite, paywall, limites e valor percebido." onclick="showAppScreen('plans')" type="button"><span>💎</span><b>Planos</b><small>Free, Pro e Elite</small></button>
+            <button class="nav-btn dymivra843-screen-btn" data-screen="app" data-nav-title="App" data-nav-desc="Instalação PWA, checklist inicial, Android e prontidão do produto." onclick="showAppScreen('app')" type="button"><span>📱</span><b>App</b><small>Instalação e produto</small></button>
+            <button class="nav-btn dymivra843-screen-btn" data-screen="legal" data-nav-title="Legal" data-nav-desc="Política, termos, suporte, privacidade e preparação para loja." onclick="showAppScreen('legal')" type="button"><span>⚖️</span><b>Legal</b><small>Confiança e loja</small></button>
+            <button class="nav-btn dymivra843-screen-btn" data-screen="settings" data-nav-title="Apoio" data-nav-desc="Suporte, status, ajustes internos e utilidades do app." onclick="showAppScreen('settings')" type="button"><span>⚙️</span><b>Apoio</b><small>Configurações</small></button>
+            <button class="nav-btn dymivra843-screen-btn" data-screen="all" data-nav-title="Tudo" data-nav-desc="Mostra todas as telas em sequência. Use apenas para revisar o app completo." onclick="showAppScreen('all')" type="button"><span>🧩</span><b>Tudo</b><small>Revisão completa</small></button>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
 
-    <div class="dymivra843-route-line" aria-label="Ordem recomendada do aplicativo">
+    <div class="dymivra843-route-line dymivra844-route-line" aria-label="Ordem recomendada do aplicativo">
       <span>Ordem recomendada</span>
       <b>Perfil</b><i></i><b>Metas</b><i></i><b>Ledger</b><i></i><b>Visão</b><i></i><b>Alocação</b><i></i><b>Renda</b><i></i><b>Projeções</b><i></i><b>Liberdade</b><i></i><b>Pulse</b>
     </div>
@@ -9387,7 +9579,7 @@ body.performance-mode .dymivra843-nav-shell,body.performance-mode .dymivra843-cu
 <div class="card premium-panel dymivra842-shell screen-hidden" data-screen-block="" data-screens="journey">
   <div class="dymivra842-hero">
     <div class="dymivra842-hero-main">
-      <div class="dymivra842-eyebrow">🧭 Dymivra 8.4.3 • Comece aqui</div>
+      <div class="dymivra842-eyebrow">🧭 Dymivra 8.4.4 • Comece aqui</div>
       <h2 class="dymivra842-title">Jornada Guiada Premium</h2>
       <p class="dymivra842-subtitle">Agora o Dymivra não é só um conjunto de telas. Ele vira um caminho: define perfil, organiza metas, alimenta a carteira, entende a alocação, mede renda, projeta o futuro e termina no Pulse com a próxima decisão.</p>
       <div class="dymivra842-progress-wrap">
@@ -14287,7 +14479,7 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
     }
 
     /* =========================================================
-       Dymivra 8.4.3 — Jornada Guiada Premium
+       Dymivra 8.4.4 — Jornada Guiada Premium
        ========================================================= */
     function dymivra842Steps(){
       return [
@@ -16733,7 +16925,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
 </script>
 
 <script>
-/* Dymivra 8.4.3 — Navegação organizada: grupos, mapa e orientação ativa */
+/* Dymivra 8.4.4 — Navegação organizada: grupos, mapa e orientação ativa */
 (function(){
   const groupByScreen={
     overview:'start',journey:'start',pulse:'start',
