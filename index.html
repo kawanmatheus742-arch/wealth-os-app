@@ -5958,6 +5958,270 @@ body{
   }
 }
 
+
+
+/* ==========================================================
+   Dymivra 8.3.7 • Ledger Premium Total
+   Reforma completa da tela Ledger sem alterar Login/Supabase/IA/Paywall
+   ========================================================== */
+body.screen-ledger-active{
+  background:
+    radial-gradient(circle at 14% -8%,rgba(34,211,238,.18),transparent 30%),
+    radial-gradient(circle at 90% 0%,rgba(250,204,21,.10),transparent 26%),
+    linear-gradient(180deg,#020617,#07111f 42%,#081326 100%)!important;
+}
+body.screen-ledger-active #screenIntro{
+  position:relative;
+  overflow:hidden;
+  padding:18px 20px!important;
+  border-radius:26px!important;
+  border-color:rgba(34,211,238,.24)!important;
+  background:
+    radial-gradient(circle at 0% 0%,rgba(34,211,238,.14),transparent 36%),
+    linear-gradient(180deg,rgba(8,18,36,.92),rgba(3,7,18,.86))!important;
+  box-shadow:0 18px 48px rgba(0,0,0,.24)!important;
+}
+body.screen-ledger-active #screenIntro:before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(110deg,transparent,rgba(255,255,255,.035),transparent);
+}
+.ledger-premium-hero{
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1.12fr .88fr;
+  gap:16px;
+  margin-top:16px;
+}
+.ledger-hero-main,
+.ledger-hero-side,
+.ledger-price-vault,
+.ledger-position-vault,
+.ledger-form-card,
+.ledger-extract-card,
+.ledger-terminal{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(34,211,238,.20)!important;
+  background:
+    radial-gradient(circle at 12% 0%,rgba(34,211,238,.13),transparent 34%),
+    radial-gradient(circle at 94% 6%,rgba(139,92,246,.10),transparent 32%),
+    linear-gradient(180deg,rgba(8,15,31,.96),rgba(3,7,18,.98))!important;
+  box-shadow:0 24px 70px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.04)!important;
+}
+.ledger-hero-main:after,
+.ledger-hero-side:after,
+.ledger-price-vault:after,
+.ledger-position-vault:after,
+.ledger-form-card:after,
+.ledger-extract-card:after,
+.ledger-terminal:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(120deg,transparent 15%,rgba(255,255,255,.032),transparent 62%);
+}
+.ledger-hero-main > *,
+.ledger-hero-side > *,
+.ledger-price-vault > *,
+.ledger-position-vault > *,
+.ledger-form-card > *,
+.ledger-extract-card > *,
+.ledger-terminal > *{position:relative;z-index:1}
+.ledger-hero-main{padding:28px!important;border-radius:30px!important;min-height:360px}
+.ledger-hero-side{padding:20px!important;border-radius:30px!important}
+.ledger-eyebrow,
+.ledger-panel-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  width:max-content;
+  max-width:100%;
+  padding:8px 11px;
+  border-radius:999px;
+  border:1px solid rgba(34,211,238,.20);
+  background:rgba(34,211,238,.08);
+  color:#cffafe;
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.ledger-main-title{
+  margin:14px 0 10px!important;
+  max-width:880px;
+  font-size:clamp(40px,6.2vw,84px)!important;
+  line-height:.92!important;
+  letter-spacing:-.09em!important;
+  color:#fff!important;
+}
+.ledger-hero-copy{max-width:820px;margin:0!important;color:#cbd5e1;line-height:1.64;font-size:15px}
+.ledger-hero-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.ledger-hero-actions button{min-height:50px;margin:0!important;border-radius:18px!important;font-size:14px!important}
+.ledger-hero-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}
+.ledger-hero-metric,
+.ledger-side-metric,
+.ledger-mini-stat,
+.ledger-field-panel,
+.ledger-filter-panel{
+  border:1px solid rgba(255,255,255,.08);
+  background:
+    radial-gradient(circle at 0% 0%,rgba(34,211,238,.08),transparent 40%),
+    rgba(255,255,255,.035);
+  border-radius:22px;
+  padding:14px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+}
+.ledger-hero-metric span,
+.ledger-side-metric span,
+.ledger-mini-stat span,
+.ledger-field-panel span,
+.ledger-filter-panel span{display:block;color:#91a4c6;font-size:12px;font-weight:850;margin-bottom:6px}
+.ledger-hero-metric strong,
+.ledger-side-metric strong,
+.ledger-mini-stat strong{
+  display:block;color:#fff;font-size:clamp(18px,2vw,28px);font-weight:950;letter-spacing:-.055em;line-height:1.08;word-break:break-word;
+}
+.ledger-hero-metric small,
+.ledger-side-metric small,
+.ledger-mini-stat small{display:block;color:#7487a8;font-size:12px;line-height:1.35;margin-top:7px}
+.ledger-side-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+.ledger-side-title{font-size:clamp(26px,3.2vw,44px);font-weight:950;letter-spacing:-.075em;line-height:1;margin:10px 0 8px;color:#fff}
+.ledger-side-copy{margin:0;color:#cbd5e1;line-height:1.55;font-size:14px}
+.ledger-side-stack{display:grid;gap:10px;margin-top:16px}
+.ledger-side-metric.good{border-color:rgba(34,197,94,.24);background:rgba(34,197,94,.08)}
+.ledger-side-metric.warn{border-color:rgba(251,146,60,.24);background:rgba(251,146,60,.075)}
+.ledger-quality-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.ledger-quality-strip div{padding:12px;border-radius:18px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.075);color:#cbd5e1;line-height:1.35;font-size:13px}
+.ledger-quality-strip b{display:block;color:#fff;margin-bottom:4px}
+body.screen-ledger-active .overview-flow-strip{margin-top:16px!important}
+body.screen-ledger-active .overview-flow-card{
+  border-radius:24px!important;
+  padding:16px!important;
+  min-height:112px!important;
+  border-color:rgba(255,255,255,.09)!important;
+  background:
+    radial-gradient(circle at 0% 0%,rgba(34,211,238,.09),transparent 38%),
+    linear-gradient(180deg,rgba(12,22,44,.92),rgba(5,10,22,.96))!important;
+}
+.ledger-price-vault,
+.ledger-position-vault,
+.ledger-terminal{padding:22px!important;border-radius:30px!important;margin-top:16px}
+.ledger-section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.ledger-section-head h3{font-size:clamp(28px,3.4vw,48px)!important;letter-spacing:-.075em!important;line-height:1!important;margin-top:8px!important}
+.ledger-section-head .muted{max-width:760px;line-height:1.55}
+.ledger-badge-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.ledger-price-grid,
+.ledger-position-grid{display:grid;gap:12px}
+#priceCenterBox:not(.empty),
+#movementPositionsBox:not(.empty),
+#assetsList:not(.empty){display:grid;gap:12px}
+#priceCenterBox .item.asset,
+#movementPositionsBox .item.asset,
+#assetsList .item.asset,
+#movementsList .ledger-movement-card{
+  margin-top:0!important;
+  border-radius:24px!important;
+  padding:16px!important;
+  border-color:rgba(255,255,255,.09)!important;
+  background:
+    radial-gradient(circle at 0% 0%,rgba(34,211,238,.08),transparent 36%),
+    linear-gradient(180deg,rgba(12,22,44,.88),rgba(5,10,22,.94))!important;
+  box-shadow:0 12px 34px rgba(0,0,0,.18)!important;
+}
+#priceCenterBox .asset-title,
+#movementPositionsBox .asset-title,
+#assetsList .asset-title{font-size:20px!important;letter-spacing:-.04em;color:#fff}
+#priceCenterBox .asset-meta,
+#movementPositionsBox .asset-meta,
+#assetsList .asset-meta{line-height:1.62!important;color:#a9bbd7!important}
+.ledger-workbench{
+  display:grid!important;
+  grid-template-columns:1.03fr .97fr!important;
+  gap:16px!important;
+  align-items:start;
+  margin-top:16px;
+}
+.ledger-form-card,
+.ledger-extract-card{padding:22px!important;border-radius:30px!important;min-width:0}
+.ledger-form-grid{display:grid;gap:13px;margin-top:14px}
+.ledger-field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ledger-field{position:relative}
+.ledger-field label,
+.ledger-filter-panel label,
+.ledger-terminal label{font-size:11px!important;text-transform:uppercase;letter-spacing:.12em;font-weight:950;color:#bdefff!important;margin:0 0 7px!important}
+.ledger-form-card input,
+.ledger-form-card select,
+.ledger-form-card textarea,
+.ledger-extract-card input,
+.ledger-extract-card select,
+.ledger-terminal input,
+.ledger-terminal select{
+  min-height:56px!important;
+  border-radius:18px!important;
+  border-color:rgba(207,250,254,.30)!important;
+  background:
+    radial-gradient(circle at 12% 0%,rgba(34,211,238,.075),transparent 38%),
+    linear-gradient(180deg,rgba(9,20,38,.92),rgba(4,11,22,.92))!important;
+  font-weight:850!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035)!important;
+}
+.ledger-form-card textarea{min-height:104px!important;line-height:1.45!important;padding-top:15px!important}
+.ledger-form-card input:focus,
+.ledger-form-card select:focus,
+.ledger-form-card textarea:focus,
+.ledger-extract-card input:focus,
+.ledger-extract-card select:focus,
+.ledger-terminal input:focus,
+.ledger-terminal select:focus{border-color:rgba(103,232,249,.78)!important;box-shadow:0 0 0 4px rgba(34,211,238,.085)!important}
+.ledger-preview-card{
+  margin-top:14px!important;
+  border-radius:24px!important;
+  padding:16px!important;
+  border-color:rgba(34,211,238,.24)!important;
+  background:linear-gradient(180deg,rgba(34,211,238,.08),rgba(255,255,255,.028))!important;
+}
+.ledger-submit-row{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:14px;align-items:center}
+.ledger-submit-row button{margin:0!important;min-height:52px;border-radius:18px!important}
+.ledger-submit-row #cancelMovementEditBtn{min-width:160px}
+.ledger-filter-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.ledger-filter-row{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:10px;align-items:end}
+.ledger-filter-row button{margin:0!important;min-height:52px;border-radius:18px!important}
+.ledger-extract-count{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ledger-movement-card{position:relative;overflow:hidden}
+.ledger-movement-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.ledger-movement-title{display:block;margin-top:10px;font-size:20px;font-weight:950;letter-spacing:-.045em;color:#fff}
+.ledger-movement-meta{display:block;margin-top:7px;color:#a9bbd7;line-height:1.55}
+.ledger-movement-amount{font-size:22px;font-weight:950;text-align:right;min-width:150px;letter-spacing:-.045em}
+.ledger-movement-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.ledger-movement-actions button{width:auto!important;min-width:100px;margin:0!important;border-radius:16px!important;padding:10px 12px!important}
+.ledger-terminal-tools{display:grid;grid-template-columns:1fr 260px;gap:10px;margin-top:14px}
+.ledger-terminal-note{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;color:#91a4c6;font-size:13px;line-height:1.45}
+.ledger-terminal-note span{padding:7px 9px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04)}
+.performance-mode .ledger-hero-main,
+.performance-mode .ledger-hero-side,
+.performance-mode .ledger-price-vault,
+.performance-mode .ledger-position-vault,
+.performance-mode .ledger-form-card,
+.performance-mode .ledger-extract-card,
+.performance-mode .ledger-terminal{box-shadow:0 10px 24px rgba(0,0,0,.22)!important;backdrop-filter:none!important}
+@media(max-width:1120px){
+  .ledger-premium-hero,
+  .ledger-workbench{grid-template-columns:1fr!important}
+  .ledger-hero-metrics{grid-template-columns:1fr 1fr}
+  .ledger-terminal-tools{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .ledger-hero-main,.ledger-hero-side,.ledger-price-vault,.ledger-position-vault,.ledger-form-card,.ledger-extract-card,.ledger-terminal{padding:16px!important;border-radius:24px!important}
+  .ledger-main-title{font-size:clamp(38px,12vw,58px)!important}
+  .ledger-hero-actions,.ledger-hero-metrics,.ledger-quality-strip,.ledger-field-row,.ledger-filter-grid,.ledger-filter-row,.ledger-submit-row{grid-template-columns:1fr!important}
+  .ledger-submit-row #cancelMovementEditBtn{width:100%!important;min-width:0}
+  .ledger-movement-amount{text-align:left;min-width:0;width:100%;font-size:20px}
+  .ledger-movement-actions{display:grid;grid-template-columns:1fr 1fr;width:100%}
+  .ledger-movement-actions button{width:100%!important}
+}
+
 </style>
 
 <style>
@@ -9299,12 +9563,129 @@ body.screen-overview-active.performance-mode [data-screen-block]:not(.screen-hid
       </div>
 
 
-      <div class="card" data-screen-block data-screens="ledger overview"><div class="section"><div><div class="kicker">Etapa 6B.1 • Preços reais do ledger</div><h3>Centro de preços por ativo</h3><div class="muted">Atualize preços reais diretamente no ledger e reduza a dependência do cadastro antigo.</div></div><span id="priceCenterBadge" class="badge purple">0 ativos</span></div><div id="priceCenterBox" class="empty">Sem ativos para atualizar.</div></div>
+      <div class="ledger-premium-hero" data-screen-block data-screens="ledger">
+        <div class="card ledger-hero-main">
+          <div class="ledger-eyebrow"><span>◆</span> Dymivra 8.3.7 • Ledger Premium Total</div>
+          <h2 class="ledger-main-title">Sala de controle da sua carteira real</h2>
+          <p class="ledger-hero-copy">A tela Ledger agora funciona como um cockpit financeiro: lançamento, auditoria, preço real, posição calculada, extrato editável e carteira consolidada no mesmo padrão premium do Dymivra.</p>
+          <div class="ledger-hero-actions">
+            <button class="success" type="button" onclick="document.getElementById('movementAsset')?.focus()">Registrar movimento</button>
+            <button class="gold" type="button" onclick="refreshAllPrices()">Atualizar preços</button>
+            <button class="secondary" type="button" onclick="showAppScreen('overview')">Ver visão geral</button>
+          </div>
+          <div class="ledger-hero-metrics">
+            <div class="ledger-hero-metric"><span>Movimentações</span><strong id="ledgerHeroMovements">0</strong><small>histórico rastreado</small></div>
+            <div class="ledger-hero-metric"><span>Fluxo líquido</span><strong id="ledgerHeroNetFlow">R$ 0,00</strong><small>entradas menos saídas/custos</small></div>
+            <div class="ledger-hero-metric"><span>Renda acumulada</span><strong id="ledgerHeroPassive">R$ 0,00</strong><small>proventos e rendimentos</small></div>
+            <div class="ledger-hero-metric"><span>Posições calculadas</span><strong id="ledgerHeroPositions">0</strong><small>ativos vivos no ledger</small></div>
+          </div>
+        </div>
+        <div class="card ledger-hero-side">
+          <div class="ledger-side-top">
+            <div>
+              <div class="ledger-panel-kicker">Auditoria da carteira</div>
+              <div class="ledger-side-title" id="ledgerHeroQuality">Aguardando dados</div>
+              <p class="ledger-side-copy" id="ledgerHeroQualityNote">Registre movimentações para o Dymivra calcular posições, custos, renda e histórico de forma mais precisa.</p>
+            </div>
+            <span class="badge purple">Fonte principal</span>
+          </div>
+          <div class="ledger-side-stack">
+            <div class="ledger-side-metric good"><span>Último movimento</span><strong id="ledgerHeroLastMove">--</strong><small>data mais recente encontrada</small></div>
+            <div class="ledger-side-metric warn"><span>Custos rastreados</span><strong id="ledgerHeroCosts">R$ 0,00</strong><small>taxas + impostos</small></div>
+          </div>
+          <div class="ledger-quality-strip">
+            <div><b>1. Registre</b>Compra, venda, renda, taxa e imposto com validação.</div>
+            <div><b>2. Audite</b>Confira o extrato e corrija qualquer lançamento.</div>
+            <div><b>3. Evolua</b>Use posições calculadas e preços reais no painel.</div>
+          </div>
+        </div>
+      </div>
 
-      <div class="card" data-screen-block data-screens="overview ledger"><div class="section"><div><div class="kicker">Etapa 6B.1 • Dashboard otimizado pelo ledger</div><h3>Carteira principal calculada por movimentações</h3><div class="muted">Dashboard avançado: ledger como fonte principal, score, concentração, diversificação e alertas inteligentes.</div></div><span id="movementPositionsBadge" class="badge purple">0 posições</span></div><div id="movementPositionsBox" class="empty">Sem posições calculadas ainda.</div></div>
+      <div class="card ledger-price-vault" data-screen-block data-screens="ledger overview">
+        <div class="ledger-section-head">
+          <div>
+            <div class="ledger-panel-kicker">Preços reais do ledger</div>
+            <h3>Central premium de preços por ativo</h3>
+            <div class="muted">Atualize, audite e limpe preços salvos sem perder a estrutura do ledger. O app usa preço real quando existe; caso contrário, usa cadastro atual ou custo médio.</div>
+          </div>
+          <div class="ledger-badge-row"><span id="priceCenterBadge" class="badge purple">0 ativos</span><span class="badge">Preço auditável</span></div>
+        </div>
+        <div id="priceCenterBox" class="empty">Sem ativos para atualizar.</div>
+      </div>
 
-      <div class="split grid" data-screen-block data-screens="ledger"><div class="card"><div class="section"><div><div class="kicker">Ledger profissional</div><h3>Registrar movimentação</h3><div class="muted">Compra, venda, dividendo, rendimento, juros, taxa, imposto e transferência com validação financeira.</div></div></div><div class="grid fields"><div><label>Tipo</label><select id="movementType"><option value="buy">Compra</option><option value="sell">Venda</option><option value="dividend">Dividendo</option><option value="interest">Juros</option><option value="yield">Rendimento</option><option value="fee">Taxa</option><option value="tax">Imposto</option><option value="transfer_in">Transferência de entrada</option><option value="transfer_out">Transferência de saída</option><option value="split">Split / desdobramento</option><option value="bonus">Bonificação</option><option value="other">Outro</option></select></div><div><label>Ativo</label><input id="movementAsset" placeholder="Ex: PETR4"></div></div><div class="grid fields"><div><label>Categoria</label><select id="movementCategory"><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select></div><div><label>Data</label><input id="movementDate" type="date"></div></div><div class="grid fields"><div><label>Quantidade</label><input id="movementQuantity" type="number" step="any" min="0" placeholder="0" inputmode="decimal"></div><div><label>Preço unitário</label><input id="movementUnitPrice" type="number" step="any" min="0" placeholder="0" inputmode="decimal"></div></div><div class="grid fields"><div><label>Valor bruto</label><input id="movementGross" type="number" step="any" min="0" placeholder="Auto: quantidade × preço" inputmode="decimal"></div><div><label>Corretora</label><input id="movementBroker" placeholder="Ex: XP, NuInvest"></div></div><div class="grid fields"><div><label>Taxas</label><input id="movementFees" type="number" step="any" min="0" placeholder="0" inputmode="decimal"></div><div><label>Impostos</label><input id="movementTaxes" type="number" step="any" min="0" placeholder="0" inputmode="decimal"></div></div><label>Observações</label><textarea id="movementNotes" placeholder="Ex: compra mensal, dividendo recebido..."></textarea><div id="movementPreview" class="item" style="margin-top:12px;border-color:rgba(56,189,248,.18)"><strong>Prévia da movimentação</strong><br><span class="muted">Preencha quantidade e preço para calcular automaticamente.</span></div><div id="movementEditBanner" class="status status-info" style="display:none"></div><div class="row" style="margin-top:12px"><button id="saveMovementBtn" onclick="saveMovement()">Salvar movimentação validada</button><button id="cancelMovementEditBtn" class="secondary" style="display:none" onclick="cancelMovementEdit()">Cancelar edição</button></div><div id="movementStatus" class="status"></div></div>
-      <div class="card"><div class="section"><div><div class="kicker">Extrato editável</div><h3>Controle financeiro de movimentações</h3><div class="muted">Filtre, edite, exclua e confira a consistência financeira dos lançamentos.</div></div><span id="movementFilteredCount" class="badge purple">0 registro(s)</span></div><div class="grid fields"><select id="movementFilterType" onchange="renderMovements()"><option value="">Todos os tipos</option><option value="buy">Compra</option><option value="sell">Venda</option><option value="dividend">Dividendo</option><option value="interest">Juros</option><option value="yield">Rendimento</option><option value="fee">Taxa</option><option value="tax">Imposto</option><option value="transfer_in">Entrada</option><option value="transfer_out">Saída</option><option value="split">Split</option><option value="bonus">Bonificação</option><option value="other">Outro</option></select><input id="movementFilterAsset" placeholder="Filtrar por ativo" oninput="renderMovements()"></div><div class="row" style="margin-top:10px"><select id="movementFilterCategory" onchange="renderMovements()" style="width:auto;min-width:180px"><option value="">Todas categorias</option><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select><button class="secondary" onclick="clearMovementFilters()">Limpar filtros</button></div><div id="movementsList" class="empty" style="margin-top:12px">Sem movimentações ainda.</div></div></div>
+      <div class="card ledger-position-vault" data-screen-block data-screens="overview ledger">
+        <div class="ledger-section-head">
+          <div>
+            <div class="ledger-panel-kicker">Posições calculadas</div>
+            <h3>Carteira viva gerada por movimentações</h3>
+            <div class="muted">Cada posição nasce do extrato: quantidade atual, preço médio calculado, renda acumulada, vendas realizadas, fonte de preço e resultado estimado.</div>
+          </div>
+          <div class="ledger-badge-row"><span id="movementPositionsBadge" class="badge purple">0 posições</span><span class="badge green">Ledger como base</span></div>
+        </div>
+        <div id="movementPositionsBox" class="empty">Sem posições calculadas ainda.</div>
+      </div>
+
+      <div class="ledger-workbench" data-screen-block data-screens="ledger">
+        <div class="card ledger-form-card">
+          <div class="ledger-section-head">
+            <div>
+              <div class="ledger-panel-kicker">Registro profissional</div>
+              <h3>Nova movimentação</h3>
+              <div class="muted">Registre compra, venda, provento, taxa, imposto, transferência, split ou bonificação com uma experiência mais clara e premium.</div>
+            </div>
+            <span class="badge green">Validação ativa</span>
+          </div>
+          <div class="ledger-form-grid">
+            <div class="ledger-field-row">
+              <div class="ledger-field"><label>Tipo</label><select id="movementType"><option value="buy">Compra</option><option value="sell">Venda</option><option value="dividend">Dividendo</option><option value="interest">Juros</option><option value="yield">Rendimento</option><option value="fee">Taxa</option><option value="tax">Imposto</option><option value="transfer_in">Transferência de entrada</option><option value="transfer_out">Transferência de saída</option><option value="split">Split / desdobramento</option><option value="bonus">Bonificação</option><option value="other">Outro</option></select></div>
+              <div class="ledger-field"><label>Ativo</label><input id="movementAsset" placeholder="Ex: PETR4"></div>
+            </div>
+            <div class="ledger-field-row">
+              <div class="ledger-field"><label>Categoria</label><select id="movementCategory"><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select></div>
+              <div class="ledger-field"><label>Data</label><input id="movementDate" type="date"></div>
+            </div>
+            <div class="ledger-field-row">
+              <div class="ledger-field"><label>Quantidade</label><input id="movementQuantity" type="number" step="any" min="0" placeholder="0" inputmode="decimal"></div>
+              <div class="ledger-field"><label>Preço unitário</label><input id="movementUnitPrice" type="number" step="any" min="0" placeholder="0" inputmode="decimal"></div>
+            </div>
+            <div class="ledger-field-row">
+              <div class="ledger-field"><label>Valor bruto</label><input id="movementGross" type="number" step="any" min="0" placeholder="Auto: quantidade × preço" inputmode="decimal"></div>
+              <div class="ledger-field"><label>Corretora</label><input id="movementBroker" placeholder="Ex: XP, NuInvest"></div>
+            </div>
+            <div class="ledger-field-row">
+              <div class="ledger-field"><label>Taxas</label><input id="movementFees" type="number" step="any" min="0" placeholder="0" inputmode="decimal"></div>
+              <div class="ledger-field"><label>Impostos</label><input id="movementTaxes" type="number" step="any" min="0" placeholder="0" inputmode="decimal"></div>
+            </div>
+            <div class="ledger-field"><label>Observações</label><textarea id="movementNotes" placeholder="Ex: compra mensal, dividendo recebido..."></textarea></div>
+          </div>
+          <div id="movementPreview" class="item ledger-preview-card"><strong>Prévia da movimentação</strong><br><span class="muted">Preencha quantidade e preço para calcular automaticamente.</span></div>
+          <div id="movementEditBanner" class="status status-info" style="display:none"></div>
+          <div class="ledger-submit-row">
+            <button id="saveMovementBtn" onclick="saveMovement()">Salvar movimentação validada</button>
+            <button id="cancelMovementEditBtn" class="secondary" style="display:none" onclick="cancelMovementEdit()">Cancelar edição</button>
+          </div>
+          <div id="movementStatus" class="status"></div>
+        </div>
+        <div class="card ledger-extract-card">
+          <div class="ledger-section-head">
+            <div>
+              <div class="ledger-panel-kicker">Extrato editável</div>
+              <h3>Histórico financeiro auditável</h3>
+              <div class="muted">Filtre, edite, exclua e confira consistência financeira em uma linha do tempo mais limpa, legível e profissional.</div>
+            </div>
+            <div class="ledger-extract-count"><span id="movementFilteredCount" class="badge purple">0 registro(s)</span><span class="badge">Editável</span></div>
+          </div>
+          <div class="ledger-filter-grid">
+            <div class="ledger-filter-panel"><label>Tipo de movimento</label><select id="movementFilterType" onchange="renderMovements()"><option value="">Todos os tipos</option><option value="buy">Compra</option><option value="sell">Venda</option><option value="dividend">Dividendo</option><option value="interest">Juros</option><option value="yield">Rendimento</option><option value="fee">Taxa</option><option value="tax">Imposto</option><option value="transfer_in">Entrada</option><option value="transfer_out">Saída</option><option value="split">Split</option><option value="bonus">Bonificação</option><option value="other">Outro</option></select></div>
+            <div class="ledger-filter-panel"><label>Buscar ativo</label><input id="movementFilterAsset" placeholder="Ex: PETR4" oninput="renderMovements()"></div>
+          </div>
+          <div class="ledger-filter-row">
+            <div class="ledger-filter-panel"><label>Categoria</label><select id="movementFilterCategory" onchange="renderMovements()"><option value="">Todas categorias</option><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select></div>
+            <button class="secondary" onclick="clearMovementFilters()">Limpar filtros</button>
+          </div>
+          <div id="movementsList" class="empty" style="margin-top:14px">Sem movimentações ainda.</div>
+        </div>
+      </div>
 
       <div class="split grid" data-screen-block data-screens="goals settings"><div class="card"><div class="section"><div><div class="kicker">Modo compatibilidade</div><h3>Investimento rápido</h3><div class="muted">Área mantida como apoio. O ledger profissional já é a fonte principal do dashboard.</div></div></div><label>Ativo</label><input id="asset" placeholder="Ex: PETR4, VALE3, BTC"><label>Categoria</label><select id="category"><option value="">Selecione</option><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select><div class="grid fields"><div><label>Quantidade</label><input id="quantity" type="number" step="any" inputmode="decimal"></div><div><label>Preço médio</label><input id="avgPrice" type="number" step="any" inputmode="decimal"></div></div><label>Preço atual</label><input id="currentPrice" type="number" step="any" inputmode="decimal"><div class="row" style="margin-top:12px"><button class="secondary" id="fetchPriceBtn" onclick="fetchSinglePrice()">Buscar preço real</button><button id="saveInvestBtn" onclick="saveInvestment()">Salvar investimento</button></div><div id="saveStatus" class="status"></div></div>
       <div class="card"><div class="section"><div><div class="kicker">Goal engine</div><h3>Meta patrimonial</h3><div class="muted">Meta, progresso e projeção inteligente.</div></div></div><div class="grid fields"><div><label>Meta de patrimônio</label><input id="targetValue" type="number" step="any" inputmode="decimal"></div><div><label>Aporte mensal</label><input id="monthlyContribution" type="number" step="any" inputmode="decimal"></div></div><button id="saveGoalBtn" class="gold" onclick="saveGoal()">Salvar meta</button><div class="grid grid4" style="margin-top:16px"><div class="mini"><div class="label">Meta</div><div id="goalValue" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Progresso</div><div id="goalProgress" class="value small">0%</div></div><div class="mini"><div class="label">Projeção</div><div id="goalProjection" class="value small">Sem meta</div></div><div class="mini"><div class="label">Acima/Falta</div><div id="goalRemaining" class="value small">R$ 0,00</div></div></div><div class="bar" style="height:12px"><div id="goalFill" class="fill" style="width:0%"></div></div><div id="goalStatus" class="status"></div></div></div>
@@ -9465,7 +9846,22 @@ body.screen-overview-active.performance-mode [data-screen-block]:not(.screen-hid
 
       <div class="grid grid2" data-screen-block data-screens="history"><div class="card"><div class="section"><div><div class="kicker">Contribution curve</div><h3>Capital investido acumulado</h3></div></div><svg id="capitalChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div><div class="card"><div class="section"><div><div class="kicker">Historical engine 4A</div><h3>Histórico patrimonial profissional</h3><div class="muted">Snapshot manual, com reset seguro para limpar histórico antigo sem apagar sua carteira.</div></div><span id="snapshotBadge" class="muted">0 snapshots</span></div><div class="grid grid3"><div class="mini"><div class="label">Recente</div><div id="snapLatest" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Maior</div><div id="snapHighest" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Variação</div><div id="snapVar" class="value small">R$ 0,00</div></div></div><div class="row" style="margin-top:12px"><button class="gold" id="manualSnapshotBtn2" onclick="saveManualSnapshot()">Salvar snapshot agora</button><button class="secondary" id="cleanSnapshotsBtn" onclick="cleanDuplicateSnapshots()">Limpar duplicados visuais</button><button class="danger" id="resetSnapshotsBtn" onclick="openResetSnapshotsModal()">Resetar histórico</button></div><div id="snapshotStatus" class="status status-info">Snapshots automáticos desativados. Use resetar histórico apenas se quiser apagar os snapshots antigos e começar um histórico limpo.</div><svg id="historyChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div></div>
 
-      <div class="card" data-screen-block data-screens="ledger settings"><div class="section"><div><div class="kicker">Portfolio terminal</div><h3>Seus investimentos</h3><div class="muted">Cadastro atual consolidado visualmente.</div></div></div><div class="grid fields"><input id="searchInput" placeholder="Buscar ativo" oninput="renderAssets()"><select id="filterCategory" onchange="renderAssets()"><option value="">Todas as categorias</option><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select></div><div id="assetsList" style="margin-top:12px" class="empty">Sem investimentos.</div></div>
+      <div class="card ledger-terminal" data-screen-block data-screens="ledger settings">
+        <div class="ledger-section-head">
+          <div>
+            <div class="ledger-panel-kicker">Portfolio terminal</div>
+            <h3>Carteira consolidada</h3>
+            <div class="muted">Visual premium do cadastro atual e das posições consolidadas. Mantido como apoio ao ledger, sem remover compatibilidade.</div>
+          </div>
+          <div class="ledger-badge-row"><span class="badge purple">Compatível</span><span class="badge">Busca rápida</span></div>
+        </div>
+        <div class="ledger-terminal-tools">
+          <div><label>Buscar ativo</label><input id="searchInput" placeholder="Buscar ativo" oninput="renderAssets()"></div>
+          <div><label>Categoria</label><select id="filterCategory" onchange="renderAssets()"><option value="">Todas as categorias</option><option>Ações</option><option>Cripto</option><option>FIIs</option><option>Renda Fixa</option><option>ETF</option><option>Internacional</option><option>Outros</option></select></div>
+        </div>
+        <div class="ledger-terminal-note"><span>Fonte principal: Ledger</span><span>Cadastro antigo preservado</span><span>Sem mudança em Supabase/IA/planos</span></div>
+        <div id="assetsList" style="margin-top:14px" class="empty">Sem investimentos.</div>
+      </div>
     </div>
   </div>
 
@@ -9612,7 +10008,7 @@ body.screen-overview-active.performance-mode [data-screen-block]:not(.screen-hid
     
     const screenTexts={
       overview:['Visão geral','cockpit premium total com patrimônio, comandos, inteligência, renda, risco, alocação e próximos passos.'],
-      ledger:['Ledger','registre, edite e exclua movimentações; atualize preços reais e acompanhe posições calculadas.'],
+      ledger:['Ledger Premium Total','registre movimentações, audite preços, acompanhe posições calculadas e controle o extrato em uma tela de comando premium.'],
       income:['Renda passiva','acompanhe proventos, yield, meta mensal de renda e fechamento do mês.'],
       liberty:['Liberdade financeira','calcule quanto patrimônio precisa para viver de renda e acompanhe marcos de renda mensal.'],
       allocation:['Alocação inteligente','compare carteira atual com carteira-alvo e veja onde colocar o próximo aporte. A tela Perfil fica separada.'],
@@ -9840,6 +10236,7 @@ let deferredInstallPrompt=null;
         document.body.classList.toggle('screen-all-active',wanted==='all');
         document.body.classList.toggle('screen-ai-active',wanted==='ai');
         document.body.classList.toggle('screen-overview-active',wanted==='overview');
+        document.body.classList.toggle('screen-ledger-active',wanted==='ledger');
         document.documentElement.style.overflowY='auto';
         document.body.style.overflowY='auto';
         document.body.style.height='auto';
@@ -10603,7 +11000,7 @@ let deferredInstallPrompt=null;
       if(!$('priceCenterBox'))return;
       const list=mainAssets();
       $('priceCenterBadge').textContent=list.length+' ativo(s)';
-      if(!list.length){$('priceCenterBox').className='empty';$('priceCenterBox').innerHTML='Sem ativos para atualizar.';return}
+      if(!list.length){$('priceCenterBox').className='empty';$('priceCenterBox').innerHTML='<strong>Sem ativos para atualizar</strong><span>Registre uma posição no ledger para ativar a central premium de preços.</span>';return}
       $('priceCenterBox').className='';
       $('priceCenterBox').innerHTML=list.map(i=>{
         const info=cachedPriceInfo(i.asset);
@@ -10613,7 +11010,7 @@ let deferredInstallPrompt=null;
         const cur=Number(i.current_value||0);
         const pl=cur-inv+Number(i.passive_income||0);
         const ret=inv?pl/inv*100:0;
-        return `<div class="item asset"><div><div class="asset-title">${esc(i.asset)} • ${esc(i.category||'Outros')} <span class="badge ${isLedger?'green':'purple'}">${isLedger?'Preço real salvo':'Sem preço real salvo'}</span></div><div class="asset-meta">Preço atual usado: ${money(price)}<br>Fonte: ${esc(i.priceSource||'-')}<br>${esc(priceAgeText(i.asset))}<br>Valor atual estimado: ${money(cur)} • Rentabilidade: ${pct(ret)}</div></div><div class="asset-right"><div>${money(price)}</div><div class="${cls(pl)}">${pnl(pl)}</div><div class="row" style="justify-content:flex-end;margin-top:10px"><button onclick="refreshLedgerPrice('${esc(i.asset)}',this)">Atualizar preço</button><button class="secondary" onclick="clearLedgerPrice('${esc(i.asset)}')">Limpar preço salvo</button></div></div></div>`
+        return `<div class="item asset ledger-price-card"><div><div class="asset-title">${esc(i.asset)} • ${esc(i.category||'Outros')} <span class="badge ${isLedger?'green':'purple'}">${isLedger?'Preço real salvo':'Sem preço real salvo'}</span></div><div class="asset-meta">Preço atual usado: <b>${money(price)}</b><br>Fonte: ${esc(i.priceSource||'-')} • ${esc(priceAgeText(i.asset))}<br>Valor atual estimado: ${money(cur)} • Rentabilidade: ${pct(ret)}</div></div><div class="asset-right"><div>${money(price)}</div><div class="${cls(pl)}">${pnl(pl)}</div><div class="row" style="justify-content:flex-end;margin-top:10px"><button onclick="refreshLedgerPrice('${esc(i.asset)}',this)">Atualizar preço</button><button class="secondary" onclick="clearLedgerPrice('${esc(i.asset)}')">Limpar preço salvo</button></div></div></div>`
       }).join('')
     }
     window.clearLedgerPrice=(asset)=>{localStorage.removeItem(priceKey(asset));renderDashboard();renderAssets();renderPositions();renderPriceCenter();toast('Preço salvo de '+asset+' removido. O app volta a usar cadastro atual ou custo médio.','info')}
@@ -12320,12 +12717,59 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
     async function loadSummary(){const {data,error}=await supabase.from('portfolio_movement_summary').select('*').eq('user_id',userId).maybeSingle();summary=error?fallbackSummary():(data||fallbackSummary())}
     function fallbackPositions(){const map=new Map();movements.forEach(m=>{const a=String(m.asset||'').toUpperCase(),c=m.category||'Outros',k=a+'__'+c;if(!map.has(k))map.set(k,{asset:a,category:c,total_movements:0,last_movement_date:m.movement_date,current_quantity:0,total_buy_cost:0,total_buy_quantity:0,total_sell_value:0,passive_income:0,total_fees:0,total_taxes:0,average_cost:0});const p=map.get(k),base=Number(m.gross_amount||0)>0?Number(m.gross_amount||0):Number(m.quantity||0)*Number(m.unit_price||0),q=Number(m.quantity||0),fees=Number(m.fees||0),taxes=Number(m.taxes||0);p.total_movements++;if(['buy','transfer_in','bonus'].includes(m.movement_type))p.current_quantity+=q;if(['sell','transfer_out'].includes(m.movement_type))p.current_quantity-=q;if(['buy','transfer_in'].includes(m.movement_type)){p.total_buy_cost+=base+fees+taxes;p.total_buy_quantity+=q}if(['sell','transfer_out'].includes(m.movement_type))p.total_sell_value+=base-fees-taxes;if(['dividend','interest','yield'].includes(m.movement_type))p.passive_income+=base-taxes;p.total_fees+=fees;p.total_taxes+=taxes;p.average_cost=p.total_buy_quantity?p.total_buy_cost/p.total_buy_quantity:0});return[...map.values()]}
     async function loadPositions(){const {data,error}=await supabase.from('portfolio_positions_from_movements').select('*').eq('user_id',userId).order('asset',{ascending:true});positions=error?fallbackPositions():(data||[])}
-    function renderSummary(){const s=summary||fallbackSummary();$('quickMovements').textContent=Number(s.total_movements||0);$('quickPassive').textContent=money(s.total_passive_income||0);$('sumEntries').textContent=money(s.total_entries||0);$('sumExits').textContent=money(s.total_exits||0);$('sumCosts').textContent=money(Number(s.total_fees||0)+Number(s.total_taxes||0));$('sumPassive').textContent=money(s.total_passive_income||0);$('ledgerBadge').textContent=Number(s.total_movements||0)?`Ledger: ${s.total_movements} movimentação(ões)`:'Ledger aguardando dados'}
+    function renderSummary(){
+      const s=summary||fallbackSummary();
+      const totalMov=Number(s.total_movements||0);
+      const entries=Number(s.total_entries||0), exits=Number(s.total_exits||0), costs=Number(s.total_fees||0)+Number(s.total_taxes||0), passive=Number(s.total_passive_income||0);
+      $('quickMovements').textContent=totalMov;
+      $('quickPassive').textContent=money(passive);
+      $('sumEntries').textContent=money(entries);
+      $('sumExits').textContent=money(exits);
+      $('sumCosts').textContent=money(costs);
+      $('sumPassive').textContent=money(passive);
+      $('ledgerBadge').textContent=totalMov?`Ledger: ${totalMov} movimentação(ões)`:'Ledger aguardando dados';
+      const set=(id,val)=>{const el=$(id);if(el)el.textContent=val};
+      set('ledgerHeroMovements',totalMov);
+      set('ledgerHeroNetFlow',money(entries-exits-costs));
+      set('ledgerHeroPassive',money(passive));
+      set('ledgerHeroCosts',money(costs));
+      const last=[...movements].sort((a,b)=>new Date((b.movement_date||b.created_at||0))-new Date((a.movement_date||a.created_at||0)))[0];
+      set('ledgerHeroLastMove',last?(last.movement_date?new Date(last.movement_date+'T00:00:00').toLocaleDateString('pt-BR'):new Date(last.created_at||Date.now()).toLocaleDateString('pt-BR')):'--');
+      if($('ledgerHeroQuality')){
+        $('ledgerHeroQuality').textContent=totalMov>=20?'Ledger robusto':totalMov>=8?'Ledger em evolução':totalMov>0?'Ledger iniciado':'Aguardando dados';
+        $('ledgerHeroQualityNote').textContent=totalMov>=20?'Você já tem uma base forte para análises, histórico e decisões educativas.':totalMov>=8?'A base já permite leituras úteis; continue registrando taxas, vendas e proventos.':totalMov>0?'Continue alimentando o extrato para melhorar precisão de posição, renda e risco.':'Registre movimentações para o Dymivra calcular posições, custos, renda e histórico de forma mais precisa.';
+      }
+    }
     function filteredMovements(){const t=$('movementFilterType')?.value||'',asset=($('movementFilterAsset')?.value||'').trim().toUpperCase(),cat=$('movementFilterCategory')?.value||'';return movements.filter(m=>(!t||m.movement_type===t)&&(!asset||String(m.asset||'').toUpperCase().includes(asset))&&(!cat||m.category===cat))}
     window.clearMovementFilters=()=>{$('movementFilterType').value='';$('movementFilterAsset').value='';$('movementFilterCategory').value='';renderMovements()}
-    function renderMovements(){const list=filteredMovements();if($('movementFilteredCount'))$('movementFilteredCount').textContent=list.length+' registro(s)';if(!movements.length){$('movementsList').className='empty';$('movementsList').innerHTML='<strong>Ledger ainda vazio</strong><span>Registre sua primeira compra, venda, dividendo, taxa ou transferência.</span>';return}if(!list.length){$('movementsList').className='empty';$('movementsList').innerHTML='<strong>Nenhum resultado com esses filtros</strong><span>Limpe os filtros ou tente buscar outro ativo.</span>';return}$('movementsList').className='';$('movementsList').innerHTML=list.slice(0,movementListLimit()).map(m=>{const val=moveValue(m),pos=['sell','dividend','interest','yield','transfer_out'].includes(m.movement_type),passive=['dividend','interest','yield'].includes(m.movement_type);return`<div class="item" style="margin-top:10px"><div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap"><div><span class="badge ${passive?'green':'purple'}">${moveLabel(m.movement_type)}</span><strong style="display:block;margin-top:8px">${esc(m.asset)} • ${esc(m.category||'Outros')}</strong><span class="muted">${m.movement_date?new Date(m.movement_date+'T00:00:00').toLocaleDateString('pt-BR'):'-'}</span><br>Qtd: ${Number(m.quantity||0)} • Preço: ${money(m.unit_price||0)}<br>Valor bruto: ${money(m.gross_amount||0)}${movementIntegrityHtml(m)}<br>Taxas: ${money(m.fees||0)} • Impostos: ${money(m.taxes||0)}${m.broker?'<br>Corretora: '+esc(m.broker):''}${m.notes?'<br><span class="muted">'+esc(m.notes)+'</span>':''}</div><div class="${pos?'positive':'negative'}" style="font-weight:900;text-align:right;min-width:120px">${pos?'+':'-'} ${money(Math.abs(val))}</div></div><div class="row" style="margin-top:12px"><button class="secondary" onclick="editMovement('${String(m.id)}')">Editar</button><button class="danger" onclick="openDeleteMovementModal('${String(m.id)}')">Excluir</button></div></div>`}).join('')}
+    function renderMovements(){
+      const list=filteredMovements();
+      if($('movementFilteredCount'))$('movementFilteredCount').textContent=list.length+' registro(s)';
+      if(!movements.length){$('movementsList').className='empty';$('movementsList').innerHTML='<strong>Ledger ainda vazio</strong><span>Registre sua primeira compra, venda, dividendo, taxa ou transferência para ativar a linha do tempo premium.</span>';return}
+      if(!list.length){$('movementsList').className='empty';$('movementsList').innerHTML='<strong>Nenhum resultado com esses filtros</strong><span>Limpe os filtros ou tente buscar outro ativo.</span>';return}
+      $('movementsList').className='';
+      $('movementsList').innerHTML=list.slice(0,movementListLimit()).map(m=>{
+        const val=moveValue(m),pos=['sell','dividend','interest','yield','transfer_out'].includes(m.movement_type),passive=['dividend','interest','yield'].includes(m.movement_type);
+        const dt=m.movement_date?new Date(m.movement_date+'T00:00:00').toLocaleDateString('pt-BR'):'-';
+        const notes=m.notes?`<br><span class="muted">${esc(m.notes)}</span>`:'';
+        const broker=m.broker?`<br>Corretora: ${esc(m.broker)}`:'';
+        return `<div class="item ledger-movement-card"><div class="ledger-movement-top"><div><span class="badge ${passive?'green':'purple'}">${moveLabel(m.movement_type)}</span><strong class="ledger-movement-title">${esc(m.asset)} • ${esc(m.category||'Outros')}</strong><span class="ledger-movement-meta">${dt}<br>Qtd: ${Number(m.quantity||0)} • Preço: ${money(m.unit_price||0)}<br>Valor bruto: ${money(m.gross_amount||0)}${movementIntegrityHtml(m)}<br>Taxas: ${money(m.fees||0)} • Impostos: ${money(m.taxes||0)}${broker}${notes}</span></div><div class="ledger-movement-amount ${pos?'positive':'negative'}">${pos?'+':'-'} ${money(Math.abs(val))}</div></div><div class="ledger-movement-actions"><button class="secondary" onclick="editMovement('${String(m.id)}')">Editar</button><button class="danger" onclick="openDeleteMovementModal('${String(m.id)}')">Excluir</button></div></div>`
+      }).join('')
+    }
     
-    function renderPositions(){const active=ledgerAssets();$('movementPositionsBadge').textContent=active.length+' posição(ões)';if(!active.length){$('movementPositionsBox').className='empty';$('movementPositionsBox').innerHTML='Sem posições calculadas ainda.';return}$('movementPositionsBox').className='';$('movementPositionsBox').innerHTML=active.map(p=>{const qty=Number(p.quantity||0),avg=Number(p.avg_price||0),base=Number(p.amount||0),cur=Number(p.current_value||0),pl=cur-base+Number(p.passive_income||0),ret=base?pl/base*100:0;return`<div class="item asset"><div><div class="asset-title">${esc(p.asset)} • ${esc(p.category||'Outros')}</div><div class="asset-meta">Quantidade atual: ${qty}<br>Preço médio calculado: ${money(avg)}<br>Preço atual usado: ${money(p.current_price)} • ${esc(p.priceSource)}<br>Valor atual estimado: ${money(cur)}<br>Último movimento: ${p.last_movement_date?new Date(p.last_movement_date+'T00:00:00').toLocaleDateString('pt-BR'):'-'}</div><span class="badge purple">${Number(p.total_movements||0)} movimento(s)</span></div><div class="asset-right"><div>${money(cur)}</div><div class="${cls(pl)}">${pnl(pl)} • ${pct(ret)}</div><div class="positive" style="font-size:13px">Renda: ${money(p.passive_income||0)}</div><div class="neutral" style="font-size:13px">Vendas: ${money(p.total_sell_value||0)}</div></div></div>`}).join('')}
+    function renderPositions(){
+      const active=ledgerAssets();
+      $('movementPositionsBadge').textContent=active.length+' posição(ões)';
+      const set=(id,val)=>{const el=$(id);if(el)el.textContent=val};
+      set('ledgerHeroPositions',active.length);
+      if(!active.length){$('movementPositionsBox').className='empty';$('movementPositionsBox').innerHTML='<strong>Sem posições calculadas ainda</strong><span>Registre compras ou transferências de entrada no ledger para gerar posições automaticamente.</span>';return}
+      $('movementPositionsBox').className='';
+      const total=active.reduce((a,p)=>a+Number(p.current_value||0),0);
+      $('movementPositionsBox').innerHTML=active.map(p=>{
+        const qty=Number(p.quantity||0),avg=Number(p.avg_price||0),base=Number(p.amount||0),cur=Number(p.current_value||0),pl=cur-base+Number(p.passive_income||0),ret=base?pl/base*100:0,share=total?cur/total*100:0;
+        return `<div class="item asset ledger-position-card"><div><div class="asset-title">${esc(p.asset)} • ${esc(p.category||'Outros')} <span class="badge purple">${Number(p.total_movements||0)} movimento(s)</span></div><div class="asset-meta">Quantidade atual: ${qty}<br>Preço médio calculado: ${money(avg)} • Preço atual: ${money(p.current_price)}<br>Fonte: ${esc(p.priceSource)} • Peso na carteira: ${share.toFixed(1)}%<br>Último movimento: ${p.last_movement_date?new Date(p.last_movement_date+'T00:00:00').toLocaleDateString('pt-BR'):'-'}</div><div class="bar"><div class="fill" style="width:${Math.min(share,100)}%"></div></div></div><div class="asset-right"><div>${money(cur)}</div><div class="${cls(pl)}">${pnl(pl)} • ${pct(ret)}</div><div class="positive" style="font-size:13px">Renda: ${money(p.passive_income||0)}</div><div class="neutral" style="font-size:13px">Vendas: ${money(p.total_sell_value||0)}</div></div></div>`
+      }).join('')
+    }
     
     
     function scoreFromCurrentState(inv,cur,pl){
