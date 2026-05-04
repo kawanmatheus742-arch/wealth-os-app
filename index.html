@@ -5958,6 +5958,355 @@ body{
   }
 }
 
+
+
+/* ==========================================================
+   Dymivra 8.3.6 • Visão Geral Ultra Premium
+   Atualiza apenas a tela "Visão geral" mantendo login, Supabase,
+   IA, planos, paywall e demais telas preservados.
+   ========================================================== */
+.dym836-overview{
+  position:relative;
+  overflow:hidden;
+  border-color:rgba(56,189,248,.24)!important;
+  background:
+    radial-gradient(circle at 10% -10%,rgba(34,211,238,.18),transparent 34%),
+    radial-gradient(circle at 92% 0%,rgba(139,92,246,.16),transparent 30%),
+    radial-gradient(circle at 50% 120%,rgba(14,165,233,.10),transparent 42%),
+    linear-gradient(180deg,rgba(8,15,31,.98),rgba(7,13,26,.96))!important;
+}
+.dym836-overview:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(120deg,transparent,rgba(255,255,255,.045),transparent 58%),
+    linear-gradient(180deg,rgba(255,255,255,.03),transparent 30%);
+}
+.dym836-overview>*{position:relative;z-index:1}
+.dym836-hero{
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:18px;
+  align-items:stretch;
+}
+.dym836-hero-copy{
+  min-height:330px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:30px;
+  padding:24px;
+  background:
+    radial-gradient(circle at 0% 0%,rgba(14,165,233,.16),transparent 35%),
+    linear-gradient(180deg,rgba(12,22,44,.90),rgba(5,11,24,.78));
+}
+.dym836-eyebrow,.dym836-small-label{
+  display:block;
+  color:#bae6fd;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  font-size:11px;
+  font-weight:950;
+}
+.dym836-hero-copy h2{
+  margin:10px 0 12px;
+  max-width:860px;
+  font-size:clamp(38px,5.8vw,78px);
+  line-height:.94;
+  letter-spacing:-.085em;
+}
+.dym836-hero-copy p{
+  max-width:760px;
+  color:#dbeafe;
+  line-height:1.65;
+  font-size:16px;
+  margin:0;
+}
+.dym836-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+.dym836-actions button,
+.dym836-analytics-head button{
+  width:auto;
+  margin:0;
+  min-width:132px;
+  padding:11px 14px;
+  border-radius:999px;
+}
+.dym836-score-card{
+  display:grid;
+  gap:12px;
+}
+.dym836-score-shell{
+  min-height:260px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  border-radius:30px;
+  padding:22px;
+  border:1px solid rgba(56,189,248,.22);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(34,211,238,.12),transparent 40%),
+    linear-gradient(180deg,rgba(12,22,44,.94),rgba(3,7,18,.86));
+}
+.dym836-score-ring{
+  width:190px!important;
+  height:190px!important;
+  box-shadow:0 0 42px rgba(34,211,238,.16), inset 0 0 0 1px rgba(255,255,255,.04)!important;
+}
+.dym836-score-status{
+  max-width:280px;
+  margin:16px auto 0;
+  color:#cbd5e1;
+  line-height:1.5;
+}
+.dym836-mini-source{
+  border-radius:24px;
+  padding:16px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.04);
+}
+.dym836-mini-source span,
+.dym836-kpi-card span,
+.dym836-pulse-card span{
+  display:block;
+  color:#8ea3c7;
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:7px;
+}
+.dym836-mini-source strong{font-size:18px}
+.dym836-kpi-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:14px;
+}
+.dym836-kpi-card,.dym836-pulse-card,.dym836-command-card,.dym836-analytics-card,.dym836-status-card{
+  border:1px solid rgba(255,255,255,.085);
+  background:rgba(12,22,44,.72);
+  border-radius:24px;
+  padding:16px;
+  overflow:hidden;
+}
+.dym836-kpi-card{
+  min-height:138px;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(34,211,238,.08),transparent 40%),
+    rgba(12,22,44,.72);
+}
+.dym836-kpi-card strong{
+  display:block;
+  color:#fff;
+  font-size:clamp(22px,2.3vw,34px);
+  line-height:1.04;
+  letter-spacing:-.06em;
+  word-break:break-word;
+}
+.dym836-kpi-card em,.dym836-pulse-card em{
+  display:block;
+  margin-top:7px;
+  color:#8ea3c7;
+  font-style:normal;
+  font-size:12px;
+  line-height:1.4;
+}
+.dym836-command-grid{
+  display:grid;
+  grid-template-columns:1.25fr .875fr .875fr;
+  gap:12px;
+  margin-top:14px;
+}
+.dym836-command-card{
+  min-height:205px;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(14,165,233,.09),transparent 38%),
+    rgba(9,18,36,.78);
+}
+.dym836-primary-action{
+  border-color:rgba(34,211,238,.20);
+}
+.dym836-card-top{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:flex-start;
+}
+.dym836-card-top h3{
+  margin:8px 0 0;
+  font-size:clamp(24px,3vw,42px);
+  line-height:1.02;
+  letter-spacing:-.07em;
+}
+.dym836-icon{
+  width:48px;
+  height:48px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-size:24px;
+  font-weight:950;
+  background:linear-gradient(135deg,rgba(14,165,233,.90),rgba(34,211,238,.62));
+  box-shadow:0 12px 28px rgba(14,165,233,.16);
+}
+.dym836-command-card p{
+  color:#cbd5e1;
+  line-height:1.55;
+  margin:12px 0 0;
+}
+.dym836-route{
+  margin-top:14px;
+  padding:12px;
+  border-radius:16px;
+  border:1px solid rgba(34,211,238,.14);
+  background:rgba(34,211,238,.07);
+  color:#e0f2fe;
+  line-height:1.45;
+  font-size:13px;
+  font-weight:850;
+}
+.dym836-stack{
+  display:grid;
+  gap:9px;
+  margin-top:12px!important;
+}
+.dym836-stack .priority-item{
+  margin:0!important;
+  border-radius:16px!important;
+  padding:11px 12px!important;
+}
+.dym836-pulse-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:14px;
+}
+.dym836-pulse-card strong{
+  display:block;
+  font-size:clamp(20px,2vw,30px);
+  letter-spacing:-.055em;
+  line-height:1.05;
+}
+.dym836-analytics-grid{
+  display:grid;
+  grid-template-columns:1.1fr .95fr .95fr;
+  gap:12px;
+  margin-top:14px;
+}
+.dym836-analytics-card{
+  min-height:280px;
+  background:
+    radial-gradient(circle at 90% 0%,rgba(139,92,246,.08),transparent 42%),
+    rgba(9,18,36,.74);
+}
+.dym836-analytics-head{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+  margin-bottom:12px;
+}
+.dym836-analytics-head h3{
+  margin:7px 0 0;
+  font-size:22px;
+  letter-spacing:-.045em;
+}
+.dym836-allocation,
+.dym836-alerts,
+.dym836-next{
+  color:#dbeafe;
+  line-height:1.5;
+}
+.dym836-allocation .bar{
+  height:10px;
+  background:rgba(255,255,255,.065);
+}
+.dym836-alerts .badge{
+  white-space:normal;
+  border-radius:14px;
+  line-height:1.35;
+}
+.dym836-bottom-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr .95fr;
+  gap:12px;
+  margin-top:14px;
+}
+.dym836-status-card{
+  min-height:150px;
+  background:
+    radial-gradient(circle at 0% 0%,rgba(34,197,94,.08),transparent 38%),
+    rgba(9,18,36,.74);
+}
+.dym836-status-card h3{
+  margin:8px 0 8px;
+  font-size:26px;
+  letter-spacing:-.055em;
+  line-height:1.04;
+}
+.dym836-status-card p{
+  margin:0;
+  color:#cbd5e1;
+  line-height:1.52;
+}
+.dym836-goal-bar{
+  height:12px;
+  border-radius:999px;
+  overflow:hidden;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.06);
+  margin:11px 0;
+}
+.dym836-goal-bar span{
+  display:block;
+  height:100%;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--blue),var(--cyan),var(--green));
+  box-shadow:0 0 22px rgba(34,211,238,.16);
+}
+.performance-mode .dym836-overview,
+.performance-mode .dym836-hero-copy,
+.performance-mode .dym836-score-shell,
+.performance-mode .dym836-kpi-card,
+.performance-mode .dym836-pulse-card,
+.performance-mode .dym836-command-card,
+.performance-mode .dym836-analytics-card,
+.performance-mode .dym836-status-card{
+  box-shadow:0 8px 20px rgba(0,0,0,.20)!important;
+  backdrop-filter:none!important;
+}
+@media(max-width:1120px){
+  .dym836-hero,
+  .dym836-command-grid,
+  .dym836-analytics-grid,
+  .dym836-bottom-grid{
+    grid-template-columns:1fr;
+  }
+  .dym836-kpi-grid,
+  .dym836-pulse-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+@media(max-width:760px){
+  .dym836-hero-copy{min-height:auto;padding:18px;border-radius:24px}
+  .dym836-score-ring{width:160px!important;height:160px!important}
+  .dym836-kpi-grid,
+  .dym836-pulse-grid{
+    grid-template-columns:1fr;
+  }
+  .dym836-actions button,
+  .dym836-analytics-head button{
+    width:100%;
+  }
+  .dym836-analytics-head{
+    display:grid;
+  }
+}
+
 </style>
 
 <style>
@@ -7466,7 +7815,7 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
         </div>
       </div>
 
-<div id="screenIntro" class="screen-intro"><strong>Visão geral</strong> — painel executivo com patrimônio, inteligência, score e principais alertas.</div>
+<div id="screenIntro" class="screen-intro"><strong>Visão geral</strong> — cockpit executivo com patrimônio, score, renda, riscos, meta e próxima ação em uma leitura única.</div>
 
       <div class="dymivra781-command">
         <div class="dymivra781-command-top">
@@ -8601,7 +8950,161 @@ body.performance-mode .smart-advisor-hero,.performance-mode .smart-alert-card{bo
 
       <div class="grid grid4" data-screen-block data-screens="overview ledger income"><div class="mini"><div class="label">Compras/entradas no ledger</div><div id="sumEntries" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Vendas/saídas no ledger</div><div id="sumExits" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Taxas + impostos</div><div id="sumCosts" class="value small">R$ 0,00</div></div><div class="mini"><div class="label">Renda passiva acumulada</div><div id="sumPassive" class="value small positive">R$ 0,00</div></div></div>
 
-      <div class="card premium-panel" data-screen-block data-screens="overview"><div class="section"><div><div class="kicker">Etapa 6B.1 • Central de inteligência</div><h3>Dashboard premium do investidor</h3><div class="muted">Tela executiva com score visual, prioridades, resumo do mês e próxima ação recomendada.</div></div><span class="badge purple">Premium intelligence</span></div><div class="command-grid"><div class="score-shell"><div><div id="premiumScoreRing" class="score-ring"><div class="score-inner"><div id="premiumScoreNumber" class="score-number">0</div><div class="score-label">score / 100</div></div></div><div id="premiumScoreStatus" class="muted" style="margin-top:14px;line-height:1.45">Aguardando dados do ledger.</div></div></div><div><div class="command-metrics"><div class="command-card"><div class="label">Patrimônio analisado</div><div id="premiumAnalyzedWealth" class="command-headline">R$ 0,00</div><div id="premiumWealthNote" class="muted" style="font-size:12px;margin-top:6px">Ledger profissional</div></div><div class="command-card"><div class="label">Resultado atual</div><div id="premiumResult" class="command-headline">R$ 0,00</div><div id="premiumResultNote" class="muted" style="font-size:12px;margin-top:6px">Rentabilidade agregada</div></div><div class="command-card"><div class="label">Renda no mês</div><div id="premiumMonthlyIncome" class="command-headline">R$ 0,00</div><div id="premiumMonthlyIncomeNote" class="muted" style="font-size:12px;margin-top:6px">Proventos recebidos</div></div></div><div class="micro-grid"><div class="micro"><div class="label">Concentração principal</div><div id="advancedConcentration" class="value small">0%</div><div id="advancedConcentrationNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div><div class="micro"><div class="label">Diversificação</div><div id="advancedDiversification" class="value small">0 classes</div><div id="advancedDiversificationNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div><div class="micro"><div class="label">Renda passiva</div><div id="advancedPassive" class="value small positive">R$ 0,00</div><div id="advancedPassiveNote" class="muted" style="font-size:12px;margin-top:6px">Dividendos, juros e rendimentos.</div></div><div class="micro"><div class="label">Score técnico</div><div id="advancedScore" class="value small">0/100</div><div id="advancedScoreNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando dados.</div></div></div></div></div><div class="intelligence-grid"><div class="item"><strong>O que aconteceu este mês</strong><div id="premiumMonthlyBrief" class="priority-stack" style="margin-top:10px">Sem movimentações no mês.</div></div><div class="item"><strong>Prioridades inteligentes</strong><div id="premiumPriorityAlerts" class="priority-stack" style="margin-top:10px">Sem alertas.</div></div><div class="item"><strong>Próxima ação recomendada</strong><div id="premiumPrimaryAction" class="action-hero">Cadastre movimentações no ledger para liberar a inteligência.</div><div id="premiumActionReason" class="muted" style="margin-top:10px;line-height:1.5"></div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Alocação por categoria</strong><div id="advancedAllocation" style="margin-top:10px">Sem dados.</div></div><div class="item"><strong>Alertas inteligentes</strong><div id="advancedAlerts" style="margin-top:10px">Sem alertas.</div></div><div class="item"><strong>Próximo passo sugerido</strong><div id="advancedNextStep" style="margin-top:10px">Cadastre movimentações no ledger para liberar a análise.</div></div></div></div>
+      
+      <div class="card premium-panel dym836-overview" data-screen-block data-screens="overview">
+        <div class="dym836-hero">
+          <div class="dym836-hero-copy">
+            <div class="dym836-eyebrow">Dymivra 8.3.6 • Visão Geral Ultra Premium</div>
+            <h2>Painel executivo da sua vida financeira</h2>
+            <p>Uma leitura única de patrimônio, resultado, renda passiva, risco, diversificação, meta e próxima ação. O app continua educativo: organiza dados e decisões, sem recomendar compra ou venda.</p>
+            <div class="dym836-actions">
+              <button type="button" onclick="showAppScreen('ledger')">Atualizar carteira</button>
+              <button type="button" class="secondary" onclick="showAppScreen('mentor')">Abrir Mentor</button>
+              <button type="button" class="secondary" onclick="showAppScreen('advisor')">Radar IA</button>
+            </div>
+          </div>
+
+          <div class="dym836-score-card">
+            <div class="dym836-score-shell">
+              <div id="premiumScoreRing" class="score-ring dym836-score-ring">
+                <div class="score-inner">
+                  <div id="premiumScoreNumber" class="score-number">0</div>
+                  <div class="score-label">score / 100</div>
+                </div>
+              </div>
+              <div id="premiumScoreStatus" class="dym836-score-status">Aguardando dados do ledger.</div>
+            </div>
+            <div class="dym836-mini-source">
+              <span>Fonte principal</span>
+              <strong id="dym836DataSource">Ledger profissional</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="dym836-kpi-grid">
+          <div class="dym836-kpi-card">
+            <span>Patrimônio analisado</span>
+            <strong id="premiumAnalyzedWealth">R$ 0,00</strong>
+            <em id="premiumWealthNote">Ledger profissional</em>
+          </div>
+          <div class="dym836-kpi-card">
+            <span>Resultado atual</span>
+            <strong id="premiumResult">R$ 0,00</strong>
+            <em id="premiumResultNote">Rentabilidade agregada</em>
+          </div>
+          <div class="dym836-kpi-card">
+            <span>Renda no mês</span>
+            <strong id="premiumMonthlyIncome">R$ 0,00</strong>
+            <em id="premiumMonthlyIncomeNote">Proventos recebidos</em>
+          </div>
+          <div class="dym836-kpi-card">
+            <span>Score técnico</span>
+            <strong id="advancedScore">0/100</strong>
+            <em id="advancedScoreNote">Aguardando dados.</em>
+          </div>
+        </div>
+
+        <div class="dym836-command-grid">
+          <div class="dym836-command-card dym836-primary-action">
+            <div class="dym836-card-top">
+              <div>
+                <span class="dym836-small-label">Próxima melhor ação</span>
+                <h3 id="premiumPrimaryAction">Cadastre movimentações no ledger para liberar a inteligência.</h3>
+              </div>
+              <div class="dym836-icon">→</div>
+            </div>
+            <p id="premiumActionReason">Quanto mais movimentações e preços reais, melhor fica a inteligência do painel.</p>
+            <div id="dym836Route" class="dym836-route">Rota: preencher ledger → definir meta → acompanhar renda → revisar alocação.</div>
+          </div>
+
+          <div class="dym836-command-card">
+            <span class="dym836-small-label">Resumo executivo do mês</span>
+            <div id="premiumMonthlyBrief" class="priority-stack dym836-stack">Sem movimentações no mês.</div>
+          </div>
+
+          <div class="dym836-command-card">
+            <span class="dym836-small-label">Prioridades inteligentes</span>
+            <div id="premiumPriorityAlerts" class="priority-stack dym836-stack">Sem alertas.</div>
+          </div>
+        </div>
+
+        <div class="dym836-pulse-grid">
+          <div class="dym836-pulse-card">
+            <span>Concentração principal</span>
+            <strong id="advancedConcentration">0%</strong>
+            <em id="advancedConcentrationNote">Aguardando dados.</em>
+          </div>
+          <div class="dym836-pulse-card">
+            <span>Diversificação</span>
+            <strong id="advancedDiversification">0 classes</strong>
+            <em id="advancedDiversificationNote">Aguardando dados.</em>
+          </div>
+          <div class="dym836-pulse-card">
+            <span>Renda passiva total</span>
+            <strong id="advancedPassive">R$ 0,00</strong>
+            <em id="advancedPassiveNote">Dividendos, juros e rendimentos.</em>
+          </div>
+          <div class="dym836-pulse-card">
+            <span>Mapa da carteira</span>
+            <strong id="dym836AssetCount">0 ativos</strong>
+            <em id="dym836ClassCount">0 categorias</em>
+          </div>
+        </div>
+
+        <div class="dym836-analytics-grid">
+          <div class="dym836-analytics-card">
+            <div class="dym836-analytics-head">
+              <div>
+                <span class="dym836-small-label">Alocação por categoria</span>
+                <h3>Onde o patrimônio está concentrado</h3>
+              </div>
+              <button type="button" onclick="showAppScreen('allocation')">Abrir alocação</button>
+            </div>
+            <div id="advancedAllocation" class="dym836-allocation">Sem dados.</div>
+          </div>
+
+          <div class="dym836-analytics-card">
+            <div class="dym836-analytics-head">
+              <div>
+                <span class="dym836-small-label">Alertas inteligentes</span>
+                <h3>O que merece atenção</h3>
+              </div>
+              <button type="button" class="secondary" onclick="showAppScreen('advisor')">Radar</button>
+            </div>
+            <div id="advancedAlerts" class="dym836-alerts">Sem alertas.</div>
+          </div>
+
+          <div class="dym836-analytics-card">
+            <div class="dym836-analytics-head">
+              <div>
+                <span class="dym836-small-label">Plano imediato</span>
+                <h3>Próximo passo sugerido</h3>
+              </div>
+              <button type="button" class="secondary" onclick="showAppScreen('goals')">Metas</button>
+            </div>
+            <div id="advancedNextStep" class="dym836-next">Cadastre movimentações no ledger para liberar a análise.</div>
+          </div>
+        </div>
+
+        <div class="dym836-bottom-grid">
+          <div class="dym836-status-card">
+            <span class="dym836-small-label">Pulso financeiro</span>
+            <h3 id="dym836HealthTitle">Carteira em preparação</h3>
+            <p id="dym836HealthBody">Quando houver ativos, preços, renda e metas, a Visão Geral passa a funcionar como um cockpit financeiro.</p>
+          </div>
+          <div class="dym836-status-card">
+            <span class="dym836-small-label">Fluxo do mês</span>
+            <h3 id="dym836CapitalFlow">R$ 0,00</h3>
+            <p id="dym836MonthOps">Sem movimentações registradas no mês atual.</p>
+          </div>
+          <div class="dym836-status-card">
+            <span class="dym836-small-label">Meta patrimonial</span>
+            <h3 id="dym836GoalStatus">Meta não definida</h3>
+            <div class="dym836-goal-bar"><span id="dym836GoalBar" style="width:0%"></span></div>
+            <p id="dym836GoalNote">Defina uma meta para o painel medir avanço.</p>
+          </div>
+        </div>
+      </div>
 
       <div class="card" data-screen-block data-screens="income overview"><div class="section"><div><div class="kicker">Etapa 6B.1 • Renda passiva profissional</div><h3>Painel de proventos e renda passiva</h3><div class="muted">Dividendos, juros, rendimentos, yield sobre custo e ranking de ativos pagadores.</div></div><span id="passiveIncomeBadge" class="badge green">Renda: R$ 0,00</span></div><div class="grid grid4"><div class="mini"><div class="label">Renda passiva total</div><div id="passiveTotal" class="value small positive">R$ 0,00</div><div id="passiveTotalNote" class="muted" style="font-size:12px;margin-top:6px">Proventos registrados no ledger.</div></div><div class="mini"><div class="label">Yield sobre custo</div><div id="passiveYieldCost" class="value small">0,0%</div><div class="muted" style="font-size:12px;margin-top:6px">Renda ÷ capital investido.</div></div><div class="mini"><div class="label">Yield sobre patrimônio</div><div id="passiveYieldCurrent" class="value small">0,0%</div><div class="muted" style="font-size:12px;margin-top:6px">Renda ÷ valor atual.</div></div><div class="mini"><div class="label">Maior pagador</div><div id="passiveTopPayer" class="value small">-</div><div id="passiveTopPayerNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando proventos.</div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Ranking de renda por ativo</strong><div id="passiveRanking" style="margin-top:10px">Sem renda passiva registrada.</div></div><div class="item"><strong>Últimos proventos</strong><div id="passiveRecent" style="margin-top:10px">Nenhum provento ainda.</div></div><div class="item"><strong>Plano de renda</strong><div id="passivePlan" style="margin-top:10px">Registre dividendos, juros ou rendimentos para liberar análise de renda.</div><div class="row" style="margin-top:12px"><button class="success" onclick="preparePassiveIncome()">Registrar provento</button></div></div></div></div>
 
@@ -13869,6 +14372,175 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
         setTimeout(dym835RenderWelcome,900);
       }catch{}
     })();
+
+
+
+
+/* ==========================================================
+   Dymivra 8.3.6 • Motor visual da Visão Geral
+   Usa os mesmos dados e funções já existentes no app.
+   ========================================================== */
+(function(){
+  function dym836Text(id,value){
+    const el=document.getElementById(id);
+    if(el)el.textContent=value;
+  }
+  function dym836Html(id,value){
+    const el=document.getElementById(id);
+    if(el)el.innerHTML=value;
+  }
+  function dym836Money(v){
+    try{return typeof money==='function'?money(Number(v||0)):'R$ '+Number(v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}
+    catch{return 'R$ 0,00'}
+  }
+  function dym836Pnl(v){
+    try{return typeof pnl==='function'?pnl(Number(v||0)):dym836Money(v)}
+    catch{return dym836Money(v)}
+  }
+  function dym836Pct(v){
+    try{return typeof pct==='function'?pct(Number(v||0)):Number(v||0).toFixed(1)+'%'}
+    catch{return '0,0%'}
+  }
+  function dym836Esc(v){
+    try{return typeof esc==='function'?esc(String(v??'')):String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+    catch{return String(v??'')}
+  }
+
+  window.dym836RenderOverview=function(inv,cur,pl){
+    try{
+      const list=typeof mainAssets==='function'?mainAssets():[];
+      const total=Number(cur||0);
+      const invested=Number(inv||0);
+      const result=Number(pl||0);
+      const passive=Number((window.summary&&summary.total_passive_income)||0);
+      const ledger=typeof usingLedger==='function'?usingLedger():false;
+      dym836Text('dym836DataSource',ledger?'Ledger profissional':'Cadastro atual');
+
+      const byCat={};
+      list.forEach(item=>{
+        const cat=item.category||'Outros';
+        byCat[cat]=(byCat[cat]||0)+Number(item.current_value||0);
+      });
+      const cats=Object.entries(byCat).sort((a,b)=>b[1]-a[1]);
+      dym836Text('dym836AssetCount',`${list.length} ${list.length===1?'ativo':'ativos'}`);
+      dym836Text('dym836ClassCount',`${cats.length} ${cats.length===1?'categoria':'categorias'}`);
+
+      const sorted=[...list].sort((a,b)=>Number(b.current_value||0)-Number(a.current_value||0));
+      const top=sorted[0];
+      const topShare=total>0&&top?Number(top.current_value||0)/total*100:0;
+      const ret=invested?result/invested*100:0;
+
+      let month={passive:0,buys:0,sells:0,costs:0,net:0,count:0,passiveItems:[]};
+      try{
+        if(typeof currentMonthKey==='function'&&typeof monthlyBuckets==='function'){
+          const key=currentMonthKey();
+          month=monthlyBuckets().find(x=>x.key===key)||month;
+        }
+      }catch{}
+
+      dym836Text('dym836CapitalFlow',dym836Pnl(month.net||0));
+      dym836Text('dym836MonthOps',month.count?`${month.count} movimentação(ões) no mês • Compras: ${dym836Money(month.buys||0)} • Renda: ${dym836Money(month.passive||0)}`:'Sem movimentações registradas no mês atual.');
+
+      let goalPct=0,goalLabel='Meta não definida',goalNote='Defina uma meta para o painel medir avanço.';
+      try{
+        if(typeof goalStats==='function'){
+          const g=goalStats(total);
+          if(g&&g.target){
+            goalPct=Math.max(0,Math.min(100,Number(g.progress||0)));
+            goalLabel=(g.display||`${goalPct.toFixed(1)}% concluída`);
+            goalNote=`Meta: ${dym836Money(g.target)} • Falta: ${dym836Money(Math.max(Number(g.target||0)-total,0))}`;
+          }
+        }else if(window.goal&&Number(goal.targetValue)>0){
+          goalPct=Math.max(0,Math.min(100,total/Number(goal.targetValue)*100));
+          goalLabel=goalPct.toFixed(1)+'% concluída';
+          goalNote=`Meta: ${dym836Money(goal.targetValue)} • Falta: ${dym836Money(Math.max(Number(goal.targetValue)-total,0))}`;
+        }
+      }catch{}
+      dym836Text('dym836GoalStatus',goalLabel);
+      dym836Text('dym836GoalNote',goalNote);
+      const goalBar=document.getElementById('dym836GoalBar');
+      if(goalBar)goalBar.style.width=goalPct+'%';
+
+      let healthTitle='Carteira em preparação';
+      let healthBody='Quando houver ativos, preços, renda e metas, a Visão Geral passa a funcionar como um cockpit financeiro.';
+      if(list.length){
+        if(topShare>=70){
+          healthTitle='Atenção à concentração';
+          healthBody=`${dym836Esc(top?.asset||'Um ativo')} concentra ${topShare.toFixed(1)}% da carteira. O painel vai priorizar equilíbrio, diversificação e acompanhamento.`;
+        }else if(cats.length>=3&&ret>=0&&passive>0){
+          healthTitle='Base financeira saudável';
+          healthBody='A carteira tem diversificação, resultado não negativo e renda passiva registrada. O próximo nível é acompanhar metas e evolução mensal.';
+        }else if(cats.length>=2){
+          healthTitle='Carteira em evolução';
+          healthBody='Já existe uma base organizada. Agora o foco é melhorar qualidade dos dados, renda, metas e equilíbrio por categoria.';
+        }else{
+          healthTitle='Primeira camada montada';
+          healthBody='Os dados começaram a aparecer. Adicione mais categorias, preços e movimentações para liberar análises melhores.';
+        }
+      }
+      dym836Text('dym836HealthTitle',healthTitle);
+      dym836Text('dym836HealthBody',healthBody);
+
+      let route='Rota: preencher ledger → definir meta → acompanhar renda → revisar alocação.';
+      if(!list.length)route='Rota: registrar primeiro ativo → atualizar preço → criar meta.';
+      else if(!goalPct)route='Rota: definir meta patrimonial → medir avanço → ajustar aportes.';
+      else if(passive<=0)route='Rota: registrar proventos → acompanhar renda mensal → projetar liberdade.';
+      else if(topShare>=55)route='Rota: revisar concentração → comparar categorias → planejar próximos aportes.';
+      else route='Rota: manter atualização mensal → salvar snapshots → acompanhar evolução.';
+      dym836Text('dym836Route',route);
+
+      if(!list.length){
+        dym836Html('premiumMonthlyBrief','<div class="priority-item mid">Comece pelo ledger para o Dymivra transformar dados em inteligência.</div>');
+        dym836Html('premiumPriorityAlerts','<div class="priority-item mid">Sem carteira suficiente para avaliar risco, renda e diversificação.</div>');
+      }
+    }catch(e){
+      console.warn('Dymivra 8.3.6 overview render:',e);
+    }
+  };
+
+  function dym836WrapRenderers(){
+    try{
+      if(typeof window.renderPremiumCommandCenter==='function'&&!window.__dym836PremiumWrapped){
+        const original=window.renderPremiumCommandCenter;
+        window.__dym836PremiumWrapped=true;
+        window.renderPremiumCommandCenter=function(inv,cur,pl){
+          const out=original.apply(this,arguments);
+          setTimeout(()=>window.dym836RenderOverview(inv,cur,pl),0);
+          return out;
+        };
+      }
+      if(typeof window.renderAdvancedDashboard==='function'&&!window.__dym836AdvancedWrapped){
+        const originalAdvanced=window.renderAdvancedDashboard;
+        window.__dym836AdvancedWrapped=true;
+        window.renderAdvancedDashboard=function(inv,cur,pl){
+          const out=originalAdvanced.apply(this,arguments);
+          setTimeout(()=>window.dym836RenderOverview(inv,cur,pl),0);
+          return out;
+        };
+      }
+      if(typeof window.showAppScreen==='function'&&!window.__dym836ScreenWrapped){
+        const originalScreen=window.showAppScreen;
+        window.__dym836ScreenWrapped=true;
+        window.showAppScreen=function(screen){
+          const out=originalScreen.apply(this,arguments);
+          setTimeout(()=>window.dym836RenderOverview(
+            Number((window.summary&&summary.total_invested)||0),
+            Number((window.summary&&summary.current_value)||0),
+            Number((window.summary&&summary.profit_loss)||0)
+          ),80);
+          return out;
+        };
+      }
+    }catch(e){}
+  }
+  dym836WrapRenderers();
+  setTimeout(dym836WrapRenderers,300);
+  setTimeout(()=>window.dym836RenderOverview(
+    Number((window.summary&&summary.total_invested)||0),
+    Number((window.summary&&summary.current_value)||0),
+    Number((window.summary&&summary.profit_loss)||0)
+  ),600);
+})();
 
 </script>
 </body>
