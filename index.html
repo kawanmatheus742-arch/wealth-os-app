@@ -8852,7 +8852,135 @@ body.performance-mode .pulse-screen,.performance-mode .pulse-main,.performance-m
 @media(max-width:1180px){.pulse-hero,.pulse-lanes{grid-template-columns:1fr}.pulse-metrics{grid-template-columns:1fr 1fr}.pulse-actions{grid-template-columns:1fr 1fr}.pulse-sim-grid{grid-template-columns:1fr 1fr}.pulse-sim-grid button{grid-column:1/-1}}
 @media(max-width:760px){.pulse-shell{padding:14px;gap:14px}.pulse-screen{border-radius:26px}.pulse-main,.pulse-score-panel,.pulse-lane,.pulse-simulator,.pulse-console{border-radius:24px;padding:16px}.pulse-kicker{font-size:10.5px;letter-spacing:.1em;width:100%;justify-content:center;text-align:center}.pulse-title{font-size:clamp(36px,12vw,56px);letter-spacing:-.075em;line-height:.96}.pulse-sub{font-size:15px;line-height:1.55}.pulse-ring{width:160px;height:160px}.pulse-ring-inner strong{font-size:36px}.pulse-metrics,.pulse-actions,.pulse-console-grid,.pulse-mini-actions,.pulse-sim-grid{grid-template-columns:1fr}.pulse-signal,.pulse-task{grid-template-columns:auto minmax(0,1fr)}.pulse-signal .grade,.pulse-task .screen-tag{grid-column:2}.pulse-impact-row{grid-template-columns:1fr}.pulse-impact-row > span:last-child{text-align:left}.pulse-card{min-height:auto}.pulse-card strong{font-size:25px}}
 
-</style></head>
+</style><style>
+
+/* =========================================================
+   Dymivra 8.4.2 — Jornada Guiada Premium
+   Organização real da experiência: Comece aqui, etapas, trilha,
+   próximos passos e navegação agrupada sem quebrar lógica existente.
+   ========================================================= */
+#appSection .app-nav.app-nav-pro{align-items:center!important;gap:8px!important;scroll-padding-left:12px!important}
+.nav-group-label{
+  flex:0 0 auto;
+  height:32px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 10px;
+  border-radius:999px;
+  color:#93c5fd;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  background:rgba(15,23,42,.52);
+  border:1px solid rgba(125,211,252,.10);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+  white-space:nowrap;
+}
+#appSection .nav-btn.journey-nav-primary{
+  border-color:rgba(250,204,21,.34)!important;
+  color:#fef3c7!important;
+  background:radial-gradient(circle at 50% 0%,rgba(250,204,21,.15),transparent 44%),linear-gradient(180deg,rgba(63,42,12,.62),rgba(15,23,42,.74))!important;
+}
+#appSection .nav-btn.journey-nav-primary.active{
+  color:#1b1200!important;
+  border-color:rgba(254,243,199,.76)!important;
+  background:linear-gradient(135deg,#fef3c7,#facc15 34%,#fb923c 68%,#22d3ee)!important;
+}
+.dymivra842-rail{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(125,211,252,.18);
+  border-radius:28px;
+  padding:14px;
+  background:
+    radial-gradient(circle at 4% 0%,rgba(34,211,238,.13),transparent 28%),
+    radial-gradient(circle at 96% 0%,rgba(250,204,21,.10),transparent 28%),
+    linear-gradient(180deg,rgba(4,12,26,.94),rgba(2,6,23,.92));
+  box-shadow:0 16px 42px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.045);
+  display:grid;
+  grid-template-columns:.95fr 1.05fr auto;
+  gap:12px;
+  align-items:center;
+}
+.dymivra842-rail:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent,rgba(255,255,255,.035),transparent)}
+.dymivra842-rail > *{position:relative;z-index:1}
+.dymivra842-rail-title{display:flex;gap:10px;align-items:center;min-width:0}
+.dymivra842-rail-icon{width:44px;height:44px;min-width:44px;border-radius:17px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(250,204,21,.22),rgba(34,211,238,.12));border:1px solid rgba(250,204,21,.20);box-shadow:0 12px 28px rgba(0,0,0,.20)}
+.dymivra842-rail-title strong{display:block;color:#fff;font-size:15px;letter-spacing:-.035em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dymivra842-rail-title span{display:block;color:#9fb6d7;font-size:12px;line-height:1.35;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dymivra842-rail-steps{display:flex;gap:6px;align-items:center;overflow:auto;scrollbar-width:none;padding:2px 0}
+.dymivra842-rail-steps::-webkit-scrollbar{height:0}
+.dymivra842-rail-dot{flex:0 0 auto;min-width:34px;height:34px;border-radius:999px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:#93a8c9;font-size:12px;font-weight:950;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
+.dymivra842-rail-dot.done{color:#dcfce7;border-color:rgba(34,197,94,.26);background:rgba(34,197,94,.11)}
+.dymivra842-rail-dot.active{color:#07111f;border-color:rgba(254,243,199,.88);background:linear-gradient(135deg,#fef3c7,#facc15,#22d3ee);box-shadow:0 0 24px rgba(250,204,21,.16)}
+.dymivra842-rail-action{min-width:150px;margin:0!important;height:44px!important;border-radius:17px!important;background:linear-gradient(135deg,#f59e0b,#facc15 54%,#22d3ee)!important;color:#111827!important;border-color:rgba(254,243,199,.54)!important;box-shadow:0 16px 34px rgba(250,204,21,.16)!important}
+.dymivra842-shell{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(250,204,21,.22)!important;
+  background:
+    radial-gradient(circle at 0% 0%,rgba(250,204,21,.13),transparent 30%),
+    radial-gradient(circle at 100% 0%,rgba(34,211,238,.13),transparent 32%),
+    linear-gradient(180deg,rgba(7,13,26,.97),rgba(2,6,23,.98))!important;
+}
+.dymivra842-shell:after{content:"";position:absolute;right:-110px;top:60px;width:290px;height:290px;border-radius:50%;background:radial-gradient(circle,rgba(250,204,21,.12),transparent 70%);pointer-events:none;filter:blur(2px)}
+.dymivra842-shell > *{position:relative;z-index:1}
+.dymivra842-hero{display:grid;grid-template-columns:1.02fr .98fr;gap:16px;align-items:stretch}
+.dymivra842-hero-main,.dymivra842-next-card,.dymivra842-panel,.dymivra842-step-card,.dymivra842-route-card,.dymivra842-metric-card{
+  border:1px solid rgba(255,255,255,.085);
+  background:rgba(7,16,33,.72);
+  border-radius:26px;
+  padding:18px;
+  box-shadow:0 14px 36px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.035);
+}
+.dymivra842-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:rgba(250,204,21,.10);border:1px solid rgba(250,204,21,.18);color:#fef3c7;font-size:12px;font-weight:950;letter-spacing:.08em;text-transform:uppercase}
+.dymivra842-title{margin:14px 0 0;font-size:clamp(38px,5.4vw,82px);line-height:.92;letter-spacing:-.095em;font-weight:950;color:#fff;text-shadow:0 0 28px rgba(250,204,21,.09)}
+.dymivra842-subtitle{margin:14px 0 0;color:#cbd5e1;line-height:1.62;font-size:15px;max-width:820px}
+.dymivra842-progress-wrap{margin-top:18px;display:grid;gap:10px}
+.dymivra842-progress-head{display:flex;justify-content:space-between;gap:10px;align-items:center;color:#e5e7eb;font-size:13px;font-weight:900}
+.dymivra842-progress-bar{height:16px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.06);overflow:hidden}
+.dymivra842-progress-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#22c55e,#22d3ee,#facc15);box-shadow:0 0 24px rgba(34,211,238,.16);width:0%;transition:width .35s ease}
+.dymivra842-next-card{background:linear-gradient(180deg,rgba(12,22,44,.90),rgba(4,12,26,.90));border-color:rgba(34,211,238,.17)}
+.dymivra842-next-label{color:#93c5fd;font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.12em}
+.dymivra842-next-title{font-size:32px;font-weight:950;line-height:1;letter-spacing:-.07em;margin-top:10px;color:#fff}
+.dymivra842-next-copy{color:#cbd5e1;line-height:1.55;margin-top:10px}
+.dymivra842-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.dymivra842-actions button{margin:0!important;min-height:50px;border-radius:18px!important}
+.dymivra842-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+.dymivra842-metric-card span{display:block;color:#8ea3c7;font-size:12px;font-weight:850;margin-bottom:6px}
+.dymivra842-metric-card strong{display:block;color:#fff;font-size:clamp(18px,2.2vw,27px);line-height:1.05;letter-spacing:-.05em}
+.dymivra842-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;margin-top:16px}
+.dymivra842-step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.dymivra842-step-card{min-height:172px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;transition:.18s ease}
+.dymivra842-step-card:hover{transform:translateY(-2px);border-color:rgba(34,211,238,.24)}
+.dymivra842-step-card.done{border-color:rgba(34,197,94,.26);background:rgba(34,197,94,.065)}
+.dymivra842-step-card.active{border-color:rgba(250,204,21,.34);background:linear-gradient(180deg,rgba(250,204,21,.10),rgba(7,16,33,.72));box-shadow:0 0 0 1px rgba(250,204,21,.06),0 18px 44px rgba(250,204,21,.08)}
+.dymivra842-step-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.dymivra842-step-no{width:38px;height:38px;border-radius:15px;display:grid;place-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-weight:950;color:#e0f2fe}
+.dymivra842-step-status{padding:6px 8px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);font-size:11px;font-weight:950;color:#cbd5e1;white-space:nowrap}
+.dymivra842-step-card.done .dymivra842-step-status{color:#bbf7d0;background:rgba(34,197,94,.10);border-color:rgba(34,197,94,.20)}
+.dymivra842-step-card.active .dymivra842-step-status{color:#fef3c7;background:rgba(250,204,21,.11);border-color:rgba(250,204,21,.20)}
+.dymivra842-step-title{font-size:21px;font-weight:950;letter-spacing:-.05em;line-height:1.06;color:#fff}
+.dymivra842-step-text{color:#9fb6d7;font-size:13px;line-height:1.45;margin-top:6px}
+.dymivra842-step-card button{margin:0!important;min-height:42px;border-radius:16px!important}
+.dymivra842-panel h3{margin:0 0 8px;font-size:22px;letter-spacing:-.05em}
+.dymivra842-panel-copy{color:#cbd5e1;line-height:1.52;margin-bottom:12px}
+.dymivra842-checklist{display:grid;gap:10px}
+.dymivra842-check{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:12px;border-radius:18px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07)}
+.dymivra842-check b{display:block;color:#fff;margin-bottom:2px}.dymivra842-check span{display:block;color:#8ea3c7;font-size:12px;line-height:1.35}.dymivra842-check em{font-style:normal;color:#bbf7d0;font-weight:950}.dymivra842-check.todo em{color:#fef3c7}.dymivra842-check.warn em{color:#fed7aa}
+.dymivra842-route{display:grid;gap:10px;margin-top:12px}
+.dymivra842-route-card{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;padding:14px;border-radius:20px}
+.dymivra842-route-icon{width:40px;height:40px;border-radius:15px;display:grid;place-items:center;background:rgba(34,211,238,.10);border:1px solid rgba(34,211,238,.15)}
+.dymivra842-route-card strong{display:block;color:#fff;margin-bottom:3px}.dymivra842-route-card span{display:block;color:#9fb6d7;font-size:12px;line-height:1.35}
+.dymivra842-screen-guide{margin-top:10px;padding:13px 14px;border-radius:18px;border:1px solid rgba(34,211,238,.14);background:rgba(34,211,238,.055);color:#dbeafe;line-height:1.5;font-size:14px}
+.dymivra842-screen-guide strong{color:#fff}
+body.performance-mode .dymivra842-rail,body.performance-mode .dymivra842-shell,body.performance-mode .dymivra842-step-card{backdrop-filter:none!important;box-shadow:0 8px 20px rgba(0,0,0,.20)!important;transition:none!important}
+@media(max-width:1120px){.dymivra842-rail,.dymivra842-hero,.dymivra842-layout{grid-template-columns:1fr}.dymivra842-metrics{grid-template-columns:1fr 1fr}.dymivra842-step-grid{grid-template-columns:1fr 1fr}.dymivra842-rail-action{width:100%}.nav-group-label{display:none}}
+@media(max-width:760px){.dymivra842-rail{padding:12px;border-radius:24px;gap:10px}.dymivra842-rail-title strong{font-size:14px}.dymivra842-rail-title span{white-space:normal}.dymivra842-rail-steps{order:3}.dymivra842-actions,.dymivra842-step-grid,.dymivra842-metrics{grid-template-columns:1fr}.dymivra842-hero-main,.dymivra842-next-card,.dymivra842-panel,.dymivra842-step-card,.dymivra842-route-card,.dymivra842-metric-card{border-radius:22px;padding:15px}.dymivra842-title{font-size:clamp(36px,12vw,58px)}.dymivra842-next-title{font-size:28px}.dymivra842-check{grid-template-columns:auto 1fr}.dymivra842-check em{grid-column:1 / -1}.dymivra842-rail-action{height:46px!important}.dymivra842-rail-dot{min-width:32px;height:32px}.dymivra842-screen-guide{font-size:13px}}
+</style>
+</head>
 <body class="dymivra781-premium">
 <div aria-hidden="true" class="wealth-aurora-stage" id="wealthAuroraStage"><span class="aurora-orb orb-a"></span><span class="aurora-orb orb-b"></span><span class="aurora-orb orb-c"></span><span class="aurora-grid"></span></div>
 <div aria-hidden="true" class="wealth-scroll-progress" id="wealthScrollProgress"><span id="wealthScrollProgressFill"></span></div>
@@ -8953,21 +9081,27 @@ body.performance-mode .pulse-screen,.performance-mode .pulse-main,.performance-m
 </div>
 <div class="grid" id="appSection">
 <div aria-label="Navegação principal" class="app-nav app-nav-pro" id="appNav" role="navigation">
+<span class="nav-group-label">Comece</span>
 <button class="nav-btn active" data-screen="overview" onclick="showAppScreen('overview')" type="button">🏠 Visão geral</button>
+<button class="nav-btn journey-nav-primary" data-screen="journey" onclick="showAppScreen('journey')" type="button">🧭 Jornada</button>
 <button class="nav-btn pulse-nav-highlight" data-screen="pulse" onclick="showAppScreen('pulse')" type="button">⚡ Pulse</button>
+<span class="nav-group-label">Carteira</span>
 <button class="nav-btn" data-screen="ledger" onclick="showAppScreen('ledger')" type="button">📒 Ledger</button>
-<button class="nav-btn" data-screen="income" onclick="showAppScreen('income')" type="button">💸 Renda</button>
-<button class="nav-btn" data-screen="liberty" onclick="showAppScreen('liberty')" type="button">🕊️ Liberdade</button>
 <button class="nav-btn" data-screen="allocation" onclick="showAppScreen('allocation')" type="button">🧭 Alocação</button>
+<button class="nav-btn" data-screen="history" onclick="showAppScreen('history')" type="button">📈 Histórico</button>
+<span class="nav-group-label">Crescimento</span>
 <button class="nav-btn" data-screen="profile" onclick="showAppScreen('profile')" type="button">🧬 Perfil</button>
+<button class="nav-btn" data-screen="goals" onclick="showAppScreen('goals')" type="button">🎯 Metas</button>
+<button class="nav-btn" data-screen="income" onclick="showAppScreen('income')" type="button">💸 Renda</button>
+<button class="nav-btn" data-screen="projections" onclick="showAppScreen('projections')" type="button">🔮 Projeções</button>
+<button class="nav-btn" data-screen="liberty" onclick="showAppScreen('liberty')" type="button">🕊️ Liberdade</button>
+<span class="nav-group-label">Inteligência</span>
 <button class="nav-btn" data-screen="ai" onclick="showAppScreen('ai')" type="button">🤖 IA Dymivra</button>
 <button class="nav-btn" data-screen="advisor" onclick="showAppScreen('advisor')" type="button">🚨 Radar IA</button>
 <button class="nav-btn" data-screen="mentor" onclick="showAppScreen('mentor')" type="button">🧠 Mentor</button>
+<span class="nav-group-label">Conta</span>
 <button class="nav-btn" data-screen="plans" onclick="showAppScreen('plans')" type="button">💎 Planos</button>
 <button class="nav-btn" data-screen="app" onclick="showAppScreen('app')" type="button">📱 App</button>
-<button class="nav-btn" data-screen="history" onclick="showAppScreen('history')" type="button">📈 Histórico</button>
-<button class="nav-btn" data-screen="goals" onclick="showAppScreen('goals')" type="button">🎯 Metas</button>
-<button class="nav-btn" data-screen="projections" onclick="showAppScreen('projections')" type="button">🔮 Projeções</button>
 <button class="nav-btn" data-screen="legal" onclick="showAppScreen('legal')" type="button">⚖️ Legal</button>
 <button class="nav-btn" data-screen="settings" onclick="showAppScreen('settings')" type="button">⚙️ Apoio</button>
 <button class="nav-btn" data-screen="all" onclick="showAppScreen('all')" type="button">🧩 Tudo</button>
@@ -9003,6 +9137,60 @@ body.performance-mode .pulse-screen,.performance-mode .pulse-main,.performance-m
 </div>
 </div>
 <div class="screen-intro" id="screenIntro"><strong>Visão geral</strong> — painel executivo com patrimônio, inteligência, score e principais alertas.</div>
+
+<div class="dymivra842-rail" id="dymivra842Rail">
+  <div class="dymivra842-rail-title">
+    <div class="dymivra842-rail-icon">🧭</div>
+    <div>
+      <strong id="dymivra842RailTitle">Jornada Dymivra</strong>
+      <span id="dymivra842RailSub">O app agora mostra o que fazer primeiro, segundo e depois.</span>
+    </div>
+  </div>
+  <div class="dymivra842-rail-steps" id="dymivra842RailSteps" aria-label="Etapas da jornada"></div>
+  <button class="dymivra842-rail-action" onclick="dymivra842GoNext()" type="button" id="dymivra842RailButton">Próximo passo</button>
+</div>
+<div class="card premium-panel dymivra842-shell screen-hidden" data-screen-block="" data-screens="journey">
+  <div class="dymivra842-hero">
+    <div class="dymivra842-hero-main">
+      <div class="dymivra842-eyebrow">🧭 Dymivra 8.4.2 • Comece aqui</div>
+      <h2 class="dymivra842-title">Jornada Guiada Premium</h2>
+      <p class="dymivra842-subtitle">Agora o Dymivra não é só um conjunto de telas. Ele vira um caminho: define perfil, organiza metas, alimenta a carteira, entende a alocação, mede renda, projeta o futuro e termina no Pulse com a próxima decisão.</p>
+      <div class="dymivra842-progress-wrap">
+        <div class="dymivra842-progress-head"><span>Progresso da organização</span><strong id="dymivra842ProgressText">0%</strong></div>
+        <div class="dymivra842-progress-bar"><div class="dymivra842-progress-fill" id="dymivra842ProgressFill"></div></div>
+      </div>
+      <div class="dymivra842-metrics">
+        <div class="dymivra842-metric-card"><span>Patrimônio lido</span><strong id="dymivra842MetricWealth">R$ 0,00</strong></div>
+        <div class="dymivra842-metric-card"><span>Etapas prontas</span><strong id="dymivra842MetricDone">0/9</strong></div>
+        <div class="dymivra842-metric-card"><span>Dados da carteira</span><strong id="dymivra842MetricAssets">0 ativos</strong></div>
+        <div class="dymivra842-metric-card"><span>Prioridade</span><strong id="dymivra842MetricPriority">Começar</strong></div>
+      </div>
+    </div>
+    <div class="dymivra842-next-card">
+      <div class="dymivra842-next-label">O que mexer agora</div>
+      <div class="dymivra842-next-title" id="dymivra842NextTitle">Carregando...</div>
+      <div class="dymivra842-next-copy" id="dymivra842NextCopy">Analisando o estado atual do app.</div>
+      <div class="dymivra842-actions">
+        <button class="gold" onclick="dymivra842GoNext()" type="button">Me guiar agora</button>
+        <button class="secondary" onclick="dymivra842CopyPlan()" type="button">Copiar roteiro</button>
+      </div>
+      <div class="dymivra842-screen-guide" id="dymivra842NextReason"><strong>Guia:</strong> comece pela primeira etapa incompleta.</div>
+    </div>
+  </div>
+  <div class="dymivra842-layout">
+    <div class="dymivra842-panel">
+      <h3>Ordem certa das telas</h3>
+      <div class="dymivra842-panel-copy">Cada card abaixo mostra o papel da tela, se ela já está pronta e para onde o usuário deve ir. É a organização que estava faltando.</div>
+      <div class="dymivra842-step-grid" id="dymivra842StepGrid"></div>
+    </div>
+    <div class="dymivra842-panel">
+      <h3>Checklist inteligente</h3>
+      <div class="dymivra842-panel-copy">O Dymivra confere dados básicos e transforma o app em uma jornada simples de seguir.</div>
+      <div class="dymivra842-checklist" id="dymivra842Checklist"></div>
+      <div class="dymivra842-route" id="dymivra842RouteMap"></div>
+    </div>
+  </div>
+</div>
 <div class="dymivra781-command">
 <div class="dymivra781-command-top">
 <div class="dymivra781-brand">
@@ -9013,9 +9201,9 @@ body.performance-mode .pulse-screen,.performance-mode .pulse-main,.performance-m
 </div>
 </div>
 <div class="dymivra781-chips">
-<button class="dymivra781-chip primary" onclick="showAppScreen('mentor')" type="button">Mentor</button>
-<button class="dymivra781-chip" onclick="showAppScreen('advisor')" type="button">Radar IA</button>
-<button class="dymivra781-chip" onclick="showAppScreen('plans')" type="button">Planos</button>
+<button class="dymivra781-chip primary" onclick="showAppScreen('journey')" type="button">Jornada</button>
+<button class="dymivra781-chip" onclick="showAppScreen('pulse')" type="button">Pulse</button>
+<button class="dymivra781-chip" onclick="showAppScreen('mentor')" type="button">Mentor</button>
 <button class="dymivra781-chip" onclick="window.scrollTo({top:0,behavior:'smooth'})" type="button">Topo</button>
 </div>
 </div>
@@ -11222,6 +11410,7 @@ body.performance-mode .pulse-screen,.performance-mode .pulse-main,.performance-m
     window.handleAuth=async()=>{if(loading.auth)return;const email=$('email').value.trim(),password=$('password').value.trim();if(!email||!password){status($('authStatus'),'Preencha email e senha.','error');return}if(password.length<6){status($('authStatus'),'A senha precisa ter pelo menos 6 caracteres.','error');return}if(!requireOnline())return;loading.auth=true;btn($('authBtn'),true,loginMode?'Entrando...':'Criando...');showActionOverlay(loginMode?'Entrando com segurança':'Criando conta','Validando acesso pelo Supabase...','🔐');try{const r=loginMode?await supabase.auth.signInWithPassword({email,password}):await supabase.auth.signUp({email,password});if(r.error)throw r.error;if(!loginMode){toast('Conta criada. Agora faça login.','success');loginMode=true;toggleAuthMode();}else toast('Login realizado.','success')}catch(e){status($('authStatus'),e.message||'Erro no acesso.','error');toast(e.message||'Erro no acesso.','error')}finally{loading.auth=false;btn($('authBtn'),false);hideActionOverlay()}}
     
     const screenTexts={
+      journey:['Jornada Guiada','comece aqui: ordem certa das telas, checklist inteligente, próxima ação e mapa do que preencher primeiro.'],
       overview:['Visão geral','cockpit premium total com patrimônio, comandos, inteligência, renda, risco, alocação e próximos passos.'],
       pulse:['Pulse 8.4.1','motor de decisão educativo que lê carteira, ledger, renda, metas, risco e alocação para mostrar prioridade, impacto e plano de 7 dias.'],
       ledger:['Ledger Premium Total','registre movimentações, audite preços, acompanhe posições calculadas e controle o extrato em uma tela de comando premium.'],
@@ -11449,7 +11638,7 @@ let deferredInstallPrompt=null;
     window.showAppScreen=function(screen='overview',smooth=true){
       const wanted=screenTexts[screen]?screen:'overview';
       try{
-        const dymivra839Screens=['all','overview','pulse','ledger','income','liberty','allocation','profile','ai','advisor','mentor','plans','app','history','goals','projections','legal','settings'];
+        const dymivra839Screens=['all','overview','journey','pulse','ledger','income','liberty','allocation','profile','ai','advisor','mentor','plans','app','history','goals','projections','legal','settings'];
         dymivra839Screens.forEach(sc=>document.body.classList.toggle(`screen-${sc}-active`,wanted===sc));
         document.documentElement.style.overflowY='auto';
         document.body.style.overflowY='auto';
@@ -11467,6 +11656,9 @@ let deferredInstallPrompt=null;
         const [title,text]=screenTexts[wanted];
         intro.innerHTML=`<strong>${title}</strong> — ${text}`;
       }
+      window.currentScreen=wanted;
+      try{renderDymivra781Premium(wanted)}catch{}
+      try{updateDymivra842JourneyRail(wanted)}catch{}
       try{localStorage.setItem(navKey(),wanted)}catch{};updatePerformanceUI();updateAppReadiness();scheduleScreenRender(wanted);
       if(smooth){try{window.wealthScrollToTop(true)}catch{const behavior=document.body.classList.contains('performance-mode')?'auto':'smooth';window.scrollTo({top:0,behavior});}}
       try{setTimeout(bindWealthFloatingTop,120)}catch{}
@@ -13792,6 +13984,7 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
        ========================================================= */
     function renderDymivra781Premium(screen){
       const map={
+        journey:['Jornada Dymivra','Ordem certa das telas, checklist e próximo passo para não se perder no app.'],
         overview:['Central Dymivra','Patrimônio, carteira, metas e próximos passos em uma visão limpa.'],
         pulse:['Dymivra Pulse','Prioridade agora, impacto estimado, sinais de risco e plano de 7 dias.'],
         ledger:['Ledger organizado','Ativos, movimentações, renda passiva e histórico em ordem.'],
@@ -13840,6 +14033,7 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
       idleTask(()=>{
         const t=mainTotals(),inv=t.inv,cur=t.cur,pl=t.pl;
         if(screen==='overview'){renderPremiumCommandCenter(inv,cur,pl);renderAdvancedDashboard(inv,cur,pl);renderInsights(inv,cur,pl);}
+        if(screen==='journey'){renderDymivra842Journey();}
         if(screen==='pulse'){renderDymivra841Pulse();}
         if(screen==='ledger'){renderSummary();renderMovements();renderPositions();renderAssets();renderPriceCenter();}
         if(screen==='income'){renderPassiveIncomeDashboard(inv,cur);renderMonthlyReport();}
@@ -13853,9 +14047,151 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
         if(screen==='settings'){updatePerformanceUI();updateAppReadiness();}
         if(screen==='advisor'){renderSmartAdvisor();}
         if(screen==='mentor'){renderDymivra760Mentor();}
-        if(screen==='all'){renderWealthAI();renderSmartAdvisor();renderProjectionEngine();renderWealthActionPlan();renderWealthPlans();try{renderDymivra770Billing()}catch{};renderDymivra760Mentor();renderDymivra841Pulse();}
+        if(screen==='all'){renderWealthAI();renderSmartAdvisor();renderProjectionEngine();renderWealthActionPlan();renderWealthPlans();try{renderDymivra770Billing()}catch{};renderDymivra760Mentor();renderDymivra841Pulse();renderDymivra842Journey();}
       },50);
     }
+
+    /* =========================================================
+       Dymivra 8.4.2 — Jornada Guiada Premium
+       ========================================================= */
+    function dymivra842Steps(){
+      return [
+        {screen:'profile',icon:'🧬',title:'Perfil',verb:'Definir quem é o investidor',why:'Escolha o perfil para o app entender risco, estilo e carteira-alvo.'},
+        {screen:'goals',icon:'🎯',title:'Metas',verb:'Definir para onde vai',why:'Registre patrimônio alvo e aporte mensal para dar direção às projeções.'},
+        {screen:'ledger',icon:'📒',title:'Ledger',verb:'Cadastrar o que já existe',why:'Compras, vendas, proventos e custos alimentam todo o Dymivra.'},
+        {screen:'overview',icon:'🏠',title:'Visão geral',verb:'Ler o retrato atual',why:'Veja patrimônio, resultado, renda, saúde e alertas em um só painel.'},
+        {screen:'allocation',icon:'🧭',title:'Alocação',verb:'Organizar a carteira',why:'Compare carteira atual com carteira-alvo e descubra onde aportar.'},
+        {screen:'income',icon:'💸',title:'Renda',verb:'Medir renda passiva',why:'Acompanhe proventos, yield, maior pagador e meta mensal de renda.'},
+        {screen:'projections',icon:'🔮',title:'Projeções',verb:'Enxergar o futuro',why:'Simule crescimento, prazo, cenários e contribuição necessária.'},
+        {screen:'liberty',icon:'🕊️',title:'Liberdade',verb:'Traduzir em independência',why:'Transforme patrimônio e renda em caminho para liberdade financeira.'},
+        {screen:'pulse',icon:'⚡',title:'Pulse',verb:'Decidir o próximo movimento',why:'O motor de decisão diz o que fazer agora com base nos dados.'}
+      ];
+    }
+    function dymivra842Context(){
+      const t=typeof mainTotals==='function'?mainTotals():{list:[],cur:0,inv:0,passive:0,pl:0};
+      const list=t.list||[];
+      const cur=Number(t.cur||0),inv=Number(t.inv||0),passive=Number((summary&&summary.total_passive_income)||t.passive||0),pl=Number(t.pl||0);
+      const g=typeof goalStats==='function'?goalStats(cur):{target:0,monthly:0,progress:0,remaining:0,reached:false};
+      let monthlyIncomeTarget=0;
+      try{monthlyIncomeTarget=typeof getMonthlyIncomeTarget==='function'?Number(getMonthlyIncomeTarget()||0):0}catch{}
+      let profileSaved=false;
+      try{profileSaved=!!localStorage.getItem(investorProfileKey())}catch{}
+      let allocSaved=false;
+      try{allocSaved=!!localStorage.getItem(allocationKey())}catch{}
+      const cats={};
+      list.forEach(i=>{const c=typeof normalizeCategory==='function'?normalizeCategory(i.category):String(i.category||'Outros');cats[c]=(cats[c]||0)+Number(i.current_value||0)});
+      const catCount=Object.values(cats).filter(v=>Number(v)>0).length;
+      const hasIncomeMove=(movements||[]).some(m=>['dividend','income','interest','rendimento'].includes(String(m.movement_type||''))||Number(m.passive_income||0)>0);
+      return {list,cur,inv,passive,pl,goal:g,monthlyIncomeTarget,profileSaved,allocSaved,catCount,assetCount:list.length,movementCount:(movements||[]).length,hasIncomeMove,snapshotCount:(snaps||[]).length};
+    }
+    function dymivra842StatusFor(step,ctx){
+      const target=Number(ctx.goal?.target||0),monthly=Number(ctx.goal?.monthly||0);
+      const map={
+        profile:{ok:ctx.profileSaved, action:'Escolha e salve seu perfil de investidor.', note:ctx.profileSaved?'Perfil salvo.':'Comece salvando seu perfil.'},
+        goals:{ok:target>0&&monthly>0, action:'Defina meta patrimonial e aporte mensal.', note:target>0&&monthly>0?'Meta e aporte ativos.':'Sem meta completa.'},
+        ledger:{ok:ctx.movementCount>0||ctx.assetCount>0, action:'Registre pelo menos uma compra, venda ou provento.', note:ctx.movementCount>0?`${ctx.movementCount} movimentação(ões).`:ctx.assetCount>0?'Carteira encontrada.':'Carteira vazia.'},
+        overview:{ok:ctx.cur>0, action:'Alimente o ledger para liberar o painel real.', note:ctx.cur>0?'Painel lendo patrimônio.':'Sem patrimônio calculado.'},
+        allocation:{ok:(ctx.catCount>0&&ctx.assetCount>0)||ctx.allocSaved, action:'Revise pesos alvo e próximo aporte.', note:ctx.allocSaved?'Modelo salvo.':ctx.catCount>0?`${ctx.catCount} categoria(s) detectadas.`:'Sem alocação.'},
+        income:{ok:ctx.passive>0||ctx.hasIncomeMove||ctx.monthlyIncomeTarget>0, action:'Registre proventos ou defina meta mensal de renda.', note:(ctx.passive>0||ctx.hasIncomeMove)?'Renda detectada.':ctx.monthlyIncomeTarget>0?'Meta mensal definida.':'Sem renda registrada.'},
+        projections:{ok:target>0&&monthly>0&&ctx.cur>0, action:'Complete meta, aporte e carteira para projetar.', note:(target>0&&monthly>0&&ctx.cur>0)?'Projeções prontas.':'Faltam dados.'},
+        liberty:{ok:ctx.monthlyIncomeTarget>0||(target>0&&ctx.cur>0), action:'Defina renda mensal desejada ou meta patrimonial.', note:ctx.monthlyIncomeTarget>0?'Renda desejada definida.':target>0?'Meta patrimonial disponível.':'Sem alvo de liberdade.'},
+        pulse:{ok:ctx.cur>0&&target>0&&(ctx.movementCount>0||ctx.assetCount>0), action:'Com dados completos, use o Pulse para decidir.', note:(ctx.cur>0&&target>0)?'Pronto para decisão.':'Aguardando base.'}
+      };
+      return map[step.screen]||{ok:false,action:'Abrir etapa.',note:'Pendente.'};
+    }
+    function dymivra842Analysis(){
+      const ctx=dymivra842Context();
+      const steps=dymivra842Steps().map((step,i)=>({...step,index:i+1,status:dymivra842StatusFor(step,ctx)}));
+      const done=steps.filter(s=>s.status.ok).length;
+      const current=steps.find(s=>!s.status.ok)||steps[steps.length-1];
+      const pct=Math.round(done/steps.length*100);
+      return {ctx,steps,done,pct,current,total:steps.length};
+    }
+    function dymivra842ScreenPosition(screen){
+      const steps=dymivra842Steps();
+      const idx=steps.findIndex(s=>s.screen===screen);
+      return idx>=0?{idx,step:steps[idx]}:null;
+    }
+    function dymivra842GoStep(screen){try{showAppScreen(screen)}catch{}}
+    window.dymivra842GoStep=dymivra842GoStep;
+    window.dymivra842GoNext=function(){
+      const a=dymivra842Analysis();
+      const next=a.current?.screen||'journey';
+      dymivra842GoStep(next);
+    }
+    window.dymivra842CopyPlan=async function(){
+      const a=dymivra842Analysis();
+      const lines=['Jornada Dymivra — roteiro de organização','',`Progresso: ${a.done}/${a.total} etapas (${a.pct}%)`,'',...a.steps.map(s=>`${s.status.ok?'✅':'⬜'} ${s.index}. ${s.title} — ${s.status.ok?s.status.note:s.status.action}`),'',`Próxima ação: ${a.current.title} — ${a.current.status.action}`];
+      const txt=lines.join('\n');
+      try{await navigator.clipboard.writeText(txt);toast('Roteiro da jornada copiado.','success')}catch{toast('Não consegui copiar automaticamente.','error')}
+    }
+    function updateDymivra842JourneyRail(screen='overview'){
+      const rail=$('dymivra842Rail');
+      if(!rail)return;
+      const a=dymivra842Analysis();
+      const pos=dymivra842ScreenPosition(screen);
+      const title=$('dymivra842RailTitle'),sub=$('dymivra842RailSub'),stepsEl=$('dymivra842RailSteps'),btnEl=$('dymivra842RailButton');
+      if(title){
+        title.textContent=pos?`Etapa ${pos.idx+1} de ${a.total} • ${pos.step.title}`:(screen==='journey'?'Jornada Dymivra':screen==='all'?'Revisão completa':'Módulo complementar');
+      }
+      if(sub){
+        sub.textContent=pos?`${pos.step.verb}. ${pos.step.why}`:(screen==='journey'?`Progresso geral: ${a.pct}% • próxima ação: ${a.current.title}.`:'Use a Jornada para saber onde esta tela entra no caminho.');
+      }
+      if(stepsEl){
+        stepsEl.innerHTML=a.steps.map(s=>`<button type="button" class="dymivra842-rail-dot ${s.status.ok?'done':''} ${s.screen===screen?'active':''}" onclick="dymivra842GoStep('${s.screen}')" title="${esc(s.title)}">${s.status.ok?'✓':s.index}</button>`).join('');
+      }
+      if(btnEl){
+        btnEl.textContent=screen==='journey'?'Começar agora':'Próximo passo';
+        btnEl.onclick=()=>window.dymivra842GoNext();
+      }
+    }
+    function renderDymivra842Journey(){
+      const a=dymivra842Analysis(),ctx=a.ctx;
+      const moneySafe=(v)=>typeof money==='function'?money(v):Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+      if($('dymivra842ProgressText'))$('dymivra842ProgressText').textContent=a.pct+'%';
+      if($('dymivra842ProgressFill'))$('dymivra842ProgressFill').style.width=a.pct+'%';
+      if($('dymivra842MetricWealth'))$('dymivra842MetricWealth').textContent=moneySafe(ctx.cur);
+      if($('dymivra842MetricDone'))$('dymivra842MetricDone').textContent=`${a.done}/${a.total}`;
+      if($('dymivra842MetricAssets'))$('dymivra842MetricAssets').textContent=`${ctx.assetCount} ativo${ctx.assetCount===1?'':'s'}`;
+      if($('dymivra842MetricPriority'))$('dymivra842MetricPriority').textContent=a.current.title;
+      if($('dymivra842NextTitle'))$('dymivra842NextTitle').textContent=`${a.current.icon} ${a.current.title}`;
+      if($('dymivra842NextCopy'))$('dymivra842NextCopy').textContent=`${a.current.verb}. ${a.current.why}`;
+      if($('dymivra842NextReason'))$('dymivra842NextReason').innerHTML=`<strong>Próxima ação:</strong> ${esc(a.current.status.action)}`;
+      const grid=$('dymivra842StepGrid');
+      if(grid){
+        grid.innerHTML=a.steps.map(s=>`<div class="dymivra842-step-card ${s.status.ok?'done':''} ${s.screen===a.current.screen?'active':''}">
+          <div>
+            <div class="dymivra842-step-top"><div class="dymivra842-step-no">${s.status.ok?'✓':s.index}</div><div class="dymivra842-step-status">${s.status.ok?'Pronto':'Pendente'}</div></div>
+            <div class="dymivra842-step-title">${s.icon} ${esc(s.title)}</div>
+            <div class="dymivra842-step-text"><strong>${esc(s.verb)}</strong><br>${esc(s.status.ok?s.status.note:s.status.action)}</div>
+          </div>
+          <button class="${s.status.ok?'secondary':'gold'}" onclick="dymivra842GoStep('${s.screen}')" type="button">${s.status.ok?'Revisar':'Abrir etapa'}</button>
+        </div>`).join('');
+      }
+      const checklist=$('dymivra842Checklist');
+      if(checklist){
+        const checks=[
+          {ok:ctx.profileSaved,t:'Perfil salvo',d:'Define como o app interpreta risco e carteira.'},
+          {ok:Number(ctx.goal?.target||0)>0&&Number(ctx.goal?.monthly||0)>0,t:'Meta e aporte',d:'Dá direção para projeções e liberdade.'},
+          {ok:ctx.movementCount>0||ctx.assetCount>0,t:'Carteira alimentada',d:'Ledger, posições e patrimônio calculados.'},
+          {ok:ctx.passive>0||ctx.hasIncomeMove||ctx.monthlyIncomeTarget>0,t:'Renda configurada',d:'Proventos ou renda desejada para análise.'},
+          {ok:a.pct>=70,t:'Pulse com contexto',d:'Quanto mais dados, melhor a decisão.'}
+        ];
+        checklist.innerHTML=checks.map(c=>`<div class="dymivra842-check ${c.ok?'':'todo'}"><div>${c.ok?'✅':'⬜'}</div><div><b>${esc(c.t)}</b><span>${esc(c.d)}</span></div><em>${c.ok?'OK':'Fazer'}</em></div>`).join('');
+      }
+      const route=$('dymivra842RouteMap');
+      if(route){
+        route.innerHTML=[
+          ['🚀','Comece','Jornada, Perfil, Metas e Pulse para saber a ordem certa.'],
+          ['💼','Carteira','Ledger, Visão Geral, Alocação e Histórico para organizar dados.'],
+          ['📈','Crescimento','Renda, Projeções e Liberdade para entender o futuro.'],
+          ['🤖','Inteligência','IA, Radar e Mentor para interpretar e acompanhar decisões.'],
+          ['⚙️','Conta','Planos, App, Legal e Apoio para operação e publicação.']
+        ].map(r=>`<div class="dymivra842-route-card"><div class="dymivra842-route-icon">${r[0]}</div><div><strong>${esc(r[1])}</strong><span>${esc(r[2])}</span></div></div>`).join('');
+      }
+      updateDymivra842JourneyRail(window.currentScreen||'journey');
+    }
+
 
 
 
