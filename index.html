@@ -8855,7 +8855,7 @@ body.performance-mode .pulse-screen,.performance-mode .pulse-main,.performance-m
 </style><style>
 
 /* =========================================================
-   Dymivra 8.4.7 — Jornada Guiada Premium
+   Dymivra 8.4.8 — Jornada Guiada Premium
    Organização real da experiência: Comece aqui, etapas, trilha,
    próximos passos e navegação agrupada sem quebrar lógica existente.
    ========================================================= */
@@ -9514,7 +9514,7 @@ body.performance-mode .dymivra846-top-tabs,body.performance-mode .dymivra846-com
 
 <style id="dymivra847-guide-os-style">
 /* =========================================================
-   Dymivra 8.4.7 — Guide OS Premium
+   Dymivra 8.4.8 — Rebuild Premium Real
    Navegação de app caro: clara, bonita, compacta e guiada.
    ========================================================= */
 #screenIntro,#appSection .dymivra842-rail,#appSection .dymivra842-shell,#appSection .dymivra781-command{display:none!important}
@@ -14690,7 +14690,7 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
     }
 
     /* =========================================================
-       Dymivra 8.4.7 — Jornada Guiada Premium
+       Dymivra 8.4.8 — Jornada Guiada Premium
        ========================================================= */
     function dymivra842Steps(){
       return [
@@ -15074,7 +15074,7 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
     function resetMovementEditUI(){editingMovementId=null;$('saveMovementBtn').textContent='Salvar movimentação';$('saveMovementBtn').dataset.t='Salvar movimentação';$('cancelMovementEditBtn').style.display='none';$('movementEditBanner').style.display='none';$('movementEditBanner').textContent=''}
     window.cancelMovementEdit=()=>{resetMovementEditUI();clearMovementForm();status($('movementStatus'),'Edição cancelada.','info')}
     window.saveMovement=async()=>{if(!requireOnline())return;let payload;try{payload=movementPayloadFromForm()}catch(e){status($('movementStatus'),e.message,'error');return}btn($('saveMovementBtn'),true,editingMovementId?'Atualizando...':'Salvando...');try{if(editingMovementId){const {error}=await supabase.from('portfolio_movements').update(payload).eq('id',editingMovementId).eq('user_id',userId);if(error)throw error;status($('movementStatus'),'Movimentação atualizada com sucesso.','success');toast('Movimentação atualizada.','success');resetMovementEditUI()}else{const {error}=await supabase.from('portfolio_movements').insert([payload]);if(error)throw error;status($('movementStatus'),'Movimentação salva com sucesso.','success');toast('Movimentação salva.','success')}clearMovementForm();await loadMovementData()}catch(e){status($('movementStatus'),e.message||'Erro ao salvar movimentação.','error');toast(e.message||'Erro ao salvar movimentação.','error')}finally{btn($('saveMovementBtn'),false)}}
-    window.editMovement=(id)=>{const m=movements.find(x=>String(x.id)===String(id));if(!m){toast('Movimentação não encontrada.','error');return}editingMovementId=m.id;$('movementType').value=m.movement_type||'buy';$('movementAsset').value=m.asset||'';$('movementCategory').value=m.category||'Outros';$('movementDate').value=m.movement_date||new Date().toISOString().slice(0,10);$('movementQuantity').value=Number(m.quantity||0)||'';$('movementUnitPrice').value=Number(m.unit_price||0)||'';$('movementGross').value=Number(m.gross_amount||0)||'';$('movementFees').value=Number(m.fees||0)||'';$('movementTaxes').value=Number(m.taxes||0)||'';$('movementBroker').value=m.broker||'';$('movementNotes').value=m.notes||'';$('saveMovementBtn').textContent='Atualizar movimentação';$('saveMovementBtn').dataset.t='Atualizar movimentação';$('cancelMovementEditBtn').style.display='inline-flex';$('movementEditBanner').style.display='block';$('movementEditBanner').textContent=`Editando ${moveLabel(m.movement_type)} de ${m.asset}.`;status($('movementStatus'),'Modo edição ativado.','info');renderMovementPreview();document.querySelector('[id=\"movementType\"]').closest('.card').scrollIntoView({behavior:'smooth',block:'start'})}
+    window.editMovement=(id)=>{const m=movements.find(x=>String(x.id)===String(id));if(!m){toast('Movimentação não encontrada.','error');return}editingMovementId=m.id;$('movementType').value=m.movement_type||'buy';$('movementAsset').value=m.asset||'';$('movementCategory').value=m.category||'Outros';$('movementDate').value=m.movement_date||new Date().toISOString().slice(0,10);$('movementQuantity').value=Number(m.quantity||0)||'';$('movementUnitPrice').value=Number(m.unit_price||0)||'';$('movementGross').value=Number(m.gross_amount||0)||'';$('movementFees').value=Number(m.fees||0)||'';$('movementTaxes').value=Number(m.taxes||0)||'';$('movementBroker').value=m.broker||'';$('movementNotes').value=m.notes||'';$('saveMovementBtn').textContent='Atualizar movimentação';$('saveMovementBtn').dataset.t='Atualizar movimentação';$('cancelMovementEditBtn').style.display='inline-flex';$('movementEditBanner').style.display='block';$('movementEditBanner').textContent=`Editando ${moveLabel(m.movement_type)} de ${m.asset}.`;status($('movementStatus'),'Modo edição ativado.','info');renderMovementPreview();document.querySelector('[id="movementType"]').closest('.card').scrollIntoView({behavior:'smooth',block:'start'})}
     window.openDeleteMovementModal=(id)=>{const m=movements.find(x=>String(x.id)===String(id));if(!m){toast('Movimentação não encontrada.','error');return}deleteMovementTarget=m;$('deleteMovementText').innerHTML=`Deseja excluir <strong>${moveLabel(m.movement_type)} de ${esc(m.asset)}</strong> no valor de <strong>${money(Math.abs(moveValue(m)))}</strong>?`;$('deleteMovementModal').classList.add('show')}
     window.closeDeleteMovementModal=()=>{$('deleteMovementModal').classList.remove('show');setTimeout(()=>{deleteMovementTarget=null},200)}
     window.confirmDeleteMovement=async()=>{if(!deleteMovementTarget||!requireOnline())return;btn($('confirmDeleteMovementBtn'),true,'Excluindo...');showActionOverlay('Excluindo movimentação','Recalculando carteira pelo ledger...','📒');try{const id=deleteMovementTarget.id;const {error}=await supabase.from('portfolio_movements').delete().eq('id',id).eq('user_id',userId);if(error)throw error;if(String(editingMovementId)===String(id)){resetMovementEditUI();clearMovementForm()}toast('Movimentação excluída.','success');closeDeleteMovementModal();await loadMovementData()}catch(e){toast(e.message||'Erro ao excluir movimentação.','error')}finally{btn($('confirmDeleteMovementBtn'),false);hideActionOverlay()}}
@@ -17439,6 +17439,284 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
   }
   document.addEventListener('DOMContentLoaded',()=>setTimeout(()=>sync(getCurrent()),120));
   setTimeout(()=>sync(getCurrent()),500);
+})();
+</script>
+
+
+
+<style id="dymivra848-rebuild-premium-style">
+/* =========================================================
+   Dymivra 8.4.8 — Rebuild Premium Real
+   Navegação fiel à prévia aprovada: limpa, guiada e com cara de produto caro.
+   ========================================================= */
+body.dymivra848-ready #appSection .dymivra842-rail,
+body.dymivra848-ready #appSection .dymivra842-shell,
+body.dymivra848-ready #appSection .dymivra843-nav-shell,
+body.dymivra848-ready #appSection .dymivra844-nav-shell,
+body.dymivra848-ready #appSection .dymivra845-shell,
+body.dymivra848-ready #appSection .dymivra846-shell,
+body.dymivra848-ready #appSection .dymivra847-shell{display:none!important}
+body.dymivra848-ready #appSection,
+body.dymivra848-ready #appSection *{min-width:0;box-sizing:border-box}
+body.dymivra848-ready #appSection .dymivra848-nav,
+body.dymivra848-ready #appSection .dymivra848-nav *{box-sizing:border-box!important;min-width:0!important}
+body.dymivra848-ready #appSection .dymivra848-nav{
+  position:sticky!important;
+  top:max(8px,env(safe-area-inset-top,0px))!important;
+  z-index:360!important;
+  margin:0 0 16px!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+.dymivra848-tabs{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:0;
+  width:100%;
+  padding:6px;
+  border-radius:26px;
+  border:1px solid rgba(125,211,252,.16);
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.05),transparent 31%,rgba(255,255,255,.04) 32%,transparent 65%,rgba(255,255,255,.04) 66%,transparent),
+    linear-gradient(180deg,rgba(8,18,38,.92),rgba(2,8,20,.96));
+  box-shadow:0 18px 50px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.06);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+#appSection .dymivra848-tab{
+  margin:0!important;
+  width:100%!important;
+  min-height:58px!important;
+  padding:8px 10px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:10px!important;
+  border-radius:21px!important;
+  border:1px solid transparent!important;
+  background:transparent!important;
+  color:#aab8d4!important;
+  box-shadow:none!important;
+  font-size:clamp(12px,3.4vw,16px)!important;
+  font-weight:900!important;
+  letter-spacing:-.02em!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  transition:background .16s ease,border-color .16s ease,color .16s ease,box-shadow .16s ease,transform .16s ease!important;
+}
+#appSection .dymivra848-tab:hover{transform:none!important;filter:none!important;background:rgba(255,255,255,.04)!important}
+#appSection .dymivra848-tab.active{
+  color:#fff!important;
+  border-color:rgba(168,85,247,.42)!important;
+  background:linear-gradient(180deg,rgba(32,22,58,.88),rgba(15,23,42,.78))!important;
+  box-shadow:0 0 0 1px rgba(168,85,247,.16),0 14px 34px rgba(139,92,246,.15),inset 0 -3px 0 rgba(168,85,247,.82)!important;
+}
+#appSection .dymivra848-tab span{width:30px;height:30px;display:grid;place-items:center;border-radius:12px;border:1px solid rgba(125,211,252,.12);background:rgba(14,165,233,.06);font-size:17px;flex:0 0 auto;color:#85dfff}
+#appSection .dymivra848-tab.active span{border-color:rgba(168,85,247,.25);background:rgba(139,92,246,.16);color:#d8b4fe}
+#appSection .dymivra848-tab b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* Contexto compacto para as telas comuns */
+body.dymivra848-ready #appSection #screenIntro.dymivra848-context{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:10px;
+  align-items:center;
+  margin:0 0 16px!important;
+  padding:14px 16px!important;
+  border-radius:22px!important;
+  border:1px solid rgba(125,211,252,.14)!important;
+  background:linear-gradient(180deg,rgba(9,19,40,.84),rgba(4,10,24,.92))!important;
+  box-shadow:0 14px 38px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.045)!important;
+  color:#d9e6ff!important;
+  line-height:1.45!important;
+  font-size:14px!important;
+}
+body.dymivra848-screen-journey #appSection #screenIntro.dymivra848-context{display:none!important}
+.dymivra848-context strong{color:#fff!important}
+.dymivra848-context .dymivra848-next-mini{padding:8px 10px;border-radius:999px;border:1px solid rgba(168,85,247,.22);background:rgba(139,92,246,.10);color:#e9d5ff;font-weight:900;font-size:12px;white-space:nowrap}
+
+/* Tela Jornada nova — sem mistura com as versões anteriores */
+body.dymivra848-ready #dymivra847JourneyScreen{
+  display:block;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+  backdrop-filter:none!important;
+}
+body.dymivra848-ready #dymivra847JourneyScreen.screen-hidden{display:none!important}
+.dymivra848-journey{
+  display:grid;
+  gap:16px;
+  width:100%;
+  color:#f8fafc;
+}
+.dymivra848-panel{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(96,165,250,.16);
+  border-radius:30px;
+  background:
+    radial-gradient(circle at 18% 0%,rgba(14,165,233,.12),transparent 32%),
+    radial-gradient(circle at 92% 12%,rgba(139,92,246,.16),transparent 34%),
+    linear-gradient(180deg,rgba(5,15,34,.96),rgba(2,7,18,.985));
+  box-shadow:0 22px 64px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.06);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+.dymivra848-panel:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,.045),transparent 42%,rgba(34,211,238,.035));opacity:.85}
+.dymivra848-panel>*{position:relative;z-index:1}
+.dymivra848-hero{
+  display:grid;
+  grid-template-columns:minmax(0,1.04fr) minmax(220px,.72fr);
+  gap:16px;
+  align-items:center;
+  min-height:280px;
+  padding:26px 28px;
+}
+.dymivra848-kicker{display:flex;align-items:center;gap:9px;color:#a78bfa;text-transform:uppercase;letter-spacing:.19em;font-size:12px;font-weight:950;margin-bottom:12px}.dymivra848-kicker:before{content:"";width:8px;height:8px;border-radius:50%;background:#8b5cf6;box-shadow:0 0 18px rgba(139,92,246,.8)}
+.dymivra848-hero h2{margin:0!important;max-width:620px;color:#fff!important;font-size:clamp(42px,7vw,72px)!important;line-height:.96!important;letter-spacing:-.075em!important;font-weight:950!important;text-wrap:balance}
+.dymivra848-hero p{margin:16px 0 0!important;max-width:580px;color:#c5d4ee!important;font-size:clamp(16px,2.4vw,20px)!important;line-height:1.55!important}
+.dymivra848-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+#appSection .dymivra848-action{width:100%!important;min-height:62px!important;margin:0!important;border-radius:18px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;padding:0 18px!important;font-size:16px!important;font-weight:950!important;letter-spacing:-.02em!important;border:1px solid rgba(56,189,248,.28)!important;background:linear-gradient(180deg,rgba(10,28,52,.92),rgba(3,12,28,.94))!important;color:#f8fafc!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.055),0 10px 25px rgba(0,0,0,.18)!important}
+#appSection .dymivra848-action.primary{border-color:rgba(168,85,247,.36)!important;background:linear-gradient(135deg,#0ea5e9,#2563eb 45%,#9333ea)!important;box-shadow:0 18px 40px rgba(79,70,229,.24),inset 0 1px 0 rgba(255,255,255,.17)!important}
+.dymivra848-action i{font-style:normal;font-size:22px;color:#a5f3fc}.dymivra848-action.primary i{color:#fff}
+.dymivra848-compass-wrap{min-height:220px;display:grid;place-items:center;position:relative}.dymivra848-compass{width:min(260px,58vw);aspect-ratio:1;border-radius:50%;position:relative;display:grid;place-items:center;background:radial-gradient(circle at 50% 50%,rgba(34,211,238,.13),transparent 46%),radial-gradient(circle,rgba(15,23,42,.92) 0 42%,rgba(2,8,23,.35) 43% 100%);box-shadow:0 0 0 1px rgba(125,211,252,.13),0 0 70px rgba(14,165,233,.13)}
+.dymivra848-compass:before,.dymivra848-compass:after{content:"";position:absolute;inset:10%;border-radius:50%;border:1px solid rgba(96,165,250,.24);transform:rotate(-13deg);box-shadow:0 0 26px rgba(37,99,235,.12)}.dymivra848-compass:after{inset:22%;border-color:rgba(168,85,247,.35);transform:rotate(26deg)}.dymivra848-needle{position:absolute;width:22%;height:70%;clip-path:polygon(50% 0,78% 49%,50% 100%,22% 49%);background:linear-gradient(180deg,#a855f7 0 44%,#38bdf8 45% 100%);filter:drop-shadow(0 0 18px rgba(168,85,247,.42));transform:rotate(42deg)}.dymivra848-needle:after{content:"";position:absolute;inset:42% 27%;border-radius:999px;background:#0f172a;border:2px solid rgba(255,255,255,.55)}
+
+.dymivra848-map{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+.dymivra848-area-card{
+  position:relative;
+  min-height:154px;
+  padding:18px 18px 16px;
+  border-radius:24px;
+  border:1px solid rgba(96,165,250,.15);
+  background:linear-gradient(180deg,rgba(7,17,38,.92),rgba(2,8,23,.94));
+  overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045);
+  cursor:pointer;
+  transition:.16s ease;
+}
+.dymivra848-area-card:before{content:"";position:absolute;right:-30px;top:-46px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,var(--glow,rgba(14,165,233,.16)),transparent 70%);pointer-events:none}.dymivra848-area-card:hover{transform:translateY(-1px);border-color:rgba(125,211,252,.25)}.dymivra848-area-card.active{border-color:var(--border,rgba(56,189,248,.42));box-shadow:0 0 0 1px var(--line,rgba(56,189,248,.10)),0 16px 42px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.055)}
+.dymivra848-area-card .num{position:absolute;left:16px;top:16px;font-size:28px;font-weight:950;letter-spacing:-.05em;color:var(--accent,#38bdf8)}.dymivra848-area-card .icon{width:64px;height:64px;border-radius:23px;display:grid;place-items:center;margin:22px auto 12px;border:1px solid var(--line,rgba(56,189,248,.18));background:rgba(2,8,23,.42);font-size:29px;color:var(--accent,#38bdf8);box-shadow:0 0 28px var(--glow,rgba(14,165,233,.12))}.dymivra848-area-card h3{margin:0!important;color:#fff!important;font-size:24px!important;letter-spacing:-.05em!important;line-height:1.05!important;text-align:center}.dymivra848-area-card p{margin:8px 0 0!important;color:#aebbd2!important;font-size:15px!important;line-height:1.35!important;text-align:center}.dymivra848-area-card .arrow{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:31px;color:#c7d2fe;opacity:.78}
+.dymivra848-map-card{padding:20px!important}.dymivra848-map-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.dymivra848-map-head span,.dymivra848-next-label,.dymivra848-order-title{color:#8af4ff;text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:950}.dymivra848-map-head b{color:#cbd5e1;font-weight:800;font-size:14px}
+
+.dymivra848-next{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px;align-items:center;padding:22px 24px}.dymivra848-next-icon{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(168,85,247,.35);background:radial-gradient(circle,rgba(168,85,247,.22),rgba(15,23,42,.38));font-size:38px;color:#c084fc;box-shadow:0 0 44px rgba(168,85,247,.16)}.dymivra848-next h3{margin:4px 0!important;color:#fff!important;font-size:clamp(32px,5vw,48px)!important;line-height:1!important;letter-spacing:-.065em!important}.dymivra848-next p{margin:0!important;color:#c3d0e5!important;line-height:1.48!important;font-size:16px!important;max-width:620px}#appSection .dymivra848-open{width:auto!important;min-width:190px!important;min-height:58px!important;margin:0!important;border-radius:17px!important;background:linear-gradient(135deg,#0ea5e9,#2563eb 45%,#9333ea)!important;color:#fff!important;font-weight:950!important;border:1px solid rgba(255,255,255,.14)!important;box-shadow:0 16px 38px rgba(79,70,229,.25)!important}
+.dymivra848-order{padding:17px 18px}.dymivra848-order-flow{display:flex;align-items:flex-start;gap:10px;overflow:auto;padding:12px 2px 2px;scroll-snap-type:x proximity}.dymivra848-order-flow::-webkit-scrollbar{height:0}.dymivra848-step{display:grid;gap:7px;justify-items:center;min-width:86px;color:#cbd5e1;scroll-snap-align:start;position:relative}.dymivra848-step:not(:last-child):after{content:"›";position:absolute;right:-12px;top:16px;color:#64748b;font-size:22px}.dymivra848-step span{width:50px;height:50px;border-radius:19px;display:grid;place-items:center;border:1px solid rgba(125,211,252,.16);background:rgba(15,23,42,.60);font-size:22px}.dymivra848-step b{font-size:12px;line-height:1.1;color:#dce7fb;text-align:center}.dymivra848-step.done span{border-color:rgba(34,197,94,.28);background:rgba(34,197,94,.12)}.dymivra848-step.next span{border-color:rgba(250,204,21,.42);background:rgba(250,204,21,.12);box-shadow:0 0 24px rgba(250,204,21,.13)}
+.dymivra848-explain{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.dymivra848-info{padding:16px;border-radius:20px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035)}.dymivra848-info span{display:block;color:#8af4ff;text-transform:uppercase;letter-spacing:.16em;font-size:10px;font-weight:950;margin-bottom:8px}.dymivra848-info b{display:block;color:#fff;font-size:17px;line-height:1.22}.dymivra848-info small{display:block;color:#aebbd2;line-height:1.35;margin-top:5px;font-size:13px}.dymivra848-status{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.dymivra848-status em{font-style:normal;padding:8px 10px;border-radius:999px;border:1px solid rgba(125,211,252,.12);background:rgba(255,255,255,.035);color:#cbd5e1;font-size:12px;font-weight:850}.dymivra848-status em.next{border-color:rgba(250,204,21,.24);color:#fde68a;background:rgba(250,204,21,.08)}
+@media(max-width:920px){.dymivra848-hero{grid-template-columns:1fr;min-height:auto;padding:22px}.dymivra848-compass-wrap{min-height:160px}.dymivra848-compass{width:190px}.dymivra848-next{grid-template-columns:auto 1fr}.dymivra848-open{grid-column:1 / -1;width:100%!important}.dymivra848-explain{grid-template-columns:1fr}.dymivra848-map{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.dymivra848-tabs{border-radius:24px;padding:5px}.dymivra848-tab{min-height:54px!important;gap:6px!important;padding:7px 6px!important}.dymivra848-tab span{width:28px!important;height:28px!important;font-size:15px!important}.dymivra848-hero{padding:20px 18px;border-radius:26px}.dymivra848-hero h2{font-size:clamp(38px,13vw,58px)!important}.dymivra848-hero p{font-size:16px!important}.dymivra848-actions{grid-template-columns:1fr;gap:10px}.dymivra848-compass-wrap{display:none}.dymivra848-map-card{padding:16px!important;border-radius:26px}.dymivra848-map{gap:10px}.dymivra848-area-card{min-height:132px;padding:14px 12px}.dymivra848-area-card .num{font-size:22px;left:13px;top:12px}.dymivra848-area-card .icon{width:50px;height:50px;border-radius:18px;margin:18px auto 9px;font-size:23px}.dymivra848-area-card h3{font-size:20px!important}.dymivra848-area-card p{font-size:13px!important}.dymivra848-area-card .arrow{display:none}.dymivra848-next{padding:18px;grid-template-columns:1fr}.dymivra848-next-icon{width:62px;height:62px;font-size:31px}.dymivra848-next h3{font-size:38px!important}.dymivra848-order{border-radius:26px}.dymivra848-context{grid-template-columns:1fr!important}.dymivra848-context .dymivra848-next-mini{width:max-content}}
+@media(max-width:390px){.dymivra848-tab b{max-width:72px}.dymivra848-map{grid-template-columns:1fr}.dymivra848-area-card{text-align:left;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:12px;min-height:96px}.dymivra848-area-card .num{position:static;font-size:20px;grid-column:1}.dymivra848-area-card .icon{margin:0;width:48px;height:48px;grid-column:1;grid-row:2}.dymivra848-area-card h3,.dymivra848-area-card p{text-align:left}.dymivra848-area-card h3{grid-column:2;grid-row:1}.dymivra848-area-card p{grid-column:2;grid-row:2}}
+body.performance-mode .dymivra848-panel,body.performance-mode .dymivra848-tabs{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:0 8px 20px rgba(0,0,0,.22)!important}body.performance-mode .dymivra848-area-card:hover{transform:none!important}
+</style>
+
+
+<script id="dymivra848-rebuild-premium-script">
+(function(){
+  const AREAS={
+    start:{n:'01',label:'Comece',icon:'⌂',text:'Visão geral, Jornada, Pulse',accent:'#38bdf8',screens:['overview','journey','pulse']},
+    setup:{n:'02',label:'Preparar',icon:'◉',text:'Perfil, Metas, Ledger',accent:'#a855f7',screens:['profile','goals','ledger']},
+    portfolio:{n:'03',label:'Carteira',icon:'◔',text:'Alocação, Renda, Histórico',accent:'#22c55e',screens:['allocation','income','history']},
+    future:{n:'04',label:'Futuro',icon:'↗',text:'Projeções, Liberdade',accent:'#f59e0b',screens:['projections','liberty']},
+    intel:{n:'05',label:'Inteligência',icon:'✺',text:'IA Dymivra, Radar, Mentor',accent:'#8b5cf6',screens:['ai','advisor','mentor']},
+    account:{n:'06',label:'Conta',icon:'♢',text:'Planos, App, Legal, Apoio',accent:'#0ea5e9',screens:['plans','app','legal','settings','all']}
+  };
+  const SCREENS={
+    overview:{area:'start',name:'Visão geral',icon:'🏠',what:'Painel que mostra patrimônio, renda, carteira e alertas.',fill:'Não preenche nada; ela lê os dados do app.',ready:'Quando patrimônio e carteira aparecem.',next:'journey',action:'Abrir Jornada'},
+    journey:{area:'start',name:'Jornada',icon:'🧬',what:'Central que organiza o app e mostra a ordem certa de uso.',fill:'Siga a próxima etapa recomendada.',ready:'Quando você sabe o próximo passo.',next:'profile',action:'Abrir Perfil'},
+    pulse:{area:'start',name:'Pulse',icon:'⚡',what:'Motor de decisão que responde o que fazer agora.',fill:'Use depois de ter perfil, metas e carteira cadastrados.',ready:'Quando o plano de ação aparece.',next:'profile',action:'Abrir Perfil'},
+    profile:{area:'setup',name:'Perfil',icon:'🧬',what:'Define seu tipo de investidor, risco, estilo e horizonte.',fill:'Escolha e salve seu perfil de investidor.',ready:'Quando o perfil estiver salvo.',next:'goals',action:'Abrir Metas'},
+    goals:{area:'setup',name:'Metas',icon:'🎯',what:'Define patrimônio alvo, renda desejada, aporte e prazo.',fill:'Informe meta patrimonial e aporte mensal.',ready:'Quando a meta estiver salva.',next:'ledger',action:'Abrir Ledger'},
+    ledger:{area:'setup',name:'Ledger',icon:'📒',what:'Registra compras, vendas, proventos, taxas e impostos.',fill:'Cadastre o que você já tem e suas movimentações.',ready:'Quando houver movimentações registradas.',next:'overview',action:'Abrir Visão'},
+    allocation:{area:'portfolio',name:'Alocação',icon:'◔',what:'Mostra se sua carteira está equilibrada ou concentrada.',fill:'Ajuste pesos-alvo e compare com a carteira atual.',ready:'Quando os alvos estiverem definidos.',next:'income',action:'Abrir Renda'},
+    income:{area:'portfolio',name:'Renda',icon:'💸',what:'Mede proventos, renda passiva, yield e meta mensal.',fill:'Registre proventos ou defina meta de renda.',ready:'Quando a renda mensal aparecer.',next:'projections',action:'Abrir Projeções'},
+    history:{area:'portfolio',name:'Histórico',icon:'↺',what:'Acompanha snapshots, curva patrimonial e evolução.',fill:'Salve snapshots para acompanhar evolução.',ready:'Quando houver histórico.',next:'pulse',action:'Abrir Pulse'},
+    projections:{area:'future',name:'Projeções',icon:'🔮',what:'Simula cenários, aportes, crescimento e prazos.',fill:'Ajuste aporte, taxa e cenário.',ready:'Quando os cenários aparecem.',next:'liberty',action:'Abrir Liberdade'},
+    liberty:{area:'future',name:'Liberdade',icon:'🕊️',what:'Traduz patrimônio e renda em independência financeira.',fill:'Informe renda alvo e acompanhe o prazo.',ready:'Quando o prazo estimado aparece.',next:'pulse',action:'Abrir Pulse'},
+    ai:{area:'intel',name:'IA Dymivra',icon:'✺',what:'Copiloto educativo para perguntas, relatórios e explicações.',fill:'Faça uma pergunta ou gere relatório.',ready:'Quando a resposta aparece.',next:'advisor',action:'Abrir Radar'},
+    advisor:{area:'intel',name:'Radar IA',icon:'◌',what:'Central de alertas, mercado, risco e prioridade.',fill:'Leia os alertas e sinais do momento.',ready:'Quando o radar mostrar prioridades.',next:'mentor',action:'Abrir Mentor'},
+    mentor:{area:'intel',name:'Mentor',icon:'▱',what:'Acompanha evolução com checklist e plano guiado.',fill:'Siga o plano de acompanhamento.',ready:'Quando houver plano ativo.',next:'pulse',action:'Abrir Pulse'},
+    plans:{area:'account',name:'Planos',icon:'♛',what:'Mostra Free, Pro e Elite com valor e limites.',fill:'Escolha ou revise o plano.',ready:'Quando o plano estiver entendido.',next:'app',action:'Abrir App'},
+    app:{area:'account',name:'App',icon:'▯',what:'Instalação, PWA, checklist inicial e prontidão.',fill:'Instale o app no celular.',ready:'Quando aparecer como instalado.',next:'legal',action:'Abrir Legal'},
+    legal:{area:'account',name:'Legal',icon:'♢',what:'Privacidade, termos, suporte e confiança para publicação.',fill:'Revise links legais e suporte.',ready:'Quando as páginas estiverem ok.',next:'settings',action:'Abrir Apoio'},
+    settings:{area:'account',name:'Apoio',icon:'☊',what:'Configurações, utilidades, status e suporte.',fill:'Ajuste preferências e use suporte.',ready:'Quando suporte estiver disponível.',next:'journey',action:'Abrir Jornada'},
+    all:{area:'account',name:'Tudo',icon:'▣',what:'Revisão completa do aplicativo inteiro.',fill:'Use apenas para conferir tudo.',ready:'Quando terminar a revisão.',next:'journey',action:'Abrir Jornada'}
+  };
+  const FLOW=['profile','goals','ledger','overview','allocation','income','projections','liberty','pulse'];
+  const TOP=[['overview','⌂','Visão geral'],['journey','🧬','Jornada'],['pulse','⚡','Pulse']];
+  const $=(q,r=document)=>r.querySelector(q); const $$=(q,r=document)=>Array.from(r.querySelectorAll(q));
+  const getCurrent=()=>window.currentScreen||localStorage.getItem('wealth_os_active_screen_guest')||'overview';
+  const data=s=>SCREENS[s]||SCREENS.journey;
+  function doneCount(){let done=0;try{if(localStorage.getItem('wealth_os_profile')||localStorage.getItem('dymivra_profile'))done++;}catch{}try{if((window.goals&&window.goals.length)||$('#goalAmount')?.value)done++;}catch{}try{if((window.ledger&&window.ledger.length)||(window.positions&&window.positions.length))done++;}catch{}try{if((window.assets&&window.assets.length)||(window.positions&&window.positions.length))done++;}catch{}try{if(localStorage.getItem('wealth_os_allocation_targets'))done++;}catch{}try{if((window.incomeItems&&window.incomeItems.length)||$('#incomeTarget')?.value)done++;}catch{}try{done++;done++;done++;}catch{}return Math.max(0,Math.min(9,done));}
+  function firstNext(){return FLOW[Math.min(doneCount(),FLOW.length-1)]||'profile'}
+  function go(screen){try{window.showAppScreen(screen)}catch(e){location.hash=screen}setTimeout(()=>sync(screen),60)}
+  window.dymivra848Go=go;
+  window.dymivra848OpenNext=function(){go(firstNext())};
+  window.dymivra848CopyGuide=function(){const next=data(firstNext());const text='Roteiro Dymivra:\n1. Perfil — defina risco e estilo.\n2. Metas — defina patrimônio alvo, renda e aporte.\n3. Ledger — registre compras, vendas e proventos.\n4. Visão geral — acompanhe seu retrato atual.\n5. Alocação — organize a carteira.\n6. Renda — acompanhe renda passiva.\n7. Projeções — simule o futuro.\n8. Liberdade — veja independência financeira.\n9. Pulse — decida o próximo movimento.\n\nPróximo passo agora: '+next.name+'.';try{navigator.clipboard.writeText(text);if(window.toast)toast('Roteiro copiado.','success');}catch{alert(text)}};
+  function renderNav(){const nav=$('#appNav');if(!nav)return;nav.className='app-nav dymivra848-nav';nav.setAttribute('aria-label','Navegação premium Dymivra');nav.innerHTML=`<div class="dymivra848-tabs">${TOP.map(t=>`<button class="nav-btn dymivra848-tab" data-screen="${t[0]}" onclick="dymivra848Go('${t[0]}')" type="button"><span>${t[1]}</span><b>${t[2]}</b></button>`).join('')}</div>`;}
+  function renderJourney(){const root=$('#dymivra847JourneyScreen');if(!root)return;root.className='card dymivra847-journey-screen dymivra848-journey-screen screen-hidden';root.setAttribute('data-screens','journey');root.innerHTML=`
+    <div class="dymivra848-journey">
+      <section class="dymivra848-panel dymivra848-hero">
+        <div>
+          <div class="dymivra848-kicker">Navegação inteligente</div>
+          <h2>Tudo no lugar certo</h2>
+          <p>O Dymivra mostra onde você está, o que mexer agora e qual tela vem depois. Menos dúvida, mais controle.</p>
+          <div class="dymivra848-actions">
+            <button class="dymivra848-action" onclick="document.getElementById('dymivra848Map')?.scrollIntoView({behavior:'smooth',block:'start'})" type="button"><i>▱</i><b>Mapa completo</b><span>›</span></button>
+            <button class="dymivra848-action primary" onclick="dymivra848OpenNext()" type="button"><i>✦</i><b>Me guiar</b><span>›</span></button>
+          </div>
+        </div>
+        <div class="dymivra848-compass-wrap" aria-hidden="true"><div class="dymivra848-compass"><span class="dymivra848-needle"></span></div></div>
+      </section>
+      <section class="dymivra848-panel dymivra848-map-card" id="dymivra848Map">
+        <div class="dymivra848-map-head"><span>Mapa do app</span><b>Escolha por objetivo</b></div>
+        <div class="dymivra848-map">${Object.entries(AREAS).map(([k,a])=>`<button class="dymivra848-area-card" style="--accent:${a.accent};--border:${a.accent}66;--line:${a.accent}28;--glow:${a.accent}22" data-area="${k}" onclick="dymivra848Go('${a.screens[0]}')" type="button"><strong class="num">${a.n}</strong><span class="icon">${a.icon}</span><h3>${a.label}</h3><p>${a.text}</p><span class="arrow">›</span></button>`).join('')}</div>
+      </section>
+      <section class="dymivra848-panel dymivra848-next">
+        <div class="dymivra848-next-icon" id="dymivra848NextIcon">◉</div>
+        <div><span class="dymivra848-next-label">Próximo passo</span><h3 id="dymivra848NextTitle">Perfil</h3><p id="dymivra848NextText">Defina seu estilo de investidor para o app entender risco, metas e carteira ideal.</p><div class="dymivra848-status"><em id="dymivra848StatusDone">0/9 etapas prontas</em><em class="next" id="dymivra848StatusNext">Agora: Perfil</em></div></div>
+        <button class="dymivra848-open" onclick="dymivra848OpenNext()" type="button" id="dymivra848NextButton">Abrir Perfil ›</button>
+      </section>
+      <section class="dymivra848-panel dymivra848-order">
+        <div class="dymivra848-order-title">Ordem ideal</div>
+        <div class="dymivra848-order-flow" id="dymivra848OrderFlow"></div>
+      </section>
+      <section class="dymivra848-explain" id="dymivra848Explain"></section>
+    </div>`;}
+  function renderOrder(){const flow=$('#dymivra848OrderFlow');if(!flow)return;const done=doneCount();flow.innerHTML=FLOW.map((s,i)=>{const d=data(s);const cls=i<done?'done':(i===done?'next':'');return `<button class="dymivra848-step ${cls}" onclick="dymivra848Go('${s}')" type="button"><span>${d.icon}</span><b>${d.name}</b></button>`}).join('');}
+  function renderExplain(screen){const box=$('#dymivra848Explain');if(!box)return;const d=data(screen),next=data(d.next);box.innerHTML=`<div class="dymivra848-info"><span>Você está em</span><b>${d.name}</b><small>${d.what}</small></div><div class="dymivra848-info"><span>O que preencher</span><b>${d.fill}</b><small>${d.ready}</small></div><div class="dymivra848-info"><span>Depois vá para</span><b>${next.name}</b><small>${next.what}</small></div>`;}
+  function sync(screen=getCurrent()){
+    document.body.classList.add('dymivra848-ready');
+    const d=data(screen),next=data(d.next),area=AREAS[d.area]||AREAS.start,done=doneCount(),nextStep=data(firstNext());
+    document.body.classList.toggle('dymivra848-screen-journey',screen==='journey');
+    const journeyRoot=$('#dymivra847JourneyScreen'); if(journeyRoot) journeyRoot.classList.toggle('screen-hidden',screen!=='journey');
+    $$('.dymivra848-tab,.nav-btn[data-screen]').forEach(b=>b.classList.toggle('active',b.dataset.screen===screen));
+    $$('.dymivra848-area-card').forEach(b=>b.classList.toggle('active',b.dataset.area===d.area));
+    const intro=$('#screenIntro');
+    if(intro){intro.className='screen-intro dymivra848-context';intro.innerHTML=`<div><strong>${d.name}</strong> — ${d.what} <span style="color:#94a3b8">Preencha: ${d.fill}.</span></div><span class="dymivra848-next-mini">Próximo: ${next.name}</span>`;}
+    const nt=$('#dymivra848NextTitle'),nx=$('#dymivra848NextText'),ni=$('#dymivra848NextIcon'),nb=$('#dymivra848NextButton');
+    if(nt)nt.textContent=nextStep.name;if(nx)nx.textContent=nextStep.what;if(ni)ni.textContent=nextStep.icon;if(nb)nb.textContent='Abrir '+nextStep.name+' ›';
+    const sd=$('#dymivra848StatusDone'),sn=$('#dymivra848StatusNext');if(sd)sd.textContent=done+'/9 etapas prontas';if(sn)sn.textContent='Agora: '+nextStep.name;
+    renderOrder();renderExplain(screen);
+  }
+  function init(){renderNav();renderJourney();sync(getCurrent())}
+  const previous=window.showAppScreen;
+  if(typeof previous==='function'&&!previous.__dymivra848){window.showAppScreen=function(screen='overview',smooth=true){const r=previous.call(this,screen,smooth);setTimeout(()=>sync(screen),50);return r};window.showAppScreen.__dymivra848=true;}
+  document.addEventListener('click',e=>{const btn=e.target.closest('[data-screen]');if(btn)setTimeout(()=>sync(btn.dataset.screen),70)},true);
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+  setTimeout(init,250);setTimeout(()=>sync(getCurrent()),900);setInterval(()=>sync(getCurrent()),3500);
 })();
 </script>
 
