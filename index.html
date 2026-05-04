@@ -6222,7 +6222,299 @@ body.screen-ledger-active .overview-flow-card{
   .ledger-movement-actions button{width:100%!important}
 }
 
-</style>
+
+
+/* ==========================================================
+   DYMIVRA 8.3.8 — RENDA PREMIUM TOTAL
+   Reforma completa da tela Renda: proventos, meta mensal,
+   ranking, fechamento, calendário e gráficos.
+   ========================================================== */
+body.screen-income-active{
+  background:
+    radial-gradient(circle at 10% 0%,rgba(34,197,94,.16),transparent 26%),
+    radial-gradient(circle at 92% 6%,rgba(34,211,238,.13),transparent 28%),
+    linear-gradient(180deg,#020617,#07111f 48%,#081326 100%)!important;
+}
+body.screen-income-active #screenIntro{
+  border-color:rgba(34,197,94,.28)!important;
+  background:
+    radial-gradient(circle at 0% 0%,rgba(34,197,94,.14),transparent 34%),
+    linear-gradient(180deg,rgba(7,18,35,.94),rgba(2,8,18,.92))!important;
+  color:#dcfce7!important;
+}
+body.screen-income-active #screenIntro:before{
+  background:linear-gradient(90deg,rgba(34,197,94,.20),rgba(34,211,238,.70),rgba(250,204,21,.20))!important;
+}
+.income-premium-hero,
+.income-monthly-suite{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(34,197,94,.22);
+  border-radius:30px;
+  padding:22px;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(34,197,94,.13),transparent 34%),
+    radial-gradient(circle at 94% 4%,rgba(34,211,238,.11),transparent 30%),
+    linear-gradient(180deg,rgba(4,13,28,.97),rgba(2,7,18,.99));
+  box-shadow:0 24px 60px rgba(0,0,0,.34),0 0 0 1px rgba(255,255,255,.025);
+  backdrop-filter:blur(18px);
+}
+.income-premium-hero:before,
+.income-monthly-suite:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.035),transparent 58%);
+}
+.income-premium-hero:after,
+.income-monthly-suite:after{
+  content:"8.3.8";
+  position:absolute;
+  top:16px;
+  right:18px;
+  z-index:1;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(34,197,94,.11);
+  border:1px solid rgba(34,197,94,.22);
+  color:#bbf7d0;
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:.10em;
+}
+.income-premium-hero > *,
+.income-monthly-suite > *{position:relative;z-index:2}
+.income-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:stretch}
+.income-hero-main,
+.income-side-console,
+.income-monthly-hero,
+.income-monthly-board{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:26px;
+  padding:18px;
+  background:linear-gradient(180deg,rgba(8,20,39,.92),rgba(3,9,22,.94));
+}
+.income-hero-main:after,
+.income-monthly-hero:after{
+  content:"";
+  position:absolute;
+  width:240px;
+  height:240px;
+  right:-90px;
+  bottom:-110px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(34,197,94,.18),transparent 68%);
+  pointer-events:none;
+}
+.income-eyebrow,
+.income-panel-kicker{
+  display:inline-flex;
+  width:max-content;
+  max-width:100%;
+  align-items:center;
+  gap:8px;
+  padding:8px 11px;
+  border-radius:999px;
+  color:#dcfce7;
+  background:rgba(34,197,94,.09);
+  border:1px solid rgba(34,197,94,.20);
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+}
+.income-title{
+  margin:14px 0 12px!important;
+  font-size:clamp(38px,5.6vw,76px)!important;
+  line-height:.94!important;
+  letter-spacing:-.085em!important;
+  color:#fff!important;
+}
+.income-subtitle{max-width:840px;color:#cbd5e1;font-size:15px;line-height:1.62;margin:0}
+.income-passive-label{margin-top:28px;color:#86efac;font-size:13px;font-weight:900;letter-spacing:.02em}
+.income-passive-value{
+  margin-top:7px;
+  font-size:clamp(50px,7vw,96px);
+  line-height:.9;
+  letter-spacing:-.10em;
+  font-weight:950;
+  color:#f8fafc;
+  text-shadow:0 0 34px rgba(34,197,94,.16);
+  word-break:break-word;
+}
+.income-badge-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+.income-badge-row .badge{border-color:rgba(255,255,255,.10);background:rgba(255,255,255,.055)}
+.income-metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+.income-metric-card,
+.income-panel-card,
+.income-action-card,
+.income-month-card,
+.income-target-card,
+.income-chart-card,
+.income-calendar-card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 0 0,rgba(255,255,255,.055),transparent 42%),
+    linear-gradient(180deg,rgba(9,20,40,.90),rgba(3,8,20,.94));
+  padding:15px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+}
+.income-metric-card.featured{border-color:rgba(34,197,94,.28);background:linear-gradient(180deg,rgba(34,197,94,.11),rgba(3,8,20,.94))}
+.income-metric-card span,
+.income-panel-card span,
+.income-month-card span,
+.income-target-card span{
+  display:block;
+  color:#8da3c4;
+  font-size:12px;
+  font-weight:850;
+  margin-bottom:7px;
+}
+.income-metric-card strong,
+.income-month-card strong{
+  display:block;
+  color:#fff;
+  font-size:clamp(18px,2vw,27px);
+  font-weight:950;
+  letter-spacing:-.055em;
+  line-height:1.05;
+  word-break:break-word;
+}
+.income-metric-card small,
+.income-month-card small,
+.income-target-card small{display:block;color:#7487a8;font-size:12px;line-height:1.38;margin-top:7px}
+.income-side-console{display:grid;gap:12px;align-content:start}
+.income-console-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.income-console-title{font-size:clamp(24px,3vw,40px);line-height:1;letter-spacing:-.07em;font-weight:950;color:#fff;margin-top:10px}
+.income-pulse-list{display:grid;gap:10px;margin-top:2px}
+.income-pulse-item{
+  padding:12px 13px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.035);
+  line-height:1.45;
+  color:#dbeafe;
+}
+.income-pulse-item strong{display:block;color:#fff;margin-bottom:4px;font-size:14px}
+.income-pulse-item span{display:block;color:#90a4c5;font-size:12px}
+.income-deep-grid{display:grid;grid-template-columns:1.05fr .95fr 1fr;gap:12px;margin-top:14px}
+.income-panel-card{min-height:210px}
+.income-panel-card strong{display:block;font-size:18px;color:#fff;letter-spacing:-.035em;margin-bottom:10px}
+.income-panel-card div[id]{color:#dbeafe;line-height:1.48;font-size:14px}
+.income-action-card{
+  border-color:rgba(250,204,21,.20);
+  background:
+    radial-gradient(circle at 0% 0%,rgba(250,204,21,.12),transparent 42%),
+    linear-gradient(180deg,rgba(16,20,31,.94),rgba(5,9,20,.96));
+}
+.income-action-title{font-size:28px;font-weight:950;letter-spacing:-.06em;line-height:1.02;color:#fff;margin:8px 0 10px}
+.income-action-card div[id]{line-height:1.5;color:#fef3c7}
+.income-action-card button{margin-top:14px!important;width:100%!important;min-height:52px;border-radius:18px!important}
+.income-monthly-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px;align-items:stretch}
+.income-monthly-title{font-size:clamp(32px,4.5vw,62px);line-height:.96;letter-spacing:-.085em;font-weight:950;color:#fff;margin:12px 0}
+.income-monthly-copy{color:#cbd5e1;line-height:1.6;margin:0;max-width:680px}
+.income-month-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}
+.income-month-card{min-height:118px}
+.income-month-card.positive{border-color:rgba(34,197,94,.22);background:linear-gradient(180deg,rgba(34,197,94,.10),rgba(3,8,20,.94))}
+.income-month-card.warning{border-color:rgba(251,146,60,.22);background:linear-gradient(180deg,rgba(251,146,60,.09),rgba(3,8,20,.94))}
+.income-target-card{display:grid;gap:10px}
+.income-target-card .fields{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end;margin-top:2px}
+.income-target-card input{height:54px;border-radius:18px!important;font-weight:850}
+.income-target-card button{margin:0!important;min-height:54px;border-radius:18px!important;white-space:nowrap}
+.income-target-card .bar{height:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.06)}
+.income-board-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.income-calendar-card{min-height:170px}
+.income-calendar-card strong,
+.income-chart-card strong{display:block;font-size:18px;color:#fff;letter-spacing:-.035em;margin-bottom:10px}
+.income-calendar-card div[id]{color:#dbeafe;line-height:1.5;font-size:14px}
+.income-chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.income-chart-card{padding:16px}
+.income-chart-card svg{
+  height:300px;
+  border-radius:18px;
+  background:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),
+    rgba(255,255,255,.018);
+  background-size:28px 28px;
+  border:1px solid rgba(255,255,255,.06);
+}
+body.screen-income-active .freedom-hero,
+body.screen-income-active .freedom-card,
+body.screen-income-active .projection-hero,
+body.screen-income-active .scenario-card{
+  border-color:rgba(34,197,94,.18)!important;
+  box-shadow:0 18px 46px rgba(0,0,0,.24)!important;
+}
+body.screen-income-active .card[data-screens*="income"]:not(.income-premium-hero):not(.income-monthly-suite){
+  border-color:rgba(34,197,94,.16)!important;
+}
+.performance-mode .income-premium-hero,
+.performance-mode .income-monthly-suite,
+.performance-mode .income-hero-main,
+.performance-mode .income-side-console,
+.performance-mode .income-monthly-hero,
+.performance-mode .income-monthly-board,
+.performance-mode .income-metric-card,
+.performance-mode .income-panel-card,
+.performance-mode .income-action-card,
+.performance-mode .income-month-card,
+.performance-mode .income-target-card,
+.performance-mode .income-chart-card,
+.performance-mode .income-calendar-card{
+  backdrop-filter:none!important;
+  box-shadow:0 8px 20px rgba(0,0,0,.20)!important;
+  transition:none!important;
+}
+@media(max-width:1180px){
+  .income-hero-grid,
+  .income-monthly-grid,
+  .income-deep-grid{grid-template-columns:1fr}
+  .income-metric-grid{grid-template-columns:1fr 1fr}
+  .income-month-grid{grid-template-columns:1fr 1fr 1fr}
+  .income-chart-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .income-premium-hero,
+  .income-monthly-suite{padding:14px;border-radius:24px}
+  .income-premium-hero:after,
+  .income-monthly-suite:after{top:12px;right:12px;font-size:10px;padding:6px 8px}
+  .income-hero-main,
+  .income-side-console,
+  .income-monthly-hero,
+  .income-monthly-board{padding:14px;border-radius:22px}
+  .income-eyebrow,
+  .income-panel-kicker{font-size:10px;padding:7px 9px;letter-spacing:.08em}
+  .income-title{font-size:40px!important;line-height:.95!important;margin-top:12px!important}
+  .income-subtitle{font-size:14px;line-height:1.5}
+  .income-passive-label{margin-top:20px}
+  .income-passive-value{font-size:46px;letter-spacing:-.085em}
+  .income-metric-grid,
+  .income-month-grid,
+  .income-board-grid,
+  .income-chart-grid{grid-template-columns:1fr}
+  .income-metric-card,
+  .income-panel-card,
+  .income-action-card,
+  .income-month-card,
+  .income-target-card,
+  .income-chart-card,
+  .income-calendar-card{padding:13px;border-radius:19px;min-height:auto}
+  .income-console-title{font-size:30px}
+  .income-deep-grid{gap:10px}
+  .income-monthly-title{font-size:36px;line-height:.98}
+  .income-target-card .fields{grid-template-columns:1fr}
+  .income-target-card button{width:100%!important}
+  .income-chart-card svg{height:240px}
+}
+
+  </style>
 
 <style>
 /* 6F12 — logo executivo premium sem travar a tela
@@ -9317,9 +9609,157 @@ body.screen-overview-active.performance-mode [data-screen-block]:not(.screen-hid
         </div>
       </div>
 
-      <div class="card" data-screen-block data-screens="income overview"><div class="section"><div><div class="kicker">Etapa 6B.1 • Renda passiva profissional</div><h3>Painel de proventos e renda passiva</h3><div class="muted">Dividendos, juros, rendimentos, yield sobre custo e ranking de ativos pagadores.</div></div><span id="passiveIncomeBadge" class="badge green">Renda: R$ 0,00</span></div><div class="grid grid4"><div class="mini"><div class="label">Renda passiva total</div><div id="passiveTotal" class="value small positive">R$ 0,00</div><div id="passiveTotalNote" class="muted" style="font-size:12px;margin-top:6px">Proventos registrados no ledger.</div></div><div class="mini"><div class="label">Yield sobre custo</div><div id="passiveYieldCost" class="value small">0,0%</div><div class="muted" style="font-size:12px;margin-top:6px">Renda ÷ capital investido.</div></div><div class="mini"><div class="label">Yield sobre patrimônio</div><div id="passiveYieldCurrent" class="value small">0,0%</div><div class="muted" style="font-size:12px;margin-top:6px">Renda ÷ valor atual.</div></div><div class="mini"><div class="label">Maior pagador</div><div id="passiveTopPayer" class="value small">-</div><div id="passiveTopPayerNote" class="muted" style="font-size:12px;margin-top:6px">Aguardando proventos.</div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Ranking de renda por ativo</strong><div id="passiveRanking" style="margin-top:10px">Sem renda passiva registrada.</div></div><div class="item"><strong>Últimos proventos</strong><div id="passiveRecent" style="margin-top:10px">Nenhum provento ainda.</div></div><div class="item"><strong>Plano de renda</strong><div id="passivePlan" style="margin-top:10px">Registre dividendos, juros ou rendimentos para liberar análise de renda.</div><div class="row" style="margin-top:12px"><button class="success" onclick="preparePassiveIncome()">Registrar provento</button></div></div></div></div>
+      <div class="income-premium-hero" data-screen-block data-screens="income overview">
+        <div class="income-hero-grid">
+          <div class="income-hero-main">
+            <div class="income-eyebrow">Dymivra 8.3.8 • Renda Premium Total</div>
+            <h3 class="income-title">Renda passiva como máquina de caixa.</h3>
+            <p class="income-subtitle">A tela de Renda agora organiza proventos, yield, maior pagador, ranking de ativos e plano de ação como um cockpit de fluxo de caixa para investidores.</p>
 
-      <div class="card" data-screen-block data-screens="income"><div class="section"><div><div class="kicker">Etapa 6B.1 • Relatório mensal</div><h3>Fechamento do mês</h3><div class="muted">Compras, vendas, proventos, custos, fluxo líquido e meta mensal de renda passiva.</div></div><span id="monthlyReportBadge" class="badge purple">Mês atual</span></div><div class="grid grid5"><div class="mini"><div class="label">Renda no mês</div><div id="monthlyPassive" class="value small positive">R$ 0,00</div><div id="monthlyPassiveNote" class="muted" style="font-size:12px;margin-top:6px">Proventos do mês.</div></div><div class="mini"><div class="label">Compras no mês</div><div id="monthlyBuys" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Aportes e entradas.</div></div><div class="mini"><div class="label">Vendas no mês</div><div id="monthlySells" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Saídas do ledger.</div></div><div class="mini"><div class="label">Custos no mês</div><div id="monthlyCosts" class="value small negative">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Taxas e impostos.</div></div><div class="mini"><div class="label">Fluxo líquido</div><div id="monthlyNetFlow" class="value small">R$ 0,00</div><div class="muted" style="font-size:12px;margin-top:6px">Entradas − saídas − custos.</div></div></div><div class="grid grid3" style="margin-top:14px"><div class="item"><strong>Meta mensal de renda</strong><div class="fields" style="margin-top:10px"><input id="monthlyIncomeTarget" type="number" min="0" step="any" placeholder="Ex: 100" inputmode="decimal"><button class="gold" onclick="saveMonthlyIncomeTarget()">Salvar meta</button></div><div class="bar" style="margin-top:12px"><div id="monthlyIncomeTargetFill" class="fill" style="width:0%"></div></div><div id="monthlyIncomeTargetText" class="muted" style="margin-top:8px">Defina uma meta mensal.</div></div><div class="item"><strong>Resumo do mês</strong><div id="monthlySummaryText" style="margin-top:10px">Sem movimentações no mês.</div></div><div class="item"><strong>Calendário de proventos</strong><div id="monthlyDividendCalendar" style="margin-top:10px">Nenhum provento no mês atual.</div></div></div><div class="grid grid2" style="margin-top:14px"><div class="item"><strong>Evolução mensal de proventos</strong><svg id="monthlyPassiveChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div><div class="item"><strong>Fluxo mensal de aportes</strong><svg id="monthlyFlowChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg></div></div></div>
+            <div class="income-passive-label">Renda passiva acumulada registrada no ledger</div>
+            <div id="passiveTotal" class="income-passive-value positive">R$ 0,00</div>
+            <div id="passiveTotalNote" class="muted" style="margin-top:8px;font-size:13px">Proventos registrados no ledger.</div>
+
+            <div class="income-badge-row">
+              <span id="passiveIncomeBadge" class="badge green">Renda: R$ 0,00</span>
+              <span class="badge">💸 Dividendos</span>
+              <span class="badge purple">📈 Yield</span>
+              <span class="badge">🧾 Fechamento mensal</span>
+            </div>
+
+            <div class="income-metric-grid">
+              <div class="income-metric-card featured">
+                <span>Yield sobre custo</span>
+                <strong id="passiveYieldCost">0,0%</strong>
+                <small>Renda ÷ capital investido.</small>
+              </div>
+              <div class="income-metric-card">
+                <span>Yield sobre patrimônio</span>
+                <strong id="passiveYieldCurrent">0,0%</strong>
+                <small>Renda ÷ valor atual.</small>
+              </div>
+              <div class="income-metric-card">
+                <span>Maior pagador</span>
+                <strong id="passiveTopPayer">-</strong>
+                <small id="passiveTopPayerNote">Aguardando proventos.</small>
+              </div>
+              <div class="income-metric-card">
+                <span>Qualidade da renda</span>
+                <strong>Em evolução</strong>
+                <small>Mais recorrência melhora a leitura da renda.</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="income-side-console">
+            <div class="income-console-head">
+              <div>
+                <div class="income-panel-kicker">Central de renda</div>
+                <div class="income-console-title">O que importa agora</div>
+              </div>
+            </div>
+            <div class="income-pulse-list">
+              <div class="income-pulse-item"><strong>1. Registrar proventos</strong><span>Dividendos, juros, rendimentos e cupons alimentam a inteligência da renda.</span></div>
+              <div class="income-pulse-item"><strong>2. Acompanhar yield real</strong><span>O app compara renda com custo e valor atual para medir eficiência.</span></div>
+              <div class="income-pulse-item"><strong>3. Reforçar previsibilidade</strong><span>Quanto mais recorrente a renda, mais forte fica o plano mensal.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="income-deep-grid">
+          <div class="income-panel-card">
+            <strong>Ranking de renda por ativo</strong>
+            <div id="passiveRanking">Sem renda passiva registrada.</div>
+          </div>
+          <div class="income-panel-card">
+            <strong>Últimos proventos</strong>
+            <div id="passiveRecent">Nenhum provento ainda.</div>
+          </div>
+          <div class="income-action-card">
+            <div class="income-panel-kicker">Plano de renda</div>
+            <div class="income-action-title">Próxima renda começa no registro.</div>
+            <div id="passivePlan">Registre dividendos, juros ou rendimentos para liberar análise de renda.</div>
+            <button class="success" onclick="preparePassiveIncome()">Registrar provento</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="income-monthly-suite" data-screen-block data-screens="income">
+        <div class="income-monthly-grid">
+          <div class="income-monthly-hero">
+            <div class="income-eyebrow">Fechamento mensal premium</div>
+            <h3 class="income-monthly-title">Seu mês financeiro em leitura executiva.</h3>
+            <p class="income-monthly-copy">Compras, vendas, custos, renda passiva, fluxo líquido, meta mensal e calendário de proventos em uma tela mais clara, mais bonita e mais decisiva.</p>
+            <div class="income-badge-row">
+              <span id="monthlyReportBadge" class="badge purple">Mês atual</span>
+              <span class="badge green">Meta de renda</span>
+              <span class="badge">Fluxo líquido</span>
+            </div>
+          </div>
+
+          <div class="income-monthly-board">
+            <div class="income-panel-kicker">Resumo do mês</div>
+            <div class="income-month-grid">
+              <div class="income-month-card positive">
+                <span>Renda no mês</span>
+                <strong id="monthlyPassive" class="positive">R$ 0,00</strong>
+                <small id="monthlyPassiveNote">Proventos do mês.</small>
+              </div>
+              <div class="income-month-card">
+                <span>Compras no mês</span>
+                <strong id="monthlyBuys">R$ 0,00</strong>
+                <small>Aportes e entradas.</small>
+              </div>
+              <div class="income-month-card">
+                <span>Vendas no mês</span>
+                <strong id="monthlySells">R$ 0,00</strong>
+                <small>Saídas do ledger.</small>
+              </div>
+              <div class="income-month-card warning">
+                <span>Custos no mês</span>
+                <strong id="monthlyCosts" class="negative">R$ 0,00</strong>
+                <small>Taxas e impostos.</small>
+              </div>
+              <div class="income-month-card">
+                <span>Fluxo líquido</span>
+                <strong id="monthlyNetFlow">R$ 0,00</strong>
+                <small>Entradas − saídas − custos.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="income-board-grid">
+          <div class="income-target-card">
+            <span>Meta mensal de renda passiva</span>
+            <div class="fields">
+              <input id="monthlyIncomeTarget" type="number" min="0" step="any" placeholder="Ex: 100" inputmode="decimal">
+              <button class="gold" onclick="saveMonthlyIncomeTarget()">Salvar meta</button>
+            </div>
+            <div class="bar"><div id="monthlyIncomeTargetFill" class="fill" style="width:0%"></div></div>
+            <small id="monthlyIncomeTargetText">Defina uma meta mensal.</small>
+          </div>
+          <div class="income-calendar-card">
+            <strong>Resumo do mês</strong>
+            <div id="monthlySummaryText">Sem movimentações no mês.</div>
+          </div>
+          <div class="income-calendar-card">
+            <strong>Calendário de proventos</strong>
+            <div id="monthlyDividendCalendar">Nenhum provento no mês atual.</div>
+          </div>
+        </div>
+
+        <div class="income-chart-grid">
+          <div class="income-chart-card">
+            <strong>Evolução mensal de proventos</strong>
+            <svg id="monthlyPassiveChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg>
+          </div>
+          <div class="income-chart-card">
+            <strong>Fluxo mensal de aportes</strong>
+            <svg id="monthlyFlowChart" viewBox="0 0 1000 320" preserveAspectRatio="none"></svg>
+          </div>
+        </div>
+      </div>
 
       
       
@@ -10009,7 +10449,7 @@ body.screen-overview-active.performance-mode [data-screen-block]:not(.screen-hid
     const screenTexts={
       overview:['Visão geral','cockpit premium total com patrimônio, comandos, inteligência, renda, risco, alocação e próximos passos.'],
       ledger:['Ledger Premium Total','registre movimentações, audite preços, acompanhe posições calculadas e controle o extrato em uma tela de comando premium.'],
-      income:['Renda passiva','acompanhe proventos, yield, meta mensal de renda e fechamento do mês.'],
+      income:['Renda Premium Total','cockpit premium para proventos, yield, maior pagador, ranking, meta mensal, fechamento do mês e calendário de renda passiva.'],
       liberty:['Liberdade financeira','calcule quanto patrimônio precisa para viver de renda e acompanhe marcos de renda mensal.'],
       allocation:['Alocação inteligente','compare carteira atual com carteira-alvo e veja onde colocar o próximo aporte. A tela Perfil fica separada.'],
       profile:['Perfil de investidor','escolha conservador, moderado, arrojado ou personalizado. Depois aplique o perfil para atualizar a tela Alocação.'],
@@ -10237,6 +10677,7 @@ let deferredInstallPrompt=null;
         document.body.classList.toggle('screen-ai-active',wanted==='ai');
         document.body.classList.toggle('screen-overview-active',wanted==='overview');
         document.body.classList.toggle('screen-ledger-active',wanted==='ledger');
+        document.body.classList.toggle('screen-income-active',wanted==='income');
         document.documentElement.style.overflowY='auto';
         document.body.style.overflowY='auto';
         document.body.style.height='auto';
