@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Dymivra 8.4.9 — Business Exclusão Premium -->
+<!-- Dymivra 8.5.0 — Business Relatório Mensal -->
 
 <html lang="pt-BR">
 <head>
@@ -15,7 +15,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.4.9 — Business Exclusão Premium</title>
+<title>Dymivra 8.5.0 — Business Relatório Mensal</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -10086,7 +10086,7 @@ body.screen-overview-active.performance-mode .overview-intelligence-suite{
 <div class="card premium-panel dymivra845-business" data-screen-block="" data-screens="business">
   <div class="business-hero-shell">
     <div class="business-hero-copy">
-      <div class="business-kicker">🏢 Dymivra 8.4.9 • Exclusão Premium</div>
+      <div class="business-kicker">🏢 Dymivra 8.5.0 • Relatório Mensal</div>
       <h2>Dymivra Business</h2>
       <p>Controle financeiro para pequenos negócios, sociedades e operações em crescimento. Separe o dinheiro do negócio da sua carteira pessoal e acompanhe caixa, entradas, saídas, lucro, margem, investimentos e retiradas.</p>
       <div class="business-quick-actions">
@@ -19149,6 +19149,423 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
   document.addEventListener('keydown', ev => {
     if(ev.key === 'Escape' && $('dymivra849DeleteOverlay')?.classList.contains('show')) window.dymivra849CloseBusinessDeleteModal();
   });
+})();
+</script>
+
+
+
+<style id="dymivra850-business-report-style">
+/* ==========================================================
+   Dymivra 8.5.0 • Business Relatório Mensal
+   Escopo: adiciona relatório mensal ao Dymivra Business.
+   Importante: botão Topo não foi alterado.
+   ========================================================== */
+.business-report-card{
+  margin-top:14px!important;
+  position:relative!important;
+  overflow:hidden!important;
+  border:1px solid rgba(34,211,238,.20)!important;
+  border-radius:28px!important;
+  padding:18px!important;
+  background:
+    radial-gradient(circle at 7% 0%,rgba(34,211,238,.12),transparent 32%),
+    radial-gradient(circle at 96% 8%,rgba(139,92,246,.10),transparent 34%),
+    linear-gradient(180deg,rgba(15,23,42,.82),rgba(3,9,22,.74))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.055),0 18px 42px rgba(0,0,0,.18)!important;
+}
+.business-report-card::before{
+  content:""!important;
+  position:absolute!important;
+  left:18px!important;
+  right:18px!important;
+  top:0!important;
+  height:3px!important;
+  border-radius:999px!important;
+  background:linear-gradient(90deg,#22d3ee,#8b5cf6,#facc15,#22c55e)!important;
+  opacity:.86!important;
+}
+.business-report-card>*{position:relative!important;z-index:1!important;}
+.business-report-head{
+  display:flex!important;
+  align-items:flex-start!important;
+  justify-content:space-between!important;
+  gap:14px!important;
+  margin-bottom:14px!important;
+}
+.business-report-kicker{
+  color:#67e8f9!important;
+  font-size:12px!important;
+  font-weight:950!important;
+  letter-spacing:.17em!important;
+  text-transform:uppercase!important;
+  margin-bottom:8px!important;
+}
+.business-report-card h3{
+  margin:0!important;
+  color:#fff!important;
+  font-size:clamp(28px,4vw,44px)!important;
+  line-height:1.02!important;
+  letter-spacing:-.075em!important;
+  font-weight:950!important;
+}
+.business-report-period{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:38px!important;
+  padding:8px 12px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(125,211,252,.18)!important;
+  background:rgba(34,211,238,.075)!important;
+  color:#dbeafe!important;
+  font-size:12px!important;
+  font-weight:950!important;
+  white-space:nowrap!important;
+}
+.business-report-grid{
+  display:grid!important;
+  grid-template-columns:repeat(4,1fr)!important;
+  gap:10px!important;
+  margin-top:10px!important;
+}
+.business-report-mini{
+  min-height:100px!important;
+  border:1px solid rgba(148,163,184,.12)!important;
+  border-radius:20px!important;
+  padding:13px!important;
+  background:rgba(255,255,255,.035)!important;
+}
+.business-report-mini span{
+  display:block!important;
+  color:rgba(203,213,225,.78)!important;
+  font-size:11px!important;
+  font-weight:950!important;
+  letter-spacing:.06em!important;
+  text-transform:uppercase!important;
+  line-height:1.2!important;
+}
+.business-report-mini strong{
+  display:block!important;
+  margin-top:9px!important;
+  color:#fff!important;
+  font-size:clamp(19px,2.2vw,26px)!important;
+  line-height:1.05!important;
+  letter-spacing:-.065em!important;
+  font-weight:950!important;
+}
+.business-report-mini small{
+  display:block!important;
+  margin-top:6px!important;
+  color:#8ea3c7!important;
+  line-height:1.3!important;
+}
+.business-report-split{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:12px!important;
+  margin-top:12px!important;
+}
+.business-report-panel{
+  border:1px solid rgba(148,163,184,.12)!important;
+  border-radius:22px!important;
+  padding:14px!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.022))!important;
+}
+.business-report-panel h4{
+  margin:0 0 10px!important;
+  color:#fff!important;
+  font-size:18px!important;
+  line-height:1.15!important;
+  letter-spacing:-.04em!important;
+}
+.business-report-status{
+  padding:13px 14px!important;
+  border-radius:18px!important;
+  border:1px solid rgba(34,211,238,.18)!important;
+  background:rgba(34,211,238,.06)!important;
+  color:#dbeafe!important;
+  line-height:1.48!important;
+}
+.business-report-status.good{border-color:rgba(34,197,94,.24)!important;background:rgba(34,197,94,.075)!important;color:#dcfce7!important;}
+.business-report-status.warn{border-color:rgba(250,204,21,.23)!important;background:rgba(250,204,21,.075)!important;color:#fef3c7!important;}
+.business-report-status.bad{border-color:rgba(248,113,113,.24)!important;background:rgba(239,68,68,.075)!important;color:#fecaca!important;}
+.business-expense-list{display:grid!important;gap:8px!important;}
+.business-expense-row{
+  display:grid!important;
+  grid-template-columns:1fr auto!important;
+  gap:10px!important;
+  align-items:center!important;
+  padding:10px 11px!important;
+  border-radius:15px!important;
+  border:1px solid rgba(255,255,255,.075)!important;
+  background:rgba(255,255,255,.03)!important;
+}
+.business-expense-row span{color:#cbd5e1!important;font-weight:850!important;line-height:1.2!important;}
+.business-expense-row strong{color:#fdba74!important;font-weight:950!important;white-space:nowrap!important;}
+.business-report-analysis{
+  margin-top:12px!important;
+  padding:14px!important;
+  border-radius:20px!important;
+  border:1px solid rgba(125,211,252,.16)!important;
+  background:radial-gradient(circle at 0 0,rgba(34,211,238,.10),transparent 34%),rgba(255,255,255,.032)!important;
+  color:#dbeafe!important;
+  line-height:1.58!important;
+}
+.business-report-actions{
+  display:grid!important;
+  grid-template-columns:1fr auto!important;
+  gap:10px!important;
+  align-items:center!important;
+  margin-top:14px!important;
+}
+.business-report-text-preview{
+  border:1px solid rgba(148,163,184,.11)!important;
+  border-radius:18px!important;
+  background:rgba(2,8,18,.28)!important;
+  color:#94a3b8!important;
+  padding:12px 13px!important;
+  line-height:1.45!important;
+  font-size:13px!important;
+}
+.business-report-copy{
+  width:auto!important;
+  min-width:170px!important;
+  margin:0!important;
+  min-height:52px!important;
+  border-radius:18px!important;
+}
+@media(max-width:1120px){
+  .business-report-grid{grid-template-columns:1fr 1fr!important;}
+  .business-report-split{grid-template-columns:1fr!important;}
+}
+@media(max-width:760px){
+  .business-report-card{padding:14px!important;border-radius:24px!important;}
+  .business-report-head{display:grid!important;grid-template-columns:1fr!important;}
+  .business-report-period{width:max-content!important;}
+  .business-report-grid{grid-template-columns:1fr!important;}
+  .business-report-mini{min-height:96px!important;border-radius:22px!important;padding:15px!important;}
+  .business-report-mini strong{font-size:clamp(27px,8vw,38px)!important;}
+  .business-report-actions{grid-template-columns:1fr!important;}
+  .business-report-copy{width:100%!important;}
+}
+</style>
+
+<script id="dymivra850-business-report-script">
+/* ==========================================================
+   Dymivra 8.5.0 • Business Relatório Mensal
+   Adiciona relatório mensal, maiores despesas e botão copiar.
+   Importante: botão Topo não foi alterado.
+   ========================================================== */
+(function(){
+  const $ = id => document.getElementById(id);
+  const STORE_PREFIX = 'dymivra_business_entries_v1_';
+  const fmt = v => new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v||0));
+  const pct = v => (Number.isFinite(Number(v)) ? Number(v) : 0).toLocaleString('pt-BR',{maximumFractionDigits:1}) + '%';
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const monthNames = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+  function userEmail(){ return ($('userEmail')?.textContent || '').trim().toLowerCase() || 'guest'; }
+  function activeKey(){ return STORE_PREFIX + userEmail(); }
+  function guestKey(){ return STORE_PREFIX + 'guest'; }
+  function readKey(key){ try{ const data=JSON.parse(localStorage.getItem(key)||'[]'); return Array.isArray(data)?data.filter(Boolean):[]; }catch{return []} }
+  function writeKey(key,list){ try{ localStorage.setItem(key,JSON.stringify(Array.isArray(list)?list:[])); }catch{} }
+  function load(){
+    let list = readKey(activeKey());
+    if(activeKey() !== guestKey()){
+      const guest = readKey(guestKey());
+      if(guest.length && !list.length){ list = guest; writeKey(activeKey(),list); }
+    }
+    return list.filter(e => e && Number(e.amount||0) >= 0);
+  }
+  function dateObj(value){
+    const d = value ? new Date(String(value).length<=10 ? value+'T00:00:00' : value) : new Date();
+    return Number.isNaN(d.getTime()) ? new Date() : d;
+  }
+  function currentMonthKey(){ const d = new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); }
+  function monthKey(value){ const d=dateObj(value); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); }
+  function periodLabel(){ const d = new Date(); return monthNames[d.getMonth()] + '/' + d.getFullYear(); }
+  function calc(list){
+    const cur = currentMonthKey();
+    let inM=0,outM=0,allIn=0,allOut=0,investment=0,withdrawals=0;
+    const expenses = {};
+    const entryCats = {};
+    (list||[]).forEach(e=>{
+      const v = Number(e.amount||0);
+      const isCurrent = monthKey(e.date || e.createdAt || new Date()) === cur;
+      if(e.type === 'entrada'){
+        allIn += v; if(isCurrent){ inM += v; entryCats[e.category||'Entrada']=(entryCats[e.category||'Entrada']||0)+v; }
+      }else if(e.type === 'saida'){
+        allOut += v; if(isCurrent){ outM += v; expenses[e.category||'Saída']=(expenses[e.category||'Saída']||0)+v; }
+      }else if(e.type === 'investimento'){
+        investment += v;
+      }else if(e.type === 'retirada'){
+        withdrawals += v;
+      }
+    });
+    const profit = inM - outM;
+    const margin = inM ? (profit/inM)*100 : 0;
+    const cash = allIn + investment - allOut - withdrawals;
+    const available = Math.max(profit - withdrawals,0);
+    return {inM,outM,allIn,allOut,investment,withdrawals,profit,margin,cash,available,split:available/2,expenses,entryCats,count:(list||[]).length};
+  }
+  function analysis(t){
+    if(!t.count) return 'Ainda não há movimentações registradas. Comece adicionando entradas, saídas, investimentos e retiradas para gerar um relatório real do negócio.';
+    if(t.inM <= 0 && t.outM <= 0) return 'Este mês ainda não tem entradas nem saídas operacionais registradas. O capital investido e as retiradas aparecem no caixa, mas o resultado mensal depende das vendas e despesas do período.';
+    if(t.inM <= 0 && t.outM > 0) return 'Este mês teve saídas, mas ainda não teve entradas registradas. Registre vendas ou recebimentos para medir lucro, margem e saúde operacional.';
+    if(t.profit < 0) return 'O mês está no prejuízo operacional. As saídas estão maiores que as entradas. O próximo passo é revisar despesas, estoque, taxas e precificação.';
+    if(t.margin < 10) return 'O negócio está positivo, mas a margem está baixa. Revise custos diretos, preço de venda e despesas recorrentes para proteger o caixa.';
+    if(t.margin >= 25) return 'O negócio está com margem saudável. As entradas cobrem as saídas com folga. Avalie reinvestir com controle e registrar retiradas de forma separada.';
+    return 'O negócio está positivo neste mês. Continue acompanhando entradas, saídas, estoque, retiradas e investimentos para manter uma operação saudável.';
+  }
+  function statusClass(t){ if(!t.count || (t.inM===0 && t.outM===0)) return 'warn'; if(t.profit<0 || t.cash<0) return 'bad'; if(t.margin>=10) return 'good'; return 'warn'; }
+  function statusTitle(t){
+    if(!t.count) return 'Relatório aguardando dados';
+    if(t.profit < 0) return 'Resultado: prejuízo operacional';
+    if(t.inM <= 0 && t.outM > 0) return 'Resultado: sem entradas no mês';
+    if(t.profit === 0) return 'Resultado: mês neutro';
+    if(t.margin >= 25) return 'Resultado: margem saudável';
+    if(t.margin < 10) return 'Resultado: lucro com margem baixa';
+    return 'Resultado: mês positivo';
+  }
+  function topExpenses(expenses){
+    return Object.entries(expenses||{}).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  }
+  function ensureReport(){
+    let card = $('businessReportCard');
+    if(card) return card;
+    const history = document.querySelector('.business-history-card');
+    const main = document.querySelector('.business-main-grid');
+    const host = main?.parentElement || history?.parentElement;
+    if(!host) return null;
+    card = document.createElement('div');
+    card.id = 'businessReportCard';
+    card.className = 'business-report-card';
+    card.innerHTML = `
+      <div class="business-report-head">
+        <div>
+          <div class="business-report-kicker">Relatório do Negócio</div>
+          <h3>Relatório mensal</h3>
+        </div>
+        <div class="business-report-period" id="businessReportPeriod">${esc(periodLabel())}</div>
+      </div>
+      <div class="business-report-grid">
+        <div class="business-report-mini"><span>Caixa atual</span><strong id="businessReportCash">R$ 0,00</strong><small>Caixa geral do negócio</small></div>
+        <div class="business-report-mini"><span>Entradas</span><strong id="businessReportIn">R$ 0,00</strong><small>Entradas do mês</small></div>
+        <div class="business-report-mini"><span>Saídas</span><strong id="businessReportOut">R$ 0,00</strong><small>Saídas do mês</small></div>
+        <div class="business-report-mini"><span>Lucro líquido</span><strong id="businessReportProfit">R$ 0,00</strong><small>Entradas − saídas</small></div>
+        <div class="business-report-mini"><span>Margem</span><strong id="businessReportMargin">0%</strong><small>Lucro sobre entradas</small></div>
+        <div class="business-report-mini"><span>Investimentos</span><strong id="businessReportInvestment">R$ 0,00</strong><small>Capital colocado</small></div>
+        <div class="business-report-mini"><span>Retiradas</span><strong id="businessReportWithdrawals">R$ 0,00</strong><small>Saída para sócios</small></div>
+        <div class="business-report-mini"><span>Divisão 50/50</span><strong id="businessReportSplit">R$ 0,00</strong><small>Lucro disponível por pessoa</small></div>
+      </div>
+      <div class="business-report-split">
+        <div class="business-report-panel">
+          <h4>Resultado operacional</h4>
+          <div class="business-report-status" id="businessReportStatus">Relatório aguardando movimentações.</div>
+        </div>
+        <div class="business-report-panel">
+          <h4>Maiores despesas</h4>
+          <div class="business-expense-list" id="businessExpenseList"><div class="business-expense-row"><span>Nenhuma saída neste mês</span><strong>R$ 0,00</strong></div></div>
+        </div>
+      </div>
+      <div class="business-report-analysis" id="businessReportAnalysis">Adicione movimentações para gerar a análise automática do negócio.</div>
+      <div class="business-report-actions">
+        <div class="business-report-text-preview">Copie o relatório mensal para enviar à sócia, salvar em anotações ou compartilhar no WhatsApp.</div>
+        <button type="button" class="business-report-copy" onclick="dymivra850CopyBusinessReport()">Copiar relatório</button>
+      </div>`;
+    if(history) history.insertAdjacentElement('beforebegin', card);
+    else host.appendChild(card);
+    return card;
+  }
+  function setText(id,value){ const el=$(id); if(el) el.textContent=value; }
+  function renderReport(){
+    const card = ensureReport(); if(!card) return;
+    const list = load();
+    const t = calc(list);
+    setText('businessReportPeriod', periodLabel());
+    setText('businessReportCash', fmt(t.cash));
+    setText('businessReportIn', fmt(t.inM));
+    setText('businessReportOut', fmt(t.outM));
+    setText('businessReportProfit', fmt(t.profit));
+    setText('businessReportMargin', pct(t.margin));
+    setText('businessReportInvestment', fmt(t.investment));
+    setText('businessReportWithdrawals', fmt(t.withdrawals));
+    setText('businessReportSplit', fmt(t.split));
+    const status = $('businessReportStatus');
+    if(status){ status.className = 'business-report-status ' + statusClass(t); status.textContent = statusTitle(t); }
+    const expenseBox = $('businessExpenseList');
+    if(expenseBox){
+      const rows = topExpenses(t.expenses);
+      expenseBox.innerHTML = rows.length ? rows.map(([name,value])=>`<div class="business-expense-row"><span>${esc(name)}</span><strong>${fmt(value)}</strong></div>`).join('') : '<div class="business-expense-row"><span>Nenhuma saída neste mês</span><strong>R$ 0,00</strong></div>';
+    }
+    setText('businessReportAnalysis', analysis(t));
+  }
+  function reportText(){
+    const t = calc(load());
+    const rows = topExpenses(t.expenses);
+    const expenseText = rows.length ? rows.map(([name,value])=>`- ${name}: ${fmt(value)}`).join('\n') : '- Nenhuma saída registrada no mês';
+    return [
+      `Relatório Dymivra Business — ${periodLabel()}`,
+      '',
+      `Caixa atual: ${fmt(t.cash)}`,
+      `Entradas do mês: ${fmt(t.inM)}`,
+      `Saídas do mês: ${fmt(t.outM)}`,
+      `Lucro líquido: ${fmt(t.profit)}`,
+      `Margem: ${pct(t.margin)}`,
+      `Investimentos: ${fmt(t.investment)}`,
+      `Retiradas: ${fmt(t.withdrawals)}`,
+      `Divisão 50/50 sugerida: ${fmt(t.split)}`,
+      '',
+      'Maiores despesas:',
+      expenseText,
+      '',
+      'Análise:',
+      analysis(t)
+    ].join('\n');
+  }
+  window.dymivra850RenderBusinessReport = renderReport;
+  window.dymivra850CopyBusinessReport = function(){
+    const txt = reportText();
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(()=>{try{toast('Relatório Business copiado.','success')}catch{alert('Relatório copiado.')}}).catch(()=>alert(txt));
+    }else{
+      alert(txt);
+    }
+  };
+  function wrap(name){
+    const old = window[name];
+    if(typeof old !== 'function' || old.__dym850Wrapped) return;
+    const wrapped = function(){
+      const result = old.apply(this, arguments);
+      setTimeout(renderReport, 40);
+      setTimeout(renderReport, 220);
+      return result;
+    };
+    wrapped.__dym850Wrapped = true;
+    window[name] = wrapped;
+  }
+  function install(){
+    ensureReport();
+    renderReport();
+    ['dymivra845RenderBusiness','dymivra846RenderBusinessFiltered','dymivra847RenderBusinessSync','dymivra845AddBusinessEntry','dymivra849ConfirmBusinessDelete'].forEach(wrap);
+  }
+  const oldShow = window.showAppScreen;
+  if(typeof oldShow === 'function' && !oldShow.__dym850ReportWrapped){
+    const wrappedShow = function(screen,smooth){
+      const result = oldShow.apply(this, arguments);
+      if(screen === 'business' || screen === 'all'){
+        setTimeout(install,80);
+        setTimeout(renderReport,450);
+      }
+      return result;
+    };
+    wrappedShow.__dym850ReportWrapped = true;
+    window.showAppScreen = wrappedShow;
+  }
+  try{ const userEl = $('userEmail'); if(userEl){ new MutationObserver(()=>setTimeout(renderReport,80)).observe(userEl,{childList:true,characterData:true,subtree:true}); } }catch{}
+  document.addEventListener('DOMContentLoaded',()=>{ setTimeout(install,120); setTimeout(renderReport,700); setTimeout(renderReport,1500); });
+  window.addEventListener('storage', ev => { if(String(ev.key||'').startsWith(STORE_PREFIX)) setTimeout(renderReport,80); });
+  if(document.readyState !== 'loading'){ setTimeout(install,120); setTimeout(renderReport,700); }
 })();
 </script>
 
