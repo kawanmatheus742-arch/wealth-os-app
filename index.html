@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Dymivra 8.5.0 — Business Relatório Mensal -->
+<!-- Dymivra 8.5.1 — Business Sócios Mais Claro -->
 
 <html lang="pt-BR">
 <head>
@@ -15,7 +15,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.5.0 — Business Relatório Mensal</title>
+<title>Dymivra 8.5.1 — Business Sócios Mais Claro</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -10086,7 +10086,7 @@ body.screen-overview-active.performance-mode .overview-intelligence-suite{
 <div class="card premium-panel dymivra845-business" data-screen-block="" data-screens="business">
   <div class="business-hero-shell">
     <div class="business-hero-copy">
-      <div class="business-kicker">🏢 Dymivra 8.5.0 • Relatório Mensal</div>
+      <div class="business-kicker">🏢 Dymivra 8.5.1 • Sócios Mais Claro</div>
       <h2>Dymivra Business</h2>
       <p>Controle financeiro para pequenos negócios, sociedades e operações em crescimento. Separe o dinheiro do negócio da sua carteira pessoal e acompanhe caixa, entradas, saídas, lucro, margem, investimentos e retiradas.</p>
       <div class="business-quick-actions">
@@ -19566,6 +19566,345 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
   document.addEventListener('DOMContentLoaded',()=>{ setTimeout(install,120); setTimeout(renderReport,700); setTimeout(renderReport,1500); });
   window.addEventListener('storage', ev => { if(String(ev.key||'').startsWith(STORE_PREFIX)) setTimeout(renderReport,80); });
   if(document.readyState !== 'loading'){ setTimeout(install,120); setTimeout(renderReport,700); }
+})();
+</script>
+
+
+
+<style id="dymivra851-business-socios-claro-style">
+/* ==========================================================
+   Dymivra 8.5.1 • Business Sócios Mais Claro
+   Escopo: deixa capital, lucro e divisão 50/50 separados.
+   Importante: botão Topo não foi alterado.
+   ========================================================== */
+.business-partner-card.dymivra851-socios-card{
+  border-color:rgba(34,211,238,.18)!important;
+  background:
+    radial-gradient(circle at 0% 0%,rgba(34,211,238,.08),transparent 35%),
+    radial-gradient(circle at 100% 100%,rgba(250,204,21,.055),transparent 36%),
+    linear-gradient(180deg,rgba(15,23,42,.84),rgba(3,9,22,.72))!important;
+}
+.business-partner-card.dymivra851-socios-card .business-partner-grid{
+  grid-template-columns:1fr 1fr!important;
+}
+.business-partner-card.dymivra851-socios-card .business-partner-grid div{
+  position:relative!important;
+  overflow:hidden!important;
+  min-height:108px!important;
+  border-color:rgba(148,163,184,.13)!important;
+  background:
+    radial-gradient(circle at 100% 100%,rgba(34,211,238,.055),transparent 42%),
+    rgba(255,255,255,.035)!important;
+}
+.business-partner-card.dymivra851-socios-card .business-partner-grid div::after{
+  content:""!important;
+  position:absolute!important;
+  right:-42px!important;
+  bottom:-48px!important;
+  width:118px!important;
+  height:118px!important;
+  border-radius:999px!important;
+  background:radial-gradient(circle,rgba(34,211,238,.08),transparent 70%)!important;
+  pointer-events:none!important;
+}
+.business-partner-card.dymivra851-socios-card .business-partner-grid div.dym851-capital{
+  border-color:rgba(147,197,253,.22)!important;
+}
+.business-partner-card.dymivra851-socios-card .business-partner-grid div.dym851-lucro{
+  border-color:rgba(34,197,94,.22)!important;
+}
+.business-partner-card.dymivra851-socios-card .business-partner-grid span,
+.business-partner-card.dymivra851-socios-card .business-partner-grid strong,
+.business-partner-card.dymivra851-socios-card .business-partner-grid small{
+  position:relative!important;
+  z-index:1!important;
+}
+.business-partner-card.dymivra851-socios-card .business-partner-grid small{
+  display:block!important;
+  margin-top:7px!important;
+  color:#8ea3c7!important;
+  font-size:12px!important;
+  line-height:1.32!important;
+}
+.business-partner-card.dymivra851-socios-card .business-note{
+  border-color:rgba(250,204,21,.28)!important;
+  background:
+    radial-gradient(circle at 0 0,rgba(250,204,21,.10),transparent 34%),
+    linear-gradient(180deg,rgba(250,204,21,.075),rgba(250,204,21,.032))!important;
+}
+.business-report-mini.dym851-report-capital{
+  border-color:rgba(147,197,253,.20)!important;
+  background:
+    radial-gradient(circle at 100% 100%,rgba(147,197,253,.085),transparent 40%),
+    rgba(255,255,255,.035)!important;
+}
+.dym851-socios-pill{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:7px!important;
+  margin-top:12px!important;
+  padding:8px 10px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(34,211,238,.18)!important;
+  background:rgba(34,211,238,.07)!important;
+  color:#cffafe!important;
+  font-size:12px!important;
+  font-weight:900!important;
+}
+@media(max-width:760px){
+  .business-partner-card.dymivra851-socios-card .business-partner-grid{
+    grid-template-columns:1fr!important;
+  }
+  .business-partner-card.dymivra851-socios-card .business-partner-grid div{
+    min-height:100px!important;
+    padding:15px!important;
+    border-radius:22px!important;
+  }
+  .business-partner-card.dymivra851-socios-card .business-partner-grid strong{
+    font-size:clamp(29px,8vw,38px)!important;
+  }
+}
+</style>
+
+<script id="dymivra851-business-socios-claro-script">
+/* ==========================================================
+   Dymivra 8.5.1 • Business Sócios Mais Claro
+   Corrige a leitura da divisão: capital investido separado
+   do lucro disponível para divisão.
+   Importante: botão Topo não foi alterado.
+   ========================================================== */
+(function(){
+  const $ = id => document.getElementById(id);
+  const STORE_PREFIX = 'dymivra_business_entries_v1_';
+  const fmt = v => new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v||0));
+  const pct = v => (Number.isFinite(Number(v)) ? Number(v) : 0).toLocaleString('pt-BR',{maximumFractionDigits:1}) + '%';
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const monthNames = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+  function userEmail(){ return ($('userEmail')?.textContent || '').trim().toLowerCase() || 'guest'; }
+  function activeKey(){ return STORE_PREFIX + userEmail(); }
+  function guestKey(){ return STORE_PREFIX + 'guest'; }
+  function readKey(key){ try{ const data = JSON.parse(localStorage.getItem(key) || '[]'); return Array.isArray(data) ? data.filter(Boolean) : []; }catch{return []} }
+  function writeKey(key,list){ try{ localStorage.setItem(key, JSON.stringify(Array.isArray(list) ? list : [])); }catch{} }
+  function load(){
+    let list = readKey(activeKey());
+    if(activeKey() !== guestKey()){
+      const guest = readKey(guestKey());
+      if(guest.length && !list.length){ list = guest; writeKey(activeKey(),list); }
+    }
+    return list.filter(e => e && Number(e.amount||0) >= 0);
+  }
+  function dateObj(value){ const d = value ? new Date(String(value).length<=10 ? value+'T00:00:00' : value) : new Date(); return Number.isNaN(d.getTime()) ? new Date() : d; }
+  function currentMonthKey(){ const d = new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); }
+  function monthKey(value){ const d = dateObj(value); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); }
+  function periodLabel(){ const d = new Date(); return monthNames[d.getMonth()] + '/' + d.getFullYear(); }
+  function calc(list){
+    const cur = currentMonthKey();
+    let inM=0,outM=0,allIn=0,allOut=0,investment=0,withdrawals=0;
+    const expenses = {};
+    (list||[]).forEach(e=>{
+      const v = Number(e.amount||0);
+      const isCurrent = monthKey(e.date || e.createdAt || new Date()) === cur;
+      if(e.type === 'entrada'){
+        allIn += v; if(isCurrent) inM += v;
+      }else if(e.type === 'saida'){
+        allOut += v; if(isCurrent){ outM += v; expenses[e.category||'Saída'] = (expenses[e.category||'Saída']||0) + v; }
+      }else if(e.type === 'investimento'){
+        investment += v;
+      }else if(e.type === 'retirada'){
+        withdrawals += v;
+      }
+    });
+    const profit = inM - outM;
+    const margin = inM ? (profit/inM)*100 : 0;
+    const cash = allIn + investment - allOut - withdrawals;
+    const available = Math.max(profit - withdrawals,0);
+    return {
+      inM,outM,allIn,allOut,investment,withdrawals,profit,margin,cash,available,
+      capitalSplit: investment/2,
+      profitSplit: available/2,
+      expenses,
+      count:(list||[]).length
+    };
+  }
+  function setText(id,value){ const el=$(id); if(el) el.textContent=value; }
+
+  function ensureSociosClarity(){
+    const card = document.querySelector('.business-partner-card');
+    const grid = card?.querySelector('.business-partner-grid');
+    if(!card || !grid) return;
+    card.classList.add('dymivra851-socios-card');
+    if(!grid.dataset.dym851Ready){
+      grid.innerHTML = `
+        <div class="dym851-capital"><span>Capital investido</span><strong id="businessInvestment">R$ 0,00</strong><small>Dinheiro colocado no negócio.</small></div>
+        <div class="dym851-capital"><span>Capital 50/50</span><strong id="businessCapitalSplit">R$ 0,00</strong><small>Referência do capital por sócio.</small></div>
+        <div><span>Retiradas</span><strong id="businessWithdrawals">R$ 0,00</strong><small>Dinheiro que saiu para sócios.</small></div>
+        <div class="dym851-lucro"><span>Lucro disponível</span><strong id="businessAvailableProfit">R$ 0,00</strong><small>Lucro operacional disponível para divisão.</small></div>
+        <div class="dym851-lucro"><span>Divisão do lucro 50/50</span><strong id="businessSplit">R$ 0,00</strong><small>Valor sugerido para cada sócio.</small></div>`;
+      grid.dataset.dym851Ready = '1';
+    }
+    const note = card.querySelector('.business-note');
+    if(note && !note.dataset.dym851Ready){
+      note.innerHTML = '<strong>Separação saudável:</strong> capital investido não é lucro. Ele entra para abrir ou fortalecer o negócio. A divisão 50/50 divide somente o lucro disponível; o card “Capital 50/50” mostra apenas a referência do investimento por sócio.';
+      note.dataset.dym851Ready = '1';
+    }
+    if(!card.querySelector('.dym851-socios-pill')){
+      const pill = document.createElement('div');
+      pill.className = 'dym851-socios-pill';
+      pill.textContent = 'Capital separado de lucro para evitar confusão na sociedade.';
+      const section = card.querySelector('.section');
+      if(section) section.appendChild(pill);
+    }
+  }
+
+  function ensureReportClarity(){
+    const report = $('businessReportCard');
+    const grid = report?.querySelector('.business-report-grid');
+    if(!report || !grid) return;
+    const split = $('businessReportSplit');
+    if(split){
+      const mini = split.closest('.business-report-mini');
+      if(mini){
+        const label = mini.querySelector('span');
+        const small = mini.querySelector('small');
+        if(label) label.textContent = 'Lucro 50/50';
+        if(small) small.textContent = 'Lucro disponível por sócio';
+      }
+    }
+    if(!$('businessReportCapitalSplit')){
+      const mini = document.createElement('div');
+      mini.className = 'business-report-mini dym851-report-capital';
+      mini.innerHTML = '<span>Capital 50/50</span><strong id="businessReportCapitalSplit">R$ 0,00</strong><small>Referência do investimento por sócio</small>';
+      const investment = $('businessReportInvestment')?.closest('.business-report-mini');
+      if(investment) investment.insertAdjacentElement('afterend', mini);
+      else grid.appendChild(mini);
+    }
+  }
+
+  function topExpenses(expenses){ return Object.entries(expenses||{}).sort((a,b)=>b[1]-a[1]).slice(0,5); }
+  function analysis(t){
+    if(!t.count) return 'Ainda não há movimentações registradas. Comece adicionando entradas, saídas, investimentos e retiradas para gerar um relatório real do negócio.';
+    if(t.inM <= 0 && t.outM <= 0) return 'Este mês ainda não tem entradas nem saídas operacionais registradas. O capital investido aparece separado do lucro: ele aumenta o caixa, mas não entra na divisão de lucro.';
+    if(t.inM <= 0 && t.outM > 0) return 'Este mês teve saídas, mas ainda não teve entradas registradas. Registre vendas ou recebimentos para medir lucro, margem e saúde operacional.';
+    if(t.profit < 0) return 'O mês está no prejuízo operacional. As saídas estão maiores que as entradas. O próximo passo é revisar despesas, estoque, taxas e precificação.';
+    if(t.margin < 10) return 'O negócio está positivo, mas a margem está baixa. Revise custos diretos, preço de venda e despesas recorrentes para proteger o caixa.';
+    if(t.margin >= 25) return 'O negócio está com margem saudável. As entradas cobrem as saídas com folga. Avalie reinvestir com controle e registrar retiradas de forma separada.';
+    return 'O negócio está positivo neste mês. Continue acompanhando entradas, saídas, estoque, retiradas e investimentos para manter uma operação saudável.';
+  }
+  function statusClass(t){ if(!t.count || (t.inM===0 && t.outM===0)) return 'warn'; if(t.profit<0 || t.cash<0) return 'bad'; if(t.margin>=10) return 'good'; return 'warn'; }
+  function statusTitle(t){
+    if(!t.count) return 'Relatório aguardando dados';
+    if(t.profit < 0) return 'Resultado: prejuízo operacional';
+    if(t.inM <= 0 && t.outM > 0) return 'Resultado: sem entradas no mês';
+    if(t.profit === 0) return 'Resultado: mês neutro';
+    if(t.margin >= 25) return 'Resultado: margem saudável';
+    if(t.margin < 10) return 'Resultado: lucro com margem baixa';
+    return 'Resultado: mês positivo';
+  }
+
+  function renderSociosClarity(){
+    ensureSociosClarity();
+    const t = calc(load());
+    setText('businessInvestment', fmt(t.investment));
+    setText('businessCapitalSplit', fmt(t.capitalSplit));
+    setText('businessWithdrawals', fmt(t.withdrawals));
+    setText('businessAvailableProfit', fmt(t.available));
+    setText('businessSplit', fmt(t.profitSplit));
+
+    ensureReportClarity();
+    setText('businessReportCapitalSplit', fmt(t.capitalSplit));
+    setText('businessReportSplit', fmt(t.profitSplit));
+    const status = $('businessReportStatus');
+    if(status){ status.className = 'business-report-status ' + statusClass(t); status.textContent = statusTitle(t); }
+    setText('businessReportAnalysis', analysis(t));
+  }
+
+  function reportText(){
+    const t = calc(load());
+    const rows = topExpenses(t.expenses);
+    const expenseText = rows.length ? rows.map(([name,value])=>`- ${name}: ${fmt(value)}`).join('\n') : '- Nenhuma saída registrada no mês';
+    return [
+      `Relatório Dymivra Business — ${periodLabel()}`,
+      '',
+      `Caixa atual: ${fmt(t.cash)}`,
+      `Entradas do mês: ${fmt(t.inM)}`,
+      `Saídas do mês: ${fmt(t.outM)}`,
+      `Lucro líquido: ${fmt(t.profit)}`,
+      `Margem: ${pct(t.margin)}`,
+      `Capital investido: ${fmt(t.investment)}`,
+      `Capital 50/50: ${fmt(t.capitalSplit)} por sócio`,
+      `Retiradas: ${fmt(t.withdrawals)}`,
+      `Lucro disponível para divisão: ${fmt(t.available)}`,
+      `Divisão do lucro 50/50: ${fmt(t.profitSplit)} por sócio`,
+      '',
+      'Maiores despesas:',
+      expenseText,
+      '',
+      'Análise:',
+      analysis(t)
+    ].join('\n');
+  }
+
+  window.dymivra851RenderBusinessSociosClarity = renderSociosClarity;
+  window.dymivra850CopyBusinessReport = function(){
+    const txt = reportText();
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(()=>{try{toast('Relatório Business copiado.','success')}catch{alert('Relatório copiado.')}}).catch(()=>alert(txt));
+    }else alert(txt);
+  };
+  window.dymivra845CopyBusinessSummary = function(){
+    const t = calc(load());
+    const txt = [
+      'Dymivra Business — resumo do negócio',
+      'Caixa atual: ' + fmt(t.cash),
+      'Entradas do mês: ' + fmt(t.inM),
+      'Saídas do mês: ' + fmt(t.outM),
+      'Lucro líquido do mês: ' + fmt(t.profit),
+      'Margem do mês: ' + pct(t.margin),
+      'Capital investido: ' + fmt(t.investment),
+      'Capital 50/50: ' + fmt(t.capitalSplit) + ' por sócio',
+      'Retiradas: ' + fmt(t.withdrawals),
+      'Lucro disponível para divisão: ' + fmt(t.available),
+      'Divisão do lucro 50/50: ' + fmt(t.profitSplit) + ' por sócio'
+    ].join('\n');
+    navigator.clipboard?.writeText(txt).then(()=>{try{toast('Resumo Business copiado.','success')}catch{alert('Resumo copiado.')}}).catch(()=>alert(txt));
+  };
+
+  function wrap(name){
+    const old = window[name];
+    if(typeof old !== 'function' || old.__dym851Wrapped) return;
+    const wrapped = function(){
+      const result = old.apply(this, arguments);
+      setTimeout(renderSociosClarity,40);
+      setTimeout(renderSociosClarity,220);
+      return result;
+    };
+    wrapped.__dym851Wrapped = true;
+    window[name] = wrapped;
+  }
+  function install(){
+    ensureSociosClarity();
+    ensureReportClarity();
+    renderSociosClarity();
+    ['dymivra845RenderBusiness','dymivra846RenderBusinessFiltered','dymivra847RenderBusinessSync','dymivra850RenderBusinessReport','dymivra845AddBusinessEntry','dymivra849ConfirmBusinessDelete'].forEach(wrap);
+  }
+  const oldShow = window.showAppScreen;
+  if(typeof oldShow === 'function' && !oldShow.__dym851SociosWrapped){
+    const wrappedShow = function(screen,smooth){
+      const result = oldShow.apply(this, arguments);
+      if(screen === 'business' || screen === 'all'){
+        setTimeout(install,90);
+        setTimeout(renderSociosClarity,520);
+      }
+      return result;
+    };
+    wrappedShow.__dym851SociosWrapped = true;
+    window.showAppScreen = wrappedShow;
+  }
+  try{ const userEl = $('userEmail'); if(userEl){ new MutationObserver(()=>setTimeout(renderSociosClarity,80)).observe(userEl,{childList:true,characterData:true,subtree:true}); } }catch{}
+  document.addEventListener('DOMContentLoaded',()=>{ setTimeout(install,140); setTimeout(renderSociosClarity,700); setTimeout(renderSociosClarity,1600); });
+  window.addEventListener('storage', ev => { if(String(ev.key||'').startsWith(STORE_PREFIX)) setTimeout(renderSociosClarity,80); });
+  if(document.readyState !== 'loading'){ setTimeout(install,140); setTimeout(renderSociosClarity,700); }
 })();
 </script>
 
