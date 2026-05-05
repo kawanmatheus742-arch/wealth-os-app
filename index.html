@@ -15,7 +15,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.5.1 — Business Sócios Mais Claro</title>
+<title>Dymivra 8.5.2 — Business Alerta Premium</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -19905,6 +19905,340 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
   document.addEventListener('DOMContentLoaded',()=>{ setTimeout(install,140); setTimeout(renderSociosClarity,700); setTimeout(renderSociosClarity,1600); });
   window.addEventListener('storage', ev => { if(String(ev.key||'').startsWith(STORE_PREFIX)) setTimeout(renderSociosClarity,80); });
   if(document.readyState !== 'loading'){ setTimeout(install,140); setTimeout(renderSociosClarity,700); }
+})();
+</script>
+
+
+<style id="dymivra852-business-copy-premium-style">
+/* ==========================================================
+   Dymivra 8.5.2 • Business Alerta Premium
+   Corrige o alerta nativo do navegador ao copiar relatório.
+   Importante: botão Topo não foi alterado.
+   ========================================================== */
+.dymivra852-copy-overlay{
+  position:fixed!important;
+  inset:0!important;
+  z-index:100000!important;
+  display:none!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:18px!important;
+  background:rgba(2,6,23,.72)!important;
+  backdrop-filter:blur(18px)!important;
+}
+.dymivra852-copy-overlay.show{display:flex!important;}
+.dymivra852-copy-modal{
+  width:min(520px,100%)!important;
+  position:relative!important;
+  overflow:hidden!important;
+  border-radius:30px!important;
+  padding:20px!important;
+  border:1px solid rgba(34,211,238,.24)!important;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(34,211,238,.18),transparent 36%),
+    radial-gradient(circle at 90% 10%,rgba(139,92,246,.16),transparent 34%),
+    linear-gradient(180deg,rgba(15,23,42,.98),rgba(3,7,18,.98))!important;
+  box-shadow:
+    0 28px 80px rgba(0,0,0,.56),
+    inset 0 1px 0 rgba(255,255,255,.07)!important;
+  color:#f8fafc!important;
+}
+.dymivra852-copy-modal::before{
+  content:""!important;
+  position:absolute!important;
+  left:18px!important;
+  right:18px!important;
+  top:0!important;
+  height:3px!important;
+  border-radius:999px!important;
+  background:linear-gradient(90deg,#22d3ee,#8b5cf6,#facc15,#22c55e)!important;
+  opacity:.95!important;
+}
+.dymivra852-copy-modal>*{position:relative!important;z-index:1!important;}
+.dymivra852-copy-top{
+  display:flex!important;
+  align-items:center!important;
+  gap:14px!important;
+  margin-bottom:14px!important;
+}
+.dymivra852-copy-icon{
+  width:58px!important;
+  height:58px!important;
+  min-width:58px!important;
+  border-radius:21px!important;
+  display:grid!important;
+  place-items:center!important;
+  font-size:25px!important;
+  border:1px solid rgba(125,211,252,.22)!important;
+  background:
+    radial-gradient(circle at 35% 20%,rgba(255,255,255,.16),transparent 42%),
+    linear-gradient(135deg,rgba(14,165,233,.26),rgba(139,92,246,.16))!important;
+  box-shadow:0 0 28px rgba(34,211,238,.13)!important;
+}
+.dymivra852-copy-kicker{
+  color:#67e8f9!important;
+  font-size:11px!important;
+  font-weight:950!important;
+  letter-spacing:.18em!important;
+  text-transform:uppercase!important;
+  margin-bottom:6px!important;
+}
+.dymivra852-copy-title{
+  margin:0!important;
+  color:#fff!important;
+  font-size:clamp(26px,5vw,36px)!important;
+  line-height:1.02!important;
+  letter-spacing:-.06em!important;
+  font-weight:950!important;
+}
+.dymivra852-copy-text{
+  margin:10px 0 0!important;
+  color:#cbd5e1!important;
+  font-size:15px!important;
+  line-height:1.55!important;
+}
+.dymivra852-copy-preview{
+  margin-top:14px!important;
+  padding:14px!important;
+  border-radius:20px!important;
+  border:1px solid rgba(255,255,255,.09)!important;
+  background:rgba(255,255,255,.035)!important;
+  color:#dbeafe!important;
+  line-height:1.45!important;
+  font-size:13px!important;
+}
+.dymivra852-copy-preview strong{
+  display:block!important;
+  color:#fff!important;
+  margin-bottom:5px!important;
+  font-size:14px!important;
+}
+.dymivra852-copy-manual{
+  display:none!important;
+  margin-top:14px!important;
+}
+.dymivra852-copy-manual.show{display:block!important;}
+.dymivra852-copy-manual textarea{
+  width:100%!important;
+  min-height:150px!important;
+  max-height:260px!important;
+  border-radius:18px!important;
+  border:1px solid rgba(125,211,252,.18)!important;
+  background:rgba(2,6,23,.70)!important;
+  color:#e5e7eb!important;
+  padding:13px!important;
+  font-size:12px!important;
+  line-height:1.45!important;
+  resize:vertical!important;
+}
+.dymivra852-copy-actions{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:10px!important;
+  margin-top:18px!important;
+}
+.dymivra852-copy-actions button{
+  margin:0!important;
+  min-height:54px!important;
+  border-radius:18px!important;
+  font-weight:950!important;
+}
+.dymivra852-copy-ok{
+  background:linear-gradient(135deg,#0ea5e9,#8b5cf6)!important;
+  color:#fff!important;
+  border:1px solid rgba(125,211,252,.22)!important;
+  box-shadow:0 16px 36px rgba(14,165,233,.18)!important;
+}
+.dymivra852-copy-secondary{
+  background:rgba(255,255,255,.055)!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  color:#dbeafe!important;
+  box-shadow:none!important;
+}
+@media(max-width:520px){
+  .dymivra852-copy-overlay{align-items:flex-end!important;padding:16px!important;}
+  .dymivra852-copy-modal{border-radius:28px 28px 24px 24px!important;padding:18px!important;}
+  .dymivra852-copy-actions{grid-template-columns:1fr!important;}
+}
+</style>
+<script id="dymivra852-business-copy-premium-script">
+/* ==========================================================
+   Dymivra 8.5.2 • Business Alerta Premium
+   Remove o alert() nativo do botão Copiar relatório.
+   Importante: botão Topo não foi alterado.
+   ========================================================== */
+(function(){
+  const $ = id => document.getElementById(id);
+  const STORE_PREFIX = 'dymivra_business_entries_v1_';
+  const fmt = v => new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v||0));
+  const pct = v => (Number(v||0)).toLocaleString('pt-BR',{maximumFractionDigits:1}) + '%';
+  function userEmail(){
+    const raw = ($('userEmail')?.textContent || '').trim().toLowerCase();
+    return raw || 'guest';
+  }
+  function readKey(k){
+    try{ const data = JSON.parse(localStorage.getItem(k) || '[]'); return Array.isArray(data) ? data.filter(Boolean) : []; }
+    catch{return []}
+  }
+  function load(){
+    const key = STORE_PREFIX + userEmail();
+    const guest = STORE_PREFIX + 'guest';
+    let list = readKey(key);
+    if(key !== guest){
+      const g = readKey(guest);
+      if(g.length && !list.length) list = g;
+    }
+    return list;
+  }
+  function monthKey(d){
+    try{ const dt = d ? new Date(String(d).length<=10 ? d+'T00:00:00' : d) : new Date(); return dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0'); }
+    catch{ const dt = new Date(); return dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0'); }
+  }
+  function periodLabel(){
+    const dt = new Date();
+    return dt.toLocaleDateString('pt-BR',{month:'long',year:'numeric'}).replace(/^./,c=>c.toUpperCase());
+  }
+  function calc(list){
+    const cur = monthKey(new Date());
+    let inM=0,outM=0,allIn=0,allOut=0,investment=0,withdrawals=0;
+    const expenses = {};
+    (list||[]).forEach(e=>{
+      const v = Number(e.amount||0);
+      const isCurrent = monthKey(e.date || e.createdAt || new Date()) === cur;
+      if(e.type === 'entrada'){ allIn += v; if(isCurrent) inM += v; }
+      else if(e.type === 'saida'){ allOut += v; if(isCurrent){ outM += v; expenses[e.category||'Saída'] = (expenses[e.category||'Saída']||0) + v; } }
+      else if(e.type === 'investimento') investment += v;
+      else if(e.type === 'retirada') withdrawals += v;
+    });
+    const profit = inM - outM;
+    const margin = inM ? (profit/inM)*100 : 0;
+    const cash = allIn + investment - allOut - withdrawals;
+    const available = Math.max(profit - withdrawals,0);
+    return {inM,outM,profit,margin,cash,investment,withdrawals,available,capitalSplit:investment/2,profitSplit:available/2,expenses,count:(list||[]).length};
+  }
+  function topExpenses(expenses){ return Object.entries(expenses||{}).sort((a,b)=>b[1]-a[1]).slice(0,5); }
+  function analysis(t){
+    if(!t.count) return 'Ainda não há movimentações registradas. Comece adicionando entradas, saídas, investimentos e retiradas para gerar um relatório real do negócio.';
+    if(t.inM <= 0 && t.outM <= 0) return 'Este mês ainda não tem entradas nem saídas operacionais registradas. O capital investido aparece separado do lucro: ele aumenta o caixa, mas não entra na divisão de lucro.';
+    if(t.inM <= 0 && t.outM > 0) return 'Este mês teve saídas, mas ainda não teve entradas registradas. Registre vendas ou recebimentos para medir lucro, margem e saúde operacional.';
+    if(t.profit < 0) return 'O mês está no prejuízo operacional. As saídas estão maiores que as entradas. O próximo passo é revisar despesas, estoque, taxas e precificação.';
+    if(t.margin < 10) return 'O negócio está positivo, mas a margem está baixa. Revise custos diretos, preço de venda e despesas recorrentes para proteger o caixa.';
+    if(t.margin >= 25) return 'O negócio está com margem saudável. As entradas cobrem as saídas com folga. Avalie reinvestir com controle e registrar retiradas de forma separada.';
+    return 'O negócio está positivo neste mês. Continue acompanhando entradas, saídas, estoque, retiradas e investimentos para manter uma operação saudável.';
+  }
+  function reportText(){
+    const t = calc(load());
+    const rows = topExpenses(t.expenses);
+    const expenseText = rows.length ? rows.map(([name,value])=>`- ${name}: ${fmt(value)}`).join('\n') : '- Nenhuma saída registrada no mês';
+    return [
+      `Relatório Dymivra Business — ${periodLabel()}`,
+      '',
+      `Caixa atual: ${fmt(t.cash)}`,
+      `Entradas do mês: ${fmt(t.inM)}`,
+      `Saídas do mês: ${fmt(t.outM)}`,
+      `Lucro líquido: ${fmt(t.profit)}`,
+      `Margem: ${pct(t.margin)}`,
+      `Capital investido: ${fmt(t.investment)}`,
+      `Capital 50/50: ${fmt(t.capitalSplit)} por sócio`,
+      `Retiradas: ${fmt(t.withdrawals)}`,
+      `Lucro disponível para divisão: ${fmt(t.available)}`,
+      `Divisão do lucro 50/50: ${fmt(t.profitSplit)} por sócio`,
+      '',
+      'Maiores despesas:',
+      expenseText,
+      '',
+      'Análise:',
+      analysis(t)
+    ].join('\n');
+  }
+  function ensureModal(){
+    let overlay = $('dymivra852CopyOverlay');
+    if(overlay) return overlay;
+    overlay = document.createElement('div');
+    overlay.id = 'dymivra852CopyOverlay';
+    overlay.className = 'dymivra852-copy-overlay';
+    overlay.innerHTML = `
+      <div class="dymivra852-copy-modal" role="dialog" aria-modal="true" aria-labelledby="dymivra852CopyTitle">
+        <div class="dymivra852-copy-top">
+          <div class="dymivra852-copy-icon">📋</div>
+          <div>
+            <div class="dymivra852-copy-kicker">Dymivra Business</div>
+            <h3 class="dymivra852-copy-title" id="dymivra852CopyTitle">Relatório copiado</h3>
+          </div>
+        </div>
+        <p class="dymivra852-copy-text" id="dymivra852CopyText">O relatório mensal foi copiado para a área de transferência.</p>
+        <div class="dymivra852-copy-preview" id="dymivra852CopyPreview"><strong>Pronto para compartilhar</strong>Agora é só colar no WhatsApp, notas ou onde preferir.</div>
+        <div class="dymivra852-copy-manual" id="dymivra852CopyManual">
+          <textarea id="dymivra852CopyTextarea" readonly></textarea>
+        </div>
+        <div class="dymivra852-copy-actions">
+          <button type="button" class="dymivra852-copy-secondary" onclick="dymivra852CloseCopyModal()">Fechar</button>
+          <button type="button" class="dymivra852-copy-ok" onclick="dymivra852CloseCopyModal()">OK</button>
+        </div>
+      </div>`;
+    overlay.addEventListener('click', ev => { if(ev.target === overlay) window.dymivra852CloseCopyModal(); });
+    document.body.appendChild(overlay);
+    return overlay;
+  }
+  window.dymivra852CloseCopyModal = function(){
+    const overlay = $('dymivra852CopyOverlay');
+    if(overlay) overlay.classList.remove('show');
+  };
+  function showCopyModal(ok, txt){
+    const overlay = ensureModal();
+    const title = $('dymivra852CopyTitle');
+    const text = $('dymivra852CopyText');
+    const preview = $('dymivra852CopyPreview');
+    const manual = $('dymivra852CopyManual');
+    const area = $('dymivra852CopyTextarea');
+    if(ok){
+      if(title) title.textContent = 'Relatório copiado';
+      if(text) text.textContent = 'O relatório mensal foi copiado para a área de transferência.';
+      if(preview) preview.innerHTML = '<strong>Pronto para compartilhar</strong>Agora é só colar no WhatsApp, notas ou onde preferir.';
+      if(manual) manual.classList.remove('show');
+    }else{
+      if(title) title.textContent = 'Copie manualmente';
+      if(text) text.textContent = 'O navegador bloqueou a cópia automática. O relatório está abaixo para você selecionar e copiar.';
+      if(preview) preview.innerHTML = '<strong>Cópia manual</strong>Toque no texto, selecione tudo e copie.';
+      if(area) area.value = txt || '';
+      if(manual) manual.classList.add('show');
+      setTimeout(()=>{try{area?.focus();area?.select();}catch{}},120);
+    }
+    overlay.classList.add('show');
+  }
+  async function copyWithPremiumModal(txt){
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        await navigator.clipboard.writeText(txt);
+        showCopyModal(true, txt);
+        return;
+      }
+    }catch(e){}
+    showCopyModal(false, txt);
+  }
+  window.dymivra850CopyBusinessReport = function(){
+    copyWithPremiumModal(reportText());
+  };
+  window.dymivra845CopyBusinessSummary = function(){
+    const t = calc(load());
+    const txt = [
+      'Dymivra Business — resumo do negócio',
+      'Caixa atual: ' + fmt(t.cash),
+      'Entradas do mês: ' + fmt(t.inM),
+      'Saídas do mês: ' + fmt(t.outM),
+      'Lucro líquido do mês: ' + fmt(t.profit),
+      'Margem do mês: ' + pct(t.margin),
+      'Capital investido: ' + fmt(t.investment),
+      'Capital 50/50: ' + fmt(t.capitalSplit) + ' por sócio',
+      'Retiradas: ' + fmt(t.withdrawals),
+      'Lucro disponível para divisão: ' + fmt(t.available),
+      'Divisão do lucro 50/50: ' + fmt(t.profitSplit) + ' por sócio'
+    ].join('\n');
+    copyWithPremiumModal(txt);
+  };
+  document.addEventListener('keydown', ev => {
+    if(ev.key === 'Escape' && $('dymivra852CopyOverlay')?.classList.contains('show')) window.dymivra852CloseCopyModal();
+  });
 })();
 </script>
 
