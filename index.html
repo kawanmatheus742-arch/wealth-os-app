@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Dymivra 8.5.5 — Business Painel de Saúde -->
+<!-- Dymivra 8.5.6 — Business Controle de Estoque -->
 
 <html lang="pt-BR">
 <head>
@@ -15,7 +15,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.5.5 — Business Painel de Saúde</title>
+<title>Dymivra 8.5.6 — Business Controle de Estoque</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -10086,7 +10086,7 @@ body.screen-overview-active.performance-mode .overview-intelligence-suite{
 <div class="card premium-panel dymivra845-business" data-screen-block="" data-screens="business">
   <div class="business-hero-shell">
     <div class="business-hero-copy">
-      <div class="business-kicker">🏢 Dymivra 8.5.5 • Painel de Saúde</div>
+      <div class="business-kicker">📦 Dymivra 8.5.6 • Controle de Estoque</div>
       <h2>Dymivra Business</h2>
       <p>Controle financeiro para pequenos negócios, sociedades e operações em crescimento. Separe o dinheiro do negócio da sua carteira pessoal e acompanhe caixa, entradas, saídas, lucro, margem, investimentos e retiradas.</p>
       <div class="business-quick-actions">
@@ -21904,6 +21904,360 @@ window.DYMIVRA853 = DYMIVRA853;
   if(document.readyState !== 'loading'){ setTimeout(install,260); setTimeout(render,1200); setTimeout(render,2400); }
   window.addEventListener('storage',schedule);
   setInterval(()=>{ try{ if(document.querySelector('[data-screen-block][data-screens="business"]')) render(); }catch{} },1800);
+})();
+</script>
+
+
+<style id="dymivra856-business-stock-style">
+/* ==========================================================
+   Dymivra 8.5.6 • Business Controle de Estoque
+   Escopo: somente Dymivra Business / produtos.
+   Não altera botão Topo, login, IA, planos, paywall ou ledger.
+   ========================================================== */
+.dym856-stock-panel{
+  margin-top:14px;
+  border-radius:28px;
+  border:1px solid rgba(34,211,238,.22);
+  background:
+    radial-gradient(circle at 7% 0%,rgba(34,211,238,.15),transparent 32%),
+    radial-gradient(circle at 98% 4%,rgba(34,197,94,.10),transparent 30%),
+    linear-gradient(180deg,rgba(12,22,44,.72),rgba(2,8,18,.62));
+  padding:18px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 18px 44px rgba(0,0,0,.18);
+  overflow:hidden;
+  position:relative;
+}
+.dym856-stock-panel:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,transparent,rgba(255,255,255,.035),transparent);opacity:.8}
+.dym856-stock-panel>*{position:relative;z-index:1}
+.dym856-stock-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:14px}
+.dym856-stock-kicker{display:inline-flex;gap:8px;align-items:center;border-radius:999px;border:1px solid rgba(34,211,238,.22);background:rgba(34,211,238,.08);color:#a5f3fc;padding:8px 11px;font-size:12px;font-weight:950;letter-spacing:.12em;text-transform:uppercase}
+.dym856-stock-title{margin:10px 0 6px;color:#fff;font-size:clamp(28px,4vw,46px);line-height:1;letter-spacing:-.075em;font-weight:950}
+.dym856-stock-sub{max-width:820px;color:#cbd5e1;line-height:1.55;font-size:14px}
+.dym856-stock-sync{border-radius:999px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.045);color:#dbeafe;padding:9px 12px;font-size:12px;font-weight:900;white-space:nowrap}
+.dym856-stock-kpis{display:grid;grid-template-columns:1.1fr repeat(4,1fr);gap:10px;margin:14px 0}
+.dym856-stock-kpi{position:relative;overflow:hidden;border-radius:20px;border:1px solid rgba(255,255,255,.08);background:rgba(15,23,42,.62);padding:14px;min-height:112px}
+.dym856-stock-kpi:after{content:"";position:absolute;right:-44px;bottom:-52px;width:120px;height:120px;border-radius:999px;background:radial-gradient(circle,rgba(34,211,238,.11),transparent 70%)}
+.dym856-stock-kpi.primary{border-color:rgba(34,211,238,.25);background:radial-gradient(circle at 0 0,rgba(34,211,238,.12),transparent 38%),rgba(15,23,42,.70)}
+.dym856-stock-kpi.warn{border-color:rgba(250,204,21,.20)}
+.dym856-stock-kpi span,.dym856-stock-kpi strong,.dym856-stock-kpi small{position:relative;z-index:1;display:block}
+.dym856-stock-kpi span{color:#94a3b8;font-size:11px;font-weight:950;text-transform:uppercase;letter-spacing:.06em}
+.dym856-stock-kpi strong{margin-top:9px;color:#fff;font-size:clamp(20px,2.3vw,30px);letter-spacing:-.065em;line-height:1.05}
+.dym856-stock-kpi small{margin-top:7px;color:#8ea3c7;font-size:12px;line-height:1.35}
+.dym856-stock-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:14px;align-items:start}
+.dym856-stock-card{border-radius:24px;border:1px solid rgba(255,255,255,.085);background:linear-gradient(180deg,rgba(15,23,42,.68),rgba(2,8,18,.52));padding:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.dym856-stock-card h3{margin:0 0 4px;color:#fff;font-size:24px;line-height:1.08;letter-spacing:-.055em}
+.dym856-stock-card p{margin:0 0 12px;color:#9fb3d1;line-height:1.45}
+.dym856-stock-form{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dym856-stock-form .wide{grid-column:1/-1}
+.dym856-stock-form label{margin-top:0;color:#c7d7f2;font-size:12px;font-weight:850}
+.dym856-stock-form textarea{min-height:82px}
+.dym856-stock-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.dym856-stock-actions button{width:auto!important;margin:0!important;min-height:44px}
+.dym856-stock-status{margin-top:10px;min-height:20px;color:#cbd5e1;line-height:1.45;font-size:13px}
+.dym856-products-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.dym856-products-list{display:grid;gap:11px}
+.dym856-product{position:relative;overflow:hidden;border-radius:22px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(8,15,31,.92),rgba(2,8,18,.68));padding:14px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
+.dym856-product:before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:4px;border-radius:999px;background:#22d3ee;box-shadow:0 0 18px rgba(34,211,238,.35)}
+.dym856-product.low:before{background:#facc15;box-shadow:0 0 18px rgba(250,204,21,.32)}
+.dym856-product.out:before{background:#ef4444;box-shadow:0 0 18px rgba(239,68,68,.35)}
+.dym856-product-main{padding-left:10px;min-width:0}
+.dym856-product-title{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.dym856-product-icon{width:44px;height:44px;display:grid;place-items:center;border-radius:16px;border:1px solid rgba(125,211,252,.14);background:rgba(15,23,42,.78);font-size:22px}
+.dym856-product h4{margin:0;color:#fff;font-size:20px;line-height:1.08;letter-spacing:-.04em}
+.dym856-product small{display:block;color:#94a3b8;margin-top:3px;line-height:1.35}
+.dym856-product-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.dym856-product-metrics div{border-radius:14px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.035);padding:9px}
+.dym856-product-metrics span{display:block;color:#8ea3c7;font-size:11px;font-weight:850;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.dym856-product-metrics strong{display:block;color:#fff;font-size:14px;line-height:1.15}
+.dym856-product-side{display:grid;gap:8px;min-width:142px;justify-items:stretch}
+.dym856-stock-down{display:grid;gap:7px}
+.dym856-stock-down input{height:42px;text-align:center;border-radius:14px}
+.dym856-product-side button{margin:0!important;width:100%!important;min-height:40px!important;padding:9px 10px!important;border-radius:14px!important;font-size:12px!important}
+.dym856-edit-btn{background:linear-gradient(135deg,rgba(14,165,233,.92),rgba(34,211,238,.72))!important}
+.dym856-down-btn{background:linear-gradient(135deg,rgba(34,197,94,.86),rgba(14,165,233,.72))!important}
+.dym856-delete-btn{background:linear-gradient(135deg,rgba(239,68,68,.85),rgba(139,92,246,.70))!important}
+.dym856-empty{border-radius:20px;border:1px dashed rgba(255,255,255,.14);background:rgba(255,255,255,.025);padding:22px;text-align:center;color:#cbd5e1;line-height:1.5}
+.dym856-stock-note{margin-top:12px;border:1px solid rgba(34,197,94,.18);background:rgba(34,197,94,.07);color:#dcfce7;border-radius:18px;padding:12px;line-height:1.45;font-size:13px}
+.dym856-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:99990;background:rgba(0,0,0,.68);backdrop-filter:blur(10px);padding:20px}
+.dym856-modal.show{display:flex}
+.dym856-modal-box{width:min(460px,calc(100vw - 30px));border-radius:28px;border:1px solid rgba(34,211,238,.22);background:radial-gradient(circle at 12% 0%,rgba(34,211,238,.14),transparent 32%),linear-gradient(180deg,#0f172a,#020617);box-shadow:0 22px 70px rgba(0,0,0,.55);padding:20px;color:#fff}
+.dym856-modal-icon{width:58px;height:58px;display:grid;place-items:center;border-radius:20px;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.22);font-size:28px;margin-bottom:12px}
+.dym856-modal-box h3{margin:0 0 8px;font-size:25px;letter-spacing:-.055em}
+.dym856-modal-box p{margin:0;color:#cbd5e1;line-height:1.5}
+.dym856-modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.dym856-modal-actions button{margin:0!important}
+@media(max-width:1120px){.dym856-stock-kpis{grid-template-columns:1fr 1fr}.dym856-stock-kpi.primary{grid-column:1/-1}.dym856-stock-grid{grid-template-columns:1fr}}
+@media(max-width:760px){.dym856-stock-panel{padding:14px;border-radius:24px}.dym856-stock-head{gap:10px}.dym856-stock-sync{width:100%;text-align:center}.dym856-stock-kpis,.dym856-stock-form,.dym856-product-metrics{grid-template-columns:1fr}.dym856-product{grid-template-columns:1fr;padding:13px;border-radius:21px}.dym856-product-side{min-width:0;grid-template-columns:1fr}.dym856-stock-actions{display:grid;grid-template-columns:1fr}.dym856-stock-actions button{width:100%!important}.dym856-modal-actions{grid-template-columns:1fr}}
+.performance-mode .dym856-stock-panel,.performance-mode .dym856-stock-card,.performance-mode .dym856-product{backdrop-filter:none!important;box-shadow:0 8px 20px rgba(0,0,0,.20)!important}
+</style>
+
+<script type="module" id="dymivra856-business-stock-script">
+/* ==========================================================
+   Dymivra 8.5.6 • Business Controle de Estoque
+   Salva em public.business_products por usuário, com fallback local.
+   ========================================================== */
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
+(function(){
+  const SUPABASE_URL = "https://sqvqssdsrpdfvfxcnwwa.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_HfHYwaCI4kEPGWTtPIpvBw_96WL_UPu";
+  const supa = createClient(SUPABASE_URL, SUPABASE_KEY);
+  const STORE = 'dymivra_business_products_local_v1_';
+  const $ = id => document.getElementById(id);
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const fmt = v => Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+  const pct = v => (Number(v||0)).toLocaleString('pt-BR',{maximumFractionDigits:1}) + '%';
+  const norm = v => {
+    const s = String(v ?? '').trim().replace(/R\$/gi,'').replace(/\s/g,'');
+    if(!s) return 0;
+    const n = Number(s.replace(/\./g,'').replace(',', '.'));
+    return Number.isFinite(n) ? n : 0;
+  };
+  let state = { products: [], source:'local', user:null, loading:false, editingId:null, deleteId:null };
+  function localKey(user){ return STORE + (user?.email || user?.id || 'anon'); }
+  function loadLocal(user){ try{return JSON.parse(localStorage.getItem(localKey(user))||'[]')}catch{return[]} }
+  function saveLocal(list,user){ try{localStorage.setItem(localKey(user),JSON.stringify(list||[]))}catch{} }
+  function status(msg,kind='info'){
+    const el=$('dym856StockStatus'); if(!el) return;
+    el.textContent = msg || '';
+    el.className = 'dym856-stock-status ' + (kind==='success'?'status-success':kind==='error'?'status-error':'status-info');
+  }
+  function setText(id,v){ const el=$(id); if(el) el.textContent = v; }
+  function productMetrics(p){
+    const q=Number(p.quantity||0), cost=Number(p.unit_cost||0), sale=Number(p.sale_price||0);
+    const costTotal=q*cost, revenue=q*sale, profit=revenue-costTotal, unitProfit=sale-cost;
+    const margin = revenue>0 ? (profit/revenue)*100 : 0;
+    return {q,cost,sale,costTotal,revenue,profit,unitProfit,margin};
+  }
+  function totals(list){
+    const t = {cost:0,revenue:0,profit:0,low:0,out:0,count:list.length,best:null,bestProfit:-Infinity};
+    for(const p of list){
+      const m=productMetrics(p);
+      t.cost += m.costTotal; t.revenue += m.revenue; t.profit += m.profit;
+      if(m.q <= 0) t.out++; else if(m.q <= 3) t.low++;
+      if(m.profit > t.bestProfit){ t.bestProfit=m.profit; t.best=p; }
+    }
+    t.margin = t.revenue>0 ? (t.profit/t.revenue)*100 : 0;
+    return t;
+  }
+  function ensurePanel(){
+    let panel = $('dym856StockPanel');
+    if(panel) return panel;
+    const business = document.querySelector('[data-screen-block][data-screens="business"]') || document.querySelector('[data-screens="business"]');
+    if(!business) return null;
+    panel = document.createElement('div');
+    panel.id = 'dym856StockPanel';
+    panel.className = 'dym856-stock-panel';
+    panel.innerHTML = `
+      <div class="dym856-stock-head">
+        <div>
+          <div class="dym856-stock-kicker">📦 Controle de estoque</div>
+          <h3 class="dym856-stock-title">Produtos, margem e lucro potencial</h3>
+          <div class="dym856-stock-sub">Cadastre produtos da operação, acompanhe custo, preço de venda, quantidade, estoque baixo e margem. Ideal para loja física, online, delivery ou qualquer pequeno negócio.</div>
+        </div>
+        <div class="dym856-stock-sync" id="dym856StockSource">Fonte: aguardando</div>
+      </div>
+      <div class="dym856-stock-kpis">
+        <div class="dym856-stock-kpi primary"><span>Valor em estoque</span><strong id="dym856StockValue">R$ 0,00</strong><small>Custo total dos produtos cadastrados</small></div>
+        <div class="dym856-stock-kpi"><span>Lucro potencial</span><strong id="dym856PotentialProfit">R$ 0,00</strong><small>Se vender tudo pelo preço cadastrado</small></div>
+        <div class="dym856-stock-kpi"><span>Margem média</span><strong id="dym856AverageMargin">0%</strong><small>Lucro potencial sobre receita</small></div>
+        <div class="dym856-stock-kpi warn"><span>Itens em baixa</span><strong id="dym856LowStock">0</strong><small>Produtos com 3 unidades ou menos</small></div>
+        <div class="dym856-stock-kpi"><span>Produto destaque</span><strong id="dym856BestProduct">—</strong><small>Maior lucro potencial</small></div>
+      </div>
+      <div class="dym856-stock-grid">
+        <div class="dym856-stock-card" id="dym856StockFormCard">
+          <h3 id="dym856StockFormTitle">Adicionar produto</h3>
+          <p>Registre produto, quantidade, custo e preço de venda para o Dymivra calcular margem automaticamente.</p>
+          <div class="dym856-stock-form">
+            <div class="wide"><label>Nome do produto</label><input id="dym856ProductName" placeholder="Ex: Camiseta preta" type="text"></div>
+            <div><label>Categoria</label><select id="dym856ProductCategory"><option>Roupa</option><option>Acessório</option><option>Beleza</option><option>Eletrônico</option><option>Alimento</option><option>Serviço</option><option>Outro</option></select></div>
+            <div><label>Quantidade</label><input id="dym856ProductQty" inputmode="decimal" placeholder="Ex: 10" type="text"></div>
+            <div><label>Custo unitário</label><input id="dym856ProductCost" inputmode="decimal" placeholder="Ex: 30,00" type="text"></div>
+            <div><label>Preço de venda</label><input id="dym856ProductSale" inputmode="decimal" placeholder="Ex: 60,00" type="text"></div>
+            <div class="wide"><label>Fornecedor</label><input id="dym856ProductSupplier" placeholder="Opcional" type="text"></div>
+            <div class="wide"><label>Observação</label><textarea id="dym856ProductNotes" placeholder="Ex: primeira compra, fornecedor, tamanho, cor..."></textarea></div>
+          </div>
+          <div class="dym856-stock-actions">
+            <button type="button" id="dym856SaveProductBtn" onclick="dymivra856SaveProduct()">Adicionar produto</button>
+            <button type="button" class="secondary" onclick="dymivra856ClearProductForm()">Limpar produto</button>
+          </div>
+          <div class="dym856-stock-status" id="dym856StockStatus"></div>
+          <div class="dym856-stock-note"><strong>Uso recomendado:</strong> registre o estoque real. Quando vender, use “Baixar estoque” no produto e registre a venda também nas movimentações do Business.</div>
+        </div>
+        <div class="dym856-stock-card">
+          <div class="dym856-products-head">
+            <div><h3>Produtos cadastrados</h3><p id="dym856ProductsSubtitle">Nenhum produto cadastrado.</p></div>
+            <button type="button" class="secondary business-small-btn" onclick="dymivra856LoadProducts()">Atualizar estoque</button>
+          </div>
+          <div class="dym856-products-list" id="dym856ProductsList"></div>
+        </div>
+      </div>
+      <div class="dym856-modal" id="dym856DeleteModal" aria-hidden="true">
+        <div class="dym856-modal-box" role="dialog" aria-modal="true">
+          <div class="dym856-modal-icon">🗑️</div>
+          <h3>Excluir produto?</h3>
+          <p id="dym856DeleteText">Essa ação remove o produto do controle de estoque. As movimentações financeiras do Business não serão apagadas.</p>
+          <div class="dym856-modal-actions"><button type="button" class="secondary" onclick="dymivra856CloseDeleteProduct()">Cancelar</button><button type="button" class="danger" onclick="dymivra856ConfirmDeleteProduct()">Excluir</button></div>
+        </div>
+      </div>`;
+    const after = $('dym855HealthPanel') || business.querySelector('.business-kpi-grid') || business.querySelector('.business-main-grid');
+    if(after) after.insertAdjacentElement('afterend', panel); else business.appendChild(panel);
+    return panel;
+  }
+  function fillForm(p){
+    state.editingId = p?.id || null;
+    setText('dym856StockFormTitle', p ? 'Editar produto' : 'Adicionar produto');
+    const btn=$('dym856SaveProductBtn'); if(btn) btn.textContent = p ? 'Salvar alterações' : 'Adicionar produto';
+    const map = {
+      dym856ProductName:p?.name||'', dym856ProductCategory:p?.category||'Outro', dym856ProductQty:p?.quantity ?? '',
+      dym856ProductCost:p?.unit_cost ?? '', dym856ProductSale:p?.sale_price ?? '', dym856ProductSupplier:p?.supplier||'', dym856ProductNotes:p?.notes||''
+    };
+    for(const [id,val] of Object.entries(map)){ const el=$(id); if(el) el.value=String(val); }
+  }
+  function render(){
+    ensurePanel();
+    const list = state.products || [];
+    const t=totals(list);
+    setText('dym856StockSource', state.source === 'supabase' ? 'Fonte: Supabase / salvo por usuário' : 'Fonte: modo local temporário');
+    setText('dym856StockValue', fmt(t.cost));
+    setText('dym856PotentialProfit', fmt(t.profit));
+    setText('dym856AverageMargin', pct(t.margin));
+    setText('dym856LowStock', String(t.low + t.out));
+    setText('dym856BestProduct', t.best ? (t.best.name || 'Produto') : '—');
+    setText('dym856ProductsSubtitle', list.length ? `${list.length} produto(s) cadastrado(s).` : 'Nenhum produto cadastrado.');
+    const box=$('dym856ProductsList'); if(!box) return;
+    if(!list.length){ box.innerHTML = '<div class="dym856-empty">Nenhum produto no estoque ainda. Cadastre o primeiro produto para calcular valor em estoque, margem e lucro potencial.</div>'; return; }
+    box.innerHTML = list.map(p=>{
+      const m=productMetrics(p);
+      const cls = m.q<=0 ? 'out' : (m.q<=3 ? 'low' : '');
+      const id=esc(p.id);
+      const stockLabel = m.q<=0 ? 'Sem estoque' : (m.q<=3 ? 'Estoque baixo' : 'Estoque saudável');
+      return `<div class="dym856-product ${cls}">
+        <div class="dym856-product-main">
+          <div class="dym856-product-title"><div class="dym856-product-icon">📦</div><div><h4>${esc(p.name||'Produto')}</h4><small>${esc(p.category||'Outro')} · ${stockLabel}${p.supplier ? ' · '+esc(p.supplier) : ''}</small></div></div>
+          <div class="dym856-product-metrics">
+            <div><span>Estoque</span><strong>${Number(m.q).toLocaleString('pt-BR')} un.</strong></div>
+            <div><span>Custo</span><strong>${fmt(m.cost)}</strong></div>
+            <div><span>Venda</span><strong>${fmt(m.sale)}</strong></div>
+            <div><span>Margem</span><strong>${pct(m.margin)}</strong></div>
+            <div><span>Custo total</span><strong>${fmt(m.costTotal)}</strong></div>
+            <div><span>Receita potencial</span><strong>${fmt(m.revenue)}</strong></div>
+            <div><span>Lucro potencial</span><strong>${fmt(m.profit)}</strong></div>
+            <div><span>Lucro/un.</span><strong>${fmt(m.unitProfit)}</strong></div>
+          </div>
+          ${p.notes ? `<small style="margin-top:9px;color:#cbd5e1">${esc(p.notes)}</small>` : ''}
+        </div>
+        <div class="dym856-product-side">
+          <button type="button" class="dym856-edit-btn" onclick="dymivra856EditProduct('${id}')">Editar</button>
+          <div class="dym856-stock-down"><input id="dym856Down_${id}" inputmode="decimal" placeholder="Qtd" type="text"><button type="button" class="dym856-down-btn" onclick="dymivra856DecreaseStock('${id}')">Baixar estoque</button></div>
+          <button type="button" class="dym856-delete-btn" onclick="dymivra856AskDeleteProduct('${id}')">Excluir</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+  async function currentUser(){ try{ const {data}=await supa.auth.getSession(); return data?.session?.user || null; }catch{return null} }
+  async function loadProducts(){
+    ensurePanel();
+    if(state.loading) return;
+    state.loading = true;
+    try{
+      const user = await currentUser(); state.user = user;
+      if(user){
+        const {data,error}=await supa.from('business_products').select('*').eq('user_id',user.id).order('created_at',{ascending:false});
+        if(error) throw error;
+        state.products = (data||[]).map(row=>({id:row.id,name:row.name,category:row.category,quantity:Number(row.quantity||0),unit_cost:Number(row.unit_cost||0),sale_price:Number(row.sale_price||0),supplier:row.supplier||'',notes:row.notes||'',created_at:row.created_at,source:'supabase'}));
+        state.source='supabase';
+        saveLocal(state.products,user);
+      }else{
+        state.products = loadLocal(null); state.source='local';
+      }
+    }catch(e){
+      state.products = loadLocal(state.user); state.source='local';
+      status('Estoque em modo local temporário: '+(e?.message||'não foi possível carregar do Supabase.'),'error');
+    }finally{ state.loading=false; render(); }
+  }
+  async function persistProduct(payload,id){
+    const user = await currentUser(); state.user = user;
+    if(user){
+      const row = {user_id:user.id,name:payload.name,category:payload.category,quantity:payload.quantity,unit_cost:payload.unit_cost,sale_price:payload.sale_price,supplier:payload.supplier,notes:payload.notes};
+      if(id){
+        const {error}=await supa.from('business_products').update(row).eq('id',id).eq('user_id',user.id); if(error) throw error;
+      }else{
+        const {error}=await supa.from('business_products').insert([row]); if(error) throw error;
+      }
+      state.source='supabase';
+      await loadProducts();
+    }else{
+      const list=loadLocal(null);
+      if(id){ const i=list.findIndex(p=>String(p.id)===String(id)); if(i>=0) list[i]={...list[i],...payload}; }
+      else list.unshift({...payload,id:'p_'+Date.now()+'_'+Math.random().toString(16).slice(2),created_at:new Date().toISOString()});
+      saveLocal(list,null); state.products=list; state.source='local'; render();
+    }
+  }
+  window.dymivra856LoadProducts = loadProducts;
+  window.dymivra856ClearProductForm = function(){ fillForm(null); status(''); };
+  window.dymivra856SaveProduct = async function(){
+    const payload = {
+      name:($('dym856ProductName')?.value||'').trim(), category:$('dym856ProductCategory')?.value||'Outro',
+      quantity:norm($('dym856ProductQty')?.value), unit_cost:norm($('dym856ProductCost')?.value), sale_price:norm($('dym856ProductSale')?.value),
+      supplier:($('dym856ProductSupplier')?.value||'').trim(), notes:($('dym856ProductNotes')?.value||'').trim()
+    };
+    if(!payload.name){ status('Digite o nome do produto.','error'); return; }
+    if(payload.quantity < 0 || payload.unit_cost < 0 || payload.sale_price < 0){ status('Quantidade, custo e venda não podem ser negativos.','error'); return; }
+    const btn=$('dym856SaveProductBtn'); const old=btn?.textContent;
+    try{
+      if(btn){btn.disabled=true;btn.textContent=state.editingId?'Salvando...':'Adicionando...'}
+      await persistProduct(payload,state.editingId);
+      fillForm(null);
+      status(state.source==='supabase'?'Produto salvo no Supabase.':'Produto salvo em modo local temporário.','success');
+      try{window.toast?.('Produto salvo no estoque.','success')}catch{}
+    }catch(e){ status(e?.message||'Erro ao salvar produto.','error'); try{window.toast?.(e?.message||'Erro ao salvar produto.','error')}catch{} }
+    finally{ if(btn){btn.disabled=false;btn.textContent=old||'Adicionar produto'} }
+  };
+  window.dymivra856EditProduct = function(id){
+    const p=state.products.find(x=>String(x.id)===String(id)); if(!p) return;
+    fillForm(p); status('Editando produto. Salve as alterações quando terminar.','info');
+    try{ $('dym856StockFormCard')?.scrollIntoView({behavior:'smooth',block:'start'}); setTimeout(()=>$('dym856ProductName')?.focus(),250); }catch{}
+  };
+  window.dymivra856DecreaseStock = async function(id){
+    const p=state.products.find(x=>String(x.id)===String(id)); if(!p) return;
+    const input=$('dym856Down_'+id); const qty=norm(input?.value);
+    if(qty<=0){ status('Informe a quantidade vendida/baixada.','error'); return; }
+    if(qty>Number(p.quantity||0)){ status('A quantidade informada é maior que o estoque atual.','error'); return; }
+    const payload={name:p.name,category:p.category,quantity:Number(p.quantity||0)-qty,unit_cost:Number(p.unit_cost||0),sale_price:Number(p.sale_price||0),supplier:p.supplier||'',notes:p.notes||''};
+    try{ await persistProduct(payload,id); status('Estoque baixado com sucesso. Registre a venda também nas movimentações do Business.','success'); try{window.toast?.('Estoque baixado.','success')}catch{} }
+    catch(e){ status(e?.message||'Erro ao baixar estoque.','error'); }
+  };
+  window.dymivra856AskDeleteProduct = function(id){
+    state.deleteId=id;
+    const p=state.products.find(x=>String(x.id)===String(id));
+    setText('dym856DeleteText', `Excluir ${p?.name || 'este produto'} do controle de estoque? As movimentações financeiras do Business não serão apagadas.`);
+    const modal=$('dym856DeleteModal'); if(modal) modal.classList.add('show');
+  };
+  window.dymivra856CloseDeleteProduct = function(){ state.deleteId=null; const modal=$('dym856DeleteModal'); if(modal) modal.classList.remove('show'); };
+  window.dymivra856ConfirmDeleteProduct = async function(){
+    const id=state.deleteId; if(!id) return;
+    try{
+      const user=await currentUser(); state.user=user;
+      if(user && state.source==='supabase'){
+        const {error}=await supa.from('business_products').delete().eq('id',id).eq('user_id',user.id); if(error) throw error;
+        await loadProducts();
+      }else{
+        const list=loadLocal(user).filter(p=>String(p.id)!==String(id)); saveLocal(list,user); state.products=list; state.source='local'; render();
+      }
+      window.dymivra856CloseDeleteProduct(); status('Produto excluído do estoque.','success'); try{window.toast?.('Produto excluído.','success')}catch{}
+    }catch(e){ status(e?.message||'Erro ao excluir produto.','error'); }
+  };
+  function install(){
+    ensurePanel(); loadProducts();
+    const oldShow=window.showAppScreen;
+    if(typeof oldShow==='function' && !oldShow.__dym856Wrapped){
+      const fn=function(){ const r=oldShow.apply(this,arguments); const screen=arguments[0]; if(screen==='business'||screen==='all') setTimeout(()=>{ensurePanel();loadProducts();},260); return r; };
+      fn.__dym856Wrapped=true; window.showAppScreen=fn;
+    }
+    try{supa.auth.onAuthStateChange(()=>setTimeout(loadProducts,350));}catch{}
+  }
+  document.addEventListener('DOMContentLoaded',()=>setTimeout(install,500));
+  if(document.readyState!=='loading') setTimeout(install,500);
 })();
 </script>
 
