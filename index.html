@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Dymivra 8.4.5 — Dymivra Business -->
+<!-- Dymivra 8.4.6 — Business Premium Refinado -->
 
 <html lang="pt-BR">
 <head>
@@ -15,7 +15,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.4.5 — Dymivra Business</title>
+<title>Dymivra 8.4.6 — Business Premium Refinado</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -10086,7 +10086,7 @@ body.screen-overview-active.performance-mode .overview-intelligence-suite{
 <div class="card premium-panel dymivra845-business" data-screen-block="" data-screens="business">
   <div class="business-hero-shell">
     <div class="business-hero-copy">
-      <div class="business-kicker">🏢 Dymivra 8.4.5 • Business</div>
+      <div class="business-kicker">🏢 Dymivra 8.4.6 • Business Premium</div>
       <h2>Dymivra Business</h2>
       <p>Controle financeiro para pequenos negócios, sociedades e operações em crescimento. Separe o dinheiro do negócio da sua carteira pessoal e acompanhe caixa, entradas, saídas, lucro, margem, investimentos e retiradas.</p>
       <div class="business-quick-actions">
@@ -18196,6 +18196,294 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
   }
   document.addEventListener('DOMContentLoaded',()=>{const d=$('businessDate'); if(d&&!d.value)d.value=today(); render();});
   if(document.readyState!=='loading'){const d=$('businessDate'); if(d&&!d.value)d.value=today(); render();}
+})();
+</script>
+
+
+<style id="dymivra846-business-refine-style">
+/* ==========================================================
+   Dymivra 8.4.6 • Business Premium Refinado
+   Escopo: somente tela Dymivra Business.
+   Importante: botão Topo não foi alterado.
+   ========================================================== */
+.dymivra845-business{
+  border-color:rgba(34,211,238,.30)!important;
+  background:
+    radial-gradient(circle at 7% 0%,rgba(34,211,238,.18),transparent 30%),
+    radial-gradient(circle at 96% 2%,rgba(139,92,246,.16),transparent 32%),
+    linear-gradient(180deg,rgba(5,14,31,.985),rgba(2,6,18,.99))!important;
+}
+.dymivra845-business::after{
+  background:rgba(4,12,28,.74)!important;
+  border-color:rgba(125,211,252,.30)!important;
+  box-shadow:0 0 22px rgba(34,211,238,.10)!important;
+}
+.business-hero-copy,
+.business-radar-card,
+.business-form-card,
+.business-partner-card,
+.business-history-card{
+  border-color:rgba(148,163,184,.13)!important;
+  background:
+    radial-gradient(circle at 0% 0%,rgba(34,211,238,.055),transparent 34%),
+    linear-gradient(180deg,rgba(15,23,42,.80),rgba(3,9,22,.68))!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.055),
+    0 18px 42px rgba(0,0,0,.18)!important;
+}
+.business-radar-card{
+  border-color:rgba(56,189,248,.18)!important;
+  background:
+    radial-gradient(circle at 18% 0%,rgba(34,211,238,.15),transparent 34%),
+    radial-gradient(circle at 96% 90%,rgba(139,92,246,.10),transparent 34%),
+    linear-gradient(180deg,rgba(8,20,40,.88),rgba(2,8,18,.72))!important;
+}
+.business-kicker{
+  background:rgba(34,211,238,.075)!important;
+  border-color:rgba(34,211,238,.24)!important;
+  color:#a7f3ff!important;
+}
+.business-radar-icon,
+.business-entry-type{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 12px 28px rgba(0,0,0,.22)!important;
+}
+.business-kpi{
+  border-color:rgba(148,163,184,.13)!important;
+  background:
+    radial-gradient(circle at 100% 100%,rgba(34,211,238,.075),transparent 38%),
+    rgba(15,23,42,.66)!important;
+  min-height:120px!important;
+}
+.business-kpi.primary{
+  border-color:rgba(34,211,238,.32)!important;
+  background:
+    radial-gradient(circle at 0 0,rgba(34,211,238,.13),transparent 38%),
+    radial-gradient(circle at 96% 80%,rgba(139,92,246,.08),transparent 38%),
+    rgba(15,23,42,.76)!important;
+}
+.business-kpi.profit{
+  border-color:rgba(34,197,94,.24)!important;
+}
+.business-kpi span,
+.business-partner-grid span{
+  color:rgba(203,213,225,.78)!important;
+}
+.business-kpi strong,
+.business-partner-grid strong{
+  text-shadow:0 0 22px rgba(255,255,255,.055)!important;
+}
+.business-form-card input,
+.business-form-card select,
+.business-form-card textarea{
+  border-color:rgba(148,163,184,.15)!important;
+  background:linear-gradient(180deg,rgba(10,20,39,.96),rgba(5,12,25,.94))!important;
+  min-height:52px!important;
+}
+.business-form-card textarea{min-height:92px!important;}
+.business-form-card input:focus,
+.business-form-card select:focus,
+.business-form-card textarea:focus{
+  border-color:rgba(103,232,249,.42)!important;
+  box-shadow:0 0 0 4px rgba(34,211,238,.075)!important;
+}
+.business-history-card .section{
+  align-items:center!important;
+  gap:12px!important;
+}
+.business-filter-bar{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:4px 0 14px;
+  padding:8px;
+  border:1px solid rgba(148,163,184,.11);
+  border-radius:18px;
+  background:rgba(2,8,18,.26);
+}
+.business-filter-btn{
+  width:auto!important;
+  min-width:auto!important;
+  margin:0!important;
+  padding:10px 12px!important;
+  border-radius:999px!important;
+  font-size:12px!important;
+  line-height:1!important;
+  box-shadow:none!important;
+  border:1px solid rgba(148,163,184,.13)!important;
+  background:rgba(255,255,255,.045)!important;
+  color:#dbeafe!important;
+}
+.business-filter-btn.active{
+  border-color:rgba(34,211,238,.34)!important;
+  background:linear-gradient(135deg,rgba(14,165,233,.42),rgba(139,92,246,.24))!important;
+  color:#fff!important;
+  box-shadow:0 0 22px rgba(34,211,238,.10)!important;
+}
+.business-history-list{
+  gap:10px!important;
+}
+.business-entry{
+  position:relative!important;
+  overflow:hidden!important;
+  border-color:rgba(148,163,184,.12)!important;
+  background:
+    radial-gradient(circle at 100% 100%,rgba(34,211,238,.065),transparent 34%),
+    linear-gradient(180deg,rgba(15,23,42,.72),rgba(5,12,25,.72))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045)!important;
+}
+.business-entry::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:12px;
+  bottom:12px;
+  width:3px;
+  border-radius:999px;
+  background:rgba(148,163,184,.32);
+}
+.business-entry.entrada::before{background:#86efac;}
+.business-entry.saida::before{background:#fdba74;}
+.business-entry.investimento::before{background:#93c5fd;}
+.business-entry.retirada::before{background:#f0abfc;}
+.business-entry h4{
+  font-size:16px!important;
+  letter-spacing:-.025em!important;
+}
+.business-entry p{
+  color:rgba(203,213,225,.76)!important;
+  font-size:12.5px!important;
+}
+.business-entry strong{
+  font-size:18px!important;
+}
+.business-entry button{
+  transition:none!important;
+}
+.business-entry button:hover,
+.business-entry button:active{
+  transform:none!important;
+  filter:none!important;
+}
+.business-note{
+  border-color:rgba(250,204,21,.24)!important;
+  background:linear-gradient(180deg,rgba(250,204,21,.075),rgba(250,204,21,.035))!important;
+}
+.business-empty{
+  border-color:rgba(148,163,184,.14)!important;
+  background:rgba(255,255,255,.025)!important;
+}
+@media(max-width:760px){
+  .business-hero-copy h2{font-size:36px!important;}
+  .business-radar-card strong{font-size:clamp(26px,8.4vw,38px)!important;}
+  .business-radar-card span{font-size:16px!important;line-height:1.55!important;}
+  .business-kpi{min-height:108px!important;padding:16px!important;border-radius:24px!important;}
+  .business-kpi strong{font-size:clamp(28px,8vw,38px)!important;margin-top:8px!important;}
+  .business-kpi small{font-size:13.5px!important;line-height:1.32!important;}
+  .business-filter-bar{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px;margin-top:10px;}
+  .business-filter-btn{width:100%!important;padding:12px 10px!important;}
+  .business-history-card .section{display:grid!important;grid-template-columns:1fr!important;}
+  .business-small-btn{width:100%!important;margin:0!important;}
+  .business-entry{
+    grid-template-columns:48px 1fr!important;
+    align-items:start!important;
+    gap:12px!important;
+    padding:14px 14px 14px 16px!important;
+    border-radius:22px!important;
+  }
+  .business-entry-type{width:48px!important;height:48px!important;border-radius:17px!important;}
+  .business-entry h4{font-size:17px!important;line-height:1.16!important;}
+  .business-entry p{font-size:13px!important;line-height:1.45!important;margin-top:5px!important;}
+  .business-entry > div:nth-child(3){
+    grid-column:2!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:12px!important;
+    margin-top:8px!important;
+  }
+  .business-entry strong{text-align:left!important;font-size:22px!important;line-height:1.05!important;}
+  .business-entry button{
+    width:36px!important;
+    height:36px!important;
+    min-width:36px!important;
+    margin:0!important;
+    border-radius:14px!important;
+  }
+}
+</style>
+<script id="dymivra846-business-refine-script">
+(function(){
+  const $=id=>document.getElementById(id);
+  const fmt=v=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v||0));
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const meta={todos:['','Todos'],entrada:['💰','Entrada'],saida:['📤','Saída'],investimento:['📥','Investimento'],retirada:['🤝','Retirada']};
+  let current=localStorage.getItem('dymivra_business_filter_v1')||'todos';
+  function userKey(){const email=($('userEmail')?.textContent||'guest').trim().toLowerCase()||'guest';return 'dymivra_business_entries_v1_'+email;}
+  function load(){try{return JSON.parse(localStorage.getItem(userKey())||'[]').filter(Boolean)}catch{return []}}
+  function ensureFilters(){
+    if($('businessFilterBar'))return;
+    const card=document.querySelector('.business-history-card');
+    const section=card?.querySelector('.section');
+    if(!card||!section)return;
+    const bar=document.createElement('div');
+    bar.className='business-filter-bar';
+    bar.id='businessFilterBar';
+    bar.innerHTML=['todos','entrada','saida','investimento','retirada'].map(k=>`<button type="button" class="business-filter-btn" data-business-filter="${k}">${meta[k][1]}</button>`).join('');
+    section.insertAdjacentElement('afterend',bar);
+    bar.addEventListener('click',ev=>{
+      const btn=ev.target.closest('[data-business-filter]');
+      if(!btn)return;
+      current=btn.getAttribute('data-business-filter')||'todos';
+      localStorage.setItem('dymivra_business_filter_v1',current);
+      renderFilteredHistory();
+    });
+  }
+  function updateActive(){
+    document.querySelectorAll('[data-business-filter]').forEach(btn=>btn.classList.toggle('active',btn.getAttribute('data-business-filter')===current));
+  }
+  function renderFilteredHistory(){
+    ensureFilters(); updateActive();
+    const box=$('businessHistoryList'); if(!box)return;
+    const list=load().sort((a,b)=>new Date(b.date||0)-new Date(a.date||0)||String(b.id).localeCompare(String(a.id)));
+    const filtered=current==='todos'?list:list.filter(e=>e.type===current);
+    const subtitle=$('businessHistorySubtitle');
+    if(subtitle){
+      subtitle.textContent=current==='todos'
+        ? (list.length?`${list.length} movimentação(ões) registradas.`:'Nenhuma movimentação registrada.')
+        : `${filtered.length} de ${list.length} em ${meta[current]?.[1]||'Filtro'}.`;
+    }
+    if(!filtered.length){
+      const label=meta[current]?.[1]||'este filtro';
+      box.innerHTML=`<div class="business-empty">Nenhuma movimentação em ${esc(label)}. Use o formulário acima para registrar uma nova operação.</div>`;
+      return;
+    }
+    box.innerHTML=filtered.map(e=>{
+      const m=meta[e.type]||['•','Movimento'];
+      const date=e.date?new Date(e.date+'T00:00:00').toLocaleDateString('pt-BR'):'Sem data';
+      const desc=e.description?` • ${esc(e.description)}`:'';
+      const partner=e.partner?` • ${esc(e.partner)}`:'';
+      return `<div class="business-entry ${esc(e.type)}"><div class="business-entry-type">${m[0]}</div><div><h4>${esc(e.category||m[1])}</h4><p>${m[1]} · ${esc(e.method||'Forma não informada')} · ${date}${partner}${desc}</p></div><div><strong>${fmt(e.amount)}</strong><button type="button" onclick="dymivra845DeleteBusinessEntry('${esc(e.id)}')">×</button></div></div>`;
+    }).join('');
+  }
+  const oldRender=window.dymivra845RenderBusiness;
+  window.dymivra846RenderBusinessFiltered=renderFilteredHistory;
+  if(typeof oldRender==='function'){
+    window.dymivra845RenderBusiness=function(){const r=oldRender.apply(this,arguments); setTimeout(renderFilteredHistory,30); return r;};
+  }
+  const oldAdd=window.dymivra845AddBusinessEntry;
+  if(typeof oldAdd==='function'){
+    window.dymivra845AddBusinessEntry=function(){const r=oldAdd.apply(this,arguments); setTimeout(renderFilteredHistory,60); return r;};
+  }
+  const oldDelete=window.dymivra845DeleteBusinessEntry;
+  if(typeof oldDelete==='function'){
+    window.dymivra845DeleteBusinessEntry=function(){const r=oldDelete.apply(this,arguments); setTimeout(renderFilteredHistory,60); return r;};
+  }
+  const oldShow=window.showAppScreen;
+  if(typeof oldShow==='function'){
+    window.showAppScreen=function(screen,smooth){const r=oldShow.apply(this,arguments); if(screen==='business'||screen==='all')setTimeout(renderFilteredHistory,90); return r;};
+  }
+  document.addEventListener('DOMContentLoaded',()=>setTimeout(renderFilteredHistory,120));
+  if(document.readyState!=='loading')setTimeout(renderFilteredHistory,120);
 })();
 </script>
 
