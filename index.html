@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Dymivra 8.5.1 — Business Sócios Mais Claro -->
+<!-- Dymivra 8.5.3 — Business com Supabase -->
 
 <html lang="pt-BR">
 <head>
@@ -15,7 +15,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.5.2 — Business Alerta Premium</title>
+<title>Dymivra 8.5.3 — Business com Supabase</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -10086,7 +10086,7 @@ body.screen-overview-active.performance-mode .overview-intelligence-suite{
 <div class="card premium-panel dymivra845-business" data-screen-block="" data-screens="business">
   <div class="business-hero-shell">
     <div class="business-hero-copy">
-      <div class="business-kicker">🏢 Dymivra 8.5.1 • Sócios Mais Claro</div>
+      <div class="business-kicker">🏢 Dymivra 8.5.3 • Business com Supabase</div>
       <h2>Dymivra Business</h2>
       <p>Controle financeiro para pequenos negócios, sociedades e operações em crescimento. Separe o dinheiro do negócio da sua carteira pessoal e acompanhe caixa, entradas, saídas, lucro, margem, investimentos e retiradas.</p>
       <div class="business-quick-actions">
@@ -20240,6 +20240,737 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
     if(ev.key === 'Escape' && $('dymivra852CopyOverlay')?.classList.contains('show')) window.dymivra852CloseCopyModal();
   });
 })();
+</script>
+
+
+
+<style id="dymivra853-business-supabase-style">
+/* ==========================================================
+   Dymivra 8.5.3 • Business com Supabase
+   Escopo: conecta o Dymivra Business à tabela business_movements.
+   Importante: botão Topo não foi alterado.
+   ========================================================== */
+.dymivra853-sync-pill{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  margin-top:12px!important;
+  padding:8px 11px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(34,211,238,.22)!important;
+  background:rgba(34,211,238,.08)!important;
+  color:#cffafe!important;
+  font-size:12px!important;
+  font-weight:900!important;
+}
+.dymivra853-sync-pill.local{
+  border-color:rgba(250,204,21,.22)!important;
+  background:rgba(250,204,21,.08)!important;
+  color:#fef3c7!important;
+}
+.dymivra853-sync-dot{
+  width:8px!important;
+  height:8px!important;
+  border-radius:50%!important;
+  background:#22c55e!important;
+  box-shadow:0 0 18px rgba(34,197,94,.42)!important;
+}
+.dymivra853-sync-pill.local .dymivra853-sync-dot{background:#facc15!important;box-shadow:0 0 18px rgba(250,204,21,.35)!important;}
+.business-entry[data-source="supabase"]::after{
+  content:"Banco"!important;
+  position:absolute!important;
+  top:10px!important;
+  right:12px!important;
+  font-size:9px!important;
+  letter-spacing:.12em!important;
+  text-transform:uppercase!important;
+  color:rgba(103,232,249,.62)!important;
+  font-weight:950!important;
+}
+.business-entry{position:relative!important;}
+</style>
+<script type="module" id="dymivra853-business-supabase-script">
+/* ==========================================================
+   Dymivra 8.5.3 • Business com Supabase
+   - Adiciona movimentações na tabela public.business_movements
+   - Carrega histórico do Supabase por usuário logado
+   - Exclui do Supabase com modal premium
+   - Mantém fallback local apenas se não houver sessão/conexão
+   - Não altera o botão Topo
+   ========================================================== */
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
+
+const DYMIVRA853 = (() => {
+  const SUPABASE_URL = "https://sqvqssdsrpdfvfxcnwwa.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_HfHYwaCI4kEPGWTtPIpvBw_96WL_UPu";
+  const supa = createClient(SUPABASE_URL, SUPABASE_KEY);
+  const $ = id => document.getElementById(id);
+  const STORE_PREFIX = 'dymivra_business_entries_v1_';
+  const FILTER_KEY = 'dymivra_business_filter_v1';
+  const TABLE = 'business_movements';
+  const meta = {
+    todos:['','Todos'],
+    entrada:['💰','Entrada'],
+    saida:['📤','Saída'],
+    investimento:['📥','Investimento'],
+    retirada:['🤝','Retirada']
+  };
+  const state = {
+    items: [],
+    loaded: false,
+    source: 'local',
+    user: null,
+    pendingDeleteId: null,
+    busy: false
+  };
+
+  const fmt = v => new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v||0));
+  const pct = v => (Number.isFinite(Number(v)) ? Number(v) : 0).toLocaleString('pt-BR',{maximumFractionDigits:1}) + '%';
+  const today = () => new Date().toISOString().slice(0,10);
+  const norm = n => Number(String(n||'').replace(/\./g,'').replace(',','.').replace(/[^0-9.-]/g,'')) || 0;
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  function miniToast(msg,type='info'){
+    try{
+      const wrap = $('toastWrap');
+      if(!wrap) return;
+      const d = document.createElement('div');
+      d.className = 'toast ' + type;
+      const t = document.createElement('div');
+      t.textContent = msg;
+      d.appendChild(t);
+      wrap.appendChild(d);
+      setTimeout(()=>{d.style.opacity='0';d.style.transform='translateY(-8px)';setTimeout(()=>d.remove(),220)},3600);
+    }catch{}
+  }
+  function setText(id,value){ const el=$(id); if(el) el.textContent=value; }
+  function setStatus(msg,type='info'){
+    const st = $('businessStatus');
+    if(st){ st.textContent = msg || ''; st.className = 'status status-' + type; }
+  }
+  function setButtonBusy(el,on,text){
+    if(!el) return;
+    if(!el.dataset.originalText) el.dataset.originalText = el.textContent.trim();
+    el.disabled = !!on;
+    el.textContent = on ? (text || 'Carregando...') : el.dataset.originalText;
+  }
+
+  async function getUser(){
+    try{
+      const {data} = await supa.auth.getSession();
+      state.user = data?.session?.user || null;
+      return state.user;
+    }catch{ state.user = null; return null; }
+  }
+  function userEmail(){
+    const raw = (state.user?.email || $('userEmail')?.textContent || '').trim().toLowerCase();
+    return raw || 'guest';
+  }
+  function localKey(email=userEmail()){ return STORE_PREFIX + (email || 'guest'); }
+  function readLocalKey(key){
+    try{ const data = JSON.parse(localStorage.getItem(key) || '[]'); return Array.isArray(data) ? data.filter(Boolean) : []; }
+    catch{return []}
+  }
+  function writeLocalKey(key,list){ try{ localStorage.setItem(key, JSON.stringify(Array.isArray(list)?list:[])); }catch{} }
+  function localEntries(){
+    let list = readLocalKey(localKey());
+    const guest = readLocalKey(STORE_PREFIX + 'guest');
+    if(userEmail() !== 'guest' && guest.length && !list.length){ list = guest; writeLocalKey(localKey(), list); }
+    return normalizeList(list);
+  }
+  function normalizeItem(e){
+    return {
+      id: String(e?.id || ('local_' + Date.now() + '_' + Math.random().toString(16).slice(2))),
+      type: String(e?.type || 'entrada'),
+      category: String(e?.category || 'Outro'),
+      amount: Number(e?.amount || 0),
+      date: String(e?.date || e?.movement_date || today()).slice(0,10),
+      method: String(e?.method || e?.payment_method || 'Pix'),
+      partner: String(e?.partner || e?.partner_name || ''),
+      description: String(e?.description || ''),
+      createdAt: e?.createdAt || e?.created_at || new Date().toISOString(),
+      source: e?.source || 'local'
+    };
+  }
+  function normalizeList(list){ return (list||[]).map(normalizeItem).filter(e => e.amount >= 0); }
+  function rowToItem(row){
+    return normalizeItem({
+      id: row.id,
+      type: row.type,
+      category: row.category,
+      amount: row.amount,
+      date: row.movement_date,
+      method: row.payment_method,
+      partner: row.partner_name,
+      description: row.description,
+      createdAt: row.created_at,
+      source: 'supabase'
+    });
+  }
+  function itemToPayload(item,user){
+    return {
+      user_id: user.id,
+      type: item.type,
+      category: item.category || 'Outro',
+      amount: Number(item.amount||0),
+      movement_date: item.date || today(),
+      payment_method: item.method || 'Pix',
+      partner_name: item.partner || '',
+      description: item.description || ''
+    };
+  }
+  function monthKey(value){
+    const d = value ? new Date(String(value).length <= 10 ? value + 'T00:00:00' : value) : new Date();
+    if(Number.isNaN(d.getTime())){ const n = new Date(); return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0'); }
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');
+  }
+  function totals(list){
+    const cur = monthKey(new Date());
+    let inM=0,outM=0,allIn=0,allOut=0,investment=0,withdrawals=0;
+    const expenses = {};
+    (list||[]).forEach(e=>{
+      const v = Number(e.amount||0);
+      const isCurrent = monthKey(e.date || e.createdAt || new Date()) === cur;
+      if(e.type === 'entrada'){ allIn += v; if(isCurrent) inM += v; }
+      else if(e.type === 'saida'){ allOut += v; if(isCurrent){ outM += v; expenses[e.category || 'Saída'] = (expenses[e.category || 'Saída'] || 0) + v; } }
+      else if(e.type === 'investimento') investment += v;
+      else if(e.type === 'retirada') withdrawals += v;
+    });
+    const profit = inM - outM;
+    const margin = inM ? profit / inM * 100 : 0;
+    const cash = allIn + investment - allOut - withdrawals;
+    const available = Math.max(profit - withdrawals, 0);
+    return {inM,outM,allIn,allOut,investment,withdrawals,profit,margin,cash,available,split:available/2,capitalSplit:investment/2,profitSplit:available/2,expenses,count:(list||[]).length};
+  }
+  function sorted(list){
+    return normalizeList(list).sort((a,b)=>{
+      const da = new Date((a.date || a.createdAt || '') + (String(a.date||'').length<=10 ? 'T00:00:00' : ''));
+      const db = new Date((b.date || b.createdAt || '') + (String(b.date||'').length<=10 ? 'T00:00:00' : ''));
+      return (Number(db)||0) - (Number(da)||0) || String(b.createdAt||b.id).localeCompare(String(a.createdAt||a.id));
+    });
+  }
+  function currentList(){
+    return sorted(state.loaded ? state.items : localEntries());
+  }
+  function activeFilter(){ return localStorage.getItem(FILTER_KEY) || 'todos'; }
+  function ensureFilters(){
+    let bar = $('businessFilterBar');
+    if(!bar){
+      const card = document.querySelector('.business-history-card');
+      const section = card?.querySelector('.section');
+      if(!card || !section) return null;
+      bar = document.createElement('div');
+      bar.className = 'business-filter-bar';
+      bar.id = 'businessFilterBar';
+      bar.innerHTML = ['todos','entrada','saida','investimento','retirada'].map(k=>`<button type="button" class="business-filter-btn" data-business-filter="${k}">${meta[k][1]}</button>`).join('');
+      section.insertAdjacentElement('afterend', bar);
+    }
+    if(!bar.dataset.dym853Ready){
+      bar.addEventListener('click', ev => {
+        const btn = ev.target.closest('[data-business-filter]');
+        if(!btn) return;
+        localStorage.setItem(FILTER_KEY, btn.getAttribute('data-business-filter') || 'todos');
+        setTimeout(render,0);
+      });
+      bar.dataset.dym853Ready = '1';
+    }
+    return bar;
+  }
+  function updateActiveFilter(){
+    const cur = activeFilter();
+    document.querySelectorAll('[data-business-filter]').forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-business-filter') === cur));
+  }
+  function updateSyncPill(){
+    const hero = document.querySelector('.business-hero-copy');
+    if(!hero) return;
+    let pill = $('dymivra853SyncPill');
+    if(!pill){
+      pill = document.createElement('div');
+      pill.id = 'dymivra853SyncPill';
+      pill.className = 'dymivra853-sync-pill';
+      pill.innerHTML = '<span class="dymivra853-sync-dot"></span><span id="dymivra853SyncText">Business conectado</span>';
+      hero.appendChild(pill);
+    }
+    const usingRemote = state.source === 'supabase';
+    pill.classList.toggle('local', !usingRemote);
+    const label = $('dymivra853SyncText');
+    if(label) label.textContent = usingRemote ? 'Business conectado ao Supabase' : 'Business em modo local temporário';
+  }
+  function updateRadar(t,list){
+    let title='Comece registrando a operação.';
+    let text='Adicione entradas, saídas, investimentos ou retiradas para o Dymivra calcular a saúde do negócio.';
+    if((list||[]).length){
+      if(t.cash < 0){ title='Caixa negativo: atenção imediata.'; text='As saídas e retiradas passaram do dinheiro disponível. Revise custos, estoque e retiradas antes de crescer.'; }
+      else if(t.inM <= 0){ title='Sem entradas registradas neste mês.'; text='Cadastre vendas, serviços ou recebimentos para medir lucro e margem do período.'; }
+      else if(t.profit < 0){ title='O mês está no prejuízo.'; text='As saídas do mês estão maiores que as entradas. O próximo passo é revisar despesas e precificação.'; }
+      else if(t.margin < 10){ title='Margem baixa.'; text='O negócio está positivo, mas a margem está apertada. Revise custos diretos, taxas e preço de venda.'; }
+      else if(t.margin >= 25){ title='Margem saudável.'; text='As entradas estão cobrindo as saídas com boa margem. Avalie reinvestir com controle e registrar retiradas corretamente.'; }
+      else { title='Negócio positivo.'; text='O mês está com lucro. Continue acompanhando despesas, estoque e caixa para manter a operação saudável.'; }
+    }
+    setText('businessRadarTitle', title);
+    setText('businessRadarText', text);
+  }
+  function ensureSociosClarity(){
+    if(typeof window.dymivra851RenderBusinessSociosClarity === 'function'){
+      try{ window.dymivra851RenderBusinessSociosClarity(); }catch{}
+    }
+  }
+  function renderHistory(list){
+    ensureFilters();
+    updateActiveFilter();
+    const box = $('businessHistoryList');
+    if(!box) return;
+    const cur = activeFilter();
+    const filtered = cur === 'todos' ? list : list.filter(e => e.type === cur);
+    const subtitle = $('businessHistorySubtitle');
+    if(subtitle){
+      subtitle.textContent = cur === 'todos'
+        ? (list.length ? `${list.length} movimentação(ões) registradas.` : 'Nenhuma movimentação registrada.')
+        : `${filtered.length} de ${list.length} em ${meta[cur]?.[1] || 'Filtro'}.`;
+    }
+    if(!filtered.length){
+      const label = meta[cur]?.[1] || 'este filtro';
+      box.innerHTML = `<div class="business-empty">Nenhuma movimentação em ${esc(label)}. Use o formulário acima para registrar uma nova operação.</div>`;
+      return;
+    }
+    box.innerHTML = filtered.map(e => {
+      const m = meta[e.type] || ['•','Movimento'];
+      const date = e.date ? new Date(e.date + 'T00:00:00').toLocaleDateString('pt-BR') : 'Sem data';
+      const desc = e.description ? ` • ${esc(e.description)}` : '';
+      const partner = e.partner ? ` • ${esc(e.partner)}` : '';
+      return `<div class="business-entry ${esc(e.type)}" data-source="${esc(e.source || state.source)}"><div class="business-entry-type">${m[0]}</div><div><h4>${esc(e.category || m[1])}</h4><p>${m[1]} · ${esc(e.method || 'Forma não informada')} · ${date}${partner}${desc}</p></div><div><strong>${fmt(e.amount)}</strong><button type="button" onclick="dymivra845DeleteBusinessEntry('${esc(e.id)}')">×</button></div></div>`;
+    }).join('');
+  }
+  function periodLabel(){
+    const dt = new Date();
+    return dt.toLocaleDateString('pt-BR',{month:'long',year:'numeric'}).replace(/^./, c => c.toUpperCase());
+  }
+  function topExpenses(expenses){ return Object.entries(expenses||{}).sort((a,b)=>b[1]-a[1]).slice(0,5); }
+  function analysis(t){
+    if(!t.count) return 'Ainda não há movimentações registradas. Comece adicionando entradas, saídas, investimentos e retiradas para gerar um relatório real do negócio.';
+    if(t.inM <= 0 && t.outM <= 0) return 'Este mês ainda não tem entradas nem saídas operacionais registradas. O capital investido aparece separado do lucro: ele aumenta o caixa, mas não entra na divisão de lucro.';
+    if(t.inM <= 0 && t.outM > 0) return 'Este mês teve saídas, mas ainda não teve entradas registradas. Registre vendas ou recebimentos para medir lucro, margem e saúde operacional.';
+    if(t.profit < 0) return 'O mês está no prejuízo operacional. As saídas estão maiores que as entradas. O próximo passo é revisar despesas, estoque, taxas e precificação.';
+    if(t.margin < 10) return 'O negócio está positivo, mas a margem está baixa. Revise custos diretos, preço de venda e despesas recorrentes para proteger o caixa.';
+    if(t.margin >= 25) return 'O negócio está com margem saudável. As entradas cobrem as saídas com folga. Avalie reinvestir com controle e registrar retiradas de forma separada.';
+    return 'O negócio está positivo neste mês. Continue acompanhando entradas, saídas, estoque, retiradas e investimentos para manter uma operação saudável.';
+  }
+  function statusTitle(t){
+    if(!t.count) return 'Relatório aguardando dados';
+    if(t.profit < 0) return 'Resultado: prejuízo operacional';
+    if(t.inM <= 0 && t.outM > 0) return 'Resultado: sem entradas no mês';
+    if(t.profit === 0) return 'Resultado: mês neutro';
+    if(t.margin >= 25) return 'Resultado: margem saudável';
+    if(t.margin < 10) return 'Resultado: lucro com margem baixa';
+    return 'Resultado: mês positivo';
+  }
+  function ensureReport(){
+    let card = $('businessReportCard');
+    if(card) return card;
+    const history = document.querySelector('.business-history-card');
+    const main = document.querySelector('.business-main-grid');
+    const host = main?.parentElement || history?.parentElement;
+    if(!host) return null;
+    card = document.createElement('div');
+    card.id = 'businessReportCard';
+    card.className = 'business-report-card';
+    card.innerHTML = `
+      <div class="business-report-head">
+        <div>
+          <div class="business-report-kicker">Relatório do Negócio</div>
+          <h3>Relatório mensal</h3>
+        </div>
+        <div class="business-report-period" id="businessReportPeriod">${esc(periodLabel())}</div>
+      </div>
+      <div class="business-report-grid">
+        <div class="business-report-mini"><span>Caixa atual</span><strong id="businessReportCash">R$ 0,00</strong><small>Caixa geral do negócio</small></div>
+        <div class="business-report-mini"><span>Entradas</span><strong id="businessReportIn">R$ 0,00</strong><small>Entradas do mês</small></div>
+        <div class="business-report-mini"><span>Saídas</span><strong id="businessReportOut">R$ 0,00</strong><small>Saídas do mês</small></div>
+        <div class="business-report-mini"><span>Lucro líquido</span><strong id="businessReportProfit">R$ 0,00</strong><small>Entradas − saídas</small></div>
+        <div class="business-report-mini"><span>Margem</span><strong id="businessReportMargin">0%</strong><small>Lucro sobre entradas</small></div>
+        <div class="business-report-mini"><span>Investimentos</span><strong id="businessReportInvestment">R$ 0,00</strong><small>Capital colocado</small></div>
+        <div class="business-report-mini dym851-report-capital"><span>Capital 50/50</span><strong id="businessReportCapitalSplit">R$ 0,00</strong><small>Referência do investimento por sócio</small></div>
+        <div class="business-report-mini"><span>Retiradas</span><strong id="businessReportWithdrawals">R$ 0,00</strong><small>Saída para sócios</small></div>
+        <div class="business-report-mini"><span>Lucro 50/50</span><strong id="businessReportSplit">R$ 0,00</strong><small>Lucro disponível por sócio</small></div>
+      </div>
+      <div class="business-report-split">
+        <div class="business-report-panel"><h4>Resultado operacional</h4><div class="business-report-status" id="businessReportStatus">Relatório aguardando movimentações.</div></div>
+        <div class="business-report-panel"><h4>Maiores despesas</h4><div class="business-expense-list" id="businessExpenseList"><div class="business-expense-row"><span>Nenhuma saída neste mês</span><strong>R$ 0,00</strong></div></div></div>
+      </div>
+      <div class="business-report-analysis" id="businessReportAnalysis">Adicione movimentações para gerar a análise automática do negócio.</div>
+      <div class="business-report-actions">
+        <div class="business-report-text-preview">Copie o relatório mensal para enviar à sócia, salvar em anotações ou compartilhar no WhatsApp.</div>
+        <button type="button" class="business-report-copy" onclick="dymivra850CopyBusinessReport()">Copiar relatório</button>
+      </div>`;
+    if(history) history.insertAdjacentElement('beforebegin', card);
+    else host.appendChild(card);
+    return card;
+  }
+  function renderReport(list,t){
+    const card = ensureReport();
+    if(!card) return;
+    setText('businessReportPeriod', periodLabel());
+    setText('businessReportCash', fmt(t.cash));
+    setText('businessReportIn', fmt(t.inM));
+    setText('businessReportOut', fmt(t.outM));
+    setText('businessReportProfit', fmt(t.profit));
+    setText('businessReportMargin', pct(t.margin));
+    setText('businessReportInvestment', fmt(t.investment));
+    setText('businessReportCapitalSplit', fmt(t.capitalSplit));
+    setText('businessReportWithdrawals', fmt(t.withdrawals));
+    setText('businessReportSplit', fmt(t.profitSplit));
+    setText('businessReportStatus', statusTitle(t));
+    setText('businessReportAnalysis', analysis(t));
+    const exp = $('businessExpenseList');
+    if(exp){
+      const rows = topExpenses(t.expenses);
+      exp.innerHTML = rows.length
+        ? rows.map(([name,value])=>`<div class="business-expense-row"><span>${esc(name)}</span><strong>${fmt(value)}</strong></div>`).join('')
+        : '<div class="business-expense-row"><span>Nenhuma saída neste mês</span><strong>R$ 0,00</strong></div>';
+    }
+  }
+  function render(){
+    ensureSociosClarity();
+    const list = currentList();
+    const t = totals(list);
+    setText('businessCash', fmt(t.cash));
+    setText('businessMonthIn', fmt(t.inM));
+    setText('businessMonthOut', fmt(t.outM));
+    setText('businessProfit', fmt(t.profit));
+    setText('businessMargin', pct(t.margin));
+    setText('businessInvestment', fmt(t.investment));
+    setText('businessCapitalSplit', fmt(t.capitalSplit));
+    setText('businessWithdrawals', fmt(t.withdrawals));
+    setText('businessAvailableProfit', fmt(t.available));
+    setText('businessSplit', fmt(t.profitSplit));
+    updateRadar(t,list);
+    renderHistory(list);
+    renderReport(list,t);
+    updateSyncPill();
+  }
+
+  async function migrateLocalToSupabase(user){
+    try{
+      const flag = 'dymivra_business_supabase_migrated_v1_' + user.id;
+      if(localStorage.getItem(flag)) return;
+      const local = normalizeList(readLocalKey(localKey(user.email))).filter(e => e.amount > 0);
+      const guest = normalizeList(readLocalKey(STORE_PREFIX + 'guest')).filter(e => e.amount > 0);
+      const seed = local.length ? local : guest;
+      if(!seed.length){ localStorage.setItem(flag,'1'); return; }
+      const {count,error:countError} = await supa.from(TABLE).select('id',{count:'exact',head:true}).eq('user_id',user.id);
+      if(countError) throw countError;
+      if(Number(count||0) > 0){ localStorage.setItem(flag,'1'); return; }
+      const payload = seed.slice(0,500).map(e => itemToPayload(e,user));
+      const {error} = await supa.from(TABLE).insert(payload);
+      if(error) throw error;
+      localStorage.setItem(flag,'1');
+      miniToast('Movimentações locais migradas para o Supabase.','success');
+    }catch(e){
+      console.warn('Dymivra Business migration skipped:', e?.message || e);
+    }
+  }
+  async function fetchRemote(silent=false){
+    const user = await getUser();
+    if(!user){
+      state.items = localEntries();
+      state.source = 'local';
+      state.loaded = true;
+      render();
+      if(!silent) setStatus('Business em modo local. Entre na conta para salvar no Supabase.','info');
+      return state.items;
+    }
+    try{
+      if(!silent) setStatus('Carregando Business do Supabase...','info');
+      await migrateLocalToSupabase(user);
+      const {data,error} = await supa.from(TABLE)
+        .select('id,type,category,amount,movement_date,payment_method,partner_name,description,created_at')
+        .eq('user_id',user.id)
+        .order('movement_date',{ascending:false})
+        .order('created_at',{ascending:false});
+      if(error) throw error;
+      state.items = normalizeList((data||[]).map(rowToItem));
+      state.source = 'supabase';
+      state.loaded = true;
+      render();
+      if(!silent) setStatus('Business conectado ao Supabase.','success');
+      return state.items;
+    }catch(e){
+      state.items = localEntries();
+      state.source = 'local';
+      state.loaded = true;
+      render();
+      setStatus('Não foi possível carregar o Supabase agora. Usando modo local temporário.','error');
+      console.warn('Dymivra Business Supabase load error:', e?.message || e);
+      return state.items;
+    }
+  }
+  async function insertRemote(item){
+    const user = await getUser();
+    if(!user) return {remote:false};
+    const {data,error} = await supa.from(TABLE).insert([itemToPayload(item,user)]).select('id,type,category,amount,movement_date,payment_method,partner_name,description,created_at').single();
+    if(error) throw error;
+    return {remote:true,item:rowToItem(data)};
+  }
+  function saveLocalEntry(item){
+    const list = localEntries();
+    list.push(item);
+    writeLocalKey(localKey(), list);
+    state.items = normalizeList(list);
+    state.source = 'local';
+    state.loaded = true;
+  }
+
+  window.dymivra845AddBusinessEntry = async function(){
+    if(state.busy) return;
+    const type = $('businessType')?.value || 'entrada';
+    const category = $('businessCategory')?.value || 'Outro';
+    const amount = norm($('businessAmount')?.value);
+    const date = $('businessDate')?.value || today();
+    const method = $('businessMethod')?.value || 'Pix';
+    const description = ($('businessDescription')?.value || '').trim();
+    const partner = ($('businessPartner')?.value || '').trim();
+    if(!amount || amount <= 0){ setStatus('Informe um valor válido para adicionar ao negócio.','error'); return; }
+    const item = normalizeItem({id:'b_'+Date.now()+'_'+Math.random().toString(16).slice(2), type, category, amount, date, method, description, partner, createdAt:new Date().toISOString()});
+    const button = document.querySelector('button[onclick="dymivra845AddBusinessEntry()"]');
+    state.busy = true;
+    setButtonBusy(button,true,'Salvando...');
+    try{
+      if(navigator.onLine){
+        const result = await insertRemote(item);
+        if(result.remote){
+          state.items = [result.item, ...state.items.filter(x => String(x.id) !== String(result.item.id))];
+          state.source = 'supabase';
+          state.loaded = true;
+          if(typeof window.dymivra845ClearBusinessForm === 'function') window.dymivra845ClearBusinessForm();
+          setStatus('Movimentação salva no Supabase.','success');
+          await fetchRemote(true);
+          miniToast('Movimentação salva no Supabase.','success');
+          return;
+        }
+      }
+      saveLocalEntry(item);
+      if(typeof window.dymivra845ClearBusinessForm === 'function') window.dymivra845ClearBusinessForm();
+      setStatus('Movimentação salva localmente. Quando estiver conectado, salve no Supabase.','info');
+      render();
+    }catch(e){
+      console.warn('Dymivra Business insert error:', e?.message || e);
+      saveLocalEntry(item);
+      if(typeof window.dymivra845ClearBusinessForm === 'function') window.dymivra845ClearBusinessForm();
+      setStatus('Falha no Supabase. A movimentação foi mantida localmente temporariamente.','error');
+      render();
+    }finally{
+      state.busy = false;
+      setButtonBusy(button,false);
+    }
+  };
+
+  function ensureDeleteModal(){
+    let overlay = $('dymivra849DeleteOverlay');
+    if(overlay) return overlay;
+    overlay = document.createElement('div');
+    overlay.id = 'dymivra849DeleteOverlay';
+    overlay.className = 'dymivra849-delete-overlay';
+    overlay.innerHTML = `
+      <div class="dymivra849-delete-modal" role="dialog" aria-modal="true" aria-labelledby="dymivra849DeleteTitle">
+        <div class="dymivra849-delete-top">
+          <div class="dymivra849-delete-icon">🗑️</div>
+          <div><div class="dymivra849-delete-kicker">Dymivra Business</div><h3 class="dymivra849-delete-title" id="dymivra849DeleteTitle">Excluir movimentação?</h3></div>
+          <button type="button" class="dymivra849-delete-x" onclick="dymivra849CloseBusinessDeleteModal()" aria-label="Fechar">×</button>
+        </div>
+        <p class="dymivra849-delete-text">Confirme se deseja remover esta movimentação do histórico do negócio.</p>
+        <div class="dymivra849-delete-preview"><div class="dymivra849-delete-preview-icon" id="dymivra849DeleteIcon">•</div><div><strong id="dymivra849DeleteName">Movimentação</strong><span id="dymivra849DeleteMeta">Tipo · Forma · Data</span><div class="dymivra849-delete-value" id="dymivra849DeleteValue">R$ 0,00</div></div></div>
+        <div class="dymivra849-delete-warning"><strong>Atenção:</strong> essa ação apaga somente este lançamento do Business. O login, carteira, IA, planos, paywall e botão Topo não são alterados.</div>
+        <div class="dymivra849-delete-actions"><button type="button" class="dymivra849-cancel" onclick="dymivra849CloseBusinessDeleteModal()">Cancelar</button><button type="button" class="dymivra849-confirm" onclick="dymivra849ConfirmBusinessDelete()">Excluir movimentação</button></div>
+      </div>`;
+    overlay.addEventListener('click', ev => { if(ev.target === overlay) window.dymivra849CloseBusinessDeleteModal(); });
+    document.body.appendChild(overlay);
+    return overlay;
+  }
+  window.dymivra849CloseBusinessDeleteModal = function(){
+    const overlay = $('dymivra849DeleteOverlay');
+    if(overlay) overlay.classList.remove('show');
+    state.pendingDeleteId = null;
+  };
+  window.dymivra845DeleteBusinessEntry = function(id){
+    const list = currentList();
+    const item = list.find(e => String(e.id) === String(id));
+    if(!item) return;
+    state.pendingDeleteId = String(id);
+    const m = meta[item.type] || ['•','Movimento'];
+    const overlay = ensureDeleteModal();
+    setText('dymivra849DeleteIcon', m[0]);
+    setText('dymivra849DeleteName', item.category || m[1]);
+    const date = item.date ? new Date(item.date+'T00:00:00').toLocaleDateString('pt-BR') : 'Sem data';
+    setText('dymivra849DeleteMeta', `${m[1]} · ${item.method || 'Forma não informada'} · ${date}${item.partner ? ' • ' + item.partner : ''}${item.description ? ' • ' + item.description : ''}`);
+    const value = $('dymivra849DeleteValue');
+    if(value){
+      value.textContent = fmt(item.amount);
+      value.style.color = item.type === 'entrada' ? '#86efac' : item.type === 'saida' ? '#fdba74' : item.type === 'investimento' ? '#93c5fd' : item.type === 'retirada' ? '#f0abfc' : '#fca5a5';
+    }
+    overlay.classList.add('show');
+  };
+  window.dymivra849ConfirmBusinessDelete = async function(){
+    if(!state.pendingDeleteId) return window.dymivra849CloseBusinessDeleteModal();
+    const id = state.pendingDeleteId;
+    const button = document.querySelector('.dymivra849-confirm');
+    setButtonBusy(button,true,'Excluindo...');
+    try{
+      if(state.source === 'supabase'){
+        const {error} = await supa.from(TABLE).delete().eq('id', id);
+        if(error) throw error;
+        state.items = state.items.filter(e => String(e.id) !== String(id));
+        window.dymivra849CloseBusinessDeleteModal();
+        render();
+        await fetchRemote(true);
+        miniToast('Movimentação removida do Supabase.','success');
+      }else{
+        const list = localEntries().filter(e => String(e.id) !== String(id));
+        writeLocalKey(localKey(), list);
+        state.items = list;
+        window.dymivra849CloseBusinessDeleteModal();
+        render();
+        miniToast('Movimentação removida.','info');
+      }
+    }catch(e){
+      console.warn('Dymivra Business delete error:', e?.message || e);
+      setStatus('Erro ao excluir no Supabase. Tente novamente.','error');
+    }finally{
+      setButtonBusy(button,false);
+    }
+  };
+
+  function buildReportText(list=currentList()){
+    const t = totals(list);
+    const rows = topExpenses(t.expenses);
+    const expenseText = rows.length ? rows.map(([name,value]) => `- ${name}: ${fmt(value)}`).join('\n') : '- Nenhuma saída registrada no mês';
+    return [
+      `Relatório Dymivra Business — ${periodLabel()}`,
+      '',
+      `Caixa atual: ${fmt(t.cash)}`,
+      `Entradas do mês: ${fmt(t.inM)}`,
+      `Saídas do mês: ${fmt(t.outM)}`,
+      `Lucro líquido: ${fmt(t.profit)}`,
+      `Margem: ${pct(t.margin)}`,
+      `Capital investido: ${fmt(t.investment)}`,
+      `Capital 50/50: ${fmt(t.capitalSplit)} por sócio`,
+      `Retiradas: ${fmt(t.withdrawals)}`,
+      `Lucro disponível para divisão: ${fmt(t.available)}`,
+      `Divisão do lucro 50/50: ${fmt(t.profitSplit)} por sócio`,
+      '',
+      'Maiores despesas:',
+      expenseText,
+      '',
+      'Análise:',
+      analysis(t),
+      '',
+      state.source === 'supabase' ? 'Fonte: Supabase / dados salvos por usuário.' : 'Fonte: modo local temporário.'
+    ].join('\n');
+  }
+  function ensureCopyModal(){
+    let overlay = $('dymivra852CopyOverlay');
+    if(overlay) return overlay;
+    overlay = document.createElement('div');
+    overlay.id = 'dymivra852CopyOverlay';
+    overlay.className = 'dymivra852-copy-overlay';
+    overlay.innerHTML = `
+      <div class="dymivra852-copy-modal" role="dialog" aria-modal="true" aria-labelledby="dymivra852CopyTitle">
+        <div class="dymivra852-copy-top"><div class="dymivra852-copy-icon">📋</div><div><div class="dymivra852-copy-kicker">Dymivra Business</div><h3 class="dymivra852-copy-title" id="dymivra852CopyTitle">Relatório copiado</h3></div></div>
+        <p class="dymivra852-copy-text" id="dymivra852CopyText">O relatório mensal foi copiado para a área de transferência.</p>
+        <div class="dymivra852-copy-preview" id="dymivra852CopyPreview"><strong>Pronto para compartilhar</strong>Agora é só colar no WhatsApp, notas ou onde preferir.</div>
+        <div class="dymivra852-copy-manual" id="dymivra852CopyManual"><textarea id="dymivra852CopyTextarea" readonly></textarea></div>
+        <div class="dymivra852-copy-actions"><button type="button" class="dymivra852-copy-secondary" onclick="dymivra852CloseCopyModal()">Fechar</button><button type="button" class="dymivra852-copy-ok" onclick="dymivra852CloseCopyModal()">OK</button></div>
+      </div>`;
+    overlay.addEventListener('click', ev => { if(ev.target === overlay) window.dymivra852CloseCopyModal(); });
+    document.body.appendChild(overlay);
+    return overlay;
+  }
+  window.dymivra852CloseCopyModal = function(){ const overlay = $('dymivra852CopyOverlay'); if(overlay) overlay.classList.remove('show'); };
+  function showCopyModal(ok, txt){
+    const overlay = ensureCopyModal();
+    const title = $('dymivra852CopyTitle'), text = $('dymivra852CopyText'), preview = $('dymivra852CopyPreview'), manual = $('dymivra852CopyManual'), area = $('dymivra852CopyTextarea');
+    if(ok){
+      if(title) title.textContent = 'Relatório copiado';
+      if(text) text.textContent = 'O relatório mensal do Business foi copiado para a área de transferência.';
+      if(preview) preview.innerHTML = '<strong>Dados do Business</strong>' + (state.source === 'supabase' ? 'Relatório gerado com dados salvos no Supabase.' : 'Relatório gerado em modo local temporário.');
+      if(manual) manual.classList.remove('show');
+    }else{
+      if(title) title.textContent = 'Copie manualmente';
+      if(text) text.textContent = 'O navegador bloqueou a cópia automática. O relatório está abaixo para selecionar e copiar.';
+      if(preview) preview.innerHTML = '<strong>Cópia manual</strong>Toque no texto, selecione tudo e copie.';
+      if(area) area.value = txt || '';
+      if(manual) manual.classList.add('show');
+      setTimeout(()=>{try{area?.focus(); area?.select();}catch{}},120);
+    }
+    overlay.classList.add('show');
+  }
+  async function copyPremium(txt){
+    try{
+      if(navigator.clipboard?.writeText){ await navigator.clipboard.writeText(txt); showCopyModal(true, txt); return; }
+    }catch{}
+    showCopyModal(false, txt);
+  }
+  window.dymivra850CopyBusinessReport = function(){ copyPremium(buildReportText()); };
+  window.dymivra845CopyBusinessSummary = function(){
+    const t = totals(currentList());
+    const txt = [
+      'Dymivra Business — resumo do negócio',
+      'Caixa atual: ' + fmt(t.cash),
+      'Entradas do mês: ' + fmt(t.inM),
+      'Saídas do mês: ' + fmt(t.outM),
+      'Lucro líquido do mês: ' + fmt(t.profit),
+      'Margem do mês: ' + pct(t.margin),
+      'Capital investido: ' + fmt(t.investment),
+      'Capital 50/50: ' + fmt(t.capitalSplit) + ' por sócio',
+      'Retiradas: ' + fmt(t.withdrawals),
+      'Lucro disponível para divisão: ' + fmt(t.available),
+      'Divisão do lucro 50/50: ' + fmt(t.profitSplit) + ' por sócio',
+      state.source === 'supabase' ? 'Fonte: Supabase.' : 'Fonte: modo local temporário.'
+    ].join('\n');
+    copyPremium(txt);
+  };
+
+  window.dymivra845RenderBusiness = render;
+  window.dymivra846RenderBusinessFiltered = render;
+  window.dymivra847RenderBusinessSync = render;
+  window.dymivra853RefreshBusinessSupabase = fetchRemote;
+
+  const oldShow = window.showAppScreen;
+  if(typeof oldShow === 'function'){
+    window.showAppScreen = function(screen,smooth){
+      const r = oldShow.apply(this, arguments);
+      if(screen === 'business' || screen === 'all'){
+        setTimeout(()=>{render(); fetchRemote(true);}, 90);
+        setTimeout(render, 500);
+      }
+      return r;
+    };
+  }
+  try{
+    const d = $('businessDate');
+    if(d && !d.value) d.value = today();
+  }catch{}
+  document.addEventListener('DOMContentLoaded',()=>{
+    const d = $('businessDate'); if(d && !d.value) d.value = today();
+    render();
+    setTimeout(()=>fetchRemote(true),250);
+    setTimeout(render,900);
+  });
+  supa.auth.onAuthStateChange((_event,_session)=>{ setTimeout(()=>fetchRemote(true),350); });
+  if(document.readyState !== 'loading'){
+    render();
+    setTimeout(()=>fetchRemote(true),250);
+    setTimeout(render,900);
+  }
+  document.addEventListener('keydown', ev => {
+    if(ev.key === 'Escape'){
+      if($('dymivra849DeleteOverlay')?.classList.contains('show')) window.dymivra849CloseBusinessDeleteModal();
+      if($('dymivra852CopyOverlay')?.classList.contains('show')) window.dymivra852CloseCopyModal();
+    }
+  });
+
+  return {render, fetchRemote, currentList};
+})();
+window.DYMIVRA853 = DYMIVRA853;
 </script>
 
 </body>
