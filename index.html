@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Dymivra 8.5.7 — Business Venda com Estoque -->
+<!-- Dymivra 8.5.8 — Business Modal de Venda Corrigido -->
 
 <html lang="pt-BR">
 <head>
@@ -15,7 +15,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.5.7 — Business Venda com Estoque</title>
+<title>Dymivra 8.5.8 — Business Modal de Venda Corrigido</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -10086,7 +10086,7 @@ body.screen-overview-active.performance-mode .overview-intelligence-suite{
 <div class="card premium-panel dymivra845-business" data-screen-block="" data-screens="business">
   <div class="business-hero-shell">
     <div class="business-hero-copy">
-      <div class="business-kicker">📦 Dymivra 8.5.6 • Controle de Estoque</div>
+      <div class="business-kicker">📦 Dymivra 8.5.8 • Venda com Estoque</div>
       <h2>Dymivra Business</h2>
       <p>Controle financeiro para pequenos negócios, sociedades e operações em crescimento. Separe o dinheiro do negócio da sua carteira pessoal e acompanhe caixa, entradas, saídas, lucro, margem, investimentos e retiradas.</p>
       <div class="business-quick-actions">
@@ -22379,6 +22379,186 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
   }
   document.addEventListener('DOMContentLoaded',()=>setTimeout(install,500));
   if(document.readyState!=='loading') setTimeout(install,500);
+})();
+</script>
+
+
+
+<!-- ==========================================================
+     Dymivra 8.5.8 — Business Modal de Venda Corrigido
+     Corrige o bug do formulário "Adicionar ao negócio" aparecendo por cima
+     da tela Registrar venda. Não altera botão Topo.
+     ========================================================== -->
+<style id="dymivra858-sale-modal-fix-style">
+#dym857SaleModal.dym858-body-modal,
+#dym856DeleteModal.dym858-body-modal{
+  position:fixed!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100dvh!important;
+  display:none!important;
+  align-items:center!important;
+  justify-content:center!important;
+  z-index:2147483600!important;
+  background:rgba(0,0,0,.76)!important;
+  backdrop-filter:blur(14px)!important;
+  -webkit-backdrop-filter:blur(14px)!important;
+  padding:18px!important;
+  overflow:hidden!important;
+}
+#dym857SaleModal.dym858-body-modal.show,
+#dym856DeleteModal.dym858-body-modal.show{
+  display:flex!important;
+}
+#dym857SaleModal.dym858-body-modal .dym856-modal-box,
+#dym856DeleteModal.dym858-body-modal .dym856-modal-box{
+  position:relative!important;
+  z-index:2147483601!important;
+  max-height:calc(100dvh - 36px)!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain!important;
+  -webkit-overflow-scrolling:touch!important;
+}
+#dym857SaleModal.dym858-body-modal .dym856-modal-box::-webkit-scrollbar,
+#dym856DeleteModal.dym858-body-modal .dym856-modal-box::-webkit-scrollbar{
+  width:0!important;
+  height:0!important;
+}
+body.dym858-modal-open{
+  overflow:hidden!important;
+}
+@media(max-width:760px){
+  #dym857SaleModal.dym858-body-modal,
+  #dym856DeleteModal.dym858-body-modal{
+    align-items:flex-start!important;
+    justify-content:center!important;
+    padding:12px!important;
+    padding-top:calc(12px + env(safe-area-inset-top))!important;
+    padding-bottom:calc(12px + env(safe-area-inset-bottom))!important;
+  }
+  #dym857SaleModal.dym858-body-modal .dym856-modal-box,
+  #dym856DeleteModal.dym858-body-modal .dym856-modal-box{
+    width:min(600px,calc(100vw - 24px))!important;
+    max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important;
+    border-radius:26px!important;
+    padding:18px!important;
+  }
+  #dym857SaleModal.dym858-body-modal .dym856-modal-actions{
+    position:sticky!important;
+    bottom:-18px!important;
+    margin-left:-18px!important;
+    margin-right:-18px!important;
+    padding:14px 18px 18px!important;
+    background:linear-gradient(180deg,rgba(2,6,23,0),rgba(2,6,23,.96) 28%,rgba(2,6,23,1))!important;
+    border-radius:0 0 24px 24px!important;
+  }
+}
+</style>
+<script id="dymivra858-sale-modal-fix-script">
+(function(){
+  let saleWrapped=false;
+  let deleteWrapped=false;
+  function liftModal(id){
+    const modal=document.getElementById(id);
+    if(!modal) return null;
+    modal.classList.add('dym858-body-modal');
+    if(modal.parentElement !== document.body){
+      document.body.appendChild(modal);
+    }
+    return modal;
+  }
+  function openBodyLock(){
+    document.body.classList.add('dym858-modal-open');
+  }
+  function closeBodyLockIfNeeded(){
+    const sale=document.getElementById('dym857SaleModal');
+    const del=document.getElementById('dym856DeleteModal');
+    if(!(sale && sale.classList.contains('show')) && !(del && del.classList.contains('show'))){
+      document.body.classList.remove('dym858-modal-open');
+    }
+  }
+  window.dymivra858LiftBusinessModals=function(){
+    liftModal('dym857SaleModal');
+    liftModal('dym856DeleteModal');
+  };
+  function bind(){
+    if(!saleWrapped && typeof window.dymivra857AskSaleProduct==='function'){
+      const oldAsk=window.dymivra857AskSaleProduct;
+      window.dymivra857AskSaleProduct=function(){
+        window.dymivra858LiftBusinessModals();
+        const result=oldAsk.apply(this,arguments);
+        const modal=liftModal('dym857SaleModal');
+        if(modal){
+          modal.classList.add('show');
+          modal.setAttribute('aria-hidden','false');
+          openBodyLock();
+          setTimeout(function(){
+            try{
+              document.getElementById('dym857SaleQty')?.focus();
+              document.getElementById('dym857SaleQty')?.select();
+            }catch(e){}
+          },120);
+        }
+        return result;
+      };
+      const oldClose=window.dymivra857CloseSaleProduct;
+      window.dymivra857CloseSaleProduct=function(){
+        const result=typeof oldClose==='function' ? oldClose.apply(this,arguments) : undefined;
+        const modal=liftModal('dym857SaleModal');
+        if(modal){
+          modal.classList.remove('show');
+          modal.setAttribute('aria-hidden','true');
+        }
+        closeBodyLockIfNeeded();
+        return result;
+      };
+      saleWrapped=true;
+    }
+    if(!deleteWrapped && typeof window.dymivra856AskDeleteProduct==='function'){
+      const oldAskDelete=window.dymivra856AskDeleteProduct;
+      window.dymivra856AskDeleteProduct=function(){
+        window.dymivra858LiftBusinessModals();
+        const result=oldAskDelete.apply(this,arguments);
+        const modal=liftModal('dym856DeleteModal');
+        if(modal){
+          modal.classList.add('show');
+          modal.setAttribute('aria-hidden','false');
+          openBodyLock();
+        }
+        return result;
+      };
+      const oldCloseDelete=window.dymivra856CloseDeleteProduct;
+      window.dymivra856CloseDeleteProduct=function(){
+        const result=typeof oldCloseDelete==='function' ? oldCloseDelete.apply(this,arguments) : undefined;
+        const modal=liftModal('dym856DeleteModal');
+        if(modal){
+          modal.classList.remove('show');
+          modal.setAttribute('aria-hidden','true');
+        }
+        closeBodyLockIfNeeded();
+        return result;
+      };
+      deleteWrapped=true;
+    }
+    window.dymivra858LiftBusinessModals();
+  }
+  document.addEventListener('click',function(ev){
+    if(ev.target && ev.target.id==='dym857SaleModal') window.dymivra857CloseSaleProduct?.();
+    if(ev.target && ev.target.id==='dym856DeleteModal') window.dymivra856CloseDeleteProduct?.();
+  });
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='Escape'){
+      window.dymivra857CloseSaleProduct?.();
+      window.dymivra856CloseDeleteProduct?.();
+    }
+  });
+  document.addEventListener('DOMContentLoaded',function(){bind(); setTimeout(bind,250); setTimeout(bind,900);});
+  bind();
+  const timer=setInterval(function(){
+    bind();
+    if(saleWrapped && deleteWrapped) clearInterval(timer);
+  },300);
+  setTimeout(function(){try{clearInterval(timer)}catch(e){}},12000);
 })();
 </script>
 
