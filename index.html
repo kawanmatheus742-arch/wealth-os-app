@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Dymivra 8.4.3 — Menu Atual Premium Refinado -->
+<!-- Dymivra 8.4.4 — Visão Geral Premium -->
 
 <html lang="pt-BR">
 <head>
@@ -15,7 +15,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.4.3 — Menu Atual Premium Refinado</title>
+<title>Dymivra 8.4.4 — Visão Geral Premium</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -9590,6 +9590,340 @@ body.performance-mode .dymivra842-rail,body.performance-mode .dymivra842-shell,b
 }
 </style>
 
+
+<style id="dymivra-844-visao-geral-premium">
+/* ==========================================================
+   Dymivra 8.4.4 — Visão Geral Premium
+   Escopo: aparência da tela Visão geral.
+   Não altera login, Supabase, IA, planos, paywall, cliques ou lógica.
+   ========================================================== */
+body.screen-overview-active{
+  background:
+    radial-gradient(circle at 10% -10%,rgba(34,211,238,.16),transparent 30%),
+    radial-gradient(circle at 92% 0%,rgba(139,92,246,.14),transparent 28%),
+    linear-gradient(180deg,#020617 0%,#07111f 48%,#030712 100%)!important;
+}
+body.screen-overview-active #screenIntro{
+  position:relative!important;
+  overflow:hidden!important;
+  border:1px solid rgba(125,211,252,.18)!important;
+  background:
+    radial-gradient(circle at 8% 0%,rgba(34,211,238,.13),transparent 36%),
+    linear-gradient(180deg,rgba(11,24,48,.82),rgba(3,7,18,.70))!important;
+  box-shadow:0 18px 48px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.045)!important;
+}
+body.screen-overview-active .overview-total-hero{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.36fr) minmax(340px,.64fr)!important;
+  gap:18px!important;
+  align-items:stretch!important;
+  margin-top:18px!important;
+}
+body.screen-overview-active .overview-hero-main,
+body.screen-overview-active .overview-command-card,
+body.screen-overview-active .overview-intelligence-suite{
+  border-radius:32px!important;
+  border:1px solid rgba(125,211,252,.18)!important;
+  box-shadow:
+    0 24px 70px rgba(0,0,0,.34),
+    0 0 0 1px rgba(14,165,233,.035),
+    inset 0 1px 0 rgba(255,255,255,.055)!important;
+  backdrop-filter:blur(20px)!important;
+}
+body.screen-overview-active .overview-hero-main{
+  min-height:560px!important;
+  padding:28px!important;
+  background:
+    radial-gradient(circle at 12% 4%,rgba(34,211,238,.20),transparent 34%),
+    radial-gradient(circle at 94% 12%,rgba(139,92,246,.16),transparent 34%),
+    linear-gradient(145deg,rgba(8,23,47,.98),rgba(3,7,18,.98) 62%,rgba(9,19,39,.96))!important;
+}
+body.screen-overview-active .overview-hero-main:after{
+  height:2px!important;
+  background:linear-gradient(90deg,transparent,rgba(103,232,249,.90),rgba(139,92,246,.35),transparent)!important;
+  opacity:.92!important;
+}
+body.screen-overview-active .overview-glow-dot.one{background:rgba(34,211,238,.24)!important;filter:blur(34px)!important;opacity:.55!important}
+body.screen-overview-active .overview-glow-dot.two{background:rgba(139,92,246,.17)!important;filter:blur(38px)!important;opacity:.58!important}
+body.screen-overview-active .overview-eyebrow,
+body.screen-overview-active .overview-panel-kicker{
+  color:#67e8f9!important;
+  letter-spacing:.18em!important;
+  font-size:11px!important;
+  font-weight:950!important;
+  text-transform:uppercase!important;
+}
+body.screen-overview-active .overview-main-title{
+  max-width:880px!important;
+  margin-top:10px!important;
+  color:#fff!important;
+  font-size:clamp(42px,5.6vw,82px)!important;
+  line-height:.92!important;
+  letter-spacing:-.09em!important;
+  text-shadow:0 18px 38px rgba(0,0,0,.32)!important;
+}
+body.screen-overview-active .overview-greeting{
+  margin-top:14px!important;
+  padding:9px 13px!important;
+  color:#e0faff!important;
+  border:1px solid rgba(103,232,249,.24)!important;
+  background:linear-gradient(135deg,rgba(34,211,238,.12),rgba(139,92,246,.08))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04)!important;
+}
+body.screen-overview-active .overview-wealth-label{
+  margin-top:34px!important;
+  color:#a7c7ff!important;
+  font-size:12px!important;
+  text-transform:uppercase!important;
+  letter-spacing:.12em!important;
+}
+body.screen-overview-active .overview-wealth-value{
+  margin-top:10px!important;
+  color:#ffffff!important;
+  font-size:clamp(56px,8.4vw,112px)!important;
+  text-shadow:0 0 34px rgba(34,211,238,.24),0 20px 42px rgba(0,0,0,.35)!important;
+}
+body.screen-overview-active .overview-hero-copy{
+  max-width:780px!important;
+  color:#d8e7ff!important;
+  font-size:15px!important;
+  line-height:1.68!important;
+}
+body.screen-overview-active .overview-badge-row .badge{
+  padding:9px 12px!important;
+  border-radius:999px!important;
+  color:#eaf7ff!important;
+  border-color:rgba(255,255,255,.12)!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035))!important;
+}
+body.screen-overview-active .overview-wealth-grid{
+  gap:12px!important;
+  margin-top:24px!important;
+}
+body.screen-overview-active .overview-metric-tile,
+body.screen-overview-active .overview-signal-grid div,
+body.screen-overview-active .overview-quick-grid div,
+body.screen-overview-active .overview-command-metric,
+body.screen-overview-active .overview-quality-grid div,
+body.screen-overview-active .overview-decision-card,
+body.screen-overview-active .overview-deep-card,
+body.screen-overview-active .overview-flow-card{
+  border:1px solid rgba(125,211,252,.13)!important;
+  background:
+    radial-gradient(circle at 14% 0%,rgba(34,211,238,.075),transparent 42%),
+    linear-gradient(180deg,rgba(14,28,56,.78),rgba(4,10,23,.78))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 14px 34px rgba(0,0,0,.18)!important;
+}
+body.screen-overview-active .overview-metric-tile{
+  padding:16px!important;
+  min-height:128px!important;
+  border-radius:22px!important;
+}
+body.screen-overview-active .overview-metric-tile.featured{
+  border-color:rgba(103,232,249,.26)!important;
+  background:
+    radial-gradient(circle at 20% 0%,rgba(34,211,238,.16),transparent 44%),
+    linear-gradient(180deg,rgba(14,40,76,.82),rgba(5,14,32,.84))!important;
+}
+body.screen-overview-active .overview-metric-tile span,
+body.screen-overview-active .overview-signal-grid span,
+body.screen-overview-active .overview-quick-grid span,
+body.screen-overview-active .overview-command-metric span,
+body.screen-overview-active .overview-quality-grid span,
+body.screen-overview-active .overview-flow-card span{
+  color:#9fb7d9!important;
+  font-size:11px!important;
+  letter-spacing:.055em!important;
+  text-transform:uppercase!important;
+}
+body.screen-overview-active .overview-metric-tile strong,
+body.screen-overview-active .overview-signal-grid strong,
+body.screen-overview-active .overview-quick-grid strong,
+body.screen-overview-active .overview-command-metric strong,
+body.screen-overview-active .overview-quality-grid strong,
+body.screen-overview-active .overview-flow-card strong{
+  color:#fff!important;
+  text-shadow:0 8px 26px rgba(0,0,0,.22)!important;
+}
+body.screen-overview-active .overview-signal-grid{
+  grid-template-columns:repeat(5,1fr)!important;
+  gap:12px!important;
+  margin-top:14px!important;
+}
+body.screen-overview-active .overview-signal-grid div{
+  min-height:88px!important;
+  border-radius:20px!important;
+}
+body.screen-overview-active .overview-command-card{
+  padding:24px!important;
+  background:
+    radial-gradient(circle at 20% 0%,rgba(139,92,246,.14),transparent 34%),
+    radial-gradient(circle at 100% 0%,rgba(34,211,238,.12),transparent 38%),
+    linear-gradient(180deg,rgba(8,18,38,.97),rgba(3,7,18,.98))!important;
+}
+body.screen-overview-active .overview-command-card h3{
+  color:#fff!important;
+  font-size:clamp(30px,3.4vw,48px)!important;
+  letter-spacing:-.078em!important;
+}
+body.screen-overview-active .overview-action-stack{
+  gap:10px!important;
+}
+body.screen-overview-active .overview-action-stack button,
+body.screen-overview-active .overview-command-links button{
+  min-height:52px!important;
+  border-radius:18px!important;
+  box-shadow:0 14px 32px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.10)!important;
+}
+body.screen-overview-active .overview-quick-grid{
+  gap:10px!important;
+}
+body.screen-overview-active .overview-quick-grid div{
+  border-radius:18px!important;
+}
+body.screen-overview-active .overview-flow-strip{
+  gap:14px!important;
+  margin-top:18px!important;
+}
+body.screen-overview-active .overview-flow-card{
+  border-radius:24px!important;
+  min-height:132px!important;
+  padding:18px!important;
+}
+body.screen-overview-active .overview-flow-card.in{border-color:rgba(34,197,94,.24)!important}
+body.screen-overview-active .overview-flow-card.out{border-color:rgba(251,146,60,.24)!important}
+body.screen-overview-active .overview-flow-card.cost{border-color:rgba(248,113,113,.24)!important}
+body.screen-overview-active .overview-flow-card.income{border-color:rgba(103,232,249,.28)!important}
+body.screen-overview-active .overview-intelligence-suite{
+  margin-top:18px!important;
+  padding:26px!important;
+  background:
+    radial-gradient(circle at 8% 0%,rgba(34,211,238,.18),transparent 34%),
+    radial-gradient(circle at 96% 0%,rgba(139,92,246,.16),transparent 36%),
+    linear-gradient(180deg,rgba(5,14,31,.99),rgba(2,6,23,.99))!important;
+}
+body.screen-overview-active .overview-suite-head h3{
+  color:#fff!important;
+  font-size:clamp(34px,4.2vw,62px)!important;
+  letter-spacing:-.084em!important;
+}
+body.screen-overview-active .overview-intel-grid{
+  grid-template-columns:minmax(260px,.38fr) minmax(0,.62fr)!important;
+  gap:16px!important;
+}
+body.screen-overview-active .overview-score-card{
+  min-height:360px!important;
+  border-radius:30px!important;
+  border-color:rgba(103,232,249,.20)!important;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(34,211,238,.18),transparent 46%),
+    linear-gradient(180deg,rgba(10,25,48,.96),rgba(2,6,23,.98))!important;
+}
+body.screen-overview-active .overview-score-ring{
+  width:196px!important;
+  height:196px!important;
+  box-shadow:0 0 48px rgba(34,211,238,.22),inset 0 1px 0 rgba(255,255,255,.06)!important;
+}
+body.screen-overview-active .overview-command-metrics,
+body.screen-overview-active .overview-quality-grid,
+body.screen-overview-active .overview-decision-grid,
+body.screen-overview-active .overview-deep-grid{
+  gap:12px!important;
+}
+body.screen-overview-active .overview-decision-card,
+body.screen-overview-active .overview-deep-card{
+  border-radius:22px!important;
+}
+body.screen-overview-active .overview-decision-card.primary{
+  border-color:rgba(103,232,249,.28)!important;
+  background:
+    radial-gradient(circle at 0 0,rgba(34,211,238,.16),transparent 46%),
+    linear-gradient(180deg,rgba(14,31,60,.82),rgba(4,10,23,.84))!important;
+}
+body.screen-overview-active .smart-advisor-panel,
+body.screen-overview-active .income-premium-hero,
+body.screen-overview-active .ledger-price-vault,
+body.screen-overview-active .ledger-position-vault{
+  border-radius:28px!important;
+  border-color:rgba(125,211,252,.13)!important;
+}
+@media(max-width:1080px){
+  body.screen-overview-active .overview-total-hero,
+  body.screen-overview-active .overview-intel-grid,
+  body.screen-overview-active .overview-decision-grid,
+  body.screen-overview-active .overview-deep-grid{
+    grid-template-columns:1fr!important;
+  }
+  body.screen-overview-active .overview-flow-strip,
+  body.screen-overview-active .overview-quality-grid{
+    grid-template-columns:1fr 1fr!important;
+  }
+}
+@media(max-width:760px){
+  body.screen-overview-active .container{padding-left:14px!important;padding-right:14px!important}
+  body.screen-overview-active .overview-total-hero{gap:14px!important;margin-top:14px!important}
+  body.screen-overview-active .overview-hero-main,
+  body.screen-overview-active .overview-command-card,
+  body.screen-overview-active .overview-intelligence-suite{
+    border-radius:26px!important;
+    padding:16px!important;
+    backdrop-filter:none!important;
+  }
+  body.screen-overview-active .overview-hero-main{min-height:auto!important}
+  body.screen-overview-active .overview-hero-head{gap:10px!important}
+  body.screen-overview-active .overview-main-title{
+    font-size:clamp(34px,10.2vw,48px)!important;
+    line-height:.95!important;
+    letter-spacing:-.078em!important;
+  }
+  body.screen-overview-active .overview-wealth-value{
+    font-size:clamp(42px,12vw,64px)!important;
+    letter-spacing:-.085em!important;
+  }
+  body.screen-overview-active .overview-wealth-grid,
+  body.screen-overview-active .overview-signal-grid,
+  body.screen-overview-active .overview-command-metrics,
+  body.screen-overview-active .overview-quality-grid,
+  body.screen-overview-active .overview-flow-strip{
+    grid-template-columns:1fr 1fr!important;
+    gap:10px!important;
+  }
+  body.screen-overview-active .overview-metric-tile,
+  body.screen-overview-active .overview-signal-grid div,
+  body.screen-overview-active .overview-flow-card{
+    min-height:108px!important;
+    padding:13px!important;
+    border-radius:19px!important;
+  }
+  body.screen-overview-active .overview-metric-tile.identity{grid-column:1/-1!important}
+  body.screen-overview-active .overview-quick-grid{grid-template-columns:1fr 1fr!important}
+  body.screen-overview-active .overview-command-links{grid-template-columns:1fr!important}
+  body.screen-overview-active .overview-score-card{min-height:280px!important;border-radius:24px!important}
+  body.screen-overview-active .overview-score-ring{width:156px!important;height:156px!important}
+}
+@media(max-width:430px){
+  body.screen-overview-active .overview-wealth-grid,
+  body.screen-overview-active .overview-signal-grid,
+  body.screen-overview-active .overview-command-metrics,
+  body.screen-overview-active .overview-quality-grid,
+  body.screen-overview-active .overview-flow-strip,
+  body.screen-overview-active .overview-quick-grid{
+    grid-template-columns:1fr!important;
+  }
+  body.screen-overview-active .overview-hero-head{align-items:flex-start!important}
+  body.screen-overview-active .premium-eye-button{width:46px!important;height:46px!important;min-width:46px!important}
+}
+.performance-mode body.screen-overview-active .overview-hero-main,
+.performance-mode body.screen-overview-active .overview-command-card,
+.performance-mode body.screen-overview-active .overview-intelligence-suite,
+body.screen-overview-active.performance-mode .overview-hero-main,
+body.screen-overview-active.performance-mode .overview-command-card,
+body.screen-overview-active.performance-mode .overview-intelligence-suite{
+  backdrop-filter:none!important;
+  box-shadow:0 12px 28px rgba(0,0,0,.24)!important;
+}
+</style>
+
 </head>
 <body class="dymivra781-premium">
 <div aria-hidden="true" class="wealth-aurora-stage" id="wealthAuroraStage"><span class="aurora-orb orb-a"></span><span class="aurora-orb orb-b"></span><span class="aurora-orb orb-c"></span><span class="aurora-grid"></span></div>
@@ -10984,8 +11318,8 @@ body.performance-mode .dymivra842-rail,body.performance-mode .dymivra842-shell,b
 <div class="overview-glow-dot two"></div>
 <div class="overview-hero-head">
 <div>
-<div class="overview-eyebrow"><span>◆</span> Dymivra 8.3.6 • Painel Geral Premium Total</div>
-<h2 class="overview-main-title">Painel executivo da sua vida financeira</h2>
+<div class="overview-eyebrow"><span>◆</span> Dymivra 8.4.4 • Visão Geral Premium</div>
+<h2 class="overview-main-title">Sua visão financeira em tempo real</h2>
 <div class="badge overview-greeting" id="greeting">Olá 👋</div>
 </div>
 <button aria-label="Mostrar ou ocultar patrimônio" class="balance-eye premium-eye-button" onclick="toggleBalance()" type="button">
@@ -10997,7 +11331,7 @@ body.performance-mode .dymivra842-rail,body.performance-mode .dymivra842-shell,b
 </div>
 <div class="overview-wealth-label">Patrimônio atual da carteira</div>
 <h2 class="hero-value overview-wealth-value" id="heroValue">R$ 0,00</h2>
-<p class="overview-hero-copy">Uma leitura única de patrimônio, resultado, renda passiva, risco, diversificação, meta e próxima ação. O app continua educativo: organiza dados e decisões, sem recomendar compra ou venda.</p>
+<p class="overview-hero-copy">Veja patrimônio, evolução, renda, metas e alertas importantes em um só lugar. O Dymivra organiza seus dados e mostra o próximo passo com mais clareza.</p>
 <div class="overview-badge-row">
 <span class="badge" id="walletBadge">Carteira neutra</span>
 <span class="badge" id="goalBadge">Meta sem configuração</span>
@@ -11034,9 +11368,9 @@ body.performance-mode .dymivra842-rail,body.performance-mode .dymivra842-shell,b
 </div>
 </div>
 <div class="card overview-command-card">
-<div class="overview-panel-kicker">Central de comando</div>
+<div class="overview-panel-kicker">Resumo operacional</div>
 <h3>Ações rápidas</h3>
-<p>Atualize preços, salve um retrato da carteira e navegue para os pontos mais importantes sem sair da Visão Geral.</p>
+<p>Ações essenciais do painel em um bloco mais limpo: atualizar, registrar snapshot, recarregar e navegar para Ledger ou IA.</p>
 <div class="overview-action-stack">
 <button class="success" id="refreshPricesBtn" onclick="refreshAllPrices()">Atualizar preços reais</button>
 <button class="gold" id="manualSnapshotBtn" onclick="saveManualSnapshot()">Salvar snapshot agora</button>
@@ -12021,7 +12355,7 @@ body.performance-mode .dymivra842-rail,body.performance-mode .dymivra842-shell,b
     
     const screenTexts={
       journey:['Jornada Guiada','comece aqui: ordem certa das telas, checklist inteligente, próxima ação e mapa do que preencher primeiro.'],
-      overview:['Visão geral','cockpit premium total com patrimônio, comandos, inteligência, renda, risco, alocação e próximos passos.'],
+      overview:['Visão geral','sua visão financeira em tempo real: patrimônio, evolução, renda, metas e alertas importantes em um só lugar.'],
       pulse:['Pulse 8.4.1','motor de decisão educativo que lê carteira, ledger, renda, metas, risco e alocação para mostrar prioridade, impacto e plano de 7 dias.'],
       ledger:['Ledger Premium Total','registre movimentações, audite preços, acompanhe posições calculadas e controle o extrato em uma tela de comando premium.'],
       income:['Renda Premium Total','cockpit premium para proventos, yield, maior pagador, ranking, meta mensal, fechamento do mês e calendário de renda passiva.'],
