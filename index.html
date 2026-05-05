@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Dymivra 8.5.3 — Business com Supabase -->
+<!-- Dymivra 8.5.4 — Business Sócios com Porcentagem -->
 
 <html lang="pt-BR">
 <head>
@@ -15,7 +15,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.5.3 — Business com Supabase</title>
+<title>Dymivra 8.5.4 — Business Sócios com Porcentagem</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -10086,7 +10086,7 @@ body.screen-overview-active.performance-mode .overview-intelligence-suite{
 <div class="card premium-panel dymivra845-business" data-screen-block="" data-screens="business">
   <div class="business-hero-shell">
     <div class="business-hero-copy">
-      <div class="business-kicker">🏢 Dymivra 8.5.3 • Business com Supabase</div>
+      <div class="business-kicker">🏢 Dymivra 8.5.4 • Sócios com porcentagem</div>
       <h2>Dymivra Business</h2>
       <p>Controle financeiro para pequenos negócios, sociedades e operações em crescimento. Separe o dinheiro do negócio da sua carteira pessoal e acompanhe caixa, entradas, saídas, lucro, margem, investimentos e retiradas.</p>
       <div class="business-quick-actions">
@@ -20971,6 +20971,649 @@ const DYMIVRA853 = (() => {
   return {render, fetchRemote, currentList};
 })();
 window.DYMIVRA853 = DYMIVRA853;
+</script>
+
+
+
+<style id="dymivra854-business-socios-porcentagem-style">
+/* ==========================================================
+   Dymivra 8.5.4 • Business Sócios com Porcentagem
+   Escopo: só a área Business / sócios e relatório.
+   Importante: botão Topo não foi alterado.
+   ========================================================== */
+.business-partner-card.dymivra854-partners-card{
+  border-color:rgba(34,211,238,.22)!important;
+  background:
+    radial-gradient(circle at 0% 0%,rgba(34,211,238,.10),transparent 34%),
+    radial-gradient(circle at 100% 100%,rgba(139,92,246,.08),transparent 34%),
+    linear-gradient(180deg,rgba(15,23,42,.88),rgba(3,9,22,.78))!important;
+}
+.dym854-config{
+  margin:14px 0 16px!important;
+  padding:15px!important;
+  border:1px solid rgba(34,211,238,.16)!important;
+  border-radius:24px!important;
+  background:
+    radial-gradient(circle at 12% 0%,rgba(34,211,238,.08),transparent 36%),
+    rgba(255,255,255,.032)!important;
+}
+.dym854-config-head{
+  display:flex!important;
+  align-items:flex-start!important;
+  justify-content:space-between!important;
+  gap:12px!important;
+  margin-bottom:12px!important;
+}
+.dym854-config-head strong{
+  display:block!important;
+  font-size:20px!important;
+  color:#fff!important;
+  letter-spacing:-.035em!important;
+}
+.dym854-config-head span{
+  display:block!important;
+  margin-top:5px!important;
+  color:#9fb4d8!important;
+  font-size:13px!important;
+  line-height:1.45!important;
+}
+.dym854-total-pill{
+  min-width:max-content!important;
+  padding:8px 10px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(34,211,238,.18)!important;
+  background:rgba(34,211,238,.07)!important;
+  color:#cffafe!important;
+  font-size:12px!important;
+  font-weight:950!important;
+}
+.dym854-partner-form{
+  display:grid!important;
+  grid-template-columns:1fr 120px!important;
+  gap:10px!important;
+}
+.dym854-partner-row{
+  display:grid!important;
+  grid-template-columns:1fr 120px!important;
+  gap:10px!important;
+  grid-column:1 / -1!important;
+}
+.dym854-partner-row input{
+  height:50px!important;
+  border-radius:16px!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  background:rgba(2,8,23,.55)!important;
+  color:#fff!important;
+  font-weight:850!important;
+}
+.dym854-partner-actions{
+  grid-column:1 / -1!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:8px!important;
+}
+.dym854-partner-actions button{
+  margin-top:2px!important;
+}
+.dym854-partner-status{
+  min-height:20px!important;
+  color:#9fb4d8!important;
+  font-size:13px!important;
+  line-height:1.42!important;
+}
+.dym854-partner-status.ok{color:#86efac!important}
+.dym854-partner-status.warn{color:#fde68a!important}
+.dym854-partner-status.err{color:#fecaca!important}
+.business-partner-card.dymivra854-partners-card .business-partner-grid{
+  grid-template-columns:repeat(2,1fr)!important;
+  gap:12px!important;
+}
+.business-partner-card.dymivra854-partners-card .business-partner-grid > div{
+  position:relative!important;
+  overflow:hidden!important;
+  min-height:112px!important;
+  border:1px solid rgba(148,163,184,.13)!important;
+  background:
+    radial-gradient(circle at 100% 100%,rgba(34,211,238,.055),transparent 42%),
+    rgba(255,255,255,.035)!important;
+}
+.business-partner-card.dymivra854-partners-card .business-partner-grid > div::after{
+  content:""!important;
+  position:absolute!important;
+  right:-44px!important;
+  bottom:-50px!important;
+  width:122px!important;
+  height:122px!important;
+  border-radius:999px!important;
+  background:radial-gradient(circle,rgba(34,211,238,.08),transparent 70%)!important;
+  pointer-events:none!important;
+}
+.business-partner-card.dymivra854-partners-card .business-partner-grid > div.dym854-profit-card{border-color:rgba(34,197,94,.22)!important}
+.business-partner-card.dymivra854-partners-card .business-partner-grid > div.dym854-capital-card{border-color:rgba(147,197,253,.22)!important}
+.business-partner-card.dymivra854-partners-card .business-partner-grid > div.dym854-withdraw-card{border-color:rgba(240,171,252,.20)!important}
+.business-partner-card.dymivra854-partners-card .business-partner-grid span,
+.business-partner-card.dymivra854-partners-card .business-partner-grid strong,
+.business-partner-card.dymivra854-partners-card .business-partner-grid small{
+  position:relative!important;
+  z-index:1!important;
+}
+.business-partner-card.dymivra854-partners-card .business-partner-grid small{
+  display:block!important;
+  margin-top:7px!important;
+  color:#8ea3c7!important;
+  font-size:12px!important;
+  line-height:1.34!important;
+}
+.dym854-partner-table{
+  margin-top:14px!important;
+  padding:14px!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+  border-radius:22px!important;
+  background:rgba(2,8,23,.28)!important;
+}
+.dym854-partner-table h4{
+  margin:0 0 10px!important;
+  font-size:16px!important;
+  color:#fff!important;
+  letter-spacing:-.025em!important;
+}
+.dym854-partner-line{
+  display:grid!important;
+  grid-template-columns:1fr auto!important;
+  gap:10px!important;
+  padding:10px 0!important;
+  border-top:1px solid rgba(255,255,255,.065)!important;
+  color:#cbd5e1!important;
+  font-size:13px!important;
+  line-height:1.35!important;
+}
+.dym854-partner-line:first-of-type{border-top:0!important;padding-top:0!important}
+.dym854-partner-line strong{color:#fff!important;font-size:14px!important;text-align:right!important}
+.dym854-report-partners{
+  margin-top:14px!important;
+  padding:15px!important;
+  border:1px solid rgba(34,211,238,.16)!important;
+  border-radius:22px!important;
+  background:
+    radial-gradient(circle at 0 0,rgba(34,211,238,.075),transparent 35%),
+    rgba(255,255,255,.032)!important;
+}
+.dym854-report-partners h4{margin:0 0 10px!important;color:#fff!important;font-size:17px!important}
+.dym854-report-partner-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important}
+.dym854-report-partner-card{
+  padding:12px!important;
+  border-radius:18px!important;
+  border:1px solid rgba(255,255,255,.075)!important;
+  background:rgba(2,8,23,.28)!important;
+}
+.dym854-report-partner-card span{display:block!important;color:#9fb4d8!important;font-size:12px!important;font-weight:900!important;margin-bottom:5px!important}
+.dym854-report-partner-card strong{display:block!important;color:#fff!important;font-size:20px!important;letter-spacing:-.04em!important}
+.dym854-copy-overlay{
+  position:fixed!important;
+  inset:0!important;
+  z-index:99999!important;
+  display:none!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:20px!important;
+  background:rgba(2,6,23,.72)!important;
+  backdrop-filter:blur(12px)!important;
+}
+.dym854-copy-overlay.show{display:flex!important}
+.dym854-copy-modal{
+  width:min(520px,calc(100vw - 28px))!important;
+  border-radius:30px!important;
+  border:1px solid rgba(34,211,238,.24)!important;
+  background:
+    radial-gradient(circle at 0 0,rgba(34,211,238,.13),transparent 34%),
+    radial-gradient(circle at 100% 100%,rgba(139,92,246,.13),transparent 34%),
+    linear-gradient(180deg,rgba(15,23,42,.98),rgba(2,8,23,.98))!important;
+  box-shadow:0 28px 90px rgba(0,0,0,.48),0 0 50px rgba(34,211,238,.08)!important;
+  padding:20px!important;
+  color:#fff!important;
+}
+.dym854-copy-top{display:flex!important;align-items:center!important;gap:13px!important;margin-bottom:12px!important}
+.dym854-copy-icon{width:54px!important;height:54px!important;border-radius:20px!important;display:grid!important;place-items:center!important;background:linear-gradient(135deg,rgba(14,165,233,.35),rgba(139,92,246,.25))!important;border:1px solid rgba(125,211,252,.22)!important;font-size:25px!important}
+.dym854-copy-kicker{color:#67e8f9!important;font-size:12px!important;font-weight:950!important;letter-spacing:.16em!important;text-transform:uppercase!important}
+.dym854-copy-title{margin:2px 0 0!important;font-size:24px!important;letter-spacing:-.045em!important}
+.dym854-copy-text{color:#cbd5e1!important;line-height:1.55!important;margin:0 0 12px!important}
+.dym854-copy-manual{display:none!important;margin-top:12px!important}
+.dym854-copy-manual.show{display:block!important}
+.dym854-copy-manual textarea{min-height:170px!important;font-size:12px!important;border-radius:18px!important}
+.dym854-copy-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;margin-top:14px!important}
+.dym854-copy-actions button{margin:0!important}
+.dym854-copy-secondary{background:rgba(255,255,255,.08)!important;border:1px solid rgba(255,255,255,.10)!important;color:#dbeafe!important;box-shadow:none!important}
+@media(max-width:760px){
+  .dym854-config-head{display:block!important}
+  .dym854-total-pill{display:inline-flex!important;margin-top:10px!important}
+  .dym854-partner-form,.dym854-partner-row{grid-template-columns:1fr!important}
+  .business-partner-card.dymivra854-partners-card .business-partner-grid{grid-template-columns:1fr!important}
+  .business-partner-card.dymivra854-partners-card .business-partner-grid > div{min-height:104px!important;padding:15px!important;border-radius:22px!important}
+  .business-partner-card.dymivra854-partners-card .business-partner-grid strong{font-size:clamp(28px,7.8vw,38px)!important}
+  .dym854-report-partner-grid{grid-template-columns:1fr!important}
+  .dym854-copy-actions{grid-template-columns:1fr!important}
+}
+</style>
+
+<script id="dymivra854-business-socios-porcentagem-script">
+/* ==========================================================
+   Dymivra 8.5.4 • Business Sócios com Porcentagem
+   Mantém Business com Supabase e melhora divisão por sócio.
+   Importante: botão Topo não foi alterado.
+   ========================================================== */
+(function(){
+  const $ = id => document.getElementById(id);
+  const STORE_PREFIX = 'dymivra_business_entries_v1_';
+  const CONFIG_PREFIX = 'dymivra_business_partner_split_v2_';
+  const fmt = v => new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v||0));
+  const pct = v => (Number.isFinite(Number(v)) ? Number(v) : 0).toLocaleString('pt-BR',{maximumFractionDigits:1}) + '%';
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const cleanNum = v => Number(String(v||'').replace(',','.').replace(/[^0-9.-]/g,'')) || 0;
+  const normName = s => String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim().toLowerCase();
+  const monthNames = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  let lastSignature = '';
+
+  function userKey(){
+    const email = ($('userEmail')?.textContent || '').trim().toLowerCase();
+    return email || 'guest';
+  }
+  function cfgKey(){ return CONFIG_PREFIX + userKey(); }
+  function readLocalEntries(){
+    try{
+      const active = STORE_PREFIX + userKey();
+      const list = JSON.parse(localStorage.getItem(active) || '[]');
+      if(Array.isArray(list) && list.length) return list;
+      const guest = JSON.parse(localStorage.getItem(STORE_PREFIX + 'guest') || '[]');
+      return Array.isArray(guest) ? guest : [];
+    }catch{return []}
+  }
+  function list(){
+    try{
+      if(window.DYMIVRA853 && typeof window.DYMIVRA853.currentList === 'function'){
+        const remote = window.DYMIVRA853.currentList();
+        if(Array.isArray(remote)) return remote.filter(Boolean);
+      }
+    }catch{}
+    return readLocalEntries().filter(Boolean);
+  }
+  function distinctPartners(items){
+    const seen = new Set(), out = [];
+    (items||[]).forEach(e=>{
+      const raw = String(e.partner || e.partner_name || '').trim();
+      const key = normName(raw);
+      if(raw && !seen.has(key)){ seen.add(key); out.push(raw); }
+    });
+    return out;
+  }
+  function config(){
+    let saved = null;
+    try{ saved = JSON.parse(localStorage.getItem(cfgKey()) || 'null'); }catch{}
+    const partners = distinctPartners(list());
+    const p1Name = String(saved?.p1Name || partners[0] || 'Sócio 1');
+    const p2Name = String(saved?.p2Name || partners[1] || 'Sócio 2');
+    const p1Pct = Number.isFinite(Number(saved?.p1Pct)) ? Number(saved.p1Pct) : 50;
+    const p2Pct = Number.isFinite(Number(saved?.p2Pct)) ? Number(saved.p2Pct) : 50;
+    return {p1Name,p2Name,p1Pct,p2Pct,total:p1Pct+p2Pct};
+  }
+  function saveConfig(next){
+    try{ localStorage.setItem(cfgKey(), JSON.stringify(next)); }catch{}
+  }
+  function dateObj(value){ const d = value ? new Date(String(value).length<=10 ? value+'T00:00:00' : value) : new Date(); return Number.isNaN(d.getTime()) ? new Date() : d; }
+  function currentMonthKey(){ const d = new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); }
+  function monthKey(value){ const d = dateObj(value); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); }
+  function calc(items){
+    const cur = currentMonthKey();
+    let inM=0,outM=0,allIn=0,allOut=0,investment=0,withdrawals=0;
+    const expenses = {}, capitalBy = {}, withdrawalsBy = {};
+    (items||[]).forEach(e=>{
+      const type = String(e.type || '').toLowerCase();
+      const v = Number(e.amount || 0);
+      const partner = normName(e.partner || e.partner_name || '');
+      const isCurrent = monthKey(e.date || e.movement_date || e.createdAt || e.created_at || new Date()) === cur;
+      if(type === 'entrada'){
+        allIn += v; if(isCurrent) inM += v;
+      }else if(type === 'saida'){
+        allOut += v;
+        if(isCurrent){ expenses[e.category || 'Saída'] = (expenses[e.category || 'Saída'] || 0) + v; outM += v; }
+      }else if(type === 'investimento'){
+        investment += v;
+        if(partner) capitalBy[partner] = (capitalBy[partner] || 0) + v;
+      }else if(type === 'retirada'){
+        withdrawals += v;
+        if(partner) withdrawalsBy[partner] = (withdrawalsBy[partner] || 0) + v;
+      }
+    });
+    const profit = inM - outM;
+    const margin = inM ? (profit/inM)*100 : 0;
+    const cash = allIn + investment - allOut - withdrawals;
+    const available = Math.max(profit - withdrawals, 0);
+    const cfg = config();
+    const p1Key = normName(cfg.p1Name), p2Key = normName(cfg.p2Name);
+    return {
+      inM,outM,allIn,allOut,investment,withdrawals,profit,margin,cash,available,expenses,count:(items||[]).length,
+      cfg,
+      p1CapitalRef: investment * cfg.p1Pct / 100,
+      p2CapitalRef: investment * cfg.p2Pct / 100,
+      p1Profit: available * cfg.p1Pct / 100,
+      p2Profit: available * cfg.p2Pct / 100,
+      p1CapitalReal: capitalBy[p1Key] || 0,
+      p2CapitalReal: capitalBy[p2Key] || 0,
+      p1Withdrawals: withdrawalsBy[p1Key] || 0,
+      p2Withdrawals: withdrawalsBy[p2Key] || 0
+    };
+  }
+  function setText(id,value){ const el=$(id); if(el) el.textContent = value; }
+  function setStatus(msg,type='ok'){
+    const el = $('dym854PartnerStatus');
+    if(el){ el.textContent = msg || ''; el.className = 'dym854-partner-status ' + type; }
+  }
+  function periodLabel(){ const d = new Date(); return monthNames[d.getMonth()] + '/' + d.getFullYear(); }
+  function topExpenses(expenses){ return Object.entries(expenses||{}).sort((a,b)=>b[1]-a[1]).slice(0,5); }
+  function analysis(t){
+    if(!t.count) return 'Ainda não há movimentações registradas. Comece adicionando entradas, saídas, investimentos e retiradas para gerar um relatório real do negócio.';
+    if(t.inM <= 0 && t.outM <= 0) return 'Este mês ainda não tem entradas nem saídas operacionais registradas. O capital investido aparece separado do lucro: ele aumenta o caixa, mas não entra na divisão de lucro.';
+    if(t.inM <= 0 && t.outM > 0) return 'Este mês teve saídas, mas ainda não teve entradas registradas. Registre vendas ou recebimentos para medir lucro, margem e saúde operacional.';
+    if(t.profit < 0) return 'O mês está no prejuízo operacional. As saídas estão maiores que as entradas. O próximo passo é revisar despesas, estoque, taxas e precificação.';
+    if(t.margin < 10) return 'O negócio está positivo, mas a margem está baixa. Revise custos diretos, preço de venda e despesas recorrentes para proteger o caixa.';
+    if(t.margin >= 25) return 'O negócio está com margem saudável. As entradas cobrem as saídas com folga. Avalie reinvestir com controle e registrar retiradas de forma separada.';
+    return 'O negócio está positivo neste mês. Continue acompanhando entradas, saídas, estoque, retiradas e investimentos para manter uma operação saudável.';
+  }
+
+  function ensurePartnerUI(){
+    const card = document.querySelector('.business-partner-card');
+    const grid = card?.querySelector('.business-partner-grid');
+    if(!card || !grid) return;
+    card.classList.add('dymivra854-partners-card');
+    const section = card.querySelector('.section');
+    if(section){
+      const h3 = section.querySelector('h3');
+      if(h3) h3.textContent = 'Sócios com porcentagem';
+    }
+    let conf = $('dym854PartnerConfig');
+    if(!conf){
+      conf = document.createElement('div');
+      conf.id = 'dym854PartnerConfig';
+      conf.className = 'dym854-config';
+      conf.innerHTML = `
+        <div class="dym854-config-head">
+          <div><strong>Configuração dos sócios</strong><span>Defina o nome e a participação de cada sócio. O cálculo do lucro deixa de ser fixo em 50/50.</span></div>
+          <div class="dym854-total-pill" id="dym854PercentTotal">Total: 100%</div>
+        </div>
+        <div class="dym854-partner-form">
+          <div class="dym854-partner-row"><input id="dym854P1Name" placeholder="Nome do sócio 1" type="text"><input id="dym854P1Pct" inputmode="decimal" placeholder="50%" type="text"></div>
+          <div class="dym854-partner-row"><input id="dym854P2Name" placeholder="Nome do sócio 2" type="text"><input id="dym854P2Pct" inputmode="decimal" placeholder="50%" type="text"></div>
+          <div class="dym854-partner-actions"><button type="button" onclick="dymivra854SavePartners()">Salvar divisão dos sócios</button><div class="dym854-partner-status" id="dym854PartnerStatus"></div></div>
+        </div>`;
+      if(section) section.insertAdjacentElement('afterend', conf); else card.insertBefore(conf, grid);
+    }
+    if(!grid.dataset.dym854Ready){
+      grid.dataset.dym851Ready = '1';
+      grid.dataset.dym854Ready = '1';
+      grid.innerHTML = `
+        <div class="dym854-capital-card"><span>Capital investido</span><strong id="businessInvestment">R$ 0,00</strong><small>Total colocado no negócio.</small></div>
+        <div class="dym854-withdraw-card"><span>Retiradas</span><strong id="businessWithdrawals">R$ 0,00</strong><small>Total que saiu para sócios.</small></div>
+        <div class="dym854-profit-card"><span>Lucro disponível</span><strong id="businessAvailableProfit">R$ 0,00</strong><small>Lucro operacional disponível para divisão.</small></div>
+        <div class="dym854-profit-card"><span id="dym854P1ProfitLabel">Lucro sócio 1</span><strong id="dym854P1Profit">R$ 0,00</strong><small>Conforme participação salva.</small></div>
+        <div class="dym854-profit-card"><span id="dym854P2ProfitLabel">Lucro sócio 2</span><strong id="dym854P2Profit">R$ 0,00</strong><small>Conforme participação salva.</small></div>
+        <div class="dym854-capital-card"><span id="dym854P1CapitalLabel">Capital sócio 1</span><strong id="dym854P1Capital">R$ 0,00</strong><small>Registrado pelo campo Sócio/responsável.</small></div>
+        <div class="dym854-capital-card"><span id="dym854P2CapitalLabel">Capital sócio 2</span><strong id="dym854P2Capital">R$ 0,00</strong><small>Registrado pelo campo Sócio/responsável.</small></div>`;
+    }
+    let table = $('dym854PartnerTable');
+    if(!table){
+      table = document.createElement('div');
+      table.id = 'dym854PartnerTable';
+      table.className = 'dym854-partner-table';
+      table.innerHTML = `
+        <h4>Leitura por sócio</h4>
+        <div class="dym854-partner-line"><span id="dym854P1Line">Sócio 1</span><strong id="dym854P1LineValue">R$ 0,00</strong></div>
+        <div class="dym854-partner-line"><span id="dym854P2Line">Sócio 2</span><strong id="dym854P2LineValue">R$ 0,00</strong></div>
+        <div class="dym854-partner-line"><span id="dym854P1WithdrawalLine">Retirada sócio 1</span><strong id="dym854P1Withdrawal">R$ 0,00</strong></div>
+        <div class="dym854-partner-line"><span id="dym854P2WithdrawalLine">Retirada sócio 2</span><strong id="dym854P2Withdrawal">R$ 0,00</strong></div>`;
+      grid.insertAdjacentElement('afterend', table);
+    }
+    const note = card.querySelector('.business-note');
+    if(note && !note.dataset.dym854Ready){
+      note.innerHTML = '<strong>Separação saudável:</strong> investimento dos sócios entra como capital do negócio. A divisão por porcentagem calcula o lucro disponível; para separar capital e retiradas por pessoa, preencha o campo “Sócio/responsável” com o mesmo nome salvo acima.';
+      note.dataset.dym854Ready = '1';
+    }
+    const partnerInput = $('businessPartner');
+    if(partnerInput && !partnerInput.dataset.dym854Ready){
+      partnerInput.placeholder = 'Ex: Kawan ou nome da sócia';
+      partnerInput.dataset.dym854Ready = '1';
+    }
+  }
+
+  function fillInputs(t){
+    const c = t.cfg;
+    const p1n = $('dym854P1Name'), p2n = $('dym854P2Name'), p1p = $('dym854P1Pct'), p2p = $('dym854P2Pct');
+    if(p1n && document.activeElement !== p1n && !p1n.dataset.touched) p1n.value = c.p1Name;
+    if(p2n && document.activeElement !== p2n && !p2n.dataset.touched) p2n.value = c.p2Name;
+    if(p1p && document.activeElement !== p1p && !p1p.dataset.touched) p1p.value = String(c.p1Pct).replace('.',',');
+    if(p2p && document.activeElement !== p2p && !p2p.dataset.touched) p2p.value = String(c.p2Pct).replace('.',',');
+    [p1n,p2n,p1p,p2p].forEach(el=>{ if(el && !el.dataset.dym854Events){ el.addEventListener('input',()=>{el.dataset.touched='1'; updatePercentPill();}); el.dataset.dym854Events='1'; } });
+  }
+  function updatePercentPill(){
+    const p1 = cleanNum($('dym854P1Pct')?.value || config().p1Pct);
+    const p2 = cleanNum($('dym854P2Pct')?.value || config().p2Pct);
+    const total = p1 + p2;
+    const pill = $('dym854PercentTotal');
+    if(pill){
+      pill.textContent = 'Total: ' + pct(total);
+      pill.style.borderColor = Math.abs(total - 100) < .01 ? 'rgba(34,211,238,.18)' : 'rgba(250,204,21,.34)';
+      pill.style.color = Math.abs(total - 100) < .01 ? '#cffafe' : '#fde68a';
+    }
+  }
+
+  function ensureReportPartners(){
+    const report = $('businessReportCard');
+    if(!report) return;
+    let panel = $('dym854ReportPartners');
+    if(!panel){
+      panel = document.createElement('div');
+      panel.id = 'dym854ReportPartners';
+      panel.className = 'dym854-report-partners';
+      panel.innerHTML = `
+        <h4>Sócios e divisão do lucro</h4>
+        <div class="dym854-report-partner-grid">
+          <div class="dym854-report-partner-card"><span id="dym854ReportP1Label">Sócio 1</span><strong id="dym854ReportP1Profit">R$ 0,00</strong></div>
+          <div class="dym854-report-partner-card"><span id="dym854ReportP2Label">Sócio 2</span><strong id="dym854ReportP2Profit">R$ 0,00</strong></div>
+          <div class="dym854-report-partner-card"><span id="dym854ReportP1CapitalLabel">Capital sócio 1</span><strong id="dym854ReportP1Capital">R$ 0,00</strong></div>
+          <div class="dym854-report-partner-card"><span id="dym854ReportP2CapitalLabel">Capital sócio 2</span><strong id="dym854ReportP2Capital">R$ 0,00</strong></div>
+        </div>`;
+      const split = report.querySelector('.business-report-split');
+      if(split) split.insertAdjacentElement('afterend', panel);
+      else report.appendChild(panel);
+    }
+  }
+
+  function render(){
+    ensurePartnerUI();
+    const items = list();
+    const t = calc(items);
+    fillInputs(t);
+    updatePercentPill();
+    setText('businessInvestment', fmt(t.investment));
+    setText('businessWithdrawals', fmt(t.withdrawals));
+    setText('businessAvailableProfit', fmt(t.available));
+    setText('dym854P1ProfitLabel', `${t.cfg.p1Name} · ${pct(t.cfg.p1Pct)}`);
+    setText('dym854P2ProfitLabel', `${t.cfg.p2Name} · ${pct(t.cfg.p2Pct)}`);
+    setText('dym854P1Profit', fmt(t.p1Profit));
+    setText('dym854P2Profit', fmt(t.p2Profit));
+    setText('dym854P1CapitalLabel', `Capital registrado · ${t.cfg.p1Name}`);
+    setText('dym854P2CapitalLabel', `Capital registrado · ${t.cfg.p2Name}`);
+    setText('dym854P1Capital', fmt(t.p1CapitalReal));
+    setText('dym854P2Capital', fmt(t.p2CapitalReal));
+    setText('dym854P1Line', `${t.cfg.p1Name}: referência de capital ${pct(t.cfg.p1Pct)}`);
+    setText('dym854P2Line', `${t.cfg.p2Name}: referência de capital ${pct(t.cfg.p2Pct)}`);
+    setText('dym854P1LineValue', fmt(t.p1CapitalRef));
+    setText('dym854P2LineValue', fmt(t.p2CapitalRef));
+    setText('dym854P1WithdrawalLine', `Retiradas registradas · ${t.cfg.p1Name}`);
+    setText('dym854P2WithdrawalLine', `Retiradas registradas · ${t.cfg.p2Name}`);
+    setText('dym854P1Withdrawal', fmt(t.p1Withdrawals));
+    setText('dym854P2Withdrawal', fmt(t.p2Withdrawals));
+    setText('businessSplit', `${fmt(t.p1Profit)} / ${fmt(t.p2Profit)}`);
+    setText('businessCapitalSplit', `${fmt(t.p1CapitalRef)} / ${fmt(t.p2CapitalRef)}`);
+
+    ensureReportPartners();
+    setText('businessReportCapitalSplit', `${fmt(t.p1CapitalRef)} / ${fmt(t.p2CapitalRef)}`);
+    setText('businessReportSplit', `${fmt(t.p1Profit)} / ${fmt(t.p2Profit)}`);
+    setText('dym854ReportP1Label', `${t.cfg.p1Name} · lucro ${pct(t.cfg.p1Pct)}`);
+    setText('dym854ReportP2Label', `${t.cfg.p2Name} · lucro ${pct(t.cfg.p2Pct)}`);
+    setText('dym854ReportP1Profit', fmt(t.p1Profit));
+    setText('dym854ReportP2Profit', fmt(t.p2Profit));
+    setText('dym854ReportP1CapitalLabel', `Capital registrado · ${t.cfg.p1Name}`);
+    setText('dym854ReportP2CapitalLabel', `Capital registrado · ${t.cfg.p2Name}`);
+    setText('dym854ReportP1Capital', fmt(t.p1CapitalReal));
+    setText('dym854ReportP2Capital', fmt(t.p2CapitalReal));
+
+    const signature = JSON.stringify({cfg:t.cfg, count:t.count, investment:t.investment, withdrawals:t.withdrawals, available:t.available, p1:t.p1Profit, p2:t.p2Profit});
+    lastSignature = signature;
+  }
+
+  window.dymivra854SavePartners = function(){
+    const p1Name = ($('dym854P1Name')?.value || 'Sócio 1').trim() || 'Sócio 1';
+    const p2Name = ($('dym854P2Name')?.value || 'Sócio 2').trim() || 'Sócio 2';
+    const p1Pct = cleanNum($('dym854P1Pct')?.value || 0);
+    const p2Pct = cleanNum($('dym854P2Pct')?.value || 0);
+    const total = p1Pct + p2Pct;
+    if(!p1Name || !p2Name){ setStatus('Preencha o nome dos dois sócios.', 'err'); return; }
+    if(p1Pct < 0 || p2Pct < 0){ setStatus('A participação não pode ser negativa.', 'err'); return; }
+    if(Math.abs(total - 100) > .01){ setStatus('A soma das participações precisa fechar 100%. Soma atual: ' + pct(total) + '.', 'warn'); updatePercentPill(); return; }
+    saveConfig({p1Name,p2Name,p1Pct,p2Pct,updatedAt:new Date().toISOString()});
+    ['dym854P1Name','dym854P2Name','dym854P1Pct','dym854P2Pct'].forEach(id=>{ const el=$(id); if(el) delete el.dataset.touched; });
+    setStatus('Divisão dos sócios salva. Os cálculos foram atualizados.', 'ok');
+    try{ if(typeof toast === 'function') toast('Divisão dos sócios salva.','success'); }catch{}
+    render();
+  };
+
+  function reportText(){
+    const t = calc(list());
+    const rows = topExpenses(t.expenses);
+    const expenseText = rows.length ? rows.map(([name,value])=>`- ${name}: ${fmt(value)}`).join('\n') : '- Nenhuma saída registrada no mês';
+    return [
+      `Relatório Dymivra Business — ${periodLabel()}`,
+      '',
+      `Caixa atual: ${fmt(t.cash)}`,
+      `Entradas do mês: ${fmt(t.inM)}`,
+      `Saídas do mês: ${fmt(t.outM)}`,
+      `Lucro líquido: ${fmt(t.profit)}`,
+      `Margem: ${pct(t.margin)}`,
+      `Capital investido: ${fmt(t.investment)}`,
+      `Retiradas: ${fmt(t.withdrawals)}`,
+      `Lucro disponível para divisão: ${fmt(t.available)}`,
+      '',
+      'Sócios:',
+      `${t.cfg.p1Name}: ${pct(t.cfg.p1Pct)}`,
+      `${t.cfg.p2Name}: ${pct(t.cfg.p2Pct)}`,
+      '',
+      'Lucro sugerido por sócio:',
+      `${t.cfg.p1Name}: ${fmt(t.p1Profit)}`,
+      `${t.cfg.p2Name}: ${fmt(t.p2Profit)}`,
+      '',
+      'Capital registrado por sócio:',
+      `${t.cfg.p1Name}: ${fmt(t.p1CapitalReal)} | referência: ${fmt(t.p1CapitalRef)}`,
+      `${t.cfg.p2Name}: ${fmt(t.p2CapitalReal)} | referência: ${fmt(t.p2CapitalRef)}`,
+      '',
+      'Retiradas por sócio:',
+      `${t.cfg.p1Name}: ${fmt(t.p1Withdrawals)}`,
+      `${t.cfg.p2Name}: ${fmt(t.p2Withdrawals)}`,
+      '',
+      'Maiores despesas:',
+      expenseText,
+      '',
+      'Análise:',
+      analysis(t),
+      '',
+      'Fonte: Dymivra Business / dados salvos por usuário.'
+    ].join('\n');
+  }
+
+  function ensureCopyModal(){
+    let overlay = $('dym854CopyOverlay');
+    if(overlay) return overlay;
+    overlay = document.createElement('div');
+    overlay.id = 'dym854CopyOverlay';
+    overlay.className = 'dym854-copy-overlay';
+    overlay.innerHTML = `
+      <div class="dym854-copy-modal" role="dialog" aria-modal="true" aria-labelledby="dym854CopyTitle">
+        <div class="dym854-copy-top"><div class="dym854-copy-icon">📋</div><div><div class="dym854-copy-kicker">Dymivra Business</div><h3 class="dym854-copy-title" id="dym854CopyTitle">Relatório copiado</h3></div></div>
+        <p class="dym854-copy-text" id="dym854CopyText">O relatório foi copiado para a área de transferência com a divisão dos sócios.</p>
+        <div class="dym854-copy-manual" id="dym854CopyManual"><textarea id="dym854CopyTextarea" readonly></textarea></div>
+        <div class="dym854-copy-actions"><button type="button" class="dym854-copy-secondary" onclick="dymivra854CloseCopyModal()">Fechar</button><button type="button" onclick="dymivra854CloseCopyModal()">OK</button></div>
+      </div>`;
+    overlay.addEventListener('click', ev => { if(ev.target === overlay) window.dymivra854CloseCopyModal(); });
+    document.body.appendChild(overlay);
+    return overlay;
+  }
+  window.dymivra854CloseCopyModal = function(){ const overlay = $('dym854CopyOverlay'); if(overlay) overlay.classList.remove('show'); };
+  function showCopyModal(ok, txt){
+    const overlay = ensureCopyModal();
+    const title = $('dym854CopyTitle'), text = $('dym854CopyText'), manual = $('dym854CopyManual'), area = $('dym854CopyTextarea');
+    if(ok){
+      if(title) title.textContent = 'Relatório copiado';
+      if(text) text.textContent = 'O relatório mensal foi copiado com a divisão dos sócios por porcentagem.';
+      if(manual) manual.classList.remove('show');
+    }else{
+      if(title) title.textContent = 'Copie manualmente';
+      if(text) text.textContent = 'O navegador bloqueou a cópia automática. O relatório está abaixo para selecionar e copiar.';
+      if(area) area.value = txt || '';
+      if(manual) manual.classList.add('show');
+      setTimeout(()=>{try{area?.focus(); area?.select();}catch{}},120);
+    }
+    overlay.classList.add('show');
+  }
+  async function copyPremium(txt){
+    try{ if(navigator.clipboard?.writeText){ await navigator.clipboard.writeText(txt); showCopyModal(true, txt); return; } }catch{}
+    showCopyModal(false, txt);
+  }
+  window.dymivra850CopyBusinessReport = function(){ copyPremium(reportText()); };
+  window.dymivra845CopyBusinessSummary = function(){ copyPremium(reportText()); };
+
+  function wrap(name){
+    const old = window[name];
+    if(typeof old !== 'function' || old.__dym854Wrapped) return;
+    const wrapped = function(){
+      const result = old.apply(this, arguments);
+      setTimeout(render,50); setTimeout(render,260); setTimeout(render,900);
+      return result;
+    };
+    wrapped.__dym854Wrapped = true;
+    window[name] = wrapped;
+  }
+  function install(){
+    ensurePartnerUI();
+    render();
+    ['dymivra845AddBusinessEntry','dymivra849ConfirmBusinessDelete','dymivra845ClearBusinessForm','dymivra845RenderBusiness','dymivra846RenderBusinessFiltered','dymivra847RenderBusinessSync'].forEach(wrap);
+    const oldShow = window.showAppScreen;
+    if(typeof oldShow === 'function' && !oldShow.__dym854Wrapped){
+      const wrappedShow = function(){
+        const result = oldShow.apply(this, arguments);
+        setTimeout(render,120); setTimeout(render,600);
+        return result;
+      };
+      wrappedShow.__dym854Wrapped = true;
+      window.showAppScreen = wrappedShow;
+    }
+  }
+  window.dymivra854RenderPartners = render;
+  document.addEventListener('DOMContentLoaded',()=>{ setTimeout(install,160); setTimeout(render,700); setTimeout(render,1600); });
+  if(document.readyState !== 'loading'){ setTimeout(install,160); setTimeout(render,700); setTimeout(render,1600); }
+  window.addEventListener('storage',()=>setTimeout(render,100));
+  try{
+    const targets = [document.querySelector('.business-partner-card'), document.getElementById('businessHistoryList'), document.getElementById('businessReportCard')].filter(Boolean);
+    const obs = new MutationObserver(()=>{ setTimeout(render,80); });
+    targets.forEach(t => obs.observe(t,{childList:true,subtree:true,characterData:true}));
+  }catch{}
+  setInterval(()=>{
+    try{
+      if(!document.querySelector('[data-screen-block][data-screens="business"]')) return;
+      const t = calc(list());
+      const sig = JSON.stringify({cfg:t.cfg,count:t.count,investment:t.investment,withdrawals:t.withdrawals,available:t.available,p1:t.p1Profit,p2:t.p2Profit});
+      if(sig !== lastSignature || !$('dym854PartnerConfig')) render();
+    }catch{}
+  },1200);
+  document.addEventListener('keydown', ev => { if(ev.key === 'Escape' && $('dym854CopyOverlay')?.classList.contains('show')) window.dymivra854CloseCopyModal(); });
+})();
 </script>
 
 </body>
