@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Dymivra 8.4.6 — Business Premium Refinado -->
+<!-- Dymivra 8.4.9 — Business Exclusão Premium -->
 
 <html lang="pt-BR">
 <head>
@@ -15,7 +15,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.4.6 — Business Premium Refinado</title>
+<title>Dymivra 8.4.9 — Business Exclusão Premium</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -10086,7 +10086,7 @@ body.screen-overview-active.performance-mode .overview-intelligence-suite{
 <div class="card premium-panel dymivra845-business" data-screen-block="" data-screens="business">
   <div class="business-hero-shell">
     <div class="business-hero-copy">
-      <div class="business-kicker">🏢 Dymivra 8.4.6 • Business Premium</div>
+      <div class="business-kicker">🏢 Dymivra 8.4.9 • Exclusão Premium</div>
       <h2>Dymivra Business</h2>
       <p>Controle financeiro para pequenos negócios, sociedades e operações em crescimento. Separe o dinheiro do negócio da sua carteira pessoal e acompanhe caixa, entradas, saídas, lucro, margem, investimentos e retiradas.</p>
       <div class="business-quick-actions">
@@ -18484,6 +18484,671 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
   }
   document.addEventListener('DOMContentLoaded',()=>setTimeout(renderFilteredHistory,120));
   if(document.readyState!=='loading')setTimeout(renderFilteredHistory,120);
+})();
+</script>
+
+
+
+<script id="dymivra847-business-sync-fix">
+/* ==========================================================
+   Dymivra 8.4.8 • Business Limpar Campos Corrigido
+   Correção: histórico, cards superiores, sócios/capital e radar
+   passam a usar a mesma fonte de dados e atualizam juntos.
+   Importante: botão Topo não foi alterado.
+   ========================================================== */
+(function(){
+  const $ = id => document.getElementById(id);
+  const STORE_PREFIX = 'dymivra_business_entries_v1_';
+  const FILTER_KEY = 'dymivra_business_filter_v1';
+  const meta = {
+    todos:['','Todos'],
+    entrada:['💰','Entrada'],
+    saida:['📤','Saída'],
+    investimento:['📥','Investimento'],
+    retirada:['🤝','Retirada']
+  };
+  const fmt = v => new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v||0));
+  const pct = v => (Number.isFinite(Number(v)) ? Number(v) : 0).toLocaleString('pt-BR',{maximumFractionDigits:1}) + '%';
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const today = () => new Date().toISOString().slice(0,10);
+  const norm = n => Number(String(n||'').replace(/\./g,'').replace(',','.').replace(/[^0-9.-]/g,'')) || 0;
+
+  function userEmail(){
+    const raw = ($('userEmail')?.textContent || '').trim().toLowerCase();
+    return raw || 'guest';
+  }
+  function activeKey(){ return STORE_PREFIX + userEmail(); }
+  function guestKey(){ return STORE_PREFIX + 'guest'; }
+  function readKey(key){
+    try{
+      const data = JSON.parse(localStorage.getItem(key) || '[]');
+      return Array.isArray(data) ? data.filter(Boolean) : [];
+    }catch{return []}
+  }
+  function writeKey(key,list){
+    try{ localStorage.setItem(key, JSON.stringify(Array.isArray(list) ? list : [])); }catch{}
+  }
+  function mergeById(a,b){
+    const map = new Map();
+    [...(a||[]),...(b||[])].forEach((item,idx)=>{
+      if(!item) return;
+      const id = item.id || ('legacy_'+idx+'_'+String(item.createdAt||item.date||Math.random()));
+      map.set(id,{...item,id});
+    });
+    return [...map.values()];
+  }
+  function loadBusinessEntries(){
+    const key = activeKey();
+    let list = readKey(key);
+
+    // Migração segura: se o usuário entrou depois de registrar como guest,
+    // traz esses dados para a chave do usuário para não “sumirem” dos cards.
+    if(key !== guestKey()){
+      const guest = readKey(guestKey());
+      if(guest.length && !list.length){
+        list = guest;
+        writeKey(key,list);
+      }
+    }
+
+    return list.filter(e => e && Number(e.amount||0) >= 0);
+  }
+  function saveBusinessEntries(list){
+    writeKey(activeKey(), list || []);
+  }
+  function monthKey(value){
+    const d = value ? new Date(String(value).length <= 10 ? value + 'T00:00:00' : value) : new Date();
+    if(Number.isNaN(d.getTime())){
+      const n = new Date();
+      return n.getFullYear() + '-' + String(n.getMonth()+1).padStart(2,'0');
+    }
+    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0');
+  }
+  function totals(list){
+    const curMonth = monthKey(new Date());
+    let inM=0,outM=0,allIn=0,allOut=0,investment=0,withdrawals=0;
+    (list||[]).forEach(e=>{
+      const v = Number(e.amount||0);
+      const m = monthKey(e.date || e.createdAt || new Date());
+      if(e.type === 'entrada'){
+        allIn += v;
+        if(m === curMonth) inM += v;
+      }else if(e.type === 'saida'){
+        allOut += v;
+        if(m === curMonth) outM += v;
+      }else if(e.type === 'investimento'){
+        investment += v;
+      }else if(e.type === 'retirada'){
+        withdrawals += v;
+      }
+    });
+    const profit = inM - outM;
+    const margin = inM ? (profit / inM) * 100 : 0;
+    const cash = allIn + investment - allOut - withdrawals;
+    const available = Math.max(profit - withdrawals, 0);
+    return {inM,outM,allIn,allOut,investment,withdrawals,profit,margin,cash,available,split:available/2};
+  }
+  function setText(id,value){ const el=$(id); if(el) el.textContent=value; }
+  function updateRadar(t,list){
+    let title='Comece registrando a operação.';
+    let text='Adicione entradas, saídas, investimentos ou retiradas para o Dymivra calcular a saúde do negócio.';
+    if((list||[]).length){
+      if(t.cash < 0){
+        title='Caixa negativo: atenção imediata.';
+        text='As saídas e retiradas passaram do dinheiro disponível. Revise custos, estoque e retiradas antes de crescer.';
+      }else if(t.inM <= 0){
+        title='Sem entradas registradas neste mês.';
+        text='Cadastre vendas, serviços ou recebimentos para medir lucro e margem do período.';
+      }else if(t.profit < 0){
+        title='O mês está no prejuízo.';
+        text='As saídas do mês estão maiores que as entradas. O próximo passo é revisar despesas e precificação.';
+      }else if(t.margin < 10){
+        title='Margem baixa.';
+        text='O negócio está positivo, mas a margem está apertada. Revise custos diretos, taxas e preço de venda.';
+      }else if(t.margin >= 25){
+        title='Margem saudável.';
+        text='As entradas estão cobrindo as saídas com boa margem. Avalie reinvestir com controle e registrar retiradas corretamente.';
+      }else{
+        title='Negócio positivo.';
+        text='O mês está com lucro. Continue acompanhando despesas, estoque e caixa para manter a operação saudável.';
+      }
+    }
+    setText('businessRadarTitle', title);
+    setText('businessRadarText', text);
+  }
+  function ensureFilters(){
+    if($('businessFilterBar')) return;
+    const card = document.querySelector('.business-history-card');
+    const section = card?.querySelector('.section');
+    if(!card || !section) return;
+    const bar = document.createElement('div');
+    bar.className = 'business-filter-bar';
+    bar.id = 'businessFilterBar';
+    bar.innerHTML = ['todos','entrada','saida','investimento','retirada']
+      .map(k => `<button type="button" class="business-filter-btn" data-business-filter="${k}">${meta[k][1]}</button>`)
+      .join('');
+    section.insertAdjacentElement('afterend', bar);
+    bar.addEventListener('click', ev => {
+      const btn = ev.target.closest('[data-business-filter]');
+      if(!btn) return;
+      localStorage.setItem(FILTER_KEY, btn.getAttribute('data-business-filter') || 'todos');
+      renderBusinessSync();
+    });
+  }
+  function activeFilter(){ return localStorage.getItem(FILTER_KEY) || 'todos'; }
+  function updateActiveFilter(){
+    const current = activeFilter();
+    document.querySelectorAll('[data-business-filter]').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-business-filter') === current);
+    });
+  }
+  function sortedList(){
+    return loadBusinessEntries().sort((a,b)=>{
+      const da = new Date((a.date||a.createdAt||'') + (String(a.date||'').length<=10?'T00:00:00':''));
+      const db = new Date((b.date||b.createdAt||'') + (String(b.date||'').length<=10?'T00:00:00':''));
+      return (Number(db)||0) - (Number(da)||0) || String(b.id||'').localeCompare(String(a.id||''));
+    });
+  }
+  function renderHistory(list){
+    ensureFilters();
+    updateActiveFilter();
+    const box = $('businessHistoryList');
+    if(!box) return;
+    const current = activeFilter();
+    const filtered = current === 'todos' ? list : list.filter(e => e.type === current);
+    const subtitle = $('businessHistorySubtitle');
+    if(subtitle){
+      subtitle.textContent = current === 'todos'
+        ? (list.length ? `${list.length} movimentação(ões) registradas.` : 'Nenhuma movimentação registrada.')
+        : `${filtered.length} de ${list.length} em ${meta[current]?.[1] || 'Filtro'}.`;
+    }
+    if(!filtered.length){
+      const label = meta[current]?.[1] || 'este filtro';
+      box.innerHTML = `<div class="business-empty">Nenhuma movimentação em ${esc(label)}. Use o formulário acima para registrar uma nova operação.</div>`;
+      return;
+    }
+    box.innerHTML = filtered.map(e => {
+      const m = meta[e.type] || ['•','Movimento'];
+      const date = e.date ? new Date(e.date + 'T00:00:00').toLocaleDateString('pt-BR') : 'Sem data';
+      const desc = e.description ? ` • ${esc(e.description)}` : '';
+      const partner = e.partner ? ` • ${esc(e.partner)}` : '';
+      return `<div class="business-entry ${esc(e.type)}"><div class="business-entry-type">${m[0]}</div><div><h4>${esc(e.category || m[1])}</h4><p>${m[1]} · ${esc(e.method || 'Forma não informada')} · ${date}${partner}${desc}</p></div><div><strong>${fmt(e.amount)}</strong><button type="button" onclick="dymivra845DeleteBusinessEntry('${esc(e.id)}')">×</button></div></div>`;
+    }).join('');
+  }
+  function renderBusinessSync(){
+    const list = sortedList();
+    const t = totals(list);
+    setText('businessCash', fmt(t.cash));
+    setText('businessMonthIn', fmt(t.inM));
+    setText('businessMonthOut', fmt(t.outM));
+    setText('businessProfit', fmt(t.profit));
+    setText('businessMargin', pct(t.margin));
+    setText('businessInvestment', fmt(t.investment));
+    setText('businessWithdrawals', fmt(t.withdrawals));
+    setText('businessAvailableProfit', fmt(t.available));
+    setText('businessSplit', fmt(t.split));
+    updateRadar(t,list);
+    renderHistory(list);
+  }
+
+  window.dymivra845RenderBusiness = renderBusinessSync;
+  window.dymivra846RenderBusinessFiltered = renderBusinessSync;
+  window.dymivra847RenderBusinessSync = renderBusinessSync;
+
+  window.dymivra845AddBusinessEntry = function(){
+    const type = $('businessType')?.value || 'entrada';
+    const category = $('businessCategory')?.value || 'Outro';
+    const amount = norm($('businessAmount')?.value);
+    const date = $('businessDate')?.value || today();
+    const method = $('businessMethod')?.value || 'Pix';
+    const description = ($('businessDescription')?.value || '').trim();
+    const partner = ($('businessPartner')?.value || '').trim();
+    const st = $('businessStatus');
+    if(!amount || amount <= 0){
+      if(st){ st.textContent='Informe um valor válido para adicionar ao negócio.'; st.className='status status-error'; }
+      return;
+    }
+    const list = loadBusinessEntries();
+    list.push({
+      id:'b_'+Date.now()+'_'+Math.random().toString(16).slice(2),
+      type,category,amount,date,method,description,partner,createdAt:new Date().toISOString()
+    });
+    saveBusinessEntries(list);
+    if(typeof window.dymivra845ClearBusinessForm === 'function') window.dymivra845ClearBusinessForm();
+    if(st){ st.textContent='Movimentação adicionada ao Dymivra Business.'; st.className='status status-success'; }
+    renderBusinessSync();
+    try{ toast('Movimentação adicionada ao Negócio.','success'); }catch{}
+  };
+
+  window.dymivra845DeleteBusinessEntry = function(id){
+    const list = loadBusinessEntries();
+    const item = list.find(e => String(e.id) === String(id));
+    if(!item) return;
+    if(!confirm('Excluir esta movimentação do negócio?')) return;
+    saveBusinessEntries(list.filter(e => String(e.id) !== String(id)));
+    renderBusinessSync();
+    try{ toast('Movimentação removida.','info'); }catch{}
+  };
+
+  window.dymivra845CopyBusinessSummary = function(){
+    const list = sortedList();
+    const t = totals(list);
+    const txt = [
+      'Dymivra Business — resumo do negócio',
+      'Caixa atual: ' + fmt(t.cash),
+      'Entradas do mês: ' + fmt(t.inM),
+      'Saídas do mês: ' + fmt(t.outM),
+      'Lucro líquido do mês: ' + fmt(t.profit),
+      'Margem do mês: ' + pct(t.margin),
+      'Investimento total: ' + fmt(t.investment),
+      'Retiradas: ' + fmt(t.withdrawals),
+      'Lucro disponível: ' + fmt(t.available),
+      'Divisão 50/50 sugerida: ' + fmt(t.split)
+    ].join('\n');
+    navigator.clipboard?.writeText(txt)
+      .then(()=>{ try{toast('Resumo Business copiado.','success')}catch{alert('Resumo copiado.')} })
+      .catch(()=>alert(txt));
+  };
+
+  const previousShow = window.showAppScreen;
+  if(typeof previousShow === 'function'){
+    window.showAppScreen = function(screen,smooth){
+      const result = previousShow.apply(this, arguments);
+      if(screen === 'business' || screen === 'all'){
+        setTimeout(renderBusinessSync, 80);
+        setTimeout(renderBusinessSync, 450);
+      }
+      return result;
+    };
+  }
+
+  // Re-renderiza quando o e-mail do usuário aparecer/alterar depois do login.
+  try{
+    const userEl = $('userEmail');
+    if(userEl){ new MutationObserver(()=>setTimeout(renderBusinessSync,60)).observe(userEl,{childList:true,characterData:true,subtree:true}); }
+  }catch{}
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    const d=$('businessDate'); if(d && !d.value) d.value=today();
+    setTimeout(renderBusinessSync,80);
+    setTimeout(renderBusinessSync,500);
+    setTimeout(renderBusinessSync,1200);
+  });
+  window.addEventListener('storage', ev => { if(String(ev.key||'').startsWith(STORE_PREFIX)) renderBusinessSync(); });
+  if(document.readyState !== 'loading'){
+    const d=$('businessDate'); if(d && !d.value) d.value=today();
+    setTimeout(renderBusinessSync,80);
+    setTimeout(renderBusinessSync,500);
+  }
+})();
+</script>
+
+
+<script id="dymivra848-business-clear-fields-fix">
+/* ==========================================================
+   Dymivra 8.4.8 • Business Limpar Campos Corrigido
+   Correção: o botão "Limpar campos" agora limpa todos os
+   campos do formulário Business sem apagar o histórico.
+   Importante: botão Topo não foi alterado.
+   ========================================================== */
+(function(){
+  const $ = id => document.getElementById(id);
+  const today = () => new Date().toISOString().slice(0,10);
+
+  function setField(id,value){
+    const el = $(id);
+    if(!el) return;
+    el.value = value;
+    try{ el.dispatchEvent(new Event('input',{bubbles:true})); }catch{}
+    try{ el.dispatchEvent(new Event('change',{bubbles:true})); }catch{}
+  }
+
+  window.dymivra845ClearBusinessForm = function(){
+    setField('businessType','entrada');
+    setField('businessCategory','Venda');
+    setField('businessAmount','');
+    setField('businessDate',today());
+    setField('businessMethod','Pix');
+    setField('businessPartner','');
+    setField('businessDescription','');
+
+    const st = $('businessStatus');
+    if(st){
+      st.textContent = 'Campos limpos. O histórico do negócio foi mantido.';
+      st.className = 'status status-info';
+    }
+
+    try{ setTimeout(()=>$('businessAmount')?.focus(),80); }catch{}
+  };
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    const d = $('businessDate');
+    if(d && !d.value) d.value = today();
+  });
+})();
+</script>
+
+
+<style id="dymivra849-business-delete-premium-style">
+/* ==========================================================
+   Dymivra 8.4.9 • Business Exclusão Premium
+   Corrige o alerta nativo do navegador ao excluir movimentação.
+   Importante: botão Topo não foi alterado.
+   ========================================================== */
+.dymivra849-delete-overlay{
+  position:fixed!important;
+  inset:0!important;
+  z-index:999999!important;
+  display:none!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:22px!important;
+  background:
+    radial-gradient(circle at 50% 24%,rgba(34,211,238,.18),transparent 36%),
+    rgba(2,6,23,.74)!important;
+  backdrop-filter:blur(16px)!important;
+  -webkit-backdrop-filter:blur(16px)!important;
+}
+.dymivra849-delete-overlay.show{display:flex!important;}
+.dymivra849-delete-modal{
+  width:min(520px,100%)!important;
+  position:relative!important;
+  overflow:hidden!important;
+  border-radius:30px!important;
+  border:1px solid rgba(125,211,252,.22)!important;
+  background:
+    radial-gradient(circle at 8% 0%,rgba(34,211,238,.16),transparent 32%),
+    radial-gradient(circle at 100% 4%,rgba(139,92,246,.16),transparent 34%),
+    linear-gradient(180deg,rgba(15,23,42,.98),rgba(2,8,23,.98))!important;
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.58),
+    inset 0 1px 0 rgba(255,255,255,.065)!important;
+  padding:22px!important;
+  color:#f8fafc!important;
+  transform:translateY(8px) scale(.985)!important;
+  animation:dym849ModalIn .16s ease forwards!important;
+}
+.dymivra849-delete-modal::before{
+  content:""!important;
+  position:absolute!important;
+  left:0!important;
+  right:0!important;
+  top:0!important;
+  height:3px!important;
+  background:linear-gradient(90deg,#22d3ee,#8b5cf6,#f0abfc)!important;
+  opacity:.95!important;
+}
+@keyframes dym849ModalIn{to{transform:translateY(0) scale(1)}}
+.dymivra849-delete-top{
+  display:grid!important;
+  grid-template-columns:auto 1fr auto!important;
+  gap:14px!important;
+  align-items:start!important;
+}
+.dymivra849-delete-icon{
+  width:58px!important;
+  height:58px!important;
+  min-width:58px!important;
+  border-radius:22px!important;
+  display:grid!important;
+  place-items:center!important;
+  font-size:27px!important;
+  border:1px solid rgba(251,113,133,.25)!important;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(255,255,255,.16),transparent 40%),
+    linear-gradient(135deg,rgba(239,68,68,.22),rgba(139,92,246,.14))!important;
+  box-shadow:0 0 30px rgba(239,68,68,.10)!important;
+}
+.dymivra849-delete-kicker{
+  color:#67e8f9!important;
+  font-size:11px!important;
+  font-weight:950!important;
+  letter-spacing:.15em!important;
+  text-transform:uppercase!important;
+  margin:2px 0 7px!important;
+}
+.dymivra849-delete-title{
+  margin:0!important;
+  color:#ffffff!important;
+  font-size:clamp(24px,5.5vw,34px)!important;
+  line-height:1.02!important;
+  letter-spacing:-.07em!important;
+  font-weight:950!important;
+}
+.dymivra849-delete-x{
+  width:42px!important;
+  height:42px!important;
+  min-width:42px!important;
+  margin:0!important;
+  padding:0!important;
+  border-radius:15px!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  background:rgba(255,255,255,.045)!important;
+  color:#dbeafe!important;
+  display:grid!important;
+  place-items:center!important;
+  box-shadow:none!important;
+  font-size:22px!important;
+}
+.dymivra849-delete-text{
+  margin:16px 0 0!important;
+  color:#cbd5e1!important;
+  line-height:1.58!important;
+  font-size:15px!important;
+}
+.dymivra849-delete-preview{
+  margin-top:16px!important;
+  display:grid!important;
+  grid-template-columns:auto 1fr!important;
+  gap:12px!important;
+  align-items:center!important;
+  padding:14px!important;
+  border-radius:22px!important;
+  border:1px solid rgba(255,255,255,.085)!important;
+  background:rgba(255,255,255,.045)!important;
+}
+.dymivra849-delete-preview-icon{
+  width:50px!important;
+  height:50px!important;
+  border-radius:18px!important;
+  display:grid!important;
+  place-items:center!important;
+  background:rgba(15,23,42,.72)!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+  font-size:23px!important;
+}
+.dymivra849-delete-preview strong{
+  display:block!important;
+  color:#fff!important;
+  font-size:18px!important;
+  line-height:1.12!important;
+}
+.dymivra849-delete-preview span{
+  display:block!important;
+  margin-top:5px!important;
+  color:#94a3b8!important;
+  font-size:13px!important;
+  line-height:1.35!important;
+}
+.dymivra849-delete-value{
+  margin-top:7px!important;
+  font-size:22px!important;
+  font-weight:950!important;
+  letter-spacing:-.055em!important;
+  color:#fca5a5!important;
+}
+.dymivra849-delete-warning{
+  margin-top:14px!important;
+  padding:13px 14px!important;
+  border-radius:18px!important;
+  border:1px solid rgba(250,204,21,.18)!important;
+  background:rgba(250,204,21,.065)!important;
+  color:#fef3c7!important;
+  line-height:1.45!important;
+  font-size:13.5px!important;
+}
+.dymivra849-delete-actions{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:10px!important;
+  margin-top:18px!important;
+}
+.dymivra849-delete-actions button{
+  margin:0!important;
+  min-height:52px!important;
+  border-radius:18px!important;
+  font-weight:950!important;
+}
+.dymivra849-cancel{
+  background:rgba(255,255,255,.055)!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  color:#dbeafe!important;
+  box-shadow:none!important;
+}
+.dymivra849-confirm{
+  background:linear-gradient(135deg,#ef4444,#f97316)!important;
+  border:1px solid rgba(254,202,202,.20)!important;
+  color:#fff!important;
+  box-shadow:0 14px 32px rgba(239,68,68,.20)!important;
+}
+@media(max-width:520px){
+  .dymivra849-delete-overlay{padding:16px!important;align-items:flex-end!important;}
+  .dymivra849-delete-modal{border-radius:28px 28px 24px 24px!important;padding:18px!important;}
+  .dymivra849-delete-actions{grid-template-columns:1fr!important;}
+  .dymivra849-cancel{order:2!important;}
+  .dymivra849-confirm{order:1!important;}
+}
+</style>
+<script id="dymivra849-business-delete-premium-script">
+/* ==========================================================
+   Dymivra 8.4.9 • Business Exclusão Premium
+   Substitui o confirm() do navegador por modal premium do app.
+   Importante: botão Topo não foi alterado.
+   ========================================================== */
+(function(){
+  const $ = id => document.getElementById(id);
+  const STORE_PREFIX = 'dymivra_business_entries_v1_';
+  let pendingId = null;
+
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const fmt = v => new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v||0));
+  const meta = {
+    entrada:['💰','Entrada'],
+    saida:['📤','Saída'],
+    investimento:['📥','Investimento'],
+    retirada:['🤝','Retirada']
+  };
+
+  function userEmail(){
+    const raw = ($('userEmail')?.textContent || '').trim().toLowerCase();
+    return raw || 'guest';
+  }
+  function key(){ return STORE_PREFIX + userEmail(); }
+  function guestKey(){ return STORE_PREFIX + 'guest'; }
+  function readKey(k){
+    try{ const data = JSON.parse(localStorage.getItem(k) || '[]'); return Array.isArray(data) ? data.filter(Boolean) : []; }
+    catch{return []}
+  }
+  function writeKey(k,list){ try{ localStorage.setItem(k, JSON.stringify(Array.isArray(list)?list:[])); }catch{} }
+  function load(){
+    let list = readKey(key());
+    if(key() !== guestKey()){
+      const guest = readKey(guestKey());
+      if(guest.length && !list.length){ list = guest; writeKey(key(),list); }
+    }
+    return list;
+  }
+  function save(list){ writeKey(key(), list || []); }
+  function dateLabel(value){
+    if(!value) return 'Sem data';
+    try{ return new Date(String(value).length<=10 ? value+'T00:00:00' : value).toLocaleDateString('pt-BR'); }
+    catch{return 'Sem data'}
+  }
+
+  function ensureModal(){
+    let overlay = $('dymivra849DeleteOverlay');
+    if(overlay) return overlay;
+    overlay = document.createElement('div');
+    overlay.id = 'dymivra849DeleteOverlay';
+    overlay.className = 'dymivra849-delete-overlay';
+    overlay.innerHTML = `
+      <div class="dymivra849-delete-modal" role="dialog" aria-modal="true" aria-labelledby="dymivra849DeleteTitle">
+        <div class="dymivra849-delete-top">
+          <div class="dymivra849-delete-icon">🗑️</div>
+          <div>
+            <div class="dymivra849-delete-kicker">Dymivra Business</div>
+            <h3 class="dymivra849-delete-title" id="dymivra849DeleteTitle">Excluir movimentação?</h3>
+          </div>
+          <button type="button" class="dymivra849-delete-x" onclick="dymivra849CloseBusinessDeleteModal()" aria-label="Fechar">×</button>
+        </div>
+        <p class="dymivra849-delete-text">Confirme se deseja remover esta movimentação do histórico do negócio.</p>
+        <div class="dymivra849-delete-preview">
+          <div class="dymivra849-delete-preview-icon" id="dymivra849DeleteIcon">•</div>
+          <div>
+            <strong id="dymivra849DeleteName">Movimentação</strong>
+            <span id="dymivra849DeleteMeta">Tipo · Forma · Data</span>
+            <div class="dymivra849-delete-value" id="dymivra849DeleteValue">R$ 0,00</div>
+          </div>
+        </div>
+        <div class="dymivra849-delete-warning"><strong>Atenção:</strong> essa ação apaga somente este lançamento do Business. O login, carteira, IA, planos, paywall e botão Topo não são alterados.</div>
+        <div class="dymivra849-delete-actions">
+          <button type="button" class="dymivra849-cancel" onclick="dymivra849CloseBusinessDeleteModal()">Cancelar</button>
+          <button type="button" class="dymivra849-confirm" onclick="dymivra849ConfirmBusinessDelete()">Excluir movimentação</button>
+        </div>
+      </div>`;
+    overlay.addEventListener('click', ev => { if(ev.target === overlay) window.dymivra849CloseBusinessDeleteModal(); });
+    document.body.appendChild(overlay);
+    return overlay;
+  }
+
+  window.dymivra849CloseBusinessDeleteModal = function(){
+    const overlay = $('dymivra849DeleteOverlay');
+    if(overlay) overlay.classList.remove('show');
+    pendingId = null;
+  };
+
+  window.dymivra845DeleteBusinessEntry = function(id){
+    const list = load();
+    const item = list.find(e => String(e.id) === String(id));
+    if(!item) return;
+    pendingId = String(id);
+    const m = meta[item.type] || ['•','Movimento'];
+    const method = item.method || 'Forma não informada';
+    const partner = item.partner ? ' • ' + item.partner : '';
+    const desc = item.description ? ' • ' + item.description : '';
+    const overlay = ensureModal();
+    const icon = $('dymivra849DeleteIcon');
+    const name = $('dymivra849DeleteName');
+    const details = $('dymivra849DeleteMeta');
+    const value = $('dymivra849DeleteValue');
+    if(icon) icon.textContent = m[0];
+    if(name) name.textContent = item.category || m[1];
+    if(details) details.textContent = `${m[1]} · ${method} · ${dateLabel(item.date || item.createdAt)}${partner}${desc}`;
+    if(value){
+      value.textContent = fmt(item.amount);
+      value.style.color = item.type === 'entrada' ? '#86efac' : item.type === 'saida' ? '#fdba74' : item.type === 'investimento' ? '#93c5fd' : item.type === 'retirada' ? '#f0abfc' : '#fca5a5';
+    }
+    overlay.classList.add('show');
+  };
+
+  window.dymivra849ConfirmBusinessDelete = function(){
+    if(!pendingId) return window.dymivra849CloseBusinessDeleteModal();
+    const id = pendingId;
+    const list = load();
+    save(list.filter(e => String(e.id) !== String(id)));
+    window.dymivra849CloseBusinessDeleteModal();
+    try{
+      if(typeof window.dymivra847RenderBusinessSync === 'function') window.dymivra847RenderBusinessSync();
+      else if(typeof window.dymivra846RenderBusinessFiltered === 'function') window.dymivra846RenderBusinessFiltered();
+      else if(typeof window.dymivra845RenderBusiness === 'function') window.dymivra845RenderBusiness();
+    }catch{}
+    setTimeout(()=>{try{ if(typeof window.dymivra847RenderBusinessSync === 'function') window.dymivra847RenderBusinessSync(); }catch{}},80);
+    try{ toast('Movimentação removida do Business.','info'); }catch{}
+  };
+
+  document.addEventListener('keydown', ev => {
+    if(ev.key === 'Escape' && $('dymivra849DeleteOverlay')?.classList.contains('show')) window.dymivra849CloseBusinessDeleteModal();
+  });
 })();
 </script>
 
