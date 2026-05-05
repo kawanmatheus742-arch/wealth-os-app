@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Dymivra 8.5.6 — Business Controle de Estoque -->
+<!-- Dymivra 8.5.7 — Business Venda com Estoque -->
 
 <html lang="pt-BR">
 <head>
@@ -15,7 +15,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.5.6 — Business Controle de Estoque</title>
+<title>Dymivra 8.5.7 — Business Venda com Estoque</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -21910,7 +21910,7 @@ window.DYMIVRA853 = DYMIVRA853;
 
 <style id="dymivra856-business-stock-style">
 /* ==========================================================
-   Dymivra 8.5.6 • Business Controle de Estoque
+   Dymivra 8.5.7 • Business Venda com Estoque
    Escopo: somente Dymivra Business / produtos.
    Não altera botão Topo, login, IA, planos, paywall ou ledger.
    ========================================================== */
@@ -21991,10 +21991,35 @@ window.DYMIVRA853 = DYMIVRA853;
 .performance-mode .dym856-stock-panel,.performance-mode .dym856-stock-card,.performance-mode .dym856-product{backdrop-filter:none!important;box-shadow:0 8px 20px rgba(0,0,0,.20)!important}
 </style>
 
+
+<style id="dymivra857-business-sale-style">
+/* ==========================================================
+   Dymivra 8.5.7 • Business Venda com Estoque
+   Registra venda, baixa estoque e cria entrada financeira.
+   Não altera botão Topo, login, IA, planos ou paywall.
+   ========================================================== */
+.dym857-sale-btn{
+  background:linear-gradient(135deg,rgba(34,197,94,.92),rgba(34,211,238,.76))!important;
+  border:1px solid rgba(134,239,172,.20)!important;
+  box-shadow:0 12px 26px rgba(34,197,94,.10)!important;
+}
+.dym857-sale-modal-box{
+  border-color:rgba(34,197,94,.24)!important;
+  background:radial-gradient(circle at 12% 0%,rgba(34,197,94,.14),transparent 32%),radial-gradient(circle at 92% 8%,rgba(34,211,238,.12),transparent 28%),linear-gradient(180deg,#0f172a,#020617)!important;
+}
+.dym857-sale-icon{width:62px;height:62px;display:grid;place-items:center;border-radius:22px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.24);font-size:30px;margin-bottom:12px;box-shadow:0 0 24px rgba(34,197,94,.10)}
+.dym857-sale-form{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.dym857-sale-form .wide{grid-column:1/-1}
+.dym857-sale-form label{margin-top:0;color:#c7d7f2;font-size:12px;font-weight:850}
+.dym857-sale-form input,.dym857-sale-form select,.dym857-sale-form textarea{border-radius:15px!important}
+.dym857-sale-form textarea{min-height:78px!important}
+.dym857-sale-preview{margin-top:12px;border-radius:18px;border:1px solid rgba(34,197,94,.20);background:rgba(34,197,94,.08);color:#dcfce7;padding:13px 14px;font-weight:950;line-height:1.35}
+@media(max-width:760px){.dym857-sale-form{grid-template-columns:1fr}.dym856-product-side{min-width:132px}}
+</style>
 <script type="module" id="dymivra856-business-stock-script">
 /* ==========================================================
-   Dymivra 8.5.6 • Business Controle de Estoque
-   Salva em public.business_products por usuário, com fallback local.
+   Dymivra 8.5.7 • Business Venda com Estoque
+   Salva em public.business_products por usuário e registra venda em public.business_movements, com fallback local.
    ========================================================== */
 import { createClient } from "https://esm.sh/@supabase/supabase-js";
 (function(){
@@ -22012,7 +22037,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
     const n = Number(s.replace(/\./g,'').replace(',', '.'));
     return Number.isFinite(n) ? n : 0;
   };
-  let state = { products: [], source:'local', user:null, loading:false, editingId:null, deleteId:null };
+  let state = { products: [], source:'local', user:null, loading:false, editingId:null, deleteId:null, saleId:null };
   function localKey(user){ return STORE + (user?.email || user?.id || 'anon'); }
   function loadLocal(user){ try{return JSON.parse(localStorage.getItem(localKey(user))||'[]')}catch{return[]} }
   function saveLocal(list,user){ try{localStorage.setItem(localKey(user),JSON.stringify(list||[]))}catch{} }
@@ -22081,7 +22106,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
             <button type="button" class="secondary" onclick="dymivra856ClearProductForm()">Limpar produto</button>
           </div>
           <div class="dym856-stock-status" id="dym856StockStatus"></div>
-          <div class="dym856-stock-note"><strong>Uso recomendado:</strong> registre o estoque real. Quando vender, use “Baixar estoque” no produto e registre a venda também nas movimentações do Business.</div>
+          <div class="dym856-stock-note"><strong>Uso recomendado:</strong> registre o estoque real. Quando vender, use “Registrar venda”. O Dymivra baixa o estoque e registra a entrada financeira automaticamente.</div>
         </div>
         <div class="dym856-stock-card">
           <div class="dym856-products-head">
@@ -22097,6 +22122,23 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
           <h3>Excluir produto?</h3>
           <p id="dym856DeleteText">Essa ação remove o produto do controle de estoque. As movimentações financeiras do Business não serão apagadas.</p>
           <div class="dym856-modal-actions"><button type="button" class="secondary" onclick="dymivra856CloseDeleteProduct()">Cancelar</button><button type="button" class="danger" onclick="dymivra856ConfirmDeleteProduct()">Excluir</button></div>
+        </div>
+      </div>
+      <div class="dym856-modal" id="dym857SaleModal" aria-hidden="true">
+        <div class="dym856-modal-box dym857-sale-modal-box" role="dialog" aria-modal="true">
+          <div class="dym857-sale-icon">🛒</div>
+          <h3>Registrar venda</h3>
+          <p id="dym857SaleText">Venda o produto, baixe o estoque e registre a entrada no Business automaticamente.</p>
+          <div class="dym857-sale-form">
+            <div><label>Quantidade vendida</label><input id="dym857SaleQty" inputmode="decimal" placeholder="Ex: 1" type="text"></div>
+            <div><label>Valor unitário</label><input id="dym857SaleUnit" inputmode="decimal" placeholder="Ex: 60,00" type="text"></div>
+            <div><label>Data da venda</label><input id="dym857SaleDate" type="date"></div>
+            <div><label>Pagamento</label><select id="dym857SaleMethod"><option>Pix</option><option>Dinheiro</option><option>Cartão</option><option>Boleto</option><option>Transferência</option><option>Outro</option></select></div>
+            <div class="wide"><label>Sócio/responsável</label><input id="dym857SalePartner" placeholder="Opcional" type="text"></div>
+            <div class="wide"><label>Descrição</label><textarea id="dym857SaleDesc" placeholder="Opcional: cliente, pedido, observação..."></textarea></div>
+          </div>
+          <div class="dym857-sale-preview" id="dym857SalePreview">Total da venda: R$ 0,00</div>
+          <div class="dym856-modal-actions"><button type="button" class="secondary" onclick="dymivra857CloseSaleProduct()">Cancelar</button><button type="button" class="success" id="dym857ConfirmSaleBtn" onclick="dymivra857ConfirmSaleProduct()">Registrar venda</button></div>
         </div>
       </div>`;
     const after = $('dym855HealthPanel') || business.querySelector('.business-kpi-grid') || business.querySelector('.business-main-grid');
@@ -22147,6 +22189,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
           ${p.notes ? `<small style="margin-top:9px;color:#cbd5e1">${esc(p.notes)}</small>` : ''}
         </div>
         <div class="dym856-product-side">
+          <button type="button" class="dym857-sale-btn" onclick="dymivra857AskSaleProduct('${id}')">Registrar venda</button>
           <button type="button" class="dym856-edit-btn" onclick="dymivra856EditProduct('${id}')">Editar</button>
           <div class="dym856-stock-down"><input id="dym856Down_${id}" inputmode="decimal" placeholder="Qtd" type="text"><button type="button" class="dym856-down-btn" onclick="dymivra856DecreaseStock('${id}')">Baixar estoque</button></div>
           <button type="button" class="dym856-delete-btn" onclick="dymivra856AskDeleteProduct('${id}')">Excluir</button>
@@ -22226,6 +22269,84 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
     const payload={name:p.name,category:p.category,quantity:Number(p.quantity||0)-qty,unit_cost:Number(p.unit_cost||0),sale_price:Number(p.sale_price||0),supplier:p.supplier||'',notes:p.notes||''};
     try{ await persistProduct(payload,id); status('Estoque baixado com sucesso. Registre a venda também nas movimentações do Business.','success'); try{window.toast?.('Estoque baixado.','success')}catch{} }
     catch(e){ status(e?.message||'Erro ao baixar estoque.','error'); }
+  };
+  function today857(){ return new Date().toISOString().slice(0,10); }
+  function localBusinessKey(user){
+    const email=(user?.email || document.getElementById('userEmail')?.textContent || '').trim().toLowerCase() || 'guest';
+    return 'dymivra_business_entries_v1_' + email;
+  }
+  function readBusinessLocal(user){ try{ const raw=localStorage.getItem(localBusinessKey(user)); const list=JSON.parse(raw||'[]'); return Array.isArray(list)?list:[]; }catch{return[]} }
+  function writeBusinessLocal(user,list){ try{ localStorage.setItem(localBusinessKey(user),JSON.stringify(Array.isArray(list)?list:[])); }catch{} }
+  async function insertBusinessSaleMovement(item){
+    const user = await currentUser(); state.user = user;
+    if(user){
+      const row={user_id:user.id,type:'entrada',category:item.category||'Venda',amount:Number(item.amount||0),movement_date:item.date||today857(),payment_method:item.method||'Pix',partner_name:item.partner||'',description:item.description||''};
+      const {data,error}=await supa.from('business_movements').insert([row]).select('id').single();
+      if(error) throw error;
+      return {remote:true,id:data?.id||null};
+    }
+    const list=readBusinessLocal(null);
+    list.push({id:'b_'+Date.now()+'_'+Math.random().toString(16).slice(2),type:'entrada',category:item.category||'Venda',amount:Number(item.amount||0),date:item.date||today857(),method:item.method||'Pix',partner:item.partner||'',description:item.description||'',createdAt:new Date().toISOString(),source:'local'});
+    writeBusinessLocal(null,list);
+    return {remote:false,id:null};
+  }
+  async function deleteBusinessSaleMovement(id){
+    if(!id) return;
+    try{ const user=await currentUser(); if(user) await supa.from('business_movements').delete().eq('id',id).eq('user_id',user.id); }catch{}
+  }
+  function updateSalePreview(){
+    const qty=norm($('dym857SaleQty')?.value), unit=norm($('dym857SaleUnit')?.value);
+    setText('dym857SalePreview','Total da venda: '+fmt(qty*unit));
+  }
+  function bindSalePreview(){
+    ['dym857SaleQty','dym857SaleUnit'].forEach(id=>{ const el=$(id); if(el && !el.dataset.dym857Ready){ el.addEventListener('input',updateSalePreview); el.dataset.dym857Ready='1'; }});
+  }
+  window.dymivra857AskSaleProduct = function(id){
+    const p=state.products.find(x=>String(x.id)===String(id)); if(!p) return;
+    state.saleId=id;
+    setText('dym857SaleText', `Registrar venda de ${p.name || 'produto'}. O estoque será baixado e uma entrada será criada no Business.`);
+    const qty=$('dym857SaleQty'), unit=$('dym857SaleUnit'), date=$('dym857SaleDate'), method=$('dym857SaleMethod'), partner=$('dym857SalePartner'), desc=$('dym857SaleDesc');
+    if(qty) qty.value='1';
+    if(unit) unit.value=String(Number(p.sale_price||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}));
+    if(date) date.value=today857();
+    if(method) method.value='Pix';
+    if(partner) partner.value='';
+    if(desc) desc.value=`Venda de ${p.name || 'produto'}`;
+    bindSalePreview(); updateSalePreview();
+    const modal=$('dym857SaleModal'); if(modal) modal.classList.add('show');
+    setTimeout(()=>{ try{ qty?.focus(); qty?.select(); }catch{} },180);
+  };
+  window.dymivra857CloseSaleProduct = function(){ state.saleId=null; const modal=$('dym857SaleModal'); if(modal) modal.classList.remove('show'); };
+  window.dymivra857ConfirmSaleProduct = async function(){
+    const id=state.saleId; const p=state.products.find(x=>String(x.id)===String(id)); if(!p) return window.dymivra857CloseSaleProduct();
+    const qty=norm($('dym857SaleQty')?.value), unit=norm($('dym857SaleUnit')?.value);
+    const date=$('dym857SaleDate')?.value||today857(), method=$('dym857SaleMethod')?.value||'Pix';
+    const partner=($('dym857SalePartner')?.value||'').trim();
+    const desc=($('dym857SaleDesc')?.value||'').trim() || `Venda de ${qty} un. de ${p.name || 'produto'}`;
+    if(qty<=0){ status('Informe a quantidade vendida.','error'); return; }
+    if(unit<=0){ status('Informe o valor unitário da venda.','error'); return; }
+    if(qty>Number(p.quantity||0)){ status('A quantidade vendida é maior que o estoque atual.','error'); return; }
+    const total=qty*unit;
+    const movement={category:'Venda',amount:total,date,method,partner,description:`${desc} · Produto: ${p.name || 'Produto'} · Qtd: ${qty.toLocaleString('pt-BR')} · Valor unitário: ${fmt(unit)}`};
+    const payload={name:p.name,category:p.category,quantity:Number(p.quantity||0)-qty,unit_cost:Number(p.unit_cost||0),sale_price:Number(p.sale_price||0),supplier:p.supplier||'',notes:p.notes||''};
+    const btn=$('dym857ConfirmSaleBtn'); const old=btn?.textContent;
+    let inserted=null;
+    try{
+      if(btn){btn.disabled=true;btn.textContent='Registrando...'}
+      inserted = await insertBusinessSaleMovement(movement);
+      await persistProduct(payload,id);
+      window.dymivra857CloseSaleProduct();
+      status(`Venda registrada: ${fmt(total)}. Estoque atualizado automaticamente.`,'success');
+      try{window.toast?.('Venda registrada no Business.','success')}catch{}
+      try{ if(window.DYMIVRA853?.fetchRemote) await window.DYMIVRA853.fetchRemote(true); else if(typeof window.dymivra853RefreshBusinessSupabase==='function') await window.dymivra853RefreshBusinessSupabase(true); }catch{}
+      setTimeout(()=>{ try{window.dymivra855RenderBusinessHealth?.(); window.dymivra850RenderBusinessReport?.(); window.dymivra854RenderPartners?.();}catch{} },350);
+    }catch(e){
+      if(inserted?.remote && inserted.id) await deleteBusinessSaleMovement(inserted.id);
+      status(e?.message||'Erro ao registrar venda do produto.','error');
+      try{window.toast?.(e?.message||'Erro ao registrar venda.','error')}catch{}
+    }finally{
+      if(btn){btn.disabled=false;btn.textContent=old||'Registrar venda'}
+    }
   };
   window.dymivra856AskDeleteProduct = function(id){
     state.deleteId=id;
