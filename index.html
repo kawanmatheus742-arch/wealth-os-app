@@ -15,7 +15,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.5.9 — Business Metas do Negócio</title>
+<title>Dymivra 8.6.0 — Business Metas do Negócio</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -22866,6 +22866,272 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
   window.dymivra859SaveBusinessGoals=saveGoal;
   document.addEventListener('DOMContentLoaded',()=>setTimeout(install,650));
   if(document.readyState!=='loading') setTimeout(install,650);
+})();
+</script>
+
+
+
+<!-- ==========================================================
+     Dymivra 8.6.0 — Business Mês Premium Corrigido
+     Troca o seletor nativo de mês do navegador por um seletor
+     premium dentro do padrão visual do app. Não altera o botão Topo.
+     ========================================================== -->
+<style id="dymivra860-premium-month-style">
+.dym860-month-trigger{
+  width:100%!important;
+  height:50px!important;
+  margin:0!important;
+  padding:0 14px!important;
+  border-radius:16px!important;
+  border:1px solid rgba(103,232,249,.18)!important;
+  background:
+    radial-gradient(circle at 12% 0%,rgba(34,211,238,.13),transparent 40%),
+    linear-gradient(135deg,rgba(14,165,233,.18),rgba(139,92,246,.14))!important;
+  color:#fff!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:10px!important;
+  font-size:15px!important;
+  font-weight:950!important;
+  letter-spacing:-.02em!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 12px 28px rgba(2,6,23,.18)!important;
+  cursor:pointer!important;
+}
+.dym860-month-trigger span{display:flex!important;align-items:center!important;gap:8px!important;min-width:0!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+.dym860-month-trigger small{
+  width:31px!important;
+  height:31px!important;
+  border-radius:12px!important;
+  display:grid!important;
+  place-items:center!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  background:rgba(255,255,255,.055)!important;
+  color:#c7f9ff!important;
+  font-size:14px!important;
+  line-height:1!important;
+  flex:none!important;
+}
+.dym860-month-trigger:hover{filter:brightness(1.05)!important;transform:none!important}
+.dym860-month-overlay{
+  position:fixed!important;
+  inset:0!important;
+  z-index:2147483000!important;
+  display:none!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:18px!important;
+  background:rgba(2,6,23,.72)!important;
+  backdrop-filter:blur(16px)!important;
+}
+.dym860-month-overlay.show{display:flex!important}
+.dym860-month-modal{
+  width:min(520px,calc(100vw - 28px))!important;
+  max-height:min(86vh,720px)!important;
+  overflow:auto!important;
+  border-radius:30px!important;
+  border:1px solid rgba(103,232,249,.24)!important;
+  background:
+    radial-gradient(circle at 0% 0%,rgba(34,211,238,.16),transparent 34%),
+    radial-gradient(circle at 100% 0%,rgba(139,92,246,.15),transparent 32%),
+    linear-gradient(180deg,rgba(15,23,42,.98),rgba(2,8,23,.98))!important;
+  box-shadow:0 28px 80px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.07)!important;
+  padding:18px!important;
+  position:relative!important;
+}
+.dym860-month-modal:before{
+  content:""!important;
+  position:absolute!important;
+  left:18px!important;
+  right:18px!important;
+  top:0!important;
+  height:3px!important;
+  border-radius:999px!important;
+  background:linear-gradient(90deg,#22d3ee,#8b5cf6,#facc15,#22c55e)!important;
+  opacity:.9!important;
+}
+.dym860-month-head{display:flex!important;align-items:flex-start!important;justify-content:space-between!important;gap:12px!important;margin-bottom:14px!important;padding-top:6px!important}
+.dym860-month-kicker{font-size:11px!important;font-weight:950!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:#67e8f9!important;margin-bottom:7px!important}
+.dym860-month-title{margin:0!important;font-size:clamp(24px,6vw,36px)!important;line-height:1.02!important;letter-spacing:-.07em!important;color:#fff!important;font-weight:950!important}
+.dym860-month-sub{margin-top:8px!important;color:#cbd5e1!important;line-height:1.45!important;font-size:13px!important}
+.dym860-month-close{
+  width:46px!important;
+  height:46px!important;
+  min-width:46px!important;
+  margin:0!important;
+  padding:0!important;
+  border-radius:17px!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  background:linear-gradient(135deg,rgba(14,165,233,.22),rgba(139,92,246,.18))!important;
+  color:#fff!important;
+  font-size:22px!important;
+  display:grid!important;
+  place-items:center!important;
+  box-shadow:none!important;
+}
+.dym860-year-row{
+  display:grid!important;
+  grid-template-columns:auto 1fr auto!important;
+  gap:10px!important;
+  align-items:center!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+  background:rgba(255,255,255,.035)!important;
+  border-radius:22px!important;
+  padding:10px!important;
+  margin-bottom:12px!important;
+}
+.dym860-year-btn{
+  width:46px!important;
+  height:46px!important;
+  min-width:46px!important;
+  margin:0!important;
+  padding:0!important;
+  border-radius:16px!important;
+  border:1px solid rgba(103,232,249,.16)!important;
+  background:rgba(14,165,233,.10)!important;
+  color:#e0f2fe!important;
+  font-size:24px!important;
+  box-shadow:none!important;
+}
+.dym860-year-value{text-align:center!important;color:#fff!important;font-size:28px!important;font-weight:950!important;letter-spacing:-.06em!important}
+.dym860-month-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:9px!important;margin-top:12px!important}
+.dym860-month-chip{
+  width:100%!important;
+  height:54px!important;
+  margin:0!important;
+  border-radius:18px!important;
+  border:1px solid rgba(255,255,255,.09)!important;
+  background:linear-gradient(180deg,rgba(15,23,42,.82),rgba(2,8,23,.58))!important;
+  color:#dbeafe!important;
+  font-size:14px!important;
+  font-weight:950!important;
+  box-shadow:none!important;
+}
+.dym860-month-chip.active{
+  border-color:rgba(103,232,249,.46)!important;
+  background:
+    radial-gradient(circle at 20% 0%,rgba(34,211,238,.22),transparent 45%),
+    linear-gradient(135deg,rgba(14,165,233,.95),rgba(139,92,246,.70))!important;
+  color:#fff!important;
+  box-shadow:0 0 24px rgba(34,211,238,.16)!important;
+}
+.dym860-month-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;margin-top:14px!important}
+.dym860-month-actions button{margin:0!important;height:52px!important;border-radius:18px!important}
+.dym860-month-actions .secondary{background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.10)!important;color:#e5e7eb!important;box-shadow:none!important}
+@media(max-width:420px){.dym860-month-modal{padding:15px!important;border-radius:26px!important}.dym860-month-grid{grid-template-columns:repeat(2,1fr)!important}.dym860-month-actions{grid-template-columns:1fr!important}.dym860-month-title{font-size:28px!important}}
+.performance-mode .dym860-month-overlay{backdrop-filter:none!important}.performance-mode .dym860-month-modal{box-shadow:0 14px 34px rgba(0,0,0,.40)!important}
+</style>
+<script id="dymivra860-premium-month-script">
+(function(){
+  const monthNames=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+  const shortNames=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  const pad=n=>String(n).padStart(2,'0');
+  const currentYM=()=>{const d=new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)};
+  const validYM=ym=>/^\d{4}-\d{2}$/.test(String(ym||''));
+  const label=ym=>{ym=validYM(ym)?ym:currentYM(); const [y,m]=ym.split('-').map(Number); return monthNames[(m||1)-1]+' de '+y;};
+  let selectedYear=new Date().getFullYear();
+  let selectedMonth=new Date().getMonth()+1;
+  let lastValue='';
+  function el(id){return document.getElementById(id)}
+  function makeModal(){
+    if(el('dym860MonthOverlay')) return;
+    const overlay=document.createElement('div');
+    overlay.id='dym860MonthOverlay';
+    overlay.className='dym860-month-overlay';
+    overlay.innerHTML=`
+      <div class="dym860-month-modal" role="dialog" aria-modal="true" aria-labelledby="dym860MonthTitle">
+        <div class="dym860-month-head">
+          <div>
+            <div class="dym860-month-kicker">Calendário premium</div>
+            <h3 class="dym860-month-title" id="dym860MonthTitle">Definir mês da meta</h3>
+            <div class="dym860-month-sub">Escolha o mês do negócio sem usar o seletor padrão do navegador.</div>
+          </div>
+          <button type="button" class="dym860-month-close" id="dym860MonthClose" aria-label="Fechar">×</button>
+        </div>
+        <div class="dym860-year-row">
+          <button type="button" class="dym860-year-btn" id="dym860PrevYear" aria-label="Ano anterior">‹</button>
+          <div class="dym860-year-value" id="dym860YearValue">2026</div>
+          <button type="button" class="dym860-year-btn" id="dym860NextYear" aria-label="Próximo ano">›</button>
+        </div>
+        <div class="dym860-month-grid" id="dym860MonthGrid"></div>
+        <div class="dym860-month-actions">
+          <button type="button" class="secondary" id="dym860MonthCancel">Cancelar</button>
+          <button type="button" id="dym860MonthApply">Aplicar mês</button>
+        </div>
+      </div>`;
+    document.body.appendChild(overlay);
+    el('dym860MonthClose').addEventListener('click',closeModal);
+    el('dym860MonthCancel').addEventListener('click',closeModal);
+    el('dym860PrevYear').addEventListener('click',()=>{selectedYear--;renderModal();});
+    el('dym860NextYear').addEventListener('click',()=>{selectedYear++;renderModal();});
+    el('dym860MonthApply').addEventListener('click',applyMonth);
+    overlay.addEventListener('click',e=>{if(e.target===overlay) closeModal();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape' && overlay.classList.contains('show')) closeModal();});
+  }
+  function renderModal(){
+    const year=el('dym860YearValue'); if(year) year.textContent=String(selectedYear);
+    const grid=el('dym860MonthGrid'); if(!grid) return;
+    grid.innerHTML=shortNames.map((name,i)=>`<button type="button" class="dym860-month-chip ${i+1===selectedMonth?'active':''}" data-month="${i+1}">${name}</button>`).join('');
+    grid.querySelectorAll('[data-month]').forEach(btn=>btn.addEventListener('click',()=>{selectedMonth=Number(btn.dataset.month);renderModal();}));
+  }
+  function openModal(){
+    const input=el('dym859GoalMonth');
+    const ym=validYM(input?.value)?input.value:currentYM();
+    const [y,m]=ym.split('-').map(Number);
+    selectedYear=y; selectedMonth=m;
+    makeModal(); renderModal();
+    el('dym860MonthOverlay')?.classList.add('show');
+    document.documentElement.style.overflow='hidden';
+    document.body.style.overflow='hidden';
+  }
+  function closeModal(){
+    el('dym860MonthOverlay')?.classList.remove('show');
+    document.documentElement.style.overflow='';
+    document.body.style.overflow='';
+  }
+  function applyMonth(){
+    const input=el('dym859GoalMonth'); if(!input) return closeModal();
+    input.value=selectedYear+'-'+pad(selectedMonth);
+    input.dispatchEvent(new Event('input',{bubbles:true}));
+    input.dispatchEvent(new Event('change',{bubbles:true}));
+    updateButton(true);
+    closeModal();
+  }
+  function updateButton(force){
+    const input=el('dym859GoalMonth'); const btn=el('dym860GoalMonthButton');
+    if(!input || !btn) return;
+    const ym=validYM(input.value)?input.value:currentYM();
+    if(force || ym!==lastValue){
+      lastValue=ym;
+      btn.querySelector('span').textContent='📅 '+label(ym);
+    }
+  }
+  function install(){
+    const input=el('dym859GoalMonth');
+    if(!input) return false;
+    if(!validYM(input.value)) input.value=currentYM();
+    input.setAttribute('type','hidden');
+    input.setAttribute('aria-hidden','true');
+    input.style.display='none';
+    if(!el('dym860GoalMonthButton')){
+      const btn=document.createElement('button');
+      btn.type='button';
+      btn.id='dym860GoalMonthButton';
+      btn.className='dym860-month-trigger';
+      btn.innerHTML='<span>📅 '+label(input.value)+'</span><small>⌄</small>';
+      btn.addEventListener('click',openModal);
+      input.insertAdjacentElement('afterend',btn);
+      input.addEventListener('change',()=>updateButton(true));
+      input.addEventListener('input',()=>updateButton(true));
+      makeModal();
+    }
+    updateButton(false);
+    return true;
+  }
+  const timer=setInterval(install,450);
+  setTimeout(()=>{try{install();}catch(e){}},800);
+  setTimeout(()=>{try{clearInterval(timer);}catch(e){}},20000);
+  setInterval(()=>{try{install();updateButton(false);}catch(e){}},2200);
 })();
 </script>
 
