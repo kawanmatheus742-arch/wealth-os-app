@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Dymivra 8.6.6 — Correções Técnicas -->
+<!-- Dymivra 8.6.7 — Ajustes Finais de Preferência e Menu -->
 
 <html lang="pt-BR">
 <head>
@@ -15,7 +15,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.6.6 — Correções Técnicas</title>
+<title>Dymivra 8.6.7 — Ajustes Finais de Preferência e Menu</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -12572,7 +12572,10 @@ let deferredInstallPrompt=null;
       `).join('');
     }
 
-    function performanceKey(){return 'wealth_os_performance_mode'}
+    function performanceKey(){
+      const scopedUser=(userId||userEmail||'guest');
+      return `dymivra_visual_mode_${scopedUser}`;
+    }
     function isLowPowerDevice(){
       const cores=navigator.hardwareConcurrency||8;
       const mobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -12580,7 +12583,10 @@ let deferredInstallPrompt=null;
       return mobile||cores<=4||memory<=4;
     }
     function getPerformancePreference(){
-      try{return localStorage.getItem(performanceKey())||'light'}catch{return'light'}
+      try{
+        const saved=localStorage.getItem(performanceKey());
+        return ['light','premium','auto'].includes(saved)?saved:'premium';
+      }catch{return'premium'}
     }
     function shouldUseLightMode(mode){
       if(mode==='light')return true;
@@ -12588,7 +12594,7 @@ let deferredInstallPrompt=null;
       return isLowPowerDevice();
     }
     function applyPerformanceMode(mode=getPerformancePreference()){
-      const chosen=['auto','light','premium'].includes(mode)?mode:'auto';
+      const chosen=['auto','light','premium'].includes(mode)?mode:'premium';
       const light=shouldUseLightMode(chosen);
       document.body.classList.toggle('performance-mode',light);
       try{localStorage.setItem(performanceKey(),chosen)}catch{}
@@ -12692,7 +12698,7 @@ let deferredInstallPrompt=null;
     }
     function restoreAppScreen(){let saved='overview';try{saved=localStorage.getItem(navKey())||'overview'}catch{};setTimeout(()=>showAppScreen(saved,false),0)}
 
-    function showApp(u){userId=u.id;userEmail=u.email||'';$('authSection').style.setProperty('display','none','important');$('appSection').style.setProperty('display','grid','important');status($('authStatus'),'');$('userEmail').textContent=userEmail;$('greeting').textContent='Olá, '+(userEmail.split('@')[0]||'investidor')+' 👋';balanceVisible=(localStorage.getItem(balKey())??'true')==='true';syncWealthAIUsageBadges();renderWealthPlans();restoreAppScreen();setTimeout(updateAppReadiness,120)}
+    function showApp(u){userId=u.id;userEmail=u.email||'';$('authSection').style.setProperty('display','none','important');$('appSection').style.setProperty('display','grid','important');status($('authStatus'),'');$('userEmail').textContent=userEmail;$('greeting').textContent='Olá, '+(userEmail.split('@')[0]||'investidor')+' 👋';balanceVisible=(localStorage.getItem(balKey())??'true')==='true';syncWealthAIUsageBadges();renderWealthPlans();applyPerformanceMode(getPerformancePreference());restoreAppScreen();setTimeout(updateAppReadiness,120)}
     function showLogin(){setTimeout(startLoginAutofillGuard,60);setTimeout(startLoginAutofillGuard,600);userId=null;$('authSection').style.setProperty('display','grid','important');$('appSection').style.setProperty('display','none','important');setTimeout(updateAppReadiness,120)}
     window.toggleBalance=()=>{balanceVisible=!balanceVisible;localStorage.setItem(balKey(),String(balanceVisible));renderDashboard()}
     function consolidate(list){const m=new Map();list.forEach(i=>{const a=String(i.asset||'').trim().toUpperCase(),c=String(i.category||'Outros').trim()||'Outros',k=a+'__'+c,q=Number(i.quantity||0),amt=Number(i.amount||0),cur=q*Number(i.current_price||0);if(!m.has(k))m.set(k,{id:i.id,asset:a,category:c,quantity:0,amount:0,current_value:0,sourceIds:[],sourceItems:[],created_at:i.created_at});const g=m.get(k);g.quantity+=q;g.amount+=amt;g.current_value+=cur;g.sourceIds.push(i.id);g.sourceItems.push(i);if(new Date(i.created_at||0)>new Date(g.created_at||0))g.created_at=i.created_at});return [...m.values()].map(g=>({...g,avg_price:g.quantity?g.amount/g.quantity:0,current_price:g.quantity?g.current_value/g.quantity:0,sourceCount:g.sourceItems.length,isGrouped:g.sourceItems.length>1})).sort((a,b)=>new Date(b.created_at||0)-new Date(a.created_at||0))}
@@ -16057,8 +16063,8 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
     function applyFastPremiumDefaults(){
       try{
         const saved=localStorage.getItem(performanceKey());
-        if(!saved || saved==='premium'){
-          localStorage.setItem(performanceKey(),'light');
+        if(!['light','premium','auto'].includes(saved)){
+          localStorage.setItem(performanceKey(),'premium');
         }
       }catch{}
     }
@@ -17555,7 +17561,8 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
     {title:'Carteira',icon:'💼',desc:'Organização, renda e evolução dos investimentos.',items:['allocation','income','history']},
     {title:'Futuro',icon:'📈',desc:'Cenários, liberdade e caminho de longo prazo.',items:['projections','liberty']},
     {title:'Inteligência',icon:'🤖',desc:'IA, radar e acompanhamento.',items:['ai','advisor','mentor']},
-    {title:'Conta',icon:'⚙️',desc:'Negócio, plano, app, legal e suporte.',items:['business','plans','app','legal','settings','all']}
+    {title:'Negócio',icon:'🏢',desc:'Controle financeiro, estoque, vendas e crescimento.',items:['business']},
+    {title:'Conta',icon:'⚙️',desc:'Plano, app, legal e suporte.',items:['plans','app','legal','settings','all']}
   ];
   const $=id=>document.getElementById(id);
   function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
@@ -18038,7 +18045,8 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
     {num:'03',title:'Carteira',icon:'💼',desc:'Organização, renda e evolução dos investimentos.',items:['allocation','income','history'],go:'allocation'},
     {num:'04',title:'Futuro',icon:'📈',desc:'Cenários, liberdade e caminho de longo prazo.',items:['projections','liberty'],go:'projections'},
     {num:'05',title:'Inteligência',icon:'🤖',desc:'IA, radar e acompanhamento.',items:['ai','advisor','mentor'],go:'ai'},
-    {num:'06',title:'Conta',icon:'⚙️',desc:'Negócio, plano, app, legal e suporte.',items:['business','plans','app','legal','settings','all'],go:'business'}
+    {num:'06',title:'Negócio',icon:'🏢',desc:'Controle financeiro, estoque, vendas e crescimento.',items:['business'],go:'business'},
+    {num:'07',title:'Conta',icon:'⚙️',desc:'Plano, app, legal e suporte.',items:['plans','app','legal','settings','all'],go:'plans'}
   ];
   const isMobile=()=>window.matchMedia&&window.matchMedia('(max-width:820px)').matches;
   const current=()=>window.currentScreen||'overview';
