@@ -7971,6 +7971,382 @@ body.screen-overview-active.performance-mode.overview-intelligence-suite{
 }
 </style>
 
+
+<style id="dymivra-8611-login-premium-fix">
+/* =========================================================
+   Dymivra 8.6.11 — Login Premium Corrigido
+   Correção visual segura: não altera autenticação, Supabase,
+   planos, IA, Business, menu, botão Topo ou lógica principal.
+   ========================================================= */
+
+#authSection.auth-shell{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.05fr) minmax(320px,.75fr)!important;
+  gap:18px!important;
+  align-items:stretch!important;
+  overflow:visible!important;
+}
+
+#authSection.auth-shell .auth-copy,
+#authSection.auth-shell .auth-panel{
+  position:relative!important;
+  z-index:1!important;
+  overflow:hidden!important;
+  border:1px solid rgba(125,211,252,.18)!important;
+  border-radius:30px!important;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(34,211,238,.13),transparent 34%),
+    radial-gradient(circle at 100% 0%,rgba(124,58,237,.10),transparent 34%),
+    linear-gradient(180deg,rgba(8,18,36,.94),rgba(2,8,18,.86))!important;
+  box-shadow:0 22px 64px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.055)!important;
+}
+
+#authSection.auth-shell .auth-copy > *,
+#authSection.auth-shell .auth-panel > *{
+  position:relative!important;
+  z-index:1!important;
+}
+
+#authSection.auth-shell .auth-copy{
+  padding:28px!important;
+  min-height:auto!important;
+}
+
+#authSection.auth-shell .auth-panel{
+  padding:24px!important;
+  align-self:stretch!important;
+}
+
+#authSection.auth-shell .kicker{
+  color:#67e8f9!important;
+  font-size:11px!important;
+  font-weight:950!important;
+  letter-spacing:.15em!important;
+  text-transform:uppercase!important;
+  margin-bottom:10px!important;
+}
+
+#authSection.auth-shell .auth-copy h2,
+#authSection.auth-shell .auth-panel h2#authTitle{
+  color:#fff!important;
+  line-height:1!important;
+  letter-spacing:-.06em!important;
+}
+
+#authSection.auth-shell #authSubtitle,
+#authSection.auth-shell .auth-copy p,
+#authSection.auth-shell .dym835-welcome-card p{
+  color:#cbd5e1!important;
+  line-height:1.48!important;
+}
+
+#authSection.auth-shell .auth-feature-grid{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:12px!important;
+  margin-top:22px!important;
+}
+
+#authSection.auth-shell .auth-feature,
+#authSection.auth-shell .auth-note,
+#authSection.auth-shell .auth-security span,
+#authSection.auth-shell .dym835-journey-card,
+#authSection.auth-shell .dym835-welcome-card{
+  border:1px solid rgba(255,255,255,.08)!important;
+  background:rgba(255,255,255,.045)!important;
+  border-radius:20px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045)!important;
+}
+
+#authSection.auth-shell .auth-feature{
+  padding:14px!important;
+}
+
+#authSection.auth-shell .auth-feature strong,
+#authSection.auth-shell .dym835-welcome-card strong,
+#authSection.auth-shell .dym835-journey-card strong{
+  display:block!important;
+  color:#fff!important;
+}
+
+#authSection.auth-shell .auth-feature span{
+  display:block!important;
+  color:#cbd5e1!important;
+  font-size:13px!important;
+  line-height:1.42!important;
+}
+
+#authSection.auth-shell .dym835-journey-card{
+  margin-top:18px!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  gap:14px!important;
+  align-items:center!important;
+  padding:16px!important;
+}
+
+#authSection.auth-shell .dym835-journey-card p{
+  margin:8px 0 0!important;
+  color:#cbd5e1!important;
+  font-size:13px!important;
+  line-height:1.45!important;
+}
+
+#authSection.auth-shell .dym835-journey-pills{
+  display:grid!important;
+  gap:7px!important;
+  min-width:132px!important;
+}
+
+#authSection.auth-shell .dym835-journey-pills b,
+#authSection.auth-shell .dym835-welcome-steps span{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:34px!important;
+  border:1px solid rgba(255,255,255,.09)!important;
+  background:rgba(2,8,18,.34)!important;
+  color:#dbeafe!important;
+  border-radius:999px!important;
+  padding:8px 10px!important;
+  font-size:12px!important;
+  font-weight:900!important;
+  white-space:nowrap!important;
+}
+
+#authSection.auth-shell .dym835-welcome-card{
+  margin:16px 0 4px!important;
+  padding:15px!important;
+}
+
+#authSection.auth-shell .dym835-welcome-top{
+  display:flex!important;
+  align-items:flex-start!important;
+  gap:12px!important;
+}
+
+#authSection.auth-shell .dym835-welcome-icon{
+  flex:0 0 auto!important;
+  width:38px!important;
+  height:38px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:15px!important;
+  background:linear-gradient(135deg,rgba(34,211,238,.22),rgba(124,58,237,.16))!important;
+  border:1px solid rgba(125,211,252,.18)!important;
+}
+
+#authSection.auth-shell .dym835-welcome-steps{
+  display:flex!important;
+  gap:8px!important;
+  flex-wrap:wrap!important;
+  margin-top:12px!important;
+}
+
+#authSection.auth-shell .dym835-welcome-steps span{
+  flex:1 1 84px!important;
+}
+
+/* Campos reais do login: e-mail e senha sempre visíveis e alinhados */
+#authSection.auth-shell .auth-panel .input-wrap,
+#authSection.auth-shell .input-wrap.email-wrap,
+#authSection.auth-shell .input-wrap.password-wrap{
+  position:relative!important;
+  width:100%!important;
+  height:64px!important;
+  min-height:64px!important;
+  max-height:64px!important;
+  margin:14px 0 0!important;
+  padding:0!important;
+  display:flex!important;
+  align-items:center!important;
+  overflow:hidden!important;
+  border:1px solid rgba(125,211,252,.24)!important;
+  border-radius:22px!important;
+  background:linear-gradient(180deg,rgba(5,12,24,.98),rgba(2,8,18,.96))!important;
+  box-shadow:0 14px 34px rgba(0,0,0,.23), inset 0 1px 0 rgba(255,255,255,.055)!important;
+}
+
+#authSection.auth-shell .input-wrap:focus-within{
+  border-color:rgba(34,211,238,.55)!important;
+  box-shadow:0 16px 42px rgba(14,165,233,.14), inset 0 1px 0 rgba(255,255,255,.075)!important;
+}
+
+#authSection.auth-shell .email-wrap::before,
+#authSection.auth-shell .password-wrap::before{
+  width:52px!important;
+  height:64px!important;
+  flex:0 0 52px!important;
+  display:grid!important;
+  place-items:center!important;
+  color:#67e8f9!important;
+  pointer-events:none!important;
+  z-index:1!important;
+}
+
+#authSection.auth-shell .email-wrap::before{
+  content:"✉️"!important;
+  font-size:16px!important;
+}
+
+#authSection.auth-shell .password-wrap::before{
+  content:"••"!important;
+  font-size:16px!important;
+  font-weight:950!important;
+  letter-spacing:-.08em!important;
+}
+
+#authSection.auth-shell .email-mirror{
+  display:none!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+#authSection.auth-shell input#email,
+#authSection.auth-shell input#password,
+#authSection.auth-shell .password-input{
+  flex:1 1 auto!important;
+  width:100%!important;
+  min-width:0!important;
+  height:64px!important;
+  min-height:64px!important;
+  max-height:64px!important;
+  margin:0!important;
+  padding:0 16px 0 0!important;
+  border:0!important;
+  outline:none!important;
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important;
+  color:#f8fafc!important;
+  -webkit-text-fill-color:#f8fafc!important;
+  caret-color:#67e8f9!important;
+  font-size:16px!important;
+  line-height:64px!important;
+  font-weight:800!important;
+  position:static!important;
+  transform:none!important;
+  opacity:1!important;
+  visibility:visible!important;
+  text-align:left!important;
+  z-index:2!important;
+  -webkit-appearance:none!important;
+  appearance:none!important;
+}
+
+#authSection.auth-shell input#password,
+#authSection.auth-shell .password-input{
+  padding-right:68px!important;
+}
+
+#authSection.auth-shell input#email::placeholder,
+#authSection.auth-shell input#password::placeholder{
+  color:#94a3b8!important;
+  -webkit-text-fill-color:#94a3b8!important;
+  opacity:1!important;
+}
+
+#authSection.auth-shell .password-wrap .eye.eye-premium{
+  position:absolute!important;
+  top:50%!important;
+  right:10px!important;
+  transform:translateY(-50%)!important;
+  width:44px!important;
+  height:44px!important;
+  min-width:44px!important;
+  min-height:44px!important;
+  margin:0!important;
+  padding:0!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:16px!important;
+  border:1px solid rgba(125,211,252,.18)!important;
+  background:linear-gradient(180deg,rgba(34,211,238,.13),rgba(15,23,42,.18))!important;
+  color:#bae6fd!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06)!important;
+  cursor:pointer!important;
+  z-index:5!important;
+}
+
+#authSection.auth-shell .password-wrap .eye.eye-premium:hover,
+#authSection.auth-shell .password-wrap .eye.eye-premium:focus{
+  color:#ffffff!important;
+  border-color:rgba(103,232,249,.34)!important;
+  background:linear-gradient(180deg,rgba(34,211,238,.19),rgba(15,23,42,.20))!important;
+}
+
+#authSection.auth-shell .password-wrap .eye.eye-premium .eye-svg{
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  width:22px!important;
+  height:22px!important;
+  transform:translate(-50%,-50%) scale(.94)!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+
+#authSection.auth-shell .password-wrap .eye.eye-premium .eye-svg.active{
+  opacity:1!important;
+  transform:translate(-50%,-50%) scale(1)!important;
+}
+
+#authSection.auth-shell .password-wrap .eye.eye-premium::before,
+#authSection.auth-shell .password-wrap .eye.eye-premium::after{
+  display:none!important;
+}
+
+#authSection.auth-shell button#authBtn,
+#authSection.auth-shell #toggleAuth.auth-toggle{
+  width:100%!important;
+  min-height:58px!important;
+  border-radius:22px!important;
+}
+
+#authSection.auth-shell button#authBtn{
+  margin:18px 0 0!important;
+}
+
+#authSection.auth-shell #toggleAuth.auth-toggle{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  margin-top:12px!important;
+  border:1px solid rgba(125,211,252,.20)!important;
+  background:rgba(14,165,233,.06)!important;
+}
+
+@media(max-width:1120px){
+  #authSection.auth-shell{
+    grid-template-columns:1fr!important;
+  }
+}
+
+@media(max-width:760px){
+  #authSection.auth-shell{
+    gap:14px!important;
+  }
+  #authSection.auth-shell .auth-copy,
+  #authSection.auth-shell .auth-panel{
+    padding:18px!important;
+    border-radius:26px!important;
+  }
+  #authSection.auth-shell .auth-feature-grid,
+  #authSection.auth-shell .dym835-journey-card{
+    grid-template-columns:1fr!important;
+  }
+  #authSection.auth-shell .dym835-journey-pills{
+    grid-template-columns:1fr!important;
+    min-width:0!important;
+  }
+  #authSection.auth-shell .dym835-welcome-steps span{
+    flex:1 1 100%!important;
+  }
+}
+</style>
+
 </head>
 <body class="dymivra781-premium">
 <div aria-hidden="true" class="wealth-aurora-stage" id="wealthAuroraStage"><span class="aurora-orb orb-a"></span><span class="aurora-orb orb-b"></span><span class="aurora-orb orb-c"></span><span class="aurora-grid"></span></div>
@@ -8022,7 +8398,7 @@ body.screen-overview-active.performance-mode.overview-intelligence-suite{
 <div class="auth-panel">
 <div class="section">
 <div>
-<div class="kicker">Acesso seguro • Supabase</div>
+<div class="kicker">Acesso seguro</div>
 <h2 id="authTitle">Entrar</h2>
 <div class="muted" id="authSubtitle">Faça login para acessar seu painel premium.</div>
 <div class="dym835-welcome-card" id="dym835Welcome">
@@ -8064,7 +8440,7 @@ body.screen-overview-active.performance-mode.overview-intelligence-suite{
 <div class="auth-toggle" id="toggleAuth" onclick="toggleAuthMode()">Criar conta</div>
 <div class="status" id="authStatus"></div>
 <div class="auth-security">
-<span>🔐 Login Supabase</span>
+<span>🔐 Login protegido</span>
 <span>☁️ Dados sincronizados</span>
 <span>📊 Painel privado</span>
 </div>
@@ -10479,7 +10855,7 @@ body.screen-overview-active.performance-mode.overview-intelligence-suite{
       if(btn)btn.classList.toggle('active',willShow);
     }
     window.toggleAuthMode=()=>{loginMode=!loginMode;$('authTitle').textContent=loginMode?'Entrar':'Criar conta';$('authSubtitle').textContent=loginMode?'Faça login para acessar seu painel premium.':'Crie sua conta para começar.';$('authBtn').textContent=loginMode?'Entrar':'Cadastrar';$('toggleAuth').textContent=loginMode?'Criar conta':'Já tenho conta';status($('authStatus'),'')}
-    window.handleAuth=async()=>{if(loading.auth)return;const email=$('email').value.trim(),password=$('password').value.trim();if(!email||!password){status($('authStatus'),'Preencha email e senha.','error');return}if(password.length<6){status($('authStatus'),'A senha precisa ter pelo menos 6 caracteres.','error');return}if(!requireOnline())return;loading.auth=true;btn($('authBtn'),true,loginMode?'Entrando...':'Criando...');showActionOverlay(loginMode?'Entrando com segurança':'Criando conta','Validando acesso pelo Supabase...','🔐');try{const r=loginMode?await supabase.auth.signInWithPassword({email,password}):await supabase.auth.signUp({email,password});if(r.error)throw r.error;if(!loginMode){toast('Conta criada. Agora faça login.','success');loginMode=true;toggleAuthMode();}else toast('Login realizado.','success')}catch(e){status($('authStatus'),e.message||'Erro no acesso.','error');toast(e.message||'Erro no acesso.','error')}finally{loading.auth=false;btn($('authBtn'),false);hideActionOverlay()}}
+    window.handleAuth=async()=>{if(loading.auth)return;const email=$('email').value.trim(),password=$('password').value.trim();if(!email||!password){status($('authStatus'),'Preencha email e senha.','error');return}if(password.length<6){status($('authStatus'),'A senha precisa ter pelo menos 6 caracteres.','error');return}if(!requireOnline())return;loading.auth=true;btn($('authBtn'),true,loginMode?'Entrando...':'Criando...');showActionOverlay(loginMode?'Entrando com segurança':'Criando conta','Validando acesso seguro...','🔐');try{const r=loginMode?await supabase.auth.signInWithPassword({email,password}):await supabase.auth.signUp({email,password});if(r.error)throw r.error;if(!loginMode){toast('Conta criada. Agora faça login.','success');loginMode=true;toggleAuthMode();}else toast('Login realizado.','success')}catch(e){status($('authStatus'),e.message||'Erro no acesso.','error');toast(e.message||'Erro no acesso.','error')}finally{loading.auth=false;btn($('authBtn'),false);hideActionOverlay()}}
     
     const screenTexts={
       journey:['Jornada Guiada','comece aqui: ordem certa das telas, checklist inteligente, próxima ação e mapa do que preencher primeiro.'],
