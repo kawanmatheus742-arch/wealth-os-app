@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Dymivra 8.5.8 — Business Modal de Venda Corrigido -->
+<!-- Dymivra 8.5.9 — Business Metas do Negócio -->
 
 <html lang="pt-BR">
 <head>
@@ -15,7 +15,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.5.8 — Business Modal de Venda Corrigido</title>
+<title>Dymivra 8.5.9 — Business Metas do Negócio</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -10086,7 +10086,7 @@ body.screen-overview-active.performance-mode .overview-intelligence-suite{
 <div class="card premium-panel dymivra845-business" data-screen-block="" data-screens="business">
   <div class="business-hero-shell">
     <div class="business-hero-copy">
-      <div class="business-kicker">📦 Dymivra 8.5.8 • Venda com Estoque</div>
+      <div class="business-kicker">🎯 Dymivra 8.5.9 • Metas do Negócio</div>
       <h2>Dymivra Business</h2>
       <p>Controle financeiro para pequenos negócios, sociedades e operações em crescimento. Separe o dinheiro do negócio da sua carteira pessoal e acompanhe caixa, entradas, saídas, lucro, margem, investimentos e retiradas.</p>
       <div class="business-quick-actions">
@@ -22559,6 +22559,313 @@ body.dym858-modal-open{
     if(saleWrapped && deleteWrapped) clearInterval(timer);
   },300);
   setTimeout(function(){try{clearInterval(timer)}catch(e){}},12000);
+})();
+</script>
+
+
+
+<!-- ==========================================================
+     Dymivra 8.5.9 — Business Metas do Negócio
+     Adiciona metas mensais reais no Dymivra Business usando
+     a tabela business_goals no Supabase. Não altera botão Topo.
+     ========================================================== -->
+<style id="dymivra859-business-goals-style">
+.dym859-goals-panel{
+  margin-top:14px!important;
+  border:1px solid rgba(250,204,21,.24)!important;
+  border-radius:28px!important;
+  padding:18px!important;
+  background:
+    radial-gradient(circle at 0% 0%,rgba(250,204,21,.12),transparent 34%),
+    radial-gradient(circle at 100% 0%,rgba(34,211,238,.10),transparent 34%),
+    linear-gradient(180deg,rgba(15,23,42,.82),rgba(2,8,23,.72))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 18px 50px rgba(0,0,0,.20)!important;
+  overflow:hidden!important;
+  position:relative!important;
+}
+.dym859-goals-panel:before{
+  content:""!important;
+  position:absolute!important;
+  left:18px!important;
+  right:18px!important;
+  top:0!important;
+  height:3px!important;
+  border-radius:999px!important;
+  background:linear-gradient(90deg,#22d3ee,#8b5cf6,#facc15,#22c55e)!important;
+  opacity:.78!important;
+}
+.dym859-goals-panel>*{position:relative!important;z-index:1!important}
+.dym859-head{display:flex!important;align-items:flex-start!important;justify-content:space-between!important;gap:14px!important;margin-bottom:14px!important}
+.dym859-kicker{color:#67e8f9!important;font-size:12px!important;font-weight:950!important;letter-spacing:.16em!important;text-transform:uppercase!important;margin-bottom:7px!important}
+.dym859-title{margin:0!important;color:#fff!important;font-size:clamp(25px,3vw,38px)!important;line-height:1.02!important;letter-spacing:-.07em!important}
+.dym859-sub{margin-top:8px!important;color:#cbd5e1!important;line-height:1.5!important;max-width:880px!important;font-size:14px!important}
+.dym859-badge{display:inline-flex!important;align-items:center!important;gap:8px!important;min-width:max-content!important;padding:9px 11px!important;border-radius:999px!important;border:1px solid rgba(250,204,21,.22)!important;background:rgba(250,204,21,.08)!important;color:#fef3c7!important;font-size:12px!important;font-weight:950!important}
+.dym859-main{display:grid!important;grid-template-columns:.92fr 1.08fr!important;gap:14px!important;align-items:stretch!important}
+.dym859-form,.dym859-results,.dym859-advice{
+  border:1px solid rgba(255,255,255,.085)!important;
+  border-radius:24px!important;
+  background:rgba(2,8,23,.34)!important;
+  padding:15px!important;
+}
+.dym859-form-title{font-size:19px!important;font-weight:950!important;color:#fff!important;letter-spacing:-.035em!important;margin-bottom:5px!important}
+.dym859-form-copy{color:#9fb4d8!important;font-size:13px!important;line-height:1.45!important;margin-bottom:12px!important}
+.dym859-form-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important}
+.dym859-form-grid label{margin:0 0 6px!important;color:#c7d7f2!important;font-size:12px!important;font-weight:850!important}
+.dym859-form-grid input,.dym859-form-grid textarea{
+  height:50px!important;
+  border-radius:16px!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  background:rgba(3,9,22,.72)!important;
+  color:#fff!important;
+  font-weight:850!important;
+}
+.dym859-form-grid textarea{height:auto!important;min-height:86px!important;grid-column:1/-1!important;font-weight:700!important;line-height:1.45!important}
+.dym859-actions{display:grid!important;grid-template-columns:1fr!important;gap:8px!important;margin-top:10px!important}
+.dym859-actions button{margin:0!important}
+.dym859-status{min-height:20px!important;margin-top:10px!important;font-size:13px!important;line-height:1.45!important;color:#9fb4d8!important}
+.dym859-status.ok{color:#86efac!important}.dym859-status.err{color:#fecaca!important}.dym859-status.warn{color:#fde68a!important}
+.dym859-progress-grid{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:10px!important}
+.dym859-goal-card{
+  position:relative!important;
+  overflow:hidden!important;
+  min-height:148px!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+  border-radius:22px!important;
+  background:linear-gradient(180deg,rgba(15,23,42,.74),rgba(2,8,23,.48))!important;
+  padding:14px!important;
+}
+.dym859-goal-card:after{content:""!important;position:absolute!important;right:-42px!important;bottom:-52px!important;width:126px!important;height:126px!important;border-radius:999px!important;background:radial-gradient(circle,rgba(34,211,238,.09),transparent 70%)!important;pointer-events:none!important}
+.dym859-goal-card>*{position:relative!important;z-index:1!important}
+.dym859-goal-card span{display:block!important;color:#94a3b8!important;font-size:11px!important;font-weight:950!important;letter-spacing:.08em!important;text-transform:uppercase!important;margin-bottom:7px!important}
+.dym859-goal-card strong{display:block!important;color:#fff!important;font-size:clamp(24px,4.5vw,34px)!important;line-height:1.02!important;letter-spacing:-.07em!important}
+.dym859-goal-card small{display:block!important;color:#9fb4d8!important;font-size:12px!important;line-height:1.35!important;margin-top:7px!important}
+.dym859-bar{height:10px!important;border-radius:999px!important;background:rgba(255,255,255,.07)!important;border:1px solid rgba(255,255,255,.06)!important;overflow:hidden!important;margin-top:10px!important}
+.dym859-fill{height:100%!important;width:0%;border-radius:999px!important;background:linear-gradient(90deg,#22d3ee,#8b5cf6,#facc15)!important;box-shadow:0 0 20px rgba(34,211,238,.14)!important;transition:width .25s ease!important}
+.dym859-goal-card.good{border-color:rgba(34,197,94,.24)!important}.dym859-goal-card.good .dym859-fill{background:linear-gradient(90deg,#22c55e,#22d3ee)!important}
+.dym859-goal-card.warn{border-color:rgba(250,204,21,.24)!important}.dym859-goal-card.warn .dym859-fill{background:linear-gradient(90deg,#facc15,#fb923c)!important}
+.dym859-goal-card.bad{border-color:rgba(239,68,68,.25)!important}.dym859-goal-card.bad .dym859-fill{background:linear-gradient(90deg,#ef4444,#fb923c)!important}
+.dym859-advice{margin-top:12px!important;border-color:rgba(34,211,238,.15)!important;background:radial-gradient(circle at 0 0,rgba(34,211,238,.07),transparent 34%),rgba(2,8,23,.30)!important}
+.dym859-advice-title{font-size:19px!important;font-weight:950!important;letter-spacing:-.04em!important;color:#fff!important;margin-bottom:8px!important}
+.dym859-advice-text{color:#cbd5e1!important;line-height:1.55!important;font-size:14px!important}
+.dym859-advice-list{display:grid!important;gap:8px!important;margin-top:12px!important}
+.dym859-advice-item{display:grid!important;grid-template-columns:auto 1fr!important;gap:10px!important;align-items:start!important;border-radius:16px!important;border:1px solid rgba(255,255,255,.07)!important;background:rgba(255,255,255,.035)!important;padding:10px!important}
+.dym859-advice-icon{width:30px!important;height:30px!important;border-radius:12px!important;display:grid!important;place-items:center!important;background:rgba(34,211,238,.10)!important;border:1px solid rgba(34,211,238,.14)!important;color:#cffafe!important;font-weight:950!important}
+.dym859-advice-item b{display:block!important;color:#fff!important;font-size:13px!important;margin-bottom:3px!important}.dym859-advice-item em{display:block!important;color:#9fb4d8!important;font-size:12px!important;line-height:1.35!important;font-style:normal!important}
+@media(max-width:980px){.dym859-main{grid-template-columns:1fr!important}.dym859-head{display:block!important}.dym859-badge{margin-top:10px!important}.dym859-progress-grid{grid-template-columns:1fr 1fr!important}}
+@media(max-width:640px){.dym859-goals-panel{padding:14px!important;border-radius:24px!important}.dym859-form,.dym859-results,.dym859-advice{padding:14px!important;border-radius:22px!important}.dym859-form-grid,.dym859-progress-grid{grid-template-columns:1fr!important}.dym859-goal-card{min-height:132px!important}.dym859-goal-card strong{font-size:clamp(31px,8.6vw,42px)!important}.dym859-title{font-size:30px!important}}
+.performance-mode .dym859-goals-panel,.performance-mode .dym859-form,.performance-mode .dym859-results,.performance-mode .dym859-advice{backdrop-filter:none!important;box-shadow:0 8px 20px rgba(0,0,0,.20)!important}
+</style>
+<script type="module" id="dymivra859-business-goals-script">
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
+(function(){
+  const SUPABASE_URL = "https://sqvqssdsrpdfvfxcnwwa.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_HfHYwaCI4kEPGWTtPIpvBw_96WL_UPu";
+  const supa = createClient(SUPABASE_URL, SUPABASE_KEY);
+  const TABLE = 'business_goals';
+  const $ = id => document.getElementById(id);
+  const fmt = v => new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v||0));
+  const pct = v => (Number.isFinite(Number(v)) ? Number(v) : 0).toLocaleString('pt-BR',{maximumFractionDigits:1}) + '%';
+  const clamp = (n,a,b)=>Math.max(a,Math.min(b,n));
+  const parseMoney = text => {
+    const s=String(text||'').replace(/[^0-9,.-]/g,'').replace(/\.(?=\d{3}(\D|$))/g,'').replace(',','.');
+    const n=Number(s); return Number.isFinite(n)?n:0;
+  };
+  const norm = value => {
+    if(typeof value === 'number') return Number.isFinite(value)?value:0;
+    const s=String(value||'').trim().replace(/\./g,'').replace(',','.');
+    const n=Number(s); return Number.isFinite(n)?n:0;
+  };
+  const esc = s => String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  const setText=(id,text)=>{const el=$(id); if(el) el.textContent=text};
+  const monthStart = (ym)=>{ const m = ym || currentMonth(); return m + '-01'; };
+  const currentMonth = ()=>{ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); };
+  const monthLabel = ym => { try{ const [y,m]=String(ym||currentMonth()).split('-').map(Number); return new Date(y,m-1,1).toLocaleDateString('pt-BR',{month:'long',year:'numeric'}); }catch{return 'mês atual'} };
+  const localKey = user => 'dymivra_business_goals_v1_' + (user?.id || 'local');
+  const state = { user:null, goal:null, source:'local', loading:false };
+
+  async function currentUser(){ try{ const {data}=await supa.auth.getSession(); return data?.session?.user || null; }catch{return null} }
+  function emptyGoal(ym=currentMonth()){ return { goal_month: monthStart(ym), revenue_goal:0, profit_goal:0, margin_goal:0, cash_goal:0, notes:'' }; }
+  function ymFromGoal(g){ return String(g?.goal_month || monthStart(currentMonth())).slice(0,7); }
+  function loadLocal(user, ym=currentMonth()){
+    try{ const all=JSON.parse(localStorage.getItem(localKey(user))||'{}'); return all[monthStart(ym)] || emptyGoal(ym); }catch{return emptyGoal(ym)}
+  }
+  function saveLocal(goal,user){
+    try{ const all=JSON.parse(localStorage.getItem(localKey(user))||'{}'); all[goal.goal_month]=goal; localStorage.setItem(localKey(user),JSON.stringify(all)); }catch{}
+  }
+  async function loadGoal(ym=currentMonth()){
+    state.loading=true; renderStatus('Carregando metas do mês...', 'warn');
+    const user = await currentUser(); state.user=user;
+    if(user){
+      try{
+        const {data,error}=await supa.from(TABLE).select('*').eq('user_id',user.id).eq('goal_month',monthStart(ym)).maybeSingle();
+        if(error) throw error;
+        state.goal = data ? normalizeGoal(data) : emptyGoal(ym);
+        state.source='supabase';
+        fillForm(state.goal);
+        render();
+        renderStatus(data ? 'Metas carregadas do Supabase.' : 'Nenhuma meta salva para este mês.', data ? 'ok' : 'warn');
+        state.loading=false; return state.goal;
+      }catch(e){
+        state.goal=loadLocal(user,ym); state.source='local'; fillForm(state.goal); render();
+        renderStatus('Modo local temporário: ' + (e?.message || 'não foi possível ler metas.'), 'warn');
+        state.loading=false; return state.goal;
+      }
+    }
+    state.goal=loadLocal(null,ym); state.source='local'; fillForm(state.goal); render();
+    renderStatus('Entre na conta para salvar as metas no Supabase.', 'warn');
+    state.loading=false; return state.goal;
+  }
+  function normalizeGoal(row){ return { id:row.id, user_id:row.user_id, goal_month:row.goal_month, revenue_goal:Number(row.revenue_goal||0), profit_goal:Number(row.profit_goal||0), margin_goal:Number(row.margin_goal||0), cash_goal:Number(row.cash_goal||0), notes:row.notes||'' }; }
+  function formGoal(){
+    const ym = $('dym859GoalMonth')?.value || currentMonth();
+    return { goal_month:monthStart(ym), revenue_goal:norm($('dym859RevenueGoal')?.value), profit_goal:norm($('dym859ProfitGoal')?.value), margin_goal:norm($('dym859MarginGoal')?.value), cash_goal:norm($('dym859CashGoal')?.value), notes:($('dym859GoalNotes')?.value||'').trim() };
+  }
+  function fillForm(g){
+    if(!$('dym859GoalMonth')) return;
+    $('dym859GoalMonth').value = ymFromGoal(g);
+    $('dym859RevenueGoal').value = Number(g?.revenue_goal||0) || '';
+    $('dym859ProfitGoal').value = Number(g?.profit_goal||0) || '';
+    $('dym859MarginGoal').value = Number(g?.margin_goal||0) || '';
+    $('dym859CashGoal').value = Number(g?.cash_goal||0) || '';
+    $('dym859GoalNotes').value = g?.notes || '';
+  }
+  async function saveGoal(){
+    const btn=$('dym859SaveGoalBtn'); const old=btn?.textContent;
+    const goal=formGoal(); state.goal=goal; render();
+    try{
+      if(btn){btn.disabled=true; btn.textContent='Salvando...'}
+      const user=await currentUser(); state.user=user;
+      if(user){
+        const payload={user_id:user.id, goal_month:goal.goal_month, revenue_goal:goal.revenue_goal, profit_goal:goal.profit_goal, margin_goal:goal.margin_goal, cash_goal:goal.cash_goal, notes:goal.notes||''};
+        const {data,error}=await supa.from(TABLE).upsert(payload,{onConflict:'user_id,goal_month'}).select('*').single();
+        if(error) throw error;
+        state.goal=normalizeGoal(data); state.source='supabase'; fillForm(state.goal); render();
+        renderStatus('Metas do negócio salvas no Supabase.', 'ok');
+        try{window.toast?.('Metas do negócio salvas.','success')}catch{}
+      }else{
+        saveLocal(goal,null); state.source='local'; renderStatus('Metas salvas localmente. Entre na conta para salvar no Supabase.', 'warn');
+      }
+    }catch(e){
+      saveLocal(goal,state.user); state.source='local'; renderStatus('Não foi possível salvar no Supabase. Salvei localmente: ' + (e?.message||''), 'err');
+    }finally{ if(btn){btn.disabled=false; btn.textContent=old||'Salvar metas do mês'} }
+  }
+  function renderStatus(text,mode){ const el=$('dym859GoalStatus'); if(!el) return; el.textContent=text||''; el.className='dym859-status ' + (mode||''); }
+  function actuals(){
+    return {
+      revenue:parseMoney($('businessMonthIn')?.textContent),
+      out:parseMoney($('businessMonthOut')?.textContent),
+      profit:parseMoney($('businessProfit')?.textContent),
+      margin:parseFloat(String($('businessMargin')?.textContent||'0').replace('%','').replace(',','.'))||0,
+      cash:parseMoney($('businessCash')?.textContent)
+    };
+  }
+  function progress(actual, goal){ if(!goal || goal<=0) return 0; return clamp((actual/goal)*100,0,100); }
+  function renderCard(id,label,actual,goal,kind){
+    const card=$(id); if(!card) return;
+    const p=progress(actual,goal);
+    const done = goal>0 && actual>=goal;
+    card.classList.remove('good','warn','bad');
+    if(goal<=0) card.classList.add('warn'); else if(done) card.classList.add('good'); else if(kind==='profit' && actual<0) card.classList.add('bad'); else card.classList.add('warn');
+    setText(id+'Value', kind==='margin' ? pct(actual) : fmt(actual));
+    setText(id+'Goal', goal>0 ? ('Meta: ' + (kind==='margin'?pct(goal):fmt(goal))) : 'Meta ainda não definida');
+    setText(id+'Hint', goal>0 ? (done ? 'Meta batida ou superada.' : 'Falta: ' + (kind==='margin'?pct(Math.max(goal-actual,0)):fmt(Math.max(goal-actual,0)))) : 'Preencha e salve a meta do mês.');
+    const fill=$(id+'Fill'); if(fill) fill.style.width = p.toFixed(1)+'%';
+  }
+  function advice(a,g){
+    const hasAny = Number(g.revenue_goal||0)>0 || Number(g.profit_goal||0)>0 || Number(g.margin_goal||0)>0 || Number(g.cash_goal||0)>0;
+    if(!hasAny) return {title:'Defina metas simples para começar.', text:'Para uma loja que está começando, o melhor é definir primeiro meta de faturamento, lucro e caixa. Depois o Dymivra mostra quanto falta para crescer com controle.', items:[['1','Meta de faturamento','Quanto vocês querem vender no mês.'],['2','Meta de lucro','Quanto precisa sobrar depois dos custos.'],['3','Meta de caixa','Quanto querem guardar para reinvestir e proteger a operação.']]};
+    if(g.revenue_goal>0 && a.revenue < g.revenue_goal) return {title:'Foco do mês: aumentar entradas.', text:'O faturamento ainda está abaixo da meta. O próximo passo é vender mais, registrar tudo e acompanhar se as despesas não estão crescendo junto.', items:[['1','Vender com margem','Priorize produtos com melhor margem no estoque.'],['2','Acompanhar diariamente','Registre vendas por Pix, dinheiro e cartão no Business.'],['3','Revisar canal de venda','Veja onde a loja vende melhor e concentre esforço ali.']]};
+    if(g.profit_goal>0 && a.profit < g.profit_goal) return {title:'Foco do mês: melhorar lucro.', text:'A receita pode estar entrando, mas o lucro ainda não atingiu a meta. Revise custos, taxas, estoque e preço de venda.', items:[['1','Cortar desperdício','Olhe a maior despesa do relatório mensal.'],['2','Rever preço','Confira se o preço cobre custo, taxa e lucro.'],['3','Controlar retiradas','Evite retirar antes de proteger o caixa.']]};
+    if(g.margin_goal>0 && a.margin < g.margin_goal) return {title:'Foco do mês: subir margem.', text:'A margem está abaixo da meta. Isso pode indicar custo alto, desconto demais, taxa pesando ou preço apertado.', items:[['1','Produto certo','Venda mais produtos com margem maior.'],['2','Fornecedor','Negocie custo ou compre melhor.'],['3','Taxas e entrega','Separe taxas para não confundir faturamento com lucro.']]};
+    if(g.cash_goal>0 && a.cash < g.cash_goal) return {title:'Foco do mês: fortalecer caixa.', text:'O resultado está caminhando, mas o caixa ainda não chegou na meta. Para crescer, mantenha reserva e reinvista com controle.', items:[['1','Guardar parte do lucro','Separe reserva antes de retirar.'],['2','Reinvestir com critério','Compre estoque que gira e dá margem.'],['3','Evitar caixa apertado','Não deixe despesa fixa vencer sem cobertura.']]};
+    return {title:'Metas do mês bem encaminhadas.', text:'As metas principais estão batidas ou próximas. Agora o objetivo é manter registro, proteger o caixa e planejar o próximo salto de crescimento.', items:[['1','Reinvestir com controle','Direcione parte do lucro para estoque, marketing ou estrutura.'],['2','Comparar meses','Veja se o próximo mês cresce sobre este.'],['3','Padronizar rotina','Continue registrando vendas e despesas todos os dias.']]};
+  }
+  function render(){
+    const panel=ensurePanel(); if(!panel) return;
+    const g=state.goal || formGoal();
+    const ym=ymFromGoal(g);
+    setText('dym859GoalBadge', (state.source==='supabase'?'Supabase • ':'Local • ') + monthLabel(ym));
+    const a=actuals();
+    renderCard('dym859Revenue', 'Faturamento', a.revenue, Number(g.revenue_goal||0), 'money');
+    renderCard('dym859Profit', 'Lucro', a.profit, Number(g.profit_goal||0), 'profit');
+    renderCard('dym859Margin', 'Margem', a.margin, Number(g.margin_goal||0), 'margin');
+    renderCard('dym859Cash', 'Caixa', a.cash, Number(g.cash_goal||0), 'money');
+    const rec=advice(a,g);
+    setText('dym859AdviceTitle', rec.title); setText('dym859AdviceText', rec.text);
+    const list=$('dym859AdviceList'); if(list) list.innerHTML = rec.items.map(x=>`<div class="dym859-advice-item"><div class="dym859-advice-icon">${esc(x[0])}</div><div><b>${esc(x[1])}</b><em>${esc(x[2])}</em></div></div>`).join('');
+  }
+  function ensurePanel(){
+    let panel=$('dym859GoalsPanel');
+    if(panel) return panel;
+    const business=document.querySelector('[data-screens="business"]');
+    if(!business) return null;
+    const anchor=$('dym855HealthPanel') || document.querySelector('[data-screens="business"] .business-kpi-grid');
+    panel=document.createElement('div');
+    panel.id='dym859GoalsPanel';
+    panel.className='dym859-goals-panel';
+    panel.innerHTML=`
+      <div class="dym859-head">
+        <div>
+          <div class="dym859-kicker">Metas do negócio</div>
+          <h3 class="dym859-title">Crescimento mensal com alvo claro</h3>
+          <div class="dym859-sub">Defina metas de faturamento, lucro, margem e caixa. O Dymivra compara com os números reais do Business e mostra o que falta para a operação crescer com controle.</div>
+        </div>
+        <div class="dym859-badge" id="dym859GoalBadge">Mês atual</div>
+      </div>
+      <div class="dym859-main">
+        <div class="dym859-form">
+          <div class="dym859-form-title">Configurar metas do mês</div>
+          <div class="dym859-form-copy">Use valores realistas para a fase inicial da loja. Você pode ajustar todo mês.</div>
+          <div class="dym859-form-grid">
+            <div><label>Mês da meta</label><input id="dym859GoalMonth" type="month"/></div>
+            <div><label>Meta de faturamento</label><input id="dym859RevenueGoal" inputmode="decimal" placeholder="Ex: 10000" type="text"/></div>
+            <div><label>Meta de lucro</label><input id="dym859ProfitGoal" inputmode="decimal" placeholder="Ex: 2500" type="text"/></div>
+            <div><label>Meta de margem (%)</label><input id="dym859MarginGoal" inputmode="decimal" placeholder="Ex: 25" type="text"/></div>
+            <div><label>Meta de caixa</label><input id="dym859CashGoal" inputmode="decimal" placeholder="Ex: 5000" type="text"/></div>
+            <textarea id="dym859GoalNotes" placeholder="Observação da meta: exemplo, abrir a loja com caixa seguro, comprar estoque, vender mais no Pix..."></textarea>
+          </div>
+          <div class="dym859-actions"><button type="button" id="dym859SaveGoalBtn">Salvar metas do mês</button></div>
+          <div class="dym859-status" id="dym859GoalStatus"></div>
+        </div>
+        <div class="dym859-results">
+          <div class="dym859-progress-grid">
+            <div class="dym859-goal-card" id="dym859Revenue"><span>Faturamento</span><strong id="dym859RevenueValue">R$ 0,00</strong><small id="dym859RevenueGoal">Meta ainda não definida</small><div class="dym859-bar"><div class="dym859-fill" id="dym859RevenueFill"></div></div><small id="dym859RevenueHint">Preencha a meta do mês.</small></div>
+            <div class="dym859-goal-card" id="dym859Profit"><span>Lucro</span><strong id="dym859ProfitValue">R$ 0,00</strong><small id="dym859ProfitGoal">Meta ainda não definida</small><div class="dym859-bar"><div class="dym859-fill" id="dym859ProfitFill"></div></div><small id="dym859ProfitHint">Preencha a meta do mês.</small></div>
+            <div class="dym859-goal-card" id="dym859Margin"><span>Margem</span><strong id="dym859MarginValue">0%</strong><small id="dym859MarginGoal">Meta ainda não definida</small><div class="dym859-bar"><div class="dym859-fill" id="dym859MarginFill"></div></div><small id="dym859MarginHint">Preencha a meta do mês.</small></div>
+            <div class="dym859-goal-card" id="dym859Cash"><span>Caixa</span><strong id="dym859CashValue">R$ 0,00</strong><small id="dym859CashGoal">Meta ainda não definida</small><div class="dym859-bar"><div class="dym859-fill" id="dym859CashFill"></div></div><small id="dym859CashHint">Preencha a meta do mês.</small></div>
+          </div>
+          <div class="dym859-advice">
+            <div class="dym859-advice-title" id="dym859AdviceTitle">Defina metas simples para começar.</div>
+            <div class="dym859-advice-text" id="dym859AdviceText">Para uma loja que está começando, o melhor é definir primeiro meta de faturamento, lucro e caixa.</div>
+            <div class="dym859-advice-list" id="dym859AdviceList"></div>
+          </div>
+        </div>
+      </div>`;
+    if(anchor) anchor.insertAdjacentElement('afterend',panel); else business.appendChild(panel);
+    $('dym859GoalMonth').value=currentMonth();
+    $('dym859SaveGoalBtn').addEventListener('click',saveGoal);
+    $('dym859GoalMonth').addEventListener('change',()=>loadGoal($('dym859GoalMonth').value||currentMonth()));
+    ['dym859RevenueGoal','dym859ProfitGoal','dym859MarginGoal','dym859CashGoal','dym859GoalNotes'].forEach(id=>$(id)?.addEventListener('input',()=>{ state.goal=formGoal(); render(); }));
+    return panel;
+  }
+  function wrap(name){
+    const old=window[name];
+    if(typeof old==='function' && !old.__dym859Wrapped){
+      const fn=function(){ const r=old.apply(this,arguments); setTimeout(render,220); return r; };
+      fn.__dym859Wrapped=true; window[name]=fn;
+    }
+  }
+  function install(){
+    ensurePanel(); loadGoal(currentMonth());
+    ['dymivra845RenderBusiness','dymivra846RenderBusinessFiltered','dymivra847RenderBusinessSync','dymivra850RenderBusinessReport','dymivra854RenderPartners','dymivra855RenderBusinessHealth','dymivra856RenderProducts','dymivra853RefreshBusinessSupabase'].forEach(wrap);
+    try{supa.auth.onAuthStateChange(()=>setTimeout(()=>loadGoal($('dym859GoalMonth')?.value||currentMonth()),500));}catch{}
+    setInterval(render,1800);
+  }
+  window.dymivra859RenderBusinessGoals=render;
+  window.dymivra859LoadBusinessGoals=loadGoal;
+  window.dymivra859SaveBusinessGoals=saveGoal;
+  document.addEventListener('DOMContentLoaded',()=>setTimeout(install,650));
+  if(document.readyState!=='loading') setTimeout(install,650);
 })();
 </script>
 
