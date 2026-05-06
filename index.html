@@ -15,7 +15,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.6.0 — Business Metas do Negócio</title>
+<title>Dymivra 8.6.1 — Mês Premium com Seleção Animada</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -22872,9 +22872,9 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
 
 
 <!-- ==========================================================
-     Dymivra 8.6.0 — Business Mês Premium Corrigido
+     Dymivra 8.6.1 — Mês Premium com Seleção Animada
      Troca o seletor nativo de mês do navegador por um seletor
-     premium dentro do padrão visual do app. Não altera o botão Topo.
+     premium dentro do padrão visual do app, agora com seleção animada do mês. Não altera o botão Topo.
      ========================================================== -->
 <style id="dymivra860-premium-month-style">
 .dym860-month-trigger{
@@ -22999,6 +22999,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
   width:100%!important;
   height:54px!important;
   margin:0!important;
+  padding:0 12px!important;
   border-radius:18px!important;
   border:1px solid rgba(255,255,255,.09)!important;
   background:linear-gradient(180deg,rgba(15,23,42,.82),rgba(2,8,23,.58))!important;
@@ -23006,14 +23007,88 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
   font-size:14px!important;
   font-weight:950!important;
   box-shadow:none!important;
+  position:relative!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  transition:filter .16s ease,border-color .16s ease,box-shadow .16s ease,background .16s ease!important;
+}
+.dym860-month-chip:before{
+  content:""!important;
+  position:absolute!important;
+  left:14px!important;
+  top:50%!important;
+  transform:translateY(-50%) scale(.72)!important;
+  width:24px!important;
+  height:24px!important;
+  border-radius:999px!important;
+  display:grid!important;
+  place-items:center!important;
+  opacity:0!important;
+  color:#03101d!important;
+  background:linear-gradient(135deg,#e0f2fe,#67e8f9)!important;
+  box-shadow:0 0 18px rgba(103,232,249,.34)!important;
+  z-index:2!important;
+}
+.dym860-month-chip:after{
+  content:""!important;
+  position:absolute!important;
+  inset:-80% -35%!important;
+  background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.42) 50%,transparent 64%)!important;
+  opacity:0!important;
+  transform:translateX(-70%) rotate(10deg)!important;
+  pointer-events:none!important;
+  z-index:1!important;
+}
+.dym860-month-chip:hover{
+  filter:brightness(1.08)!important;
+  border-color:rgba(103,232,249,.20)!important;
+  transform:none!important;
+}
+.dym860-month-chip:active{
+  filter:brightness(1.16)!important;
+  transform:scale(.985)!important;
 }
 .dym860-month-chip.active{
-  border-color:rgba(103,232,249,.46)!important;
+  padding-left:38px!important;
+  border-color:rgba(103,232,249,.72)!important;
   background:
-    radial-gradient(circle at 20% 0%,rgba(34,211,238,.22),transparent 45%),
-    linear-gradient(135deg,rgba(14,165,233,.95),rgba(139,92,246,.70))!important;
+    radial-gradient(circle at 20% 0%,rgba(34,211,238,.34),transparent 48%),
+    radial-gradient(circle at 92% 20%,rgba(250,204,21,.18),transparent 40%),
+    linear-gradient(135deg,rgba(14,165,233,.98),rgba(37,99,235,.92),rgba(139,92,246,.78))!important;
   color:#fff!important;
-  box-shadow:0 0 24px rgba(34,211,238,.16)!important;
+  box-shadow:
+    0 0 0 2px rgba(103,232,249,.12),
+    0 0 26px rgba(34,211,238,.28),
+    inset 0 1px 0 rgba(255,255,255,.16)!important;
+  animation:dym860MonthSelectedPop .30s ease both!important;
+}
+.dym860-month-chip.active:before{
+  content:"✓"!important;
+  opacity:1!important;
+  animation:dym860MonthCheckIn .24s ease both!important;
+}
+.dym860-month-chip.active:after{
+  opacity:.78!important;
+  animation:dym860MonthShine .70s ease both!important;
+}
+.dym860-month-chip.dym860-tap-feedback{
+  filter:brightness(1.18)!important;
+  border-color:rgba(103,232,249,.70)!important;
+}
+@keyframes dym860MonthSelectedPop{
+  0%{transform:scale(.96);box-shadow:0 0 0 0 rgba(103,232,249,.0),0 0 0 rgba(34,211,238,.0)}
+  58%{transform:scale(1.035);box-shadow:0 0 0 5px rgba(103,232,249,.12),0 0 32px rgba(34,211,238,.32)}
+  100%{transform:scale(1);box-shadow:0 0 0 2px rgba(103,232,249,.12),0 0 26px rgba(34,211,238,.28)}
+}
+@keyframes dym860MonthCheckIn{
+  0%{opacity:0;transform:translateY(-50%) scale(.52) rotate(-18deg)}
+  75%{opacity:1;transform:translateY(-50%) scale(1.08) rotate(0deg)}
+  100%{opacity:1;transform:translateY(-50%) scale(1) rotate(0deg)}
+}
+@keyframes dym860MonthShine{
+  0%{opacity:0;transform:translateX(-75%) rotate(10deg)}
+  25%{opacity:.80}
+  100%{opacity:0;transform:translateX(75%) rotate(10deg)}
 }
 .dym860-month-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;margin-top:14px!important}
 .dym860-month-actions button{margin:0!important;height:52px!important;border-radius:18px!important}
@@ -23044,7 +23119,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
           <div>
             <div class="dym860-month-kicker">Calendário premium</div>
             <h3 class="dym860-month-title" id="dym860MonthTitle">Definir mês da meta</h3>
-            <div class="dym860-month-sub">Escolha o mês do negócio sem usar o seletor padrão do navegador.</div>
+            <div class="dym860-month-sub">Escolha o mês do negócio; o mês selecionado fica marcado com brilho premium.</div>
           </div>
           <button type="button" class="dym860-month-close" id="dym860MonthClose" aria-label="Fechar">×</button>
         </div>
@@ -23071,8 +23146,16 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
   function renderModal(){
     const year=el('dym860YearValue'); if(year) year.textContent=String(selectedYear);
     const grid=el('dym860MonthGrid'); if(!grid) return;
-    grid.innerHTML=shortNames.map((name,i)=>`<button type="button" class="dym860-month-chip ${i+1===selectedMonth?'active':''}" data-month="${i+1}">${name}</button>`).join('');
-    grid.querySelectorAll('[data-month]').forEach(btn=>btn.addEventListener('click',()=>{selectedMonth=Number(btn.dataset.month);renderModal();}));
+    grid.innerHTML=shortNames.map((name,i)=>{
+      const active=i+1===selectedMonth;
+      return `<button type="button" class="dym860-month-chip ${active?'active':''}" data-month="${i+1}" aria-pressed="${active?'true':'false'}" aria-label="${active?'Mês selecionado: ':''}${name}">${name}</button>`;
+    }).join('');
+    grid.querySelectorAll('[data-month]').forEach(btn=>btn.addEventListener('click',()=>{
+      selectedMonth=Number(btn.dataset.month);
+      try{ if(navigator.vibrate) navigator.vibrate(10); }catch(e){}
+      btn.classList.add('dym860-tap-feedback');
+      setTimeout(()=>renderModal(),70);
+    }));
   }
   function openModal(){
     const input=el('dym859GoalMonth');
