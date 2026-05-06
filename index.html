@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Dymivra 8.6.1 — Business Contas a Pagar e Receber -->
+<!-- Dymivra 8.6.2 — Business Crescimento Mensal -->
 
 <html lang="pt-BR">
 <head>
@@ -15,7 +15,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.6.1 — Business Contas a Pagar e Receber</title>
+<title>Dymivra 8.6.2 — Business Crescimento Mensal</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -23272,6 +23272,240 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
   supa.auth.onAuthStateChange(()=>setTimeout(load,400));
   setInterval(()=>{ try{ if(document.querySelector('[data-screen-block][data-screens="business"]')) install(); }catch{} },2600);
   window.DYMIVRA861={load,render,summary};
+})();
+</script>
+
+
+
+<style id="dymivra862-business-growth-style">
+/* ==========================================================
+   Dymivra 8.6.2 • Business Crescimento Mensal
+   Escopo: somente Dymivra Business. Botão Topo não alterado.
+   ========================================================== */
+.dym862-growth-panel{
+  position:relative!important;
+  overflow:hidden!important;
+  margin-top:18px!important;
+  padding:20px!important;
+  border-radius:30px!important;
+  border:1px solid rgba(34,211,238,.22)!important;
+  background:
+    radial-gradient(circle at 8% 0%,rgba(34,211,238,.16),transparent 34%),
+    radial-gradient(circle at 96% 10%,rgba(34,197,94,.12),transparent 34%),
+    linear-gradient(180deg,rgba(9,18,38,.94),rgba(2,8,23,.92))!important;
+  box-shadow:0 24px 70px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.055)!important;
+  backdrop-filter:blur(18px)!important;
+}
+.dym862-growth-panel:before{
+  content:""!important;
+  position:absolute!important;
+  left:22px!important;
+  right:22px!important;
+  top:0!important;
+  height:3px!important;
+  border-radius:999px!important;
+  background:linear-gradient(90deg,#22d3ee,#22c55e,#facc15,#8b5cf6)!important;
+  opacity:.9!important;
+  pointer-events:none!important;
+}
+.dym862-growth-panel>*{position:relative!important;z-index:1!important;}
+.dym862-head{display:flex!important;align-items:flex-start!important;justify-content:space-between!important;gap:14px!important;margin-bottom:14px!important;}
+.dym862-kicker{color:#67e8f9!important;font-size:12px!important;font-weight:950!important;letter-spacing:.16em!important;text-transform:uppercase!important;margin-bottom:7px!important;}
+.dym862-title{margin:0!important;color:#fff!important;font-size:clamp(26px,3.3vw,40px)!important;line-height:1.02!important;letter-spacing:-.075em!important;font-weight:950!important;}
+.dym862-sub{margin-top:8px!important;color:#cbd5e1!important;line-height:1.52!important;max-width:900px!important;font-size:14px!important;}
+.dym862-badge{display:inline-flex!important;align-items:center!important;gap:8px!important;min-width:max-content!important;padding:9px 11px!important;border-radius:999px!important;border:1px solid rgba(34,211,238,.22)!important;background:rgba(34,211,238,.08)!important;color:#cffafe!important;font-size:12px!important;font-weight:950!important;}
+.dym862-hero{display:grid!important;grid-template-columns:.72fr 1.28fr!important;gap:14px!important;align-items:stretch!important;margin:14px 0!important;}
+.dym862-score-card,.dym862-diagnosis-card{position:relative!important;overflow:hidden!important;border-radius:26px!important;border:1px solid rgba(255,255,255,.09)!important;background:linear-gradient(180deg,rgba(15,23,42,.74),rgba(2,8,23,.58))!important;padding:16px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)!important;}
+.dym862-score-card{display:grid!important;place-items:center!important;text-align:center!important;min-height:210px!important;border-color:rgba(34,211,238,.22)!important;}
+.dym862-score-ring{width:152px!important;height:152px!important;border-radius:50%!important;display:grid!important;place-items:center!important;background:conic-gradient(#22d3ee 0deg,rgba(255,255,255,.08) 0deg)!important;box-shadow:0 0 36px rgba(34,211,238,.14)!important;position:relative!important;}
+.dym862-score-ring:before{content:""!important;position:absolute!important;inset:13px!important;border-radius:50%!important;background:linear-gradient(180deg,#0f172a,#020617)!important;border:1px solid rgba(255,255,255,.08)!important;}
+.dym862-score-inner{position:relative!important;z-index:1!important;}
+.dym862-score-number{display:block!important;color:#fff!important;font-size:42px!important;line-height:.95!important;letter-spacing:-.08em!important;font-weight:950!important;}
+.dym862-score-label{display:block!important;margin-top:6px!important;color:#9fb4d8!important;font-size:12px!important;font-weight:850!important;}
+.dym862-score-note{margin-top:12px!important;color:#cbd5e1!important;font-size:13px!important;line-height:1.45!important;max-width:260px!important;}
+.dym862-diagnosis-card h4{margin:0 0 8px!important;color:#fff!important;font-size:24px!important;letter-spacing:-.055em!important;line-height:1.08!important;}
+.dym862-diagnosis-card p{margin:0!important;color:#cbd5e1!important;font-size:15px!important;line-height:1.58!important;}
+.dym862-advice{margin-top:12px!important;border-radius:20px!important;border:1px solid rgba(250,204,21,.18)!important;background:rgba(250,204,21,.065)!important;padding:13px!important;color:#fef3c7!important;line-height:1.48!important;font-size:13px!important;}
+.dym862-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:10px!important;margin:14px 0!important;}
+.dym862-kpi{position:relative!important;overflow:hidden!important;min-height:126px!important;border-radius:22px!important;border:1px solid rgba(255,255,255,.08)!important;background:radial-gradient(circle at 95% 100%,rgba(34,211,238,.10),transparent 52%),linear-gradient(180deg,rgba(15,23,42,.72),rgba(2,8,23,.54))!important;padding:14px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)!important;}
+.dym862-kpi.good{border-color:rgba(34,197,94,.22)!important;}
+.dym862-kpi.bad{border-color:rgba(248,113,113,.24)!important;}
+.dym862-kpi.warn{border-color:rgba(250,204,21,.24)!important;}
+.dym862-kpi span{display:block!important;color:#94a3b8!important;font-size:11px!important;font-weight:950!important;letter-spacing:.08em!important;text-transform:uppercase!important;margin-bottom:8px!important;}
+.dym862-kpi strong{display:block!important;color:#fff!important;font-size:clamp(23px,3.6vw,32px)!important;line-height:1.04!important;letter-spacing:-.07em!important;font-weight:950!important;}
+.dym862-kpi small{display:block!important;margin-top:8px!important;font-size:12px!important;line-height:1.35!important;color:#9fb4d8!important;}
+.dym862-delta{display:inline-flex!important;align-items:center!important;gap:5px!important;margin-top:10px!important;border-radius:999px!important;padding:6px 8px!important;border:1px solid rgba(255,255,255,.08)!important;background:rgba(255,255,255,.045)!important;color:#dbeafe!important;font-size:12px!important;font-weight:900!important;}
+.dym862-delta.up{color:#bbf7d0!important;background:rgba(34,197,94,.08)!important;border-color:rgba(34,197,94,.20)!important;}
+.dym862-delta.down{color:#fecaca!important;background:rgba(239,68,68,.08)!important;border-color:rgba(239,68,68,.20)!important;}
+.dym862-delta.neutral{color:#dbeafe!important;}
+.dym862-bars{display:grid!important;gap:10px!important;margin-top:12px!important;}
+.dym862-bar-row{border-radius:18px!important;border:1px solid rgba(255,255,255,.08)!important;background:rgba(255,255,255,.03)!important;padding:11px!important;}
+.dym862-bar-top{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important;margin-bottom:8px!important;color:#dbeafe!important;font-size:13px!important;font-weight:900!important;}
+.dym862-track{height:10px!important;border-radius:999px!important;background:rgba(255,255,255,.07)!important;overflow:hidden!important;border:1px solid rgba(255,255,255,.05)!important;}
+.dym862-fill{height:100%!important;border-radius:999px!important;background:linear-gradient(90deg,#22d3ee,#22c55e)!important;width:0%;transition:width .25s ease!important;}
+.dym862-fill.prev{background:linear-gradient(90deg,#64748b,#94a3b8)!important;}
+.dym862-actions{display:grid!important;grid-template-columns:1fr auto!important;gap:10px!important;align-items:center!important;margin-top:13px!important;}
+.dym862-actions div{color:#9fb4d8!important;font-size:13px!important;line-height:1.45!important;}
+.dym862-actions button{width:auto!important;min-width:190px!important;margin:0!important;border-radius:18px!important;min-height:52px!important;}
+.dym862-modal-overlay{position:fixed!important;inset:0!important;z-index:99999!important;display:none!important;align-items:center!important;justify-content:center!important;padding:18px!important;background:rgba(2,6,23,.72)!important;backdrop-filter:blur(14px)!important;}
+.dym862-modal-overlay.show{display:flex!important;}
+.dym862-modal{width:min(520px,calc(100vw - 28px))!important;border-radius:28px!important;border:1px solid rgba(103,232,249,.22)!important;background:radial-gradient(circle at 0% 0%,rgba(34,211,238,.16),transparent 34%),linear-gradient(180deg,rgba(15,23,42,.98),rgba(2,8,23,.98))!important;box-shadow:0 30px 90px rgba(0,0,0,.55)!important;padding:20px!important;color:#fff!important;}
+.dym862-modal-top{display:flex!important;align-items:center!important;gap:12px!important;margin-bottom:12px!important;}
+.dym862-modal-icon{width:54px!important;height:54px!important;border-radius:20px!important;display:grid!important;place-items:center!important;font-size:25px!important;background:rgba(34,211,238,.12)!important;border:1px solid rgba(103,232,249,.18)!important;}
+.dym862-modal-kicker{color:#67e8f9!important;font-size:11px!important;font-weight:950!important;letter-spacing:.15em!important;text-transform:uppercase!important;margin-bottom:4px!important;}
+.dym862-modal-title{margin:0!important;font-size:25px!important;letter-spacing:-.06em!important;}
+.dym862-modal-text{color:#cbd5e1!important;line-height:1.55!important;margin:0 0 13px!important;}
+.dym862-modal textarea{width:100%!important;min-height:210px!important;border-radius:18px!important;border:1px solid rgba(255,255,255,.10)!important;background:#020617!important;color:#e5e7eb!important;padding:12px!important;font:700 12px/1.45 ui-monospace,Menlo,monospace!important;}
+.dym862-modal-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;margin-top:12px!important;}
+.dym862-modal-actions button{margin:0!important;border-radius:18px!important;min-height:52px!important;}
+.dym862-modal-actions .secondary{background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.10)!important;color:#dbeafe!important;box-shadow:none!important;}
+@media(max-width:980px){.dym862-hero{grid-template-columns:1fr!important}.dym862-grid{grid-template-columns:1fr 1fr!important}.dym862-actions{grid-template-columns:1fr!important}.dym862-actions button{width:100%!important;}}
+@media(max-width:640px){.dym862-growth-panel{padding:14px!important;border-radius:26px!important}.dym862-head{display:grid!important}.dym862-badge{width:max-content!important}.dym862-grid{grid-template-columns:1fr!important}.dym862-kpi{min-height:108px!important}.dym862-score-card{min-height:190px!important}.dym862-modal-actions{grid-template-columns:1fr!important}}
+</style>
+<script id="dymivra862-business-growth-script">
+(function(){
+  const $ = id => document.getElementById(id);
+  const brl = v => new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v||0));
+  const pct = v => (Number.isFinite(Number(v)) ? Number(v) : 0).toLocaleString('pt-BR',{maximumFractionDigits:1}) + '%';
+  const esc = s => String(s ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function ym(d){ const x = d instanceof Date ? d : new Date(String(d||'').length<=10?String(d||'')+'T00:00:00':String(d||'')); if(Number.isNaN(x.getTime())) return ym(new Date()); return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0'); }
+  function addMonth(key,delta){ const [y,m]=String(key).split('-').map(Number); const d=new Date(y,(m-1)+delta,1); return ym(d); }
+  function monthLabel(key){ const [y,m]=String(key).split('-').map(Number); const d=new Date(y,(m||1)-1,1); return d.toLocaleDateString('pt-BR',{month:'long',year:'numeric'}); }
+  function currentMonth(){ return ym(new Date()); }
+  function getList(){
+    try{ if(window.DYMIVRA853?.currentList) return window.DYMIVRA853.currentList(); }catch{}
+    return [];
+  }
+  function totalsFor(list,key){
+    let entrada=0,saida=0,investimento=0,retirada=0; const expenses={};
+    (list||[]).forEach(e=>{
+      const date=e.date||e.movement_date||e.createdAt||e.created_at||new Date();
+      if(ym(date)!==key) return;
+      const v=Number(e.amount||0);
+      if(e.type==='entrada') entrada+=v;
+      else if(e.type==='saida'){ saida+=v; expenses[e.category||'Saída']=(expenses[e.category||'Saída']||0)+v; }
+      else if(e.type==='investimento') investimento+=v;
+      else if(e.type==='retirada') retirada+=v;
+    });
+    const lucro=entrada-saida;
+    const margem=entrada?lucro/entrada*100:0;
+    return {entrada,saida,investimento,retirada,lucro,margem,expenses};
+  }
+  function allCash(list){
+    let entrada=0,saida=0,investimento=0,retirada=0;
+    (list||[]).forEach(e=>{ const v=Number(e.amount||0); if(e.type==='entrada') entrada+=v; else if(e.type==='saida') saida+=v; else if(e.type==='investimento') investimento+=v; else if(e.type==='retirada') retirada+=v; });
+    return entrada+investimento-saida-retirada;
+  }
+  function change(cur,prev){
+    cur=Number(cur||0); prev=Number(prev||0);
+    if(prev===0 && cur===0) return {text:'sem variação',cls:'neutral',num:0,icon:'•'};
+    if(prev===0 && cur>0) return {text:'novo movimento',cls:'up',num:100,icon:'↑'};
+    const n=((cur-prev)/Math.abs(prev))*100;
+    return {text:(n>=0?'+':'')+n.toLocaleString('pt-BR',{maximumFractionDigits:1})+'%',cls:n>0?'up':(n<0?'down':'neutral'),num:n,icon:n>0?'↑':(n<0?'↓':'•')};
+  }
+  function score(cur,prev,cash){
+    let s=50;
+    if(cur.entrada>0) s+=12; else s-=10;
+    if(cur.lucro>0) s+=18; else if(cur.lucro<0) s-=20;
+    if(cur.margem>=25) s+=16; else if(cur.margem>=10) s+=8; else if(cur.entrada>0) s-=8;
+    if(prev.entrada>0 && cur.entrada>prev.entrada) s+=8;
+    if(prev.lucro!==0 && cur.lucro>prev.lucro) s+=8;
+    if(cash<0) s-=18;
+    return Math.max(0,Math.min(100,Math.round(s)));
+  }
+  function status(score,cur,prev,cash){
+    if(cash<0) return ['Caixa negativo: corrigir antes de crescer.','O caixa geral está negativo. Priorize receber pendências, reduzir saídas e evitar novas retiradas até estabilizar.','Revisar caixa e contas pendentes agora.'];
+    if(cur.entrada<=0) return ['Sem vendas registradas neste mês.','Ainda não existem entradas no mês atual. Para acompanhar crescimento, registre vendas, serviços ou recebimentos assim que acontecerem.','Registrar as primeiras vendas do mês.'];
+    if(cur.lucro<0) return ['Crescimento com prejuízo operacional.','O mês tem entradas, mas as saídas estão maiores. Crescer assim aumenta risco, porque vender mais não garante sobra.','Revisar custos, estoque, taxas e preço de venda.'];
+    if(prev.entrada>0 && cur.entrada>prev.entrada && cur.lucro>=prev.lucro) return ['Crescimento saudável.','As entradas cresceram e o resultado operacional acompanha a evolução. Mantenha controle de despesas e reinvista com cautela.','Reinvestir uma parte e manter reserva do negócio.'];
+    if(prev.entrada>0 && cur.entrada>prev.entrada && cur.lucro<prev.lucro) return ['Vendas cresceram, mas lucro piorou.','O faturamento subiu, porém o lucro não acompanhou. Isso pode indicar custo maior, desconto alto ou precificação apertada.','Comparar despesas e margem por produto.'];
+    if(cur.margem>=25) return ['Mês positivo com boa margem.','O negócio está gerando lucro com uma margem saudável. O próximo passo é acompanhar estoque, metas e contas futuras.','Aumentar vendas sem perder margem.'];
+    if(cur.margem>0) return ['Mês positivo, margem apertada.','Existe lucro, mas a margem ainda está baixa. Um aumento pequeno nos custos pode consumir o resultado.','Ajustar preço, fornecedor ou mix de produtos.'];
+    return ['Acompanhamento iniciado.','O Dymivra já consegue comparar este mês com o mês anterior. Conforme vocês registrarem mais movimentos, a leitura ficará mais precisa.','Continuar registrando entradas, saídas e vendas com estoque.'];
+  }
+  function topExpense(expenses){ const arr=Object.entries(expenses||{}).sort((a,b)=>b[1]-a[1]); return arr[0] ? `${arr[0][0]} (${brl(arr[0][1])})` : 'Nenhuma saída no mês'; }
+  function setText(id,value){ const el=$(id); if(el) el.textContent=value; }
+  function maxAbs(values){ return Math.max(1,...values.map(v=>Math.abs(Number(v||0)))); }
+  function barWidth(v,max){ return Math.max(5,Math.min(100,Math.abs(Number(v||0))/max*100)); }
+  function kpiClass(kind,cur,prev){ if(kind==='saida') return cur>prev && prev>0?'warn':(cur<prev?'good':''); if(kind==='lucro'||kind==='margem') return cur<0?'bad':(cur>prev?'good':''); if(kind==='entrada') return cur>prev?'good':(cur<prev?'bad':''); return ''; }
+  function ensurePanel(){
+    const business=document.querySelector('[data-screen-block][data-screens="business"]') || document.querySelector('[data-screens="business"]');
+    if(!business) return null;
+    let panel=$('dym862GrowthPanel');
+    if(panel) return panel;
+    panel=document.createElement('section');
+    panel.id='dym862GrowthPanel';
+    panel.className='dym862-growth-panel';
+    panel.innerHTML=`
+      <div class="dym862-head">
+        <div>
+          <div class="dym862-kicker">Crescimento mensal</div>
+          <h3 class="dym862-title">Evolução do negócio</h3>
+          <div class="dym862-sub">Compare o mês atual com o mês anterior para saber se a operação está vendendo mais, gastando melhor e crescendo com lucro.</div>
+        </div>
+        <div class="dym862-badge" id="dym862PeriodBadge">📈 Comparativo mensal</div>
+      </div>
+      <div class="dym862-hero">
+        <div class="dym862-score-card">
+          <div class="dym862-score-ring" id="dym862ScoreRing"><div class="dym862-score-inner"><span class="dym862-score-number" id="dym862Score">0</span><span class="dym862-score-label">score de crescimento</span></div></div>
+          <div class="dym862-score-note" id="dym862ScoreNote">Registre movimentações para medir a evolução.</div>
+        </div>
+        <div class="dym862-diagnosis-card">
+          <h4 id="dym862DiagnosisTitle">Aguardando dados do negócio</h4>
+          <p id="dym862DiagnosisText">O Dymivra vai comparar entradas, saídas, lucro e margem entre os meses.</p>
+          <div class="dym862-advice" id="dym862NextStep"><strong>Próximo passo:</strong> registre entradas e saídas para acompanhar crescimento real.</div>
+          <div class="dym862-bars" id="dym862Bars"></div>
+        </div>
+      </div>
+      <div class="dym862-grid">
+        <div class="dym862-kpi" id="dym862KpiRevenue"><span>Entradas</span><strong id="dym862Revenue">R$ 0,00</strong><small>Mês anterior: <b id="dym862PrevRevenue">R$ 0,00</b></small><div class="dym862-delta" id="dym862RevenueDelta">sem variação</div></div>
+        <div class="dym862-kpi" id="dym862KpiExpense"><span>Saídas</span><strong id="dym862Expense">R$ 0,00</strong><small>Mês anterior: <b id="dym862PrevExpense">R$ 0,00</b></small><div class="dym862-delta" id="dym862ExpenseDelta">sem variação</div></div>
+        <div class="dym862-kpi" id="dym862KpiProfit"><span>Lucro</span><strong id="dym862Profit">R$ 0,00</strong><small>Mês anterior: <b id="dym862PrevProfit">R$ 0,00</b></small><div class="dym862-delta" id="dym862ProfitDelta">sem variação</div></div>
+        <div class="dym862-kpi" id="dym862KpiMargin"><span>Margem</span><strong id="dym862Margin">0%</strong><small>Mês anterior: <b id="dym862PrevMargin">0%</b></small><div class="dym862-delta" id="dym862MarginDelta">sem variação</div></div>
+      </div>
+      <div class="dym862-grid">
+        <div class="dym862-kpi"><span>Caixa atual</span><strong id="dym862Cash">R$ 0,00</strong><small>Entradas + investimentos − saídas − retiradas</small></div>
+        <div class="dym862-kpi"><span>Maior despesa</span><strong id="dym862TopExpense">—</strong><small>Categoria que mais pesou no mês</small></div>
+        <div class="dym862-kpi"><span>Investimentos</span><strong id="dym862Investments">R$ 0,00</strong><small>Capital colocado neste mês</small></div>
+        <div class="dym862-kpi"><span>Retiradas</span><strong id="dym862Withdrawals">R$ 0,00</strong><small>Saída para sócios neste mês</small></div>
+      </div>
+      <div class="dym862-actions">
+        <div>Use esse comparativo para decidir se a loja deve comprar mais estoque, segurar custos, ajustar preço ou reinvestir com segurança.</div>
+        <button type="button" onclick="dymivra862CopyGrowthReport()">Copiar comparativo</button>
+      </div>`;
+    const anchor=$('dym861BillsPanel') || $('dym859GoalsPanel') || $('dym856StockPanel') || $('dym855HealthPanel') || document.querySelector('[data-screens="business"] .business-history-card');
+    if(anchor) anchor.insertAdjacentElement('afterend',panel); else business.appendChild(panel);
+    return panel;
+  }
+  function updateDelta(id,d){ const el=$(id); if(!el) return; el.className='dym862-delta '+d.cls; el.textContent=d.icon+' '+d.text; }
+  function render(){
+    const panel=ensurePanel(); if(!panel) return;
+    const list=getList(); const curKey=currentMonth(); const prevKey=addMonth(curKey,-1);
+    const cur=totalsFor(list,curKey); const prev=totalsFor(list,prevKey); const cash=allCash(list); const sc=score(cur,prev,cash); const diag=status(sc,cur,prev,cash);
+    setText('dym862PeriodBadge','📈 '+monthLabel(curKey)+' vs '+monthLabel(prevKey));
+    setText('dym862Score',String(sc)); const ring=$('dym862ScoreRing'); if(ring) ring.style.background=`conic-gradient(#22d3ee 0deg, #22c55e ${Math.round(sc*3.6)}deg, rgba(255,255,255,.08) ${Math.round(sc*3.6)}deg 360deg)`;
+    setText('dym862ScoreNote', sc>=75?'Crescimento forte com controle.':sc>=55?'Crescimento em acompanhamento.':sc>=35?'Atenção: crescimento ainda frágil.':'Risco alto: revise a operação.');
+    setText('dym862DiagnosisTitle',diag[0]); setText('dym862DiagnosisText',diag[1]); const nx=$('dym862NextStep'); if(nx) nx.innerHTML='<strong>Próximo passo:</strong> '+esc(diag[2]);
+    setText('dym862Revenue',brl(cur.entrada)); setText('dym862PrevRevenue',brl(prev.entrada)); updateDelta('dym862RevenueDelta',change(cur.entrada,prev.entrada));
+    setText('dym862Expense',brl(cur.saida)); setText('dym862PrevExpense',brl(prev.saida)); const expDelta=change(cur.saida,prev.saida); if(expDelta.cls==='up') expDelta.cls='warn'; updateDelta('dym862ExpenseDelta',expDelta);
+    setText('dym862Profit',brl(cur.lucro)); setText('dym862PrevProfit',brl(prev.lucro)); updateDelta('dym862ProfitDelta',change(cur.lucro,prev.lucro));
+    setText('dym862Margin',pct(cur.margem)); setText('dym862PrevMargin',pct(prev.margem)); updateDelta('dym862MarginDelta',change(cur.margem,prev.margem));
+    setText('dym862Cash',brl(cash)); setText('dym862TopExpense',topExpense(cur.expenses)); setText('dym862Investments',brl(cur.investimento)); setText('dym862Withdrawals',brl(cur.retirada));
+    [['dym862KpiRevenue','entrada',cur.entrada,prev.entrada],['dym862KpiExpense','saida',cur.saida,prev.saida],['dym862KpiProfit','lucro',cur.lucro,prev.lucro],['dym862KpiMargin','margem',cur.margem,prev.margem]].forEach(([id,kind,c,p])=>{const el=$(id); if(el) el.className='dym862-kpi '+kpiClass(kind,c,p);});
+    const max=maxAbs([cur.entrada,prev.entrada,cur.saida,prev.saida,cur.lucro,prev.lucro]);
+    const bars=$('dym862Bars'); if(bars){ bars.innerHTML=[['Entradas',cur.entrada,prev.entrada],['Saídas',cur.saida,prev.saida],['Lucro',cur.lucro,prev.lucro]].map(([label,c,p])=>`<div class="dym862-bar-row"><div class="dym862-bar-top"><span>${label}</span><strong>${brl(c)} atual · ${brl(p)} anterior</strong></div><div class="dym862-track"><div class="dym862-fill" style="width:${barWidth(c,max)}%"></div></div><div class="dym862-track" style="margin-top:6px"><div class="dym862-fill prev" style="width:${barWidth(p,max)}%"></div></div></div>`).join(''); }
+  }
+  function buildReport(){ const list=getList(); const curKey=currentMonth(); const prevKey=addMonth(curKey,-1); const cur=totalsFor(list,curKey); const prev=totalsFor(list,prevKey); const cash=allCash(list); const sc=score(cur,prev,cash); const diag=status(sc,cur,prev,cash); return [`Comparativo Dymivra Business — ${monthLabel(curKey)} vs ${monthLabel(prevKey)}`,'',`Score de crescimento: ${sc}/100`,`Diagnóstico: ${diag[0]}`,'',`Entradas atuais: ${brl(cur.entrada)} | anterior: ${brl(prev.entrada)}`,`Saídas atuais: ${brl(cur.saida)} | anterior: ${brl(prev.saida)}`,`Lucro atual: ${brl(cur.lucro)} | anterior: ${brl(prev.lucro)}`,`Margem atual: ${pct(cur.margem)} | anterior: ${pct(prev.margem)}`,`Caixa atual: ${brl(cash)}`,`Maior despesa do mês: ${topExpense(cur.expenses)}`,`Investimentos do mês: ${brl(cur.investimento)}`,`Retiradas do mês: ${brl(cur.retirada)}`,'','Análise:',diag[1],'','Próximo passo:',diag[2]].join('\n'); }
+  function ensureModal(){ let o=$('dym862CopyOverlay'); if(o) return o; o=document.createElement('div'); o.id='dym862CopyOverlay'; o.className='dym862-modal-overlay'; o.innerHTML=`<div class="dym862-modal" role="dialog" aria-modal="true"><div class="dym862-modal-top"><div class="dym862-modal-icon">📈</div><div><div class="dym862-modal-kicker">Dymivra Business</div><h3 class="dym862-modal-title" id="dym862ModalTitle">Comparativo copiado</h3></div></div><p class="dym862-modal-text" id="dym862ModalText">O comparativo mensal foi copiado para a área de transferência.</p><textarea id="dym862CopyText" readonly></textarea><div class="dym862-modal-actions"><button type="button" class="secondary" onclick="dymivra862CloseCopyModal()">Fechar</button><button type="button" onclick="dymivra862CloseCopyModal()">OK</button></div></div>`; o.addEventListener('click',e=>{if(e.target===o) closeModal();}); document.body.appendChild(o); return o; }
+  function closeModal(){ const o=$('dym862CopyOverlay'); if(o) o.classList.remove('show'); }
+  window.dymivra862CloseCopyModal=closeModal;
+  window.dymivra862CopyGrowthReport=async function(){ const txt=buildReport(); let ok=false; try{ if(navigator.clipboard?.writeText){ await navigator.clipboard.writeText(txt); ok=true; } }catch{} const o=ensureModal(); setText('dym862ModalTitle',ok?'Comparativo copiado':'Copie manualmente'); setText('dym862ModalText',ok?'O comparativo mensal foi copiado para a área de transferência.':'O navegador bloqueou a cópia automática. Selecione o texto abaixo e copie.'); const area=$('dym862CopyText'); if(area){ area.value=txt; setTimeout(()=>{ if(!ok){ try{area.focus();area.select();}catch{} } },120); } o.classList.add('show'); };
+  function install(){ ensurePanel(); render(); }
+  const oldShow=window.showAppScreen; if(typeof oldShow==='function'){ window.showAppScreen=function(screen){ const r=oldShow.apply(this,arguments); if(screen==='business'||screen==='all'){ setTimeout(install,350); setTimeout(render,900); } return r; }; }
+  document.addEventListener('DOMContentLoaded',()=>{ setTimeout(install,900); setTimeout(render,1800); });
+  if(document.readyState!=='loading'){ setTimeout(install,900); setTimeout(render,1800); }
+  setInterval(()=>{ try{ if(document.querySelector('[data-screen-block][data-screens="business"]')||document.querySelector('[data-screens="business"]')) render(); }catch{} },2800);
+  window.DYMIVRA862={render,install};
 })();
 </script>
 
