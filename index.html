@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Dymivra 8.5.9 — Business Metas do Negócio -->
+<!-- Dymivra 8.6.1 — Business Contas a Pagar e Receber -->
 
 <html lang="pt-BR">
 <head>
@@ -15,7 +15,7 @@
 <meta content="#030712" name="msapplication-TileColor"/>
 <meta content="no" name="msapplication-tap-highlight"/>
 <link href="/manifest.json?v=6F16" rel="manifest"/>
-<title>Dymivra 8.6.1 — Mês Premium com Seleção Animada</title>
+<title>Dymivra 8.6.1 — Business Contas a Pagar e Receber</title>
 <meta content="#07111f" name="theme-color"/>
 <link href="/icon-192.png?v=6F16" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/icon-192.png?v=6F16" rel="apple-touch-icon"/>
@@ -22872,9 +22872,9 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
 
 
 <!-- ==========================================================
-     Dymivra 8.6.1 — Mês Premium com Seleção Animada
+     Dymivra 8.6.0 — Business Mês Premium Corrigido
      Troca o seletor nativo de mês do navegador por um seletor
-     premium dentro do padrão visual do app, agora com seleção animada do mês. Não altera o botão Topo.
+     premium dentro do padrão visual do app. Não altera o botão Topo.
      ========================================================== -->
 <style id="dymivra860-premium-month-style">
 .dym860-month-trigger{
@@ -22999,7 +22999,6 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
   width:100%!important;
   height:54px!important;
   margin:0!important;
-  padding:0 12px!important;
   border-radius:18px!important;
   border:1px solid rgba(255,255,255,.09)!important;
   background:linear-gradient(180deg,rgba(15,23,42,.82),rgba(2,8,23,.58))!important;
@@ -23007,88 +23006,14 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
   font-size:14px!important;
   font-weight:950!important;
   box-shadow:none!important;
-  position:relative!important;
-  overflow:hidden!important;
-  isolation:isolate!important;
-  transition:filter .16s ease,border-color .16s ease,box-shadow .16s ease,background .16s ease!important;
-}
-.dym860-month-chip:before{
-  content:""!important;
-  position:absolute!important;
-  left:14px!important;
-  top:50%!important;
-  transform:translateY(-50%) scale(.72)!important;
-  width:24px!important;
-  height:24px!important;
-  border-radius:999px!important;
-  display:grid!important;
-  place-items:center!important;
-  opacity:0!important;
-  color:#03101d!important;
-  background:linear-gradient(135deg,#e0f2fe,#67e8f9)!important;
-  box-shadow:0 0 18px rgba(103,232,249,.34)!important;
-  z-index:2!important;
-}
-.dym860-month-chip:after{
-  content:""!important;
-  position:absolute!important;
-  inset:-80% -35%!important;
-  background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.42) 50%,transparent 64%)!important;
-  opacity:0!important;
-  transform:translateX(-70%) rotate(10deg)!important;
-  pointer-events:none!important;
-  z-index:1!important;
-}
-.dym860-month-chip:hover{
-  filter:brightness(1.08)!important;
-  border-color:rgba(103,232,249,.20)!important;
-  transform:none!important;
-}
-.dym860-month-chip:active{
-  filter:brightness(1.16)!important;
-  transform:scale(.985)!important;
 }
 .dym860-month-chip.active{
-  padding-left:38px!important;
-  border-color:rgba(103,232,249,.72)!important;
+  border-color:rgba(103,232,249,.46)!important;
   background:
-    radial-gradient(circle at 20% 0%,rgba(34,211,238,.34),transparent 48%),
-    radial-gradient(circle at 92% 20%,rgba(250,204,21,.18),transparent 40%),
-    linear-gradient(135deg,rgba(14,165,233,.98),rgba(37,99,235,.92),rgba(139,92,246,.78))!important;
+    radial-gradient(circle at 20% 0%,rgba(34,211,238,.22),transparent 45%),
+    linear-gradient(135deg,rgba(14,165,233,.95),rgba(139,92,246,.70))!important;
   color:#fff!important;
-  box-shadow:
-    0 0 0 2px rgba(103,232,249,.12),
-    0 0 26px rgba(34,211,238,.28),
-    inset 0 1px 0 rgba(255,255,255,.16)!important;
-  animation:dym860MonthSelectedPop .30s ease both!important;
-}
-.dym860-month-chip.active:before{
-  content:"✓"!important;
-  opacity:1!important;
-  animation:dym860MonthCheckIn .24s ease both!important;
-}
-.dym860-month-chip.active:after{
-  opacity:.78!important;
-  animation:dym860MonthShine .70s ease both!important;
-}
-.dym860-month-chip.dym860-tap-feedback{
-  filter:brightness(1.18)!important;
-  border-color:rgba(103,232,249,.70)!important;
-}
-@keyframes dym860MonthSelectedPop{
-  0%{transform:scale(.96);box-shadow:0 0 0 0 rgba(103,232,249,.0),0 0 0 rgba(34,211,238,.0)}
-  58%{transform:scale(1.035);box-shadow:0 0 0 5px rgba(103,232,249,.12),0 0 32px rgba(34,211,238,.32)}
-  100%{transform:scale(1);box-shadow:0 0 0 2px rgba(103,232,249,.12),0 0 26px rgba(34,211,238,.28)}
-}
-@keyframes dym860MonthCheckIn{
-  0%{opacity:0;transform:translateY(-50%) scale(.52) rotate(-18deg)}
-  75%{opacity:1;transform:translateY(-50%) scale(1.08) rotate(0deg)}
-  100%{opacity:1;transform:translateY(-50%) scale(1) rotate(0deg)}
-}
-@keyframes dym860MonthShine{
-  0%{opacity:0;transform:translateX(-75%) rotate(10deg)}
-  25%{opacity:.80}
-  100%{opacity:0;transform:translateX(75%) rotate(10deg)}
+  box-shadow:0 0 24px rgba(34,211,238,.16)!important;
 }
 .dym860-month-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;margin-top:14px!important}
 .dym860-month-actions button{margin:0!important;height:52px!important;border-radius:18px!important}
@@ -23119,7 +23044,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
           <div>
             <div class="dym860-month-kicker">Calendário premium</div>
             <h3 class="dym860-month-title" id="dym860MonthTitle">Definir mês da meta</h3>
-            <div class="dym860-month-sub">Escolha o mês do negócio; o mês selecionado fica marcado com brilho premium.</div>
+            <div class="dym860-month-sub">Escolha o mês do negócio sem usar o seletor padrão do navegador.</div>
           </div>
           <button type="button" class="dym860-month-close" id="dym860MonthClose" aria-label="Fechar">×</button>
         </div>
@@ -23146,16 +23071,8 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
   function renderModal(){
     const year=el('dym860YearValue'); if(year) year.textContent=String(selectedYear);
     const grid=el('dym860MonthGrid'); if(!grid) return;
-    grid.innerHTML=shortNames.map((name,i)=>{
-      const active=i+1===selectedMonth;
-      return `<button type="button" class="dym860-month-chip ${active?'active':''}" data-month="${i+1}" aria-pressed="${active?'true':'false'}" aria-label="${active?'Mês selecionado: ':''}${name}">${name}</button>`;
-    }).join('');
-    grid.querySelectorAll('[data-month]').forEach(btn=>btn.addEventListener('click',()=>{
-      selectedMonth=Number(btn.dataset.month);
-      try{ if(navigator.vibrate) navigator.vibrate(10); }catch(e){}
-      btn.classList.add('dym860-tap-feedback');
-      setTimeout(()=>renderModal(),70);
-    }));
+    grid.innerHTML=shortNames.map((name,i)=>`<button type="button" class="dym860-month-chip ${i+1===selectedMonth?'active':''}" data-month="${i+1}">${name}</button>`).join('');
+    grid.querySelectorAll('[data-month]').forEach(btn=>btn.addEventListener('click',()=>{selectedMonth=Number(btn.dataset.month);renderModal();}));
   }
   function openModal(){
     const input=el('dym859GoalMonth');
@@ -23215,6 +23132,146 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
   setTimeout(()=>{try{install();}catch(e){}},800);
   setTimeout(()=>{try{clearInterval(timer);}catch(e){}},20000);
   setInterval(()=>{try{install();updateButton(false);}catch(e){}},2200);
+})();
+</script>
+
+
+
+<style id="dymivra861-business-bills-style">
+/* ==========================================================
+   Dymivra 8.6.1 • Business Contas a Pagar e Receber
+   Escopo: somente Dymivra Business. Botão Topo não alterado.
+   ========================================================== */
+.dym861-bills-panel{
+  position:relative!important;
+  overflow:hidden!important;
+  margin-top:18px!important;
+  padding:20px!important;
+  border-radius:30px!important;
+  border:1px solid rgba(103,232,249,.22)!important;
+  background:
+    radial-gradient(circle at 6% 0%,rgba(34,211,238,.16),transparent 34%),
+    radial-gradient(circle at 100% 8%,rgba(139,92,246,.13),transparent 34%),
+    linear-gradient(180deg,rgba(9,18,38,.94),rgba(2,8,23,.92))!important;
+  box-shadow:0 24px 70px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.055)!important;
+  backdrop-filter:blur(18px)!important;
+}
+.dym861-bills-panel:before{content:""!important;position:absolute!important;left:22px!important;right:22px!important;top:0!important;height:3px!important;border-radius:999px!important;background:linear-gradient(90deg,#22d3ee,#8b5cf6,#facc15,#22c55e)!important;opacity:.88!important;pointer-events:none!important}
+.dym861-bills-panel>*{position:relative!important;z-index:1!important}
+.dym861-head{display:flex!important;align-items:flex-start!important;justify-content:space-between!important;gap:14px!important;margin-bottom:14px!important}
+.dym861-kicker{color:#67e8f9!important;font-size:12px!important;font-weight:950!important;letter-spacing:.16em!important;text-transform:uppercase!important;margin-bottom:7px!important}
+.dym861-title{margin:0!important;color:#fff!important;font-size:clamp(26px,3.3vw,40px)!important;line-height:1.02!important;letter-spacing:-.075em!important;font-weight:950!important}
+.dym861-sub{margin-top:8px!important;color:#cbd5e1!important;line-height:1.52!important;max-width:900px!important;font-size:14px!important}
+.dym861-badge{display:inline-flex!important;align-items:center!important;gap:8px!important;min-width:max-content!important;padding:9px 11px!important;border-radius:999px!important;border:1px solid rgba(34,211,238,.22)!important;background:rgba(34,211,238,.08)!important;color:#cffafe!important;font-size:12px!important;font-weight:950!important}
+.dym861-summary-grid{display:grid!important;grid-template-columns:repeat(5,1fr)!important;gap:10px!important;margin:14px 0!important}
+.dym861-kpi{position:relative!important;overflow:hidden!important;min-height:122px!important;border-radius:22px!important;border:1px solid rgba(255,255,255,.08)!important;background:radial-gradient(circle at 95% 100%,rgba(34,211,238,.10),transparent 52%),linear-gradient(180deg,rgba(15,23,42,.72),rgba(2,8,23,.54))!important;padding:14px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)!important}
+.dym861-kpi.pay{border-color:rgba(251,146,60,.21)!important}.dym861-kpi.receive{border-color:rgba(34,197,94,.21)!important}.dym861-kpi.warn{border-color:rgba(250,204,21,.23)!important}.dym861-kpi.bad{border-color:rgba(248,113,113,.24)!important}
+.dym861-kpi span{display:block!important;color:#94a3b8!important;font-size:11px!important;font-weight:950!important;letter-spacing:.08em!important;text-transform:uppercase!important;margin-bottom:8px!important}
+.dym861-kpi strong{display:block!important;color:#fff!important;font-size:clamp(24px,4vw,34px)!important;line-height:1.02!important;letter-spacing:-.07em!important;font-weight:950!important}
+.dym861-kpi small{display:block!important;color:#9fb4d8!important;font-size:12px!important;line-height:1.35!important;margin-top:8px!important}
+.dym861-main{display:grid!important;grid-template-columns:.88fr 1.12fr!important;gap:14px!important;align-items:start!important}
+.dym861-form,.dym861-list-card,.dym861-actions-card{border:1px solid rgba(255,255,255,.08)!important;border-radius:26px!important;background:rgba(2,8,23,.34)!important;padding:16px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)!important}
+.dym861-form-title,.dym861-list-title{font-size:20px!important;font-weight:950!important;color:#fff!important;letter-spacing:-.04em!important;margin-bottom:5px!important}
+.dym861-form-copy,.dym861-list-copy{color:#9fb4d8!important;font-size:13px!important;line-height:1.45!important;margin-bottom:12px!important}
+.dym861-form-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important}
+.dym861-form-grid label{margin:0 0 6px!important;color:#c7d7f2!important;font-size:12px!important;font-weight:850!important}
+.dym861-form-grid input,.dym861-form-grid select,.dym861-form-grid textarea{width:100%!important;border-radius:17px!important;border:1px solid rgba(255,255,255,.10)!important;background:linear-gradient(180deg,rgba(3,10,25,.84),rgba(2,6,17,.72))!important;color:#fff!important;font-weight:850!important;min-height:52px!important;padding:13px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)!important}
+.dym861-form-grid textarea{grid-column:1/-1!important;min-height:86px!important;line-height:1.45!important;font-weight:700!important}
+.dym861-form-grid select option{background:#020617!important;color:#fff!important}
+.dym861-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:9px!important;margin-top:10px!important}
+.dym861-actions button{margin:0!important;border-radius:18px!important;min-height:52px!important}.dym861-actions .secondary{background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.10)!important;color:#dbeafe!important;box-shadow:none!important}
+.dym861-status{min-height:20px!important;margin-top:10px!important;font-size:13px!important;line-height:1.45!important;color:#9fb4d8!important}.dym861-status.ok{color:#86efac!important}.dym861-status.err{color:#fecaca!important}.dym861-status.warn{color:#fde68a!important}
+.dym861-filter-bar{display:flex!important;gap:8px!important;flex-wrap:wrap!important;margin:8px 0 12px!important}
+.dym861-filter-bar button{width:auto!important;min-width:max-content!important;margin:0!important;padding:9px 11px!important;border-radius:999px!important;border:1px solid rgba(255,255,255,.09)!important;background:rgba(255,255,255,.045)!important;color:#dbeafe!important;box-shadow:none!important;font-size:12px!important}
+.dym861-filter-bar button.active{border-color:rgba(103,232,249,.36)!important;background:linear-gradient(135deg,rgba(14,165,233,.85),rgba(139,92,246,.55))!important;color:#fff!important}
+.dym861-list{display:grid!important;gap:10px!important}
+.dym861-empty{padding:18px!important;text-align:center!important;border-radius:20px!important;border:1px dashed rgba(255,255,255,.12)!important;color:#9fb4d8!important;background:rgba(255,255,255,.025)!important;line-height:1.45!important}
+.dym861-bill{position:relative!important;overflow:hidden!important;display:grid!important;grid-template-columns:auto 1fr auto!important;gap:12px!important;align-items:center!important;border-radius:24px!important;border:1px solid rgba(255,255,255,.08)!important;background:linear-gradient(180deg,rgba(15,23,42,.78),rgba(2,8,23,.62))!important;padding:13px!important}
+.dym861-bill:before{content:""!important;position:absolute!important;left:0!important;top:14px!important;bottom:14px!important;width:4px!important;border-radius:999px!important;background:#22d3ee!important}
+.dym861-bill.pay:before{background:#fb923c!important}.dym861-bill.receive:before{background:#22c55e!important}.dym861-bill.late:before{background:#ef4444!important}.dym861-bill.done{opacity:.74!important}.dym861-bill.cancelled{opacity:.52!important}
+.dym861-bill-icon{width:48px!important;height:48px!important;border-radius:18px!important;display:grid!important;place-items:center!important;background:rgba(34,211,238,.08)!important;border:1px solid rgba(255,255,255,.08)!important;font-size:22px!important}
+.dym861-bill-main b{display:block!important;color:#fff!important;font-size:17px!important;letter-spacing:-.035em!important;margin-bottom:5px!important}
+.dym861-bill-main span{display:block!important;color:#9fb4d8!important;font-size:13px!important;line-height:1.38!important}
+.dym861-bill-value{text-align:right!important;min-width:132px!important}.dym861-bill-value strong{display:block!important;font-size:22px!important;letter-spacing:-.055em!important;color:#fff!important;margin-bottom:7px!important}.dym861-bill-value .pay strong{color:#fdba74!important}.dym861-bill-value .receive strong{color:#86efac!important}
+.dym861-bill-tag{display:inline-flex!important;align-items:center!important;gap:5px!important;border-radius:999px!important;padding:6px 8px!important;border:1px solid rgba(255,255,255,.10)!important;background:rgba(255,255,255,.05)!important;color:#e5e7eb!important;font-size:11px!important;font-weight:900!important;white-space:nowrap!important}
+.dym861-card-actions{display:flex!important;gap:7px!important;justify-content:flex-end!important;flex-wrap:wrap!important;margin-top:9px!important}.dym861-card-actions button{width:auto!important;min-width:0!important;margin:0!important;padding:8px 9px!important;border-radius:13px!important;font-size:11px!important;box-shadow:none!important}.dym861-card-actions .settle{background:linear-gradient(135deg,#16a34a,#22c55e)!important}.dym861-card-actions .delete{background:linear-gradient(135deg,#0ea5e9,#8b5cf6)!important}
+.dym861-actions-card{margin-top:14px!important;border-color:rgba(250,204,21,.18)!important;background:radial-gradient(circle at 0 0,rgba(250,204,21,.08),transparent 34%),rgba(2,8,23,.30)!important;color:#fef3c7!important;line-height:1.55!important}
+.dym861-actions-card strong{color:#fff!important}.dym861-actions-card ul{margin:9px 0 0 18px!important;padding:0!important}.dym861-actions-card li{margin:6px 0!important;color:#fde68a!important}
+.dym861-modal-overlay{position:fixed!important;inset:0!important;z-index:999999!important;display:none!important;align-items:center!important;justify-content:center!important;padding:18px!important;background:rgba(2,6,23,.76)!important;backdrop-filter:blur(16px)!important}.dym861-modal-overlay.show{display:flex!important}
+.dym861-modal{width:min(520px,calc(100vw - 28px))!important;border-radius:30px!important;border:1px solid rgba(103,232,249,.24)!important;background:radial-gradient(circle at 0 0,rgba(34,211,238,.16),transparent 34%),radial-gradient(circle at 100% 0,rgba(139,92,246,.14),transparent 32%),linear-gradient(180deg,rgba(15,23,42,.98),rgba(2,8,23,.98))!important;box-shadow:0 28px 80px rgba(0,0,0,.56),inset 0 1px 0 rgba(255,255,255,.065)!important;padding:18px!important;max-height:min(86vh,720px)!important;overflow:auto!important}
+.dym861-modal-top{display:flex!important;align-items:flex-start!important;gap:12px!important;margin-bottom:12px!important}.dym861-modal-icon{width:52px!important;height:52px!important;border-radius:19px!important;display:grid!important;place-items:center!important;background:rgba(34,211,238,.10)!important;border:1px solid rgba(103,232,249,.18)!important;font-size:24px!important}.dym861-modal-kicker{font-size:11px!important;font-weight:950!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:#67e8f9!important;margin-bottom:6px!important}.dym861-modal-title{margin:0!important;color:#fff!important;font-size:27px!important;line-height:1.02!important;letter-spacing:-.07em!important}.dym861-modal-text{color:#cbd5e1!important;line-height:1.55!important;margin:10px 0 12px!important}.dym861-modal-preview{border-radius:20px!important;border:1px solid rgba(255,255,255,.08)!important;background:rgba(255,255,255,.04)!important;padding:12px!important;color:#e5e7eb!important;line-height:1.45!important}.dym861-modal-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;margin-top:14px!important}.dym861-modal-actions button{margin:0!important;border-radius:18px!important}.dym861-modal-actions .secondary{background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.10)!important;color:#dbeafe!important;box-shadow:none!important}
+@media(max-width:980px){.dym861-head{display:block!important}.dym861-badge{margin-top:10px!important}.dym861-summary-grid{grid-template-columns:1fr 1fr!important}.dym861-main{grid-template-columns:1fr!important}}
+@media(max-width:640px){.dym861-bills-panel{padding:14px!important;border-radius:24px!important}.dym861-summary-grid,.dym861-form-grid,.dym861-actions{grid-template-columns:1fr!important}.dym861-kpi strong{font-size:clamp(31px,8vw,42px)!important}.dym861-bill{grid-template-columns:1fr!important;gap:9px!important}.dym861-bill-icon{width:46px!important;height:46px!important}.dym861-bill-value{text-align:left!important;min-width:0!important}.dym861-card-actions{justify-content:flex-start!important}.dym861-title{font-size:30px!important}.dym861-modal-actions{grid-template-columns:1fr!important}}
+.performance-mode .dym861-bills-panel,.performance-mode .dym861-form,.performance-mode .dym861-list-card,.performance-mode .dym861-actions-card,.performance-mode .dym861-modal-overlay{backdrop-filter:none!important;box-shadow:0 8px 20px rgba(0,0,0,.22)!important}
+</style>
+<script type="module" id="dymivra861-business-bills-script">
+/* ==========================================================
+   Dymivra 8.6.1 • Business Contas a Pagar e Receber
+   - Salva em public.business_bills por usuário
+   - Ao liquidar, cria Entrada/Saída em public.business_movements
+   - Não altera botão Topo, login, IA, planos ou paywall
+   ========================================================== */
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
+(() => {
+  const SUPABASE_URL = "https://sqvqssdsrpdfvfxcnwwa.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_HfHYwaCI4kEPGWTtPIpvBw_96WL_UPu";
+  const supa = createClient(SUPABASE_URL, SUPABASE_KEY);
+  const $ = id => document.getElementById(id);
+  const TABLE = 'business_bills';
+  const MOVEMENTS = 'business_movements';
+  const STORE = 'dymivra_business_bills_local_v1_';
+  const FILTER = 'dymivra_business_bills_filter_v1';
+  const state = {items:[],user:null,source:'local',loaded:false,busy:false,pending:null,modalMode:''};
+  const brl = v => new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v||0));
+  const pad = n => String(n).padStart(2,'0');
+  const today = () => new Date().toISOString().slice(0,10);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const norm = v => Number(String(v||'').replace(/\./g,'').replace(',','.').replace(/[^0-9.-]/g,'')) || 0;
+  const parseDate = v => { v=String(v||'').trim(); if(/^\d{4}-\d{2}-\d{2}$/.test(v)) return v; const m=v.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})$/); if(m) return `${m[3]}-${pad(m[2])}-${pad(m[1])}`; return ''; };
+  const dateBR = iso => { try{ const d=parseDate(iso); if(!d) return 'Sem data'; const [y,m,dd]=d.split('-'); return `${dd}/${m}/${y}`; }catch{return 'Sem data'} };
+  const shortDue = iso => { const d=parseDate(iso); if(!d) return 'sem vencimento'; const now=today(); const days=Math.round((new Date(d+'T00:00:00') - new Date(now+'T00:00:00'))/86400000); if(days<0) return `atrasada há ${Math.abs(days)} dia(s)`; if(days===0) return 'vence hoje'; if(days===1) return 'vence amanhã'; return `vence em ${days} dia(s)`; };
+  const isSettled = b => ['pago','recebido','cancelado'].includes(String(b.status||''));
+  const isLate = b => !isSettled(b) && parseDate(b.due_date) && parseDate(b.due_date) < today();
+  const isSoon = b => { if(isSettled(b)) return false; const d=parseDate(b.due_date); if(!d) return false; const days=Math.round((new Date(d+'T00:00:00') - new Date(today()+'T00:00:00'))/86400000); return days>=0 && days<=7; };
+  function setText(id,v){ const el=$(id); if(el) el.textContent=v; }
+  function status(msg,mode=''){ const el=$('dym861BillStatus'); if(el){el.textContent=msg||''; el.className='dym861-status '+mode;} }
+  function toast(msg,type='info'){ try{ if(window.toast) return window.toast(msg,type); const wrap=$('toastWrap'); if(!wrap) return; const d=document.createElement('div'); d.className='toast '+type; d.textContent=msg; wrap.appendChild(d); setTimeout(()=>{d.style.opacity='0';setTimeout(()=>d.remove(),250)},3200);}catch{} }
+  function setBusy(btn,on,text){ if(!btn) return; if(!btn.dataset.originalText) btn.dataset.originalText=btn.textContent.trim(); btn.disabled=!!on; btn.textContent=on?(text||'Carregando...'):btn.dataset.originalText; }
+  async function getUser(){ try{ const {data}=await supa.auth.getSession(); state.user=data?.session?.user||null; return state.user;}catch{state.user=null;return null;} }
+  function localKey(){ return STORE+(state.user?.id || state.user?.email || 'guest'); }
+  function readLocal(){ try{ const x=JSON.parse(localStorage.getItem(localKey())||'[]'); return Array.isArray(x)?x.map(normBill):[]; }catch{return []} }
+  function writeLocal(list){ try{ localStorage.setItem(localKey(),JSON.stringify(list||[])); }catch{} }
+  function normBill(b){ return {id:String(b?.id||('bill_'+Date.now()+'_'+Math.random().toString(16).slice(2))), bill_type:String(b?.bill_type||b?.type||'pagar'), category:String(b?.category||'Outro'), amount:Number(b?.amount||0), due_date:parseDate(b?.due_date||b?.date)||today(), status:String(b?.status||'pendente'), payment_method:String(b?.payment_method||b?.method||'Pix'), partner_name:String(b?.partner_name||b?.partner||''), description:String(b?.description||''), movement_id:b?.movement_id||null, settled_at:b?.settled_at||null, created_at:b?.created_at||new Date().toISOString(), source:b?.source||state.source}; }
+  function payloadFromForm(){ const type=$('dym861BillType')?.value||'pagar'; const category=($('dym861BillCategory')?.value||'Outro').trim()||'Outro'; const amount=norm($('dym861BillAmount')?.value); const due=parseDate($('dym861BillDue')?.value); const statusValue=$('dym861BillState')?.value||'pendente'; if(amount<=0) throw new Error('Informe um valor maior que zero.'); if(!due) throw new Error('Informe o vencimento no formato DD/MM/AAAA.'); return {bill_type:type,category,amount,due_date:due,status:statusValue,payment_method:$('dym861BillMethod')?.value||'Pix',partner_name:($('dym861BillPartner')?.value||'').trim(),description:($('dym861BillDescription')?.value||'').trim()}; }
+  function clearForm(){ ['dym861BillAmount','dym861BillPartner','dym861BillDescription'].forEach(id=>{const el=$(id); if(el) el.value='';}); const due=$('dym861BillDue'); if(due) due.value = dateBR(today()); const st=$('dym861BillState'); if(st) st.value='pendente'; const tp=$('dym861BillType'); if(tp) tp.value='pagar'; const cat=$('dym861BillCategory'); if(cat) cat.value='Fornecedor'; const met=$('dym861BillMethod'); if(met) met.value='Pix'; status('Campos limpos.','ok'); }
+  async function load(){ const user=await getUser(); if(user){ try{ const {data,error}=await supa.from(TABLE).select('*').eq('user_id',user.id).order('due_date',{ascending:true}).order('created_at',{ascending:false}); if(error) throw error; state.items=(data||[]).map(x=>normBill({...x,source:'supabase'})); state.source='supabase'; state.loaded=true; render(); return; }catch(e){ console.warn('Dymivra 8.6.1 bills Supabase load:', e?.message||e); } } state.items=readLocal(); state.source='local'; state.loaded=true; render(); }
+  function summary(){ const list=state.items.map(normBill); let pagar=0,receber=0,late=0,soon=0,pending=0; list.forEach(b=>{ if(!isSettled(b)){ pending++; if(b.bill_type==='pagar') pagar+=b.amount; else receber+=b.amount; if(isLate(b)) late++; if(isSoon(b)) soon++; }}); return {pagar,receber,saldo:receber-pagar,late,soon,pending,count:list.length}; }
+  function filtered(){ let f=localStorage.getItem(FILTER)||'todos'; return state.items.map(normBill).filter(b=>{ if(f==='todos') return true; if(f==='pagar'||f==='receber') return b.bill_type===f; if(f==='pendente') return !isSettled(b); if(f==='atrasadas') return isLate(b); if(f==='liquidadas') return isSettled(b); return true; }).sort((a,b)=>parseDate(a.due_date).localeCompare(parseDate(b.due_date)) || String(b.created_at||'').localeCompare(String(a.created_at||''))); }
+  function recommendation(s){ if(s.late>0) return ['🚨 Prioridade: regularizar atrasadas',`Existem ${s.late} conta(s) atrasada(s). Antes de comprar mais estoque ou retirar dinheiro, resolva esses compromissos.`]; if(s.saldo<0) return ['⚠️ Caixa futuro pressionado','O total a pagar está maior que o total a receber. Planeje vendas, renegocie prazos ou segure retiradas.']; if(s.soon>0) return ['📅 Atenção aos próximos 7 dias',`Existem ${s.soon} compromisso(s) vencendo em breve. Confira o caixa antes de assumir novas compras.`]; if(s.receber>0 && s.saldo>0) return ['✅ Previsão positiva','As contas a receber superam as contas a pagar. Use essa folga com controle para reinvestir.']; return ['🧭 Próximo passo','Cadastre boletos, fornecedores, vendas no cartão, encomendas e parcelas para prever o caixa da operação.']; }
+  function ensurePanel(){ const business=document.querySelector('[data-screen-block][data-screens="business"]')||document.querySelector('[data-screens="business"]'); if(!business) return null; let panel=$('dym861BillsPanel'); if(panel) return panel; panel=document.createElement('div'); panel.id='dym861BillsPanel'; panel.className='dym861-bills-panel'; panel.innerHTML=`
+    <div class="dym861-head"><div><div class="dym861-kicker">Contas a pagar e receber</div><h3 class="dym861-title">Previsão de caixa do negócio</h3><div class="dym861-sub">Controle boletos, fornecedores, parcelas, vendas no cartão, encomendas e compromissos futuros. Quando marcar como pago ou recebido, o Dymivra cria a movimentação no Business automaticamente.</div></div><div class="dym861-badge" id="dym861BillBadge">Aguardando dados</div></div>
+    <div class="dym861-summary-grid"><div class="dym861-kpi pay"><span>A pagar</span><strong id="dym861PayTotal">R$ 0,00</strong><small>Compromissos pendentes</small></div><div class="dym861-kpi receive"><span>A receber</span><strong id="dym861ReceiveTotal">R$ 0,00</strong><small>Entradas futuras pendentes</small></div><div class="dym861-kpi"><span>Saldo previsto</span><strong id="dym861ForecastBalance">R$ 0,00</strong><small>A receber − a pagar</small></div><div class="dym861-kpi warn"><span>Próximos 7 dias</span><strong id="dym861SoonCount">0</strong><small>Vencimentos próximos</small></div><div class="dym861-kpi bad"><span>Atrasadas</span><strong id="dym861LateCount">0</strong><small>Precisam de atenção</small></div></div>
+    <div class="dym861-main"><div><div class="dym861-form"><div class="dym861-form-title">Adicionar conta</div><div class="dym861-form-copy">Cadastre o que ainda vai sair ou entrar. Use data em formato DD/MM/AAAA para manter o visual premium, sem seletor padrão do Android.</div><div class="dym861-form-grid"><div><label>Tipo</label><select id="dym861BillType"><option value="pagar">A pagar</option><option value="receber">A receber</option></select></div><div><label>Categoria</label><select id="dym861BillCategory"><option>Fornecedor</option><option>Aluguel</option><option>Boleto</option><option>Estoque</option><option>Marketing</option><option>Entrega</option><option>Taxa</option><option>Venda cartão</option><option>Encomenda</option><option>Cliente</option><option>Parcela</option><option>Equipamento</option><option>Outro</option></select></div><div><label>Valor</label><input id="dym861BillAmount" inputmode="decimal" placeholder="Ex: 500,00" type="text"></div><div><label>Vencimento</label><input id="dym861BillDue" inputmode="numeric" placeholder="DD/MM/AAAA" type="text"></div><div><label>Status</label><select id="dym861BillState"><option value="pendente">Pendente</option><option value="pago">Pago</option><option value="recebido">Recebido</option><option value="cancelado">Cancelado</option></select></div><div><label>Forma</label><select id="dym861BillMethod"><option>Pix</option><option>Dinheiro</option><option>Cartão</option><option>Boleto</option><option>Transferência</option><option>Outro</option></select></div><div><label>Sócio/responsável</label><input id="dym861BillPartner" placeholder="Opcional" type="text"></div><textarea id="dym861BillDescription" placeholder="Ex: fornecedor de estoque, aluguel da loja, venda no cartão para receber..."></textarea></div><div class="dym861-actions"><button type="button" id="dym861SaveBillBtn">Adicionar conta</button><button type="button" class="secondary" id="dym861ClearBillBtn">Limpar campos</button></div><div class="dym861-status" id="dym861BillStatus"></div></div><div class="dym861-actions-card" id="dym861Advice"><strong>Próximo passo</strong><div id="dym861AdviceText">Cadastre contas futuras para prever o caixa.</div></div></div><div class="dym861-list-card"><div class="dym861-list-title">Compromissos do negócio</div><div class="dym861-list-copy" id="dym861ListSubtitle">Nenhuma conta cadastrada.</div><div class="dym861-filter-bar" id="dym861FilterBar"><button type="button" data-dym861-filter="todos">Todos</button><button type="button" data-dym861-filter="pagar">A pagar</button><button type="button" data-dym861-filter="receber">A receber</button><button type="button" data-dym861-filter="pendente">Pendentes</button><button type="button" data-dym861-filter="atrasadas">Atrasadas</button><button type="button" data-dym861-filter="liquidadas">Liquidadas</button></div><div class="dym861-list" id="dym861BillsList"></div></div></div>`;
+    const anchor=$('dym859GoalsPanel') || $('dym856StockPanel') || $('dym855HealthPanel') || document.querySelector('[data-screens="business"] .business-history-card'); if(anchor) anchor.insertAdjacentElement('afterend',panel); else business.appendChild(panel);
+    $('dym861SaveBillBtn')?.addEventListener('click',saveBill); $('dym861ClearBillBtn')?.addEventListener('click',clearForm); $('dym861FilterBar')?.addEventListener('click',e=>{const b=e.target.closest('[data-dym861-filter]'); if(!b) return; localStorage.setItem(FILTER,b.dataset.dym861Filter||'todos'); render();}); const due=$('dym861BillDue'); if(due && !due.value) due.value=dateBR(today()); return panel; }
+  function render(){ const panel=ensurePanel(); if(!panel) return; const s=summary(); setText('dym861BillBadge',(state.source==='supabase'?'Supabase':'Local')+' • '+s.count+' conta(s)'); setText('dym861PayTotal',brl(s.pagar)); setText('dym861ReceiveTotal',brl(s.receber)); setText('dym861ForecastBalance',brl(s.saldo)); setText('dym861SoonCount',String(s.soon)); setText('dym861LateCount',String(s.late)); const [title,text]=recommendation(s); const adv=$('dym861Advice'); if(adv) adv.innerHTML=`<strong>${esc(title)}</strong><div id="dym861AdviceText">${esc(text)}</div>`; const f=localStorage.getItem(FILTER)||'todos'; document.querySelectorAll('[data-dym861-filter]').forEach(b=>b.classList.toggle('active',b.dataset.dym861Filter===f)); const list=filtered(); setText('dym861ListSubtitle', list.length? `${list.length} de ${s.count} conta(s) exibida(s).`:'Nenhuma conta neste filtro.'); const box=$('dym861BillsList'); if(!box) return; if(!list.length){box.innerHTML='<div class="dym861-empty">Nenhuma conta cadastrada ainda. Adicione pagamentos e recebimentos futuros para enxergar o caixa antes de ele mudar.</div>'; return;} box.innerHTML=list.map(b=>billHTML(b)).join(''); }
+  function billHTML(b){ const type=b.bill_type==='receber'?'receive':'pay'; const late=isLate(b); const done=isSettled(b); const cls=['dym861-bill',type,late?'late':'',done?'done':'',b.status==='cancelado'?'cancelled':''].join(' '); const icon=b.bill_type==='receber'?'📥':'📤'; const typeLabel=b.bill_type==='receber'?'A receber':'A pagar'; const statusLabel=late?'Atrasada':(b.status==='pago'?'Pago':b.status==='recebido'?'Recebido':b.status==='cancelado'?'Cancelada':'Pendente'); const settleLabel=b.bill_type==='receber'?'Marcar recebido':'Marcar pago'; const canSettle=!done; return `<div class="${cls}" data-bill-id="${esc(b.id)}"><div class="dym861-bill-icon">${icon}</div><div class="dym861-bill-main"><b>${esc(b.category||typeLabel)}</b><span>${typeLabel} · ${esc(b.payment_method||'Forma não informada')} · ${dateBR(b.due_date)} · ${shortDue(b.due_date)}${b.partner_name?' · '+esc(b.partner_name):''}${b.description?' · '+esc(b.description):''}</span><div class="dym861-card-actions">${canSettle?`<button type="button" class="settle" onclick="dymivra861OpenSettleBill('${esc(b.id)}')">${settleLabel}</button>`:''}<button type="button" class="delete" onclick="dymivra861OpenDeleteBill('${esc(b.id)}')">Excluir</button></div></div><div class="dym861-bill-value"><div class="${type}"><strong>${brl(b.amount)}</strong></div><span class="dym861-bill-tag">${statusLabel}</span></div></div>`; }
+  async function saveBill(){ if(state.busy) return; let row; try{row=payloadFromForm();}catch(e){return status(e.message,'err');} state.busy=true; const btn=$('dym861SaveBillBtn'); setBusy(btn,true,'Salvando...'); try{ const user=await getUser(); if(user){ const {error}=await supa.from(TABLE).insert([{...row,user_id:user.id}]); if(error) throw error; state.source='supabase'; status('Conta salva no Supabase.','ok'); toast('Conta adicionada.','success'); clearForm(); await load(); }else{ const list=readLocal(); list.push(normBill({...row,created_at:new Date().toISOString(),source:'local'})); writeLocal(list); state.items=list; status('Conta salva em modo local temporário.','warn'); toast('Conta adicionada em modo local.','info'); clearForm(); render(); } }catch(e){ console.warn('Dymivra 8.6.1 bills save:',e?.message||e); status(e?.message||'Erro ao salvar conta.','err'); }finally{state.busy=false;setBusy(btn,false);} }
+  function ensureModal(){ let o=$('dym861ModalOverlay'); if(o) return o; o=document.createElement('div'); o.id='dym861ModalOverlay'; o.className='dym861-modal-overlay'; o.innerHTML=`<div class="dym861-modal" role="dialog" aria-modal="true"><div class="dym861-modal-top"><div class="dym861-modal-icon" id="dym861ModalIcon">📌</div><div><div class="dym861-modal-kicker">Dymivra Business</div><h3 class="dym861-modal-title" id="dym861ModalTitle">Confirmar ação</h3></div></div><p class="dym861-modal-text" id="dym861ModalText">Confirme a ação.</p><div class="dym861-modal-preview" id="dym861ModalPreview"></div><div class="dym861-modal-actions"><button type="button" class="secondary" onclick="dymivra861CloseModal()">Cancelar</button><button type="button" id="dym861ModalConfirm">Confirmar</button></div></div>`; o.addEventListener('click',e=>{if(e.target===o) closeModal();}); document.body.appendChild(o); document.addEventListener('keydown',e=>{if(e.key==='Escape'&&o.classList.contains('show')) closeModal();}); return o; }
+  function closeModal(){ const o=$('dym861ModalOverlay'); if(o) o.classList.remove('show'); state.pending=null; state.modalMode=''; }
+  window.dymivra861CloseModal=closeModal;
+  function findBill(id){ return state.items.map(normBill).find(b=>String(b.id)===String(id)); }
+  function openModal(mode,id){ const b=findBill(id); if(!b) return; state.pending=b; state.modalMode=mode; const o=ensureModal(); setText('dym861ModalIcon', mode==='delete'?'🗑️':(b.bill_type==='receber'?'📥':'📤')); setText('dym861ModalTitle', mode==='delete'?'Excluir conta?':(b.bill_type==='receber'?'Marcar como recebido?':'Marcar como pago?')); setText('dym861ModalText', mode==='delete'?'Essa ação remove apenas esta conta futura.':'O Dymivra vai liquidar esta conta e criar uma movimentação real no Business.'); const preview=$('dym861ModalPreview'); if(preview) preview.innerHTML=`<strong>${esc(b.category)}</strong><br>${b.bill_type==='receber'?'A receber':'A pagar'} · ${brl(b.amount)} · ${dateBR(b.due_date)}${b.description?' · '+esc(b.description):''}`; const c=$('dym861ModalConfirm'); if(c){ c.textContent=mode==='delete'?'Excluir conta':(b.bill_type==='receber'?'Confirmar recebimento':'Confirmar pagamento'); c.onclick=()=> mode==='delete'?deleteBill():settleBill(); } o.classList.add('show'); }
+  window.dymivra861OpenSettleBill=id=>openModal('settle',id); window.dymivra861OpenDeleteBill=id=>openModal('delete',id);
+  async function settleBill(){ const b=state.pending; if(!b) return closeModal(); const btn=$('dym861ModalConfirm'); setBusy(btn,true,'Confirmando...'); try{ const newStatus=b.bill_type==='receber'?'recebido':'pago'; const movementType=b.bill_type==='receber'?'entrada':'saida'; const user=await getUser(); if(user){ const movement={user_id:user.id,type:movementType,category:b.category||'Outro',amount:Number(b.amount||0),movement_date:today(),payment_method:b.payment_method||'Pix',partner_name:b.partner_name||'',description:(b.description?b.description+' · ':'')+(b.bill_type==='receber'?'Conta recebida':'Conta paga')+' pelo Dymivra Business'}; const {data:mv,error:mvErr}=await supa.from(MOVEMENTS).insert([movement]).select('id').single(); if(mvErr) throw mvErr; const {error}=await supa.from(TABLE).update({status:newStatus,settled_at:new Date().toISOString(),movement_id:mv?.id||null}).eq('id',b.id).eq('user_id',user.id); if(error) throw error; closeModal(); toast(b.bill_type==='receber'?'Conta recebida e entrada criada.':'Conta paga e saída criada.','success'); await load(); try{ window.DYMIVRA853?.fetchRemote?.(true); }catch{} }else{ const list=readLocal().map(x=>String(x.id)===String(b.id)?{...x,status:newStatus,settled_at:new Date().toISOString()}:x); writeLocal(list); state.items=list; closeModal(); toast('Conta liquidada em modo local.','info'); render(); } }catch(e){ console.warn('Dymivra 8.6.1 settle bill:',e?.message||e); status(e?.message||'Erro ao liquidar conta.','err'); }finally{setBusy(btn,false);} }
+  async function deleteBill(){ const b=state.pending; if(!b) return closeModal(); const btn=$('dym861ModalConfirm'); setBusy(btn,true,'Excluindo...'); try{ const user=await getUser(); if(user && state.source==='supabase'){ const {error}=await supa.from(TABLE).delete().eq('id',b.id).eq('user_id',user.id); if(error) throw error; closeModal(); toast('Conta excluída.','success'); await load(); }else{ const list=readLocal().filter(x=>String(x.id)!==String(b.id)); writeLocal(list); state.items=list; closeModal(); toast('Conta excluída.','info'); render(); } }catch(e){ console.warn('Dymivra 8.6.1 delete bill:',e?.message||e); status(e?.message||'Erro ao excluir conta.','err'); }finally{setBusy(btn,false);} }
+  function install(){ ensurePanel(); render(); }
+  const oldShow=window.showAppScreen; if(typeof oldShow==='function'){ window.showAppScreen=function(screen){ const r=oldShow.apply(this,arguments); if(screen==='business'||screen==='all'){ setTimeout(()=>{install();load();},300); } return r; }; }
+  document.addEventListener('DOMContentLoaded',()=>{ install(); setTimeout(load,550); });
+  if(document.readyState!=='loading'){ install(); setTimeout(load,550); }
+  supa.auth.onAuthStateChange(()=>setTimeout(load,400));
+  setInterval(()=>{ try{ if(document.querySelector('[data-screen-block][data-screens="business"]')) install(); }catch{} },2600);
+  window.DYMIVRA861={load,render,summary};
 })();
 </script>
 
