@@ -22575,26 +22575,26 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
 
 
 <!-- ==========================================================
-     Dymivra — Calendário premium e performance estável
-     Ajuste visual e técnico para usuário final.
+     Dymivra — Calendários, venda e performance estáveis
+     Ajuste invisível para manter o aplicativo rápido e confiável.
      ========================================================== -->
-<style id="dymivra8616-calendar-performance-style">
-/* Calendário premium para campos de data */
+<style id="dymivra8617-stable-calendar-sale-performance-style">
+/* Campos de data com calendário visual do Dymivra */
 .dym-date-premium-input{
   cursor:pointer!important;
   caret-color:transparent!important;
   user-select:none!important;
   color:#f8fafc!important;
-  font-weight:850!important;
+  font-weight:900!important;
   letter-spacing:.02em!important;
   background:
     radial-gradient(circle at 12% 0%,rgba(34,211,238,.10),transparent 38%),
     linear-gradient(180deg,rgba(7,14,30,.96),rgba(2,8,23,.94))!important;
-  border-color:rgba(103,232,249,.22)!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 0 0 1px rgba(34,211,238,.03)!important;
+  border-color:rgba(103,232,249,.25)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 0 0 1px rgba(34,211,238,.04)!important;
 }
 .dym-date-premium-input:focus{
-  border-color:rgba(103,232,249,.48)!important;
+  border-color:rgba(103,232,249,.50)!important;
   box-shadow:0 0 0 4px rgba(34,211,238,.10), inset 0 1px 0 rgba(255,255,255,.05)!important;
 }
 .dym-date-premium-input::-webkit-calendar-picker-indicator{display:none!important;opacity:0!important}
@@ -22607,13 +22607,16 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
   justify-content:center!important;
   padding:16px!important;
   background:rgba(2,6,23,.76)!important;
-  backdrop-filter:blur(16px)!important;
+  backdrop-filter:blur(14px)!important;
+  -webkit-backdrop-filter:blur(14px)!important;
 }
 .dym-date-overlay.show{display:flex!important}
 .dym-date-modal{
   width:min(520px,calc(100vw - 24px))!important;
   max-height:min(88vh,760px)!important;
   overflow:auto!important;
+  overscroll-behavior:contain!important;
+  -webkit-overflow-scrolling:touch!important;
   border-radius:30px!important;
   border:1px solid rgba(103,232,249,.26)!important;
   background:
@@ -22654,7 +22657,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
 .dym-date-actions .secondary{background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.10)!important;color:#e5e7eb!important;box-shadow:none!important}
 @media(max-width:420px){.dym-date-modal{padding:15px!important;border-radius:26px!important}.dym-date-day{height:40px!important;border-radius:14px!important}.dym-date-actions{grid-template-columns:1fr!important}.dym-date-title{font-size:30px!important}}
 
-/* Seleção do mês: destaque visível, animação e confirmação */
+/* Mês da meta com seleção visível */
 .dym860-month-chip{position:relative!important;transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease!important}
 .dym860-month-chip.active,.dym860-month-chip.is-selected{
   border-color:rgba(103,232,249,.72)!important;
@@ -22672,12 +22675,11 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
   top:6px!important;
   padding:3px 6px!important;
   border-radius:999px!important;
-  background:rgba(2,6,23,.28)!important;
+  background:rgba(2,6,23,.30)!important;
   border:1px solid rgba(255,255,255,.13)!important;
   color:#e0f2fe!important;
   font-size:9px!important;
   font-weight:950!important;
-  letter-spacing:.02em!important;
 }
 .dym860-month-chip.active:before,.dym860-month-chip.is-selected:before{
   content:"✓"!important;
@@ -22693,70 +22695,164 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
   font-size:12px!important;
 }
 
-/* Performance estável: mantém recursos, reduz custo visual pesado */
-body.dymivra-fast-runtime:before{opacity:.10!important;transform:translateZ(0)!important}
+/* Registrar venda: modal rolável e pagamento sem seletor nativo */
+#dym857SaleModal.dym858-body-modal,
+#dym856DeleteModal.dym858-body-modal{
+  position:fixed!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100dvh!important;
+  display:none!important;
+  align-items:center!important;
+  justify-content:center!important;
+  z-index:2147483600!important;
+  background:rgba(0,0,0,.76)!important;
+  backdrop-filter:blur(14px)!important;
+  -webkit-backdrop-filter:blur(14px)!important;
+  padding:18px!important;
+  overflow:hidden!important;
+}
+#dym857SaleModal.dym858-body-modal.show,
+#dym856DeleteModal.dym858-body-modal.show{display:flex!important}
+#dym857SaleModal.dym858-body-modal .dym856-modal-box,
+#dym856DeleteModal.dym858-body-modal .dym856-modal-box{
+  position:relative!important;
+  z-index:2147483601!important;
+  max-height:calc(100dvh - 36px)!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain!important;
+  -webkit-overflow-scrolling:touch!important;
+}
+#dym857SaleModal.dym858-body-modal .dym856-modal-box::-webkit-scrollbar,
+#dym856DeleteModal.dym858-body-modal .dym856-modal-box::-webkit-scrollbar{width:0!important;height:0!important}
+#dym857SaleModal .dym856-modal-actions{
+  position:sticky!important;
+  bottom:-20px!important;
+  margin-left:-20px!important;
+  margin-right:-20px!important;
+  padding:14px 20px 20px!important;
+  background:linear-gradient(180deg,rgba(2,6,23,0),rgba(2,6,23,.96) 28%,rgba(2,6,23,1))!important;
+  border-radius:0 0 28px 28px!important;
+  z-index:3!important;
+}
+body.dym858-modal-open{overflow:hidden!important}
+.dym8617-payment-native{
+  position:absolute!important;
+  opacity:0!important;
+  pointer-events:none!important;
+  width:1px!important;
+  height:1px!important;
+  min-height:1px!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+}
+.dym8617-payment-grid{
+  display:grid!important;
+  grid-template-columns:repeat(2,1fr)!important;
+  gap:9px!important;
+  margin-top:8px!important;
+}
+.dym8617-payment-option{
+  width:100%!important;
+  margin:0!important;
+  min-height:48px!important;
+  border-radius:16px!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  background:rgba(255,255,255,.045)!important;
+  color:#dbeafe!important;
+  box-shadow:none!important;
+  font-size:13px!important;
+  font-weight:950!important;
+}
+.dym8617-payment-option.active{
+  border-color:rgba(103,232,249,.55)!important;
+  background:linear-gradient(135deg,rgba(14,165,233,.92),rgba(34,211,238,.70))!important;
+  color:#fff!important;
+  box-shadow:0 0 0 3px rgba(34,211,238,.12),0 12px 24px rgba(14,165,233,.14)!important;
+}
+@media(max-width:760px){
+  #dym857SaleModal.dym858-body-modal,
+  #dym856DeleteModal.dym858-body-modal{
+    align-items:flex-start!important;
+    padding:12px!important;
+    padding-top:calc(12px + env(safe-area-inset-top))!important;
+    padding-bottom:calc(12px + env(safe-area-inset-bottom))!important;
+  }
+  #dym857SaleModal.dym858-body-modal .dym856-modal-box,
+  #dym856DeleteModal.dym858-body-modal .dym856-modal-box{
+    width:min(600px,calc(100vw - 24px))!important;
+    max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important;
+    border-radius:26px!important;
+    padding:18px!important;
+  }
+  .dym857-sale-form{grid-template-columns:1fr!important}
+  .dym8617-payment-grid{grid-template-columns:1fr 1fr!important}
+}
+
+/* Performance segura: reduz custo visual sem bloquear componentes */
+body.dymivra-fast-runtime:before{opacity:.10!important}
 body.dymivra-fast-runtime .card,
 body.dymivra-fast-runtime .mini,
 body.dymivra-fast-runtime .item,
 body.dymivra-fast-runtime .premium-panel,
 body.dymivra-fast-runtime .business-card,
 body.dymivra-fast-runtime .business-kpi,
+body.dymivra-fast-runtime .dym856-stock-panel,
+body.dymivra-fast-runtime .dym856-stock-card,
+body.dymivra-fast-runtime .dym856-product,
 body.dymivra-fast-runtime .dym861-bills-panel,
 body.dymivra-fast-runtime .dym8612-costs-panel,
 body.dymivra-fast-runtime .dym8613-partner-report,
 body.dymivra-fast-runtime .dym8615-mentor-panel{
   backdrop-filter:none!important;
   -webkit-backdrop-filter:none!important;
-  box-shadow:0 10px 28px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.035)!important;
+  box-shadow:0 8px 22px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.035)!important;
   will-change:auto!important;
-}
-body.dymivra-fast-runtime .card,
-body.dymivra-fast-runtime .mini,
-body.dymivra-fast-runtime .item,
-body.dymivra-fast-runtime [data-screen-block],
-body.dymivra-fast-runtime .premium-panel{
-  content-visibility:auto;
-  contain-intrinsic-size:auto 360px;
+  contain:layout paint!important;
 }
 body.dymivra-fast-runtime .modal,
 body.dymivra-fast-runtime .modal *,
+body.dymivra-fast-runtime #dym857SaleModal,
+body.dymivra-fast-runtime #dym857SaleModal *,
+body.dymivra-fast-runtime #dym856DeleteModal,
+body.dymivra-fast-runtime #dym856DeleteModal *,
+body.dymivra-fast-runtime .dym-date-overlay,
+body.dymivra-fast-runtime .dym-date-overlay *,
+body.dymivra-fast-runtime .dym860-month-overlay,
+body.dymivra-fast-runtime .dym860-month-overlay *,
 body.dymivra-fast-runtime .app-nav,
 body.dymivra-fast-runtime .app-nav *,
 body.dymivra-fast-runtime .floating-top,
 body.dymivra-fast-runtime .toast-wrap,
-body.dymivra-fast-runtime .toast-wrap *,
-body.dymivra-fast-runtime .dym-date-overlay,
-body.dymivra-fast-runtime .dym-date-overlay *,
-body.dymivra-fast-runtime .dym860-month-overlay,
-body.dymivra-fast-runtime .dym860-month-overlay *{
-  content-visibility:visible!important;
+body.dymivra-fast-runtime .toast-wrap *{
   contain:none!important;
+  content-visibility:visible!important;
 }
-body.dymivra-is-scrolling *,body.dymivra-is-scrolling *:before,body.dymivra-is-scrolling *:after{
-  animation-play-state:paused!important;
+body.dymivra-is-scrolling .card,
+body.dymivra-is-scrolling .mini,
+body.dymivra-is-scrolling .item,
+body.dymivra-is-scrolling .premium-panel,
+body.dymivra-is-scrolling button,
+body.dymivra-is-scrolling .nav-btn{
   transition-duration:0s!important;
 }
 body.dymivra-fast-runtime button:hover,
 body.dymivra-fast-runtime .nav-btn:hover,
 body.dymivra-fast-runtime .card:hover,
 body.dymivra-fast-runtime .mini:hover,
-body.dymivra-fast-runtime .item:hover{
-  transform:none!important;
-}
-@supports not (content-visibility:auto){
-  body.dymivra-fast-runtime .card,body.dymivra-fast-runtime .mini,body.dymivra-fast-runtime .item{contain:layout paint!important}
-}
+body.dymivra-fast-runtime .item:hover{transform:none!important}
 </style>
-<script id="dymivra8616-calendar-performance-script">
+<script id="dymivra8617-stable-calendar-sale-performance-script">
 (function(){
   'use strict';
-  const nativeValue=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value');
+  const descriptor=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value');
   const pad=n=>String(n).padStart(2,'0');
-  const today=()=>new Date().toISOString().slice(0,10);
   const monthNames=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
   const week=['D','S','T','Q','Q','S','S'];
-  const toISO=v=>{
-    v=String(v||'').trim();
+  const today=()=>new Date().toISOString().slice(0,10);
+  const toISO=value=>{
+    const v=String(value||'').trim();
     if(/^\d{4}-\d{2}-\d{2}$/.test(v)) return v;
     const br=v.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})$/);
     if(br) return `${br[3]}-${pad(br[2])}-${pad(br[1])}`;
@@ -22764,12 +22860,16 @@ body.dymivra-fast-runtime .item:hover{
     if(!Number.isNaN(d.getTime())) return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
     return '';
   };
-  const toBR=iso=>{iso=toISO(iso); if(!iso) return ''; const [y,m,d]=iso.split('-'); return `${d}/${m}/${y}`;};
-  let target=null, viewYear=new Date().getFullYear(), viewMonth=new Date().getMonth();
-  function el(id){return document.getElementById(id)}
-  function ensureModal(){
-    if(el('dymDateOverlay')) return el('dymDateOverlay');
-    const overlay=document.createElement('div');
+  const toBR=value=>{const iso=toISO(value); if(!iso) return ''; const [y,m,d]=iso.split('-'); return `${d}/${m}/${y}`;};
+  const $=id=>document.getElementById(id);
+  let target=null;
+  let viewYear=new Date().getFullYear();
+  let viewMonth=new Date().getMonth();
+
+  function ensureDateModal(){
+    let overlay=$('dymDateOverlay');
+    if(overlay) return overlay;
+    overlay=document.createElement('div');
     overlay.id='dymDateOverlay';
     overlay.className='dym-date-overlay';
     overlay.innerHTML=`
@@ -22778,7 +22878,7 @@ body.dymivra-fast-runtime .item:hover{
           <div>
             <div class="dym-date-kicker">Calendário</div>
             <h3 class="dym-date-title" id="dymDateTitle">Definir data</h3>
-            <div class="dym-date-sub">Escolha a data dentro do padrão visual do Dymivra.</div>
+            <div class="dym-date-sub">Escolha a data com o visual premium do Dymivra.</div>
           </div>
           <button type="button" class="dym-date-close" id="dymDateClose" aria-label="Fechar">×</button>
         </div>
@@ -22795,115 +22895,201 @@ body.dymivra-fast-runtime .item:hover{
         </div>
       </div>`;
     document.body.appendChild(overlay);
-    el('dymDateClose').addEventListener('click',close);
-    el('dymDateCancel').addEventListener('click',close);
-    el('dymDateToday').addEventListener('click',()=>selectDate(today()));
-    el('dymDatePrev').addEventListener('click',()=>{viewMonth--; if(viewMonth<0){viewMonth=11;viewYear--;} render();});
-    el('dymDateNext').addEventListener('click',()=>{viewMonth++; if(viewMonth>11){viewMonth=0;viewYear++;} render();});
-    overlay.addEventListener('click',e=>{if(e.target===overlay) close();});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape' && overlay.classList.contains('show')) close();});
+    $('dymDateClose')?.addEventListener('click',closeDate);
+    $('dymDateCancel')?.addEventListener('click',closeDate);
+    $('dymDateToday')?.addEventListener('click',()=>selectDate(today()));
+    $('dymDatePrev')?.addEventListener('click',()=>{viewMonth--; if(viewMonth<0){viewMonth=11;viewYear--;} renderDate();});
+    $('dymDateNext')?.addEventListener('click',()=>{viewMonth++; if(viewMonth>11){viewMonth=0;viewYear++;} renderDate();});
+    overlay.addEventListener('click',e=>{if(e.target===overlay) closeDate();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape' && overlay.classList.contains('show')) closeDate();});
     return overlay;
   }
-  function setTargetValue(input,iso,notify){
-    iso=toISO(iso);
+  function setDateValue(input,value,notify=false){
+    const iso=toISO(value);
     input.dataset.dymIso=iso;
-    nativeValue.set.call(input, toBR(iso));
+    descriptor.set.call(input,toBR(iso));
     input.setAttribute('data-display-date',toBR(iso));
     if(notify){
       input.dispatchEvent(new Event('input',{bubbles:true}));
       input.dispatchEvent(new Event('change',{bubbles:true}));
     }
   }
-  function open(input){
+  function openDate(input){
     target=input;
-    const iso=toISO(input.dataset.dymIso || nativeValue.get.call(input) || today()) || today();
+    const iso=toISO(input.dataset.dymIso || descriptor.get.call(input) || today()) || today();
     const d=new Date(iso+'T00:00:00');
-    viewYear=d.getFullYear(); viewMonth=d.getMonth();
-    ensureModal().classList.add('show');
+    viewYear=d.getFullYear();
+    viewMonth=d.getMonth();
+    ensureDateModal().classList.add('show');
     document.documentElement.style.overflow='hidden';
     document.body.style.overflow='hidden';
-    render();
+    renderDate();
   }
-  function close(){
-    const o=el('dymDateOverlay'); if(o) o.classList.remove('show');
+  function closeDate(){
+    const overlay=$('dymDateOverlay');
+    if(overlay) overlay.classList.remove('show');
     document.documentElement.style.overflow='';
     document.body.style.overflow='';
     target=null;
   }
   function selectDate(iso){
-    if(target) setTargetValue(target,iso,true);
-    close();
+    if(target) setDateValue(target,iso,true);
+    closeDate();
   }
-  function render(){
-    const current=el('dymDateCurrent'), grid=el('dymDateGrid'); if(!grid) return;
-    current.textContent=`${monthNames[viewMonth]} de ${viewYear}`;
-    const selected=target ? toISO(target.dataset.dymIso || nativeValue.get.call(target)) : '';
+  function renderDate(){
+    const current=$('dymDateCurrent');
+    const grid=$('dymDateGrid');
+    if(!grid) return;
+    if(current) current.textContent=`${monthNames[viewMonth]} de ${viewYear}`;
+    const selected=target ? toISO(target.dataset.dymIso || descriptor.get.call(target)) : '';
     const now=today();
-    const first=new Date(viewYear,viewMonth,1);
-    const start=new Date(viewYear,viewMonth,1-first.getDay());
+    const start=new Date(viewYear,viewMonth,1-new Date(viewYear,viewMonth,1).getDay());
     const days=[];
     for(let i=0;i<42;i++){
-      const d=new Date(start); d.setDate(start.getDate()+i);
+      const d=new Date(start);
+      d.setDate(start.getDate()+i);
       const iso=`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
       const cls=['dym-date-day',d.getMonth()!==viewMonth?'out':'',iso===selected?'selected':'',iso===now?'today':''].filter(Boolean).join(' ');
       days.push(`<button type="button" class="${cls}" data-iso="${iso}">${d.getDate()}</button>`);
     }
     grid.innerHTML=days.join('');
-    grid.querySelectorAll('[data-iso]').forEach(b=>b.addEventListener('click',()=>selectDate(b.dataset.iso)));
+    grid.querySelectorAll('[data-iso]').forEach(btn=>btn.addEventListener('click',()=>selectDate(btn.dataset.iso)));
   }
-  function enhance(input){
+  function enhanceDateInput(input){
     if(!input || input.dataset.dymDateEnhanced==='1') return;
     input.dataset.dymDateEnhanced='1';
-    const raw=nativeValue.get.call(input) || input.getAttribute('value') || '';
-    try{ input.type='text'; }catch{}
+    const raw=descriptor.get.call(input) || input.getAttribute('value') || input.dataset.dymIso || '';
+    try{input.type='text';}catch{}
     input.readOnly=true;
     input.setAttribute('inputmode','none');
     input.setAttribute('autocomplete','off');
     input.classList.add('dym-date-premium-input');
     Object.defineProperty(input,'value',{
       configurable:true,
-      get(){ return this.dataset.dymIso || ''; },
-      set(v){ setTargetValue(this,v,false); }
+      get(){return this.dataset.dymIso || '';},
+      set(v){setDateValue(this,v,false);}
     });
-    setTargetValue(input, raw || input.dataset.dymIso || '', false);
-    input.addEventListener('click',e=>{e.preventDefault(); open(input);});
-    input.addEventListener('focus',e=>{e.preventDefault(); setTimeout(()=>open(input),0);});
-    input.addEventListener('keydown',e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); open(input); } });
+    setDateValue(input, raw || today(), false);
+    input.addEventListener('click',e=>{e.preventDefault(); openDate(input);});
+    input.addEventListener('focus',e=>{e.preventDefault(); setTimeout(()=>openDate(input),0);});
+    input.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault(); openDate(input);}});
   }
   function enhanceDates(){
-    document.querySelectorAll('input[type="date"],input[data-dymivra-date]').forEach(enhance);
+    document.querySelectorAll('input[type="date"],input[data-dymivra-date]').forEach(enhanceDateInput);
   }
-  function enhanceMonthSelection(){
-    const grid=el('dym860MonthGrid');
+
+  function syncMonthSelection(){
+    const grid=$('dym860MonthGrid');
     if(!grid) return;
-    const sync=()=>{
-      const active=grid.querySelector('.dym860-month-chip.active');
-      grid.querySelectorAll('.dym860-month-chip').forEach(btn=>btn.classList.toggle('is-selected',btn===active));
-    };
-    sync();
-    if(!grid.dataset.dym8616MonthWatch){
-      grid.dataset.dym8616MonthWatch='1';
-      grid.addEventListener('click',()=>setTimeout(sync,40));
-      new MutationObserver(sync).observe(grid,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
+    const active=grid.querySelector('.dym860-month-chip.active');
+    grid.querySelectorAll('.dym860-month-chip').forEach(btn=>btn.classList.toggle('is-selected',btn===active));
+    if(!grid.dataset.dym8617Ready){
+      grid.dataset.dym8617Ready='1';
+      grid.addEventListener('click',()=>setTimeout(syncMonthSelection,30));
+      try{new MutationObserver(syncMonthSelection).observe(grid,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});}catch{}
     }
   }
+
+  function installPaymentPicker(){
+    const select=$('dym857SaleMethod');
+    if(!select) return;
+    if(select.dataset.dym8617Payment==='1'){
+      syncPaymentPicker();
+      return;
+    }
+    select.dataset.dym8617Payment='1';
+    select.classList.add('dym8617-payment-native');
+    const wrap=document.createElement('div');
+    wrap.id='dym8617SalePaymentGrid';
+    wrap.className='dym8617-payment-grid';
+    const options=[...select.options].map(o=>o.value || o.textContent.trim()).filter(Boolean);
+    wrap.innerHTML=options.map(value=>`<button type="button" class="dym8617-payment-option" data-payment="${value.replace(/"/g,'&quot;')}">${value}</button>`).join('');
+    select.insertAdjacentElement('afterend',wrap);
+    wrap.addEventListener('click',e=>{
+      const btn=e.target.closest('[data-payment]');
+      if(!btn) return;
+      select.value=btn.dataset.payment || 'Pix';
+      select.dispatchEvent(new Event('input',{bubbles:true}));
+      select.dispatchEvent(new Event('change',{bubbles:true}));
+      syncPaymentPicker();
+    });
+    select.addEventListener('change',syncPaymentPicker);
+    syncPaymentPicker();
+  }
+  function syncPaymentPicker(){
+    const select=$('dym857SaleMethod');
+    const grid=$('dym8617SalePaymentGrid');
+    if(!select || !grid) return;
+    const value=select.value || 'Pix';
+    grid.querySelectorAll('[data-payment]').forEach(btn=>btn.classList.toggle('active',(btn.dataset.payment||'')===value));
+  }
+  function prepareSaleModal(){
+    const modal=$('dym857SaleModal');
+    if(modal){
+      modal.classList.add('dym858-body-modal');
+      if(modal.parentElement!==document.body) document.body.appendChild(modal);
+      const box=modal.querySelector('.dym856-modal-box');
+      if(box && modal.classList.contains('show')) box.scrollTop=0;
+    }
+    const del=$('dym856DeleteModal');
+    if(del){
+      del.classList.add('dym858-body-modal');
+      if(del.parentElement!==document.body) document.body.appendChild(del);
+    }
+    installPaymentPicker();
+  }
+  function wrapSaleOpen(){
+    const fn=window.dymivra857AskSaleProduct;
+    if(typeof fn!=='function' || fn.__dym8617Wrapped) return;
+    const wrapped=function(){
+      prepareSaleModal();
+      const result=fn.apply(this,arguments);
+      setTimeout(()=>{
+        prepareSaleModal();
+        syncPaymentPicker();
+        const modal=$('dym857SaleModal');
+        const box=modal?.querySelector('.dym856-modal-box');
+        if(box) box.scrollTop=0;
+      },60);
+      return result;
+    };
+    wrapped.__dym8617Wrapped=true;
+    window.dymivra857AskSaleProduct=wrapped;
+  }
+
   function installPerformance(){
+    if(document.body.dataset.dym8617Perf==='1') return;
+    document.body.dataset.dym8617Perf='1';
     document.body.classList.add('dymivra-fast-runtime');
     let timer=0;
     const mark=()=>{
       document.body.classList.add('dymivra-is-scrolling');
       clearTimeout(timer);
-      timer=setTimeout(()=>document.body.classList.remove('dymivra-is-scrolling'),180);
+      timer=setTimeout(()=>document.body.classList.remove('dymivra-is-scrolling'),160);
     };
     window.addEventListener('scroll',mark,{passive:true});
-    document.addEventListener('touchmove',mark,{passive:true});
     window.addEventListener('wheel',mark,{passive:true});
+    document.addEventListener('touchmove',mark,{passive:true});
   }
-  function tick(){ enhanceDates(); enhanceMonthSelection(); }
-  document.addEventListener('DOMContentLoaded',()=>{installPerformance(); setTimeout(tick,250);});
-  if(document.readyState!=='loading'){installPerformance(); setTimeout(tick,250);}
-  new MutationObserver(()=>tick()).observe(document.documentElement,{childList:true,subtree:true});
-  setInterval(tick,1500);
+  let scheduled=false;
+  function tick(){
+    scheduled=false;
+    try{enhanceDates();}catch(e){console.warn('Dymivra date:',e?.message||e)}
+    try{syncMonthSelection();}catch(e){}
+    try{prepareSaleModal(); wrapSaleOpen();}catch(e){console.warn('Dymivra sale modal:',e?.message||e)}
+  }
+  function scheduleTick(){
+    if(scheduled) return;
+    scheduled=true;
+    setTimeout(tick,180);
+  }
+  function start(){
+    installPerformance();
+    scheduleTick();
+    try{new MutationObserver(scheduleTick).observe(document.body || document.documentElement,{childList:true,subtree:true});}catch{}
+    setInterval(scheduleTick,5000);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',start,{once:true}); else start();
 })();
 </script>
 
