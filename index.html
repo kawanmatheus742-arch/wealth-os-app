@@ -13864,7 +13864,7 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
           ['🚀','Comece','Jornada, Perfil, Metas e Pulse para saber a ordem certa.'],
           ['💼','Carteira','Ledger, Visão Geral, Alocação e Histórico para organizar dados.'],
           ['📈','Crescimento','Renda, Projeções e Liberdade para entender o futuro.'],
-          ['🤖','Inteligência','IA, Radar e Mentor para interpretar e acompanhar decisões.'],
+          ['🧠','Inteligência','Diagnóstico financeiro, IA, Radar e Mentor para interpretar e acompanhar decisões.'],
           ['⚙️','Conta','Planos, App, Legal e Apoio para uso e suporte.']
         ].map(r=>`<div class="dymivra842-route-card"><div class="dymivra842-route-icon">${r[0]}</div><div><strong>${esc(r[1])}</strong><span>${esc(r[2])}</span></div></div>`).join('');
       }
@@ -16180,7 +16180,8 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
     income:{icon:'💸',title:'Renda',serve:'Acompanha proventos, yield e renda passiva mensal.',fill:'Registre proventos e defina uma meta de renda.',ready:'Quando o app consegue comparar renda atual x renda desejada.',next:'projections'},
     history:{icon:'📈',title:'Histórico',serve:'Guarda evolução patrimonial e snapshots da carteira.',fill:'Crie registros periódicos para acompanhar crescimento.',ready:'Quando existirem snapshots para comparar.',next:'projections'},
     projections:{icon:'🔮',title:'Projeções',serve:'Mostra cenários futuros e prazo até a meta.',fill:'Use meta, aporte e patrimônio atual para simular caminhos.',ready:'Quando os cenários mostram prazo e gap.',next:'liberty'},
-    liberty:{icon:'🕊️',title:'Liberdade',serve:'Traduz patrimônio e renda em independência financeira.',fill:'Compare renda desejada, patrimônio necessário e progresso.',ready:'Quando você entende quanto falta para liberdade.',next:'pulse'},
+    liberty:{icon:'🕊️',title:'Liberdade',serve:'Traduz patrimônio e renda em independência financeira.',fill:'Compare renda desejada, patrimônio necessário e progresso.',ready:'Quando você entende quanto falta para liberdade.',next:'intelligence'},
+    intelligence:{icon:'🧠',title:'Inteligência Financeira',serve:'Mostra score, momento atual, gargalo e próxima melhor decisão.',fill:'Use depois de alimentar patrimônio, metas, carteira, renda ou negócio.',ready:'Quando o app apresenta um plano claro para os próximos 30 dias.',next:'ai'},
     ai:{icon:'🤖',title:'IA Dymivra',serve:'Interpreta sua carteira e gera relatórios educativos.',fill:'Pergunte depois de alimentar Perfil, Metas e Ledger.',ready:'Quando a IA tem contexto suficiente para orientar.',next:'advisor'},
     advisor:{icon:'🚨',title:'Radar IA',serve:'Central de alertas e leitura de risco.',fill:'Use para conferir concentração, postura e pontos de atenção.',ready:'Quando há alertas priorizados.',next:'mentor'},
     mentor:{icon:'🧠',title:'Mentor',serve:'Acompanha execução e disciplina financeira.',fill:'Use para transformar diagnóstico em rotina.',ready:'Quando existe plano de acompanhamento.',next:'pulse'},
@@ -16196,7 +16197,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
     {title:'Preparar',icon:'🧱',desc:'O que precisa existir antes da análise ficar boa.',items:['profile','goals','ledger']},
     {title:'Carteira',icon:'💼',desc:'Organização, renda e evolução dos investimentos.',items:['allocation','income','history']},
     {title:'Futuro',icon:'📈',desc:'Cenários, liberdade e caminho de longo prazo.',items:['projections','liberty']},
-    {title:'Inteligência',icon:'🤖',desc:'IA, radar e acompanhamento.',items:['ai','advisor','mentor']},
+    {title:'Inteligência',icon:'🧠',desc:'Diagnóstico financeiro, IA, radar e acompanhamento.',items:['intelligence','ai','advisor','mentor']},
     {title:'Negócio',icon:'🏢',desc:'Controle financeiro, estoque, vendas e crescimento.',items:['business']},
     {title:'Conta',icon:'⚙️',desc:'Plano, app, legal e suporte.',items:['plans','app','legal','settings','all']}
   ];
@@ -16637,7 +16638,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
     profile:{icon:'🧬',title:'Perfil'}, goals:{icon:'🎯',title:'Metas'}, ledger:{icon:'📒',title:'Ledger'},
     allocation:{icon:'🧭',title:'Alocação'}, income:{icon:'💸',title:'Renda'}, history:{icon:'📈',title:'Histórico'},
     projections:{icon:'🔮',title:'Projeções'}, liberty:{icon:'🕊️',title:'Liberdade'},
-    ai:{icon:'🤖',title:'IA'}, advisor:{icon:'🚨',title:'Radar'}, mentor:{icon:'🧠',title:'Mentor'},
+    intelligence:{icon:'🧠',title:'Financeira'}, ai:{icon:'🤖',title:'IA'}, advisor:{icon:'🚨',title:'Radar'}, mentor:{icon:'🧠',title:'Mentor'},
     business:{icon:'🏢',title:'Negócio'},
     plans:{icon:'💎',title:'Planos'}, app:{icon:'📱',title:'App'}, legal:{icon:'⚖️',title:'Legal'}, settings:{icon:'⚙️',title:'Apoio'}, all:{icon:'🗂️',title:'Tudo'}
   };
@@ -16646,7 +16647,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
     {num:'02',title:'Preparar',icon:'🧱',desc:'Perfil, metas e base real da carteira.',items:['profile','goals','ledger'],go:'profile'},
     {num:'03',title:'Carteira',icon:'💼',desc:'Organização, renda e evolução dos investimentos.',items:['allocation','income','history'],go:'allocation'},
     {num:'04',title:'Futuro',icon:'📈',desc:'Cenários, liberdade e caminho de longo prazo.',items:['projections','liberty'],go:'projections'},
-    {num:'05',title:'Inteligência',icon:'🤖',desc:'IA, radar e acompanhamento.',items:['ai','advisor','mentor'],go:'ai'},
+    {num:'05',title:'Inteligência',icon:'🧠',desc:'Diagnóstico financeiro, IA, radar e acompanhamento.',items:['intelligence','ai','advisor','mentor'],go:'intelligence'},
     {num:'06',title:'Negócio',icon:'🏢',desc:'Controle financeiro, estoque, vendas e crescimento.',items:['business'],go:'business'},
     {num:'07',title:'Conta',icon:'⚙️',desc:'Plano, app, legal e suporte.',items:['plans','app','legal','settings','all'],go:'plans'}
   ];
