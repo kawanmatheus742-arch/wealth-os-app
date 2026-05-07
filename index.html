@@ -23093,5 +23093,257 @@ body.dymivra-fast-runtime .item:hover{transform:none!important}
 })();
 </script>
 
+
+
+<!-- Dymivra — ajuste seguro de venda, pagamento e desempenho -->
+<style id="dymivra8618-sale-scroll-payment-performance-style">
+/* Venda: rolagem no próprio overlay para impedir retorno automático ao topo */
+#dym857SaleModal.dym8618-sale-fixed{
+  position:fixed!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100dvh!important;
+  max-height:100dvh!important;
+  z-index:2147483600!important;
+  padding:14px!important;
+  padding-top:calc(14px + env(safe-area-inset-top))!important;
+  padding-bottom:calc(22px + env(safe-area-inset-bottom))!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior:contain!important;
+  -webkit-overflow-scrolling:touch!important;
+  touch-action:pan-y!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+}
+#dym857SaleModal.dym8618-sale-fixed.show{
+  display:block!important;
+}
+#dym857SaleModal.dym8618-sale-fixed .dym856-modal-box,
+#dym857SaleModal.dym8618-sale-fixed .dym857-sale-modal-box,
+#dym857SaleModal.dym8618-sale-fixed .dym8618-sale-box{
+  width:min(620px,calc(100vw - 28px))!important;
+  max-width:min(620px,calc(100vw - 28px))!important;
+  max-height:none!important;
+  height:auto!important;
+  overflow:visible!important;
+  overscroll-behavior:auto!important;
+  margin:0 auto calc(22px + env(safe-area-inset-bottom)) auto!important;
+  border-radius:28px!important;
+  transform:none!important;
+}
+#dym857SaleModal.dym8618-sale-fixed .dym856-modal-actions{
+  position:relative!important;
+  bottom:auto!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  padding:0!important;
+  background:transparent!important;
+  border-radius:0!important;
+  z-index:2!important;
+}
+#dym857SaleModal.dym8618-sale-fixed input,
+#dym857SaleModal.dym8618-sale-fixed textarea,
+#dym857SaleModal.dym8618-sale-fixed button{
+  touch-action:manipulation!important;
+}
+#dym857SaleModal.dym8618-sale-fixed .dym857-sale-form{
+  grid-template-columns:1fr!important;
+}
+#dym857SaleModal.dym8618-sale-fixed .dym857-sale-form > div,
+#dym857SaleModal.dym8618-sale-fixed .dym857-sale-form .wide{
+  min-width:0!important;
+}
+
+/* Pagamento da venda: seletor premium próprio, sem dropdown nativo */
+#dym857SaleMethod.dym8618-hidden-select,
+#dym857SaleMethod.dym8617-payment-native{
+  position:absolute!important;
+  left:-9999px!important;
+  top:auto!important;
+  width:1px!important;
+  height:1px!important;
+  min-height:1px!important;
+  opacity:0!important;
+  pointer-events:none!important;
+  border:0!important;
+  padding:0!important;
+  margin:0!important;
+  appearance:none!important;
+  -webkit-appearance:none!important;
+}
+#dym8617SalePaymentGrid{
+  display:none!important;
+}
+.dym8618-payment-grid{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:10px!important;
+  margin-top:8px!important;
+}
+.dym8618-payment-option{
+  width:100%!important;
+  min-height:52px!important;
+  margin:0!important;
+  padding:12px 10px!important;
+  border-radius:18px!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  background:rgba(255,255,255,.045)!important;
+  color:#dbeafe!important;
+  box-shadow:none!important;
+  font-size:13px!important;
+  font-weight:950!important;
+  line-height:1.15!important;
+  transform:none!important;
+}
+.dym8618-payment-option.active{
+  border-color:rgba(103,232,249,.62)!important;
+  background:linear-gradient(135deg,rgba(14,165,233,.96),rgba(34,211,238,.76))!important;
+  color:#fff!important;
+  box-shadow:0 0 0 3px rgba(34,211,238,.13),0 12px 26px rgba(14,165,233,.16)!important;
+}
+.dym8618-payment-option.active:after{
+  content:" ✓";
+  font-weight:950;
+}
+@media(max-width:430px){.dym8618-payment-grid{grid-template-columns:1fr!important}}
+
+/* Desempenho: menos custo visual no desktop sem remover funções */
+@media(min-width:900px){
+  html{scroll-behavior:auto!important}
+  body:before{opacity:.08!important}
+  .card,.mini,.item,.premium-panel,.auth-shell,.auth-panel,.auth-copy,.business-card,.business-kpi,
+  .dym856-stock-panel,.dym856-stock-card,.dym856-product,.dym861-bills-panel,.dym8612-costs-panel,
+  .dym8613-partner-report,.dym8615-mentor-panel,.dym864-sales-panel,.dym865-ranking-panel,
+  .dym8614-performance-panel,.dym8616-panel,.dym8617-panel{
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    box-shadow:0 8px 22px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.035)!important;
+  }
+  button:hover,.nav-btn:hover,.card:hover,.mini:hover,.item:hover{
+    transform:none!important;
+    filter:none!important;
+  }
+  .score-shell:after,.card:before,.mini:before,.item:before{
+    animation:none!important;
+  }
+}
+</style>
+<script id="dymivra8618-sale-scroll-payment-performance-script">
+(function(){
+  const $ = id => document.getElementById(id);
+  const paymentOptions = ['Pix','Dinheiro','Cartão','Boleto','Transferência','Outro'];
+  let wasOpen = false;
+  let scheduled = false;
+
+  function saleModal(){ return $('dym857SaleModal'); }
+  function saleBox(){ return saleModal()?.querySelector('.dym856-modal-box'); }
+  function isOpen(){ const m=saleModal(); return !!(m && m.classList.contains('show')); }
+
+  function choosePayment(value){
+    const select = $('dym857SaleMethod');
+    if(!select) return;
+    select.value = value || 'Pix';
+    select.dispatchEvent(new Event('input',{bubbles:true}));
+    select.dispatchEvent(new Event('change',{bubbles:true}));
+    syncPayment();
+  }
+
+  function syncPayment(){
+    const select = $('dym857SaleMethod');
+    const grid = $('dym8618SalePaymentGrid');
+    if(!(select && grid)) return;
+    const value = select.value || 'Pix';
+    grid.querySelectorAll('[data-dym8618-payment]').forEach(btn=>{
+      btn.classList.toggle('active',(btn.dataset.dym8618Payment||'')===value);
+      btn.setAttribute('aria-pressed',(btn.dataset.dym8618Payment||'')===value ? 'true':'false');
+    });
+  }
+
+  function installPayment(){
+    const select = $('dym857SaleMethod');
+    if(!select) return;
+    select.classList.add('dym8618-hidden-select');
+    select.setAttribute('aria-hidden','true');
+    select.tabIndex = -1;
+    const old = $('dym8617SalePaymentGrid');
+    if(old) old.style.display = 'none';
+
+    let grid = $('dym8618SalePaymentGrid');
+    if(!grid){
+      grid = document.createElement('div');
+      grid.id = 'dym8618SalePaymentGrid';
+      grid.className = 'dym8618-payment-grid';
+      select.insertAdjacentElement('afterend',grid);
+    }
+    const currentOptions = Array.from(select.options||[]).map(o=>o.value || (o.textContent||'').trim()).filter(Boolean);
+    const options = currentOptions.length ? currentOptions : paymentOptions;
+    const sig = options.join('|');
+    if(grid.dataset.options !== sig){
+      grid.dataset.options = sig;
+      grid.innerHTML = options.map(value=>`<button type="button" class="dym8618-payment-option" data-dym8618-payment="${String(value).replace(/&/g,'&amp;').replace(/"/g,'&quot;')}">${String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</button>`).join('');
+      grid.querySelectorAll('[data-dym8618-payment]').forEach(btn=>{
+        btn.addEventListener('click',ev=>{
+          ev.preventDefault();
+          ev.stopPropagation();
+          choosePayment(btn.dataset.dym8618Payment || 'Pix');
+        });
+      });
+    }
+    if(!select.value) select.value='Pix';
+    syncPayment();
+  }
+
+  function stabilizeSale(){
+    const modal = saleModal();
+    if(!modal) return;
+    modal.classList.add('dym8618-sale-fixed','dym858-body-modal');
+    if(modal.parentElement !== document.body) document.body.appendChild(modal);
+    const box = saleBox();
+    if(box) box.classList.add('dym8618-sale-box');
+    installPayment();
+
+    const open = isOpen();
+    if(open && !wasOpen){
+      modal.scrollTop = 0;
+      setTimeout(()=>{ try{ document.activeElement && document.activeElement.blur && document.activeElement.blur(); }catch(e){} },180);
+    }
+    wasOpen = open;
+  }
+
+  function wrapOpenOnce(){
+    const fn = window.dymivra857AskSaleProduct;
+    if(typeof fn !== 'function' || fn.__dym8618Wrapped) return;
+    const wrapped = function(){
+      const result = fn.apply(this,arguments);
+      setTimeout(stabilizeSale,40);
+      setTimeout(stabilizeSale,180);
+      return result;
+    };
+    wrapped.__dym8618Wrapped = true;
+    window.dymivra857AskSaleProduct = wrapped;
+  }
+
+  function tick(){
+    scheduled = false;
+    try{ stabilizeSale(); wrapOpenOnce(); }catch(e){ console.warn('Dymivra venda:', e?.message || e); }
+  }
+  function schedule(){
+    if(scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(tick);
+  }
+
+  document.addEventListener('click',ev=>{
+    const pay = ev.target && ev.target.closest && ev.target.closest('[data-dym8618-payment]');
+    if(pay){ ev.preventDefault(); ev.stopPropagation(); choosePayment(pay.dataset.dym8618Payment || 'Pix'); }
+  },true);
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded',schedule,{once:true}); else schedule();
+  try{ new MutationObserver(schedule).observe(document.body || document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['class','style']}); }catch(e){}
+  setInterval(schedule,1500);
+})();
+</script>
+
 </body>
 </html>
