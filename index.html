@@ -22573,5 +22573,339 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
 </script>
 <!-- Dymivra Mentor Business Inteligente END -->
 
+
+<!-- ==========================================================
+     Dymivra — Calendário premium e performance estável
+     Ajuste visual e técnico para usuário final.
+     ========================================================== -->
+<style id="dymivra8616-calendar-performance-style">
+/* Calendário premium para campos de data */
+.dym-date-premium-input{
+  cursor:pointer!important;
+  caret-color:transparent!important;
+  user-select:none!important;
+  color:#f8fafc!important;
+  font-weight:850!important;
+  letter-spacing:.02em!important;
+  background:
+    radial-gradient(circle at 12% 0%,rgba(34,211,238,.10),transparent 38%),
+    linear-gradient(180deg,rgba(7,14,30,.96),rgba(2,8,23,.94))!important;
+  border-color:rgba(103,232,249,.22)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 0 0 1px rgba(34,211,238,.03)!important;
+}
+.dym-date-premium-input:focus{
+  border-color:rgba(103,232,249,.48)!important;
+  box-shadow:0 0 0 4px rgba(34,211,238,.10), inset 0 1px 0 rgba(255,255,255,.05)!important;
+}
+.dym-date-premium-input::-webkit-calendar-picker-indicator{display:none!important;opacity:0!important}
+.dym-date-overlay{
+  position:fixed!important;
+  inset:0!important;
+  z-index:2147483600!important;
+  display:none!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:16px!important;
+  background:rgba(2,6,23,.76)!important;
+  backdrop-filter:blur(16px)!important;
+}
+.dym-date-overlay.show{display:flex!important}
+.dym-date-modal{
+  width:min(520px,calc(100vw - 24px))!important;
+  max-height:min(88vh,760px)!important;
+  overflow:auto!important;
+  border-radius:30px!important;
+  border:1px solid rgba(103,232,249,.26)!important;
+  background:
+    radial-gradient(circle at 0 0,rgba(34,211,238,.16),transparent 34%),
+    radial-gradient(circle at 100% 0,rgba(139,92,246,.14),transparent 32%),
+    linear-gradient(180deg,rgba(15,23,42,.98),rgba(2,8,23,.98))!important;
+  box-shadow:0 28px 80px rgba(0,0,0,.56), inset 0 1px 0 rgba(255,255,255,.065)!important;
+  padding:18px!important;
+  position:relative!important;
+}
+.dym-date-modal:before{
+  content:""!important;
+  position:absolute!important;
+  left:18px!important;
+  right:18px!important;
+  top:0!important;
+  height:3px!important;
+  border-radius:999px!important;
+  background:linear-gradient(90deg,#22d3ee,#8b5cf6,#facc15,#22c55e)!important;
+}
+.dym-date-head{display:flex!important;justify-content:space-between!important;gap:12px!important;align-items:flex-start!important;margin-bottom:14px!important;padding-top:6px!important}
+.dym-date-kicker{font-size:11px!important;font-weight:950!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:#67e8f9!important;margin-bottom:7px!important}
+.dym-date-title{margin:0!important;font-size:clamp(28px,7vw,42px)!important;line-height:1.02!important;letter-spacing:-.075em!important;color:#fff!important;font-weight:950!important}
+.dym-date-sub{margin-top:8px!important;color:#cbd5e1!important;line-height:1.45!important;font-size:13px!important}
+.dym-date-close{width:46px!important;height:46px!important;min-width:46px!important;margin:0!important;padding:0!important;border-radius:17px!important;border:1px solid rgba(255,255,255,.12)!important;background:linear-gradient(135deg,rgba(14,165,233,.22),rgba(139,92,246,.18))!important;color:#fff!important;font-size:22px!important;display:grid!important;place-items:center!important;box-shadow:none!important}
+.dym-date-month-row{display:grid!important;grid-template-columns:auto 1fr auto!important;gap:10px!important;align-items:center!important;border:1px solid rgba(255,255,255,.08)!important;background:rgba(255,255,255,.035)!important;border-radius:22px!important;padding:10px!important;margin-bottom:12px!important}
+.dym-date-nav{width:46px!important;height:46px!important;min-width:46px!important;margin:0!important;padding:0!important;border-radius:16px!important;border:1px solid rgba(103,232,249,.16)!important;background:rgba(14,165,233,.10)!important;color:#e0f2fe!important;font-size:24px!important;box-shadow:none!important}
+.dym-date-current{text-align:center!important;color:#fff!important;font-size:22px!important;font-weight:950!important;letter-spacing:-.04em!important;text-transform:capitalize!important}
+.dym-date-week,.dym-date-grid{display:grid!important;grid-template-columns:repeat(7,1fr)!important;gap:7px!important}
+.dym-date-week{margin:12px 0 8px!important;color:#91a4c8!important;font-size:12px!important;font-weight:900!important;text-align:center!important}
+.dym-date-day{height:45px!important;margin:0!important;padding:0!important;border-radius:16px!important;border:1px solid rgba(255,255,255,.08)!important;background:rgba(255,255,255,.035)!important;color:#dbeafe!important;font-size:14px!important;font-weight:900!important;box-shadow:none!important;transition:transform .14s ease, border-color .14s ease, background .14s ease, color .14s ease!important}
+.dym-date-day.out{opacity:.34!important}
+.dym-date-day.today{border-color:rgba(250,204,21,.32)!important;color:#fef3c7!important}
+.dym-date-day.selected{position:relative!important;border-color:rgba(103,232,249,.62)!important;background:linear-gradient(135deg,rgba(14,165,233,.95),rgba(139,92,246,.74))!important;color:#fff!important;box-shadow:0 0 0 3px rgba(34,211,238,.12),0 0 26px rgba(34,211,238,.18)!important;transform:scale(1.05)!important}
+.dym-date-day.selected:after{content:"✓"!important;position:absolute!important;right:5px!important;top:4px!important;width:15px!important;height:15px!important;border-radius:999px!important;background:rgba(255,255,255,.16)!important;display:grid!important;place-items:center!important;font-size:10px!important;color:#fff!important}
+.dym-date-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;margin-top:14px!important}
+.dym-date-actions button{margin:0!important;height:52px!important;border-radius:18px!important}
+.dym-date-actions .secondary{background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.10)!important;color:#e5e7eb!important;box-shadow:none!important}
+@media(max-width:420px){.dym-date-modal{padding:15px!important;border-radius:26px!important}.dym-date-day{height:40px!important;border-radius:14px!important}.dym-date-actions{grid-template-columns:1fr!important}.dym-date-title{font-size:30px!important}}
+
+/* Seleção do mês: destaque visível, animação e confirmação */
+.dym860-month-chip{position:relative!important;transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease!important}
+.dym860-month-chip.active,.dym860-month-chip.is-selected{
+  border-color:rgba(103,232,249,.72)!important;
+  background:
+    radial-gradient(circle at 18% 0%,rgba(255,255,255,.23),transparent 36%),
+    linear-gradient(135deg,rgba(14,165,233,.98),rgba(139,92,246,.78))!important;
+  color:#fff!important;
+  box-shadow:0 0 0 3px rgba(34,211,238,.14),0 0 30px rgba(34,211,238,.22)!important;
+  transform:scale(1.035)!important;
+}
+.dym860-month-chip.active:after,.dym860-month-chip.is-selected:after{
+  content:"Selecionado"!important;
+  position:absolute!important;
+  right:8px!important;
+  top:6px!important;
+  padding:3px 6px!important;
+  border-radius:999px!important;
+  background:rgba(2,6,23,.28)!important;
+  border:1px solid rgba(255,255,255,.13)!important;
+  color:#e0f2fe!important;
+  font-size:9px!important;
+  font-weight:950!important;
+  letter-spacing:.02em!important;
+}
+.dym860-month-chip.active:before,.dym860-month-chip.is-selected:before{
+  content:"✓"!important;
+  position:absolute!important;
+  left:9px!important;
+  top:7px!important;
+  width:18px!important;
+  height:18px!important;
+  border-radius:999px!important;
+  display:grid!important;
+  place-items:center!important;
+  background:rgba(255,255,255,.16)!important;
+  font-size:12px!important;
+}
+
+/* Performance estável: mantém recursos, reduz custo visual pesado */
+body.dymivra-fast-runtime:before{opacity:.10!important;transform:translateZ(0)!important}
+body.dymivra-fast-runtime .card,
+body.dymivra-fast-runtime .mini,
+body.dymivra-fast-runtime .item,
+body.dymivra-fast-runtime .premium-panel,
+body.dymivra-fast-runtime .business-card,
+body.dymivra-fast-runtime .business-kpi,
+body.dymivra-fast-runtime .dym861-bills-panel,
+body.dymivra-fast-runtime .dym8612-costs-panel,
+body.dymivra-fast-runtime .dym8613-partner-report,
+body.dymivra-fast-runtime .dym8615-mentor-panel{
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  box-shadow:0 10px 28px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.035)!important;
+  will-change:auto!important;
+}
+body.dymivra-fast-runtime .card,
+body.dymivra-fast-runtime .mini,
+body.dymivra-fast-runtime .item,
+body.dymivra-fast-runtime [data-screen-block],
+body.dymivra-fast-runtime .premium-panel{
+  content-visibility:auto;
+  contain-intrinsic-size:auto 360px;
+}
+body.dymivra-fast-runtime .modal,
+body.dymivra-fast-runtime .modal *,
+body.dymivra-fast-runtime .app-nav,
+body.dymivra-fast-runtime .app-nav *,
+body.dymivra-fast-runtime .floating-top,
+body.dymivra-fast-runtime .toast-wrap,
+body.dymivra-fast-runtime .toast-wrap *,
+body.dymivra-fast-runtime .dym-date-overlay,
+body.dymivra-fast-runtime .dym-date-overlay *,
+body.dymivra-fast-runtime .dym860-month-overlay,
+body.dymivra-fast-runtime .dym860-month-overlay *{
+  content-visibility:visible!important;
+  contain:none!important;
+}
+body.dymivra-is-scrolling *,body.dymivra-is-scrolling *:before,body.dymivra-is-scrolling *:after{
+  animation-play-state:paused!important;
+  transition-duration:0s!important;
+}
+body.dymivra-fast-runtime button:hover,
+body.dymivra-fast-runtime .nav-btn:hover,
+body.dymivra-fast-runtime .card:hover,
+body.dymivra-fast-runtime .mini:hover,
+body.dymivra-fast-runtime .item:hover{
+  transform:none!important;
+}
+@supports not (content-visibility:auto){
+  body.dymivra-fast-runtime .card,body.dymivra-fast-runtime .mini,body.dymivra-fast-runtime .item{contain:layout paint!important}
+}
+</style>
+<script id="dymivra8616-calendar-performance-script">
+(function(){
+  'use strict';
+  const nativeValue=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value');
+  const pad=n=>String(n).padStart(2,'0');
+  const today=()=>new Date().toISOString().slice(0,10);
+  const monthNames=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+  const week=['D','S','T','Q','Q','S','S'];
+  const toISO=v=>{
+    v=String(v||'').trim();
+    if(/^\d{4}-\d{2}-\d{2}$/.test(v)) return v;
+    const br=v.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})$/);
+    if(br) return `${br[3]}-${pad(br[2])}-${pad(br[1])}`;
+    const d=new Date(v);
+    if(!Number.isNaN(d.getTime())) return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+    return '';
+  };
+  const toBR=iso=>{iso=toISO(iso); if(!iso) return ''; const [y,m,d]=iso.split('-'); return `${d}/${m}/${y}`;};
+  let target=null, viewYear=new Date().getFullYear(), viewMonth=new Date().getMonth();
+  function el(id){return document.getElementById(id)}
+  function ensureModal(){
+    if(el('dymDateOverlay')) return el('dymDateOverlay');
+    const overlay=document.createElement('div');
+    overlay.id='dymDateOverlay';
+    overlay.className='dym-date-overlay';
+    overlay.innerHTML=`
+      <div class="dym-date-modal" role="dialog" aria-modal="true" aria-labelledby="dymDateTitle">
+        <div class="dym-date-head">
+          <div>
+            <div class="dym-date-kicker">Calendário</div>
+            <h3 class="dym-date-title" id="dymDateTitle">Definir data</h3>
+            <div class="dym-date-sub">Escolha a data dentro do padrão visual do Dymivra.</div>
+          </div>
+          <button type="button" class="dym-date-close" id="dymDateClose" aria-label="Fechar">×</button>
+        </div>
+        <div class="dym-date-month-row">
+          <button type="button" class="dym-date-nav" id="dymDatePrev" aria-label="Mês anterior">‹</button>
+          <div class="dym-date-current" id="dymDateCurrent"></div>
+          <button type="button" class="dym-date-nav" id="dymDateNext" aria-label="Próximo mês">›</button>
+        </div>
+        <div class="dym-date-week">${week.map(x=>`<div>${x}</div>`).join('')}</div>
+        <div class="dym-date-grid" id="dymDateGrid"></div>
+        <div class="dym-date-actions">
+          <button type="button" class="secondary" id="dymDateCancel">Cancelar</button>
+          <button type="button" id="dymDateToday">Usar hoje</button>
+        </div>
+      </div>`;
+    document.body.appendChild(overlay);
+    el('dymDateClose').addEventListener('click',close);
+    el('dymDateCancel').addEventListener('click',close);
+    el('dymDateToday').addEventListener('click',()=>selectDate(today()));
+    el('dymDatePrev').addEventListener('click',()=>{viewMonth--; if(viewMonth<0){viewMonth=11;viewYear--;} render();});
+    el('dymDateNext').addEventListener('click',()=>{viewMonth++; if(viewMonth>11){viewMonth=0;viewYear++;} render();});
+    overlay.addEventListener('click',e=>{if(e.target===overlay) close();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape' && overlay.classList.contains('show')) close();});
+    return overlay;
+  }
+  function setTargetValue(input,iso,notify){
+    iso=toISO(iso);
+    input.dataset.dymIso=iso;
+    nativeValue.set.call(input, toBR(iso));
+    input.setAttribute('data-display-date',toBR(iso));
+    if(notify){
+      input.dispatchEvent(new Event('input',{bubbles:true}));
+      input.dispatchEvent(new Event('change',{bubbles:true}));
+    }
+  }
+  function open(input){
+    target=input;
+    const iso=toISO(input.dataset.dymIso || nativeValue.get.call(input) || today()) || today();
+    const d=new Date(iso+'T00:00:00');
+    viewYear=d.getFullYear(); viewMonth=d.getMonth();
+    ensureModal().classList.add('show');
+    document.documentElement.style.overflow='hidden';
+    document.body.style.overflow='hidden';
+    render();
+  }
+  function close(){
+    const o=el('dymDateOverlay'); if(o) o.classList.remove('show');
+    document.documentElement.style.overflow='';
+    document.body.style.overflow='';
+    target=null;
+  }
+  function selectDate(iso){
+    if(target) setTargetValue(target,iso,true);
+    close();
+  }
+  function render(){
+    const current=el('dymDateCurrent'), grid=el('dymDateGrid'); if(!grid) return;
+    current.textContent=`${monthNames[viewMonth]} de ${viewYear}`;
+    const selected=target ? toISO(target.dataset.dymIso || nativeValue.get.call(target)) : '';
+    const now=today();
+    const first=new Date(viewYear,viewMonth,1);
+    const start=new Date(viewYear,viewMonth,1-first.getDay());
+    const days=[];
+    for(let i=0;i<42;i++){
+      const d=new Date(start); d.setDate(start.getDate()+i);
+      const iso=`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+      const cls=['dym-date-day',d.getMonth()!==viewMonth?'out':'',iso===selected?'selected':'',iso===now?'today':''].filter(Boolean).join(' ');
+      days.push(`<button type="button" class="${cls}" data-iso="${iso}">${d.getDate()}</button>`);
+    }
+    grid.innerHTML=days.join('');
+    grid.querySelectorAll('[data-iso]').forEach(b=>b.addEventListener('click',()=>selectDate(b.dataset.iso)));
+  }
+  function enhance(input){
+    if(!input || input.dataset.dymDateEnhanced==='1') return;
+    input.dataset.dymDateEnhanced='1';
+    const raw=nativeValue.get.call(input) || input.getAttribute('value') || '';
+    try{ input.type='text'; }catch{}
+    input.readOnly=true;
+    input.setAttribute('inputmode','none');
+    input.setAttribute('autocomplete','off');
+    input.classList.add('dym-date-premium-input');
+    Object.defineProperty(input,'value',{
+      configurable:true,
+      get(){ return this.dataset.dymIso || ''; },
+      set(v){ setTargetValue(this,v,false); }
+    });
+    setTargetValue(input, raw || input.dataset.dymIso || '', false);
+    input.addEventListener('click',e=>{e.preventDefault(); open(input);});
+    input.addEventListener('focus',e=>{e.preventDefault(); setTimeout(()=>open(input),0);});
+    input.addEventListener('keydown',e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); open(input); } });
+  }
+  function enhanceDates(){
+    document.querySelectorAll('input[type="date"],input[data-dymivra-date]').forEach(enhance);
+  }
+  function enhanceMonthSelection(){
+    const grid=el('dym860MonthGrid');
+    if(!grid) return;
+    const sync=()=>{
+      const active=grid.querySelector('.dym860-month-chip.active');
+      grid.querySelectorAll('.dym860-month-chip').forEach(btn=>btn.classList.toggle('is-selected',btn===active));
+    };
+    sync();
+    if(!grid.dataset.dym8616MonthWatch){
+      grid.dataset.dym8616MonthWatch='1';
+      grid.addEventListener('click',()=>setTimeout(sync,40));
+      new MutationObserver(sync).observe(grid,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
+    }
+  }
+  function installPerformance(){
+    document.body.classList.add('dymivra-fast-runtime');
+    let timer=0;
+    const mark=()=>{
+      document.body.classList.add('dymivra-is-scrolling');
+      clearTimeout(timer);
+      timer=setTimeout(()=>document.body.classList.remove('dymivra-is-scrolling'),180);
+    };
+    window.addEventListener('scroll',mark,{passive:true});
+    document.addEventListener('touchmove',mark,{passive:true});
+    window.addEventListener('wheel',mark,{passive:true});
+  }
+  function tick(){ enhanceDates(); enhanceMonthSelection(); }
+  document.addEventListener('DOMContentLoaded',()=>{installPerformance(); setTimeout(tick,250);});
+  if(document.readyState!=='loading'){installPerformance(); setTimeout(tick,250);}
+  new MutationObserver(()=>tick()).observe(document.documentElement,{childList:true,subtree:true});
+  setInterval(tick,1500);
+})();
+</script>
+
 </body>
 </html>
