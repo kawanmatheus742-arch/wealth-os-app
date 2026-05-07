@@ -8504,10 +8504,7 @@ body.screen-overview-active.performance-mode.overview-intelligence-suite{
 <button class="secondary" onclick="showMobileInstallHelp()">Como instalar?</button>
 </div>
 </div>
-<div class="screen-intro" id="screenIntro"><strong>Visão geral</strong> — sua central para entender o dinheiro, saber o que preencher primeiro e decidir o próximo passo.</div>
-
-<div class="dymivra821-guide-host" id="dymivra821GuideHost" aria-live="polite"></div>
-
+<div class="screen-intro" id="screenIntro"><strong>Visão geral</strong> — painel executivo com patrimônio, inteligência, score e principais alertas.</div>
 
 <div class="card premium-panel dymivra845-business" data-screen-block="" data-screens="business">
   <div class="business-hero-shell">
@@ -10861,26 +10858,26 @@ body.screen-overview-active.performance-mode.overview-intelligence-suite{
     window.handleAuth=async()=>{if(loading.auth)return;const email=$('email').value.trim(),password=$('password').value.trim();if(!email||!password){status($('authStatus'),'Preencha email e senha.','error');return}if(password.length<6){status($('authStatus'),'A senha precisa ter pelo menos 6 caracteres.','error');return}if(!requireOnline())return;loading.auth=true;btn($('authBtn'),true,loginMode?'Entrando...':'Criando...');showActionOverlay(loginMode?'Entrando com segurança':'Criando conta','Validando acesso seguro...','🔐');try{const r=loginMode?await supabase.auth.signInWithPassword({email,password}):await supabase.auth.signUp({email,password});if(r.error)throw r.error;if(!loginMode){toast('Conta criada. Agora faça login.','success');loginMode=true;toggleAuthMode();}else toast('Login realizado.','success')}catch(e){status($('authStatus'),e.message||'Erro no acesso.','error');toast(e.message||'Erro no acesso.','error')}finally{loading.auth=false;btn($('authBtn'),false);hideActionOverlay()}}
     
     const screenTexts={
-      journey:['Jornada','guia o começo: mostra a ordem certa para preencher o app e entender o que cada área faz por você.'],
-      overview:['Visão geral','sua central: veja o momento financeiro, o que já está organizado, o que falta preencher e qual caminho seguir.'],
-      pulse:['Pulse','leitura rápida do seu momento: prioridade, ponto de atenção e plano curto para agir sem se perder.'],
-      ledger:['Ledger','registre o que movimenta seu dinheiro e seus investimentos: aportes, saídas, vendas, proventos, taxas e custos.'],
-      income:['Renda','acompanhe se seus investimentos estão gerando renda e quanto falta para transformar renda passiva em resultado real.'],
-      liberty:['Liberdade','entenda quanto patrimônio e renda seriam necessários para viver com mais independência financeira.'],
-      allocation:['Alocação','veja se sua carteira está equilibrada, concentrada ou fora do perfil que você escolheu.'],
-      profile:['Perfil','defina seu estilo de investidor para o app comparar risco, carteira e decisões com mais clareza.'],
-      ai:['IA Dymivra','faça perguntas sobre sua vida financeira e use o contexto do app para receber explicações mais úteis.'],
-      advisor:['Radar','acompanhe mercado, riscos e cenário para não decidir investimentos no escuro.'],
-      mentor:['Mentor','receba orientação prática: o que fazer agora, qual prioridade seguir e como evoluir com os dados que você já tem.'],
-      plans:['Planos','veja os recursos liberados em cada plano e entenda o valor das funções premium.'],
-      app:['App','ajuste a experiência, instalação e uso no celular ou computador.'],
-      history:['Histórico','acompanhe a evolução do patrimônio para entender se você está crescendo ou ficando parado.'],
-      goals:['Metas','transforme objetivos em plano: quanto falta, ritmo necessário e ações para chegar mais perto.'],
-      projections:['Projeções','simule cenários para entender como aportes, tempo e patrimônio mudam seu futuro.'],
-      legal:['Legal','privacidade, termos, suporte e segurança dos seus dados.'],
-      settings:['Apoio','preferências, desempenho, modo leve e ferramentas de suporte do app.'],
-      business:['Negócio','controle caixa, vendas, estoque, contas, metas e decisões da sua loja ou operação.'],
-      all:['Tudo','modo completo para revisar todas as áreas. Use quando quiser conferir o app inteiro.']
+      journey:['Jornada Guiada','comece aqui: ordem certa das telas, checklist inteligente, próxima ação e mapa do que preencher primeiro.'],
+      overview:['Visão geral','sua visão financeira em tempo real: patrimônio, evolução, renda, metas e alertas importantes em um só lugar.'],
+      pulse:['Pulse','motor de decisão educativo que lê carteira, ledger, renda, metas, risco e alocação para mostrar prioridade, impacto e plano de 7 dias.'],
+      ledger:['Ledger Premium Total','registre movimentações, audite preços, acompanhe posições calculadas e controle o extrato em uma tela de comando premium.'],
+      income:['Renda Premium Total','cockpit premium para proventos, yield, maior pagador, ranking, meta mensal, fechamento do mês e calendário de renda passiva.'],
+      liberty:['Liberdade','mapa renovado de independência financeira com renda desejada, patrimônio necessário, progresso, marcos, prazo e plano de ação.'],
+      allocation:['Alocação','mesa visual de carteira-alvo, desvio, concentração, próximo aporte e diagnóstico visual para organizar a carteira com mais clareza.'],
+      profile:['Perfil','identidade de investidor com identidade, risco, compatibilidade, recomendação e aplicação automática na carteira-alvo.'],
+      ai:['IA Dymivra','copiloto educativo com relatório, contexto, plano de ação, pergunta personalizada e controle de uso premium.'],
+      advisor:['Radar IA','torre de controle com mercado, alertas, postura, riscos, prioridade, ações e linha do tempo inteligente.'],
+      mentor:['Mentor','jornada guiada com diagnóstico, plano, check-up, execução de 30 dias, progresso, lembretes e IA.'],
+      plans:['Planos','escada comercial Free, Pro e Elite com valor percebido, acesso premium, limites de IA e base de assinatura.'],
+      app:['App','acesso ao app, preferências, suporte e experiência no celular.'],
+      history:['Histórico','snapshots, curva de capital, evolução patrimonial e comparação visual para acompanhar crescimento.'],
+      goals:['Metas','meta patrimonial, aporte, progresso, projeção, gargalo e plano de execução em uma tela mais premium.'],
+      projections:['Projeções','cenários futuros, prazo para meta, contribuição necessária, gap e rota patrimonial com leitura executiva.'],
+      legal:['Legal','privacidade, termos, suporte, exclusão de dados, aviso financeiro e confiança para o usuário.'],
+      settings:['Apoio','performance, modo leve, visual premium, compatibilidade, diagnóstico e ferramentas de operação do app.'],
+      business:['Dymivra Business','controle financeiro para pequenos negócios, sociedades e operações em crescimento.'],
+      all:['Tudo','modo de revisão completa. Use apenas para conferir o app inteiro, pois é mais pesado.']
     };
     
     
@@ -16403,13 +16400,13 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
     plans:{icon:'💎',title:'Planos'}, app:{icon:'📱',title:'App'}, legal:{icon:'⚖️',title:'Legal'}, settings:{icon:'⚙️',title:'Apoio'}, all:{icon:'🗂️',title:'Tudo'}
   };
   const groups=[
-    {num:'01',title:'Comece',icon:'🚀',desc:'Entenda o app, veja por onde começar e siga o próximo passo.',items:['overview','journey','pulse'],go:'overview'},
-    {num:'02',title:'Organizar',icon:'🧱',desc:'Monte sua base: perfil, metas e registros que explicam sua vida financeira.',items:['profile','goals','ledger'],go:'profile'},
-    {num:'03',title:'Investir melhor',icon:'💼',desc:'Entenda carteira, renda, evolução e se seus investimentos fazem sentido.',items:['allocation','income','history'],go:'allocation'},
-    {num:'04',title:'Planejar o futuro',icon:'📈',desc:'Veja cenários, liberdade financeira e caminho de longo prazo.',items:['projections','liberty'],go:'projections'},
-    {num:'05',title:'Orientação',icon:'🤖',desc:'Pergunte, veja o mercado e receba direção prática para decidir melhor.',items:['ai','advisor','mentor'],go:'ai'},
+    {num:'01',title:'Comece',icon:'🚀',desc:'Entrada principal e orientação.',items:['overview','journey','pulse'],go:'overview'},
+    {num:'02',title:'Preparar',icon:'🧱',desc:'Perfil, metas e base real da carteira.',items:['profile','goals','ledger'],go:'profile'},
+    {num:'03',title:'Carteira',icon:'💼',desc:'Organização, renda e evolução dos investimentos.',items:['allocation','income','history'],go:'allocation'},
+    {num:'04',title:'Futuro',icon:'📈',desc:'Cenários, liberdade e caminho de longo prazo.',items:['projections','liberty'],go:'projections'},
+    {num:'05',title:'Inteligência',icon:'🤖',desc:'IA, radar e acompanhamento.',items:['ai','advisor','mentor'],go:'ai'},
     {num:'06',title:'Negócio',icon:'🏢',desc:'Controle financeiro, estoque, vendas e crescimento.',items:['business'],go:'business'},
-    {num:'07',title:'Conta',icon:'⚙️',desc:'Plano, instalação, segurança, suporte e revisão completa.',items:['plans','app','legal','settings','all'],go:'plans'}
+    {num:'07',title:'Conta',icon:'⚙️',desc:'Plano, app, legal e suporte.',items:['plans','app','legal','settings','all'],go:'plans'}
   ];
   const isMobile=()=>window.matchMedia&&window.matchMedia('(max-width:820px)').matches;
   const current=()=>window.currentScreen||'overview';
@@ -23349,570 +23346,161 @@ body.dymivra-fast-runtime .item:hover{transform:none!important}
 </script>
 
 
-<style id="dymivra821-experiencia-guiada-style">
-/* Camada de conforto e orientação — Dymivra */
-.dymivra821-guide-host{display:block;margin:-4px 0 14px 0}
-.dymivra821-guide{
-  position:relative;
-  overflow:hidden;
-  border:1px solid rgba(125,211,252,.18);
-  border-radius:26px;
-  padding:18px;
-  background:
-    radial-gradient(circle at 8% 0%,rgba(34,211,238,.15),transparent 32%),
-    radial-gradient(circle at 92% 10%,rgba(139,92,246,.12),transparent 30%),
-    linear-gradient(180deg,rgba(8,15,31,.90),rgba(4,10,22,.88));
-  box-shadow:0 16px 38px rgba(0,0,0,.20);
-}
-.dymivra821-guide:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,.035),transparent);
-}
-.dymivra821-guide>*{position:relative;z-index:1}
-.dymivra821-guide-top{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:14px;
-  flex-wrap:wrap;
-  margin-bottom:14px;
-}
-.dymivra821-guide-kicker{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  padding:7px 10px;
-  border-radius:999px;
-  border:1px solid rgba(34,211,238,.20);
-  background:rgba(34,211,238,.08);
-  color:#cffafe;
-  font-size:11px;
-  font-weight:950;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-}
-.dymivra821-guide-title{
-  margin:9px 0 6px;
-  font-size:clamp(24px,3.2vw,42px);
-  letter-spacing:-.065em;
-  line-height:1.02;
-}
-.dymivra821-guide-sub{
-  color:#cbd5e1;
-  line-height:1.55;
-  max-width:920px;
-  font-size:14px;
-}
-.dymivra821-guide-badge{
-  min-width:130px;
-  text-align:center;
-  padding:12px;
-  border-radius:20px;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(255,255,255,.045);
-  color:#e0f2fe;
-  font-weight:950;
-}
-.dymivra821-guide-badge span{
-  display:block;
-  color:#94a3b8;
-  font-size:11px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  margin-bottom:4px;
-}
-.dymivra821-guide-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-top:12px;
-}
-.dymivra821-guide-card{
-  border:1px solid rgba(255,255,255,.075);
-  border-radius:19px;
-  background:rgba(255,255,255,.035);
-  padding:13px;
-  min-height:118px;
-}
-.dymivra821-guide-card strong{
-  display:block;
-  margin-bottom:6px;
-  color:#fff;
-  font-size:15px;
-  letter-spacing:-.02em;
-}
-.dymivra821-guide-card span{
-  display:block;
-  color:#cbd5e1;
-  line-height:1.45;
-  font-size:13px;
-}
-.dymivra821-guide-actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:14px;
-}
-.dymivra821-guide-actions button{
-  width:auto;
-  min-width:150px;
-  margin:0;
-  padding:11px 13px;
-  border-radius:15px;
-}
-.dymivra821-guide-actions .dymivra821-soft{
-  background:linear-gradient(135deg,rgba(71,85,105,.95),rgba(100,116,139,.88))!important;
-}
-.dymivra821-path{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:8px;
-  margin-top:12px;
-}
-.dymivra821-path-step{
-  padding:10px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,.075);
-  background:rgba(255,255,255,.03);
-  color:#dbeafe;
-  font-size:12px;
-  line-height:1.35;
-}
-.dymivra821-path-step b{
-  display:block;
-  color:#fff;
-  font-size:13px;
-  margin-bottom:3px;
-}
-.dymivra821-modal{
-  position:fixed;
-  inset:0;
-  z-index:9997;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-  background:rgba(0,0,0,.66);
-  backdrop-filter:blur(10px);
-}
-.dymivra821-modal.show{display:flex}
-.dymivra821-modalbox{
-  width:min(760px,100%);
-  max-height:min(86vh,860px);
-  overflow:auto;
-  border-radius:28px;
-  border:1px solid rgba(125,211,252,.20);
-  background:
-    radial-gradient(circle at 8% 0%,rgba(34,211,238,.14),transparent 32%),
-    linear-gradient(180deg,#0f172a,#07111f);
-  box-shadow:0 24px 70px rgba(0,0,0,.45);
-  padding:20px;
-}
-.dymivra821-modal-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:12px;
-  margin-bottom:12px;
-}
-.dymivra821-modal-head h2{
-  margin:6px 0 6px;
-  font-size:clamp(28px,4vw,48px);
-  line-height:1;
-  letter-spacing:-.075em;
-}
-.dymivra821-close{
-  width:48px!important;
-  height:48px!important;
-  min-width:48px!important;
-  margin:0!important;
-  padding:0!important;
-  border-radius:17px!important;
-}
-.dymivra821-map{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-.dymivra821-map-item{
-  padding:13px;
-  border-radius:18px;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(255,255,255,.035);
-  line-height:1.45;
-}
-.dymivra821-map-item strong{display:block;margin-bottom:5px}
-.dymivra821-map-item span{display:block;color:#cbd5e1;font-size:13px}
-.dymivra821-mini-help{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:6px 9px;
-  border-radius:999px;
-  background:rgba(34,211,238,.08);
-  border:1px solid rgba(34,211,238,.16);
-  color:#cffafe;
-  font-size:12px;
-  font-weight:900;
-}
-.performance-mode .dymivra821-guide,
-.performance-mode .dymivra821-modalbox{
-  backdrop-filter:none!important;
-  box-shadow:0 10px 24px rgba(0,0,0,.20)!important;
-}
-.performance-mode .dymivra821-guide:before{display:none!important}
-@media(max-width:980px){
-  .dymivra821-guide-grid,.dymivra821-path{grid-template-columns:1fr}
-  .dymivra821-map{grid-template-columns:1fr}
-  .dymivra821-guide-actions button{width:100%}
-  .dymivra821-guide-badge{width:100%;text-align:left}
-}
+<!-- Dymivra: camada de experiência viva e orientação contextual -->
+<style id="dymivra-vivo-2-style">
+.dymivra-vivo-core{position:relative;overflow:hidden;margin:14px 0 18px;border:1px solid rgba(125,211,252,.20);border-radius:28px;background:radial-gradient(circle at 8% 0%,rgba(34,211,238,.16),transparent 34%),radial-gradient(circle at 92% 0%,rgba(139,92,246,.13),transparent 32%),linear-gradient(180deg,rgba(8,15,31,.94),rgba(3,7,18,.96));box-shadow:0 18px 46px rgba(0,0,0,.24);padding:18px}.dymivra-vivo-core:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent,rgba(255,255,255,.04),transparent);opacity:.76}.dymivra-vivo-core>*{position:relative;z-index:1}.dymivra-vivo-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap}.dymivra-vivo-kicker{display:inline-flex;gap:8px;align-items:center;padding:7px 10px;border-radius:999px;border:1px solid rgba(125,211,252,.17);background:rgba(14,165,233,.10);color:#e0f2fe;font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:950}.dymivra-vivo-title{margin:9px 0 6px;font-size:clamp(24px,3vw,42px);line-height:1.02;letter-spacing:-.075em;font-weight:950;color:#fff}.dymivra-vivo-sub{max-width:930px;color:#cbd5e1;line-height:1.55;font-size:14px}.dymivra-vivo-score{min-width:170px;border:1px solid rgba(255,255,255,.08);border-radius:22px;background:rgba(255,255,255,.04);padding:14px;text-align:center}.dymivra-vivo-score strong{display:block;font-size:34px;letter-spacing:-.07em;line-height:1;color:#fff}.dymivra-vivo-score span{display:block;margin-top:6px;color:#8ea3c7;font-size:12px}.dymivra-vivo-grid{display:grid;grid-template-columns:1.05fr .95fr 1fr;gap:12px;margin-top:14px}.dymivra-vivo-card{border:1px solid rgba(255,255,255,.08);border-radius:22px;background:rgba(255,255,255,.035);padding:14px;min-height:128px}.dymivra-vivo-card strong{display:block;color:#fff;font-size:16px;letter-spacing:-.03em;margin-bottom:8px}.dymivra-vivo-card p{margin:0;color:#cbd5e1;font-size:13px;line-height:1.48}.dymivra-vivo-card ul{margin:0;padding-left:18px;color:#cbd5e1;font-size:13px;line-height:1.48}.dymivra-vivo-card li{margin:4px 0}.dymivra-vivo-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.dymivra-vivo-actions button{width:auto!important;min-width:130px;margin:0!important;padding:11px 13px!important;border-radius:999px!important;box-shadow:none!important;font-size:12px!important}.dymivra-vivo-actions .vivo-primary{background:linear-gradient(135deg,#0ea5e9,#22d3ee)!important}.dymivra-vivo-actions .vivo-soft{background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.10)!important;color:#e0f2fe!important}.dymivra-vivo-progress{margin-top:14px;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:12px;background:rgba(2,6,23,.25)}.dymivra-vivo-progress-top{display:flex;justify-content:space-between;gap:10px;align-items:center;color:#dbeafe;font-size:13px;font-weight:900}.dymivra-vivo-track{height:10px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden;margin-top:9px;border:1px solid rgba(255,255,255,.05)}.dymivra-vivo-fill{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#22c55e,#22d3ee);box-shadow:0 0 18px rgba(34,211,238,.16);transition:width .35s ease}.dymivra-vivo-missions{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:10px}.dymivra-vivo-mission{border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:10px;background:rgba(255,255,255,.03);font-size:12px;line-height:1.35;color:#cbd5e1}.dymivra-vivo-mission.ok{border-color:rgba(34,197,94,.24);background:rgba(34,197,94,.08);color:#dcfce7}.dymivra-vivo-mission b{display:block;color:#fff;margin-bottom:4px}.dymivra-vivo-focus{outline:2px solid rgba(34,211,238,.72)!important;box-shadow:0 0 0 5px rgba(34,211,238,.14)!important;transition:box-shadow .22s ease,outline .22s ease!important}.dymivra-vivo-pill{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08);font-size:12px;color:#dbeafe;margin:5px 6px 0 0}.dymivra-vivo-mini-map{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.dymivra-vivo-mapitem{border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:13px;background:rgba(255,255,255,.035);cursor:pointer;transition:.16s ease}.dymivra-vivo-mapitem:hover{border-color:rgba(34,211,238,.25);transform:translateY(-1px)}.dymivra-vivo-mapitem b{display:block;color:#fff;margin-bottom:5px}.dymivra-vivo-mapitem span{display:block;color:#94a3b8;font-size:12px;line-height:1.38}.dymivra-vivo-decision{border-color:rgba(250,204,21,.22)!important;background:linear-gradient(180deg,rgba(250,204,21,.09),rgba(255,255,255,.025))!important}.performance-mode .dymivra-vivo-core,.performance-mode .dymivra-vivo-card,.performance-mode .dymivra-vivo-score,.performance-mode .dymivra-vivo-mission,.performance-mode .dymivra-vivo-mapitem{box-shadow:none!important;backdrop-filter:none!important;transition:none!important}.performance-mode .dymivra-vivo-core:before{display:none!important}@media(max-width:1120px){.dymivra-vivo-grid,.dymivra-vivo-mini-map{grid-template-columns:1fr 1fr}.dymivra-vivo-missions{grid-template-columns:1fr 1fr}}@media(max-width:760px){.dymivra-vivo-core{padding:14px;border-radius:23px}.dymivra-vivo-grid,.dymivra-vivo-mini-map,.dymivra-vivo-missions{grid-template-columns:1fr}.dymivra-vivo-score{width:100%;min-width:0}.dymivra-vivo-actions{display:grid;grid-template-columns:1fr;gap:8px}.dymivra-vivo-actions button{width:100%!important}.dymivra-vivo-title{font-size:30px}}
 </style>
-
-<script id="dymivra821-experiencia-guiada-script">
+<script id="dymivra-vivo-2-script">
 (function(){
-  const guideData={
-    overview:{
-      icon:'🏠',
-      title:'Sua central financeira',
-      badge:'Comece aqui',
-      sub:'Esta tela existe para você entender seu momento geral: patrimônio, renda, metas, alertas e próxima direção. Não é só um painel bonito; é o ponto de partida para saber o que precisa organizar.',
-      first:'Olhe primeiro para o que falta preencher. Sem renda, gastos, metas e investimentos registrados, qualquer análise fica fraca.',
-      helps:'Ajuda você a parar de olhar números soltos e enxergar uma direção: organizar, investir, proteger caixa ou evoluir renda.',
-      next:'Abra a Jornada para seguir uma ordem simples, ou vá para Ledger se quiser começar registrando movimentações.',
-      actions:[['Abrir Jornada','journey'],['Registrar no Ledger','ledger'],['Ver Mentor','mentor']]
-    },
-    journey:{
-      icon:'🧭',
-      title:'Seu passo a passo dentro do Dymivra',
-      badge:'Ordem certa',
-      sub:'Use esta área quando você não souber por onde começar. Ela organiza o caminho para o app deixar de ser um monte de telas e virar uma rotina financeira.',
-      first:'Siga a sequência: perfil, metas, registros, carteira, renda e depois inteligência.',
-      helps:'Ajuda você a entender o que preencher primeiro e por que cada informação melhora as recomendações.',
-      next:'Complete um passo por vez. O objetivo não é preencher tudo no mesmo dia, é criar clareza.',
-      actions:[['Definir perfil','profile'],['Criar meta','goals'],['Registrar movimentação','ledger']]
-    },
-    pulse:{
-      icon:'⚡',
-      title:'Decisão rápida do momento',
-      badge:'Hoje',
-      sub:'O Pulse serve para responder: “qual é a coisa mais importante agora?”. É uma leitura curta para você não se perder nos detalhes.',
-      first:'Use depois de registrar carteira, renda ou metas. Quanto mais dados, melhor a prioridade.',
-      helps:'Ajuda a transformar informação em ação: fortalecer reserva, revisar meta, aportar melhor ou reduzir risco.',
-      next:'Leia a prioridade e execute uma ação pequena hoje.',
-      actions:[['Ver Visão geral','overview'],['Ver Mentor','mentor'],['Ver Metas','goals']]
-    },
-    ledger:{
-      icon:'📒',
-      title:'Tudo que movimenta seu dinheiro',
-      badge:'Base dos dados',
-      sub:'O Ledger é onde você registra o que muda seu patrimônio: compras, vendas, aportes, proventos, taxas, custos e movimentações importantes.',
-      first:'Comece registrando o que entrou, o que saiu e o que foi investido. Use descrição e categoria para lembrar o motivo.',
-      helps:'Sem registro, o app não entende sua realidade. Com registro, ele calcula evolução, renda, histórico e decisões melhores.',
-      next:'Registre poucos dados, mas com consistência. Depois veja Alocação, Histórico e Renda.',
-      actions:[['Adicionar registro','ledger'],['Ver Alocação','allocation'],['Ver Histórico','history']]
-    },
-    allocation:{
-      icon:'🧭',
-      title:'Sua carteira faz sentido?',
-      badge:'Equilíbrio',
-      sub:'A Alocação mostra se seus investimentos estão equilibrados ou concentrados demais. Ela compara sua carteira com o perfil escolhido.',
-      first:'Defina seu perfil e registre seus ativos. Depois veja onde há excesso ou falta.',
-      helps:'Ajuda a evitar investir no escuro, comprar qualquer coisa ou assumir risco que não combina com você.',
-      next:'Use a sugestão de próximo aporte como direção educativa, não como ordem automática.',
-      actions:[['Definir Perfil','profile'],['Ver Ledger','ledger'],['Ver Radar','advisor']]
-    },
-    profile:{
-      icon:'🧬',
-      title:'Seu jeito de investir',
-      badge:'Identidade',
-      sub:'O Perfil ajuda o Dymivra a entender se você quer segurança, equilíbrio, crescimento, renda ou personalização.',
-      first:'Escolha o perfil que mais parece com você hoje. Você pode mudar depois conforme amadurecer.',
-      helps:'Ajuda o app a comparar sua carteira real com uma carteira mais coerente para o seu momento.',
-      next:'Depois de salvar o perfil, vá para Alocação para ver se sua carteira combina com ele.',
-      actions:[['Aplicar perfil','profile'],['Ver Alocação','allocation'],['Criar Meta','goals']]
-    },
-    goals:{
-      icon:'🎯',
-      title:'Objetivos viram plano',
-      badge:'Plano real',
-      sub:'Metas não servem só para guardar um número. Elas mostram quanto falta, se seu ritmo está bom e o que precisa mudar.',
-      first:'Crie uma meta simples: reserva, patrimônio, compra importante ou liberdade financeira.',
-      helps:'Ajuda a transformar desejo em cálculo: prazo, aporte necessário e prioridade.',
-      next:'Depois de criar uma meta, acompanhe se o mês atual aproxima ou afasta você dela.',
-      actions:[['Criar meta','goals'],['Ver Projeções','projections'],['Ver Liberdade','liberty']]
-    },
-    income:{
-      icon:'💸',
-      title:'Seu dinheiro trabalhando por você',
-      badge:'Renda',
-      sub:'Renda mostra se seus investimentos estão gerando pagamentos e se isso já representa algo na sua vida financeira.',
-      first:'Registre proventos, juros, dividendos ou rendimentos quando receber.',
-      helps:'Ajuda a entender se você está só acumulando ativos ou criando renda recorrente.',
-      next:'Defina uma meta mensal de renda e acompanhe sua evolução.',
-      actions:[['Registrar provento','income'],['Ver Liberdade','liberty'],['Ver Histórico','history']]
-    },
-    history:{
-      icon:'📈',
-      title:'Sua evolução ao longo do tempo',
-      badge:'Progresso',
-      sub:'Histórico mostra se você está crescendo, parado ou oscilando. Ele dá contexto para não julgar sua vida financeira por um dia ruim.',
-      first:'Crie snapshots e acompanhe a curva de patrimônio com frequência.',
-      helps:'Ajuda a enxergar evolução real e manter disciplina.',
-      next:'Compare evolução com metas e projeções.',
-      actions:[['Ver Metas','goals'],['Ver Projeções','projections'],['Ver Visão geral','overview']]
-    },
-    projections:{
-      icon:'🔮',
-      title:'O futuro em cenários',
-      badge:'Simular',
-      sub:'Projeções mostram como tempo, aporte e patrimônio podem mudar seu futuro. Não é promessa; é clareza para planejar.',
-      first:'Informe aporte, prazo e meta. Compare cenários conservador, base e otimista.',
-      helps:'Ajuda a perceber que pequenas mudanças mensais podem alterar muito o resultado no longo prazo.',
-      next:'Use a projeção para ajustar metas e aportes.',
-      actions:[['Ajustar meta','goals'],['Ver Liberdade','liberty'],['Ver Alocação','allocation']]
-    },
-    liberty:{
-      icon:'🕊️',
-      title:'Caminho para liberdade financeira',
-      badge:'Longo prazo',
-      sub:'Liberdade mostra quanto patrimônio ou renda seria necessário para reduzir dependência do trabalho ativo.',
-      first:'Defina uma renda desejada e veja o patrimônio aproximado necessário.',
-      helps:'Ajuda você a pensar além do mês atual: reserva, aportes, renda passiva e independência.',
-      next:'Volte para metas e renda para construir o caminho aos poucos.',
-      actions:[['Definir meta','goals'],['Ver Renda','income'],['Ver Projeções','projections']]
-    },
-    ai:{
-      icon:'🤖',
-      title:'Pergunte com contexto',
-      badge:'Perguntas',
-      sub:'A IA serve para tirar dúvidas e transformar seus dados em explicação. Ela é mais útil quando você pergunta sobre uma decisão real.',
-      first:'Pergunte algo específico, como: “o que devo priorizar este mês?” ou “minha carteira está coerente?”.',
-      helps:'Ajuda a entender o porquê das decisões, não só ver números.',
-      next:'Use depois de preencher pelo menos metas, carteira ou movimentações.',
-      actions:[['Ver Mentor','mentor'],['Ver Radar','advisor'],['Ver Visão geral','overview']]
-    },
-    advisor:{
-      icon:'🚨',
-      title:'Mercado e sinais de atenção',
-      badge:'Radar',
-      sub:'Radar mostra cenário, taxas e alertas para você não tomar decisão isolada. Ele ajuda a interpretar o ambiente antes de investir.',
-      first:'Atualize o cenário e leia a postura sugerida.',
-      helps:'Ajuda a entender Selic, IPCA, dólar, bolsa e risco de mercado de forma prática.',
-      next:'Compare o Radar com sua carteira e seu perfil.',
-      actions:[['Atualizar Radar','advisor'],['Ver Alocação','allocation'],['Perguntar à IA','ai']]
-    },
-    mentor:{
-      icon:'🧠',
-      title:'O que fazer agora',
-      badge:'Orientação',
-      sub:'Mentor é a parte que traduz o app em ação. Ele deve responder: “qual prioridade eu sigo agora?”.',
-      first:'Use quando já tiver alguns dados preenchidos e quiser uma direção prática.',
-      helps:'Ajuda a escolher foco: organizar, investir, reduzir risco, criar meta, fortalecer renda ou revisar negócio.',
-      next:'Leia a prioridade e execute uma ação simples no app.',
-      actions:[['Ver Jornada','journey'],['Ver Pulse','pulse'],['Perguntar à IA','ai']]
-    },
-    business:{
-      icon:'🏢',
-      title:'Controle da sua operação',
-      badge:'Negócio',
-      sub:'Negócio é a área para sua loja ou operação: caixa, vendas, estoque, contas, custos, metas e sócios. Ela já é a parte mais direta para uso real no dia a dia.',
-      first:'Registre entradas, saídas, vendas, estoque, contas e custos fixos.',
-      helps:'Ajuda a separar dinheiro pessoal do dinheiro do negócio e entender lucro, margem e caixa.',
-      next:'Use com frequência: venda feita, custo pago, conta criada ou produto reposto.',
-      actions:[['Abrir Negócio','business'],['Registrar venda','business'],['Ver Mentor','mentor']]
-    },
-    plans:{
-      icon:'💎',
-      title:'O que cada plano libera',
-      badge:'Acesso',
-      sub:'Planos mostram os recursos disponíveis e o que muda entre os níveis de uso.',
-      first:'Veja quais funções fazem sentido para seu momento.',
-      helps:'Ajuda a entender o valor das funções premium sem misturar com o uso financeiro.',
-      next:'Volte para Jornada se quiser continuar organizando o app.',
-      actions:[['Ver Jornada','journey'],['Ver App','app'],['Ver Apoio','settings']]
-    },
-    app:{
-      icon:'📱',
-      title:'Uso no celular e computador',
-      badge:'Experiência',
-      sub:'App reúne instalação, preferências e experiência de uso.',
-      first:'Instale no celular se quiser acesso rápido como aplicativo.',
-      helps:'Ajuda a deixar o Dymivra mais confortável no dia a dia.',
-      next:'Depois de ajustar o app, volte para Visão geral.',
-      actions:[['Ver Visão geral','overview'],['Ver Apoio','settings']]
-    },
-    legal:{
-      icon:'⚖️',
-      title:'Confiança e segurança',
-      badge:'Legal',
-      sub:'Legal explica privacidade, termos, suporte, exclusão de dados e aviso educativo.',
-      first:'Leia quando quiser entender segurança e responsabilidade do app.',
-      helps:'Ajuda a dar confiança para uso real.',
-      next:'Volte para o app quando terminar.',
-      actions:[['Voltar para Visão geral','overview'],['Ver Apoio','settings']]
-    },
-    settings:{
-      icon:'⚙️',
-      title:'Ajustes e apoio',
-      badge:'Suporte',
-      sub:'Apoio reúne preferências, modo leve, desempenho e ferramentas de operação.',
-      first:'Use quando algo parecer pesado, estranho ou quando quiser ajustar a experiência.',
-      helps:'Ajuda a manter o app confortável sem perder funções.',
-      next:'Depois dos ajustes, volte para a área que estava usando.',
-      actions:[['Ver Visão geral','overview'],['Ver App','app']]
-    },
-    all:{
-      icon:'🧩',
-      title:'Revisão completa',
-      badge:'Tudo',
-      sub:'Tudo mostra muitas áreas ao mesmo tempo. É útil para conferência, mas pode ficar pesado no celular ou computador.',
-      first:'Use só quando quiser revisar o app inteiro.',
-      helps:'Ajuda a conferir se tudo está no lugar, mas não é a melhor tela para uso diário.',
-      next:'Para usar melhor, volte para uma área específica.',
-      actions:[['Voltar para Visão geral','overview'],['Abrir Jornada','journey']]
+  'use strict';
+  const $=id=>document.getElementById(id);
+  const money=n=>Number(n||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+  const clean=s=>String(s||'').replace(/<[^>]*>/g,'').trim();
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const numFromText=(txt)=>{txt=String(txt||'').replace(/[^0-9,.-]/g,'').replace(/\.(?=\d{3}(\D|$))/g,'').replace(',','.');const n=Number(txt);return Number.isFinite(n)?n:0};
+  const val=id=>{const el=$(id);if(!el)return 0;return el.value!==undefined?Number(String(el.value).replace(',','.'))||0:numFromText(el.textContent)};
+  const text=id=>clean($(id)?.textContent||'');
+  const checkup=()=>{try{return JSON.parse(localStorage.getItem('dymivra_checkup_v1')||'null')||{}}catch{return {}}};
+  const hasPositive=(...ids)=>ids.some(id=>val(id)>0 || numFromText(text(id))>0);
+  const activeScreen=()=>document.querySelector('.nav-btn.active')?.dataset?.screen || window.currentScreen || 'overview';
+  const content={
+    overview:{icon:'🏠',title:'Central de controle da sua vida financeira',purpose:'Aqui não é só para ver patrimônio. Esta tela precisa responder se você está evoluindo, o que está faltando e qual decisão vem primeiro.',impact:['Junta carteira, renda, metas, histórico, negócio e alertas.','Mostra se o app já tem dados suficientes para te orientar.','Transforma números soltos em prioridade financeira.'],decision:'Use esta tela para decidir o primeiro movimento: organizar renda, alimentar carteira, criar meta ou tocar o negócio.',actions:[['Preencher vida pessoal','mentor','#dymivra762Income'],['Registrar investimento','ledger','#asset'],['Criar meta','goals','#targetValue'],['Abrir Negócio','business','#businessFormCard']]},
+    journey:{icon:'🧭',title:'Roteiro para não se perder no app',purpose:'Essa área deve ser o caminho de entrada. Ela mostra a ordem certa para o Dymivra deixar de ser painel e virar um sistema de evolução.',impact:['Mostra o que preencher primeiro.','Evita usar IA, Radar ou Projeções sem base real.','Conecta perfil, metas, ledger e mentor.'],decision:'Siga a jornada como uma trilha: primeiro entenda sua vida, depois registre dados, depois analise.',actions:[['Começar pelo check-up','mentor','#dymivra762Income'],['Definir perfil','profile','#investorProfileSelect'],['Criar meta','goals','#targetValue']]},
+    pulse:{icon:'⚡',title:'Motor de próxima decisão',purpose:'O Pulse existe para responder “qual é o próximo movimento inteligente?”, usando carteira, meta, renda e risco.',impact:['Mostra gargalo.','Transforma dados em prioridade.','Ajuda a escolher entre corrigir alocação, acelerar meta, renda ou risco.'],decision:'Use depois de ter pelo menos uma meta e movimentações no ledger.',actions:[['Alimentar Ledger','ledger','#asset'],['Configurar Meta','goals','#targetValue'],['Ver Mentor','mentor','#dymivra760Score']]},
+    ledger:{icon:'📒',title:'O lugar onde seu dinheiro investido ganha vida',purpose:'O Ledger não é um cadastro. Ele é a fonte que faz patrimônio, lucro/prejuízo, renda, alocação, histórico e IA começarem a funcionar.',impact:['Compra aumenta posição e patrimônio.','Venda altera resultado e caixa.','Provento alimenta renda passiva.','Taxas e impostos mostram custo real.'],decision:'Se nada muda nas outras abas, quase sempre falta registrar movimentações reais aqui.',actions:[['Registrar movimentação','ledger','#asset'],['Atualizar preços','ledger','#fetchPriceBtn'],['Ver posições','ledger','#positions']]},
+    allocation:{icon:'🧭',title:'Equilíbrio da carteira',purpose:'A Alocação mostra se sua carteira está torta, concentrada ou alinhada com o perfil. É aqui que o próximo aporte começa a fazer sentido.',impact:['Compara peso atual com peso ideal.','Mostra excesso e falta por classe.','Ajuda a parar de comprar por impulso.'],decision:'Use quando quiser saber onde o próximo aporte faz mais sentido dentro da estratégia.',actions:[['Definir carteira-alvo','allocation','#allocTargetAcoes'],['Ajustar perfil','profile','#investorProfileSelect'],['Registrar aporte','ledger','#asset']]},
+    profile:{icon:'🧬',title:'Identidade de investidor',purpose:'O Perfil existe para o app entender se a carteira combina com você. Sem perfil, o app até calcula, mas orienta com menos precisão.',impact:['Define tolerância a risco.','Influencia alocação-alvo.','Ajuda Mentor e IA a falarem com mais contexto.'],decision:'Escolha o perfil antes de julgar se a carteira está boa ou ruim.',actions:[['Escolher perfil','profile','#investorProfileSelect'],['Ir para Alocação','allocation','#allocTargetAcoes'],['Abrir Mentor','mentor','#dymivra762Income']]},
+    goals:{icon:'🎯',title:'Meta vira plano, não desejo solto',purpose:'Metas existem para transformar sonho em rota: quanto falta, quanto aportar, se está atrasado e o que fazer para chegar.',impact:['Calcula distância até o objetivo.','Mostra ritmo mensal necessário.','Alimenta projeções, liberdade e mentor.'],decision:'Use esta área para transformar “quero chegar lá” em “quanto preciso fazer por mês”.',actions:[['Definir patrimônio alvo','goals','#targetValue'],['Definir aporte mensal','goals','#monthlyContribution'],['Ver Projeções','projections','#projectionMonthlyContribution']]},
+    income:{icon:'💸',title:'Renda passiva como prova de evolução',purpose:'A Renda mostra quanto seu dinheiro já trabalha por você. Ela deve deixar claro quais despesas sua renda passiva já conseguiria pagar.',impact:['Soma proventos do ledger.','Mostra maior pagador e fechamento mensal.','Conecta carteira com independência financeira.'],decision:'Use para medir se seus investimentos estão começando a pagar partes da sua vida.',actions:[['Registrar provento','ledger','#asset'],['Definir meta de renda','income','#incomeMonthlyTarget'],['Ver Liberdade','liberty','#freedomMonthlyTarget']]},
+    history:{icon:'📈',title:'Evolução com memória',purpose:'Histórico serve para provar se você está crescendo ou só movimentando dinheiro. Ele transforma momentos em comparação.',impact:['Registra snapshots.','Mostra maior patrimônio.','Revela crescimento ou queda ao longo do tempo.'],decision:'Use pelo menos uma vez por mês para enxergar evolução real.',actions:[['Salvar snapshot','history','#manualSnapshotBtn2'],['Voltar à Visão','overview','#screenIntro']]},
+    projections:{icon:'🔮',title:'Consequência das escolhas',purpose:'Projeções existem para mostrar o impacto do que você faz hoje: aportar mais, aportar menos, esperar mais tempo ou ajustar meta.',impact:['Mostra cenários.','Mostra gap até a meta.','Ajuda a comparar velocidade de evolução.'],decision:'Use para entender quanto uma mudança pequena de aporte muda seu futuro.',actions:[['Ajustar aporte','projections','#projectionMonthlyContribution'],['Revisar meta','goals','#targetValue'],['Ver Liberdade','liberty','#freedomMonthlyTarget']]},
+    liberty:{icon:'🕊️',title:'Liberdade financeira em números reais',purpose:'Liberdade traduz patrimônio e renda em independência: quanto falta para seu dinheiro pagar sua vida.',impact:['Calcula patrimônio necessário.','Mostra renda potencial.','Mostra marcos de progresso.'],decision:'Use depois de preencher renda desejada, patrimônio e renda passiva.',actions:[['Definir renda desejada','liberty','#freedomMonthlyTarget'],['Registrar renda passiva','ledger','#asset'],['Ver Projeções','projections','#projectionMonthlyContribution']]},
+    ai:{icon:'🤖',title:'Perguntas livres com contexto',purpose:'A IA deve ser usada quando você quer conversar com seus dados. Quanto mais o app estiver preenchido, melhor a pergunta vira orientação.',impact:['Interpreta contexto financeiro.','Ajuda a explicar carteira, meta e prioridade.','Pode gerar relatório educativo.'],decision:'Pergunte depois de alimentar check-up, ledger e metas para evitar resposta genérica.',actions:[['Preencher check-up','mentor','#dymivra762Income'],['Fazer pergunta','ai','#wealthAIQuestion'],['Ver Mentor','mentor','#dymivra760Score']]},
+    advisor:{icon:'🚨',title:'Radar de cenário e alerta',purpose:'O Radar não é mentor. Ele olha ambiente, mercado e sinais de risco para mostrar atenção antes da decisão.',impact:['Mostra Selic, IPCA, dólar e mercado.','Ajuda a entender postura: cautela, equilíbrio ou oportunidade.','Dá alertas sem substituir sua decisão.'],decision:'Use para entender o cenário antes de investir ou rebalancear.',actions:[['Atualizar mercado','advisor','#dymivra750FetchStatus'],['Informar Selic','advisor','#marketSelic'],['Ver Alocação','allocation','#allocTargetAcoes']]},
+    mentor:{icon:'🧠',title:'Mentor de execução',purpose:'O Mentor é o treinador. Ele junta check-up, carteira, meta, renda e histórico para transformar diagnóstico em plano de ação.',impact:['Lê renda, gastos, dívidas e reserva.','Organiza plano de 30 dias.','Mostra prioridade, alerta e próxima ação.'],decision:'Use quando quiser saber o que fazer agora, esta semana e este mês.',actions:[['Preencher renda','mentor','#dymivra762Income'],['Salvar check-up','mentor','#dymivra762Output'],['Gerar plano','mentor','#dymivra763Plan30']]},
+    business:{icon:'🏢',title:'Negócio já tem ciclo vivo',purpose:'Esta área já funciona do jeito certo: você registra venda ou movimento, e o app muda caixa, estoque, lucro, margem, ranking, contas e relatórios.',impact:['Venda altera estoque e faturamento.','Conta paga vira saída.','Relatório mostra resultado para sócios.','Radar Business mostra prioridade.'],decision:'Mantenha esta lógica como modelo para o restante do app.',actions:[['Registrar venda','business','#businessSalesPanel'],['Adicionar movimento','business','#businessFormCard'],['Ver relatório','business','#businessPartnerReport']]},
+    plans:{icon:'💎',title:'Planos e valor percebido',purpose:'Planos mostram o que cada nível libera. Não é para confundir: é para deixar claro o valor do app conforme a pessoa evolui.',impact:['Organiza Free, Pro e Elite.','Mostra limite de IA.','Prepara acesso premium.'],decision:'Use para revisar posicionamento comercial e liberação premium.',actions:[['Ver recursos','plans','#planControlPanel'],['Abrir app','app','#screenIntro']]},
+    app:{icon:'📱',title:'Conforto de uso',purpose:'A tela App existe para deixar a experiência mais simples no celular e computador: instalação, acesso, suporte e preferências.',impact:['Ajuda a instalar.','Mostra prontidão.','Organiza preferências e suporte.'],decision:'Use quando o usuário tiver dúvida de acesso ou conforto.',actions:[['Ver apoio','settings','#screenIntro'],['Copiar link','app','#screenIntro']]},
+    legal:{icon:'⚖️',title:'Confiança',purpose:'Legal existe para deixar o produto mais confiável para usuários reais: privacidade, termos, suporte e aviso financeiro.',impact:['Aumenta confiança.','Evita confusão sobre recomendação financeira.','Organiza suporte e dados.'],decision:'Use como base de credibilidade do produto.',actions:[['Ver suporte','settings','#screenIntro'],['Voltar ao app','overview','#screenIntro']]},
+    settings:{icon:'⚙️',title:'Apoio e desempenho',purpose:'Apoio é para conforto: performance, modo leve, preferências, diagnóstico e suporte.',impact:['Ajuda quando o dispositivo pesa.','Centraliza preferências.','Mantém a experiência estável.'],decision:'Use quando algo estiver lento ou desconfortável.',actions:[['Ativar modo leve','settings','#screenIntro'],['Voltar à visão','overview','#screenIntro']]},
+    all:{icon:'🗂️',title:'Revisão completa',purpose:'Mostra tudo, mas pode ficar pesado. Serve para revisar, não para uso diário.',impact:['Abre o app inteiro.','Ajuda a conferir estrutura.','Pode consumir mais desempenho.'],decision:'Use só quando quiser revisar tudo.',actions:[['Voltar à visão','overview','#screenIntro'],['Abrir negócio','business','#businessFormCard']]}
+  };
+  function metrics(){
+    const c=checkup();
+    const income=Number(c.income||val('dymivra762Income')||0);
+    const expense=Number(c.expense||val('dymivra762Expense')||0);
+    const debt=Number(c.debt||val('dymivra762Debt')||0);
+    const reserve=Number(c.reserve||val('dymivra762Reserve')||0);
+    const sobra=income-expense;
+    const hasPersonal=income>0||expense>0||reserve>0||debt>0;
+    const hasGoal=val('targetValue')>0||numFromText(text('goalValue'))>0||numFromText(text('goalRemaining'))>0;
+    const hasLedger=hasPositive('sumEntries','sumExits','sumPassive')||document.querySelector('#positions .asset,#positions .item,#positions .asset-item');
+    const hasAllocation=String(text('allocationScore')).trim()&&!/^0\/?100/.test(text('allocationScore'));
+    const hasIncome=hasPositive('passiveTotal','premiumMonthlyIncome','sumPassive');
+    const hasFuture=hasPositive('freedomRequiredWealth','freedomPotentialIncome')||val('freedomMonthlyTarget')>0;
+    const hasBusiness=hasPositive('businessCash','businessMonthIn','businessMonthOut','businessProfit');
+    const hasMarket=val('marketSelic')>0||val('marketInflation')>0||val('marketDollar')>0||text('dymivra750Status').length>3;
+    const list=[
+      {k:'Vida pessoal',ok:hasPersonal,why:'renda, gastos, reserva e dívidas'},
+      {k:'Carteira real',ok:!!hasLedger,why:'movimentações no ledger'},
+      {k:'Meta',ok:!!hasGoal,why:'objetivo e aporte'},
+      {k:'Alocação',ok:!!hasAllocation,why:'equilíbrio da carteira'},
+      {k:'Renda passiva',ok:!!hasIncome,why:'proventos e renda mensal'},
+      {k:'Futuro',ok:!!hasFuture,why:'liberdade e projeções'},
+      {k:'Negócio',ok:!!hasBusiness,why:'caixa, lucro e operação'},
+      {k:'Cenário',ok:!!hasMarket,why:'mercado e radar'}
+    ];
+    const done=list.filter(x=>x.ok).length;
+    const score=Math.round(done/list.length*100);
+    let leitura='O Dymivra fica mais inteligente conforme você transforma cada área em fonte de dados real.';
+    if(hasPersonal&&income){
+      if(sobra>0) leitura=`Sua vida pessoal mostra sobra estimada de ${money(sobra)}. Um valor seguro inicial para investir poderia ficar abaixo de ${money(Math.max(0,sobra*0.5))}, mantendo caixa de proteção.`;
+      else leitura=`Sua vida pessoal indica aperto de ${money(Math.abs(sobra))}. Antes de investir mais, a prioridade é reduzir gasto, dívida ou aumentar renda.`;
     }
-  };
-
-  const defaultData=guideData.overview;
-
-  function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-  function go(screen){
-    try{
-      if(typeof window.showAppScreen==='function') window.showAppScreen(screen,true);
-    }catch(e){}
+    return {income,expense,debt,reserve,sobra,list,done,score,leitura};
   }
-  function renderGuide(screen){
-    const host=document.getElementById('dymivra821GuideHost');
-    if(!host)return;
-    const data=guideData[screen]||defaultData;
-    const path = screen==='overview'||screen==='journey' ? `
-      <div class="dymivra821-path" aria-label="Caminho sugerido">
-        <div class="dymivra821-path-step"><b>1. Entenda</b>Veja o que cada área faz.</div>
-        <div class="dymivra821-path-step"><b>2. Registre</b>Coloque dados reais aos poucos.</div>
-        <div class="dymivra821-path-step"><b>3. Compare</b>Veja metas, carteira e histórico.</div>
-        <div class="dymivra821-path-step"><b>4. Decida</b>Use Mentor, Radar e IA.</div>
-        <div class="dymivra821-path-step"><b>5. Evolua</b>Repita todo mês.</div>
-      </div>` : '';
-    host.innerHTML=`
-      <section class="dymivra821-guide" data-dymivra-guide="${esc(screen)}">
-        <div class="dymivra821-guide-top">
-          <div>
-            <div class="dymivra821-guide-kicker">${esc(data.icon)} Guia da área</div>
-            <h2 class="dymivra821-guide-title">${esc(data.title)}</h2>
-            <div class="dymivra821-guide-sub">${esc(data.sub)}</div>
-          </div>
-          <div class="dymivra821-guide-badge"><span>Use para</span>${esc(data.badge)}</div>
-        </div>
-        <div class="dymivra821-guide-grid">
-          <div class="dymivra821-guide-card"><strong>O que fazer primeiro</strong><span>${esc(data.first)}</span></div>
-          <div class="dymivra821-guide-card"><strong>Como isso te ajuda</strong><span>${esc(data.helps)}</span></div>
-          <div class="dymivra821-guide-card"><strong>Próximo passo</strong><span>${esc(data.next)}</span></div>
-        </div>
-        ${path}
-        <div class="dymivra821-guide-actions">
-          ${(data.actions||[]).map((a,i)=>`<button type="button" class="${i===0?'':'dymivra821-soft'}" data-dymivra821-go="${esc(a[1])}">${esc(a[0])}</button>`).join('')}
-          <button type="button" class="dymivra821-soft" data-dymivra821-map="1">Ver mapa do app</button>
-        </div>
-      </section>`;
+  function missingAction(m){
+    const first=m.list.find(x=>!x.ok);
+    if(!first)return 'A base está forte. Agora o foco é usar Mentor, Radar e Projeções para tomar decisões melhores.';
+    const map={
+      'Vida pessoal':'Comece pelo check-up do Mentor: renda, gastos, reserva e dívidas. Sem isso, o app não entende sua vida fora dos investimentos.',
+      'Carteira real':'Registre pelo menos uma movimentação no Ledger. É isso que faz patrimônio, alocação e renda ficarem vivos.',
+      'Meta':'Defina uma meta. Sem objetivo, o app não sabe para onde você quer ir.',
+      'Alocação':'Defina sua carteira-alvo para saber onde o próximo aporte faz sentido.',
+      'Renda passiva':'Registre proventos para ver quanto seu dinheiro já paga da sua vida.',
+      'Futuro':'Configure liberdade/projeções para enxergar consequência das suas decisões.',
+      'Negócio':'Use Business quando houver loja, sociedade ou operação separada da vida pessoal.',
+      'Cenário':'Atualize o Radar para entender juros, inflação e mercado antes da decisão.'
+    };
+    return map[first.k]||'Preencha a próxima parte para liberar leitura mais útil.';
   }
-
-  function ensureModal(){
-    if(document.getElementById('dymivra821Modal'))return;
-    const modal=document.createElement('div');
-    modal.className='dymivra821-modal';
-    modal.id='dymivra821Modal';
-    modal.innerHTML=`
-      <div class="dymivra821-modalbox" role="dialog" aria-modal="true" aria-label="Mapa do Dymivra">
-        <div class="dymivra821-modal-head">
-          <div>
-            <div class="dymivra821-guide-kicker">🗺️ Mapa do Dymivra</div>
-            <h2>O que o app faz por você</h2>
-            <div class="dymivra821-guide-sub">Use o Dymivra como uma rotina: organize dados reais, entenda sua situação, tome decisões melhores e acompanhe evolução.</div>
-          </div>
-          <button type="button" class="dymivra821-close" data-dymivra821-close="1" aria-label="Fechar">×</button>
-        </div>
-        <div class="dymivra821-map">
-          <div class="dymivra821-map-item"><strong>🏠 Visão geral</strong><span>Mostra seu momento e o que precisa de atenção.</span></div>
-          <div class="dymivra821-map-item"><strong>🧭 Jornada</strong><span>Explica por onde começar e qual ordem seguir.</span></div>
-          <div class="dymivra821-map-item"><strong>📒 Ledger</strong><span>Base dos registros: entradas, saídas, aportes, proventos e custos.</span></div>
-          <div class="dymivra821-map-item"><strong>🧬 Perfil + Alocação</strong><span>Mostra se seus investimentos combinam com seu risco.</span></div>
-          <div class="dymivra821-map-item"><strong>🎯 Metas + Projeções</strong><span>Transforma objetivo em plano, prazo e ritmo.</span></div>
-          <div class="dymivra821-map-item"><strong>💸 Renda + Liberdade</strong><span>Mostra se seu dinheiro começa a gerar independência.</span></div>
-          <div class="dymivra821-map-item"><strong>🚨 Radar + IA + Mentor</strong><span>Ajuda a entender mercado, tirar dúvidas e decidir o próximo passo.</span></div>
-          <div class="dymivra821-map-item"><strong>🏢 Negócio</strong><span>Controle da sua loja: caixa, vendas, estoque, contas, metas e sócios.</span></div>
-        </div>
-        <div class="dymivra821-guide-actions">
-          <button type="button" data-dymivra821-go="journey">Começar pela Jornada</button>
-          <button type="button" class="dymivra821-soft" data-dymivra821-go="overview">Ir para Visão geral</button>
-          <button type="button" class="dymivra821-soft" data-dymivra821-close="1">Fechar</button>
-        </div>
-      </div>`;
-    document.body.appendChild(modal);
-    modal.addEventListener('click',function(ev){
-      if(ev.target===modal || ev.target.closest('[data-dymivra821-close]')){
-        modal.classList.remove('show');
-        return;
-      }
-      const btn=ev.target.closest('[data-dymivra821-go]');
-      if(btn){
-        modal.classList.remove('show');
-        go(btn.getAttribute('data-dymivra821-go')||'overview');
-      }
-    });
+  function roleMap(){return `
+    <div class="dymivra-vivo-mini-map">
+      <div class="dymivra-vivo-mapitem" data-vivo-go="mentor" data-vivo-target="#dymivra762Income"><b>🏠 Minha vida</b><span>Renda, gastos, reserva e dívidas para saber quanto sobra de verdade.</span></div>
+      <div class="dymivra-vivo-mapitem" data-vivo-go="ledger" data-vivo-target="#asset"><b>💼 Meu dinheiro investido</b><span>Movimentações que fazem carteira, renda e histórico mudarem.</span></div>
+      <div class="dymivra-vivo-mapitem" data-vivo-go="goals" data-vivo-target="#targetValue"><b>🎯 Meu futuro</b><span>Metas, projeções e liberdade para transformar desejo em rota.</span></div>
+      <div class="dymivra-vivo-mapitem" data-vivo-go="business" data-vivo-target="#businessFormCard"><b>🏢 Meu negócio</b><span>Operação viva: vendas, estoque, caixa, lucro, margem e relatório.</span></div>
+    </div>`}
+  function actionButtons(g){
+    return (g.actions||[]).map((a,i)=>`<button type="button" class="${i===0?'vivo-primary':'vivo-soft'}" data-vivo-go="${esc(a[1])}" data-vivo-target="${esc(a[2]||'#screenIntro')}">${esc(a[0])}</button>`).join('');
   }
-
-  function openModal(){
-    ensureModal();
-    const modal=document.getElementById('dymivra821Modal');
-    if(modal)modal.classList.add('show');
-    try{localStorage.setItem('dymivra821_map_seen','1')}catch(e){}
+  function render(){
+    const intro=$('screenIntro');if(!intro)return;
+    let panel=$('dymivraVivoCore');
+    if(!panel){panel=document.createElement('section');panel.id='dymivraVivoCore';panel.className='dymivra-vivo-core';intro.insertAdjacentElement('afterend',panel)}
+    const screen=activeScreen();
+    const g=content[screen]||content.overview;
+    const m=metrics();
+    const personal=m.income||m.expense?`<span class="dymivra-vivo-pill">Sobra pessoal: <b>${money(m.sobra)}</b></span>`:'<span class="dymivra-vivo-pill">Vida pessoal: ainda sem check-up</span>';
+    const decision=missingAction(m);
+    panel.innerHTML=`
+      <div class="dymivra-vivo-head">
+        <div>
+          <div class="dymivra-vivo-kicker">${esc(g.icon)} Experiência viva</div>
+          <h2 class="dymivra-vivo-title">${esc(g.title)}</h2>
+          <div class="dymivra-vivo-sub">${esc(g.purpose)}</div>
+          <div style="margin-top:8px">${personal}<span class="dymivra-vivo-pill">Base do app: <b>${m.done}/${m.list.length}</b></span></div>
+        </div>
+        <div class="dymivra-vivo-score"><strong>${m.score}%</strong><span>base para decisões</span></div>
+      </div>
+      <div class="dymivra-vivo-grid">
+        <div class="dymivra-vivo-card"><strong>O que muda quando você usa</strong><ul>${(g.impact||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
+        <div class="dymivra-vivo-card dymivra-vivo-decision"><strong>Decisão que esta tela libera</strong><p>${esc(g.decision)}</p></div>
+        <div class="dymivra-vivo-card"><strong>Leitura prática agora</strong><p>${esc(m.leitura)}</p></div>
+      </div>
+      <div class="dymivra-vivo-progress">
+        <div class="dymivra-vivo-progress-top"><span>Mapa de evolução do usuário</span><span>${m.done}/${m.list.length} partes alimentadas</span></div>
+        <div class="dymivra-vivo-track"><div class="dymivra-vivo-fill" style="width:${m.score}%"></div></div>
+        <div class="dymivra-vivo-missions">${m.list.map(x=>`<div class="dymivra-vivo-mission ${x.ok?'ok':''}"><b>${x.ok?'✅':'○'} ${esc(x.k)}</b><span>${esc(x.why)}</span></div>`).join('')}</div>
+      </div>
+      <div class="dymivra-vivo-card" style="margin-top:12px"><strong>Próximo movimento recomendado</strong><p>${esc(decision)}</p></div>
+      ${screen==='overview'||screen==='journey'?roleMap():''}
+      <div class="dymivra-vivo-actions">${actionButtons(g)}</div>`;
   }
-
+  function go(screen,target){
+    try{if(typeof window.showAppScreen==='function')window.showAppScreen(screen,true)}catch{}
+    setTimeout(()=>{
+      let el=null;
+      try{el=document.querySelector(target||'#screenIntro')}catch{}
+      if(!el)el=$('screenIntro');
+      if(el){try{el.scrollIntoView({behavior:document.body.classList.contains('performance-mode')?'auto':'smooth',block:'center'})}catch{el.scrollIntoView()}el.classList.add('dymivra-vivo-focus');try{if(typeof el.focus==='function')el.focus({preventScroll:true})}catch{}setTimeout(()=>el.classList.remove('dymivra-vivo-focus'),1800)}
+    },260);
+  }
   function bind(){
-    document.addEventListener('click',function(ev){
-      const goBtn=ev.target.closest('[data-dymivra821-go]');
-      if(goBtn){ev.preventDefault();go(goBtn.getAttribute('data-dymivra821-go')||'overview');return;}
-      if(ev.target.closest('[data-dymivra821-map]')){ev.preventDefault();openModal();return;}
-    });
-    document.addEventListener('keydown',function(ev){
-      if(ev.key==='Escape'){
-        const modal=document.getElementById('dymivra821Modal');
-        if(modal)modal.classList.remove('show');
-      }
-    });
+    if(document.__dymivraVivoClick)return;document.__dymivraVivoClick=true;
+    document.addEventListener('click',e=>{const b=e.target.closest('[data-vivo-go]');if(!b)return;e.preventDefault();go(b.dataset.vivoGo,b.dataset.vivoTarget)});
+    document.addEventListener('input',e=>{if(String(e.target?.id||'').startsWith('dymivra762')||['targetValue','monthlyContribution','freedomMonthlyTarget','marketSelic'].includes(e.target?.id))setTimeout(render,80)});
   }
-
-  function update(screen){
-    const current=screen||window.currentScreen||'overview';
-    renderGuide(current);
+  function hook(){
+    bind();render();
+    if(typeof window.showAppScreen==='function'&&!window.__dymivraVivoWrapped){
+      const original=window.showAppScreen;window.__dymivraVivoWrapped=true;
+      window.showAppScreen=function(){const r=original.apply(this,arguments);setTimeout(render,120);setTimeout(render,520);return r};
+    }
   }
-
-  const prevShow=window.showAppScreen;
-  window.showAppScreen=function(screen,smooth){
-    const result=prevShow?prevShow.apply(this,arguments):undefined;
-    setTimeout(()=>update(screen||window.currentScreen||'overview'),90);
-    return result;
-  };
-
-  window.dymivra821OpenMap=openModal;
-  window.dymivra821RenderGuide=update;
-
-  function boot(){
-    bind();
-    ensureModal();
-    update(window.currentScreen||'overview');
-    setTimeout(()=>update(window.currentScreen||'overview'),400);
-    try{
-      if(!localStorage.getItem('dymivra821_map_seen')){
-        setTimeout(()=>{ if(document.getElementById('appSection') && getComputedStyle(document.getElementById('appSection')).display!=='none') openModal(); },1200);
-      }
-    }catch(e){}
-  }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true}); else boot();
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',hook);else hook();
+  window.addEventListener('load',()=>{hook();setTimeout(render,900)});
+  setTimeout(hook,600);setTimeout(hook,1600);setInterval(()=>{try{render()}catch{}},6000);
 })();
 </script>
 
