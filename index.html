@@ -22444,5 +22444,134 @@ body.dymivra-scroll-boost .item:hover{
 })();
 </script>
 
+
+<!-- Dymivra Mentor Business Inteligente START -->
+<style id="dym8615-mentor-business-style">
+.dym8615-mentor-panel{position:relative!important;overflow:hidden!important;margin-top:18px!important;padding:20px!important;border-radius:30px!important;border:1px solid rgba(103,232,249,.22)!important;background:radial-gradient(circle at 12% 0%,rgba(34,211,238,.14),transparent 30%),radial-gradient(circle at 92% 0%,rgba(139,92,246,.12),transparent 28%),linear-gradient(180deg,rgba(8,15,31,.96),rgba(7,13,26,.96))!important;box-shadow:0 18px 44px rgba(0,0,0,.26)!important}
+.dym8615-mentor-panel:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(255,255,255,.035),transparent);pointer-events:none!important}
+.dym8615-mentor-panel>*{position:relative;z-index:1}.dym8615-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:14px}.dym8615-kicker{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:#bae6fd;font-weight:900;margin-bottom:8px}.dym8615-title{font-size:clamp(24px,3vw,38px);line-height:1.02;letter-spacing:-.065em;margin:0!important}.dym8615-sub{margin-top:8px;color:#cbd5e1;line-height:1.55;max-width:820px}.dym8615-badge{padding:9px 12px;border-radius:999px;background:rgba(34,211,238,.10);border:1px solid rgba(34,211,238,.22);color:#e0f2fe;font-size:12px;font-weight:900;white-space:nowrap}.dym8615-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:14px;align-items:stretch}.dym8615-focus{min-height:100%;border-radius:26px;border:1px solid rgba(34,211,238,.20);background:radial-gradient(circle at 0% 0%,rgba(34,211,238,.13),transparent 34%),rgba(2,8,18,.35);padding:18px}.dym8615-priority{font-size:clamp(24px,3.2vw,42px);font-weight:950;line-height:1.03;letter-spacing:-.07em;margin-top:8px}.dym8615-mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.dym8615-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);border-radius:20px;padding:14px;min-height:122px}.dym8615-card strong{display:block;color:#fff;font-size:14px;margin-bottom:8px}.dym8615-card span{display:block;color:#cbd5e1;line-height:1.42;font-size:13px}.dym8615-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.dym8615-action{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);border-radius:18px;padding:13px;line-height:1.45;color:#dbeafe}.dym8615-action.good{border-color:rgba(34,197,94,.24);background:rgba(34,197,94,.08)}.dym8615-action.warn{border-color:rgba(251,146,60,.28);background:rgba(251,146,60,.08)}.dym8615-action.danger{border-color:rgba(239,68,68,.26);background:rgba(239,68,68,.08)}.dym8615-bottom{display:grid;grid-template-columns:1.05fr .95fr;gap:12px;margin-top:14px}.dym8615-decision{border-radius:22px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);padding:15px;line-height:1.55;color:#dbeafe}.dym8615-copy{align-self:stretch;display:flex;align-items:center}.dym8615-copy button{margin:0!important}.dym8615-loading{padding:18px;border:1px dashed rgba(255,255,255,.13);border-radius:22px;color:#cbd5e1;text-align:center;background:rgba(255,255,255,.025)}
+@media(max-width:1050px){.dym8615-grid,.dym8615-bottom{grid-template-columns:1fr}.dym8615-actions{grid-template-columns:1fr}.dym8615-mini-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.dym8615-mentor-panel{padding:16px!important;border-radius:24px!important}.dym8615-mini-grid{grid-template-columns:1fr}.dym8615-priority{font-size:30px}.dym8615-badge{width:100%;text-align:center}}
+.performance-mode .dym8615-mentor-panel,.performance-mode .dym8615-card,.performance-mode .dym8615-focus,.performance-mode .dym8615-action,.performance-mode .dym8615-decision{backdrop-filter:none!important;box-shadow:0 8px 18px rgba(0,0,0,.18)!important}
+</style>
+<script type="module" id="dym8615-mentor-business-inteligente-script">
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
+(() => {
+  const SUPABASE_URL = "https://sqvqssdsrpdfvfxcnwwa.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_HfHYwaCI4kEPGWTtPIpvBw_96WL_UPu";
+  const supa = createClient(SUPABASE_URL, SUPABASE_KEY);
+  const BRL = new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
+  const state = {loaded:false, source:'local', summary:null};
+  function $(id){return document.getElementById(id)}
+  function brl(v){return BRL.format(Number(v)||0)}
+  function pct(v){return (Number(v)||0).toFixed(1).replace('.',',') + '%'}
+  function esc(v){return String(v ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
+  function ym(d){const x=d?new Date(d):new Date(); return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')}
+  function monthStart(){const d=new Date(); return new Date(d.getFullYear(),d.getMonth(),1).toISOString().slice(0,10)}
+  function nextMonthStart(){const d=new Date(); return new Date(d.getFullYear(),d.getMonth()+1,1).toISOString().slice(0,10)}
+  async function user(){try{const {data}=await supa.auth.getSession(); return data?.session?.user || null}catch{return null}}
+  async function table(name, uid){try{const {data,error}=await supa.from(name).select('*').eq('user_id',uid); if(error)throw error; return data||[]}catch(e){console.warn('Mentor Business:',name,e?.message||e); return []}}
+  function n(v){return Number(v)||0}
+  function sameMonth(date){return ym(date)===ym(new Date())}
+  function movementAmount(row){return n(row.amount ?? row.value ?? row.total ?? 0)}
+  function movementType(row){return String(row.type || row.movement_type || row.kind || '').toLowerCase()}
+  function saleRevenue(row){return n(row.gross_revenue ?? (n(row.quantity)*n(row.unit_price))) }
+  function saleCost(row){return n(row.product_cost ?? (n(row.quantity)*n(row.unit_cost))) }
+  function summarize(data){
+    const movements=(data.movements||[]).filter(x=>sameMonth(x.movement_date || x.date || x.created_at));
+    const sales=(data.sales||[]).filter(x=>sameMonth(x.sale_date || x.created_at) && String(x.status||'concluida')!=='cancelada');
+    const bills=(data.bills||[]).filter(x=>String(x.status||'pendente')==='pendente');
+    const goals=(data.goals||[]).filter(x=>sameMonth(x.goal_month || x.created_at));
+    const costs=(data.costs||[]).filter(x=>x.is_active!==false);
+    const products=data.products||[];
+    const entrada=movements.filter(x=>movementType(x)==='entrada').reduce((a,x)=>a+movementAmount(x),0);
+    const saida=movements.filter(x=>movementType(x)==='saida').reduce((a,x)=>a+movementAmount(x),0);
+    const investimento=movements.filter(x=>movementType(x)==='investimento').reduce((a,x)=>a+movementAmount(x),0);
+    const retirada=movements.filter(x=>movementType(x)==='retirada').reduce((a,x)=>a+movementAmount(x),0);
+    const caixa=entrada + investimento - saida - retirada;
+    const lucro=entrada - saida;
+    const margem=entrada>0 ? (lucro/entrada)*100 : 0;
+    const salesRevenueTotal=sales.reduce((a,x)=>a+saleRevenue(x),0);
+    const salesCostTotal=sales.reduce((a,x)=>a+saleCost(x),0);
+    const salesProfit=salesRevenueTotal-salesCostTotal;
+    const lowStock=products.filter(p=>n(p.quantity)>0 && n(p.quantity)<=3).length;
+    const noStock=products.filter(p=>n(p.quantity)<=0).length;
+    const stockValue=products.reduce((a,p)=>a+n(p.quantity)*n(p.unit_cost),0);
+    const fixedMonthly=costs.reduce((a,c)=>a+n(c.amount)*(String(c.frequency||'mensal')==='anual'?1/12:String(c.frequency||'mensal')==='semanal'?4.33:String(c.frequency||'mensal')==='quinzenal'?2:1),0);
+    const billsPay=bills.filter(b=>String(b.bill_type||'')==='pagar').reduce((a,b)=>a+n(b.amount),0);
+    const billsReceive=bills.filter(b=>String(b.bill_type||'')==='receber').reduce((a,b)=>a+n(b.amount),0);
+    const currentGoal=goals[0]||{};
+    const revenueGoal=n(currentGoal.revenue_goal); const profitGoal=n(currentGoal.profit_goal); const marginGoal=n(currentGoal.margin_goal); const cashGoal=n(currentGoal.cash_goal);
+    const byProduct={};
+    sales.forEach(s=>{const name=s.product_name||'Produto'; if(!byProduct[name]) byProduct[name]={qty:0,profit:0,revenue:0}; byProduct[name].qty+=n(s.quantity); byProduct[name].profit+=saleRevenue(s)-saleCost(s); byProduct[name].revenue+=saleRevenue(s);});
+    const topProfit=Object.entries(byProduct).sort((a,b)=>b[1].profit-a[1].profit)[0];
+    return {entrada,saida,investimento,retirada,caixa,lucro,margem,salesRevenueTotal,salesCostTotal,salesProfit,lowStock,noStock,stockValue,fixedMonthly,billsPay,billsReceive,revenueGoal,profitGoal,marginGoal,cashGoal,topProfit,productsCount:products.length,salesCount:sales.length};
+  }
+  function diagnosis(s){
+    let priority='Organizar os dados do negócio para receber uma orientação mais precisa.';
+    let health='Cadastre entradas, saídas, estoque, metas e custos para acompanhar a operação com clareza.';
+    let finance='Sem alertas críticos no momento.';
+    let growth='Use o histórico de vendas para descobrir os produtos com melhor resultado.';
+    const actions=[];
+    if(s.caixa<0){priority='Preservar caixa e revisar saídas imediatamente.'; finance='O caixa está negativo. Evite novas retiradas e revise contas a pagar.'; actions.push(['danger','Segurar retiradas até o caixa voltar ao positivo.']);}
+    else if(s.lucro<0){priority='Reduzir custos e recuperar o lucro operacional.'; health='O mês está em prejuízo operacional. As saídas superaram as entradas.'; actions.push(['danger','Revisar despesas, fornecedores e compras de estoque.']);}
+    else if(s.margem>0 && s.margem<20){priority='Melhorar margem antes de acelerar compras.'; health='O negócio está vendendo, mas a margem ainda está apertada.'; actions.push(['warn','Revisar preço de venda e custo dos produtos.']);}
+    else if(s.entrada>0){priority='Manter o ritmo de vendas com controle de caixa.'; health='O negócio está com movimentação positiva no mês.'; actions.push(['good','Reforçar produtos com melhor lucro e manter controle de despesas.']);}
+    if(s.fixedMonthly>0 && s.entrada>0 && s.fixedMonthly/s.entrada>.35){finance='Os custos fixos estão consumindo uma parte alta do faturamento.'; actions.push(['warn','Negociar custos recorrentes e acompanhar ponto de equilíbrio.']);}
+    if(s.billsPay>s.billsReceive && s.billsPay>0){finance='As contas a pagar superam os recebimentos pendentes.'; actions.push(['warn','Priorizar recebimentos e planejar pagamentos próximos.']);}
+    if(s.noStock>0){actions.push(['warn','Repor ou revisar produtos sem estoque.']);}
+    if(s.lowStock>0){actions.push(['good','Acompanhar itens com estoque baixo para não perder venda.']);}
+    if(s.topProfit){growth=`O produto ${s.topProfit[0]} é destaque em lucro no mês.`; actions.push(['good',`Dar mais visibilidade ao produto ${s.topProfit[0]}.`]);}
+    if(s.revenueGoal>0 && s.entrada<s.revenueGoal){actions.push(['warn',`Faltam ${brl(s.revenueGoal-s.entrada)} para a meta de faturamento.`]);}
+    if(s.profitGoal>0 && s.lucro<s.profitGoal){actions.push(['warn',`Faltam ${brl(s.profitGoal-s.lucro)} para a meta de lucro.`]);}
+    if(!actions.length){actions.push(['good','Registrar movimentações reais todos os dias.']); actions.push(['good','Acompanhar produtos com maior margem.']); actions.push(['good','Definir metas do mês para guiar crescimento.']);}
+    const unique=[]; const seen=new Set(); actions.forEach(a=>{if(!seen.has(a[1])){seen.add(a[1]); unique.push(a);}});
+    return {priority,health,finance,growth,actions:unique.slice(0,6)};
+  }
+  function ensurePanel(){
+    let panel=$('dym8615MentorPanel'); if(panel) return panel;
+    const business=document.querySelector('[data-screen-block][data-screens="business"]') || document.querySelector('[data-screens="business"]');
+    if(!business) return null;
+    panel=document.createElement('section'); panel.id='dym8615MentorPanel'; panel.className='dym8615-mentor-panel';
+    panel.innerHTML='<div class="dym8615-loading">Carregando mentor do negócio...</div>';
+    const after=$('dym8613PartnerReportPanel') || $('dym8612CostsPanel') || $('dym863RadarPanel') || business;
+    after.insertAdjacentElement('afterend', panel);
+    return panel;
+  }
+  function render(){
+    const panel=ensurePanel(); if(!panel) return;
+    const s=state.summary || summarize({}); const d=diagnosis(s);
+    panel.innerHTML=`
+      <div class="dym8615-head"><div><div class="dym8615-kicker">Mentor do Negócio</div><h3 class="dym8615-title">Prioridade clara para crescer com controle</h3><div class="dym8615-sub">Entenda a situação do negócio, veja o ponto de atenção mais importante e transforme seus dados em decisões práticas.</div></div><div class="dym8615-badge">${esc(state.source==='supabase'?'Dados da conta':'Modo local')}</div></div>
+      <div class="dym8615-grid"><div class="dym8615-focus"><div class="label">Prioridade de hoje</div><div class="dym8615-priority">${esc(d.priority)}</div><div class="badges"><span class="badge">Caixa: ${esc(brl(s.caixa))}</span><span class="badge">Lucro: ${esc(brl(s.lucro))}</span><span class="badge">Margem: ${esc(pct(s.margem))}</span></div></div>
+      <div class="dym8615-mini-grid"><div class="dym8615-card"><strong>Saúde do negócio</strong><span>${esc(d.health)}</span></div><div class="dym8615-card"><strong>Atenção financeira</strong><span>${esc(d.finance)}</span></div><div class="dym8615-card"><strong>Crescimento</strong><span>${esc(d.growth)}</span></div><div class="dym8615-card"><strong>Base analisada</strong><span>${esc(s.salesCount)} venda(s), ${esc(s.productsCount)} produto(s), custos fixos de ${esc(brl(s.fixedMonthly))}.</span></div></div></div>
+      <div class="dym8615-actions">${d.actions.map(a=>`<div class="dym8615-action ${esc(a[0])}">${esc(a[1])}</div>`).join('')}</div>
+      <div class="dym8615-bottom"><div class="dym8615-decision"><strong>Resumo da decisão</strong><br>${esc(decisionText(s,d))}</div><div class="dym8615-copy"><button type="button" onclick="window.dym8615CopyMentor?.()">Copiar orientação do mentor</button></div></div>`;
+  }
+  function decisionText(s,d){
+    if(s.caixa<0) return 'Priorize caixa positivo antes de ampliar compras, retiradas ou novas despesas.';
+    if(s.lucro<0) return 'O foco agora é recuperar lucro operacional: corte custos, revise preços e evite estoque sem giro.';
+    if(s.margem>0 && s.margem<20) return 'Existe venda, mas a margem precisa melhorar para o crescimento ser saudável.';
+    if(s.topProfit) return `Reforce o produto ${s.topProfit[0]} e compare sua margem com os demais itens.`;
+    return 'Mantenha registros diários e use metas mensais para transformar controle em crescimento.';
+  }
+  async function load(){
+    const u=await user();
+    if(!u){ state.source='local'; state.summary=summarize({}); state.loaded=true; render(); return; }
+    const [movements,products,sales,bills,goals,costs]=await Promise.all([
+      table('business_movements',u.id), table('business_products',u.id), table('business_sales',u.id), table('business_bills',u.id), table('business_goals',u.id), table('business_recurring_costs',u.id)
+    ]);
+    state.source='supabase'; state.summary=summarize({movements,products,sales,bills,goals,costs}); state.loaded=true; render();
+  }
+  function mentorText(){const s=state.summary || summarize({}); const d=diagnosis(s); return `Mentor do Negócio — Dymivra\n\nPrioridade de hoje:\n${d.priority}\n\nSaúde do negócio:\n${d.health}\n\nAtenção financeira:\n${d.finance}\n\nCrescimento:\n${d.growth}\n\nResumo da decisão:\n${decisionText(s,d)}\n\nAções recomendadas:\n${d.actions.map((a,i)=>`${i+1}. ${a[1]}`).join('\n')}\n\nIndicadores analisados:\nCaixa: ${brl(s.caixa)}\nLucro: ${brl(s.lucro)}\nMargem: ${pct(s.margem)}\nCustos fixos mensais: ${brl(s.fixedMonthly)}\nContas a pagar: ${brl(s.billsPay)}\nContas a receber: ${brl(s.billsReceive)}`}
+  window.dym8615CopyMentor=async function(){const text=mentorText(); try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.left='-9999px'; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();} try{window.toast?.('Orientação do mentor copiada.','success')}catch(e){} };
+  window.dym8615LoadMentorBusiness = load;
+  function start(){ensurePanel(); load(); setInterval(()=>{try{load()}catch(e){}},30000)}
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',start,{once:true}); else start();
+  window.DYMIVRA8615 = { load, render };
+})();
+</script>
+<!-- Dymivra Mentor Business Inteligente END -->
+
 </body>
 </html>
