@@ -24265,7 +24265,7 @@ html,body{overscroll-behavior-y:contain}.dymivra824-shell{position:relative;over
           <h3>Simulador de aporte</h3>
           <div class="dymivra825-sim-grid">
             <div><label>Valor que você pensa em investir</label><input id="dymivra825SimAmount" inputmode="decimal" placeholder="Ex: 300" type="number" value="${Math.round(readSim().amount||safeInvest(pd)||0)}"></div>
-            <div><label>Objetivo do aporte</label><select id="dymivra825SimFocus"><option value="equilibrio">Equilíbrio</option><option value="seguranca">Segurança</option><option value="renda">Renda passiva</option><option value="crescimento">Crescimento</option><option value="rebalancear">Rebalancear</option></select></div>
+            <div><label>Objetivo do aporte</label><input id="dymivra825SimFocus" type="hidden" value="${esc(readSim().focus||'equilibrio')}"><div class="dymivra8630-focus-grid" role="group" aria-label="Objetivo do aporte"><button type="button" class="dymivra8630-focus-btn ${((readSim().focus||'equilibrio')==='equilibrio')?'active':''}" data-d8630-focus="equilibrio">⚖️ Equilíbrio</button><button type="button" class="dymivra8630-focus-btn ${((readSim().focus||'equilibrio')==='seguranca')?'active':''}" data-d8630-focus="seguranca">🛡️ Segurança</button><button type="button" class="dymivra8630-focus-btn ${((readSim().focus||'equilibrio')==='renda')?'active':''}" data-d8630-focus="renda">🌱 Renda passiva</button><button type="button" class="dymivra8630-focus-btn ${((readSim().focus||'equilibrio')==='crescimento')?'active':''}" data-d8630-focus="crescimento">🚀 Crescimento</button><button type="button" class="dymivra8630-focus-btn ${((readSim().focus||'equilibrio')==='rebalancear')?'active':''}" data-d8630-focus="rebalancear">🔄 Rebalancear</button></div></div>
           </div>
           <div class="dymivra825-result" id="dymivra825SimResult">${esc(simResult(pd,wd))}</div>
           <div class="dymivra825-actions" style="grid-template-columns:repeat(3,1fr);margin-top:10px">
@@ -24712,6 +24712,64 @@ html,body{overscroll-behavior-y:contain}.dymivra824-shell{position:relative;over
   window.addEventListener('load',()=>setTimeout(boot,900),{once:true});
   setTimeout(boot,2200);
   setTimeout(boot,5200);
+})();
+</script>
+
+
+<style id="dymivra8630-aporte-premium-style">
+/* Correção final: objetivo do aporte 100% no padrão premium do app */
+#dymivra825SimFocus[type=hidden]{position:absolute!important;opacity:0!important;pointer-events:none!important;width:1px!important;height:1px!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;}
+.dymivra8630-focus-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important;margin-top:8px!important;}
+.dymivra8630-focus-btn{width:100%!important;margin:0!important;min-width:0!important;min-height:54px!important;border-radius:18px!important;padding:12px 14px!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;gap:8px!important;white-space:normal!important;word-break:normal!important;overflow-wrap:normal!important;line-height:1.16!important;font-size:13px!important;font-weight:950!important;letter-spacing:-.02em!important;color:#e0f2fe!important;border:1px solid rgba(125,211,252,.18)!important;background:linear-gradient(135deg,rgba(14,165,233,.17),rgba(34,211,238,.08))!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.055),0 10px 22px rgba(2,6,23,.12)!important;filter:none!important;transform:none!important;}
+.dymivra8630-focus-btn.active{color:#fff!important;border-color:rgba(103,232,249,.55)!important;background:linear-gradient(135deg,rgba(14,165,233,.96),rgba(37,99,235,.90))!important;box-shadow:0 12px 26px rgba(14,165,233,.22),inset 0 1px 0 rgba(255,255,255,.12)!important;}
+.dymivra8630-focus-btn:active,.dymivra8630-focus-btn:focus{outline:none!important;transform:none!important;}
+.dymivra825-sim select#dymivra825SimFocus{display:none!important;}
+.dymivra825-sim .dymivra825-actions{grid-template-columns:repeat(3,minmax(0,1fr))!important;}
+.dymivra825-sim .dymivra825-actions button{white-space:normal!important;word-break:normal!important;overflow-wrap:normal!important;line-height:1.15!important;min-width:0!important;}
+@media(max-width:760px){.dymivra8630-focus-grid{grid-template-columns:1fr!important}.dymivra8630-focus-btn{justify-content:flex-start!important;text-align:left!important;min-height:52px!important;font-size:14px!important}.dymivra825-sim .dymivra825-actions{grid-template-columns:1fr!important}.dymivra825-sim .dymivra825-actions button{min-height:54px!important;font-size:13px!important}}
+.performance-mode .dymivra8630-focus-btn{transition:none!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)!important;}
+</style>
+<script id="dymivra8630-aporte-premium-script">
+(function(){
+  if(window.__dymivra8630AportePremium)return;
+  window.__dymivra8630AportePremium=true;
+  const $=id=>document.getElementById(id);
+  const qa=(s,r=document)=>Array.from(r.querySelectorAll(s));
+  function parse(v){return Number(String(v||'').replace(/[^0-9,.-]/g,'').replace(/\.(?=\d{3}(\D|$))/g,'').replace(',','.'))||0}
+  function sync(){
+    const input=$('dymivra825SimFocus');
+    if(!input)return;
+    qa('[data-d8630-focus]').forEach(btn=>btn.classList.toggle('active',btn.dataset.d8630Focus===input.value));
+  }
+  function storeFocus(value){
+    const input=$('dymivra825SimFocus');
+    if(input)input.value=value||'equilibrio';
+    try{
+      const key='dymivra825_invest_sim_v1';
+      const raw=JSON.parse(localStorage.getItem(key)||'{}')||{};
+      raw.focus=value||'equilibrio';
+      const amountEl=$('dymivra825SimAmount');
+      if(amountEl)raw.amount=parse(amountEl.value);
+      raw.updatedAt=new Date().toISOString();
+      localStorage.setItem(key,JSON.stringify(raw));
+    }catch(e){}
+    sync();
+    try{
+      const res=$('dymivra825SimResult');
+      if(res&&typeof window.dymivra825RefreshSimulation==='function')window.dymivra825RefreshSimulation();
+    }catch(e){}
+  }
+  document.addEventListener('click',function(ev){
+    const btn=ev.target.closest('[data-d8630-focus]');
+    if(!btn)return;
+    ev.preventDefault();
+    storeFocus(btn.dataset.d8630Focus);
+  },true);
+  document.addEventListener('change',function(ev){if(ev.target&&ev.target.id==='dymivra825SimFocus')sync();},true);
+  function boot(){sync();}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+  window.addEventListener('load',()=>setTimeout(boot,500),{once:true});
+  setInterval(boot,2500);
 })();
 </script>
 
