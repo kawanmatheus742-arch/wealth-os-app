@@ -25196,5 +25196,174 @@ html,body{overscroll-behavior-y:contain}.dymivra824-shell{position:relative;over
 })();
 </script>
 
+
+
+<style id="dymivra836-scroll-stability-style">
+html.dymivra836-initial-scroll-stable{scroll-behavior:auto!important;}
+body.dymivra836-user-scroll-active{overscroll-behavior-y:contain!important;}
+</style>
+<script id="dymivra836-scroll-stability-script">
+(function(){
+  'use strict';
+  if(window.__dymivra836ScrollStabilityInstalled)return;
+  window.__dymivra836ScrollStabilityInstalled=true;
+
+  var installedAt=Date.now();
+  var protectUntil=installedAt+12000;
+  var allowTopUntil=0;
+  var lastManualAt=0;
+  var lastDownIntentAt=0;
+  var lastTouchY=null;
+  var lastSafeY=0;
+  var lastY=getY();
+  var restoring=false;
+  var userHasMoved=false;
+
+  function now(){return Date.now();}
+  function getY(){
+    return Number(window.scrollY||document.documentElement.scrollTop||document.body.scrollTop||0)||0;
+  }
+  function isAppVisible(){
+    var app=document.getElementById('appSection');
+    if(!app)return true;
+    var st='';
+    try{st=getComputedStyle(app).display;}catch(e){}
+    return st!=='none';
+  }
+  function arm(ms){
+    protectUntil=Math.max(protectUntil,now()+(ms||9000));
+    try{document.documentElement.classList.add('dymivra836-initial-scroll-stable');}catch(e){}
+  }
+  function releaseSoon(){
+    setTimeout(function(){
+      if(now()>protectUntil){
+        try{document.documentElement.classList.remove('dymivra836-initial-scroll-stable');document.body.classList.remove('dymivra836-user-scroll-active');}catch(e){}
+      }
+    },650);
+  }
+  function isControl(el){
+    try{
+      return !!(el&&el.closest&&el.closest('button,a,.nav-btn,.wealth-floating-top,.floating-top,.inline-top-btn,[data-screen],[data-close],[data-vivo-go],[role="button"],input,textarea,select,label'));
+    }catch(e){return false;}
+  }
+  function allowTop(ms){
+    allowTopUntil=now()+(ms||1800);
+  }
+  function markManual(direction){
+    userHasMoved=true;
+    lastManualAt=now();
+    arm(6500);
+    try{document.body.classList.add('dymivra836-user-scroll-active');}catch(e){}
+    if(direction==='down')lastDownIntentAt=now();
+    releaseSoon();
+  }
+  function shouldBlockTop(targetTop){
+    var current=getY();
+    var t=Number(targetTop||0);
+    if(!Number.isFinite(t))return false;
+    if(t>30)return false;
+    if(now()<allowTopUntil)return false;
+    if(now()>protectUntil)return false;
+    if(!isAppVisible())return false;
+    if(!userHasMoved)return false;
+    if(current<90)return false;
+    if(now()-lastDownIntentAt>2600)return false;
+    return true;
+  }
+
+  ['click','pointerdown','mousedown'].forEach(function(ev){
+    document.addEventListener(ev,function(e){
+      if(isControl(e.target))allowTop(2200);
+      else markManual('neutral');
+    },true);
+  });
+  window.addEventListener('wheel',function(e){
+    if(isControl(e.target))return;
+    markManual(Number(e.deltaY||0)>0?'down':'up');
+  },{passive:true,capture:true});
+  window.addEventListener('touchstart',function(e){
+    if(isControl(e.target)){allowTop(2200);return;}
+    lastTouchY=e.touches&&e.touches[0]?e.touches[0].clientY:null;
+    markManual('neutral');
+  },{passive:true,capture:true});
+  window.addEventListener('touchmove',function(e){
+    if(isControl(e.target))return;
+    var y=e.touches&&e.touches[0]?e.touches[0].clientY:null;
+    var direction='neutral';
+    if(lastTouchY!==null&&y!==null){
+      if(lastTouchY-y>3)direction='down';
+      if(y-lastTouchY>3)direction='up';
+    }
+    lastTouchY=y;
+    markManual(direction);
+  },{passive:true,capture:true});
+  window.addEventListener('keydown',function(e){
+    var k=String(e.key||'');
+    if(['Home','PageUp','ArrowUp'].includes(k))allowTop(1200);
+    if(['PageDown','ArrowDown',' '].includes(k))markManual('down');
+  },{passive:true,capture:true});
+
+  var nativeScrollTo=window.scrollTo.bind(window);
+  window.scrollTo=function(x,y){
+    var target=typeof x==='object'&&x?Number(x.top||0):Number(y||0);
+    if(shouldBlockTop(target))return;
+    return nativeScrollTo.apply(window,arguments);
+  };
+
+  var oldWealthTop=window.wealthScrollToTop;
+  if(typeof oldWealthTop==='function'&&!oldWealthTop.__dymivra836Wrapped){
+    var wrappedTop=function(){
+      if(shouldBlockTop(0))return;
+      return oldWealthTop.apply(this,arguments);
+    };
+    wrappedTop.__dymivra836Wrapped=true;
+    window.wealthScrollToTop=wrappedTop;
+  }
+
+  var nativeInto=Element.prototype.scrollIntoView;
+  if(nativeInto&&!nativeInto.__dymivra836Wrapped){
+    Element.prototype.scrollIntoView=function(){
+      try{
+        var rect=this.getBoundingClientRect?this.getBoundingClientRect():null;
+        var wouldPullUp=rect&&rect.top<0&&getY()>90;
+        if(wouldPullUp&&now()<protectUntil&&now()>allowTopUntil&&now()-lastDownIntentAt<2200&&isAppVisible())return;
+      }catch(e){}
+      return nativeInto.apply(this,arguments);
+    };
+    Element.prototype.scrollIntoView.__dymivra836Wrapped=true;
+  }
+
+  window.addEventListener('scroll',function(){
+    if(restoring)return;
+    var y=getY();
+    var droppedToTop=(lastSafeY>120&&y<35&&lastY>80);
+    if(droppedToTop&&now()<protectUntil&&now()>allowTopUntil&&now()-lastDownIntentAt<2600&&isAppVisible()){
+      restoring=true;
+      requestAnimationFrame(function(){
+        try{nativeScrollTo({top:lastSafeY,behavior:'auto'});}catch(e){try{nativeScrollTo(0,lastSafeY);}catch(err){}}
+        setTimeout(function(){restoring=false;lastY=getY();},80);
+      });
+      return;
+    }
+    if(y>lastSafeY)lastSafeY=y;
+    lastY=y;
+  },{passive:true,capture:true});
+
+  function bootArm(){
+    arm(10000);
+    setTimeout(function(){lastY=getY();lastSafeY=Math.max(lastSafeY,lastY);},120);
+    setTimeout(function(){try{document.documentElement.classList.remove('dymivra836-initial-scroll-stable');document.body.classList.remove('dymivra836-user-scroll-active');}catch(e){}},13500);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bootArm);else bootArm();
+  window.addEventListener('load',function(){arm(7000);setTimeout(releaseSoon,7600);},{passive:true});
+  try{
+    var app=document.getElementById('appSection');
+    if(app&&window.MutationObserver){
+      new MutationObserver(function(){if(isAppVisible())bootArm();}).observe(app,{attributes:true,attributeFilter:['style','class']});
+    }
+  }catch(e){}
+})();
+</script>
+
 </body>
 </html>
