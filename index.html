@@ -24970,5 +24970,80 @@ html,body{overscroll-behavior-y:contain}.dymivra824-shell{position:relative;over
 })();
 </script>
 
+
+
+<!-- Dymivra 8.6.33 — Calendário visual premium corrigido -->
+<style id="dymivra8633-calendario-visual-corrigido-style">
+/* Correção visual segura: evita que as etiquetas do calendário quebrem em letras no celular. */
+.dymivra832-day .dymivra832-pill-mini{white-space:nowrap!important;word-break:keep-all!important;overflow:hidden!important;text-overflow:ellipsis!important;}
+@media(max-width:760px){
+  .dymivra832-calendar{gap:6px!important;}
+  .dymivra832-day{min-height:64px!important;border-radius:14px!important;padding:7px!important;overflow:hidden!important;position:relative!important;}
+  .dymivra832-num{font-size:16px!important;line-height:1!important;}
+  .dymivra832-day .dymivra832-pill-mini{
+    width:22px!important;height:22px!important;min-width:22px!important;max-width:22px!important;
+    padding:0!important;border-radius:999px!important;
+    font-size:0!important;line-height:0!important;letter-spacing:0!important;
+    display:inline-grid!important;place-items:center!important;
+  }
+  .dymivra832-day .dymivra832-pill-mini::after{
+    content:attr(data-short);font-size:10px!important;line-height:1!important;font-weight:950!important;color:#e0f2fe!important;
+  }
+  .dymivra832-day .dymivra832-pill-mini[data-kind="entrada"]::after{content:"R$";font-size:9px!important;}
+  .dymivra832-day .dymivra832-pill-mini[data-kind="contas"]::after{content:"!";font-size:12px!important;}
+  .dymivra832-day .dymivra832-pill-mini[data-kind="aporte"]::after{content:"↗";font-size:12px!important;}
+  .dymivra832-day .dymivra832-pill-mini[data-kind="hoje"]::after{content:"•";font-size:18px!important;}
+  .dymivra832-day .dymivra832-pill-mini[data-kind="fechamento"]::after{content:"✓";font-size:12px!important;}
+  .dymivra832-day .dymivra832-pill-mini[data-kind="risco"]::after{content:"!";font-size:12px!important;}
+  .dymivra832-tag{display:none!important;}
+}
+</style>
+<script id="dymivra8633-calendario-visual-corrigido-script">
+(function(){
+  'use strict';
+  const MAP={
+    'hoje':{kind:'hoje',short:'•'},
+    'entrada':{kind:'entrada',short:'R$'},
+    'contas':{kind:'contas',short:'!'},
+    'risco':{kind:'risco',short:'!'},
+    'aporte':{kind:'aporte',short:'↗'},
+    'fechamento':{kind:'fechamento',short:'✓'}
+  };
+  function normalize(v){return String(v||'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+  function compactCalendarPills(){
+    const isMobile=window.matchMedia&&window.matchMedia('(max-width: 760px)').matches;
+    document.querySelectorAll('.dymivra832-calendar .dymivra832-pill-mini').forEach(pill=>{
+      const original=(pill.getAttribute('data-full')||pill.textContent||'').trim();
+      if(!original)return;
+      const key=normalize(original);
+      const item=MAP[key]||{kind:key||'item',short:original.slice(0,1).toUpperCase()};
+      pill.setAttribute('data-full',original);
+      pill.setAttribute('data-kind',item.kind);
+      pill.setAttribute('data-short',item.short);
+      pill.setAttribute('title',original);
+      pill.setAttribute('aria-label',original);
+      if(isMobile){
+        if(pill.textContent!==item.short)pill.textContent=item.short;
+      }else if(pill.textContent!==original){
+        pill.textContent=original;
+      }
+    });
+  }
+  function start(){
+    compactCalendarPills();
+    const calendar=document.getElementById('dymivra832Calendar')||document.querySelector('.dymivra832-calendar');
+    if(calendar&&window.MutationObserver){
+      const observer=new MutationObserver(()=>compactCalendarPills());
+      observer.observe(calendar,{childList:true,subtree:true});
+    }
+    window.addEventListener('resize',compactCalendarPills,{passive:true});
+    window.addEventListener('orientationchange',()=>setTimeout(compactCalendarPills,120),{passive:true});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});
+  else start();
+  setTimeout(compactCalendarPills,500);
+})();
+</script>
+
 </body>
 </html>
