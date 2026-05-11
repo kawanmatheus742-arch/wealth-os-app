@@ -8347,6 +8347,340 @@ body.screen-overview-active.performance-mode.overview-intelligence-suite{
 }
 </style>
 
+
+<style id="dymivra-design-prime-global">
+/* Dymivra — Design Prime: camada visual global, leve e sem rolagem automática */
+:root{
+  --bg:#05010a!important;
+  --bg2:#0b0614!important;
+  --card:rgba(16,12,31,.88)!important;
+  --card2:rgba(24,16,44,.92)!important;
+  --line:rgba(255,255,255,.105)!important;
+  --text:#fbf7ff!important;
+  --muted:#b9a9d2!important;
+  --blue:#38bdf8!important;
+  --cyan:#22d3ee!important;
+  --green:#34d399!important;
+  --orange:#fb923c!important;
+  --red:#fb7185!important;
+  --yellow:#facc15!important;
+  --violet:#8b5cf6!important;
+  --magenta:#e879f9!important;
+  --shadow:0 22px 58px rgba(2,0,10,.34)!important;
+  --radius:30px!important;
+  --radius2:22px!important;
+  --prime-grad:linear-gradient(135deg,#7c3aed 0%,#db2777 46%,#22d3ee 100%);
+  --prime-glass:linear-gradient(155deg,rgba(255,255,255,.105),rgba(255,255,255,.045) 46%,rgba(255,255,255,.026));
+}
+html{scroll-behavior:auto!important;overscroll-behavior-y:auto!important;}
+body.dymivra-design-prime{
+  color:var(--text)!important;
+  background:
+    radial-gradient(circle at 8% -8%,rgba(168,85,247,.24),transparent 30%),
+    radial-gradient(circle at 92% 2%,rgba(236,72,153,.17),transparent 30%),
+    radial-gradient(circle at 48% 12%,rgba(34,211,238,.10),transparent 34%),
+    linear-gradient(180deg,#04010a 0%,#0d0619 42%,#050712 100%)!important;
+  background-attachment:scroll!important;
+}
+body.dymivra-design-prime:before{
+  opacity:.42!important;
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px)!important;
+  background-size:38px 38px!important;
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.45),transparent)!important;
+}
+body.dymivra-design-prime *{
+  scrollbar-width:thin;
+  scrollbar-color:rgba(232,121,249,.35) rgba(255,255,255,.035);
+}
+body.dymivra-design-prime .container{
+  max-width:1720px!important;
+  padding:clamp(16px,2vw,30px)!important;
+}
+body.dymivra-design-prime .topbar{
+  position:relative;
+  overflow:hidden;
+  padding:18px!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  border-radius:34px!important;
+  background:
+    radial-gradient(circle at 0 0,rgba(232,121,249,.16),transparent 34%),
+    radial-gradient(circle at 100% 0,rgba(34,211,238,.12),transparent 34%),
+    rgba(10,6,22,.72)!important;
+  box-shadow:0 26px 70px rgba(2,0,10,.34)!important;
+  backdrop-filter:none!important;
+}
+body.dymivra-design-prime .logo{
+  width:72px!important;height:72px!important;border-radius:26px!important;
+  background:linear-gradient(135deg,#7c3aed,#e879f9 52%,#22d3ee)!important;
+  box-shadow:0 18px 42px rgba(124,58,237,.32), inset 0 1px 0 rgba(255,255,255,.22)!important;
+  border:1px solid rgba(255,255,255,.18)!important;
+}
+body.dymivra-design-prime h1{
+  font-size:clamp(34px,4.5vw,64px)!important;
+  letter-spacing:-.095em!important;
+}
+body.dymivra-design-prime .subtitle{color:#d8c7ef!important;max-width:760px!important;}
+body.dymivra-design-prime .chips .chip,
+body.dymivra-design-prime .badge,
+body.dymivra-design-prime .pwa-pill,
+body.dymivra-design-prime .mobile-mode-badge{
+  border:1px solid rgba(255,255,255,.12)!important;
+  background:rgba(255,255,255,.065)!important;
+  color:#f7edff!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.055)!important;
+}
+body.dymivra-design-prime #screenIntro{
+  margin-bottom:2px!important;
+  border-radius:26px!important;
+  border:1px solid rgba(232,121,249,.18)!important;
+  background:
+    linear-gradient(90deg,rgba(124,58,237,.20),rgba(236,72,153,.10),rgba(34,211,238,.10)),
+    rgba(255,255,255,.035)!important;
+  color:#eee5ff!important;
+  box-shadow:0 18px 44px rgba(2,0,10,.22)!important;
+}
+body.dymivra-design-prime #screenIntro strong{color:white!important;}
+
+/* Layout de produto no desktop: menu lateral organizado */
+@media(min-width:1060px){
+  body.dymivra-design-prime #appSection{
+    display:grid!important;
+    grid-template-columns:286px minmax(0,1fr)!important;
+    gap:22px!important;
+    align-items:start!important;
+  }
+  body.dymivra-design-prime #appNav{
+    grid-column:1!important;
+    grid-row:1 / span 999!important;
+    position:sticky!important;
+    top:18px!important;
+    align-self:start!important;
+    max-height:calc(100vh - 36px)!important;
+    overflow:auto!important;
+    display:flex!important;
+    flex-direction:column!important;
+    gap:8px!important;
+    padding:14px!important;
+    border-radius:30px!important;
+    border:1px solid rgba(255,255,255,.12)!important;
+    background:
+      radial-gradient(circle at 0 0,rgba(124,58,237,.20),transparent 38%),
+      radial-gradient(circle at 100% 0,rgba(34,211,238,.10),transparent 36%),
+      rgba(10,6,22,.86)!important;
+    box-shadow:0 26px 70px rgba(2,0,10,.34)!important;
+    backdrop-filter:none!important;
+  }
+  body.dymivra-design-prime #appSection > :not(#appNav){grid-column:2!important;min-width:0!important;}
+  body.dymivra-design-prime #appNav .nav-group-label{
+    display:block!important;
+    padding:16px 13px 6px!important;
+    color:#c9b4e8!important;
+    font-size:11px!important;
+    font-weight:950!important;
+    letter-spacing:.18em!important;
+    text-transform:uppercase!important;
+    opacity:.82!important;
+  }
+  body.dymivra-design-prime #appNav .nav-group-label:first-child{padding-top:2px!important;}
+  body.dymivra-design-prime #appNav .nav-btn{
+    width:100%!important;
+    min-width:0!important;
+    margin:0!important;
+    padding:13px 14px!important;
+    border-radius:18px!important;
+    justify-content:flex-start!important;
+    text-align:left!important;
+    white-space:normal!important;
+    font-size:13px!important;
+    color:#eadfff!important;
+    border:1px solid rgba(255,255,255,.09)!important;
+    background:rgba(255,255,255,.045)!important;
+    box-shadow:none!important;
+  }
+  body.dymivra-design-prime #appNav .nav-btn.active{
+    background:linear-gradient(135deg,rgba(124,58,237,.98),rgba(219,39,119,.88))!important;
+    border-color:rgba(255,255,255,.20)!important;
+    color:white!important;
+    box-shadow:0 12px 26px rgba(124,58,237,.26)!important;
+  }
+}
+
+body.dymivra-design-prime .card,
+body.dymivra-design-prime .mini,
+body.dymivra-design-prime .item,
+body.dymivra-design-prime .premium-panel,
+body.dymivra-design-prime .business-kpi,
+body.dymivra-design-prime .business-form-card,
+body.dymivra-design-prime .business-radar-card,
+body.dymivra-design-prime .overview-flow-card,
+body.dymivra-design-prime .overview-command-card,
+body.dymivra-design-prime .overview-intelligence-suite,
+body.dymivra-design-prime .income-hero-main,
+body.dymivra-design-prime .income-metric-card,
+body.dymivra-design-prime .projection-hero,
+body.dymivra-design-prime .freedom-hero,
+body.dymivra-design-prime .allocation-hero,
+body.dymivra-design-prime .profile-hero{
+  border-radius:30px!important;
+  border:1px solid rgba(255,255,255,.11)!important;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(232,121,249,.095),transparent 30%),
+    radial-gradient(circle at 92% 2%,rgba(34,211,238,.060),transparent 32%),
+    var(--prime-glass)!important;
+  box-shadow:0 20px 54px rgba(2,0,10,.30), inset 0 1px 0 rgba(255,255,255,.055)!important;
+  backdrop-filter:none!important;
+}
+body.dymivra-design-prime .card:before,
+body.dymivra-design-prime .mini:before,
+body.dymivra-design-prime .item:before{opacity:.38!important;}
+body.dymivra-design-prime .grid{gap:18px!important;}
+body.dymivra-design-prime .section{margin-bottom:16px!important;}
+body.dymivra-design-prime .kicker,
+body.dymivra-design-prime .overview-eyebrow,
+body.dymivra-design-prime .ledger-panel-kicker,
+body.dymivra-design-prime .business-kicker,
+body.dymivra-design-prime .income-eyebrow{
+  color:#f0abfc!important;
+  letter-spacing:.18em!important;
+  font-weight:950!important;
+}
+body.dymivra-design-prime h2,
+body.dymivra-design-prime h3{
+  color:#fff!important;
+  letter-spacing:-.055em!important;
+}
+body.dymivra-design-prime .muted,
+body.dymivra-design-prime .label,
+body.dymivra-design-prime small{color:#bdaed7!important;}
+body.dymivra-design-prime .value,
+body.dymivra-design-prime .hero-value,
+body.dymivra-design-prime .projection-value,
+body.dymivra-design-prime .freedom-title,
+body.dymivra-design-prime .allocation-score,
+body.dymivra-design-prime .profile-name{
+  color:#fff!important;
+  text-shadow:0 14px 34px rgba(232,121,249,.10)!important;
+}
+body.dymivra-design-prime button{
+  border-radius:17px!important;
+  background:linear-gradient(135deg,#7c3aed 0%,#db2777 58%,#f472b6 100%)!important;
+  color:white!important;
+  box-shadow:0 14px 28px rgba(124,58,237,.24)!important;
+  transition:filter .14s ease, transform .14s ease, border-color .14s ease!important;
+}
+body.dymivra-design-prime button:hover{filter:brightness(1.06)!important;transform:translateY(-1px)!important;}
+body.dymivra-design-prime .secondary{
+  background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.045))!important;
+  color:#f4eaff!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  box-shadow:none!important;
+}
+body.dymivra-design-prime .success{background:linear-gradient(135deg,#059669,#22c55e)!important;}
+body.dymivra-design-prime .danger{background:linear-gradient(135deg,#be123c,#fb7185)!important;}
+body.dymivra-design-prime .gold{background:linear-gradient(135deg,#f59e0b,#facc15)!important;color:#1f1300!important;}
+body.dymivra-design-prime input,
+body.dymivra-design-prime textarea,
+body.dymivra-design-prime select{
+  border-radius:18px!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  background:linear-gradient(180deg,rgba(13,8,28,.96),rgba(6,5,16,.96))!important;
+  color:#fff!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045)!important;
+}
+body.dymivra-design-prime input:focus,
+body.dymivra-design-prime textarea:focus,
+body.dymivra-design-prime select:focus{
+  border-color:rgba(232,121,249,.56)!important;
+  box-shadow:0 0 0 4px rgba(232,121,249,.11), inset 0 1px 0 rgba(255,255,255,.05)!important;
+}
+
+/* Painel principal novo */
+body.dymivra-design-prime .dymivra-prime-command{
+  position:relative;
+  overflow:hidden;
+  padding:0!important;
+  border-radius:38px!important;
+  border:1px solid rgba(255,255,255,.13)!important;
+  background:
+    radial-gradient(circle at 14% 0%,rgba(232,121,249,.24),transparent 35%),
+    radial-gradient(circle at 88% 6%,rgba(34,211,238,.16),transparent 30%),
+    linear-gradient(135deg,rgba(20,9,42,.98),rgba(7,5,18,.96) 58%,rgba(9,15,30,.96))!important;
+  box-shadow:0 34px 90px rgba(2,0,10,.44), inset 0 1px 0 rgba(255,255,255,.08)!important;
+}
+body.dymivra-design-prime .dymivra-prime-command:after{
+  content:"";position:absolute;right:-140px;bottom:-170px;width:380px;height:380px;border-radius:999px;
+  background:radial-gradient(circle,rgba(34,211,238,.12),transparent 68%);pointer-events:none;
+}
+.dymivra-prime-inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(340px,.9fr);gap:18px;padding:22px;}
+.dymivra-prime-stage{min-height:380px;padding:28px;border-radius:32px;border:1px solid rgba(255,255,255,.10);background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.032));display:flex;flex-direction:column;justify-content:space-between;}
+.dymivra-prime-eyebrow{display:inline-flex;align-items:center;gap:8px;width:max-content;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.065);color:#f5d0fe;border-radius:999px;padding:8px 11px;font-size:12px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;}
+.dymivra-prime-title{font-size:clamp(38px,5vw,78px);line-height:.92;letter-spacing:-.09em;font-weight:950;margin:18px 0 12px;color:#fff;max-width:820px;}
+.dymivra-prime-sub{font-size:16px;line-height:1.62;color:#dacdf1;max-width:760px;margin:0;}
+.dymivra-prime-command-text{margin-top:18px;padding:16px 18px;border-radius:22px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);color:#fff;font-weight:950;font-size:clamp(18px,2.2vw,28px);letter-spacing:-.04em;line-height:1.16;}
+.dymivra-prime-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+.dymivra-prime-actions button{width:auto!important;margin:0!important;min-width:150px!important;}
+.dymivra-prime-panel{display:grid;gap:12px;}
+.dymivra-prime-meter{padding:18px;border-radius:28px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.055);}
+.dymivra-prime-meter-top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px;}
+.dymivra-prime-meter-top span{color:#cdbde6;font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.14em;}
+.dymivra-prime-meter-top strong{font-size:34px;letter-spacing:-.06em;color:white;}
+.dymivra-prime-track{height:14px;border-radius:999px;background:rgba(255,255,255,.075);overflow:hidden;border:1px solid rgba(255,255,255,.07);}
+.dymivra-prime-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#fb7185,#facc15,#22c55e);width:0%;transition:width .25s ease;}
+.dymivra-prime-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.dymivra-prime-tile{min-height:116px;padding:16px;border-radius:24px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.050);}
+.dymivra-prime-tile span{display:block;color:#cdbde6;font-size:12px;font-weight:900;margin-bottom:9px;}
+.dymivra-prime-tile strong{display:block;color:white;font-size:clamp(19px,2vw,27px);letter-spacing:-.05em;line-height:1.08;word-break:break-word;}
+.dymivra-prime-tile small{display:block;margin-top:7px;color:#b9a9d2!important;line-height:1.35;}
+.dymivra-prime-route{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:0 22px 22px;position:relative;z-index:1;}
+.dymivra-prime-route button{margin:0!important;width:100%!important;min-height:70px!important;text-align:left!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;background:rgba(255,255,255,.055)!important;border:1px solid rgba(255,255,255,.10)!important;box-shadow:none!important;color:#fff!important;}
+.dymivra-prime-route button b{display:block;font-size:14px;}.dymivra-prime-route button small{display:block;color:#cdbde6!important;font-size:11px;margin-top:3px;}
+
+/* Mais diferença visual nas telas internas */
+body.dymivra-design-prime [data-screen-block]{animation:none!important;}
+body.dymivra-design-prime .overview-total-hero,
+body.dymivra-design-prime .business-main-grid,
+body.dymivra-design-prime .projection-grid,
+body.dymivra-design-prime .allocation-grid,
+body.dymivra-design-prime .profile-grid,
+body.dymivra-design-prime .freedom-grid{
+  gap:20px!important;
+}
+body.dymivra-design-prime .overview-hero-main{border-radius:38px!important;}
+body.dymivra-design-prime .hero-value{font-size:clamp(54px,7vw,110px)!important;}
+body.dymivra-design-prime .overview-flow-strip{gap:14px!important;}
+body.dymivra-design-prime .overview-flow-card{min-height:120px!important;padding:18px!important;}
+body.dymivra-design-prime .overview-flow-card strong{font-size:clamp(20px,2vw,30px)!important;}
+body.dymivra-design-prime .empty{border-color:rgba(255,255,255,.11)!important;background:rgba(255,255,255,.04)!important;border-radius:22px!important;}
+
+/* Segurança de desempenho */
+body.dymivra-design-prime.performance-mode *,
+body.dymivra-design-prime *{will-change:auto!important;}
+body.dymivra-design-prime svg{max-width:100%;}
+body.dymivra-design-prime .score-shell:after{animation:none!important;opacity:.22!important;}
+body.dymivra-design-prime .boot{background:rgba(5,1,10,.92)!important;}
+
+@media(max-width:1120px){
+  .dymivra-prime-inner{grid-template-columns:1fr;}
+  .dymivra-prime-route{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:760px){
+  body.dymivra-design-prime .container{padding:14px!important;padding-bottom:112px!important;}
+  body.dymivra-design-prime .topbar{border-radius:26px!important;padding:14px!important;}
+  body.dymivra-design-prime .logo{width:58px!important;height:58px!important;border-radius:22px!important;}
+  .dymivra-prime-inner{padding:14px!important;gap:14px!important;}
+  .dymivra-prime-stage{min-height:auto;padding:18px;border-radius:26px;}
+  .dymivra-prime-title{font-size:clamp(36px,12vw,52px);}
+  .dymivra-prime-grid{grid-template-columns:1fr;}
+  .dymivra-prime-route{grid-template-columns:1fr;padding:0 14px 14px;}
+  .dymivra-prime-actions button{width:100%!important;}
+  body.dymivra-design-prime #appNav{backdrop-filter:none!important;background:rgba(13,6,24,.94)!important;border-color:rgba(255,255,255,.13)!important;}
+  body.dymivra-design-prime .card,body.dymivra-design-prime .premium-panel{border-radius:24px!important;}
+  body.dymivra-design-prime button:hover{transform:none!important;}
+}
+</style>
+
 </head>
 <body class="dymivra781-premium">
 <div aria-hidden="true" class="wealth-aurora-stage" id="wealthAuroraStage"><span class="aurora-orb orb-a"></span><span class="aurora-orb orb-b"></span><span class="aurora-orb orb-c"></span><span class="aurora-grid"></span></div>
@@ -8378,7 +8712,7 @@ body.screen-overview-active.performance-mode.overview-intelligence-suite{
 <div class="auth-feature"><strong>📒 Ledger profissional</strong><span>Compras, vendas, proventos, taxas e impostos.</span></div>
 <div class="auth-feature"><strong>🧭 Alocação inteligente</strong><span>Perfil de investidor e sugestão do próximo aporte.</span></div>
 <div class="auth-feature"><strong>🕊️ Liberdade financeira</strong><span>Plano para viver de renda e marcos mensais.</span></div>
-<div class="auth-feature"><strong>📱 App instalável</strong><span>Acesso premium no celular e no computador.</span></div>
+<div class="auth-feature"><strong>⚡ Acesso rápido</strong><span>Acesso premium no celular e no computador.</span></div>
 </div>
 <div class="dym835-journey-card">
 <div>
@@ -8476,12 +8810,12 @@ body.screen-overview-active.performance-mode.overview-intelligence-suite{
 </div>
 <div class="pwa-install-card browser-only" id="pwaInstallCard">
 <div>
-<div class="pwa-pill">📱 App instalável</div>
-<div class="pwa-install-title">Instale o Dymivra no celular ou computador</div>
-<div class="pwa-install-text">Modo app com tela cheia, acesso rápido e experiência mais próxima de aplicativo nativo.</div><div class="pwa-installed-mini">✅ Dymivra já está instalado neste dispositivo</div>
+<div class="pwa-pill">⚡ Acesso rápido</div>
+<div class="pwa-install-title">Acesse o Dymivra com mais velocidade</div>
+<div class="pwa-install-text">Abra sua área financeira com menos passos e uma experiência mais limpa no celular ou computador.</div><div class="pwa-installed-mini">✅ Dymivra já está instalado neste dispositivo</div>
 </div>
 <div class="pwa-install-actions">
-<button class="success" id="installAppBtn" onclick="installWealthApp()">Instalar app</button>
+<button class="success" id="installAppBtn" onclick="installWealthApp()">Ativar acesso rápido</button>
 <button class="secondary" onclick="dismissInstallCard()">Depois</button>
 </div>
 </div>
@@ -8490,14 +8824,14 @@ body.screen-overview-active.performance-mode.overview-intelligence-suite{
 <div>
 <div class="mobile-mode-badge">📲 Celular</div>
 <div class="mobile-guide-title">Instalar no celular</div>
-<div class="mobile-guide-sub">Use o Dymivra pelo navegador ou adicione à tela inicial para acesso rápido.</div>
+<div class="mobile-guide-sub">Use o Dymivra pelo navegador ou fixe o acesso para entrar com mais rapidez.</div>
 </div>
 <button class="secondary" onclick="dismissMobileInstallGuide()">Fechar</button>
 </div>
 <div class="mobile-guide-steps">
 <div class="mobile-guide-step"><b>1. Abra no celular</b><span>Abra o Dymivra no navegador do celular e adicione à tela inicial.</span></div>
-<div class="mobile-guide-step"><b>2. Menu do navegador</b><span>Toque nos três pontinhos e escolha “Instalar app” ou “Adicionar à tela inicial”.</span></div>
-<div class="mobile-guide-step"><b>3. Abra pelo ícone</b><span>Depois da instalação, entre pelo ícone Dymivra na tela inicial.</span></div>
+<div class="mobile-guide-step"><b>2. Menu do navegador</b><span>Toque nos três pontinhos e escolha “Ativar acesso rápido” ou “Fixar acesso”.</span></div>
+<div class="mobile-guide-step"><b>3. Abra pelo ícone</b><span>Depois disso, entre pelo ícone Dymivra na tela inicial.</span></div>
 </div>
 <div class="mobile-guide-actions">
 <button class="success" onclick="copyAppLink()">Copiar link do app</button>
@@ -8505,6 +8839,43 @@ body.screen-overview-active.performance-mode.overview-intelligence-suite{
 </div>
 </div>
 <div class="screen-intro" id="screenIntro"><strong>Visão geral</strong> — painel executivo com patrimônio, inteligência, score e principais alertas.</div>
+
+<section class="card dymivra-prime-command" id="dymivraPrimeCommand" data-screen-block="" data-screens="overview">
+  <div class="dymivra-prime-inner">
+    <div class="dymivra-prime-stage">
+      <div>
+        <div class="dymivra-prime-eyebrow">◆ Painel de comando</div>
+        <div class="dymivra-prime-title">Seu dinheiro organizado para a decisão de hoje.</div>
+        <p class="dymivra-prime-sub">A tela principal agora prioriza comando, consequência e execução. Você abre, entende o risco, vê a folga e sabe qual movimento merece atenção antes de mexer no dinheiro.</p>
+        <div class="dymivra-prime-command-text" id="dymivraPrimeCommandText">Cadastre ou atualize seus dados para o Dymivra mostrar o comando financeiro do momento.</div>
+      </div>
+      <div class="dymivra-prime-actions">
+        <button type="button" onclick="dymivraPrimeOpen('guardian')">Decidir agora</button>
+        <button type="button" class="secondary" onclick="dymivraPrimeOpen('plan')">Ver plano</button>
+        <button type="button" class="secondary" onclick="dymivraPrimeCopy()">Copiar comando</button>
+      </div>
+    </div>
+    <div class="dymivra-prime-panel">
+      <div class="dymivra-prime-meter">
+        <div class="dymivra-prime-meter-top"><span>Saúde do momento</span><strong id="dymivraPrimeScore">0</strong></div>
+        <div class="dymivra-prime-track"><div class="dymivra-prime-fill" id="dymivraPrimeFill"></div></div>
+      </div>
+      <div class="dymivra-prime-grid">
+        <div class="dymivra-prime-tile"><span>Patrimônio</span><strong id="dymivraPrimeWealth">R$ 0,00</strong><small>Valor principal do painel.</small></div>
+        <div class="dymivra-prime-tile"><span>Resultado</span><strong id="dymivraPrimeResult">R$ 0,00</strong><small>Consequência atual registrada.</small></div>
+        <div class="dymivra-prime-tile"><span>Renda do mês</span><strong id="dymivraPrimeIncome">R$ 0,00</strong><small>Fluxo passivo identificado.</small></div>
+        <div class="dymivra-prime-tile"><span>Negócio</span><strong id="dymivraPrimeBusiness">R$ 0,00</strong><small>Caixa operacional quando existir.</small></div>
+      </div>
+    </div>
+  </div>
+  <div class="dymivra-prime-route">
+    <button type="button" onclick="dymivraPrimeOpen('organize')"><span><b>Organizar</b><small>Renda, gastos e contas</small></span></button>
+    <button type="button" onclick="dymivraPrimeOpen('guardian')"><span><b>Decidir</b><small>Teste antes de gastar</small></span></button>
+    <button type="button" onclick="dymivraPrimeOpen('grow')"><span><b>Crescer</b><small>Metas, aporte e renda</small></span></button>
+    <button type="button" onclick="dymivraPrimeOpen('business')"><span><b>Negócio</b><small>Pessoa + empresa</small></span></button>
+  </div>
+</section>
+
 
 <div class="card premium-panel dymivra845-business" data-screen-block="" data-screens="business">
   <div class="business-hero-shell">
@@ -9733,7 +10104,7 @@ body.screen-overview-active.performance-mode.overview-intelligence-suite{
 <button class="onboarding-pulse" onclick="showAppScreen('ledger')" type="button">Registrar no Ledger</button>
 <button class="gold" onclick="showAppScreen('goals')" type="button">Configurar meta</button>
 <button class="secondary" onclick="showAppScreen('income')" type="button">Registrar renda</button>
-<button class="secondary" onclick="installWealthOS()" type="button">Instalar app</button>
+<button class="secondary" onclick="installWealthOS()" type="button">Ativar acesso rápido</button>
 </div>
 </div>
 <div class="item">
@@ -9746,7 +10117,7 @@ body.screen-overview-active.performance-mode.overview-intelligence-suite{
 <div class="grid grid3" style="margin-top:14px">
 <div class="install-card">
 <strong>📱 Instalação como app</strong>
-<div class="muted" style="margin-top:8px;line-height:1.5">No celular, use “Adicionar à tela inicial”. No desktop, use o botão instalar do navegador quando aparecer.</div>
+<div class="muted" style="margin-top:8px;line-height:1.5">No celular, use “Fixar acesso”. No desktop, use o botão instalar do navegador quando aparecer.</div>
 </div>
 <div class="install-card">
 <strong>🧭 Navegação de produto</strong>
@@ -9812,7 +10183,7 @@ body.screen-overview-active.performance-mode.overview-intelligence-suite{
 </div>
 <div class="item">
 <strong>Próximo ganho técnico</strong>
-<div class="muted" style="margin-top:8px;line-height:1.5">Depois desta etapa, o ideal é separar o projeto em arquivos React/Vite para escalar como empresa.</div>
+<div class="muted" style="margin-top:8px;line-height:1.5">Sua experiência foi organizada para manter o painel rápido, claro e pronto para uso no dia a dia.</div>
 </div>
 </div>
 </div>
@@ -9923,7 +10294,7 @@ body.screen-overview-active.performance-mode.overview-intelligence-suite{
 <h3>Centro de decisão da Visão Geral</h3>
 <div class="muted">Score, prioridades, resumo do mês, alocação e próxima ação em uma experiência mais limpa, forte e profissional.</div>
 </div>
-<span class="badge purple">Premium intelligence</span>
+<span class="badge purple">Inteligência premium</span>
 </div>
 <div class="overview-intel-grid">
 <div class="overview-score-card">
@@ -10947,7 +11318,7 @@ let deferredInstallPrompt=null;
         updateAppReadiness();
         return;
       }
-      toast('Se o botão instalar não aparecer, use o menu do navegador e escolha “Instalar app” ou “Adicionar à tela inicial”.','info');
+      toast('Se o botão instalar não aparecer, use o menu do navegador e escolha “Ativar acesso rápido” ou “Fixar acesso”.','info');
     }
     function appReadinessKey(){return `wealth_os_first_run_done_${userId||'guest'}`}
     function updateAppReadiness(){
@@ -10971,7 +11342,7 @@ let deferredInstallPrompt=null;
         {ok:hasIncome,icon:'💸',title:'Renda passiva',text:hasIncome?'Renda/provento registrado no ledger.':'Registre dividendos, juros ou rendimentos.'},
         {ok:historyEngineReady,icon:'📈',title:'Histórico patrimonial',text:hasSnapshot?'Snapshot criado para acompanhar evolução.':'Motor de histórico ativo. Snapshot manual disponível.'},
         {ok:perfOn,icon:'⚡',title:'Performance mobile',text:perfOn?'Modo leve ativo ou automático.':'Ative modo leve se sentir travamento.'},
-        {ok:pwaReady,icon:'📱',title:'Instalação do app',text:syncInstalledPwaState()?'App instalado e abrindo em modo aplicativo.':pwaReady?'O app está pronto para instalação.':'Use Instalar app / Adicionar à tela inicial.',install:pwaReady}
+        {ok:pwaReady,icon:'📱',title:'Instalação do app',text:syncInstalledPwaState()?'App instalado e abrindo em modo aplicativo.':pwaReady?'O app está pronto para instalação.':'Use Ativar acesso rápido / Fixar acesso.',install:pwaReady}
       ];
       const done=checks.filter(c=>c.ok).length;
       const score=Math.round(done/checks.length*100);
@@ -14159,7 +14530,7 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
 
       if(btn){
         btn.disabled=!deferredInstallPromptPwa;
-        btn.textContent=deferredInstallPromptPwa?'Instalar app':'Instalação indisponível';
+        btn.textContent=deferredInstallPromptPwa?'Ativar acesso rápido':'Instalação indisponível';
       }
     }
 
@@ -14186,7 +14557,7 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
         return;
       }
       if(!deferredInstallPromptPwa){
-        toast('Se o botão de instalar não aparecer, use o menu do navegador e toque em “Instalar app” ou “Adicionar à tela inicial”.','info');
+        toast('Se o botão de instalar não aparecer, use o menu do navegador e toque em “Ativar acesso rápido” ou “Fixar acesso”.','info');
         return;
       }
       showActionOverlay('Instalando app','Preparando Dymivra para abrir como aplicativo...','📱');
@@ -14267,7 +14638,7 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
     };
 
     window.showMobileInstallHelp=()=>{
-      toast('No Android: abra o link no Chrome/Edge, toque nos três pontinhos e escolha “Instalar app” ou “Adicionar à tela inicial”.','info');
+      toast('No Android: abra o link no Chrome/Edge, toque nos três pontinhos e escolha “Ativar acesso rápido” ou “Fixar acesso”.','info');
     };
 
     window.addEventListener('resize',()=>{
@@ -21968,7 +22339,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
     [/preparação para loja/gi, 'experiência do usuário'],
     [/publicar como app Android/gi, 'usar no celular'],
     [/Depois do app instalável estável, o próximo passo é empacotar com app para usar no celular\./gi, 'Use o Dymivra pelo navegador ou instalado na tela inicial, com experiência premium no celular e no computador.'],
-    [/Use o link da Vercel no Android\. O Dymivra vai aparecer na tela inicial como app\./gi, 'Use o Dymivra pelo navegador ou adicione à tela inicial para acesso rápido.'],
+    [/Use o link da Vercel no Android\. O Dymivra vai aparecer na tela inicial como app\./gi, 'Use o Dymivra pelo navegador ou fixe o acesso para entrar com mais rapidez.'],
     [/Envie ou digite o link da Vercel no Chrome\/Edge do Android\./gi, 'Abra o Dymivra no navegador do celular e adicione à tela inicial.'],
     [/Copiar link da Vercel/gi, 'Copiar link do app'],
     [/Central de performance e produto/gi, 'Preferências do app'],
@@ -26590,450 +26961,108 @@ body.performance-mode #dymivra30Command *{transition:none!important;animation:no
 </script>
 
 
-<style id="dymivra-command-os-final-style">
-/* Dymivra — camada final de experiência e design premium. Conteúdo visível voltado ao usuário final. */
-:root{
-  --os-bg:#030712;
-  --os-panel:rgba(3,10,24,.82);
-  --os-panel-strong:rgba(6,18,38,.92);
-  --os-line:rgba(180,225,255,.16);
-  --os-line-strong:rgba(103,232,249,.34);
-  --os-text:#f8fbff;
-  --os-muted:#9fb6d8;
-  --os-cyan:#67e8f9;
-  --os-blue:#0ea5e9;
-  --os-violet:#8b5cf6;
-  --os-green:#22c55e;
-  --os-amber:#f59e0b;
-  --os-red:#ef4444;
-  --os-shadow:0 32px 90px rgba(0,0,0,.45);
-}
-body.dymivra-command-os-ready{
-  background:
-    radial-gradient(circle at 10% -8%,rgba(103,232,249,.18),transparent 29%),
-    radial-gradient(circle at 88% -2%,rgba(139,92,246,.16),transparent 30%),
-    radial-gradient(circle at 52% 32%,rgba(14,165,233,.07),transparent 36%),
-    linear-gradient(180deg,#020617 0%,#061225 48%,#020617 100%)!important;
-}
-body.dymivra-command-os-ready:before{opacity:.18!important;background-size:36px 36px!important;}
-body.dymivra-command-os-ready .container{max-width:1380px!important;}
-body.dymivra-command-os-ready .topbar{
-  position:relative!important;
-  margin-bottom:14px!important;
-  padding:14px!important;
-  border:1px solid rgba(180,225,255,.10)!important;
-  border-radius:30px!important;
-  background:linear-gradient(180deg,rgba(8,20,42,.72),rgba(2,6,23,.56))!important;
-  box-shadow:0 24px 70px rgba(0,0,0,.26),inset 0 1px 0 rgba(255,255,255,.055)!important;
-  backdrop-filter:blur(18px)!important;
-}
-body.dymivra-command-os-ready .brand .logo{
-  width:62px!important;height:62px!important;border-radius:23px!important;
-  background:radial-gradient(circle at 35% 0%,rgba(255,255,255,.22),transparent 38%),linear-gradient(135deg,#083344,#0891b2 48%,#8b5cf6)!important;
-  box-shadow:0 20px 48px rgba(14,165,233,.20),inset 0 1px 0 rgba(255,255,255,.16)!important;
-}
-body.dymivra-command-os-ready h1{font-size:clamp(30px,4vw,48px)!important;letter-spacing:-.085em!important;}
-body.dymivra-command-os-ready .subtitle{max-width:720px!important;color:#aec2df!important;}
-body.dymivra-command-os-ready .chips{gap:8px!important;align-items:center!important;}
-body.dymivra-command-os-ready .chip,
-body.dymivra-command-os-ready .chip-action{
-  min-height:38px!important;
-  display:inline-flex!important;align-items:center!important;justify-content:center!important;
-  border-radius:999px!important;
-  border:1px solid rgba(180,225,255,.12)!important;
-  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.025))!important;
-  color:#dbeafe!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.04)!important;
-}
-body.dymivra-command-os-ready #appSection.app-nav,
-body.dymivra-command-os-ready .app-nav{
-  border-radius:26px!important;
-  border:1px solid rgba(180,225,255,.13)!important;
-  background:linear-gradient(180deg,rgba(2,8,21,.86),rgba(3,12,26,.72))!important;
-  box-shadow:0 20px 60px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.05)!important;
-}
-body.dymivra-command-os-ready .nav-group-label{
-  opacity:.74!important;
-  color:#7dd3fc!important;
-  font-size:10px!important;
-  letter-spacing:.14em!important;
-  text-transform:uppercase!important;
-  font-weight:950!important;
-  align-self:center!important;
-}
-body.dymivra-command-os-ready .nav-btn{
-  border-radius:999px!important;
-  border:1px solid rgba(180,225,255,.11)!important;
-  background:linear-gradient(180deg,rgba(15,23,42,.72),rgba(2,6,23,.62))!important;
-  color:#dcecff!important;
-}
-body.dymivra-command-os-ready .nav-btn.active{
-  color:#031220!important;
-  border-color:rgba(236,254,255,.72)!important;
-  background:linear-gradient(135deg,#67e8f9 0%,#22d3ee 28%,#0ea5e9 55%,#8b5cf6 100%)!important;
-  box-shadow:0 18px 48px rgba(34,211,238,.26),inset 0 1px 0 rgba(255,255,255,.36)!important;
-}
-#dymivraCommandOS{
-  position:relative;
-  z-index:3;
-  margin:10px 0 18px!important;
-  overflow:visible!important;
-}
-#dymivraCommandOS.screen-hidden{display:none!important;}
-.dymos-stage{
-  position:relative;
-  overflow:hidden;
-  border-radius:38px;
-  border:1px solid rgba(180,225,255,.18);
-  background:
-    linear-gradient(180deg,rgba(255,255,255,.060),rgba(255,255,255,.018)),
-    radial-gradient(circle at 10% 0%,rgba(103,232,249,.18),transparent 38%),
-    radial-gradient(circle at 96% 4%,rgba(139,92,246,.18),transparent 36%),
-    linear-gradient(145deg,rgba(6,18,38,.98),rgba(2,6,23,.98) 62%,rgba(8,17,34,.96));
-  box-shadow:var(--os-shadow),inset 0 1px 0 rgba(255,255,255,.070);
-  padding:20px;
-}
-.dymos-stage:before{
-  content:"";position:absolute;inset:-2px;pointer-events:none;
-  background:linear-gradient(110deg,transparent 0%,rgba(103,232,249,.13) 24%,transparent 42%,rgba(139,92,246,.12) 67%,transparent 84%);
-  opacity:.62;
-}
-.dymos-stage:after{
-  content:"";position:absolute;left:24px;right:24px;top:0;height:2px;border-radius:999px;
-  background:linear-gradient(90deg,transparent,rgba(103,232,249,.9),rgba(139,92,246,.42),transparent);
-}
-.dymos-stage>*{position:relative;z-index:1;}
-.dymos-hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);gap:16px;align-items:stretch;}
-.dymos-main,.dymos-radar,.dymos-card{
-  border:1px solid rgba(180,225,255,.12);
-  border-radius:30px;
-  background:linear-gradient(180deg,rgba(8,23,47,.76),rgba(2,8,20,.64));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.050),0 18px 44px rgba(0,0,0,.20);
-  backdrop-filter:blur(18px);
-}
-.dymos-main{padding:26px;min-height:360px;display:flex;flex-direction:column;justify-content:space-between;}
-.dymos-kicker{display:inline-flex;width:max-content;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(103,232,249,.24);background:rgba(34,211,238,.08);color:#a5f3fc;font-size:11px;font-weight:950;letter-spacing:.14em;text-transform:uppercase;}
-.dymos-title{margin:14px 0 10px!important;color:#fff;font-size:clamp(42px,5.7vw,82px);line-height:.91;letter-spacing:-.095em;text-shadow:0 20px 50px rgba(0,0,0,.36);max-width:920px;}
-.dymos-text{margin:0;color:#c8d9f2;font-size:15px;line-height:1.64;max-width:880px;}
-.dymos-command-text{margin-top:16px;padding:15px 16px;border-radius:22px;border:1px solid rgba(103,232,249,.18);background:rgba(34,211,238,.06);color:#eafbff;line-height:1.55;font-weight:750;}
-.dymos-actions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px;}
-.dymos-actions button,.dymos-route button,.dymos-mini-action{
-  width:100%!important;margin:0!important;min-height:50px!important;border-radius:18px!important;padding:0 13px!important;font-weight:950!important;letter-spacing:-.02em!important;
-  border:1px solid rgba(180,225,255,.16)!important;
-  background:linear-gradient(135deg,rgba(8,145,178,.92),rgba(14,165,233,.84) 54%,rgba(37,99,235,.92))!important;
-  color:#fff!important;
-  box-shadow:0 16px 38px rgba(14,165,233,.20),inset 0 1px 0 rgba(255,255,255,.14)!important;
-}
-.dymos-actions button.secondary,.dymos-route button.secondary,.dymos-mini-action.secondary{background:linear-gradient(180deg,rgba(15,23,42,.96),rgba(5,12,26,.94))!important;color:#e7f5ff!important;box-shadow:0 12px 28px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.06)!important;}
-.dymos-actions button.gold,.dymos-mini-action.gold{background:linear-gradient(135deg,#92400e,#f59e0b 56%,#facc15)!important;color:#1b1200!important;}
-.dymos-radar{padding:20px;display:grid;grid-template-columns:210px minmax(0,1fr);gap:14px;align-items:center;}
-.dymos-ring{position:relative;width:196px;height:196px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#67e8f9 0deg,rgba(255,255,255,.08) 0deg);box-shadow:0 0 44px rgba(34,211,238,.18),inset 0 1px 0 rgba(255,255,255,.10);}
-.dymos-ring:before{content:"";position:absolute;inset:15px;border-radius:50%;background:linear-gradient(180deg,#0a172e,#020617);border:1px solid rgba(255,255,255,.08);}
-.dymos-ring-inner{position:relative;z-index:1;text-align:center;}
-.dymos-ring-inner b{display:block;font-size:44px;line-height:.9;letter-spacing:-.08em;color:#fff;}
-.dymos-ring-inner span{display:block;margin-top:7px;color:#9fb6d8;font-size:12px;text-transform:uppercase;letter-spacing:.10em;font-weight:900;}
-.dymos-status-pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 11px;font-size:12px;font-weight:950;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:#eaf7ff;}
-.dymos-status-pill.good{border-color:rgba(34,197,94,.28);background:rgba(34,197,94,.10);color:#bbf7d0;}
-.dymos-status-pill.warn{border-color:rgba(245,158,11,.32);background:rgba(245,158,11,.11);color:#fde68a;}
-.dymos-status-pill.danger{border-color:rgba(239,68,68,.32);background:rgba(239,68,68,.12);color:#fecaca;}
-.dymos-radar h3{margin:12px 0 8px!important;color:#fff;font-size:28px;line-height:1.02;letter-spacing:-.06em;}
-.dymos-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:14px;}
-.dymos-metric{position:relative;overflow:hidden;min-height:126px;padding:16px;border:1px solid rgba(180,225,255,.12);border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.050),rgba(255,255,255,.020)),rgba(5,15,31,.74);box-shadow:inset 0 1px 0 rgba(255,255,255,.045);}
-.dymos-metric:after{content:"";position:absolute;right:-38px;bottom:-44px;width:118px;height:118px;border-radius:50%;background:radial-gradient(circle,rgba(103,232,249,.10),transparent 70%);}
-.dymos-metric span,.dymos-route span,.dymos-line span{display:block;color:#9fb6d8;font-size:12px;line-height:1.38;}
-.dymos-metric strong{display:block;margin-top:8px;color:#fff;font-size:clamp(20px,2.1vw,30px);line-height:1.02;letter-spacing:-.055em;position:relative;z-index:1;}
-.dymos-route-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px;}
-.dymos-route{position:relative;overflow:hidden;min-height:156px;padding:14px;border-radius:24px;border:1px solid rgba(180,225,255,.12);background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.018)),rgba(3,12,26,.70);cursor:pointer;transition:transform .16s ease,border-color .16s ease,background .16s ease;}
-.dymos-route:hover{transform:translateY(-2px);border-color:rgba(103,232,249,.28);background:linear-gradient(180deg,rgba(34,211,238,.075),rgba(255,255,255,.020)),rgba(3,12,26,.78);}
-.dymos-route i{display:grid;place-items:center;width:42px;height:42px;border-radius:16px;border:1px solid rgba(180,225,255,.13);background:rgba(255,255,255,.055);font-style:normal;font-size:22px;margin-bottom:10px;}
-.dymos-route b{display:block;color:#fff;font-size:17px;letter-spacing:-.045em;margin-bottom:6px;}
-.dymos-route button{margin-top:12px!important;min-height:40px!important;font-size:12px!important;border-radius:15px!important;}
-.dymos-decision{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
-.dymos-card{padding:16px;}
-.dymos-section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px;}
-.dymos-section-head h3{color:#fff;font-size:22px;letter-spacing:-.055em;}
-.dymos-section-head span{color:#9fb6d8;font-size:12px;}
-.dymos-lines{display:grid;gap:9px;}
-.dymos-line{display:grid;grid-template-columns:auto 1fr;gap:11px;align-items:flex-start;padding:12px;border-radius:18px;border:1px solid rgba(180,225,255,.10);background:rgba(255,255,255,.032);}
-.dymos-line i{display:grid;place-items:center;width:34px;height:34px;border-radius:13px;background:rgba(103,232,249,.08);font-style:normal;}
-.dymos-line b{display:block;color:#fff;margin-bottom:3px;letter-spacing:-.025em;}
-.dymos-line.good{border-color:rgba(34,197,94,.24);background:rgba(34,197,94,.065);}
-.dymos-line.warn{border-color:rgba(245,158,11,.26);background:rgba(245,158,11,.070);}
-.dymos-line.danger{border-color:rgba(239,68,68,.27);background:rgba(239,68,68,.080);}
-.dymos-line.info{border-color:rgba(103,232,249,.18);background:rgba(34,211,238,.050);}
-.dymos-bottom{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;margin-top:14px;padding:14px;border:1px solid rgba(180,225,255,.12);border-radius:22px;background:rgba(2,8,21,.52);}
-.dymos-bottom strong{color:#fff;display:block;margin-bottom:4px;}
-.dymos-bottom span{color:#9fb6d8;line-height:1.42;font-size:13px;}
-.dymos-bottom .dymos-mini-actions{display:flex;gap:8px;flex-wrap:wrap;}
-.dymos-mini-action{width:auto!important;min-height:42px!important;font-size:12px!important;}
-body.dymivra-command-os-ready .card,
-body.dymivra-command-os-ready .mini,
-body.dymivra-command-os-ready .item,
-body.dymivra-command-os-ready .premium-panel{
-  border-color:rgba(180,225,255,.12)!important;
-  background:linear-gradient(180deg,rgba(255,255,255,.052),rgba(255,255,255,.020)),rgba(5,15,31,.80)!important;
-  box-shadow:0 18px 52px rgba(0,0,0,.26),inset 0 1px 0 rgba(255,255,255,.040)!important;
-}
-body.dymivra-command-os-ready .card:hover,
-body.dymivra-command-os-ready .mini:hover,
-body.dymivra-command-os-ready .item:hover{border-color:rgba(103,232,249,.22)!important;}
-body.dymivra-command-os-ready button:not(.nav-btn):not(.eye):not(.balance-eye):not(.wealth-floating-top):not(.inline-top-btn){border-radius:18px!important;}
-.dymos-focus-outline{outline:2px solid rgba(103,232,249,.72)!important;box-shadow:0 0 0 7px rgba(34,211,238,.14),0 0 42px rgba(34,211,238,.18)!important;}
-body.performance-mode .dymos-stage,
-body.performance-mode .dymos-main,
-body.performance-mode .dymos-radar,
-body.performance-mode .dymos-card,
-body.performance-mode .dymos-metric,
-body.performance-mode .dymos-route{backdrop-filter:none!important;box-shadow:0 8px 20px rgba(0,0,0,.22)!important;}
-body.performance-mode .dymos-route:hover,body.performance-mode .dymos-actions button:hover{transform:none!important;}
-@media(max-width:1180px){
-  .dymos-hero,.dymos-decision{grid-template-columns:1fr;}
-  .dymos-radar{grid-template-columns:180px 1fr;}
-  .dymos-ring{width:170px;height:170px;}
-  .dymos-metrics{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .dymos-route-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
-}
-@media(max-width:760px){
-  body.dymivra-command-os-ready .container{padding-left:13px!important;padding-right:13px!important;}
-  body.dymivra-command-os-ready .topbar{border-radius:24px!important;padding:12px!important;}
-  #dymivraCommandOS{margin:8px 0 14px!important;}
-  .dymos-stage{border-radius:30px;padding:12px;}
-  .dymos-main{padding:16px;border-radius:24px;min-height:0;}
-  .dymos-title{font-size:clamp(38px,12.5vw,58px);}
-  .dymos-text{font-size:14px;line-height:1.52;}
-  .dymos-command-text{font-size:14px;padding:13px;border-radius:19px;}
-  .dymos-actions{grid-template-columns:1fr 1fr;gap:8px;}
-  .dymos-actions button{min-height:47px!important;font-size:12.5px!important;}
-  .dymos-radar{grid-template-columns:1fr;padding:15px;border-radius:24px;text-align:left;}
-  .dymos-ring{width:150px;height:150px;margin:auto;}
-  .dymos-ring-inner b{font-size:34px;}
-  .dymos-radar h3{font-size:24px;}
-  .dymos-metrics{grid-template-columns:1fr 1fr;gap:8px;}
-  .dymos-metric{min-height:112px;border-radius:20px;padding:13px;}
-  .dymos-metric strong{font-size:20px;}
-  .dymos-route-grid{grid-template-columns:1fr 1fr;gap:8px;}
-  .dymos-route{min-height:142px;border-radius:20px;padding:12px;}
-  .dymos-route b{font-size:15px;}
-  .dymos-card{border-radius:22px;padding:13px;}
-  .dymos-bottom{grid-template-columns:1fr;border-radius:20px;}
-  .dymos-bottom .dymos-mini-actions{display:grid;grid-template-columns:1fr 1fr;}
-  .dymos-mini-action{width:100%!important;}
-}
-@media(max-width:430px){
-  .dymos-actions,.dymos-metrics,.dymos-route-grid,.dymos-bottom .dymos-mini-actions{grid-template-columns:1fr;}
-  .dymos-kicker{font-size:10px;white-space:normal;}
-}
-</style>
-
-
-<script id="dymivra-command-os-final-script">
+<script id="dymivra-design-prime-script">
 (function(){
   'use strict';
-  if(window.__dymivraCommandOSFinalInstalled)return;
-  window.__dymivraCommandOSFinalInstalled=true;
-  const $=id=>document.getElementById(id);
-  const q=(s,r=document)=>r.querySelector(s);
-  const qa=(s,r=document)=>Array.from(r.querySelectorAll(s));
-  const money=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
-  const fmt=n=>money.format(Number(n)||0);
-  const pct=n=>`${Math.round(Number(n)||0)}%`;
-  const clamp=(n,a,b)=>Math.max(a,Math.min(b,Number(n)||0));
-  const esc=s=>String(s??'').replace(/[&<>'"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]));
-  const num=v=>{if(v==null)return 0;let s=String(v).replace(/[^0-9,.-]/g,'').replace(/\.(?=\d{3}(\D|$))/g,'').replace(',','.');let n=parseFloat(s);return Number.isFinite(n)?n:0};
-  const val=id=>{const el=$(id);return el?num(el.value||el.textContent):0};
-  function toast(msg,type){try{if(typeof window.showToast==='function')return window.showToast(msg,type||'success')}catch(e){}try{console.log(msg)}catch(e){}}
-  function userKey(){try{return localStorage.getItem('dymivra_current_user')||localStorage.getItem('wealth_current_user')||localStorage.getItem('sb-user-id')||'local'}catch(e){return 'local'}}
-  function monthKey(date){const d=date||new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')}
-  function readJson(key,fb){try{const raw=localStorage.getItem(key);if(!raw)return fb;const data=JSON.parse(raw);return data??fb}catch(e){return fb}}
-  function writeJson(key,data){try{localStorage.setItem(key,JSON.stringify(data))}catch(e){}}
-  function currentScreen(){try{return document.body.getAttribute('data-current-screen')||document.documentElement.getAttribute('data-current-screen')||localStorage.getItem('dymivra_active_screen')||'overview'}catch(e){return 'overview'}}
-  function readCheckup(){try{return JSON.parse(localStorage.getItem('dymivra_checkup_v1')||'{}')||{}}catch(e){return {}}}
-  function personal(){
-    const c=readCheckup();
-    const income=val('dymivra823Income')||num(c.income||c.renda||0)||val('dymivra762Income')||val('monthlyIncome')||val('incomeInput');
-    const extra=val('dymivra823Extra')||num(c.extra||c.entradasExtras||0);
-    const fixed=val('dymivra823Fixed')||num(c.fixed||c.expense||c.despesa||0)||val('dymivra762Expense')||val('fixedExpenses');
-    const variable=val('dymivra823Variable')||num(c.variable||c.gastosVariaveis||0)||val('variableExpenses');
-    const debt=val('dymivra823Debt')||num(c.debt||c.divida||0)||val('dymivra762Debt')||val('debtPayment');
-    const reserve=val('dymivra823Reserve')||num(c.reserve||c.reserva||0)||val('dymivra762Reserve')||val('reserveCurrent')||val('emergencyReserve');
-    const passive=val('dymivra834PassiveIncome')||val('passiveIncome')||val('monthlyPassiveIncome')||num(c.passive||0);
-    const totalIncome=income+extra;
-    const expenses=fixed+variable+debt;
-    const net=totalIncome-expenses;
-    const essential=Math.max(1,fixed+debt+Math.max(variable*.55,0));
-    const reserveMonths=reserve/essential;
-    const debtRate=totalIncome>0?debt/totalIncome*100:0;
-    const variableRate=totalIncome>0?variable/totalIncome*100:0;
-    const pressure=totalIncome>0?expenses/totalIncome*100:(expenses>0?100:0);
-    const now=new Date();const days=new Date(now.getFullYear(),now.getMonth()+1,0).getDate();const day=now.getDate();const remain=Math.max(1,days-day+1);
-    const protectedFree=Math.max(0,net-Math.max(totalIncome*.06,120));
-    const safeToday=Math.max(0,Math.min(protectedFree/remain,Math.max(0,net)*.16));
-    const safeWeek=Math.max(0,Math.min(protectedFree, safeToday*7));
-    const safeInvest=net>0?Math.max(0,Math.min(net*.42,net-Math.max(totalIncome*.06,120))):0;
-    const nextNet=net-Math.max(0,variable*.08)-Math.max(0,debt*.03)+Math.max(0,passive*.15);
-    return {income,extra,totalIncome,fixed,variable,debt,reserve,passive,expenses,net,essential,reserveMonths,debtRate,variableRate,pressure,day,days,remain,protectedFree,safeToday,safeWeek,safeInvest,nextNet};
+  var BOOT_AT = Date.now();
+  var lastUserAction = 0;
+  function markUser(){ lastUserAction = Date.now(); }
+  ['pointerdown','touchstart','wheel','keydown','click'].forEach(function(evt){
+    window.addEventListener(evt, markUser, {capture:true, passive:true});
+  });
+  try{
+    var nativeScrollTo = window.scrollTo.bind(window);
+    if(!window.scrollTo.__dymivraPrimeSafe){
+      var safeScrollTo = function(){
+        var y = 0;
+        try{
+          if(arguments.length === 1 && typeof arguments[0] === 'object') y = Number(arguments[0].top || 0);
+          else y = Number(arguments[1] || 0);
+        }catch(e){ y = 0; }
+        var bootWindow = Date.now() - BOOT_AT < 6500;
+        var noUserAction = Date.now() - lastUserAction > 900;
+        if(bootWindow && noUserAction && y <= 4){ return; }
+        return nativeScrollTo.apply(window, arguments);
+      };
+      safeScrollTo.__dymivraPrimeSafe = true;
+      window.scrollTo = safeScrollTo;
+    }
+  }catch(e){}
+  function $(id){ return document.getElementById(id); }
+  function txt(id, fallback){ var el=$(id); var t=el ? String(el.textContent||'').trim() : ''; return t || fallback || ''; }
+  function parseNumber(str){
+    str = String(str||'').replace(/[^0-9,.-]/g,'').replace(/\.(?=\d{3}(\D|$))/g,'').replace(',','.');
+    var n = Number(str); return isFinite(n) ? n : 0;
   }
-  function guardHistory(){const key='dymivra842d_guardiao_'+userKey()+'_'+monthKey();const arr=readJson(key,[]);return Array.isArray(arr)?arr:[]}
-  function habits(){const h=guardHistory();let good=0,warn=0,danger=0,amount=0,desire=0;h.forEach(it=>{amount+=num(it.amount);if(it.level==='good')good++;else if(it.level==='danger')danger++;else warn++;if(String(it.type||'').toLowerCase().includes('desejo'))desire++});return {total:h.length,good,warn,danger,amount,desire};}
-  function business(){
-    let entrada=0,saida=0,invest=0,ret=0,cash=0,found=0;
+  function score(){
+    var raw = txt('premiumScoreNumber','') || txt('advancedScore','') || txt('smartAdvisorScore','') || txt('pulseScore','');
+    var n = parseInt(String(raw).replace(/[^0-9]/g,''),10);
+    if(!isFinite(n)) n = 0;
+    return Math.max(0, Math.min(100, n));
+  }
+  function buildCommand(n){
+    var action = txt('premiumPrimaryAction','');
+    var next = txt('advancedNextStep','');
+    if(action && !/cadastre movimentações/i.test(action)) return action;
+    if(next && !/cadastre movimentações/i.test(next)) return next;
+    if(n >= 78) return 'Seu mês parece mais controlado. Mantenha o plano, proteja a reserva e use o Guardião antes de decisões fora do previsto.';
+    if(n >= 48) return 'O foco de hoje é decidir com cuidado: revise gastos variáveis, preserve a folga e só avance se a decisão couber no limite seguro.';
+    return 'Prioridade de hoje: proteger caixa, evitar decisão por impulso e organizar renda, gastos e contas antes de assumir novo compromisso.';
+  }
+  function updatePrime(){
+    try{ document.body.classList.add('dymivra-design-prime'); }catch(e){}
+    var n = score();
+    var scoreEl = $('dymivraPrimeScore'); if(scoreEl) scoreEl.textContent = String(n);
+    var fill = $('dymivraPrimeFill'); if(fill) fill.style.width = Math.max(4,n) + '%';
+    var command = $('dymivraPrimeCommandText'); if(command) command.textContent = buildCommand(n);
+    var wealth = $('dymivraPrimeWealth'); if(wealth) wealth.textContent = txt('heroValue', txt('premiumAnalyzedWealth','R$ 0,00'));
+    var result = $('dymivraPrimeResult'); if(result) result.textContent = txt('premiumResult', txt('pnlValue','R$ 0,00'));
+    var income = $('dymivraPrimeIncome'); if(income) income.textContent = txt('premiumMonthlyIncome', txt('passiveTotal','R$ 0,00'));
+    var business = $('dymivraPrimeBusiness'); if(business) business.textContent = txt('businessCash','R$ 0,00');
+  }
+  window.dymivraPrimeCopy = function(){
+    var parts = [
+      'Comando do Dymivra:',
+      txt('dymivraPrimeCommandText','Atualize seus dados para liberar o comando financeiro.'),
+      'Saúde do momento: ' + txt('dymivraPrimeScore','0') + '/100',
+      'Patrimônio: ' + txt('dymivraPrimeWealth','R$ 0,00'),
+      'Resultado: ' + txt('dymivraPrimeResult','R$ 0,00'),
+      'Renda do mês: ' + txt('dymivraPrimeIncome','R$ 0,00'),
+      'Negócio: ' + txt('dymivraPrimeBusiness','R$ 0,00')
+    ].join('\n');
+    try{ navigator.clipboard.writeText(parts); if(typeof showToast==='function') showToast('Comando copiado.', 'success'); }
+    catch(e){ if(typeof showToast==='function') showToast('Não foi possível copiar agora.', 'error'); }
+  };
+  window.dymivraPrimeOpen = function(target){
     try{
-      for(let i=0;i<localStorage.length;i++){
-        const k=localStorage.key(i)||'';
-        if(!/business|negocio|dymivra86|bills|sales|stock/i.test(k))continue;
-        const v=readJson(k,null);
-        const rows=Array.isArray(v)?v:(v&&typeof v==='object'?Object.values(v).flat().filter(x=>x&&typeof x==='object'):[]);
-        rows.slice(0,500).forEach(r=>{
-          if(!r||typeof r!=='object')return;found++;
-          const type=String(r.type||r.kind||r.category||r.movimento||'').toLowerCase();
-          const value=num(r.amount||r.value||r.valor||r.total||r.revenue||r.faturamento||r.lucro||0);
-          if(!value)return;
-          if(/entrada|receita|venda|sale|income|receive/.test(type)||r.revenue||r.faturamento){entrada+=Math.abs(value);cash+=Math.abs(value)}
-          else if(/saida|despesa|custo|expense|pay/.test(type)){saida+=Math.abs(value);cash-=Math.abs(value)}
-          else if(/invest/.test(type)){invest+=Math.abs(value);cash-=Math.abs(value)}
-          else if(/retirada|withdraw/.test(type)){ret+=Math.abs(value);cash-=Math.abs(value)}
-        });
+      if(target === 'business' && typeof showAppScreen === 'function') return showAppScreen('business');
+      if(target === 'grow' && typeof showAppScreen === 'function') return showAppScreen('goals');
+      if(target === 'organize' && typeof showAppScreen === 'function') return showAppScreen('ledger');
+      if(typeof showAppScreen === 'function') showAppScreen('overview');
+      setTimeout(function(){
+        var el = target === 'plan' ? ($('premiumPrimaryAction') || $('advancedNextStep')) : ($('dymivra842dGuardiao') || $('dymivra843Habits') || $('dymivraPrimeCommand'));
+        if(el && el.scrollIntoView) el.scrollIntoView({block:'start', behavior:'smooth'});
+      }, 180);
+    }catch(e){}
+  };
+  function boot(){
+    updatePrime();
+    [250,900,1800,3200].forEach(function(ms){ setTimeout(updatePrime, ms); });
+    try{
+      var old = window.showAppScreen;
+      if(typeof old === 'function' && !old.__dymivraPrimeWrapped){
+        var wrapped = function(){
+          lastUserAction = Date.now();
+          var r = old.apply(this, arguments);
+          setTimeout(updatePrime, 80);
+          return r;
+        };
+        wrapped.__dymivraPrimeWrapped = true;
+        window.showAppScreen = wrapped;
       }
     }catch(e){}
-    const profit=entrada-saida-invest-ret;const margin=entrada>0?profit/entrada*100:0;return {entrada,saida,invest,ret,cash,profit,margin,found};
   }
-  function state(){
-    const p=personal(),h=habits(),b=business();
-    let pressure=0;
-    if(p.totalIncome<=0)pressure+=18;
-    if(p.net<0)pressure+=32; else if(p.net<p.totalIncome*.06)pressure+=14;
-    if(p.reserveMonths<1)pressure+=20; else if(p.reserveMonths<3)pressure+=10;
-    if(p.debtRate>28)pressure+=18; else if(p.debtRate>16)pressure+=8;
-    if(p.variableRate>38)pressure+=9;
-    if(h.danger>0)pressure+=Math.min(18,h.danger*7);
-    if(h.desire>=2&&h.warn+h.danger>0)pressure+=7;
-    if(b.found&&b.profit<0)pressure+=12;
-    pressure=clamp(pressure,0,100);
-    const health=100-pressure;
-    let cls='good',label='Execução liberada',verb='Avançar com limite';
-    if(pressure>=70){cls='danger';label='Modo proteção';verb='Proteger caixa'}
-    else if(pressure>=42){cls='warn';label='Atenção ativa';verb='Decidir com limite'}
-    const focus=pressure>=70?'protecao':p.debtRate>24?'divida':p.reserveMonths<1.5?'reserva':b.found?'negocio':'execucao';
-    const main = focus==='protecao'?'Proteger o mês':focus==='divida'?'Reduzir pressão':focus==='reserva'?'Fortalecer reserva':focus==='negocio'?'Equilibrar pessoa e negócio':'Executar com limite';
-    const command = p.totalIncome<=0?'Comece preenchendo renda, gastos, dívidas e reserva para o comando ficar preciso.':pressure>=70?'Hoje o foco é proteger caixa: segure decisões grandes, revise gastos variáveis e preserve reserva.':pressure>=42?'Hoje avance apenas dentro do limite seguro: toda decisão fora do plano precisa passar pelo Guardião.':'Hoje você pode executar o plano com controle: mantenha reserva protegida, limite diário e próximo mês em vista.';
-    const reason = p.net<0?'O mês está negativo e qualquer decisão extra aumenta pressão.':p.reserveMonths<1?'A reserva ainda não cobre um mês essencial.':p.debtRate>24?'As dívidas estão consumindo uma parte alta da renda.':h.danger>0?'Decisões recentes pediram pausa e isso muda o risco do mês.':b.found&&b.profit<0?'O negócio aparece pressionando caixa nesta leitura.':'Os sinais principais permitem execução com controle.';
-    const action = p.totalIncome<=0?'Preencher check-up financeiro.':pressure>=70?'Cortar ou adiar uma decisão não essencial hoje.':pressure>=42?'Testar a próxima decisão no Guardião antes de agir.':'Separar o livre consciente e executar a tarefa da semana.';
-    const avoid = pressure>=70?'Não assumir parcela nova, não retirar do negócio sem caixa e não investir apertado.':pressure>=42?'Não gastar acima do limite diário por sensação de sobra.':'Não abandonar o registro das decisões.';
-    const recovery=Math.max(0, p.net<0?Math.abs(p.net)+Math.max(80,p.totalIncome*.03): pressure>=42?Math.max(120,p.totalIncome*.05):Math.max(0,p.totalIncome*.025));
-    const autonomy=clamp(health + (h.total>=3?6:0) + (p.reserveMonths>=3?8:0) - (p.debtRate>25?8:0),0,100);
-    return {p,h,b,pressure,health,cls,label,verb,focus,main,command,reason,action,avoid,recovery,autonomy};
-  }
-  function metric(label,value,small){return `<div class="dymos-metric"><span>${esc(label)}</span><strong>${esc(value)}</strong><span>${esc(small)}</span></div>`}
-  function line(icon,title,text,cls){return `<div class="dymos-line ${esc(cls||'info')}"><i>${esc(icon)}</i><div><b>${esc(title)}</b><span>${esc(text)}</span></div></div>`}
-  function route(icon,title,text,screen,target){return `<div class="dymos-route" data-os-screen="${esc(screen)}" data-os-target="${esc(target||'')}"><i>${esc(icon)}</i><b>${esc(title)}</b><span>${esc(text)}</span><button type="button" class="secondary">Abrir</button></div>`}
-  function ensurePanel(){
-    let panel=$('dymivraCommandOS');
-    if(panel)return panel;
-    panel=document.createElement('section');
-    panel.id='dymivraCommandOS';
-    panel.setAttribute('data-screen-block','');
-    panel.setAttribute('data-screens','overview all');
-    const nav=$('appNav')||q('.app-nav');
-    if(nav&&nav.parentNode)nav.insertAdjacentElement('afterend',panel);
-    else{const app=$('appSection')||q('.container')||document.body;app.insertBefore(panel,app.firstChild)}
-    return panel;
-  }
-  function applyVisibility(){const panel=$('dymivraCommandOS');if(!panel)return;const screen=currentScreen();panel.classList.toggle('screen-hidden',!(screen==='overview'||screen==='all'));}
-  function renameNav(){
-    const labels={overview:'🏠 Agora',journey:'🧭 Jornada',pulse:'⚡ Pulse',ledger:'📒 Carteira',allocation:'🧭 Alocação',history:'📈 Histórico',profile:'🧬 Perfil',goals:'🎯 Metas',income:'💸 Renda',projections:'🔮 Futuro',liberty:'🕊️ Liberdade',ai:'🤖 IA',advisor:'🚨 Radar',mentor:'🧠 Mentor',business:'🏢 Negócio',plans:'💎 Planos',app:'📱 App',legal:'⚖️ Legal',settings:'⚙️ Apoio',all:'🧩 Tudo'};
-    qa('#appNav .nav-btn[data-screen]').forEach(btn=>{const s=btn.getAttribute('data-screen');if(labels[s]&&!btn.dataset.osRenamed){btn.textContent=labels[s];btn.dataset.osRenamed='1'}});
-  }
-  function render(){
-    try{
-      document.body.classList.add('dymivra-command-os-ready');
-      renameNav();
-      const panel=ensurePanel();
-      const s=state(),p=s.p,h=s.h,b=s.b;
-      const degree=clamp(s.autonomy,0,100)*3.6;
-      const follow=s.pressure>=70?`Ao seguir, você busca recuperar ${fmt(s.recovery)} de folga e evita que o mês force dívida ou reserva.`:s.pressure>=42?`Ao seguir, você mantém o livre consciente perto de ${fmt(p.protectedFree)} e reduz decisões fora do plano.`:`Ao seguir, você preserva ${fmt(p.safeWeek)} para a semana e entra no próximo mês com previsão de ${fmt(p.nextNet)}.`;
-      const ignore=s.pressure>=70?'Se ignorar, a consequência provável é mais pressão no fechamento, uso de reserva ou retirada ruim do negócio.':s.pressure>=42?'Se ignorar, pequenos gastos podem passar do limite diário e diminuir o valor seguro para investir ou guardar.':'Se ignorar os registros, o app perde padrão e a decisão volta a depender de sensação.';
-      panel.innerHTML=`
-        <div class="dymos-stage">
-          <div class="dymos-hero">
-            <div class="dymos-main">
-              <div>
-                <div class="dymos-kicker">💎 Comando financeiro premium</div>
-                <h2 class="dymos-title">O que fazer com seu dinheiro agora.</h2>
-                <p class="dymos-text">O Dymivra organiza a tela por intenção: decisão de hoje, consequência, limite seguro, proteção do mês e conexão com o negócio. Menos bagunça visual. Mais comando prático.</p>
-                <div class="dymos-command-text">${esc(s.command)}</div>
-              </div>
-              <div class="dymos-actions">
-                <button type="button" data-os-go="overview" data-os-target="#dymivra842dGuardiao">Decidir agora</button>
-                <button type="button" class="secondary" data-os-go="overview" data-os-target="#dymivra30Command,#dymivra30Core,#dymivraCommandOS">Ver plano</button>
-                <button type="button" class="secondary" data-os-go="business">Pessoa + negócio</button>
-                <button type="button" class="gold" data-os-copy>Copiar comando</button>
-              </div>
-            </div>
-            <div class="dymos-radar">
-              <div class="dymos-ring" style="background:conic-gradient(#67e8f9 ${degree}deg,rgba(255,255,255,.08) 0deg)"><div class="dymos-ring-inner"><b>${Math.round(s.autonomy)}</b><span>Autonomia</span></div></div>
-              <div>
-                <span class="dymos-status-pill ${esc(s.cls)}">${esc(s.label)} • ${esc(s.verb)}</span>
-                <h3>${esc(s.main)}</h3>
-                <p class="dymos-text">${esc(s.reason)} Próxima ação: ${esc(s.action)}</p>
-              </div>
-            </div>
-          </div>
-          <div class="dymos-metrics">
-            ${metric('Livre seguro hoje',fmt(p.safeToday),'Limite prático antes de decidir')}
-            ${metric('Folga do mês',fmt(p.net),'Depois de gastos e dívidas')}
-            ${metric('Reserva',p.essential>1?p.reserveMonths.toFixed(1).replace('.',',')+' mês(es)':'Sem base','Proteção estimada')}
-            ${metric('Decisões salvas',String(h.total),`${h.good} seguras • ${h.warn} atenção • ${h.danger} pausadas`)}
-          </div>
-          <div class="dymos-route-grid">
-            ${route('⚡','Agora','Comando do dia, limite seguro e consequência antes de agir.','overview','#dymivraCommandOS')}
-            ${route('📊','Organizar','Renda, gastos, dívidas, contas e sobra real do mês.','mentor','#dymivra823Personal,#dymivra762Income')}
-            ${route('🛡️','Decidir','Guardião, hábitos, risco e simulações antes de gastar.','overview','#dymivra842dGuardiao')}
-            ${route('🚀','Crescer','Metas, investimento, renda passiva e futuro com limite.','allocation','#dymivra825Invest,#dymivra834Freedom')}
-            ${route('🏢','Negócio','Caixa, lucro, retirada, reinvestimento e sócios.','business','')}
-            ${route('📑','Relatórios','Histórico, leitura mensal e visão de evolução.','history','')}
-          </div>
-          <div class="dymos-decision">
-            <div class="dymos-card"><div class="dymos-section-head"><h3>Decisão com consequência</h3><span>fazer ou esperar</span></div><div class="dymos-lines">${line('✅','Se seguir o comando',follow,s.cls==='danger'?'warn':'good')}${line('⚠️','Se ignorar agora',ignore,s.cls)}${line('🎯','Ação de hoje',s.action,'info')}</div></div>
-            <div class="dymos-card"><div class="dymos-section-head"><h3>Mapa de pressão</h3><span>onde olhar primeiro</span></div><div class="dymos-lines">${line('💳','Dívidas',p.debt>0?`${pct(p.debtRate)} da renda comprometida.`:'Sem dívida mensal informada.',p.debtRate>25?'danger':p.debtRate>12?'warn':'good')}${line('🛡️','Reserva',p.reserveMonths<1?'Base frágil: priorize proteção.':p.reserveMonths<3?'Reserva em formação: avance com limite.':'Reserva mais confortável para decidir.',p.reserveMonths<1?'danger':p.reserveMonths<3?'warn':'good')}${line('🏢','Negócio',b.found?`Lucro lido: ${fmt(b.profit)} • caixa estimado: ${fmt(b.cash)}.`:'Registre dados do negócio para cruzar vida pessoal e empresa.',b.found?(b.profit<0?'danger':'good'):'info')}</div></div>
-          </div>
-          <div class="dymos-bottom">
-            <div><strong>Nova organização visual</strong><span>O app continua completo, mas a primeira leitura agora é por intenção: agora, organizar, decidir, crescer, negócio e relatórios.</span></div>
-            <div class="dymos-mini-actions"><button type="button" class="dymos-mini-action secondary" data-os-save>Salvar comando</button><button type="button" class="dymos-mini-action gold" data-os-go="overview" data-os-target="#dymivra843Habits">Ver hábitos</button></div>
-          </div>
-        </div>`;
-      applyVisibility();
-    }catch(e){console.warn('Dymivra comando final:',e)}
-  }
-  function findTarget(list){return String(list||'').split(',').map(s=>q(s.trim())).find(Boolean)}
-  function go(screen,target){
-    try{if(screen&&typeof window.showAppScreen==='function')window.showAppScreen(screen,true)}catch(e){}
-    setTimeout(()=>{const el=findTarget(target);if(el){try{el.scrollIntoView({behavior:document.body.classList.contains('performance-mode')?'auto':'smooth',block:'center'})}catch(e){try{el.scrollIntoView()}catch(_){}}el.classList.add('dymos-focus-outline');setTimeout(()=>el.classList.remove('dymos-focus-outline'),1900)}},180);
-  }
-  function copyCommand(){
-    const s=state(),p=s.p;
-    const text=['Comando financeiro — Dymivra','',s.command,'',`Status: ${s.label}`,`Foco: ${s.main}`,`Motivo: ${s.reason}`,`Ação de hoje: ${s.action}`,`Evitar: ${s.avoid}`,'',`Livre seguro hoje: ${fmt(p.safeToday)}`,`Folga do mês: ${fmt(p.net)}`,`Reserva: ${p.reserveMonths.toFixed(1).replace('.',',')} mês(es)`,`Próximo mês previsto: ${fmt(p.nextNet)}`].join('\n');
-    navigator.clipboard?.writeText(text).then(()=>toast('Comando copiado.','success')).catch(()=>toast('Não consegui copiar automaticamente.','error'));
-  }
-  function saveCommand(){
-    const s=state();
-    writeJson('dymivra_command_os_'+userKey()+'_'+monthKey(),{date:new Date().toISOString(),command:s.command,status:s.label,focus:s.main,action:s.action,pressure:s.pressure});
-    toast('Comando salvo para este mês.','success');
-  }
-  function bind(){
-    document.addEventListener('click',function(ev){
-      const route=ev.target.closest('[data-os-screen]');
-      if(route){ev.preventDefault();go(route.getAttribute('data-os-screen'),route.getAttribute('data-os-target')||'');return}
-      const goBtn=ev.target.closest('[data-os-go]');
-      if(goBtn){ev.preventDefault();go(goBtn.getAttribute('data-os-go'),goBtn.getAttribute('data-os-target')||'');return}
-      if(ev.target.closest('[data-os-copy]')){ev.preventDefault();copyCommand();return}
-      if(ev.target.closest('[data-os-save]')){ev.preventDefault();saveCommand();return}
-    });
-    window.addEventListener('storage',()=>setTimeout(render,160));
-    document.addEventListener('input',ev=>{if(ev.target&&String(ev.target.id||'').match(/dymivra823|dymivra762|Income|Expense|Debt|Reserve/i))setTimeout(render,220)},true);
-  }
-  function wrapShow(){try{if(typeof window.showAppScreen==='function'&&!window.showAppScreen.__dymivraCommandOSWrapped){const old=window.showAppScreen;const fn=function(){const r=old.apply(this,arguments);setTimeout(render,150);return r};fn.__dymivraCommandOSWrapped=true;window.showAppScreen=fn}}catch(e){}}
-  function boot(){render();wrapShow();setTimeout(render,500);setTimeout(render,1400)}
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{boot();bind()},{once:true});else{boot();bind()}
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, {once:true}); else boot();
 })();
 </script>
 
