@@ -8347,6 +8347,57 @@ body.screen-overview-active.performance-mode.overview-intelligence-suite{
 }
 </style>
 
+<style id="dymivra-perf-boost">
+/* === DYMIVRA — PERFORMANCE + VISUAL BOOST === */
+
+/* Auto performance: reduce blur on mobile */
+@media (max-width: 768px) {
+  .card, .mini, .item { backdrop-filter: blur(4px) !important; -webkit-backdrop-filter: blur(4px) !important; }
+  .app-nav { backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; }
+  .boot { backdrop-filter: blur(6px) !important; }
+  .score-shell:after { animation: none !important; }
+}
+
+/* GPU acceleration */
+.score-shell:after, .spinner { will-change: transform; transform: translateZ(0); }
+.score-shell:after { animation: spin 18s linear infinite !important; opacity: 0.35 !important; }
+
+/* CSS containment — big perf win */
+.card, .mini, .item { contain: layout style; }
+.card, .mini, .item, .app-nav, .boot, .modalbox { transition: border-color 0.18s ease, box-shadow 0.18s ease !important; }
+
+/* ===== VISUAL UPGRADES ===== */
+.card { border: 1px solid rgba(255,255,255,.15) !important; box-shadow: 0 20px 60px rgba(0,0,0,.34), 0 1px 0 rgba(255,255,255,.06) inset !important; }
+.mini, .item { border: 1px solid rgba(255,255,255,.10) !important; box-shadow: 0 8px 24px rgba(0,0,0,.22), 0 1px 0 rgba(255,255,255,.04) inset !important; }
+.card:hover, .mini:hover, .item:hover { border-color: rgba(56,189,248,.34) !important; box-shadow: 0 20px 60px rgba(0,0,0,.36), 0 0 0 1px rgba(56,189,248,.10) !important; }
+.hero { border-color: rgba(56,189,248,.22) !important; box-shadow: 0 28px 72px rgba(0,0,0,.36), 0 0 0 1px rgba(56,189,248,.08) inset !important; }
+
+button:not(.nav-btn):not(.eye) { box-shadow: 0 8px 28px rgba(14,165,233,.28), 0 1px 0 rgba(255,255,255,.14) inset !important; letter-spacing: -.01em; }
+button:hover:not(:disabled):not(.nav-btn):not(.eye) { box-shadow: 0 12px 36px rgba(14,165,233,.38), 0 1px 0 rgba(255,255,255,.18) inset !important; transform: translateY(-2px) !important; }
+
+.app-nav { border: 1px solid rgba(255,255,255,.12) !important; box-shadow: 0 16px 40px rgba(0,0,0,.32), 0 1px 0 rgba(255,255,255,.06) inset !important; }
+.nav-btn.active { box-shadow: 0 4px 20px rgba(34,211,238,.22) !important; }
+
+input, select, textarea { background: rgba(7,13,26,.9) !important; border: 1px solid rgba(255,255,255,.11) !important; transition: border-color .15s ease, box-shadow .15s ease !important; }
+input:focus, select:focus, textarea:focus { border-color: rgba(56,189,248,.52) !important; box-shadow: 0 0 0 3px rgba(56,189,248,.12), 0 0 0 1px rgba(56,189,248,.40) inset !important; }
+
+.badge { border-radius: 12px !important; font-weight: 700; }
+.value, .hero-value { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+.logo { box-shadow: 0 8px 24px rgba(14,165,233,.24), 0 1px 0 rgba(255,255,255,.10) inset !important; border: 1px solid rgba(56,189,248,.26) !important; }
+.fill { transition: width 0.6s cubic-bezier(0.4,0,0.2,1) !important; }
+.toast { box-shadow: 0 16px 48px rgba(0,0,0,.36) !important; border: 1px solid rgba(255,255,255,.13) !important; }
+.toast.success { border-color: rgba(34,197,94,.40) !important; }
+.toast.error { border-color: rgba(239,68,68,.40) !important; }
+.modalbox { box-shadow: 0 32px 80px rgba(0,0,0,.48) !important; border: 1px solid rgba(255,255,255,.14) !important; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,.12); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.22); }
+.bar .fill { transition: width .8s cubic-bezier(0.34,1.56,0.64,1) !important; }
+.empty { border: 1px dashed rgba(255,255,255,.14) !important; background: rgba(255,255,255,.025) !important; }
+.priority-item { backdrop-filter: none !important; }
+h2, .kicker, .value { -webkit-font-smoothing: antialiased; }
+</style>
 </head>
 <body class="dymivra781-premium">
 <div aria-hidden="true" class="wealth-aurora-stage" id="wealthAuroraStage"><span class="aurora-orb orb-a"></span><span class="aurora-orb orb-b"></span><span class="aurora-orb orb-c"></span><span class="aurora-grid"></span></div>
@@ -26460,5 +26511,26 @@ body.performance-mode #dymivra843Habits *{transition:none!important;animation:no
 })();
 </script>
 
+<script id="dymivra-perf-auto">
+(function(){
+  // Auto-detect low-end device and apply performance mode
+  function applyPerf(){
+    document.querySelectorAll('.card,.mini,.item').forEach(function(el){
+      el.classList.add('performance-mode');
+    });
+  }
+  var lowMem = navigator.deviceMemory && navigator.deviceMemory < 4;
+  var lowCPU = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4;
+  var slowConn = navigator.connection && ['slow-2g','2g','3g'].includes(navigator.connection.effectiveType);
+  if(lowMem || lowCPU || slowConn){
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',applyPerf);
+    else applyPerf();
+  }
+  // FPS detector
+  var frames=0, t0=performance.now();
+  function fps(ts){ frames++; if(ts-t0<1200){requestAnimationFrame(fps);}else if(frames/1.2<35){applyPerf();} }
+  try{requestAnimationFrame(fps);}catch(e){}
+})();
+</script>
 </body>
 </html>
