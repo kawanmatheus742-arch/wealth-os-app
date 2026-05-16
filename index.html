@@ -993,9 +993,11 @@ input[type="password"]{
 
 /* Quando o navegador insiste em pintar branco, escondemos o input real
    e mostramos o e-mail no espelho escuro. O login continua usando o valor real. */.auth-panel.email-wrap.autofill-mirror-on input#email{
-  opacity:0!important;
-  color:transparent!important;
-  -webkit-text-fill-color:transparent!important;
+  opacity:1!important;
+  color:#f8fafc!important;
+  -webkit-text-fill-color:#f8fafc!important;
+  -webkit-box-shadow:0 0 0 9999px #071b31 inset!important;
+  box-shadow:0 0 0 9999px #071b31 inset!important;
 }.auth-panel.email-wrap.email-mirror{
   position:absolute!important;
   inset:0!important;
@@ -3019,9 +3021,9 @@ button.danger:not(.nav-btn),.danger:not(.nav-btn){background:linear-gradient(135
 
 body.motion-lite.wealth-scroll-progress span,body.performance-mode.motion-lite.wealth-scroll-progress span,body.mobile-device.motion-lite.wealth-scroll-progress span{animation:wealthProgressGlow 2.6s ease-in-out infinite alternate!important}
 @keyframes wealthProgressGlow{from{filter:saturate(1);box-shadow:0 0 10px rgba(45,212,239,.20)}to{filter:saturate(1.25);box-shadow:0 0 20px rgba(45,212,239,.36)}}
-body.motion-lite.lux-reveal{opacity:0;transform:translateY(8px) scale(.995)}
+body.motion-lite.lux-reveal{opacity:0}
 body.motion-lite.lux-reveal.lux-inview,body.performance-mode.motion-lite.lux-reveal.lux-inview,body.mobile-device.motion-lite.lux-reveal.lux-inview{animation:wealthSoftLift.38s cubic-bezier(.2,.8,.2,1) both!important}
-@keyframes wealthSoftLift{from{opacity:.78;transform:translateY(9px) scale(.995);filter:saturate(.94)}to{opacity:1;transform:translateY(0) scale(1);filter:saturate(1)}}
+@keyframes wealthSoftLift{from{opacity:.92}to{opacity:1}}
 body.performance-mode #appSection.nav-btn.active::after,body.mobile-device #appSection.nav-btn.active::after{display:block!important;animation:wealthLuxurySweep 5.2s ease-in-out infinite!important}
 body.performance-mode.ui-ready.premium-panel.lux-inview,body.performance-mode.ui-ready.card.lux-inview,body.performance-mode.ui-ready.screen-intro.lux-inview,body.mobile-device.ui-ready.premium-panel.lux-inview,body.mobile-device.ui-ready.card.lux-inview,body.mobile-device.ui-ready.screen-intro.lux-inview{animation:wealthSoftLift.34s cubic-bezier(.2,.8,.2,1) both!important}
 body.performance-mode.card,body.performance-mode.mini,body.performance-mode.item,body.performance-mode.premium-panel,body.performance-mode.legal-box,body.performance-mode.legal-card{background:radial-gradient(circle at 0% 0%,rgba(45,212,239,.05),transparent 32%),linear-gradient(180deg,rgba(6,13,28,.96),rgba(2,6,23,.98))!important;border-color:rgba(148,217,255,.10)!important;box-shadow:0 16px 38px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.032)!important}
@@ -3107,9 +3109,9 @@ input,select,textarea{background:linear-gradient(180deg,rgba(6,18,38,.98),rgba(2
 input:focus,select:focus,textarea:focus{border-color:rgba(34,211,238,.52)!important;box-shadow:0 0 0 4px rgba(34,211,238,.12),0 16px 36px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.06)!important;}.wealth-scroll-progress{height:4px!important;background:rgba(255,255,255,.035)!important;}.wealth-scroll-progress span{background:linear-gradient(90deg,#22d3ee,#0ea5e9,#8b5cf6,#ec4899,#f59e0b,#14b8a6)!important;box-shadow:0 0 24px rgba(34,211,238,.42)!important;}.wealth-floating-top{right:18px!important;bottom:calc(18px + env(safe-area-inset-bottom,0px))!important;height:54px!important;min-width:112px!important;padding:0 16px!important;border-radius:999px!important;color:#f8fbff!important;background:linear-gradient(135deg,rgba(2,6,23,.94),rgba(8,47,73,.96) 45%,rgba(139,92,246,.82) 100%)!important;border:1px solid rgba(34,211,238,.32)!important;box-shadow:0 18px 52px rgba(0,0,0,.45),0 0 34px rgba(34,211,238,.20),inset 0 1px 0 rgba(255,255,255,.14)!important;backdrop-filter:blur(18px) saturate(1.18)!important;}.wealth-floating-top.top-icon{background:linear-gradient(135deg,rgba(34,211,238,.28),rgba(236,72,153,.12))!important;color:#fff!important;border:1px solid rgba(255,255,255,.16)!important;}.wealth-floating-top:hover{transform:translateY(-3px)!important;box-shadow:0 24px 70px rgba(0,0,0,.52),0 0 48px rgba(34,211,238,.26)!important;}.legal-hero,.legal-grid,.grid,.grid2,.grid3,.grid4,.grid5,.hero-grid,.split{max-width:100%!important;min-width:0!important;}.legal-card,.legal-box,.legal-row{max-width:100%!important;min-width:0!important;overflow:hidden!important;}.legal-row span,.legal-card span,.legal-pill,a,p,span,div{overflow-wrap:break-word;}
 body.screen-all-active #appSection,body.screen-all-active [data-screen-block]:not(.screen-hidden),#appSection,[data-screen-block],.container{height:auto!important;max-height:none!important;overflow-y:visible!important;}.container{overflow-y:auto!important;}
 
-body.final-design-mode.lux-reveal{opacity:0;transform:translate3d(0,10px,0) scale(.992);}
+body.final-design-mode.lux-reveal{opacity:0;}
 body.final-design-mode.lux-reveal.lux-inview{animation:wealthFinalReveal.46s cubic-bezier(.2,.8,.2,1) both!important;}
-@keyframes wealthFinalReveal{0%{opacity:0;transform:translate3d(0,10px,0) scale(.992);filter:saturate(.88)}100%{opacity:1;transform:translate3d(0,0,0) scale(1);filter:saturate(1)}}
+@keyframes wealthFinalReveal{0%{opacity:0}100%{opacity:1}}
 body.performance-mode.final-design-mode.lux-reveal.lux-inview,body.mobile-device.final-design-mode.lux-reveal.lux-inview{animation:wealthFinalReveal.36s cubic-bezier(.2,.8,.2,1) both!important;}
 body.performance-mode.final-design-mode #appSection.nav-btn.active::after,body.mobile-device.final-design-mode #appSection.nav-btn.active::after{animation:wealthFinalNavSweep 4.4s ease-in-out infinite!important;}
 body.performance-mode.final-design-mode.wealth-aurora-stage.aurora-orb,body.mobile-device.final-design-mode.wealth-aurora-stage.aurora-orb{animation-duration:22s!important;filter:blur(52px);opacity:.24;}
@@ -8351,6 +8353,78 @@ body.screen-overview-active.performance-mode.overview-intelligence-suite{
 /* Remove "Sair" do bloco de ações rápidas */
 button[onclick="openLogoutModal()"] {
   display: none !important;
+}
+
+/* ===== DYMIVRA PERFORMANCE PATCH v4 =====
+   Fixes: speed, scroll stability, autofill, month selector
+   =========================================*/
+
+/* Remove grid background que consome GPU */
+body::before {
+  display: none !important;
+}
+
+/* Disable backdrop-filter no mobile - maior ganho de performance */
+@media (max-width: 760px) {
+  .card, .mini, .item, .app-nav, .boot, .modalbox,
+  .auth-shell, .auth-panel, .auth-copy, .bootbox,
+  .dym860-month-modal, .toast {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* Scroll estável - sem pulos nem subida sozinha */
+html {
+  scroll-behavior: auto !important;
+}
+.container {
+  overscroll-behavior-y: contain !important;
+}
+.lux-reveal {
+  transform: none !important;
+}
+
+/* Autofill login - camada extra para cobrir o branco */
+#email:-webkit-autofill,
+#email:-webkit-autofill:hover,
+#email:-webkit-autofill:focus,
+#password:-webkit-autofill,
+#password:-webkit-autofill:hover,
+#password:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 9999px #071b31 inset,
+    0 0 0 1px rgba(125,211,252,.18) !important;
+  box-shadow: 0 0 0 9999px #071b31 inset,
+    0 0 0 1px rgba(125,211,252,.18) !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+/* Month chip: só ✓ sem label "Selecionado" */
+.dym860-month-chip.active:after,
+.dym860-month-chip.is-selected:after {
+  content: "" !important;
+  display: none !important;
+}
+.dym860-month-chip.active:before,
+.dym860-month-chip.is-selected:before {
+  content: "✓" !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 22px !important;
+  height: 22px !important;
+}
+
+/* Disable heavy animations globalmente no mobile */
+@media (max-width: 760px) {
+  .score-shell:after,
+  .logo {
+    animation: none !important;
+  }
+  body::before,
+  .pulse-grid-bg {
+    display: none !important;
+  }
 }
 </style>
 </head>
@@ -22675,17 +22749,8 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js";
   transform:scale(1.035)!important;
 }
 .dym860-month-chip.active:after,.dym860-month-chip.is-selected:after{
-  content:"Selecionado"!important;
-  position:absolute!important;
-  right:8px!important;
-  top:6px!important;
-  padding:3px 6px!important;
-  border-radius:999px!important;
-  background:rgba(2,6,23,.30)!important;
-  border:1px solid rgba(255,255,255,.13)!important;
-  color:#e0f2fe!important;
-  font-size:9px!important;
-  font-weight:950!important;
+  content:""!important;
+  display:none!important;
 }
 .dym860-month-chip.active:before,.dym860-month-chip.is-selected:before{
   content:"✓"!important;
@@ -27130,6 +27195,46 @@ body.performance-mode #dymivra843Habits *{transition:none!important;animation:no
   setTimeout(patchContainerScroll, 400);
   setTimeout(patchContainerScroll, 1200);
 
+})();
+</script>
+
+<script>
+/* ===== DYMIVRA SCROLL STABILITY PATCH =====
+   Bloqueia o scroll automático indesejado
+   =========================================*/
+(function(){
+  // Sobrescreve wealthScrollToTop para não executar automaticamente
+  var _origScrollToTop = window.wealthScrollToTop;
+  
+  // Desativa o overscroll bounce que causa "sobe sozinho"
+  document.addEventListener('DOMContentLoaded', function(){
+    var container = document.querySelector('.container');
+    if(container){
+      container.style.overscrollBehaviorY = 'contain';
+    }
+    
+    // Remove translateY de todos os elementos lux-reveal para evitar scroll jumps
+    document.querySelectorAll('.lux-reveal').forEach(function(el){
+      el.style.transform = 'none';
+    });
+    
+    // Observer para novos elementos lux-reveal
+    var mo = new MutationObserver(function(muts){
+      muts.forEach(function(m){
+        m.addedNodes.forEach(function(n){
+          if(n.nodeType===1){
+            if(n.classList && n.classList.contains('lux-reveal')){
+              n.style.transform='none';
+            }
+            n.querySelectorAll && n.querySelectorAll('.lux-reveal').forEach(function(el){
+              el.style.transform='none';
+            });
+          }
+        });
+      });
+    });
+    mo.observe(document.body, {childList:true, subtree:true});
+  });
 })();
 </script>
 </body>
