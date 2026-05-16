@@ -26830,5 +26830,307 @@ body.performance-mode #dymivra843Habits *{transition:none!important;animation:no
 
 })();
 </script>
+
+<script id="dym-patches-v2">
+/* ============================================================
+   DYMIVRA PATCHES v2
+   1. Fix seleção de texto nos chips do calendário
+   2. Performance desktop: desativa backdrop-filter pesado
+   3. Design refresh: tipografia, espaçamentos, cards mais limpos
+   ============================================================ */
+(function(){
+  'use strict';
+  if(window.__dymPatchV2)return;
+  window.__dymPatchV2=true;
+
+  /* ----------------------------------------------------------
+     PATCH A — Injeta CSS de correções via <style>
+  ---------------------------------------------------------- */
+  var css = [
+
+    /* ---- FIX: seleção de texto nos chips do calendário ---- */
+    '.dym860-month-chip, .dym860-year-btn, .dym860-month-actions button {',
+    '  -webkit-user-select: none !important;',
+    '  user-select: none !important;',
+    '  -webkit-touch-callout: none !important;',
+    '}',
+
+    /* ---- FIX: cursor nos chips ---- */
+    '.dym860-month-chip { cursor: pointer !important; }',
+
+    /* ============================================================
+       PERFORMANCE DESKTOP
+       Em desktop (hover disponível = não é touch) desliga
+       backdrop-filter de todos os cards internos.
+       Mantém apenas 1 camada de blur na nav e nos modais.
+    ============================================================ */
+    '@media (hover: hover) and (min-width: 820px) {',
+
+    /* Cards, minis e items: remove blur pesado */
+    '  .card, .mini, .item, [class*="dymivra8"], [class*="dymivra7"],',
+    '  [class*="dym8"], [class*="dym86"], [class*="dymivra823"],',
+    '  [class*="dymivra824"], [class*="dymivra825"], [class*="dymivra826"],',
+    '  [class*="dymivra827"], [class*="dymivra831"], [class*="dymivra832"],',
+    '  [class*="dymivra834"], [class*="dymivra835"], [class*="dymivra840"],',
+    '  [class*="dymivra841"], [class*="dymivra842"], [class*="dymivra843"],',
+    '  [class*="dymivra844"], [class*="dymivra845"], [class*="dymivra856"],',
+    '  [class*="dymivra860"], [class*="dymivra861"], [class*="dymivra862"],',
+    '  [class*="auth-shell"], [class*="auth-panel"], [class*="auth-copy"],',
+    '  [class*="score-shell"], [class*="command-card"], [class*="priority-item"],',
+    '  [class*="start-hero"], [class*="premium-panel"] {',
+    '    backdrop-filter: none !important;',
+    '    -webkit-backdrop-filter: none !important;',
+    '  }',
+
+    /* Apenas nav e modais mantêm blur — são poucos elementos */
+    '  .app-nav, #appNav, .dymivra842pro-nav,',
+    '  .boot, .bootbox, .modal, .modalbox,',
+    '  .dym860-month-overlay, .dym860-month-modal,',
+    '  .dym823MonthOverlay, .dym842-mobile-drawer,',
+    '  .topbar, .auth-shell {',
+    '    backdrop-filter: blur(14px) !important;',
+    '    -webkit-backdrop-filter: blur(14px) !important;',
+    '  }',
+
+    /* Desativa animações contínuas desnecessárias no desktop */
+    '  .score-shell::after {',
+    '    animation: none !important;',
+    '  }',
+    '  @keyframes wealthLogoPulse { from{} to{} }',
+    '  @keyframes wealthOrbFloatA { from{} to{} }',
+    '  @keyframes wealthOrbFloatB { from{} to{} }',
+    '  @keyframes wealthOrbFloatC { from{} to{} }',
+
+    /* will-change nos elementos que animam de fato */
+    '  .app-nav, .nav-btn.active { will-change: auto !important; }',
+    '  button:hover { will-change: transform; }',
+
+    '}', /* end @media hover */
+
+    /* ============================================================
+       DESIGN REFRESH — Desktop
+       Tipografia maior, cards com mais respiro, hierarquia clara
+    ============================================================ */
+    '@media (min-width: 820px) {',
+
+    /* Topbar mais compacta e limpa */
+    '  .topbar {',
+    '    padding: 10px 14px !important;',
+    '    margin-bottom: 20px !important;',
+    '    border-radius: 28px !important;',
+    '  }',
+    '  .logo {',
+    '    width: 60px !important;',
+    '    height: 60px !important;',
+    '    border-radius: 22px !important;',
+    '  }',
+    '  h1 { font-size: 36px !important; letter-spacing: -.07em !important; }',
+
+    /* Nav: pills mais definidas */
+    '  .app-nav, #appNav {',
+    '    padding: 8px 10px !important;',
+    '    border-radius: 26px !important;',
+    '    gap: 6px !important;',
+    '    margin-bottom: 20px !important;',
+    '  }',
+    '  .nav-btn {',
+    '    height: 38px !important;',
+    '    padding: 0 16px !important;',
+    '    font-size: 13px !important;',
+    '    border-radius: 999px !important;',
+    '    font-weight: 700 !important;',
+    '    letter-spacing: -.01em !important;',
+    '  }',
+    '  .nav-btn.active {',
+    '    box-shadow: 0 0 18px rgba(34,211,238,.20), 0 2px 8px rgba(0,0,0,.28) !important;',
+    '  }',
+
+    /* Cards com bordas mais definidas e respiro melhor */
+    '  .card {',
+    '    border-radius: 22px !important;',
+    '    padding: 24px !important;',
+    '    border-color: rgba(255,255,255,.11) !important;',
+    '    box-shadow: 0 8px 28px rgba(0,0,0,.22) !important;',
+    '  }',
+    '  .mini, .item {',
+    '    border-radius: 16px !important;',
+    '    padding: 16px !important;',
+    '    border-color: rgba(255,255,255,.09) !important;',
+    '  }',
+    '  .card:hover, .mini:hover, .item:hover {',
+    '    border-color: rgba(56,189,248,.28) !important;',
+    '    box-shadow: 0 12px 36px rgba(0,0,0,.28), 0 0 0 1px rgba(56,189,248,.08) !important;',
+    '    transform: translateY(-1px) !important;',
+    '    transition: border-color .15s, box-shadow .15s, transform .15s !important;',
+    '  }',
+
+    /* Kicker mais legível */
+    '  .kicker {',
+    '    font-size: 10px !important;',
+    '    letter-spacing: .18em !important;',
+    '    opacity: .9 !important;',
+    '    color: #93c5fd !important;',
+    '    margin-bottom: 6px !important;',
+    '  }',
+
+    /* Hero value maior e mais impactante */
+    '  .hero-value {',
+    '    font-size: clamp(52px, 5.5vw, 82px) !important;',
+    '  }',
+
+    /* Inputs mais limpos */
+    '  input, select, textarea {',
+    '    border-radius: 12px !important;',
+    '    background: rgba(5,12,30,.72) !important;',
+    '    border-color: rgba(255,255,255,.12) !important;',
+    '    font-size: 14px !important;',
+    '  }',
+    '  input:focus, select:focus, textarea:focus {',
+    '    border-color: rgba(34,211,238,.50) !important;',
+    '    box-shadow: 0 0 0 3px rgba(34,211,238,.10) !important;',
+    '  }',
+
+    /* Botões mais elegantes */
+    '  button {',
+    '    border-radius: 12px !important;',
+    '    padding: 13px 18px !important;',
+    '    font-size: 14px !important;',
+    '    letter-spacing: -.01em !important;',
+    '    transition: filter .12s, transform .12s, box-shadow .12s !important;',
+    '  }',
+    '  button:hover {',
+    '    transform: translateY(-1px) !important;',
+    '    filter: brightness(1.06) !important;',
+    '  }',
+    '  button:active {',
+    '    transform: translateY(0) !important;',
+    '    filter: brightness(.97) !important;',
+    '  }',
+
+    /* Grid mais arejado */
+    '  .grid { gap: 16px !important; }',
+    '  .grid2 { gap: 16px !important; }',
+    '  .grid3 { gap: 14px !important; }',
+    '  .grid4 { gap: 12px !important; }',
+
+    /* Valores (cards de métricas) com contraste melhor */
+    '  .value {',
+    '    font-size: clamp(20px, 2vw, 30px) !important;',
+    '    letter-spacing: -.045em !important;',
+    '  }',
+    '  .label {',
+    '    font-size: 11px !important;',
+    '    letter-spacing: .04em !important;',
+    '    opacity: .82 !important;',
+    '  }',
+
+    /* Badges mais polidas */
+    '  .badge {',
+    '    padding: 6px 12px !important;',
+    '    font-size: 12px !important;',
+    '    border-radius: 999px !important;',
+    '    font-weight: 700 !important;',
+    '    letter-spacing: -.01em !important;',
+    '  }',
+
+    /* Barra de progresso mais nítida */
+    '  .bar { height: 7px !important; border-radius: 999px !important; }',
+    '  .fill { border-radius: 999px !important; }',
+
+    /* Container com padding melhor */
+    '  .container { padding: 20px 24px !important; }',
+
+    /* Scroll mais suave */
+    '  .container {',
+    '    scroll-behavior: smooth !important;',
+    '  }',
+
+    /* Scrollbar fina no desktop */
+    '  .container::-webkit-scrollbar { width: 5px !important; }',
+    '  .container::-webkit-scrollbar-track { background: transparent !important; }',
+    '  .container::-webkit-scrollbar-thumb {',
+    '    background: rgba(103,232,249,.22) !important;',
+    '    border-radius: 99px !important;',
+    '  }',
+    '  .container::-webkit-scrollbar-thumb:hover {',
+    '    background: rgba(103,232,249,.40) !important;',
+    '  }',
+
+    /* Section spacing */
+    '  .section { margin-bottom: 16px !important; }',
+
+    /* Hero card com gradiente mais limpo */
+    '  .hero {',
+    '    padding-top: 24px !important;',
+    '    border-radius: 22px !important;',
+    '  }',
+
+    /* Muted text mais legível */
+    '  .muted { color: #94a3b8 !important; }',
+
+    '}', /* end @media min-width 820px */
+
+    /* ---- Texto não-selecionável em toda interface interativa ---- */
+    '.app-nav, .app-nav *, #appNav, #appNav *,',
+    '.dym860-month-modal, .dym860-month-modal * {',
+    '  -webkit-user-select: none !important;',
+    '  user-select: none !important;',
+    '}',
+
+    /* ---- Garante que inputs DENTRO da interface sejam selecionáveis ---- */
+    'input, textarea, select, [contenteditable] {',
+    '  -webkit-user-select: text !important;',
+    '  user-select: text !important;',
+    '}',
+
+  ].join('\n');
+
+  var el = document.createElement('style');
+  el.id = 'dym-patches-v2-styles';
+  el.textContent = css;
+  document.head.appendChild(el);
+
+  /* ----------------------------------------------------------
+     PATCH B — Ativa performance-mode automático no desktop
+     quando o device não tem tela touch (mouse puro)
+  ---------------------------------------------------------- */
+  function applyDesktopPerf(){
+    var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    var isWide = window.innerWidth >= 820;
+    if(!isTouch && isWide){
+      document.body.classList.add('performance-mode');
+      document.body.classList.add('dymivra-desktop-perf');
+    }
+  }
+  applyDesktopPerf();
+  window.addEventListener('resize', applyDesktopPerf);
+
+  /* ----------------------------------------------------------
+     PATCH C — Scroll suave nativo do container
+     Garante que .container role suavemente e sem travamento
+  ---------------------------------------------------------- */
+  function patchContainerScroll(){
+    var container = document.querySelector('.container');
+    if(!container || container.__dymScrollPatched) return;
+    container.__dymScrollPatched = true;
+
+    /* Garante que o scroll é sempre no container, não no body */
+    container.style.overflowY = 'auto';
+    container.style.overflowX = 'hidden';
+    container.style.webkitOverflowScrolling = 'touch';
+
+    /* No desktop, usa scroll nativo sem overscroll-behavior travado */
+    var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    if(!isTouch){
+      container.style.overscrollBehaviorY = 'auto';
+      /* Remove o scrollTop forçado que causa o "sobe sozinho" no desktop */
+      container.style.scrollBehavior = 'smooth';
+    }
+  }
+  setTimeout(patchContainerScroll, 400);
+  setTimeout(patchContainerScroll, 1200);
+
+})();
+</script>
 </body>
 </html>
