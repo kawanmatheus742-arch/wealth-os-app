@@ -8398,6 +8398,215 @@ input:focus, select:focus, textarea:focus { border-color: rgba(56,189,248,.52) !
 .priority-item { backdrop-filter: none !important; }
 h2, .kicker, .value { -webkit-font-smoothing: antialiased; }
 </style>
+
+<style id="dym-nubank-nav">
+/* ============================================================
+   DYMIVRA — NUBANK-STYLE NAVIGATION
+   ============================================================ */
+
+/* ---- Bottom Tab Bar ---- */
+#dym-bottom-tab {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 9990;
+  display: flex;
+  align-items: stretch;
+  background: rgba(4, 8, 20, 0.96);
+  border-top: 1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 -8px 32px rgba(0,0,0,.36);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  height: calc(64px + env(safe-area-inset-bottom, 0px));
+}
+.dym-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 4px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  transition: color .18s ease;
+  position: relative;
+  width: auto;
+  margin: 0;
+  box-shadow: none;
+  border-radius: 0;
+  transform: none !important;
+}
+.dym-tab:hover { color: #94a3b8; transform: none !important; box-shadow: none !important; }
+.dym-tab.active { color: #38bdf8; }
+.dym-tab.active .dym-tab-icon { filter: drop-shadow(0 0 8px rgba(56,189,248,.5)); }
+.dym-tab-icon { font-size: 22px; line-height: 1; transition: transform .18s cubic-bezier(0.34,1.56,0.64,1); }
+.dym-tab.active .dym-tab-icon { transform: translateY(-2px) scale(1.08); }
+.dym-tab-dot {
+  position: absolute;
+  top: 6px; right: calc(50% - 16px);
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  display: none;
+}
+.dym-tab-mais .dym-tab-icon {
+  width: 26px; height: 26px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  transition: background .18s ease, border-color .18s ease, transform .18s cubic-bezier(0.34,1.56,0.64,1);
+}
+.dym-tab-mais.active .dym-tab-icon,
+.dym-tab-mais:hover .dym-tab-icon {
+  background: rgba(56,189,248,.14);
+  border-color: rgba(56,189,248,.28);
+}
+
+/* ---- "Mais" Drawer ---- */
+#dym-mais-overlay {
+  position: fixed; inset: 0; z-index: 9991;
+  background: rgba(0,0,0,.6);
+  opacity: 0; pointer-events: none;
+  transition: opacity .22s ease;
+  backdrop-filter: blur(4px);
+}
+#dym-mais-overlay.open { opacity: 1; pointer-events: all; }
+
+#dym-mais-drawer {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 9992;
+  background: linear-gradient(180deg, #0d1a2f, #070f1e);
+  border-top: 1px solid rgba(255,255,255,.12);
+  border-radius: 28px 28px 0 0;
+  box-shadow: 0 -20px 60px rgba(0,0,0,.5);
+  padding: 12px 20px 20px;
+  padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  transform: translateY(100%);
+  transition: transform .28s cubic-bezier(0.32,0.72,0,1);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+#dym-mais-drawer.open { transform: translateY(0); }
+
+.dym-drawer-handle {
+  width: 40px; height: 4px;
+  border-radius: 2px;
+  background: rgba(255,255,255,.18);
+  margin: 0 auto 18px;
+}
+.dym-drawer-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #4a6080;
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+.dym-drawer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.dym-drawer-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 8px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  cursor: pointer;
+  color: #cbd5e1;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
+  width: auto; margin: 0; box-shadow: none; border-radius: 18px; transform: none !important;
+}
+.dym-drawer-btn:hover {
+  background: rgba(56,189,248,.10);
+  border-color: rgba(56,189,248,.22);
+  color: #e0f2fe;
+  transform: none !important;
+  box-shadow: none !important;
+}
+.dym-drawer-btn-icon { font-size: 22px; }
+
+/* ---- Sair rápido na gaveta ---- */
+.dym-drawer-sair {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(239,68,68,.06);
+  border: 1px solid rgba(239,68,68,.18);
+  cursor: pointer;
+  color: #fca5a5;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background .15s ease, border-color .15s ease;
+  width: 100%; margin: 0; box-shadow: none; transform: none !important;
+  letter-spacing: -.01em;
+}
+.dym-drawer-sair:hover {
+  background: rgba(239,68,68,.12);
+  border-color: rgba(239,68,68,.32);
+  box-shadow: none !important;
+  transform: none !important;
+}
+.dym-drawer-sair-icon { font-size: 20px; }
+
+/* ---- Avatar button no topbar ---- */
+#dym-avatar-btn {
+  position: relative;
+  width: 44px; height: 44px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: #cbd5e1;
+  font-size: 20px;
+  flex-shrink: 0;
+  transition: background .15s ease, border-color .15s ease;
+  margin: 0; padding: 0; box-shadow: none; width: 44px;
+}
+#dym-avatar-btn:hover {
+  background: rgba(56,189,248,.12);
+  border-color: rgba(56,189,248,.28);
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ---- Padding bottom para não sobrepor conteúdo ---- */
+@media (max-width: 900px) {
+  .container { padding-bottom: 88px !important; }
+  .app-nav { display: none !important; }
+}
+@media (min-width: 901px) {
+  #dym-bottom-tab { display: none !important; }
+  #dym-mais-overlay, #dym-mais-drawer { display: none !important; }
+}
+
+/* Esconde botão Sair da visão geral (agora está na gaveta) */
+@media (max-width: 900px) {
+  button[onclick="openLogoutModal()"] { display: none !important; }
+}
+</style>
 </head>
 <body class="dymivra781-premium">
 <div aria-hidden="true" class="wealth-aurora-stage" id="wealthAuroraStage"><span class="aurora-orb orb-a"></span><span class="aurora-orb orb-b"></span><span class="aurora-orb orb-c"></span><span class="aurora-grid"></span></div>
@@ -8413,7 +8622,7 @@ h2, .kicker, .value { -webkit-font-smoothing: antialiased; }
 </div>
 <div class="container">
 <div class="offline" id="offline">Você está sem conexão. Algumas funções podem não responder até a internet voltar.</div>
-<div class="topbar"><div class="brand"><div aria-label="Logo Dymivra" class="logo"><img alt="Logo Dymivra" src="data:image/webp;base64,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"/></div><div><h1>Dymivra</h1><div class="subtitle">Controle financeiro inteligente para patrimônio, investimentos, metas, renda, negócios e evolução financeira.</div></div></div><div class="chips">
+<div class="topbar"><div class="brand"><div aria-label="Logo Dymivra" class="logo"><img alt="Logo Dymivra" src="data:image/webp;base64,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"/><button id="dym-avatar-btn" onclick="dymOpenMais()" title="Menu" type="button" aria-label="Menu">👤</button></div><div><h1>Dymivra</h1><div class="subtitle">Controle financeiro inteligente para patrimônio, investimentos, metas, renda, negócios e evolução financeira.</div></div></div><div class="chips">
 <div class="chip premium">Radar inteligente ativo</div>
 <button class="chip chip-action" id="performanceToggleChip" onclick="togglePerformanceMode()" type="button">Modo leve: Premium</button>
 <div class="chip" id="syncChip">Sync: OK</div>
@@ -26532,5 +26741,181 @@ body.performance-mode #dymivra843Habits *{transition:none!important;animation:no
   try{requestAnimationFrame(fps);}catch(e){}
 })();
 </script>
+
+<!-- DYMIVRA — BOTTOM TAB BAR (Nubank-style) -->
+<div id="dym-mais-overlay" onclick="dymCloseMais()"></div>
+
+<div id="dym-mais-drawer">
+  <div class="dym-drawer-handle"></div>
+  
+  <div class="dym-drawer-title">Carteira</div>
+  <div class="dym-drawer-grid">
+    <button class="dym-drawer-btn" onclick="dymGoScreen('ledger')" type="button">
+      <span class="dym-drawer-btn-icon">📒</span>Ledger
+    </button>
+    <button class="dym-drawer-btn" onclick="dymGoScreen('allocation')" type="button">
+      <span class="dym-drawer-btn-icon">🧭</span>Alocação
+    </button>
+    <button class="dym-drawer-btn" onclick="dymGoScreen('history')" type="button">
+      <span class="dym-drawer-btn-icon">📈</span>Histórico
+    </button>
+    <button class="dym-drawer-btn" onclick="dymGoScreen('income')" type="button">
+      <span class="dym-drawer-btn-icon">💸</span>Renda
+    </button>
+  </div>
+
+  <div class="dym-drawer-title">Crescimento</div>
+  <div class="dym-drawer-grid">
+    <button class="dym-drawer-btn" onclick="dymGoScreen('projections')" type="button">
+      <span class="dym-drawer-btn-icon">🔮</span>Projeções
+    </button>
+    <button class="dym-drawer-btn" onclick="dymGoScreen('liberty')" type="button">
+      <span class="dym-drawer-btn-icon">🕊️</span>Liberdade
+    </button>
+    <button class="dym-drawer-btn" onclick="dymGoScreen('journey')" type="button">
+      <span class="dym-drawer-btn-icon">🧭</span>Jornada
+    </button>
+    <button class="dym-drawer-btn" onclick="dymGoScreen('pulse')" type="button">
+      <span class="dym-drawer-btn-icon">⚡</span>Pulse
+    </button>
+  </div>
+
+  <div class="dym-drawer-title">Inteligência</div>
+  <div class="dym-drawer-grid">
+    <button class="dym-drawer-btn" onclick="dymGoScreen('advisor')" type="button">
+      <span class="dym-drawer-btn-icon">🚨</span>Radar IA
+    </button>
+    <button class="dym-drawer-btn" onclick="dymGoScreen('mentor')" type="button">
+      <span class="dym-drawer-btn-icon">🧠</span>Mentor
+    </button>
+    <button class="dym-drawer-btn" onclick="dymGoScreen('business')" type="button">
+      <span class="dym-drawer-btn-icon">🏢</span>Negócio
+    </button>
+    <button class="dym-drawer-btn" onclick="dymGoScreen('plans')" type="button">
+      <span class="dym-drawer-btn-icon">💎</span>Planos
+    </button>
+  </div>
+
+  <div class="dym-drawer-title">Conta</div>
+  <div class="dym-drawer-grid">
+    <button class="dym-drawer-btn" onclick="dymGoScreen('settings')" type="button">
+      <span class="dym-drawer-btn-icon">⚙️</span>Apoio
+    </button>
+    <button class="dym-drawer-btn" onclick="dymGoScreen('legal')" type="button">
+      <span class="dym-drawer-btn-icon">⚖️</span>Legal
+    </button>
+    <button class="dym-drawer-btn" onclick="dymGoScreen('profile')" type="button">
+      <span class="dym-drawer-btn-icon">🧬</span>Perfil
+    </button>
+    <button class="dym-drawer-btn" onclick="dymGoScreen('app')" type="button">
+      <span class="dym-drawer-btn-icon">📱</span>App
+    </button>
+  </div>
+
+  <button class="dym-drawer-sair" onclick="dymCloseMais();openLogoutModal();" type="button">
+    <span class="dym-drawer-sair-icon">🚪</span>
+    Sair da conta
+  </button>
+</div>
+
+<nav id="dym-bottom-tab" aria-label="Navegação principal">
+  <button class="dym-tab active" data-dymtab="overview" onclick="dymGoScreen('overview')" type="button">
+    <span class="dym-tab-icon">🏠</span>
+    <span>Início</span>
+  </button>
+  <button class="dym-tab" data-dymtab="ledger" onclick="dymGoScreen('ledger')" type="button">
+    <span class="dym-tab-icon">💼</span>
+    <span>Carteira</span>
+  </button>
+  <button class="dym-tab" data-dymtab="goals" onclick="dymGoScreen('goals')" type="button">
+    <span class="dym-tab-icon">🎯</span>
+    <span>Metas</span>
+  </button>
+  <button class="dym-tab" data-dymtab="ai" onclick="dymGoScreen('ai')" type="button">
+    <span class="dym-tab-icon">🤖</span>
+    <span>IA</span>
+  </button>
+  <button class="dym-tab dym-tab-mais" data-dymtab="mais" onclick="dymToggleMais()" type="button">
+    <span class="dym-tab-icon">☰</span>
+    <span>Mais</span>
+  </button>
+</nav>
+
+<script id="dym-nubank-js">
+(function(){
+  // Screens that have a dedicated bottom tab
+  var TAB_SCREENS = ['overview','ledger','goals','ai'];
+
+  function updateBottomTabs(screen) {
+    document.querySelectorAll('.dym-tab[data-dymtab]').forEach(function(btn){
+      var tab = btn.getAttribute('data-dymtab');
+      if (tab === 'mais') return; // don't auto-activate "mais"
+      btn.classList.toggle('active', tab === screen);
+    });
+    // If screen is not a main tab, activate "mais" tab
+    var isMaisScreen = !TAB_SCREENS.includes(screen);
+    var maisBtn = document.querySelector('.dym-tab-mais');
+    if (maisBtn) maisBtn.classList.toggle('active', isMaisScreen);
+  }
+
+  window.dymGoScreen = function(screen) {
+    dymCloseMais();
+    try { window.showAppScreen(screen); } catch(e){}
+    updateBottomTabs(screen);
+  };
+
+  window.dymOpenMais = function() {
+    document.getElementById('dym-mais-overlay').classList.add('open');
+    document.getElementById('dym-mais-drawer').classList.add('open');
+    document.querySelector('.dym-tab-mais').classList.add('active');
+  };
+
+  window.dymCloseMais = function() {
+    document.getElementById('dym-mais-overlay').classList.remove('open');
+    document.getElementById('dym-mais-drawer').classList.remove('open');
+  };
+
+  window.dymToggleMais = function() {
+    var drawer = document.getElementById('dym-mais-drawer');
+    if (drawer.classList.contains('open')) dymCloseMais();
+    else dymOpenMais();
+  };
+
+  // Hook into existing showAppScreen to sync bottom tabs
+  document.addEventListener('DOMContentLoaded', function(){
+    var original = window.showAppScreen;
+    if (typeof original === 'function') {
+      window.showAppScreen = function(screen, smooth) {
+        var result = original.call(this, screen, smooth);
+        updateBottomTabs(screen || 'overview');
+        return result;
+      };
+    }
+    // Set initial state
+    updateBottomTabs('overview');
+
+    // Touch swipe to close drawer
+    var startY = 0;
+    var drawer = document.getElementById('dym-mais-drawer');
+    drawer.addEventListener('touchstart', function(e){ startY = e.touches[0].clientY; }, {passive:true});
+    drawer.addEventListener('touchend', function(e){
+      if (e.changedTouches[0].clientY - startY > 60) dymCloseMais();
+    }, {passive:true});
+
+    // Update avatar with user initial
+    var emailEl = document.getElementById('userEmail');
+    if (emailEl) {
+      var obs = new MutationObserver(function(){
+        var email = emailEl.textContent || '';
+        var initial = email ? email[0].toUpperCase() : '👤';
+        var btn = document.getElementById('dym-avatar-btn');
+        if (btn && initial !== '👤') { btn.textContent = initial; btn.style.fontWeight = '900'; btn.style.fontSize = '18px'; }
+      });
+      obs.observe(emailEl, {childList:true, characterData:true, subtree:true});
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
