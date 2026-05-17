@@ -26694,5 +26694,289 @@ body.performance-mode #dymivra843Habits *{transition:none!important;animation:no
 })();
 </script>
 
+
+<!-- ==========================================================
+ DYMIVRA — DESTRAVAR TELA / SCROLL HARD FIX
+ Corrige tela travada no celular e computador:
+ - remove bloqueios de overflow/altura fixa
+ - libera rolagem natural do app
+ - evita barra fixa capturando o movimento
+ - mantém o app em modo leve
+========================================================== -->
+<style id="dymivra-scroll-unlock-hardfix-style">
+html,
+body{
+  width:100%!important;
+  min-width:0!important;
+  height:auto!important;
+  min-height:100%!important;
+  max-height:none!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  position:static!important;
+  touch-action:pan-y pinch-zoom!important;
+  overscroll-behavior-y:auto!important;
+  -webkit-overflow-scrolling:touch!important;
+  scroll-behavior:auto!important;
+}
+
+body{
+  min-height:100svh!important;
+}
+
+body.modal-open,
+html.modal-open,
+body.scroll-lock,
+html.scroll-lock,
+body.no-scroll,
+html.no-scroll{
+  height:auto!important;
+  max-height:none!important;
+  overflow-y:auto!important;
+  position:static!important;
+}
+
+.container,
+#appSection,
+#authSection,
+main,
+.app,
+.app-shell,
+.wrap,
+.content,
+.screen,
+[data-screen-block]{
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:visible!important;
+  position:relative!important;
+  touch-action:pan-y pinch-zoom!important;
+}
+
+.container{
+  min-height:100svh!important;
+  padding-bottom:24px!important;
+}
+
+#appSection{
+  display:block;
+}
+
+#appSection.app-nav,
+.app-nav{
+  position:sticky!important;
+  top:max(8px,env(safe-area-inset-top,0px))!important;
+  bottom:auto!important;
+  left:auto!important;
+  right:auto!important;
+  z-index:120!important;
+  max-height:none!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  touch-action:pan-x pan-y!important;
+  -webkit-overflow-scrolling:touch!important;
+}
+
+.nav-btn,
+button,
+a,
+input,
+select,
+textarea{
+  touch-action:manipulation!important;
+}
+
+.boot.hidden,
+.modal:not(.show),
+[id*="Overlay"]:not(.show),
+[class*="overlay"]:not(.show){
+  pointer-events:none!important;
+}
+
+.boot.hidden{
+  display:none!important;
+}
+
+#pwaInstallCard,
+#mobileInstallGuide,
+.browser-install-card,
+.google-install-card,
+.install-browser,
+.install-guide-browser{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+@media(max-width:760px){
+  html,
+  body{
+    overflow-y:auto!important;
+    touch-action:pan-y pinch-zoom!important;
+  }
+
+  .container{
+    width:100%!important;
+    max-width:100%!important;
+    padding:14px!important;
+    padding-bottom:26px!important;
+    overflow:visible!important;
+  }
+
+  #appSection.app-nav,
+  .app-nav{
+    margin:0 0 14px!important;
+    border-radius:22px!important;
+    flex-wrap:nowrap!important;
+    justify-content:flex-start!important;
+    max-width:100%!important;
+  }
+
+  .nav-btn{
+    flex:0 0 auto!important;
+  }
+}
+
+body.performance-mode *,
+body.dymivra-scroll-unlocked *{
+  scroll-behavior:auto!important;
+}
+
+body.performance-mode .card,
+body.performance-mode .mini,
+body.performance-mode .item{
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+</style>
+
+<script id="dymivra-scroll-unlock-hardfix-script">
+(function(){
+  'use strict';
+  if(window.__DYMIVRA_SCROLL_UNLOCK_HARDFIX__) return;
+  window.__DYMIVRA_SCROLL_UNLOCK_HARDFIX__ = true;
+
+  function hasVisibleModal(){
+    try{
+      return !!document.querySelector('.modal.show,.dym860-month-overlay.show,.dym-date-overlay.show,[id*="Overlay"].show');
+    }catch(e){
+      return false;
+    }
+  }
+
+  function forceStyle(el, styles){
+    if(!el) return;
+    Object.keys(styles).forEach(function(k){
+      try{ el.style.setProperty(k, styles[k], 'important'); }catch(e){}
+    });
+  }
+
+  function unlockPage(){
+    try{
+      document.body.classList.add('dymivra-scroll-unlocked','performance-mode');
+      document.documentElement.classList.remove('modal-open','scroll-lock','no-scroll');
+      document.body.classList.remove('modal-open','scroll-lock','no-scroll');
+    }catch(e){}
+
+    if(!hasVisibleModal()){
+      forceStyle(document.documentElement,{
+        'height':'auto',
+        'min-height':'100%',
+        'max-height':'none',
+        'overflow-x':'hidden',
+        'overflow-y':'auto',
+        'position':'static',
+        'touch-action':'pan-y pinch-zoom',
+        'scroll-behavior':'auto'
+      });
+      forceStyle(document.body,{
+        'height':'auto',
+        'min-height':'100svh',
+        'max-height':'none',
+        'overflow-x':'hidden',
+        'overflow-y':'auto',
+        'position':'static',
+        'touch-action':'pan-y pinch-zoom',
+        'scroll-behavior':'auto'
+      });
+    }
+
+    try{
+      document.querySelectorAll('.container,#appSection,#authSection,main,.app,.app-shell,.wrap,.content,.screen,[data-screen-block]').forEach(function(el){
+        forceStyle(el,{
+          'height':'auto',
+          'max-height':'none',
+          'overflow':'visible',
+          'position':'relative',
+          'touch-action':'pan-y pinch-zoom'
+        });
+      });
+    }catch(e){}
+
+    try{
+      document.querySelectorAll('#appSection.app-nav,.app-nav').forEach(function(el){
+        forceStyle(el,{
+          'position':'sticky',
+          'top':'max(8px, env(safe-area-inset-top, 0px))',
+          'bottom':'auto',
+          'left':'auto',
+          'right':'auto',
+          'overflow-x':'auto',
+          'overflow-y':'hidden',
+          'touch-action':'pan-x pan-y'
+        });
+      });
+    }catch(e){}
+
+    try{
+      document.querySelectorAll('#pwaInstallCard,#mobileInstallGuide,.browser-install-card,.google-install-card,.install-browser,.install-guide-browser').forEach(function(el){
+        el.style.setProperty('display','none','important');
+        el.style.setProperty('visibility','hidden','important');
+        el.style.setProperty('pointer-events','none','important');
+      });
+      localStorage.setItem('wealth_pwa_install_dismissed','1');
+      localStorage.setItem('dymivra_mobile_install_dismissed','1');
+    }catch(e){}
+
+    try{
+      var chip = document.getElementById('performanceToggleChip');
+      if(chip) chip.textContent = 'Modo leve: Ativo';
+    }catch(e){}
+  }
+
+  function releaseHiddenOverlays(){
+    try{
+      document.querySelectorAll('.boot.hidden,.modal:not(.show),[id*="Overlay"]:not(.show),[class*="overlay"]:not(.show)').forEach(function(el){
+        el.style.setProperty('pointer-events','none','important');
+      });
+    }catch(e){}
+  }
+
+  function boot(){
+    unlockPage();
+    releaseHiddenOverlays();
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', boot, {once:true});
+  }else{
+    boot();
+  }
+
+  window.addEventListener('load', function(){
+    [0,120,400,900,1800,3500].forEach(function(ms){ setTimeout(boot, ms); });
+  }, {once:true, passive:true});
+
+  ['touchstart','touchmove','wheel','pointerdown','keydown','resize','orientationchange'].forEach(function(ev){
+    window.addEventListener(ev, function(){ setTimeout(boot, 0); }, {capture:true, passive:true});
+  });
+
+  setTimeout(boot, 500);
+  setTimeout(boot, 1500);
+  setTimeout(boot, 4000);
+})();
+</script>
+
 </body>
 </html>

@@ -2,7 +2,7 @@
   "name": "Dymivra",
   "short_name": "Dymivra",
   "description": "Dymivra — controle financeiro inteligente para patrimônio, investimentos, metas, renda, negócios e evolução financeira.",
-  "start_url": "/",
+  "start_url": "/?dymivra=unlock-2026-05-17",
   "scope": "/",
   "display": "standalone",
   "display_override": [
