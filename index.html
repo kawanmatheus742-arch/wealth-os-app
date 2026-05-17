@@ -8427,6 +8427,184 @@ html {
   }
 }
 </style>
+<style id="dym-autofill-nuclear">
+/* =====================================================
+   NUCLEAR AUTOFILL FIX - Cobre 100% do campo branco
+   ===================================================== */
+
+/* Caixa escura fixa em cima de qualquer autofill */
+.email-wrap, .input-wrap.password-wrap {
+  position: relative !important;
+  isolation: isolate !important;
+}
+
+/* Pseudo-elemento que fica sobre o input e bloqueia o branco visualmente */
+.email-wrap::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 2px !important;
+  border-radius: 18px !important;
+  background: linear-gradient(180deg, #0b2541, #061729) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  transition: opacity 0.1s !important;
+}
+
+/* Quando focado, remove o overlay para mostrar o cursor normalmente */
+.email-wrap:focus-within::after {
+  opacity: 0 !important;
+}
+
+/* O input fica acima do overlay apenas quando focado */
+.email-wrap input#email {
+  position: relative !important;
+  z-index: 2 !important;
+  background: linear-gradient(180deg, #0b2541, #061729) !important;
+  background-color: #071b31 !important;
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+/* Autofill: força cor escura */
+#email, #password,
+input#email, input#password {
+  background-color: #071b31 !important;
+  background-image: linear-gradient(180deg, #0b2541, #061729) !important;
+  -webkit-box-shadow: 0 0 0 9999px #071b31 inset !important;
+  box-shadow: 0 0 0 9999px #071b31 inset !important;
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+#email:-webkit-autofill,
+#password:-webkit-autofill,
+#email:-webkit-autofill:hover,
+#password:-webkit-autofill:hover,
+#email:-webkit-autofill:focus,
+#password:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 9999px #071b31 inset !important;
+  box-shadow: 0 0 0 9999px #071b31 inset !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  color: #f8fafc !important;
+  background-color: #071b31 !important;
+}
+
+/* Performance: sem backdrop-filter no mobile */
+@media (max-width: 820px) {
+  .card, .mini, .item, .auth-panel, .auth-shell, .auth-copy,
+  .app-nav, .modalbox, .boot, .bootbox, .toast,
+  .dym860-month-modal {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  /* Sem animações pesadas */
+  .lux-reveal, .lux-inview,
+  .score-shell::after,
+  .wealthLogoPulse {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  body::before, .pulse-grid-bg {
+    display: none !important;
+  }
+}
+
+/* Scroll estável: sem translateY nos reveals */
+.lux-reveal {
+  transform: none !important;
+}
+body.motion-lite .lux-reveal {
+  opacity: 0;
+  transform: none !important;
+}
+body.motion-lite .lux-reveal.lux-inview {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: dymFadeOnly 0.3s ease both !important;
+}
+@keyframes dymFadeOnly {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Month chip: sem label Selecionado */
+.dym860-month-chip.active::after,
+.dym860-month-chip.is-selected::after {
+  display: none !important;
+  content: "" !important;
+}
+
+
+/* =====================================================
+   PERFORMANCE GLOBAL - ELIMINA TRAVAMENTOS
+   ===================================================== */
+
+/* 1. Remove backdrop-filter de TUDO - maior causa de lag */
+* {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* 2. Restaura backdrop apenas onde é essencial (modais) */
+.dym860-month-overlay,
+.modal,
+.boot {
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* 3. Remove animações de fundo contínuas (rodam 60fps sem parar) */
+.score-shell::after,
+.wealth-aurora-stage .aurora-orb,
+.wealthLogoPulse,
+.logo {
+  animation: none !important;
+}
+
+/* 4. Remove grid de background - consome GPU desnecessariamente */
+body::before,
+.pulse-grid-bg {
+  display: none !important;
+}
+
+/* 5. Desativa will-change desnecessário */
+* {
+  will-change: auto !important;
+}
+
+/* 6. Força GPU composta apenas nos botões nav */
+.nav-btn.active {
+  will-change: transform !important;
+}
+
+/* 7. Transitions mais rápidas para parecer mais responsivo */
+.mini, .item, .card {
+  transition: border-color 0.1s ease !important;
+}
+button {
+  transition: filter 0.1s ease !important;
+}
+
+/* 8. scroll-behavior auto em tudo - smooth causa lag em celular */
+html, body, .container, * {
+  scroll-behavior: auto !important;
+}
+
+/* 9. Sem box-shadow pesado nas cards no mobile */
+@media (max-width: 820px) {
+  .card, .mini, .item, .premium-panel,
+  .command-card, .allocation-card {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
+  }
+}
+
+/* 10. Disable filter: em hover nos cards - muito pesado */
+.card:hover, .mini:hover, .item:hover {
+  filter: none !important;
+}
+
+</style>
 </head>
 <body class="dymivra781-premium">
 <div aria-hidden="true" class="wealth-aurora-stage" id="wealthAuroraStage"><span class="aurora-orb orb-a"></span><span class="aurora-orb orb-b"></span><span class="aurora-orb orb-c"></span><span class="aurora-grid"></span></div>
@@ -8498,11 +8676,11 @@ html {
 </div>
 </div>
 <div class="input-wrap email-wrap">
-<input autocomplete="email" id="email" placeholder="Seu e-mail" spellcheck="false" type="email"/>
+<input autocomplete="off" data-lpignore="true" data-form-type="other" id="email" placeholder="Seu e-mail" spellcheck="false" type="text" inputmode="email"/>
 <span aria-hidden="true" class="email-mirror" id="emailMirror"></span>
 </div>
 <div class="input-wrap password-wrap">
-<input autocomplete="current-password" class="password-input" id="password" placeholder="Sua senha" type="password"/>
+<input autocomplete="off" data-lpignore="true" class="password-input" id="password" placeholder="Sua senha" type="password"/>
 <button aria-label="Mostrar ou ocultar senha" class="eye eye-premium" onclick="togglePassword()" type="button">
 <svg aria-hidden="true" class="eye-svg active" fill="none" id="eyeIconOpen" viewbox="0 0 24 24">
 <path d="M2.4 12.1C4.25 8.85 7.6 6.5 12 6.5s7.75 2.35 9.6 5.6c-1.85 3.25-5.2 5.6-9.6 5.6s-7.75-2.35-9.6-5.6Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.85"></path>
@@ -14173,7 +14351,8 @@ Não mande comprar, vender ou manter ativo específico. Não prometa rentabilida
         email.style.color='#f8fafc';
         email.style.webkitTextFillColor='#f8fafc';
         email.style.caretColor='#67e8f9';
-        email.style.backgroundColor='transparent';
+        /* REMOVIDO: backgroundColor transparent que causava o branco */
+        email.style.background='linear-gradient(180deg,#0b2541,#061729)';
         email.style.visibility='visible';
       }
 
@@ -14680,9 +14859,9 @@ Confirmo que desejo excluir os dados associados à minha conta.`);
           container.style.height='auto';
           container.style.maxHeight='none';
           container.style.minHeight='100vh';
-          container.style.overflow='visible';
-          container.style.overflowX='clip';
-          container.style.overflowY='visible';
+          /* CORRIGIDO: overflow:visible quebrava o scroll - mantém auto */
+          container.style.overflowX='hidden';
+          container.style.overflowY='auto';
         }
         const app=$('appSection');
         if(app){
@@ -16442,7 +16621,7 @@ Criar checkout Pro/Elite no provedor escolhido, configurar webhook seguro no bac
     else syncMenuState();
   },{passive:true});
 
-  setInterval(syncMenuState,800);
+  /* CORRIGIDO: syncMenuState era setInterval 800ms → removido, usa eventos */ 
 })();
 </script>
 
@@ -26879,18 +27058,19 @@ body.performance-mode #dymivra843Habits *{transition:none!important;animation:no
       window.addEventListener(ev, function(){ lastUserScroll = Date.now(); }, {passive:true, capture:true});
     });
 
-    var rafId = null;
-    function checkScroll(){
-      rafId = requestAnimationFrame(checkScroll);
+    // CORRIGIDO: usar evento de scroll em vez de RAF loop (muito mais leve)
+    function checkScrollOnce(){
       if(!inInput || savedPos === null) return;
-      if(Date.now() - lastUserScroll < 300) return; // usuário está rolando de propósito
+      if(Date.now() - lastUserScroll < 400) return;
       var cur = getScrollTop();
-      // Se o scroll subiu mais de 80px sem o usuário ter rolado, restaura
       if(savedPos - cur > 80){
         setScrollTop(savedPos);
       }
     }
-    checkScroll();
+    // Só verifica quando há um evento de scroll, não em loop contínuo
+    window.addEventListener('scroll', checkScrollOnce, {passive:true});
+    var scroller = document.querySelector('.container');
+    if(scroller) scroller.addEventListener('scroll', checkScrollOnce, {passive:true});
   })();
 
 })();
@@ -27199,43 +27379,92 @@ body.performance-mode #dymivra843Habits *{transition:none!important;animation:no
 </script>
 
 <script>
-/* ===== DYMIVRA SCROLL STABILITY PATCH =====
-   Bloqueia o scroll automático indesejado
-   =========================================*/
+/* ===== DYMIVRA PATCH v5 - SCROLL + AUTOFILL + PERFORMANCE =====*/
 (function(){
-  // Sobrescreve wealthScrollToTop para não executar automaticamente
-  var _origScrollToTop = window.wealthScrollToTop;
-  
-  // Desativa o overscroll bounce que causa "sobe sozinho"
-  document.addEventListener('DOMContentLoaded', function(){
-    var container = document.querySelector('.container');
-    if(container){
-      container.style.overscrollBehaviorY = 'contain';
-    }
-    
-    // Remove translateY de todos os elementos lux-reveal para evitar scroll jumps
-    document.querySelectorAll('.lux-reveal').forEach(function(el){
-      el.style.transform = 'none';
+
+  // ---- AUTOFILL NUCLEAR: força background escuro via JS ----
+  function forceInputsDark(){
+    var ids = ['email','password'];
+    ids.forEach(function(id){
+      var el = document.getElementById(id);
+      if(!el) return;
+      el.style.setProperty('background','linear-gradient(180deg,#0b2541,#061729)','important');
+      el.style.setProperty('background-color','#071b31','important');
+      el.style.setProperty('color','#f8fafc','important');
+      el.style.setProperty('-webkit-text-fill-color','#f8fafc','important');
+      el.style.setProperty('caret-color','#67e8f9','important');
     });
-    
-    // Observer para novos elementos lux-reveal
-    var mo = new MutationObserver(function(muts){
-      muts.forEach(function(m){
-        m.addedNodes.forEach(function(n){
-          if(n.nodeType===1){
-            if(n.classList && n.classList.contains('lux-reveal')){
-              n.style.transform='none';
-            }
-            n.querySelectorAll && n.querySelectorAll('.lux-reveal').forEach(function(el){
-              el.style.transform='none';
-            });
-          }
-        });
+  }
+
+  // Roda imediatamente e em intervalos
+  forceInputsDark();
+  [100,300,600,1000,1500,2000,3000,5000].forEach(function(ms){
+    setTimeout(forceInputsDark, ms);
+  });
+  /* CORRIGIDO: só roda o interval quando o login está visível */
+  var _dymInputGuardInterval = null;
+  function startInputGuard(){
+    if(_dymInputGuardInterval) return;
+    _dymInputGuardInterval = setInterval(function(){
+      var auth = document.getElementById('authSection');
+      if(auth && auth.style.display !== 'none' && auth.offsetParent !== null){
+        forceInputsDark();
+      } else {
+        // Para o interval se não está no login
+        clearInterval(_dymInputGuardInterval);
+        _dymInputGuardInterval = null;
+      }
+    }, 2000);
+  }
+  startInputGuard();
+  // Reinicia quando navegar para o login
+  document.addEventListener('click', function(e){
+    if(e.target && (e.target.id==='loginBtn'||e.target.closest&&e.target.closest('#authSection'))){
+      startInputGuard();
+    }
+  });
+
+  // Monitora APENAS o authSection quando os inputs aparecem
+  var moAuth = document.getElementById('authSection') || document.querySelector('.auth-panel') || document.body;
+  var mo = new MutationObserver(function(muts){
+    for(var i=0;i<muts.length;i++){
+      var t=muts[i].target;
+      if(t.id==='email'||t.id==='password'||t.id==='authSection'){
+        forceInputsDark(); break;
+      }
+    }
+  });
+  mo.observe(moAuth, {childList:true, subtree:true, attributes:true, attributeFilter:['style','class']});
+
+  // ---- SCROLL STABILITY: sem translateY nos reveals ----
+  function fixRevealTransforms(){
+    document.querySelectorAll('.lux-reveal').forEach(function(el){
+      el.style.setProperty('transform','none','important');
+    });
+  }
+  fixRevealTransforms();
+  var scrollMo = new MutationObserver(function(muts){
+    muts.forEach(function(m){
+      m.addedNodes.forEach(function(n){
+        if(n.nodeType!==1) return;
+        if(n.classList && n.classList.contains('lux-reveal')) n.style.setProperty('transform','none','important');
+        if(n.querySelectorAll) n.querySelectorAll('.lux-reveal').forEach(function(el){ el.style.setProperty('transform','none','important'); });
       });
     });
-    mo.observe(document.body, {childList:true, subtree:true});
   });
+  scrollMo.observe(document.body, {childList:true, subtree:true});
+
+  // ---- CONTAINER: scroll estável ----
+  document.addEventListener('DOMContentLoaded', function(){
+    var c = document.querySelector('.container');
+    if(c){
+      c.style.overscrollBehaviorY = 'contain';
+    }
+    forceInputsDark();
+  });
+
 })();
 </script>
+
 </body>
 </html>
