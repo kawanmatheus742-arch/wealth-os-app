@@ -1,7 +1,7 @@
 {
   "name": "Dymivra",
   "short_name": "Dymivra",
-  "description": "Dymivra — controle de patrimônio, ledger, renda passiva, metas, projeções e inteligência financeira.",
+  "description": "Dymivra — controle financeiro inteligente para patrimônio, investimentos, metas, renda, negócios e evolução financeira.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -12,8 +12,6 @@
   "background_color": "#030712",
   "theme_color": "#07111f",
   "orientation": "portrait-primary",
-  "lang": "pt-BR",
-  "dir": "ltr",
   "categories": [
     "finance",
     "productivity"
@@ -30,32 +28,12 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Radar IA",
-      "short_name": "Radar",
-      "description": "Abrir o painel de alertas inteligentes.",
-      "url": "/?screen=radar",
-      "icons": [
-        {
-          "src": "/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
     },
     {
-      "name": "Dashboard",
-      "short_name": "Painel",
-      "description": "Abrir o painel principal.",
-      "url": "/",
-      "icons": [
-        {
-          "src": "/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
+      "src": "/wealth-os-logo-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }
